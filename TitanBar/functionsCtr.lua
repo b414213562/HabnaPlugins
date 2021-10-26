@@ -412,6 +412,18 @@ function ImportCtr( value )
             AS[ "Ctr" ]:SetPosition( _G.ASLocX, _G.ASLocY );
         end
         if _G.ASWhere ~= 3 then UpdateAncientScript(); end	
+    elseif value == "BOT" then --Badge of Taste
+        if _G.BOTWhere == 1 then
+            import (AppCtrD.."BadgeOfTaste");
+            BOT[ "Ctr" ]:SetPosition( _G.BOTLocX, _G.BOTLocY );
+        end
+        if _G.BOTWhere ~= 3 then UpdateBadgeOfTaste(); end
+    elseif value == "BOD" then --Badge of Dishonour
+        if _G.BODWhere == 1 then
+            import (AppCtrD.."BadgeOfDishonour");
+            BOD[ "Ctr" ]:SetPosition( _G.BODLocX, _G.BODLocY );
+        end
+        if _G.BODWhere ~= 3 then UpdateBadgeOfDishonour(); end
 	elseif value == "RP" then --Reputation Points
         RPGR = { ['default'] = {
             [0] = 10000, [1] = 10000, [2] = 20000, [3] = 25000, [4] = 30000,
@@ -1140,6 +1152,8 @@ function UpdateCurrency( str )
 	if str == L[ "MSPL" ] and ShowSpringLeaf then UpdateSpringLeaf(); end
 	if str == L[ "MMST" ] and ShowMidsummerToken then UpdateMidsummerToken(); end
 	if str == L[ "MAS" ] and ShowAncientScript then UpdateAncientScript(); end
+    if str == L[ "MBOT" ] and ShowBadgeOfTaste then UpdateBadgeOfTaste(); end
+    if str == L[ "MBOD" ] and ShowBadgeOfDishonour then UpdateBadgeOfDishonour(); end
 end
 
 function GetCurrency( str )
