@@ -520,10 +520,10 @@ function ImportCtr( value )
                                     local newR = tonumber( PlayerReputation[ PN ][ name ].R ) - 1;
                                     isNewRNegative = newR;
                                     if v == 2 or v == 7 or v == 8 or v == 15 then
-                                        isNewRNegative = isNewRNegative + 1;
+                                        isNewRNegative = isNewRNegative - 1;
                                     end
                                     if isNewRNegative >= 0 then
-                                        max = RPGR[RPPROG][ ( newR ) ];
+                                        max = RPGR[RPPROG][ ( isNewRNegative ) ];
                                         PlayerReputation[ PN ][ name ].R = tostring( newR );
                                         tot = tot + max;
                                     end
