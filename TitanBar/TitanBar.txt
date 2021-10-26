@@ -1,0 +1,30 @@
+TitanBar Known Issues/Limitations:
+	- Player Location (Player location is not accessible in API. It's currently based on chat channel, so it will only work if any one of those channel is active: 'Trade', 'Regional', 'RP', 'OOC' or 'LFF'.)
+	- Equipment score (Score based on item Quality & Toughness)
+	- Equipment durability (Item min & max durability are not accessible in API. It's currently based on item wear state.)
+	- Server Time is based on user defined GMT.
+	- TitanBar set to bottom. It will be over UI element because UI element can't be moved in-game.
+	- TitanBar auto always hide not working when exiting TitanBar menu. (when not selecting anything)
+	- Auto sizing label & control is not quite perfect, some time as lot of space.
+	- Icon are always in front (LOTRO stretch issue), so moving other control over each other is not recommended.
+	- LOTRO points not updating when user spend some points in the lotro store. (LOTRO points not available in API and no text in chat when spending)
+	- Turbine.Gameplay.LocalPlayer.GetEquipment() not working properly again. (LOTRO API issue)
+
+
+TitanBar Future Enhancements:
+	Add Travel location when API permits it. (how many travel rations you have)
+	Add Hunter's camp location when API permits it.
+	Add Trader location when API premits it.
+	Add milestone location when API permits it.
+	Add mount list when API permits it.
+	Add Monster play money when API permits it.
+	Add kinship members and friends when API permits it.
+	Add other medallion (of Dol Guldur / of Lothlrien / of Moria )
+	Add an alarm function (Message will pop at certain time to remind user of something)
+	Add House chest when API permits it.
+
+	Try to change the game time update to a eventHandler (if possible)
+	Broadcast control infos to selected chat channel (Maybe later if needed)
+
+You want to update TitanBar?
+Have a look at TitanBarMaintenance.txt and have fun ;)

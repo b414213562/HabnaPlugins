@@ -1,0 +1,123 @@
+This is a replacement for TitanBar v1.34.00 by Technical-13 which replaced v1.29.00 by Thorondor which replaced v1.24 by Habana.
+You do not need the original files.
+
+
+Need translations (mostly French)! 
+If you notice an error, please send me a pm or post it on the boards.
+
+=================================================
+v.1.35.24 (October 18, 2021)
+- Fixed a typo in functions.lua
+- Fixed some typos in the language files (including the missing reputation levels for "The Gabil'akkâ" in German and French)
+- Changed the size of the player information tooltip 
+
+=================================================
+v.1.35.23 (October 17, 2021)
+- Added "Ancient Script"
+- Added the Brawler
+- Fixed some typos in the language files
+- Reputation factions with special characters in their name now update correctly (huge thanks to DaBear78 for figuring that one out!!)
+- Corrected the reputation levels of the "Kharum-ubnâr"
+
+=================================================
+v.1.35.22 (September 5, 2021)
+- Corrected the reputation levels of "The League of the Axe" (thanks NotACat!)
+
+=================================================
+v.1.35.21 (I forgot to upload that version)
+- Added a search bar to the wallet window
+- Corrected some issues with currencies (thanks b414213562!)
+
+=================================================
+v1.35.20 (June 17, 2021)
+- Added "Midsummer Tokens"
+
+=================================================
+v1.35.19 (June 15, 2021)
+- Corrected an error in the reputation display (Woodcutter's Brotherhood was missing)
+
+=================================================
+v1.35.18 (June 13, 2021)
+- Corrected zip-file for LOTRO Interface
+
+=================================================
+v1.35.17 (June 12, 2021)
+- Added reputation factions (The Haban'akkâ of Thráin, Kharum-ubnâr)
+- The values for "The Haban'akkâ of Thráin" and the "Kharum-ubnâr" don't update automatically. No idea why.
+- Corrected the name of the "Woodcutter's Brotherhood"
+- Corrected the reputation levels of "The League of the Axe"
+- Corrected some missing German and French translations
+
+=================================================
+v1.35.16 (May 20, 2021)
+- Updated the "readme.md", "changelog.txt" and "credits.txt" files
+- Added "TitanBarMaintenance.txt" (How to update TitanBar)
+- Removed the update instructions from "TitanBar.txt"
+
+=================================================
+v1.35.15 (May 16, 2021)
+- Corrected ID for Plugin Compendium
+
+=================================================
+v1.35.14 (May 16, 2021)
+- Added German and French localization
+
+=================================================
+v1.35.13 (May 13, 2021)
+- Added "Spring Leaves"
+
+=================================================
+v1.35.12 (May 12, 2021)
+- Added reputation levels for "The Gabil'akkâ"
+- Converted files to ANSI
+
+=================================================
+v1.35.11 (May 02, 2021)
+- Added "Farmers Faire Tokens"
+
+=================================================
+v1.35.10 (May 02, 2021)
+- Added "Fall Festival Tokens"
+
+=================================================
+v1.35.09 (May 02, 2021)
+- Rearranged wallet
+
+=================================================
+v1.35.08 (May 02, 2021)
+- Added "Figments of Splendour"
+
+=================================================
+v1.35.07 (May 02, 2021)
+- Added "Woodcutter's Brotherhood"
+- Added "The League of the Axe"
+
+=================================================
+v1.35.06 (May 02, 2021)
+- Changed width of currency tooltip window
+
+=================================================
+v1.35.05 (April 21, 2021)
+- Added "March on Gundabad"
+- Added "The Gabil'akkâ"
+
+=================================================
+v1.35.04 (April 17, 2021)
+- Added "Protectors of Wilderland"
+
+=================================================
+v1.35.03 (April 17, 2021)
+- Added "Embers of Enchantment"
+
+=================================================
+v1.35.02 (April 11, 2021)
+- Removed "Ash of Enchantment"
+
+=================================================
+v1.35.01 (April 11, 2021)
+- Added "How to add a new currency"
+- Corrected XP needed for each player level (level 120 to 130)
+
+=================================================
+v1.35.00 (April 11, 2021)
+- Added "Motes of Enchantment"
