@@ -430,14 +430,16 @@ function ImportCtr( value )
         import (AppCtrD.."ReputationToolTip");
         RPcb = AddCallback(Turbine.Chat, "Received",
             function( sender, args )
+                if (args.ChatType ~= Turbine.ChatType.Advancement) then return; end
+                
                 rpMess = args.Message;
                 if rpMess ~= nil then
                 -- Check string, Reputation Name and Reputation Point pattern
                     local cstr, rpnPattern, rppPatern, rpbPattern;
                     if GLocale == "en" then
                         rpnPattern = "reputation with (.*) has"..
-                            " increased by";
-                        rppPattern = "has increased by ([%d%p]*)%.";
+                            " (.*) by";
+                        rppPattern = "has .* by ([%d%p]*)%.";
                     elseif GLocale == "fr" then
                         rpnPattern = "de la faction (.*) a "..
                             "augment\195\169 de";
@@ -466,7 +468,7 @@ function ImportCtr( value )
                             rpbPattern = "%(([%d%p]*) durch Bonus";
                         end
                     end
-                    local rpName = string.match( rpMess,rpnPattern );
+                    local rpName,increaseOrDecrease = string.match( rpMess,rpnPattern );
                     -- Reputation Name
                     if rpMess ~= nil and rpName ~= nil then
                         if rpbPattern ~= nil then
@@ -480,6 +482,9 @@ function ImportCtr( value )
                             PlayerReputation[ PN ][ "RPACC" ].P = string.format( "%.0f", tot );
                         end
                         local rpPTS = string.match( rpMess, rppPattern );
+                        if (increaseOrDecrease == L[ "RPDECREASE"]) then
+                            rpPTS = -rpPTS;
+                        end
                         -- Reputation points
                         local rpPTS = string.gsub( rpPTS, ",", "" );
                         -- Replace "," in 1,400 to get 1400
