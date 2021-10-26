@@ -53,17 +53,19 @@ function frmWalletWindow()
 	end
 	-- **^
 	
+	local WIlbltextHeight = 35;
 	local WIlbltext = Turbine.UI.Label();
 	WIlbltext:SetParent( _G.wWI );
 	WIlbltext:SetText( L["WIt"] );
 	WIlbltext:SetPosition( 20, 35);
-	WIlbltext:SetSize( _G.wWI:GetWidth()-40 , 35 );
+	WIlbltext:SetSize( _G.wWI:GetWidth()-40 , WIlbltextHeight );
 	WIlbltext:SetTextAlignment( Turbine.UI.ContentAlignment.MiddleCenter );
 	WIlbltext:SetForeColor( Color["green"] );
 
-   local WIFilterlbl = Turbine.UI.Label();
+	local WIFilterlblHeight = 20;
+    local WIFilterlbl = Turbine.UI.Label();
     WIFilterlbl:SetParent(_G.wWI);
-    WIFilterlbl:SetSize(60,20);
+    WIFilterlbl:SetSize(60,WIFilterlblHeight);
     WIFilterlbl:SetPosition(20,75);
     WIFilterlbl:SetTextAlignment(Turbine.UI.ContentAlignment.MiddleLeft);
     WIFilterlbl:SetText("Search:");
@@ -94,12 +96,14 @@ function frmWalletWindow()
     end
 
 	-- **v Set the Wallet listbox v**
+	local WIListBoxHeight = 
+		_G.wWI:GetHeight()-95 - WIlbltextHeight - WIFilterlblHeight;
 	WIListBox = Turbine.UI.ListBox();
 	WIListBox:SetParent( _G.wWI );
 	WIListBox:SetZOrder( 1 );
 	WIListBox:SetPosition( 20, 115 );
 	--WIListBox:SetPosition( 20, WIlbltext:GetTop()+WIlbltext:GetHeight()+5 );
-	WIListBox:SetSize( _G.wWI:GetWidth()-40, _G.wWI:GetHeight()-95 );
+	WIListBox:SetSize( _G.wWI:GetWidth()-40, WIListBoxHeight );
 	WIListBox:SetMaxItemsPerLine( 1 );
 	WIListBox:SetOrientation( Turbine.UI.Orientation.Horizontal );
 	--WIListBox:SetBackColor( Color["red"] ); --debug purpose
