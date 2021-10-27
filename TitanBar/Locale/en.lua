@@ -118,7 +118,7 @@ L[ "MSTh" ] = "These are your Midsummer Tokens";
 -- Ancient Script control
 L[ "MAS" ] = "Ancient Script";
 L[ "ASh" ] = "These are your Ancient Scripts";
--- Inn League / Ale Association
+-- Inn League / Ale Association control
 L[ "MBOT" ] = "Badge of Taste";
 L[ "BOTh" ] = "These are your Badges of Taste";
 L[ "MBOD" ] = "Badge of Dishonour";
