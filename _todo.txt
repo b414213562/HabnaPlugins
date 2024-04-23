@@ -28,8 +28,14 @@ Get rid of WalletOrder, it's not doing anything now, and makes things harder.
 
 ----
 
+Problems seen while working on this:
+    MCh is the tooltip for both Mithril Coins and Copper Coins.
 
-
+Notes:
+    Is WalletControl the generic thing I've been wanting to make?!?
+    Reorder the items in functionsCtr.lua 
+        function ImportCtr( value )
+        to sort the wallet items together
 
 Maybe fix how often we're using string.format for updating a setting?
 

@@ -12,7 +12,7 @@ function frmWalletWindow()
 	_G.wWI = Turbine.UI.Lotro.Window();
 	if GLocale == "de" then w = 300; else w = 280; end
 	_G.wWI:SetSize( w, 640 ); --280x260
-    _G.wWI:SetPosition( WIWLeft, WIWTop );
+    _G.wWI:SetPosition( PositionW.Left["Wallet"], PositionW.Top["Wallet"] );
 	_G.wWI:SetText( L["MBag"] );
 	_G.wWI:SetVisible( true );
 	_G.wWI:SetWantsKeyEvents( true );
@@ -41,7 +41,7 @@ function frmWalletWindow()
 		dragging = false;
 		settings.Wallet.L = string.format("%.0f", _G.wWI:GetLeft());
 		settings.Wallet.T = string.format("%.0f", _G.wWI:GetTop());
-		WIWLeft, WIWTop = _G.wWI:GetPosition();
+		PositionW.Left["Wallet"], PositionW.Top["Wallet"] = _G.wWI:GetPosition();
 		SaveSettings( false );
 	end
 

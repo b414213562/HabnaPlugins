@@ -1006,7 +1006,7 @@ end
 function ChangeColor(tColor)
 	if BGWToAll then
 		TB["win"]:SetBackColor( tColor );
-		if ShowWallet then WI[ "Ctr" ]:SetBackColor( tColor ); end
+		if Show["Wallet"] then WI[ "Ctr" ]:SetBackColor( tColor ); end
 		if ShowMoney then MI[ "Ctr" ]:SetBackColor( tColor ); end
 		if ShowDestinyPoints then DP[ "Ctr" ]:SetBackColor( tColor ); end
 		if ShowShards then SP[ "Ctr" ]:SetBackColor( tColor ); end

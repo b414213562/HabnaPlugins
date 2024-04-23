@@ -2,6 +2,24 @@
 -- Written by Habna
 -- Rewritten by many
 
+-- Globals that are used by Settings:
+Show = {}; -- Visibility boolean for Controls
+
+BC = {}; -- Background Color of Controls
+BC.Alpha = {};
+BC.Red = {};
+BC.Green = {};
+BC.Blue = {};
+
+Position = {}; -- Position of Controls
+Position.Left = {};
+Position.Top = {};
+
+PositionW = {}; -- Position of Windows
+PositionW.Left = {};
+PositionW.Top = {};
+
+
 
 -- **v Load / update / set default settings v**
 -- I'm confused as to what most of this is... Most of these strings should be in localization files, and I believe they are - so why are they here too?  Deprecated code that hasn't been cleaned up yet?
@@ -113,25 +131,25 @@ function LoadSettings()
 	BGWToAll = settings.Background.A;
 
 
-	if settings.Wallet == nil then settings.Wallet = {}; end
-	if settings.Wallet.V == nil then settings.Wallet.V = false; end
-	if settings.Wallet.A == nil then settings.Wallet.A = string.format("%.3f", tA); end
-	if settings.Wallet.R == nil then settings.Wallet.R = string.format("%.3f", tR); end
-	if settings.Wallet.G == nil then settings.Wallet.G = string.format("%.3f", tG); end
-	if settings.Wallet.B == nil then settings.Wallet.B = string.format("%.3f", tB); end
-	if settings.Wallet.X == nil then settings.Wallet.X = string.format("%.0f", tX); end
-	if settings.Wallet.Y == nil then settings.Wallet.Y = string.format("%.0f", tY); end
-	if settings.Wallet.L == nil then settings.Wallet.L = string.format("%.0f", tL); end --X position of Wallet window
-	if settings.Wallet.T == nil then settings.Wallet.T = string.format("%.0f", tT); end --Y position of Wallet window
-	ShowWallet = settings.Wallet.V;
-	WIbcAlpha = tonumber(settings.Wallet.A);
-	WIbcRed = tonumber(settings.Wallet.R);
-	WIbcGreen = tonumber(settings.Wallet.G);
-	WIbcBlue = tonumber(settings.Wallet.B);
-	_G.WILocX = tonumber(settings.Wallet.X);
-	_G.WILocY = tonumber(settings.Wallet.Y);
-	WIWLeft = tonumber(settings.Wallet.L);
-	WIWTop = tonumber(settings.Wallet.T);
+	if settings["Wallet"] == nil then settings["Wallet"] = {}; end
+	if settings["Wallet"].V == nil then settings["Wallet"].V = false; end
+	if settings["Wallet"].A == nil then settings["Wallet"].A = string.format("%.3f", tA); end
+	if settings["Wallet"].R == nil then settings["Wallet"].R = string.format("%.3f", tR); end
+	if settings["Wallet"].G == nil then settings["Wallet"].G = string.format("%.3f", tG); end
+	if settings["Wallet"].B == nil then settings["Wallet"].B = string.format("%.3f", tB); end
+	if settings["Wallet"].X == nil then settings["Wallet"].X = string.format("%.0f", tX); end
+	if settings["Wallet"].Y == nil then settings["Wallet"].Y = string.format("%.0f", tY); end
+	if settings["Wallet"].L == nil then settings["Wallet"].L = string.format("%.0f", tL); end --X position of Wallet window
+	if settings["Wallet"].T == nil then settings["Wallet"].T = string.format("%.0f", tT); end --Y position of Wallet window
+	Show["Wallet"] = settings["Wallet"].V;
+    BC.Alpha["Wallet"] = tonumber(settings["Wallet"].A);
+	BC.Red["Wallet"] = tonumber(settings.Wallet.R);
+	BC.Green["Wallet"] = tonumber(settings.Wallet.G);
+	BC.Blue["Wallet"] = tonumber(settings.Wallet.B);
+	Position.Left["Wallet"] = tonumber(settings.Wallet.X);
+	Position.Top["Wallet"] = tonumber(settings.Wallet.Y);
+	PositionW.Left["Wallet"] = tonumber(settings.Wallet.L);
+	PositionW.Top["Wallet"] = tonumber(settings.Wallet.T);
 
 
 	if settings.Money == nil then settings.Money = {}; end
@@ -1027,15 +1045,15 @@ function SaveSettings(str)
 		settings.Background.A = BGWToAll;
 
 		settings.Wallet = {};
-		settings.Wallet.V = ShowWallet;
-		settings.Wallet.A = string.format("%.3f", WIbcAlpha);
-		settings.Wallet.R = string.format("%.3f", WIbcRed);
-		settings.Wallet.G = string.format("%.3f", WIbcGreen);
-		settings.Wallet.B = string.format("%.3f", WIbcBlue);
-		settings.Wallet.X = string.format("%.0f", _G.WILocX);
-		settings.Wallet.Y = string.format("%.0f", _G.WILocY);
-		settings.Wallet.L = string.format("%.0f", WIWLeft);
-		settings.Wallet.T = string.format("%.0f", WIWTop);
+		settings.Wallet.V = Show["Wallet"];
+		settings.Wallet.A = string.format("%.3f", BC.Alpha["Wallet"]);
+		settings.Wallet.R = string.format("%.3f", BC.Red["Wallet"]);
+		settings.Wallet.G = string.format("%.3f", BC.Green["Wallet"]);
+		settings.Wallet.B = string.format("%.3f", BC.Blue["Wallet"]);
+		settings.Wallet.X = string.format("%.0f", Position.Left["Wallet"]);
+		settings.Wallet.Y = string.format("%.0f", Position.Top["Wallet"]);
+		settings.Wallet.L = string.format("%.0f", PositionW.Left["Wallet"]);
+		settings.Wallet.T = string.format("%.0f", PositionW.Top["Wallet"]);
 
 		settings.Money = {};
 		settings.Money.V = ShowMoney;
@@ -1488,7 +1506,7 @@ function ResetSettings()
 	tL, tT = 100, 100;
 	
 	TBHeight, _G.TBFont, TBFontT, TBTop, TBAutoHide, TBIconSize, bcAlpha, bcRed, bcGreen, bcBlue = 30, 1107296268, "TrajanPro14", true, L["OPAHC"], 32, tA, tR, tG, tB; --Backcolor & default X Location for TitanBar
-	ShowWallet, WIbcAlpha, WIbcRed, WIbcGreen, WIbcBlue, _G.WILocX, _G.WILocY = false, tA, tR, tG, tB, tX, tY; --for Wallet Control
+	Show["Wallet"], BC.Alpha["Wallet"], BC.Red["Wallet"], BC.Green["Wallet"], BC.Blue["Wallet"], Position.Left["Wallet"], Position.Top["Wallet"] = false, tA, tR, tG, tB, tX, tY; --for Wallet Control
 	ShowMoney, _G.STM, _G.SSS, _G.STS, MIbcAlpha, MIbcRed, MIbcGreen, MIbcBlue, _G.MILocX, _G.MILocY, _G.MIWhere = true, false, true, true, tA, tR, tG, tB, 400, tY, 1; --for Money Control
 	ShowDestinyPoints, DPbcAlpha, DPbcRed, DPbcGreen, DPbcBlue, _G.DPLocX, _G.DPLocY, _G.DPWhere = false, tA, tR, tG, tB, tX, tY, tW; --for Destiny points Control
 	ShowShards, SPbcAlpha, SPbcRed, SPbcGreen, SPbcBlue, _G.SPLocX, _G.SPLocY, _G.SPWhere = false, tA, tR, tG, tB, tX, tY, tW; --for Shards Control
@@ -1543,9 +1561,9 @@ function ReplaceCtr()
 	settings.TitanBar.W = string.format("%.0f", screenWidth);
 	
 	local oldLocX = settings.Wallet.X / oldScreenWidth;
-	_G.WILocX = oldLocX * screenWidth;
-	settings.Wallet.X = string.format("%.0f", _G.WILocX);
-	if ShowWallet then WI[ "Ctr" ]:SetPosition( _G.WILocX, _G.WILocY ); end
+	Position.Left["Wallet"] = oldLocX * screenWidth;
+	settings.Wallet.X = string.format("%.0f", Position.Left["Wallet"]);
+	if Show["Wallet"] then WI[ "Ctr" ]:SetPosition( Position.Left["Wallet"], Position.Top["Wallet"] ); end
 
 	oldLocX = settings.Money.X / oldScreenWidth;
 	_G.MILocX = oldLocX * screenWidth;

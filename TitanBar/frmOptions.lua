@@ -4,7 +4,7 @@
 
 
 local WalletControls = { };
-if WI ~= nil then WalletControls[ "WI" ] = { ShowHide = ShowWallet, Control = WI[ "Ctr" ] }; end
+if WI ~= nil then WalletControls[ "WI" ] = { ShowHide = Show["Wallet"], Control = WI[ "Ctr" ] }; end
 if MI ~= nil then WalletControls[ "MI" ] = { ShowHide = ShowMoney, Control = MI[ "Ctr" ] }; end
 if DP ~= nil then WalletControls[ "DP" ] = { ShowHide = ShowDestinyPoints, Control = DP[ "Ctr" ] }; end
 if SP ~= nil then WalletControls[ "SP" ] = { ShowHide = ShowShards, Control = SP[ "Ctr" ] }; end

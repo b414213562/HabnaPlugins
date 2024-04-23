@@ -6,19 +6,19 @@
 
 -- **v Show/Hide Wallet v**
 function ShowHideWallet()
-	ShowWallet = not ShowWallet;
-	settings.Wallet.V = ShowWallet;
+	Show["Wallet"] = not Show["Wallet"];
+	settings.Wallet.V = Show["Wallet"];
 	SaveSettings( false );
-	if ShowWallet then
+	if Show["Wallet"] then
 		--write( "TitanBar: Showing wallet control");
 		ImportCtr( "WI" );
-		WI[ "Ctr" ]:SetBackColor( Turbine.UI.Color( WIbcAlpha, WIbcRed, WIbcGreen, WIbcBlue ) );
+		WI[ "Ctr" ]:SetBackColor( Turbine.UI.Color( BC.Alpha["Wallet"], BC.Red["Wallet"], BC.Green["Wallet"], BC.Blue["Wallet"] ) );
 	else
 		--write( "TitanBar: Hiding wallet control");
 		if _G.frmWI then wWI:Close(); end
 	end
-	WI[ "Ctr" ]:SetVisible( ShowWallet );
-	opt_WI:SetChecked( ShowWallet );
+	WI[ "Ctr" ]:SetVisible( Show["Wallet"] );
+	opt_WI:SetChecked( Show["Wallet"] );
 end
 -- **^
 -- **v Show/Hide Money v**

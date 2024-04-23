@@ -8,7 +8,7 @@ function ImportCtr( value )
         import (AppCtrWalletD.."Wallet");
         import (AppCtrWalletD.."WalletToolTip");
         UpdateWallet();
-        WI[ "Ctr" ]:SetPosition( _G.WILocX, _G.WILocY );
+        WI[ "Ctr" ]:SetPosition( Position.Left["Wallet"], Position.Top["Wallet"] );
     elseif value == "MI" then --Money Infos
         if _G.MIWhere == 1 then
             import (AppCtrWalletD.."MoneyInfos");

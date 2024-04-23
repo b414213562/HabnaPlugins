@@ -203,13 +203,13 @@ function frmMain()
 		ShowMidsummerToken = false;
 		ShowAncientScript = false;
 		if PlayerWalletSize ~= nil or PlayerWalletSize ~= 0 then
-			if ShowWallet then ImportCtr( "WI" ); end
+			if Show["Wallet"] then ImportCtr( "WI" ); end
 			if _G.CPWhere ~= 3 then ImportCtr( "CP" ); end
 			if _G.LPWhere ~= 3 then ImportCtr( "LP" ); end
 		end
 	end
 
-	if ShowWallet then ImportCtr( "WI" ); end
+	if Show["Wallet"] then ImportCtr( "WI" ); end
 	if _G.MIWhere ~= 3 then ImportCtr( "MI" ); end
 	if _G.DPWhere ~= 3 then ImportCtr( "DP" ); end
 	if ShowTrackItems then ImportCtr( "TI" ); end --Track Items

@@ -10,7 +10,7 @@ WI["Ctr"]:SetParent( TB["win"] );
 WI["Ctr"]:SetMouseVisible( false );
 WI["Ctr"]:SetZOrder( 2 );
 WI["Ctr"]:SetBlendMode( 4 );
-WI["Ctr"]:SetBackColor( Turbine.UI.Color( WIbcAlpha, WIbcRed, WIbcGreen, WIbcBlue ) );
+WI["Ctr"]:SetBackColor( Turbine.UI.Color( BC.Alpha["Wallet"], BC.Red["Wallet"], BC.Green["Wallet"], BC.Blue["Wallet"] ) );
 --WI["Ctr"]:SetBackColor( Color["red"] ); -- Debug puWIose
 --**^
 --**v Wallet icon on TitanBar v**
@@ -79,10 +79,10 @@ end
 WI["Icon"].MouseUp = function( sender, args )
 	WI["Ctr"]:SetZOrder( 2 );
 	dragging = false;
-	_G.WILocX = WI["Ctr"]:GetLeft();
-	settings.Wallet.X = string.format("%.0f", _G.WILocX);
-	_G.WILocY = WI["Ctr"]:GetTop();
-	settings.Wallet.Y = string.format("%.0f", _G.WILocY);
+	Position.Left["Wallet"] = WI["Ctr"]:GetLeft();
+	settings.Wallet.X = string.format("%.0f", Position.Left["Wallet"]);
+	Position.Top["Wallet"] = WI["Ctr"]:GetTop();
+	settings.Wallet.Y = string.format("%.0f", Position.Top["Wallet"]);
 	SaveSettings( false );
 end
 --**^

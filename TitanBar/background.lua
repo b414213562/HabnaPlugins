@@ -61,7 +61,7 @@ function frmBackground()
 	
 	-- Set backcolor window setting to currently control color
 	if sFrom == "TitanBar" then curSelAlpha = bcAlpha; curSelRed = bcRed; curSelGreen = bcGreen; curSelBlue = bcBlue; end
-	if sFrom == "WI" then curSelAlpha = WIbcAlpha; curSelRed = WIbcRed; curSelGreen = WIbcGreen; curSelBlue = WIbcBlue; end
+	if sFrom == "WI" then curSelAlpha = BC.Alpha["Wallet"]; curSelRed = BC.Red["Wallet"]; curSelGreen = BC.Green["Wallet"]; curSelBlue = BC.Blue["Wallet"]; end
 	if sFrom == "Money" then curSelAlpha = MIbcAlpha; curSelRed = MIbcRed; curSelGreen = MIbcGreen; curSelBlue = MIbcBlue; end
 	if sFrom == "DP" then curSelAlpha = DPbcAlpha; curSelRed = DPbcRed; curSelGreen = DPbcGreen; curSelBlue = DPbcBlue; end
 	if sFrom == "SP" then curSelAlpha = SPbcAlpha; curSelRed = SPbcRed; curSelGreen = SPbcGreen; curSelBlue = SPbcBlue; end
@@ -329,7 +329,7 @@ function UpdateBCvariable()
 	curSelAlpha = curAlpha;
 	if BGWToAll then
 		bcAlpha, bcRed, bcGreen, bcBlue = curSelAlpha, curSelRed, curSelGreen, curSelBlue;
-		WIbcAlpha, WIbcRed, WIbcGreen, WIbcBlue = curSelAlpha, curSelRed, curSelGreen, curSelBlue;
+		BC.Alpha["Wallet"], BC.Red["Wallet"], BC.Green["Wallet"], BC.Blue["Wallet"] = curSelAlpha, curSelRed, curSelGreen, curSelBlue;
 		MIbcAlpha, MIbcRed, MIbcGreen, MIbcBlue = curSelAlpha, curSelRed, curSelGreen, curSelBlue;
 		DPbcAlpha, DPbcRed, DPbcGreen, DPbcBlue = curSelAlpha, curSelRed, curSelGreen, curSelBlue;
 		SPbcAlpha, SPbcRed, SPbcGreen, SPbcBlue = curSelAlpha, curSelRed, curSelGreen, curSelBlue;
@@ -373,7 +373,7 @@ function UpdateBCvariable()
 
 	else
 		if sFrom == "TitanBar" then bcAlpha = curSelAlpha; bcRed = curSelRed; bcGreen = curSelGreen; bcBlue = curSelBlue; end
-		if sFrom == "WI" then WIbcAlpha = curSelAlpha; WIbcRed = curSelRed; WIbcGreen = curSelGreen; WIbcBlue = curSelBlue; end
+		if sFrom == "WI" then BC.Alpha["Wallet"] = curSelAlpha; BC.Red["Wallet"] = curSelRed; BC.Green["Wallet"] = curSelGreen; BC.Blue["Wallet"] = curSelBlue; end
 		if sFrom == "Money" then MIbcAlpha = curSelAlpha; MIbcRed = curSelRed; MIbcGreen = curSelGreen; MIbcBlue = curSelBlue; end
 		if sFrom == "DP" then DPbcAlpha = curSelAlpha; DPbcRed = curSelRed; DPbcGreen = curSelGreen; DPbcBlue = curSelBlue; end
 		if sFrom == "SP" then SPbcAlpha = curSelAlpha; SPbcRed = curSelRed; SPbcGreen = curSelGreen; SPbcBlue = curSelBlue; end

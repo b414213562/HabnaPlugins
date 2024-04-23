@@ -45,7 +45,7 @@ local opt_line = Turbine.UI.MenuItem("------------------------------------------
 local opt_empty = Turbine.UI.MenuItem("", false);
 
 opt_WI = Turbine.UI.MenuItem(L["MBag"]);
-opt_WI:SetChecked( ShowWallet );
+opt_WI:SetChecked( Show["Wallet"] );
 opt_WI.Click = function( sender, args ) ShowHideWallet(); TitanBarMenu:ShowMenuAt(mouseXPos, mouseYPos); end
 
 opt_BI = Turbine.UI.MenuItem(L["MBI"]);
