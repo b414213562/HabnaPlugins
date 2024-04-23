@@ -2,6 +2,8 @@
 -- written by Habna
 -- refacotred by 4andreas
 
+MoneyIcons = {resources.MoneyIcon.Copper, resources.MoneyIcon.Silver, resources.MoneyIcon.Gold};
+
 function ShowMIWindow()
 	_G.ToolTipWin = Turbine.UI.Window();
 	_G.ToolTipWin:SetZOrder( 1 );
@@ -34,7 +36,6 @@ function MIRefreshMITTListBox()
 	MITTPosY = 0;
 	iFound = false;
     
-    MoneyIcons = {resources.MoneyIcon.Copper, resources.MoneyIcon.Silver, resources.MoneyIcon.Gold};
 	--Create an array of character name, sort it, then use it as a reference.
 	local a = {};
     for n in pairs(wallet) do table.insert(a, n) end
