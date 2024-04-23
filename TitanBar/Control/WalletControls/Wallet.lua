@@ -56,7 +56,7 @@ WI["Icon"].MouseClick = function( sender, args )
 			if _G.frmWI then _G.frmWI = false; wWI:Close();
 			else
 				_G.frmWI = true;
-				import (AppCtrD.."WalletWindow");
+				import (AppCtrWalletD.."WalletWindow");
 				frmWalletWindow();
 			end
 		end

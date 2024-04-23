@@ -5,14 +5,14 @@
 
 function ImportCtr( value )
     if value == "WI" then --Wallet infos
-        import (AppCtrD.."Wallet");
-        import (AppCtrD.."WalletToolTip");
+        import (AppCtrWalletD.."Wallet");
+        import (AppCtrWalletD.."WalletToolTip");
         UpdateWallet();
         WI[ "Ctr" ]:SetPosition( _G.WILocX, _G.WILocY );
     elseif value == "MI" then --Money Infos
         if _G.MIWhere == 1 then
-            import (AppCtrD.."MoneyInfos");
-            import (AppCtrD.."MoneyInfosToolTip");
+            import (AppCtrWalletD.."MoneyInfos");
+            import (AppCtrWalletD.."MoneyInfosToolTip");
             MI[ "Ctr" ]:SetPosition( _G.MILocX, _G.MILocY );
         end
         if _G.MIWhere ~= 3 then
@@ -30,7 +30,7 @@ function ImportCtr( value )
         end
     elseif value == "DP" then --Destiny Points
         if _G.DPWhere == 1 then
-            import (AppCtrD.."DestinyPoints");
+            import (AppCtrWalletD.."DestinyPoints");
             DP[ "Ctr" ]:SetPosition( _G.DPLocX, _G.DPLocY );
         end
         if _G.DPWhere ~= 3 then
@@ -44,49 +44,49 @@ function ImportCtr( value )
         end
     elseif value == "SP" then --Shards
         if _G.SPWhere == 1 then
-            import (AppCtrD.."Shards");
+            import (AppCtrWalletD.."Shards");
             SP[ "Ctr" ]:SetPosition( _G.SPLocX, _G.SPLocY );
         end
         if _G.SPWhere ~= 3 then UpdateShards(); end
     elseif value == "SM" then --Skirmish Marks
         if _G.SMWhere == 1 then
-            import (AppCtrD.."SkirmishMarks");
+            import (AppCtrWalletD.."SkirmishMarks");
             SM[ "Ctr" ]:SetPosition( _G.SMLocX, _G.SMLocY );
         end
         if _G.SMWhere ~= 3 then UpdateMarks(); end
     elseif value == "MC" then --Mithril Coins
         if _G.MCWhere == 1 then
-            import (AppCtrD.."MithrilCoins");
+            import (AppCtrWalletD.."MithrilCoins");
             MC[ "Ctr" ]:SetPosition( _G.MCLocX, _G.MCLocY );
         end
         if _G.MCWhere ~= 3 then UpdateMithril(); end
     elseif value == "YT" then --Yule Tokens
         if _G.YTWhere == 1 then
-            import (AppCtrD.."YuleToken");
+            import (AppCtrWalletD.."YuleToken");
             YT[ "Ctr" ]:SetPosition( _G.YTLocX, _G.YTLocY );
         end
         if _G.YTWhere ~= 3 then UpdateYuleToken(); end
     elseif value == "HT" then --Tokens of Hytbold
         if _G.HTWhere == 1 then
-            import (AppCtrD.."TokensOfHytbold");
+            import (AppCtrWalletD.."TokensOfHytbold");
             HT[ "Ctr" ]:SetPosition( _G.HTLocX, _G.HTLocY );
         end
         if _G.HTWhere ~= 3 then UpdateHytboldTokens(); end
     elseif value == "MP" then --Medallions
         if _G.MPWhere == 1 then
-            import (AppCtrD.."Medallions");
+            import (AppCtrWalletD.."Medallions");
             MP[ "Ctr" ]:SetPosition( _G.MPLocX, _G.MPLocY );
         end
         if _G.MPWhere ~= 3 then UpdateMedallions(); end
     elseif value == "SL" then --Seals
         if _G.SLWhere == 1 then
-            import (AppCtrD.."Seals");
+            import (AppCtrWalletD.."Seals");
             SL[ "Ctr" ]:SetPosition( _G.SLLocX, _G.SLLocY );
         end
         if _G.SLWhere ~= 3 then UpdateSeals(); end
     elseif value == "CP" then --Commendations
         if _G.CPWhere == 1 then
-            import (AppCtrD.."Commendations");
+            import (AppCtrWalletD.."Commendations");
             CP[ "Ctr" ]:SetPosition( _G.CPLocX, _G.CPLocY );
         end
         if _G.CPWhere ~= 3 then UpdateCommendations(); end
@@ -263,7 +263,7 @@ function ImportCtr( value )
         DN[ "Ctr" ]:SetPosition( _G.DNLocX, _G.DNLocY );
     elseif value == "LP" then --LOTRO points
         if _G.LPWhere == 1 then
-            import (AppCtrD.."LOTROPoints");
+            import (AppCtrWalletD.."LOTROPoints");
             LP[ "Ctr" ]:SetPosition( _G.LPLocX, _G.LPLocY );
             UpdateLOTROPoints();
         end
@@ -274,6 +274,8 @@ function ImportCtr( value )
             --);
             LPcb = AddCallback(Turbine.Chat, "Received",
                 function(sender, args)
+                    -- Note: We are only detecting earned, because currently there is
+                    --       no chat output identifying how much LP we spend.
                 if args.ChatType == Turbine.ChatType.Advancement then
                     tpMess = args.Message;
                     if tpMess ~= nil then
@@ -330,97 +332,97 @@ function ImportCtr( value )
         SS[ "Ctr" ]:SetPosition( _G.SSLocX, _G.SSLocY );
     elseif value == "ASP" then --Amroth Silver Piece
         if _G.ASPWhere == 1 then
-            import (AppCtrD.."AmrothSilverPiece");
+            import (AppCtrWalletD.."AmrothSilverPiece");
             ASP[ "Ctr" ]:SetPosition( _G.ASPLocX, _G.ASPLocY );
         end
         if _G.ASPWhere ~= 3 then UpdateAmrothSilverPiece(); end
     elseif value == "SOM" then --Stars of Merit
         if _G.SOMWhere == 1 then
-            import (AppCtrD.."StarsofMerit");
+            import (AppCtrWalletD.."StarsofMerit");
             SOM[ "Ctr" ]:SetPosition( _G.SOMLocX, _G.SOMLocY );
         end
         if _G.SOMWhere ~= 3 then UpdateStarsofMerit(); end
     elseif value == "CGSP" then --Central Gondor Silver Piece
         if _G.CGSPWhere == 1 then
-            import (AppCtrD.."CentralGondorSilverPiece");
+            import (AppCtrWalletD.."CentralGondorSilverPiece");
             CGSP[ "Ctr" ]:SetPosition( _G.CGSPLocX, _G.CGSPLocY );
         end
         if _G.CGSPWhere ~= 3 then UpdateCentralGondorSilverPiece(); end
     elseif value == "GGB" then --Gift giver's Brand
         if _G.GGBWhere == 1 then
-            import (AppCtrD.."GiftgiversBrand");
+            import (AppCtrWalletD.."GiftgiversBrand");
             GGB[ "Ctr" ]:SetPosition( _G.GGBLocX, _G.GGBLocY );
         end
         if _G.GGBWhere ~= 3 then UpdateGiftgiversBrand(); end
     elseif value == "BB" then --Bingo Badge
         if _G.BBWhere == 1 then
-            import (AppCtrD.."BingoBadge");
+            import (AppCtrWalletD.."BingoBadge");
             BB[ "Ctr" ]:SetPosition( _G.BBLocX, _G.BBLocY );
         end
         if _G.BBWhere ~= 3 then UpdateBingoBadge(); end
     elseif value == "LAT" then --Anniversary Token
         if _G.LATWhere == 1 then
-            import (AppCtrD.."AnniversaryToken");
+            import (AppCtrWalletD.."AnniversaryToken");
             LAT[ "Ctr" ]:SetPosition( _G.LATLocX, _G.LATLocY );
         end
         if _G.LATWhere ~= 3 then UpdateAnniversaryToken(); end
 	elseif value == "MOE" then --Motes of Enchantment
         if _G.MOEWhere == 1 then
-            import (AppCtrD.."MotesOfEnchantment");
+            import (AppCtrWalletD.."MotesOfEnchantment");
             MOE[ "Ctr" ]:SetPosition( _G.MOELocX, _G.MOELocY );
         end
         if _G.MOEWhere ~= 3 then UpdateMotesOfEnchantment(); end	
 	elseif value == "EOE" then --Embers of Enchantment
         if _G.EOEWhere == 1 then
-            import (AppCtrD.."EmbersOfEnchantment");
+            import (AppCtrWalletD.."EmbersOfEnchantment");
             EOE[ "Ctr" ]:SetPosition( _G.EOELocX, _G.EOELocY );
         end
         if _G.EOEWhere ~= 3 then UpdateEmbersOfEnchantment(); end
 	elseif value == "FOS" then --Figments of Splendour
         if _G.FOSWhere == 1 then
-            import (AppCtrD.."FigmentsOfSplendour");
+            import (AppCtrWalletD.."FigmentsOfSplendour");
             FOS[ "Ctr" ]:SetPosition( _G.FOSLocX, _G.FOSLocY );
         end
         if _G.FOSWhere ~= 3 then UpdateFigmentsOfSplendour(); end
 	elseif value == "FFT" then --Fall Festival Tokens
         if _G.FFTWhere == 1 then
-            import (AppCtrD.."FallFestivalToken");
+            import (AppCtrWalletD.."FallFestivalToken");
             FFT[ "Ctr" ]:SetPosition( _G.FFTLocX, _G.FFTLocY );
         end
         if _G.FFTWhere ~= 3 then UpdateFallFestivalToken(); end
 	elseif value == "FFAT" then --Farmers Faire Tokens
         if _G.FFATWhere == 1 then
-            import (AppCtrD.."FarmersFaireToken");
+            import (AppCtrWalletD.."FarmersFaireToken");
             FFAT[ "Ctr" ]:SetPosition( _G.FFATLocX, _G.FFATLocY );
         end
         if _G.FFATWhere ~= 3 then UpdateFarmersFaireToken(); end
 	elseif value == "SPL" then --Spring Leaves
         if _G.SPLWhere == 1 then
-            import (AppCtrD.."SpringLeaf");
+            import (AppCtrWalletD.."SpringLeaf");
             SPL[ "Ctr" ]:SetPosition( _G.SPLLocX, _G.SPLLocY );
         end
         if _G.SPLWhere ~= 3 then UpdateSpringLeaf(); end	
 	elseif value == "MST" then --Midsummer Tokens
         if _G.MSTWhere == 1 then
-            import (AppCtrD.."MidsummerToken");
+            import (AppCtrWalletD.."MidsummerToken");
             MST[ "Ctr" ]:SetPosition( _G.MSTLocX, _G.MSTLocY );
         end
         if _G.MSTWhere ~= 3 then UpdateMidsummerToken(); end
 	elseif value == "AS" then --Ancient Script
         if _G.ASWhere == 1 then
-            import (AppCtrD.."AncientScript");
+            import (AppCtrWalletD.."AncientScript");
             AS[ "Ctr" ]:SetPosition( _G.ASLocX, _G.ASLocY );
         end
         if _G.ASWhere ~= 3 then UpdateAncientScript(); end	
     elseif value == "BOT" then --Badge of Taste
         if _G.BOTWhere == 1 then
-            import (AppCtrD.."BadgeOfTaste");
+            import (AppCtrWalletD.."BadgeOfTaste");
             BOT[ "Ctr" ]:SetPosition( _G.BOTLocX, _G.BOTLocY );
         end
         if _G.BOTWhere ~= 3 then UpdateBadgeOfTaste(); end
     elseif value == "BOD" then --Badge of Dishonour
         if _G.BODWhere == 1 then
-            import (AppCtrD.."BadgeOfDishonour");
+            import (AppCtrWalletD.."BadgeOfDishonour");
             BOD[ "Ctr" ]:SetPosition( _G.BODLocX, _G.BODLocY );
         end
         if _G.BODWhere ~= 3 then UpdateBadgeOfDishonour(); end

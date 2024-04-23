@@ -77,7 +77,7 @@ LP["Lbl"].MouseClick = function( sender, args )
 			if _G.frmLP then _G.frmLP = false; wLP:Close();
 			else
 				_G.frmLP = true;
-				import (AppCtrD.."LOTROPointsWindow");
+				import (AppCtrWalletD.."LOTROPointsWindow");
 				frmLOTROPointsWindow();
 			end
 		end

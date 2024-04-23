@@ -12,6 +12,7 @@ AppDirD = AppDir..".";
 
 AppClassD = AppDirD.."Class.";
 AppCtrD = AppDirD.."Control.";
+AppCtrWalletD = AppDirD.."Control.WalletControls.";
 AppLocaleD = AppDirD.."Locale.";
 
 Version = Plugins["TitanBar"]:GetVersion();--> ** TitanBar current version **

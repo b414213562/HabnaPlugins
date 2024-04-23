@@ -322,7 +322,7 @@ MI["CLbl"].MouseClick = function( sender, args )
 			if _G.frmMI then _G.frmMI = false; wMI:Close();
 			else
 				_G.frmMI = true;
-				import (AppCtrD.."MoneyInfosWindow");
+				import (AppCtrWalletD.."MoneyInfosWindow");
 				frmMoneyInfosWindow();
 			end
 		end
