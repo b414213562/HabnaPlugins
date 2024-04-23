@@ -4,8 +4,6 @@
 
 
 function AddCallback(object, event, callback)
-	--write("Add Event: " .. tostring(event));
-	--write("Add Callback: " .. tostring(callback));
     if (object[event] == nil) then
         object[event] = callback;
     else
@@ -19,8 +17,6 @@ function AddCallback(object, event, callback)
 end
 
 function RemoveCallback(object, event, callback)
-	--write("Remove Event: " .. tostring(event));
-	--write("Remove Callback: " .. tostring(callback));
     if (object[event] == callback) then
         object[event] = nil;
     else
@@ -452,7 +448,7 @@ function UpdateMoney()
 		
 		local STS = totem - totsm;
 		if STS < 0 then STS = math.abs(STS); bSumSTS = false; end
-		walletStats[DOY][PN].SuASS = tostring(STS);
+		walletStats[DOY][PN].SumTS = tostring(STS);
 
 		Turbine.PluginData.Save( 
             Turbine.DataScope.Server, "TitanBarPlayerWalletStats", walletStats);

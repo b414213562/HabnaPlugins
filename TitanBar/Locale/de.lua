@@ -284,8 +284,12 @@ L[ "RPMOG" ]   = "Marsch auf Gundabad";
 L[ "RPGA" ]    = "Die Gabil'akk\195\162";
 L[ "RPWB"]	   = "Bruderschaft der Holzf\195\164ller";
 L[ "RPLOTA"]   = "Der Bund der Axt";
-L[ "RPHOT" ]   = "Die Haban'akk\195\162 von Thr\195\162in";
+L[ "RPHOT" ]   = "Die Haban’akk\195\162 von Thr\195\161in";
 L[ "RPKU" ]    = "Kharum-ubn\195\162r";
+L[ "RPROFMH" ] = "R\195\188ckeroberer der Bergfestung";
+L[ "RPDOTA" ]  = "Verteidiger des Bogens";
+L[ "RPTYW" ]   = "Die Ferne Wacht";
+L[ "RPDOC" ]   = "Dúnedain von Cardolan";
 L[ "RPACC" ]   = "Rufbeschleunigung";
 
 -- All reputation standings
@@ -331,6 +335,9 @@ L[ "RPGA3" ] = "Izkhas";
 L[ "RPGA4" ] = "Uzkhas";
 L[ "RPGA5" ] = "Fabar\195\162l";
 L[ "RPGA6" ] = "Azghzabad";
+
+-- Reputation changes
+L[ "RPDECREASE"] = "verschlechtert";
 
 -- Infamy/Renown window
 if PlayerAlign == 1 then L[ "IFWTitle" ] = "Ansehen"; L[ "IFIF" ] = "Gesamtes Ansehen:";
