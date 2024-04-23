@@ -1,0 +1,93 @@
+TitanBar thoughts:
+
+Each Currency has two main keys associated:
+	core abbreviation, e.g. "MC"
+	settings name, e.g. "MithrilCoins"
+
+The settings for each currency are copied to globals:
+	ShowMithrilCoins
+	MCbcAlpha
+	MCbcRed
+	MCbcGreen
+	MCbcBlue
+	_G.MCLocX
+	_G.MCLocY
+	_G.MCWhere
+I'd like to put these into a table, like Show = {}, and Show[currencyKey] can genericize access.
+	This might apply to more than currencies. That's probably ok?
+
+Once the variables are made into a table,
+that should allow for a lot of looping instead of stating every variable name.
+
+The controls also populate tables, like this:
+	_G.LAT = {}; -- Anniversary Token table in _G
+In order that we stop polluting the global table,
+	maybe put them in something like _G.TokenControls["LAT"].
+
+Get rid of WalletOrder, it's not doing anything now, and makes things harder.
+
+----
+
+
+
+
+Maybe fix how often we're using string.format for updating a setting?
+
+
+---
+
+-- Coin -- 
+L["MGSC"] -- Money
+L["MCP"] -- Commendation
+L["MDP"] -- Destiny point
+L["MLP"] -- LOTRO points
+L["MMC"] -- Mithril Coin
+
+-- Currency -- 
+L["MMOE"] -- Motes of Enchantment
+L["MFOS"] -- Figments of Splendour
+L["MEOE"] -- Embers of Enchantment
+L["MAS"] -- Ancient Script
+
+-- Instances and Skirmishes -- 
+L["MSM"] -- Mark
+L["MMP"] -- Medallion
+L["MSL"] -- Seal
+L["MSOM"] -- Star of Merit
+
+-- Festivals and Events -- 
+L["MLAT"] -- Anniversary Token
+L["MFFT"] -- Fall Festival Token
+L["MFFAT"] -- Farmers Faire Token
+L["MMST"] -- Midsummer Token
+L["MSPL"] -- Spring Leaf
+L["MYT"] -- Yule Festival Token
+
+-- Inn League and Ale Association -- 
+L["MBOT"] -- Badge of Taste
+L["MBOD"] -- Badge of Dishonour
+
+-- Item Advancement -- 
+L["MSP"] -- Shard
+
+-- Other    -- 
+L["MASP"] -- Amroth Silver Piece
+L["MBB"] -- Bingo Badge
+L["MCGSP"] -- Central Gondor Silver Piece
+L["MGGB"] -- Gift-giver's Brand
+L["MHT"] -- Token of Hytbold
+
+
+defeated was interested in: delving writs
+I want: festivity tokens
+
+----
+
+Other notes:
+
+
+Notes for Defenders of the Angle reputation for TitanBar:
+    Neutral: 6,250
+    Acquaintance: 6,250
+    Friend: 6,250
+    Ally: 6,250
