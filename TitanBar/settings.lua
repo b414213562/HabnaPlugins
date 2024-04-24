@@ -3,6 +3,11 @@
 -- Rewritten by many
 
 -- Globals that are used by Settings:
+
+-- default values:
+tA, tR, tG, tB, tX, tY, tW = 0.3, 0.3, 0.3, 0.3, 0, 0, 3; --Default alpha, red, green, blue, X, Y pos of control, Show where
+tL, tT = 100, 100; --Default position of control window
+
 Show = {}; -- Visibility boolean for Controls
 
 BC = {}; -- Background Color of Controls
@@ -21,6 +26,14 @@ PositionW.Top = {};
 
 Where = {}; -- Is currency on bar, tooltip, or hidden?
 
+HasWindow = {
+    ["Wallet"] = true;
+    ["Money"] = true;
+};
+DoesNotHaveWhere = {
+    ["Wallet"] = true;
+}; 
+
 --- Parses an entry like settings.Money.W. Also checks for a discrepancy between Where and Show.
 ---@param where string
 ---@param show boolean
@@ -32,6 +45,54 @@ function ParseWhere(where, show)
         where = string.format("%.0f", whereNum);
     end -- old TitanBar comment: Remove after Oct, 15th 2013
     return whereNum, where;
+end
+
+function InitializeControlSettings(settings, key)
+    InitializeDefaultControlSettings(settings, key);
+    InitializeGlobalControlSettings(settings, key);
+end
+
+--- Initialize Show, ARGB, X/Y, and Where variables
+---@param settings any
+---@param key any
+function InitializeDefaultControlSettings(settings, key)
+	if settings[key] == nil then settings[key] = {}; end
+	if settings[key].V == nil then settings[key].V = false; end
+	if settings[key].A == nil then settings[key].A = string.format("%.3f", tA); end
+	if settings[key].R == nil then settings[key].R = string.format("%.3f", tR); end
+	if settings[key].G == nil then settings[key].G = string.format("%.3f", tG); end
+	if settings[key].B == nil then settings[key].B = string.format("%.3f", tB); end
+	if settings[key].X == nil then settings[key].X = string.format("%.0f", tX); end
+	if settings[key].Y == nil then settings[key].Y = string.format("%.0f", tY); end
+    if (HasWindow[key]) then
+        if settings[key].L == nil then settings[key].L = string.format("%.0f", tL); end --X position of window
+        if settings[key].T == nil then settings[key].T = string.format("%.0f", tT); end --Y position of window
+    end
+    if (not DoesNotHaveWhere[key]) then
+        local value = tW;
+        if (key == "Money") then value = 1; end
+        if settings[key].W == nil then settings[key].W = string.format("%.0f", value); end
+    end
+end
+
+--- Initialize global Show, ARGB, X/Y, and Where variables
+---@param settings any
+---@param key any
+function InitializeGlobalControlSettings(settings, key)
+	Show[key] = settings[key].V;
+    BC.Alpha[key] = tonumber(settings[key].A);
+	BC.Red[key] = tonumber(settings[key].R);
+	BC.Green[key] = tonumber(settings[key].G);
+	BC.Blue[key] = tonumber(settings[key].B);
+	Position.Left[key] = tonumber(settings[key].X);
+	Position.Top[key] = tonumber(settings[key].Y);
+    if (HasWindow[key]) then
+        PositionW.Left[key] = tonumber(settings[key].L);
+        PositionW.Top[key] = tonumber(settings[key].T);
+    end
+    if (not DoesNotHaveWhere[key]) then
+        Where[key] = ParseWhere(settings, key);
+    end
 end
 
 --- Parses an entry like settings.Money.W. Also checks for a discrepancy between Where and Show.
@@ -59,9 +120,6 @@ function LoadSettings()
 		settings = Turbine.PluginData.Load( Turbine.DataScope.Character, "TitanBarSettingsFR" );
 	end
 	
-	tA, tR, tG, tB, tX, tY, tW = 0.3, 0.3, 0.3, 0.3, 0, 0, 3; --Default alpha, red, green, blue, X, Y pos of control, Show where
-	tL, tT = 100, 100; --Default position of control window
-
 	if settings == nil then	settings = {}; end
 
 	if settings.TitanBar == nil then settings.TitanBar = {}; end
@@ -157,73 +215,17 @@ function LoadSettings()
 	BGWTop = tonumber(settings.Background.T);
 	BGWToAll = settings.Background.A;
 
+    InitializeControlSettings(settings, "Wallet");
 
-	if settings["Wallet"] == nil then settings["Wallet"] = {}; end
-	if settings["Wallet"].V == nil then settings["Wallet"].V = false; end
-	if settings["Wallet"].A == nil then settings["Wallet"].A = string.format("%.3f", tA); end
-	if settings["Wallet"].R == nil then settings["Wallet"].R = string.format("%.3f", tR); end
-	if settings["Wallet"].G == nil then settings["Wallet"].G = string.format("%.3f", tG); end
-	if settings["Wallet"].B == nil then settings["Wallet"].B = string.format("%.3f", tB); end
-	if settings["Wallet"].X == nil then settings["Wallet"].X = string.format("%.0f", tX); end
-	if settings["Wallet"].Y == nil then settings["Wallet"].Y = string.format("%.0f", tY); end
-	if settings["Wallet"].L == nil then settings["Wallet"].L = string.format("%.0f", tL); end --X position of Wallet window
-	if settings["Wallet"].T == nil then settings["Wallet"].T = string.format("%.0f", tT); end --Y position of Wallet window
-	Show["Wallet"] = settings["Wallet"].V;
-    BC.Alpha["Wallet"] = tonumber(settings["Wallet"].A);
-	BC.Red["Wallet"] = tonumber(settings.Wallet.R);
-	BC.Green["Wallet"] = tonumber(settings.Wallet.G);
-	BC.Blue["Wallet"] = tonumber(settings.Wallet.B);
-	Position.Left["Wallet"] = tonumber(settings.Wallet.X);
-	Position.Top["Wallet"] = tonumber(settings.Wallet.Y);
-	PositionW.Left["Wallet"] = tonumber(settings.Wallet.L);
-	PositionW.Top["Wallet"] = tonumber(settings.Wallet.T);
-
-
-	if settings.Money == nil then settings.Money = {}; end
-	if settings.Money.V == nil then settings.Money.V = true; end
-	if settings.Money.A == nil then settings.Money.A = string.format("%.3f", tA); end --Alpha color
-	if settings.Money.R == nil then settings.Money.R = string.format("%.3f", tR); end --Red color
-	if settings.Money.G == nil then settings.Money.G = string.format("%.3f", tG); end --Green color
-	if settings.Money.B == nil then settings.Money.B = string.format("%.3f", tB); end --Blue color
-	if settings.Money.X == nil then settings.Money.X = string.format("%.0f", 400); end --X position on TitanBar
-	if settings.Money.Y == nil then settings.Money.Y = string.format("%.0f", tY); end --Y position on TitanBar
+    InitializeControlSettings(settings, "Money");
 	if settings.Money.S == nil then settings.Money.S = false; end --Show Total Money of all character on TitanBar Money control.
 	if settings.Money.SS == nil then settings.Money.SS = true; end --Show sessions statistics
 	if settings.Money.TS == nil then settings.Money.TS = true; end --Show today statistics
-	if settings.Money.L == nil then settings.Money.L = string.format("%.0f", tL); end -- X position on screen for money window
-	if settings.Money.T == nil then settings.Money.T = string.format("%.0f", tT); end -- Y position on screen for money window
-	if settings.Money.W == nil then settings.Money.W = string.format("%.0f", 1); end --Show where? on TitanBar or in the wallet Tooltip. Default is in wallet Tooltip
-	Show["Money"] = settings.Money.V;
-	BC.Alpha["Money"] = tonumber(settings.Money.A);
-	BC.Red["Money"] = tonumber(settings.Money.R);
-	BC.Green["Money"] = tonumber(settings.Money.G);
-	BC.Blue["Money"] = tonumber(settings.Money.B);
-	Position.Left["Money"] = tonumber(settings.Money.X);
-	Position.Top["Money"] = tonumber(settings.Money.Y);
-	PositionW.Left["Money"] = tonumber(settings.Money.L);
-	PositionW.Top["Money"] = tonumber(settings.Money.T);
-    Where["Money"] = ParseWhere(settings, "Money");
 	_G.STM = settings.Money.S;
 	_G.SSS = settings.Money.SS;
 	_G.STS = settings.Money.TS;
 
-	if settings.DestinyPoints == nil then settings.DestinyPoints = {}; end
-	if settings.DestinyPoints.V == nil then settings.DestinyPoints.V = false; end
-	if settings.DestinyPoints.A == nil then settings.DestinyPoints.A = string.format("%.3f", tA); end
-	if settings.DestinyPoints.R == nil then settings.DestinyPoints.R = string.format("%.3f", tR); end
-	if settings.DestinyPoints.G == nil then settings.DestinyPoints.G = string.format("%.3f", tG); end
-	if settings.DestinyPoints.B == nil then settings.DestinyPoints.B = string.format("%.3f", tB); end
-	if settings.DestinyPoints.X == nil then settings.DestinyPoints.X = string.format("%.0f", tX); end
-	if settings.DestinyPoints.Y == nil then settings.DestinyPoints.Y = string.format("%.0f", tY); end
-	if settings.DestinyPoints.W == nil then settings.DestinyPoints.W = string.format("%.0f", tW); end
-	Show["DestinyPoints"] = settings.DestinyPoints.V;
-	BC.Alpha["DestinyPoints"] = tonumber(settings.DestinyPoints.A);
-	BC.Red["DestinyPoints"] = tonumber(settings.DestinyPoints.R);
-	BC.Green["DestinyPoints"] = tonumber(settings.DestinyPoints.G);
-	BC.Blue["DestinyPoints"] = tonumber(settings.DestinyPoints.B);
-	Position.Left["DestinyPoints"] = tonumber(settings.DestinyPoints.X);
-	Position.Top["DestinyPoints"] = tonumber(settings.DestinyPoints.Y);
-    Where["DestinyPoints"] = ParseWhere(settings, "DestinyPoints");
+    InitializeControlSettings(settings, "DestinyPoints");
 
 	if settings.Shards == nil then settings.Shards = {}; end
 	if settings.Shards.V == nil then settings.Shards.V = false; end
