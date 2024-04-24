@@ -225,9 +225,9 @@ function frmWalletWindow()
 			if SelIndex == 1 then if not Show["Money"] then ShowHideMoney(); end
 			else if Show["Money"] then ShowHideMoney(); end end
 		elseif wcur == L["MDP"] then
-			_G.DPWhere = SelIndex; settings.DestinyPoints.W = string.format("%.0f", SelIndex);
-			if SelIndex == 1 then if not ShowDestinyPoints then ShowHideDestinyPoints(); end
-			else if ShowDestinyPoints then ShowHideDestinyPoints(); end end
+			Where["DestinyPoints"] = SelIndex; settings.DestinyPoints.W = string.format("%.0f", SelIndex);
+			if SelIndex == 1 then if not Show["DestinyPoints"] then ShowHideDestinyPoints(); end
+			else if Show["DestinyPoints"] then ShowHideDestinyPoints(); end end
 		elseif wcur == L["MSP"] then
 			_G.SPWhere = SelIndex; settings.Shards.W = string.format("%.0f", SelIndex);
 			if SelIndex == 1 then if not ShowShards then ShowHideShards(); end
@@ -381,7 +381,7 @@ function RefreshWIListBox()
 				WIbutSave:SetPosition( WIWCtr:GetWidth()/2 - WIbutSave:GetWidth()/2, WIDD:GetTop()+WIDD:GetHeight()+10 );
 
 				if wcur == L["MGSC"] then tw = Where["Money"]; -- 
-				elseif wcur == L["MDP"] then tw = _G.DPWhere; -- Destiny Points
+				elseif wcur == L["MDP"] then tw = Where["DestinyPoints"]; -- Destiny Points
 				elseif wcur == L["MSP"] then tw = _G.SPWhere; -- Shards
 				elseif wcur == L["MSM"] then tw = _G.SMWhere; -- Skirmish marks
 				elseif wcur == L["MMC"] then tw = _G.MCWhere; -- Mithril Coins

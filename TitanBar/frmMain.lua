@@ -189,7 +189,7 @@ function frmMain()
 		end
 	else
 		-- Disable infos not useful in Monster Play
-		ShowDurabilityInfos, ShowEquipInfos, ShowDestinyPoints, ShowShards = false, false, false, false;
+		ShowDurabilityInfos, ShowEquipInfos, Show["DestinyPoints"], ShowShards = false, false, false, false;
 		ShowYuleToken, ShowSkirmishMarks, ShowHytboldTokens, ShowMedallions = false, false, false, false;
 		ShowSeals, ShowVault, ShowSharedStorage, ShowAmrothSilverPiece = false, false, false, false;
 		ShowStarsofMerit, ShowCentralGondorSilverPiece, ShowGiftgiversBrand = false, false, false;
@@ -211,7 +211,7 @@ function frmMain()
 
 	if Show["Wallet"] then ImportCtr( "WI" ); end
 	if Where["Money"] ~= 3 then ImportCtr( "MI" ); end
-	if _G.DPWhere ~= 3 then ImportCtr( "DP" ); end
+	if Where["DestinyPoints"] ~= 3 then ImportCtr( "DP" ); end
 	if ShowTrackItems then ImportCtr( "TI" ); end --Track Items
 	if ShowInfamy then ImportCtr( "IF" ); end --Infamy/Renown
 	if ShowVault then ImportCtr( "VT" ); end --Vault

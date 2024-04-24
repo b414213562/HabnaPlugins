@@ -34,6 +34,19 @@ function ParseWhere(where, show)
     return whereNum, where;
 end
 
+--- Parses an entry like settings.Money.W. Also checks for a discrepancy between Where and Show.
+---@param settings table
+---@param key string
+---@return number?
+function ParseWhere(settings, key)
+    local where = tonumber(settings[key].W);
+    if where == 3 and settings[key].V then
+        where = 1;
+        settings[key].W = string.format("%.0f", where);
+    end -- old TitanBar comment: Remove after Oct, 15th 2013
+    return where;
+end
+
 
 -- **v Load / update / set default settings v**
 -- I'm confused as to what most of this is... Most of these strings should be in localization files, and I believe they are - so why are they here too?  Deprecated code that hasn't been cleaned up yet?
@@ -189,7 +202,7 @@ function LoadSettings()
 	Position.Top["Money"] = tonumber(settings.Money.Y);
 	PositionW.Left["Money"] = tonumber(settings.Money.L);
 	PositionW.Top["Money"] = tonumber(settings.Money.T);
-    Where["Money"], settings.Money.W = ParseWhere(settings.Money.W, Show["Money"]);
+    Where["Money"] = ParseWhere(settings, "Money");
 	_G.STM = settings.Money.S;
 	_G.SSS = settings.Money.SS;
 	_G.STS = settings.Money.TS;
@@ -203,16 +216,14 @@ function LoadSettings()
 	if settings.DestinyPoints.X == nil then settings.DestinyPoints.X = string.format("%.0f", tX); end
 	if settings.DestinyPoints.Y == nil then settings.DestinyPoints.Y = string.format("%.0f", tY); end
 	if settings.DestinyPoints.W == nil then settings.DestinyPoints.W = string.format("%.0f", tW); end
-	ShowDestinyPoints = settings.DestinyPoints.V;
-	DPbcAlpha = tonumber(settings.DestinyPoints.A);
-	DPbcRed = tonumber(settings.DestinyPoints.R);
-	DPbcGreen = tonumber(settings.DestinyPoints.G);
-	DPbcBlue = tonumber(settings.DestinyPoints.B);
-	_G.DPLocX = tonumber(settings.DestinyPoints.X);
-	_G.DPLocY = tonumber(settings.DestinyPoints.Y);
-	_G.DPWhere = tonumber(settings.DestinyPoints.W);
-	if _G.DPWhere == 3 and ShowDestinyPoints then _G.DPWhere = 1; settings.DestinyPoints.W = string.format("%.0f", _G.DPWhere); end --Remove after Oct, 15th 2013
-
+	Show["DestinyPoints"] = settings.DestinyPoints.V;
+	BC.Alpha["DestinyPoints"] = tonumber(settings.DestinyPoints.A);
+	BC.Red["DestinyPoints"] = tonumber(settings.DestinyPoints.R);
+	BC.Green["DestinyPoints"] = tonumber(settings.DestinyPoints.G);
+	BC.Blue["DestinyPoints"] = tonumber(settings.DestinyPoints.B);
+	Position.Left["DestinyPoints"] = tonumber(settings.DestinyPoints.X);
+	Position.Top["DestinyPoints"] = tonumber(settings.DestinyPoints.Y);
+    Where["DestinyPoints"] = ParseWhere(settings, "DestinyPoints");
 
 	if settings.Shards == nil then settings.Shards = {}; end
 	if settings.Shards.V == nil then settings.Shards.V = false; end
@@ -1083,14 +1094,14 @@ function SaveSettings(str)
 		if PlayerAlign == 1 then settings.Money.T = string.format("%.0f", PositionW.Top["Money"]); end
 
 		settings.DestinyPoints = {};
-		settings.DestinyPoints.V = ShowDestinyPoints;
-		settings.DestinyPoints.A = string.format("%.3f", DPbcAlpha);
-		settings.DestinyPoints.R = string.format("%.3f", DPbcRed);
-		settings.DestinyPoints.G = string.format("%.3f", DPbcGreen);
-		settings.DestinyPoints.B = string.format("%.3f", DPbcBlue);
-		settings.DestinyPoints.X = string.format("%.0f", _G.DPLocX);
-		settings.DestinyPoints.Y = string.format("%.0f", _G.DPLocY);
-		settings.DestinyPoints.W = string.format("%.0f", _G.DPWhere);
+		settings.DestinyPoints.V = Show["DestinyPoints"];
+		settings.DestinyPoints.A = string.format("%.3f", BC.Alpha["DestinyPoints"]);
+		settings.DestinyPoints.R = string.format("%.3f", BC.Red["DestinyPoints"]);
+		settings.DestinyPoints.G = string.format("%.3f", BC.Green["DestinyPoints"]);
+		settings.DestinyPoints.B = string.format("%.3f", BC.Blue["DestinyPoints"]);
+		settings.DestinyPoints.X = string.format("%.0f", Position.Left["DestinyPoints"]);
+		settings.DestinyPoints.Y = string.format("%.0f", Position.Top["DestinyPoints"]);
+		settings.DestinyPoints.W = string.format("%.0f", Where["DestinyPoints"]);
 
 		settings.Shards = {};
 		settings.Shards.V = ShowShards;
@@ -1520,7 +1531,7 @@ function ResetSettings()
 	TBHeight, _G.TBFont, TBFontT, TBTop, TBAutoHide, TBIconSize, bcAlpha, bcRed, bcGreen, bcBlue = 30, 1107296268, "TrajanPro14", true, L["OPAHC"], 32, tA, tR, tG, tB; --Backcolor & default X Location for TitanBar
 	Show["Wallet"], BC.Alpha["Wallet"], BC.Red["Wallet"], BC.Green["Wallet"], BC.Blue["Wallet"], Position.Left["Wallet"], Position.Top["Wallet"] = false, tA, tR, tG, tB, tX, tY; --for Wallet Control
 	Show["Money"], _G.STM, _G.SSS, _G.STS, BC.Alpha["Money"], BC.Red["Money"], BC.Green["Money"], BC.Blue["Money"], Position.Left["Money"], Position.Top["Money"], Where["Money"] = true, false, true, true, tA, tR, tG, tB, 400, tY, 1; --for Money Control
-	ShowDestinyPoints, DPbcAlpha, DPbcRed, DPbcGreen, DPbcBlue, _G.DPLocX, _G.DPLocY, _G.DPWhere = false, tA, tR, tG, tB, tX, tY, tW; --for Destiny points Control
+	Show["DestinyPoints"], BC.Alpha["DestinyPoints"], BC.Red["DestinyPoints"], BC.Green["DestinyPoints"], BC.Blue["DestinyPoints"], Position.Left["DestinyPoints"], Position.Top["DestinyPoints"], Where["DestinyPoints"] = false, tA, tR, tG, tB, tX, tY, tW; --for Destiny points Control
 	ShowShards, SPbcAlpha, SPbcRed, SPbcGreen, SPbcBlue, _G.SPLocX, _G.SPLocY, _G.SPWhere = false, tA, tR, tG, tB, tX, tY, tW; --for Shards Control
 	ShowSkirmishMarks, SMbcAlpha, SMbcRed, SMbcGreen, SMbcBlue, _G.SMLocX, _G.SMLocY, _G.SMWhere = false, tA, tR, tG, tB, tX, tY, tW; --for Skirmish marks Control
 	ShowMithrilCoins, MCbcAlpha, MCbcRed, MCbcGreen, MCbcBlue, _G.MCLocX, _G.MCLocY, _G.MCWhere = false, tA, tR, tG, tB, tX, tY, tW; --for Mithril Coins Control
@@ -1583,9 +1594,9 @@ function ReplaceCtr()
 	if Show["Money"] and Where["Money"] == 1 then MI[ "Ctr" ]:SetPosition( Position.Left["Money"], Position.Top["Money"] ); end
 	
 	oldLocX = settings.DestinyPoints.X / oldScreenWidth;
-	_G.DPLocX = oldLocX * screenWidth;
-	settings.DestinyPoints.X = string.format("%.0f", _G.DPLocX);
-	if ShowDestinyPoints and _G.DPWhere == 1 then DP[ "Ctr" ]:SetPosition( _G.DPLocX, _G.DPLocY ); end
+	Position.Left["DestinyPoints"] = oldLocX * screenWidth;
+	settings.DestinyPoints.X = string.format("%.0f", Position.Left["DestinyPoints"]);
+	if Show["DestinyPoints"] and Where["DestinyPoints"] == 1 then DP[ "Ctr" ]:SetPosition( Position.Left["DestinyPoints"], Position.Top["DestinyPoints"] ); end
 
 	oldLocX = settings.Shards.X / oldScreenWidth;
 	_G.SPLocX = oldLocX * screenWidth;

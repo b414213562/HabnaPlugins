@@ -41,15 +41,15 @@ end
 -- **^
 -- **v Show/Hide Destiny Points v**
 function ShowHideDestinyPoints()
-	ShowDestinyPoints = not ShowDestinyPoints;
-	settings.DestinyPoints.V = ShowDestinyPoints;
-	settings.DestinyPoints.W = string.format("%.0f", _G.DPWhere);
+	Show["DestinyPoints"] = not Show["DestinyPoints"];
+	settings.DestinyPoints.V = Show["DestinyPoints"];
+	settings.DestinyPoints.W = string.format("%.0f", Where["DestinyPoints"]);
 	SaveSettings( false );
 	ImportCtr( "DP" );
-	if ShowDestinyPoints then
-		DP[ "Ctr" ]:SetBackColor( Turbine.UI.Color( DPbcAlpha, DPbcRed, DPbcGreen, DPbcBlue ) );
+	if Show["DestinyPoints"] then
+		DP[ "Ctr" ]:SetBackColor( Turbine.UI.Color( BC.Alpha["DestinyPoints"], BC.Red["DestinyPoints"], BC.Green["DestinyPoints"], BC.Blue["DestinyPoints"] ) );
 	end
-	DP[ "Ctr" ]:SetVisible( ShowDestinyPoints );
+	DP[ "Ctr" ]:SetVisible( Show["DestinyPoints"] );
 end
 -- **^
 -- **v Show/Hide Shards v**

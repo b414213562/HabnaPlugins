@@ -63,7 +63,7 @@ function frmBackground()
 	if sFrom == "TitanBar" then curSelAlpha = bcAlpha; curSelRed = bcRed; curSelGreen = bcGreen; curSelBlue = bcBlue; end
 	if sFrom == "WI" then curSelAlpha = BC.Alpha["Wallet"]; curSelRed = BC.Red["Wallet"]; curSelGreen = BC.Green["Wallet"]; curSelBlue = BC.Blue["Wallet"]; end
 	if sFrom == "Money" then curSelAlpha = BC.Alpha["Money"]; curSelRed = BC.Red["Money"]; curSelGreen = BC.Green["Money"]; curSelBlue = BC.Blue["Money"]; end
-	if sFrom == "DP" then curSelAlpha = DPbcAlpha; curSelRed = DPbcRed; curSelGreen = DPbcGreen; curSelBlue = DPbcBlue; end
+	if sFrom == "DP" then curSelAlpha = BC.Alpha["DestinyPoints"]; curSelRed = BC.Red["DestinyPoints"]; curSelGreen = BC.Green["DestinyPoints"]; curSelBlue = BC.Blue["DestinyPoints"]; end
 	if sFrom == "SP" then curSelAlpha = SPbcAlpha; curSelRed = SPbcRed; curSelGreen = SPbcGreen; curSelBlue = SPbcBlue; end
 	if sFrom == "SM" then curSelAlpha = SMbcAlpha; curSelRed = SMbcRed; curSelGreen = SMbcGreen; curSelBlue = SMbcBlue; end
 	if sFrom == "MC" then curSelAlpha = MCbcAlpha; curSelRed = MCbcRed; curSelGreen = MCbcGreen; curSelBlue = MCbcBlue; end
@@ -331,7 +331,7 @@ function UpdateBCvariable()
 		bcAlpha, bcRed, bcGreen, bcBlue = curSelAlpha, curSelRed, curSelGreen, curSelBlue;
 		BC.Alpha["Wallet"], BC.Red["Wallet"], BC.Green["Wallet"], BC.Blue["Wallet"] = curSelAlpha, curSelRed, curSelGreen, curSelBlue;
 		BC.Alpha["Money"], BC.Red["Money"], BC.Green["Money"], BC.Blue["Money"] = curSelAlpha, curSelRed, curSelGreen, curSelBlue;
-		DPbcAlpha, DPbcRed, DPbcGreen, DPbcBlue = curSelAlpha, curSelRed, curSelGreen, curSelBlue;
+		BC.Alpha["DestinyPoints"], BC.Red["DestinyPoints"], BC.Green["DestinyPoints"], BC.Blue["DestinyPoints"] = curSelAlpha, curSelRed, curSelGreen, curSelBlue;
 		SPbcAlpha, SPbcRed, SPbcGreen, SPbcBlue = curSelAlpha, curSelRed, curSelGreen, curSelBlue;
 		SMbcAlpha, SMbcRed, SMbcGreen, SMbcBlue = curSelAlpha, curSelRed, curSelGreen, curSelBlue;
 		MCbcAlpha, MCbcRed, MCbcGreen, MCbcBlue = curSelAlpha, curSelRed, curSelGreen, curSelBlue;
@@ -375,7 +375,7 @@ function UpdateBCvariable()
 		if sFrom == "TitanBar" then bcAlpha = curSelAlpha; bcRed = curSelRed; bcGreen = curSelGreen; bcBlue = curSelBlue; end
 		if sFrom == "WI" then BC.Alpha["Wallet"] = curSelAlpha; BC.Red["Wallet"] = curSelRed; BC.Green["Wallet"] = curSelGreen; BC.Blue["Wallet"] = curSelBlue; end
 		if sFrom == "Money" then BC.Alpha["Money"] = curSelAlpha; BC.Red["Money"] = curSelRed; BC.Green["Money"] = curSelGreen; BC.Blue["Money"] = curSelBlue; end
-		if sFrom == "DP" then DPbcAlpha = curSelAlpha; DPbcRed = curSelRed; DPbcGreen = curSelGreen; DPbcBlue = curSelBlue; end
+		if sFrom == "DP" then BC.Alpha["DestinyPoints"] = curSelAlpha; BC.Red["DestinyPoints"] = curSelRed; BC.Green["DestinyPoints"] = curSelGreen; BC.Blue["DestinyPoints"] = curSelBlue; end
 		if sFrom == "SP" then SPbcAlpha = curSelAlpha; SPbcRed = curSelRed; SPbcGreen = curSelGreen; SPbcBlue = curSelBlue; end
 		if sFrom == "SM" then SMbcAlpha = curSelAlpha; SMbcRed = curSelRed; SMbcGreen = curSelGreen; SMbcBlue = curSelBlue; end
 		if sFrom == "MC" then MCbcAlpha = curSelAlpha; MCbcRed = curSelRed; MCbcGreen = curSelGreen; MCbcBlue = curSelBlue; end

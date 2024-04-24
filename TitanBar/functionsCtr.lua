@@ -29,11 +29,11 @@ function ImportCtr( value )
             -- ^^ Thx Heridian!
         end
     elseif value == "DP" then --Destiny Points
-        if _G.DPWhere == 1 then
+        if Where["DestinyPoints"] == 1 then
             import (AppCtrWalletD.."DestinyPoints");
-            DP[ "Ctr" ]:SetPosition( _G.DPLocX, _G.DPLocY );
+            DP[ "Ctr" ]:SetPosition( Position.Left["DestinyPoints"], Position.Top["DestinyPoints"] );
         end
-        if _G.DPWhere ~= 3 then
+        if Where["DestinyPoints"] ~= 3 then
             PlayerAtt = Player:GetAttributes();
             AddCallback(PlayerAtt, "DestinyPointsChanged",
                 function(sender, args) UpdateDestinyPoints(); end

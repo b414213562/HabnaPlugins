@@ -459,7 +459,7 @@ end
 --**^
 --**v Update destiny point currency on TitanBar v**
 function UpdateDestinyPoints()
-	if _G.DPWhere == 1 then
+	if Where["DestinyPoints"] == 1 then
 		DP[ "Lbl" ]:SetText( PlayerAtt:GetDestinyPoints() );
 		DP[ "Lbl" ]:SetSize( DP[ "Lbl" ]:GetTextLength() * NM, CTRHeight ); 
 		AjustIcon( "DP" );
@@ -1008,7 +1008,7 @@ function ChangeColor(tColor)
 		TB["win"]:SetBackColor( tColor );
 		if Show["Wallet"] then WI[ "Ctr" ]:SetBackColor( tColor ); end
 		if Show["Money"] then MI[ "Ctr" ]:SetBackColor( tColor ); end
-		if ShowDestinyPoints then DP[ "Ctr" ]:SetBackColor( tColor ); end
+		if Show["DestinyPoints"] then DP[ "Ctr" ]:SetBackColor( tColor ); end
 		if ShowShards then SP[ "Ctr" ]:SetBackColor( tColor ); end
 		if ShowSkirmishMarks then SM[ "Ctr" ]:SetBackColor( tColor ); end
 		if ShowMithrilCoins then MC[ "Ctr" ]:SetBackColor( tColor ); end

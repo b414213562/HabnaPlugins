@@ -10,7 +10,7 @@ DP["Ctr"]:SetParent( TB["win"] );
 DP["Ctr"]:SetMouseVisible( false );
 DP["Ctr"]:SetZOrder( 2 );
 DP["Ctr"]:SetBlendMode( Turbine.UI.BlendMode.AlphaBlend );
-DP["Ctr"]:SetBackColor( Turbine.UI.Color( DPbcAlpha, DPbcRed, DPbcGreen, DPbcBlue ) );
+DP["Ctr"]:SetBackColor( Turbine.UI.Color( BC.Alpha["DestinyPoints"], BC.Red["DestinyPoints"], BC.Green["DestinyPoints"], BC.Blue["DestinyPoints"] ) );
 --DP["Ctr"]:SetBackColor( Color["red"] ); -- Debug purpose
 --**^
 --**v Destiny points & icon on TitanBar v**
@@ -92,10 +92,10 @@ end
 DP["Lbl"].MouseUp = function( sender, args )
 	DP["Ctr"]:SetZOrder( 2 );
 	dragging = false;
-	_G.DPLocX = DP["Ctr"]:GetLeft();
-	settings.DestinyPoints.X = string.format("%.0f", _G.DPLocX);
-	_G.DPLocY = DP["Ctr"]:GetTop();
-	settings.DestinyPoints.Y = string.format("%.0f", _G.DPLocY);
+	Position.Left["DestinyPoints"] = DP["Ctr"]:GetLeft();
+	settings.DestinyPoints.X = string.format("%.0f", Position.Left["DestinyPoints"]);
+	Position.Top["DestinyPoints"] = DP["Ctr"]:GetTop();
+	settings.DestinyPoints.Y = string.format("%.0f", Position.Top["DestinyPoints"]);
 	SaveSettings( false );
 end
 --**^
