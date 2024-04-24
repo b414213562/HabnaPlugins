@@ -38,7 +38,7 @@ function RefreshWITTListBox()
 	
 	for i = 1, #MenuItem do
 		wttcur = MenuItem[WalletOrder[i]];
-		if wttcur == L["MGSC"] then ttw = _G.MIWhere;
+		if wttcur == L["MGSC"] then ttw = Where["Money"];
 		elseif wttcur == L["MDP"] then ttw = _G.DPWhere; CtrIconCodeIs=WalletItem.DestinyPoints.Icon; CtrQteIs=PlayerAtt:GetDestinyPoints();
 		elseif wttcur == L["MSP"] then ttw = _G.SPWhere; CtrIconCodeIs=WalletItem.Shard.Icon; CtrQteIs=GetCurrency( L[ "MSP" ] );
 		elseif wttcur == L["MSM"] then ttw = _G.SMWhere; CtrIconCodeIs=WalletItem.Mark.Icon; CtrQteIs=GetCurrency( L[ "MSM" ] );

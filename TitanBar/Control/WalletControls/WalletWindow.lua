@@ -221,9 +221,9 @@ function frmWalletWindow()
 		SelIndex = WIDD:GetSelection();
 		--Where-> 1: On TitanBar / 2: In wallet control tooltip / 3: Don't show
 		if wcur == L["MGSC"] then
-			_G.MIWhere = SelIndex; settings.Money.W = string.format("%.0f", SelIndex);
-			if SelIndex == 1 then if not ShowMoney then ShowHideMoney(); end
-			else if ShowMoney then ShowHideMoney(); end end
+			Where["Money"] = SelIndex; settings.Money.W = string.format("%.0f", SelIndex);
+			if SelIndex == 1 then if not Show["Money"] then ShowHideMoney(); end
+			else if Show["Money"] then ShowHideMoney(); end end
 		elseif wcur == L["MDP"] then
 			_G.DPWhere = SelIndex; settings.DestinyPoints.W = string.format("%.0f", SelIndex);
 			if SelIndex == 1 then if not ShowDestinyPoints then ShowHideDestinyPoints(); end
@@ -380,7 +380,7 @@ function RefreshWIListBox()
 				LPWCtr:SetVisible( false );
 				WIbutSave:SetPosition( WIWCtr:GetWidth()/2 - WIbutSave:GetWidth()/2, WIDD:GetTop()+WIDD:GetHeight()+10 );
 
-				if wcur == L["MGSC"] then tw = _G.MIWhere; -- 
+				if wcur == L["MGSC"] then tw = Where["Money"]; -- 
 				elseif wcur == L["MDP"] then tw = _G.DPWhere; -- Destiny Points
 				elseif wcur == L["MSP"] then tw = _G.SPWhere; -- Shards
 				elseif wcur == L["MSM"] then tw = _G.SMWhere; -- Skirmish marks

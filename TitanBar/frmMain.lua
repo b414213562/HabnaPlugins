@@ -210,7 +210,7 @@ function frmMain()
 	end
 
 	if Show["Wallet"] then ImportCtr( "WI" ); end
-	if _G.MIWhere ~= 3 then ImportCtr( "MI" ); end
+	if Where["Money"] ~= 3 then ImportCtr( "MI" ); end
 	if _G.DPWhere ~= 3 then ImportCtr( "DP" ); end
 	if ShowTrackItems then ImportCtr( "TI" ); end --Track Items
 	if ShowInfamy then ImportCtr( "IF" ); end --Infamy/Renown

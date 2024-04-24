@@ -10,7 +10,7 @@ MI["Ctr"]:SetParent( TB["win"] );
 MI["Ctr"]:SetMouseVisible( false );
 MI["Ctr"]:SetZOrder( 2 );
 MI["Ctr"]:SetBlendMode( Turbine.UI.BlendMode.AlphaBlend );
-MI["Ctr"]:SetBackColor( Turbine.UI.Color( MIbcAlpha, MIbcRed, MIbcGreen, MIbcBlue ) );
+MI["Ctr"]:SetBackColor( Turbine.UI.Color( BC.Alpha["Money"], BC.Red["Money"], BC.Green["Money"], BC.Blue["Money"] ) );
 --MI["Ctr"]:SetBackColor( Color["red"] ); -- Debug purpose
 --**^
 --**v Control of Gold currencies v**
@@ -345,10 +345,10 @@ end
 MI["CLbl"].MouseUp = function( sender, args )
 	MI["Ctr"]:SetZOrder( 2 );
 	dragging = false;
-	_G.MILocX = MI["Ctr"]:GetLeft();
-	settings.Money.X = string.format("%.0f", _G.MILocX);
-	_G.MILocY = MI["Ctr"]:GetTop();
-	settings.Money.Y = string.format("%.0f", _G.MILocY);
+	Position.Left["Money"] = MI["Ctr"]:GetLeft();
+	settings.Money.X = string.format("%.0f", Position.Left["Money"]);
+	Position.Top["Money"] = MI["Ctr"]:GetTop();
+	settings.Money.Y = string.format("%.0f", Position.Top["Money"]);
 	SaveSettings( false );
 end
 --**^

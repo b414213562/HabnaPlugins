@@ -23,20 +23,20 @@ end
 -- **^
 -- **v Show/Hide Money v**
 function ShowHideMoney()
-	ShowMoney = not ShowMoney;
-	settings.Money.V = ShowMoney;
-	settings.Money.W = string.format("%.0f", _G.MIWhere);
+	Show["Money"] = not Show["Money"];
+	settings.Money.V = Show["Money"];
+	settings.Money.W = string.format("%.0f", Where["Money"]);
 	SaveSettings( false );
 	ImportCtr( "MI" );
-	if ShowMoney then
+	if Show["Money"] then
 		--write( "TitanBar: Showing money");
 		--ImportCtr( "MI" );
-		MI[ "Ctr" ]:SetBackColor( Turbine.UI.Color( MIbcAlpha, MIbcRed, MIbcGreen, MIbcBlue ) );
+		MI[ "Ctr" ]:SetBackColor( Turbine.UI.Color( BC.Alpha["Money"], BC.Red["Money"], BC.Green["Money"], BC.Blue["Money"] ) );
 	else
 		--write( "TitanBar: Hiding money");
 		if _G.frmMI then wMI:Close(); end
 	end
-	MI[ "Ctr" ]:SetVisible( ShowMoney );
+	MI[ "Ctr" ]:SetVisible( Show["Money"] );
 end
 -- **^
 -- **v Show/Hide Destiny Points v**

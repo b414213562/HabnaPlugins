@@ -8,7 +8,7 @@
 function UnloadControl( value )
 	if value == "ctr" then
 		if Show["Wallet"] then ShowHideWallet(); end
-		if ShowMoney then _G.MIWhere = 3; ShowHideMoney(); end
+		if Show["Money"] then Where["Money"] = 3; ShowHideMoney(); end
 		if ShowDestinyPoints then _G.DPWhere = 3; ShowHideDestinyPoints(); end
 		if ShowShards then _G.SPWhere = 3; ShowHideShards(); end
 		if ShowSkirmishMarks then _G.SMWhere = 3; ShowHideSkirmishMarks(); end
@@ -50,7 +50,7 @@ function UnloadControl( value )
 		if ShowBadgeOfDishonour then _G.BODWhere = 3; ShowHideBadgeOfDishonour(); end
 		elseif value == "this" then
 			if _G.sFromCtr == "WI" then ShowHideWallet();
-			elseif _G.sFromCtr == "Money" then _G.MIWhere = 3; ShowHideMoney();
+			elseif _G.sFromCtr == "Money" then Where["Money"] = 3; ShowHideMoney();
 			elseif _G.sFromCtr == "DP" then _G.DPWhere = 3; ShowHideDestinyPoints();
 			elseif _G.sFromCtr == "SP" then _G.SPWhere = 3; ShowHideShards();
 			elseif _G.sFromCtr == "SM" then _G.SMWhere = 3; ShowHideSkirmishMarks();
@@ -106,7 +106,7 @@ function BGColor( cmd, value )
 		tA, tR, tG, tB = bcAlpha, bcRed, bcGreen, bcBlue;
 	elseif cmd == "apply" then
 		if _G.sFromCtr == "WI" then tA, tR, tG, tB = BC.Alpha["Wallet"], BC.Red["Wallet"], BC.Green["Wallet"], BC.Blue["Wallet"];
-		elseif _G.sFromCtr == "Money" then tA, tR, tG, tB = MIbcAlpha, MIbcRed, MIbcGreen, MIbcBlue;
+		elseif _G.sFromCtr == "Money" then tA, tR, tG, tB = BC.Alpha["Money"], BC.Red["Money"], BC.Green["Money"], BC.Blue["Money"];
 		elseif _G.sFromCtr == "DP" then tA, tR, tG, tB = DPbcAlpha, DPbcRed, DPbcGreen, DPbcBlue;
 		elseif _G.sFromCtr == "SP" then tA, tR, tG, tB = SPbcAlpha, SPbcRed, SPbcGreen, SPbcBlue;
 		elseif _G.sFromCtr == "SM" then tA, tR, tG, tB = SMbcAlpha, SMbcRed, SMbcGreen, SMbcBlue;
@@ -152,8 +152,8 @@ function BGColor( cmd, value )
 	if value == "ctr" then
 		BC.Alpha["Wallet"], BC.Red["Wallet"], BC.Green["Wallet"], BC.Blue["Wallet"] = tA, tR, tG, tB;
 		if Show["Wallet"] then WI[ "Ctr" ]:SetBackColor( Turbine.UI.Color( tA, tR, tG, tB ) ); end
-		MIbcAlpha, MIbcRed, MIbcGreen, MIbcBlue = tA, tR, tG, tB;
-		if ShowMoney then MI[ "Ctr" ]:SetBackColor( Turbine.UI.Color( tA, tR, tG, tB ) ); end
+		BC.Alpha["Money"], BC.Red["Money"], BC.Green["Money"], BC.Blue["Money"] = tA, tR, tG, tB;
+		if Show["Money"] then MI[ "Ctr" ]:SetBackColor( Turbine.UI.Color( tA, tR, tG, tB ) ); end
 		DPbcAlpha, DPbcRed, DPbcGreen, DPbcBlue = tA, tR, tG, tB;
 		if ShowDestinyPoints then DP[ "Ctr" ]:SetBackColor( Turbine.UI.Color( tA, tR, tG, tB ) ); end
 		SPbcAlpha, SPbcRed, SPbcGreen, SPbcBlue = tA, tR, tG, tB;
@@ -239,7 +239,7 @@ function BGColor( cmd, value )
 		if _G.sFromCtr == "WI" then
 			WI[ "Ctr" ]:SetBackColor( Turbine.UI.Color( tA, tR, tG, tB ) );
 		elseif _G.sFromCtr == "Money" then
-			MIbcAlpha, MIbcRed, MIbcGreen, MIbcBlue = tA, tR, tG, tB;
+			BC.Alpha["Money"], BC.Red["Money"], BC.Green["Money"], BC.Blue["Money"] = tA, tR, tG, tB;
 			MI[ "Ctr" ]:SetBackColor( Turbine.UI.Color( tA, tR, tG, tB ) );
 		elseif _G.sFromCtr == "DP" then
 			DPbcAlpha, DPbcRed, DPbcGreen, DPbcBlue = tA, tR, tG, tB;

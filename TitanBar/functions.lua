@@ -364,7 +364,7 @@ end
 --**^
 --**v Update money on TitanBar v**
 function UpdateMoney()
-	if _G.MIWhere == 1 then
+	if Where["Money"] == 1 then
 		local money = PlayerAtt:GetMoney();
 		DecryptMoney( money );
 	
@@ -1007,7 +1007,7 @@ function ChangeColor(tColor)
 	if BGWToAll then
 		TB["win"]:SetBackColor( tColor );
 		if Show["Wallet"] then WI[ "Ctr" ]:SetBackColor( tColor ); end
-		if ShowMoney then MI[ "Ctr" ]:SetBackColor( tColor ); end
+		if Show["Money"] then MI[ "Ctr" ]:SetBackColor( tColor ); end
 		if ShowDestinyPoints then DP[ "Ctr" ]:SetBackColor( tColor ); end
 		if ShowShards then SP[ "Ctr" ]:SetBackColor( tColor ); end
 		if ShowSkirmishMarks then SM[ "Ctr" ]:SetBackColor( tColor ); end

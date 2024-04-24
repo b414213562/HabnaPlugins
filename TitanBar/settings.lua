@@ -19,6 +19,20 @@ PositionW = {}; -- Position of Windows
 PositionW.Left = {};
 PositionW.Top = {};
 
+Where = {}; -- Is currency on bar, tooltip, or hidden?
+
+--- Parses an entry like settings.Money.W. Also checks for a discrepancy between Where and Show.
+---@param where string
+---@param show boolean
+---@return number?,string
+function ParseWhere(where, show)
+    local whereNum = tonumber(where);
+    if whereNum == 3 and show then
+        whereNum = 1;
+        where = string.format("%.0f", whereNum);
+    end -- old TitanBar comment: Remove after Oct, 15th 2013
+    return whereNum, where;
+end
 
 
 -- **v Load / update / set default settings v**
@@ -166,21 +180,19 @@ function LoadSettings()
 	if settings.Money.L == nil then settings.Money.L = string.format("%.0f", tL); end -- X position on screen for money window
 	if settings.Money.T == nil then settings.Money.T = string.format("%.0f", tT); end -- Y position on screen for money window
 	if settings.Money.W == nil then settings.Money.W = string.format("%.0f", 1); end --Show where? on TitanBar or in the wallet Tooltip. Default is in wallet Tooltip
-	ShowMoney = settings.Money.V;
-	MIbcAlpha = tonumber(settings.Money.A);
-	MIbcRed = tonumber(settings.Money.R);
-	MIbcGreen = tonumber(settings.Money.G);
-	MIbcBlue = tonumber(settings.Money.B);
-	_G.MILocX = tonumber(settings.Money.X);
-	_G.MILocY = tonumber(settings.Money.Y);
+	Show["Money"] = settings.Money.V;
+	BC.Alpha["Money"] = tonumber(settings.Money.A);
+	BC.Red["Money"] = tonumber(settings.Money.R);
+	BC.Green["Money"] = tonumber(settings.Money.G);
+	BC.Blue["Money"] = tonumber(settings.Money.B);
+	Position.Left["Money"] = tonumber(settings.Money.X);
+	Position.Top["Money"] = tonumber(settings.Money.Y);
+	PositionW.Left["Money"] = tonumber(settings.Money.L);
+	PositionW.Top["Money"] = tonumber(settings.Money.T);
+    Where["Money"], settings.Money.W = ParseWhere(settings.Money.W, Show["Money"]);
 	_G.STM = settings.Money.S;
 	_G.SSS = settings.Money.SS;
 	_G.STS = settings.Money.TS;
-	MIWLeft = tonumber(settings.Money.L);
-	MIWTop = tonumber(settings.Money.T);
-	_G.MIWhere = tonumber(settings.Money.W);
-	if _G.MIWhere == 3 and ShowMoney then _G.MIWhere = 1; settings.Money.W = string.format("%.0f", _G.MIWhere); end --Remove after Oct, 15th 2013
-
 
 	if settings.DestinyPoints == nil then settings.DestinyPoints = {}; end
 	if settings.DestinyPoints.V == nil then settings.DestinyPoints.V = false; end
@@ -1056,19 +1068,19 @@ function SaveSettings(str)
 		settings.Wallet.T = string.format("%.0f", PositionW.Top["Wallet"]);
 
 		settings.Money = {};
-		settings.Money.V = ShowMoney;
-		settings.Money.A = string.format("%.3f", MIbcAlpha);
-		settings.Money.R = string.format("%.3f", MIbcRed);
-		settings.Money.G = string.format("%.3f", MIbcGreen);
-		settings.Money.B = string.format("%.3f", MIbcBlue);
-		settings.Money.X = string.format("%.0f", _G.MILocX);
-		settings.Money.Y = string.format("%.0f", _G.MILocY);
-		settings.Money.W = string.format("%.0f", _G.MIWhere);
+		settings.Money.V = Show["Money"];
+		settings.Money.A = string.format("%.3f", BC.Alpha["Money"]);
+		settings.Money.R = string.format("%.3f", BC.Red["Money"]);
+		settings.Money.G = string.format("%.3f", BC.Green["Money"]);
+		settings.Money.B = string.format("%.3f", BC.Blue["Money"]);
+		settings.Money.X = string.format("%.0f", Position.Left["Money"]);
+		settings.Money.Y = string.format("%.0f", Position.Top["Money"]);
+		settings.Money.W = string.format("%.0f", Where["Money"]);
 		settings.Money.S = _G.STM; --Show Total Money of all character on TitanBar Money control.
 		settings.Money.SS = _G.SSS; --Show sessions statistics in money tooltip.
 		settings.Money.TS = _G.STS; --Show today statistics in money tooltip
-		if PlayerAlign == 1 then settings.Money.L = string.format("%.0f", MIWLeft); end
-		if PlayerAlign == 1 then settings.Money.T = string.format("%.0f", MIWTop); end
+		if PlayerAlign == 1 then settings.Money.L = string.format("%.0f", PositionW.Left["Money"]); end
+		if PlayerAlign == 1 then settings.Money.T = string.format("%.0f", PositionW.Top["Money"]); end
 
 		settings.DestinyPoints = {};
 		settings.DestinyPoints.V = ShowDestinyPoints;
@@ -1507,7 +1519,7 @@ function ResetSettings()
 	
 	TBHeight, _G.TBFont, TBFontT, TBTop, TBAutoHide, TBIconSize, bcAlpha, bcRed, bcGreen, bcBlue = 30, 1107296268, "TrajanPro14", true, L["OPAHC"], 32, tA, tR, tG, tB; --Backcolor & default X Location for TitanBar
 	Show["Wallet"], BC.Alpha["Wallet"], BC.Red["Wallet"], BC.Green["Wallet"], BC.Blue["Wallet"], Position.Left["Wallet"], Position.Top["Wallet"] = false, tA, tR, tG, tB, tX, tY; --for Wallet Control
-	ShowMoney, _G.STM, _G.SSS, _G.STS, MIbcAlpha, MIbcRed, MIbcGreen, MIbcBlue, _G.MILocX, _G.MILocY, _G.MIWhere = true, false, true, true, tA, tR, tG, tB, 400, tY, 1; --for Money Control
+	Show["Money"], _G.STM, _G.SSS, _G.STS, BC.Alpha["Money"], BC.Red["Money"], BC.Green["Money"], BC.Blue["Money"], Position.Left["Money"], Position.Top["Money"], Where["Money"] = true, false, true, true, tA, tR, tG, tB, 400, tY, 1; --for Money Control
 	ShowDestinyPoints, DPbcAlpha, DPbcRed, DPbcGreen, DPbcBlue, _G.DPLocX, _G.DPLocY, _G.DPWhere = false, tA, tR, tG, tB, tX, tY, tW; --for Destiny points Control
 	ShowShards, SPbcAlpha, SPbcRed, SPbcGreen, SPbcBlue, _G.SPLocX, _G.SPLocY, _G.SPWhere = false, tA, tR, tG, tB, tX, tY, tW; --for Shards Control
 	ShowSkirmishMarks, SMbcAlpha, SMbcRed, SMbcGreen, SMbcBlue, _G.SMLocX, _G.SMLocY, _G.SMWhere = false, tA, tR, tG, tB, tX, tY, tW; --for Skirmish marks Control
@@ -1566,9 +1578,9 @@ function ReplaceCtr()
 	if Show["Wallet"] then WI[ "Ctr" ]:SetPosition( Position.Left["Wallet"], Position.Top["Wallet"] ); end
 
 	oldLocX = settings.Money.X / oldScreenWidth;
-	_G.MILocX = oldLocX * screenWidth;
-	settings.Money.X = string.format("%.0f", _G.MILocX);
-	if ShowMoney and _G.MIWhere == 1 then MI[ "Ctr" ]:SetPosition( _G.MILocX, _G.MILocY ); end
+	Position.Left["Money"] = oldLocX * screenWidth;
+	settings.Money.X = string.format("%.0f", Position.Left["Money"]);
+	if Show["Money"] and Where["Money"] == 1 then MI[ "Ctr" ]:SetPosition( Position.Left["Money"], Position.Top["Money"] ); end
 	
 	oldLocX = settings.DestinyPoints.X / oldScreenWidth;
 	_G.DPLocX = oldLocX * screenWidth;

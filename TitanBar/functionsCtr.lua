@@ -10,12 +10,12 @@ function ImportCtr( value )
         UpdateWallet();
         WI[ "Ctr" ]:SetPosition( Position.Left["Wallet"], Position.Top["Wallet"] );
     elseif value == "MI" then --Money Infos
-        if _G.MIWhere == 1 then
+        if Where["Money"] == 1 then
             import (AppCtrWalletD.."MoneyInfos");
             import (AppCtrWalletD.."MoneyInfosToolTip");
-            MI[ "Ctr" ]:SetPosition( _G.MILocX, _G.MILocY );
+            MI[ "Ctr" ]:SetPosition( Position.Left["Money"], Position.Top["Money"] );
         end
-        if _G.MIWhere ~= 3 then
+        if Where["Money"] ~= 3 then
             PlayerAtt = Player:GetAttributes();
             AddCallback(PlayerAtt, "MoneyChanged",
                 function(sender, args) UpdateMoney(); end
