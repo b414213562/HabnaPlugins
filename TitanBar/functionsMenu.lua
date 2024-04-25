@@ -587,15 +587,15 @@ function ShowHideMidsummerToken()
 end
 
 function ShowHideAncientScript()
-	ShowAncientScript = not ShowAncientScript;
-	settings.AncientScript.V = ShowAncientScript;
-	settings.AncientScript.W = string.format( "%.0f", _G.ASWhere );
+	Show["AncientScript"] = not Show["AncientScript"];
+	settings.AncientScript.V = Show["AncientScript"];
+	settings.AncientScript.W = string.format( "%.0f", Where["AncientScript"] );
 	SaveSettings( false );
 	ImportCtr( "AS" );
-	if ShowAncientScript then
-		AS[ "Ctr" ]:SetBackColor( Turbine.UI.Color( ASbcAlpha, ASbcRed, ASbcGreen, ASbcBlue ) );
+	if Show["AncientScript"] then
+		AS[ "Ctr" ]:SetBackColor( Turbine.UI.Color( BC.Alpha["AncientScript"], BC.Red["AncientScript"], BC.Green["AncientScript"], BC.Blue["AncientScript"] ) );
 	end
-	AS[ "Ctr" ]:SetVisible( ShowAncientScript);
+	AS[ "Ctr" ]:SetVisible( Show["AncientScript"]);
 end
 
 function ShowHideBadgeOfTaste()

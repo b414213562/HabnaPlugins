@@ -45,8 +45,8 @@ function UnloadControl( value )
 		if Show["FarmersFaireToken"] then Where["FarmersFaireToken"] = 3; ShowHideFarmersFaireToken(); end
 		if Show["SpringLeaf"] then Where["SpringLeaf"] = 3; ShowHideSpringLeaf(); end
 		if Show["MidsummerToken"] then Where["MidsummerToken"] = 3; ShowHideMidsummerToken(); end
-		if ShowAncientScript then _G.ASWhere = 3; ShowHideAncientScript(); end
 		if ShowBadgeOfTaste then _G.BOTWhere = 3; ShowHideBadgeOfTaste(); end
+		if Show["AncientScript"] then Where["AncientScript"] = 3; ShowHideAncientScript(); end
 		if ShowBadgeOfDishonour then _G.BODWhere = 3; ShowHideBadgeOfDishonour(); end
 		elseif value == "this" then
 			if _G.sFromCtr == "WI" then ShowHideWallet();
@@ -87,8 +87,8 @@ function UnloadControl( value )
 			elseif _G.sFromCtr == "FFAT" then Where["FarmersFaireToken"] = 3; ShowHideFarmersFaireToken();
 			elseif _G.sFromCtr == "SPL" then Where["SpringLeaf"] = 3; ShowHideSpringLeaf();
 			elseif _G.sFromCtr == "MST" then Where["MidsummerToken"] = 3; ShowHideMidsummerToken();
-			elseif _G.sFromCtr == "AS" then _G.ASWhere = 3; ShowHideAncientScript();
 			elseif _G.sFromCtr == "BOT" then _G.BOTWhere = 3; ShowHideBadgeOfTaste();
+			elseif _G.sFromCtr == "AS" then Where["AncientScript"] = 3; ShowHideAncientScript();
 			elseif _G.sFromCtr == "BOD" then _G.BODWhere = 3; ShowHideBadgeOfDishonour();
 			end
 		end
@@ -143,8 +143,8 @@ function BGColor( cmd, value )
 		elseif _G.sFromCtr == "FFAT" then tA, tR, tG, tB = BC.Alpha["FarmersFaireToken"], BC.Red["FarmersFaireToken"], BC.Green["FarmersFaireToken"], BC.Blue["FarmersFaireToken"];
 		elseif _G.sFromCtr == "SPL" then tA, tR, tG, tB = BC.Alpha["SpringLeaf"], BC.Red["SpringLeaf"], BC.Green["SpringLeaf"], BC.Blue["SpringLeaf"];
 		elseif _G.sFromCtr == "MST" then tA, tR, tG, tB = BC.Alpha["MidsummerToken"], BC.Red["MidsummerToken"], BC.Green["MidsummerToken"], BC.Blue["MidsummerToken"];
-		elseif _G.sFromCtr == "AS" then tA, tR, tG, tB = ASbcAlpha, ASbcRed, ASbcGreen, ASbcBlue;
 		elseif _G.sFromCtr == "BOT" then tA, tR, tG, tB = BOTbcAlpha, BOTbcRed, BOTbcGreen, BOTbcBlue;
+		elseif _G.sFromCtr == "AS" then tA, tR, tG, tB = BC.Alpha["AncientScript"], BC.Red["AncientScript"], BC.Green["AncientScript"], BC.Blue["AncientScript"];
 		elseif _G.sFromCtr == "BOD" then tA, tR, tG, tB = BODbcAlpha, BODbcRed, BODbcGreen, BODbcBlue;
 		end
 	end
@@ -226,10 +226,10 @@ function BGColor( cmd, value )
 		if Show["SpringLeaf"] then SPL[ "Ctr" ]:SetBackColor( Turbine.UI.Color( tA, tR, tG, tB ) ); end
 		BC.Alpha["MidsummerToken"], BC.Red["MidsummerToken"], BC.Green["MidsummerToken"], BC.Blue["MidsummerToken"] = tA, tR, tG, tB;
 		if Show["MidsummerToken"] then MST[ "Ctr" ]:SetBackColor( Turbine.UI.Color( tA, tR, tG, tB ) ); end
-		ASbcAlpha, ASbcRed, ASbcGreen, ASbcBlue = tA, tR, tG, tB;
-		if ShowAncientScript then AS[ "Ctr" ]:SetBackColor( Turbine.UI.Color( tA, tR, tG, tB ) ); end
 		BOTbcAlpha, BOTbcRed, BOTbcGreen, BOTbcBlue = tA, tR, tG, tB;
 		if ShowBadgeOfTaste then BOT[ "Ctr" ]:SetBackColor( Turbine.UI.Color( tA, tR, tG, tB ) ); end
+		BC.Alpha["AncientScript"], BC.Red["AncientScript"], BC.Green["AncientScript"], BC.Blue["AncientScript"] = tA, tR, tG, tB;
+		if Show["AncientScript"] then AS[ "Ctr" ]:SetBackColor( Turbine.UI.Color( tA, tR, tG, tB ) ); end
 		BODbcAlpha, BODbcRed, BODbcGreen, BODbcBlue = tA, tR, tG, tB;
 		if ShowBadgeOfDishonour then BOD[ "Ctr" ]:SetBackColor( Turbine.UI.Color( tA, tR, tG, tB ) ); end
 	elseif value == "all" then
@@ -351,7 +351,7 @@ function BGColor( cmd, value )
 			BC.Alpha["MidsummerToken"], BC.Red["MidsummerToken"], BC.Green["MidsummerToken"], BC.Blue["MidsummerToken"] = tA, tR, tG, tB;
 			MST[ "Ctr" ]:SetBackColor( Turbine.UI.Color( tA, tR, tG, tB ) );
 		elseif _G.sFromCtr == "AS" then
-			ASbcAlpha, ASbcRed, ASbcGreen, ASbcBlue = tA, tR, tG, tB;
+			BC.Alpha["AncientScript"], BC.Red["AncientScript"], BC.Green["AncientScript"], BC.Blue["AncientScript"] = tA, tR, tG, tB;
 			AS[ "Ctr" ]:SetBackColor( Turbine.UI.Color( tA, tR, tG, tB ) );	
 		elseif _G.sFromCtr == "BOT" then
 			BOTbcAlpha, BOTbcRed, BOTbcGreen, BOTbcBlue = tA, tR, tG, tB;

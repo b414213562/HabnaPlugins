@@ -668,7 +668,7 @@ end
 --**^
 --**v Update Ancient Script currency on TitanBar v**
 function UpdateAncientScript()
-	if _G.ASWhere == 1 then
+	if Where["AncientScript"] == 1 then
 		AS[ "Lbl" ]:SetText( GetCurrency( L[ "MAS" ] ) );
 		AS[ "Lbl" ]:SetSize( AS[ "Lbl" ]:GetTextLength() * NM, CTRHeight ); 
 		AjustIcon( "AS" );
@@ -1044,8 +1044,8 @@ function ChangeColor(tColor)
 		if Show["FarmersFaireToken"] then FFAT[ "Ctr" ]:SetBackColor( tColor ); end
 		if Show["SpringLeaf"] then SPL[ "Ctr" ]:SetBackColor( tColor ); end
 		if Show["MidsummerToken"] then MST[ "Ctr" ]:SetBackColor( tColor ); end
-		if ShowAncientScript then AS[ "Ctr" ]:SetBackColor( tColor ); end
 		if ShowBadgeOfTaste then BOT[ "Ctr" ]:SetBackColor( tColor ); end
+		if Show["AncientScript"] then AS[ "Ctr" ]:SetBackColor( tColor ); end
 		if ShowBadgeOfDishonour then BOD[ "Ctr" ]:SetBackColor( tColor ); end
 	else
 		if sFrom == "TitanBar" then TB["win"]:SetBackColor( tColor ); end

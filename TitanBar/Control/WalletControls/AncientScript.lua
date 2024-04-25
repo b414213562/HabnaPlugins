@@ -10,7 +10,7 @@ AS["Ctr"]:SetParent( TB["win"] );
 AS["Ctr"]:SetMouseVisible( false );
 AS["Ctr"]:SetZOrder( 2 );
 AS["Ctr"]:SetBlendMode( Turbine.UI.BlendMode.AlphaBlend );
-AS["Ctr"]:SetBackColor( Turbine.UI.Color( ASbcAlpha, ASbcRed, ASbcGreen, ASbcBlue ) );
+AS["Ctr"]:SetBackColor( Turbine.UI.Color( BC.Alpha["AncientScript"], BC.Red["AncientScript"], BC.Green["AncientScript"], BC.Blue["AncientScript"] ) );
 --**^
 --**v Ancient Script & icon on TitanBar v**
 AS["Icon"] = Turbine.UI.Control();
@@ -89,10 +89,10 @@ end
 AS["Lbl"].MouseUp = function( sender, args )
 	AS["Ctr"]:SetZOrder( 2 );
 	dragging = false;
-	_G.ASLocX = AS["Ctr"]:GetLeft();
-	settings.AncientScript.X = string.format("%.0f", _G.ASLocX);
-	_G.ASLocY = AS["Ctr"]:GetTop();
-	settings.AncientScript.Y = string.format("%.0f", _G.ASLocY);
+	Position.Left["AncientScript"] = AS["Ctr"]:GetLeft();
+	settings.AncientScript.X = string.format("%.0f", Position.Left["AncientScript"]);
+	Position.Top["AncientScript"] = AS["Ctr"]:GetTop();
+	settings.AncientScript.Y = string.format("%.0f", Position.Top["AncientScript"]);
 	SaveSettings( false );
 end
 --**^

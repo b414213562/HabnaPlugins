@@ -99,8 +99,8 @@ function frmBackground()
 	if sFrom == "FFAT" then curSelAlpha = BC.Alpha["FarmersFaireToken"]; curSelRed = BC.Red["FarmersFaireToken"]; curSelGreen = BC.Green["FarmersFaireToken"]; curSelBlue = BC.Blue["FarmersFaireToken"]; end
 	if sFrom == "SPL" then curSelAlpha = BC.Alpha["SpringLeaf"]; curSelRed = BC.Red["SpringLeaf"]; curSelGreen = BC.Green["SpringLeaf"]; curSelBlue = BC.Blue["SpringLeaf"]; end
 	if sFrom == "MST" then curSelAlpha = BC.Alpha["MidsummerToken"]; curSelRed = BC.Red["MidsummerToken"]; curSelGreen = BC.Green["MidsummerToken"]; curSelBlue = BC.Blue["MidsummerToken"]; end
-	if sFrom == "AS" then curSelAlpha = ASbcAlpha; curSelRed = ASbcRed; curSelGreen = ASbcGreen; curSelBlue = ASbcBlue; end
 	if sFrom == "BOT" then curSelAlpha = BOTbcAlpha; curSelRed = BOTbcRed; curSelGreen = BOTbcGreen; curSelBlue = BOTbcBlue; end
+	if sFrom == "AS" then curSelAlpha = BC.Alpha["AncientScript"]; curSelRed = BC.Red["AncientScript"]; curSelGreen = BC.Green["AncientScript"]; curSelBlue = BC.Blue["AncientScript"]; end
 	if sFrom == "BOD" then curSelAlpha = BODbcAlpha; curSelRed = BODbcRed; curSelGreen = BODbcGreen; curSelBlue = BODbcBlue; end
 	curAlpha, curColor.R, curColor.G, curColor.B = curSelAlpha, curSelRed, curSelGreen, curSelBlue;
 	curSelColor:SetBackColor( Turbine.UI.Color( curSelAlpha, curSelRed, curSelGreen, curSelBlue ) );
@@ -367,8 +367,8 @@ function UpdateBCvariable()
 		BC.Alpha["FarmersFaireToken"], BC.Red["FarmersFaireToken"], BC.Green["FarmersFaireToken"], BC.Blue["FarmersFaireToken"] = curSelAlpha, curSelRed, curSelGreen, curSelBlue;
 		BC.Alpha["SpringLeaf"], BC.Red["SpringLeaf"], BC.Green["SpringLeaf"], BC.Blue["SpringLeaf"] = curSelAlpha, curSelRed, curSelGreen, curSelBlue;
 		BC.Alpha["MidsummerToken"], BC.Red["MidsummerToken"], BC.Green["MidsummerToken"], BC.Blue["MidsummerToken"] = curSelAlpha, curSelRed, curSelGreen, curSelBlue;
-		ASbcAlpha, ASbcRed, ASbcGreen, ASbcBlue = curSelAlpha, curSelRed, curSelGreen, curSelBlue;
 		BOTbcAlpha, BOTbcRed, BOTbcGreen, BOTbcBlue = curSelAlpha, curSelRed, curSelGreen, curSelBlue;
+		BC.Alpha["AncientScript"], BC.Red["AncientScript"], BC.Green["AncientScript"], BC.Blue["AncientScript"] = curSelAlpha, curSelRed, curSelGreen, curSelBlue;
 		BODbcAlpha, BODbcRed, BODbcGreen, BODbcBlue = curSelAlpha, curSelRed, curSelGreen, curSelBlue;
 
 	else
@@ -411,8 +411,8 @@ function UpdateBCvariable()
 		if sFrom == "FFAT" then BC.Alpha["FarmersFaireToken"] = curSelAlpha; BC.Red["FarmersFaireToken"] = curSelRed; BC.Green["FarmersFaireToken"] = curSelGreen; BC.Blue["FarmersFaireToken"] = curSelBlue; end
 		if sFrom == "SPL" then BC.Alpha["SpringLeaf"] = curSelAlpha; BC.Red["SpringLeaf"] = curSelRed; BC.Green["SpringLeaf"] = curSelGreen; BC.Blue["SpringLeaf"] = curSelBlue; end
 		if sFrom == "MST" then BC.Alpha["MidsummerToken"] = curSelAlpha; BC.Red["MidsummerToken"] = curSelRed; BC.Green["MidsummerToken"] = curSelGreen; BC.Blue["MidsummerToken"] = curSelBlue; end
-		if sFrom == "AS" then ASbcAlpha = curSelAlpha; ASbcRed = curSelRed; ASbcGreen = curSelGreen; ASbcBlue = curSelBlue; end
 		if sFrom == "BOT" then BOTbcAlpha = curSelAlpha; BOTbcRed = curSelRed; BOTbcGreen = curSelGreen; BOTbcBlue = curSelBlue; end
+		if sFrom == "AS" then BC.Alpha["AncientScript"] = curSelAlpha; BC.Red["AncientScript"] = curSelRed; BC.Green["AncientScript"] = curSelGreen; BC.Blue["AncientScript"] = curSelBlue; end
 		if sFrom == "BOD" then BODbcAlpha = curSelAlpha; BODbcRed = curSelRed; BODbcGreen = curSelGreen; BODbcBlue = curSelBlue; end
 	end
 end

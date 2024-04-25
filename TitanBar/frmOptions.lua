@@ -40,8 +40,8 @@ if FFT ~= nil then WalletControls[ "FFT" ] = { ShowHide = Show["FallFestivalToke
 if FFAT ~= nil then WalletControls[ "FFAT" ] = { ShowHide = Show["FarmersFaireToken"], Control = FFAT[ "Ctr" ] }; end
 if SPL ~= nil then WalletControls[ "SPL" ] = { ShowHide = Show["SpringLeaf"], Control = SPL[ "Ctr" ] }; end
 if MST ~= nil then WalletControls[ "MST" ] = { ShowHide = Show["MidsummerToken"], Control = MST[ "Ctr" ] }; end
-if AS ~= nil then WalletControls[ "AS" ] = { ShowHide = ShowAncientScript, Control = AS[ "Ctr" ] }; end
 if BOT ~= nil then WalletControls[ "BOT" ] = { ShowHide = ShowBadgeOfTaste, Control = BOT[ "Ctr" ] }; end
+if AS ~= nil then WalletControls[ "AS" ] = { ShowHide = Show["AncientScript"], Control = AS[ "Ctr" ] }; end
 if BOD ~= nil then WalletControls[ "BOD" ] = { ShowHide = ShowBadgeOfDishonour, Control = BOD[ "Ctr" ] }; end
 
 tFonts = { "Arial12", "TrajanPro13", "TrajanPro14", "TrajanPro15", "TrajanPro16", "TrajanPro18", "TrajanPro19", "TrajanPro20", "TrajanPro21",

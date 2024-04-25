@@ -935,15 +935,14 @@ function LoadSettings()
 	if settings.AncientScript.X == nil then settings.AncientScript.X = string.format("%.0f", tX); end
 	if settings.AncientScript.Y == nil then settings.AncientScript.Y = string.format("%.0f", tY); end
 	if settings.AncientScript.W == nil then settings.AncientScript.W = string.format("%.0f", tW); end
-	ShowAncientScript = settings.AncientScript.V;
-	ASbcAlpha = tonumber(settings.AncientScript.A);
-	ASbcRed = tonumber(settings.AncientScript.R);
-	ASbcGreen = tonumber(settings.AncientScript.G);
-	ASbcBlue = tonumber(settings.AncientScript.B);
-	_G.ASLocX = tonumber(settings.AncientScript.X);
-	_G.ASLocY = tonumber(settings.AncientScript.Y);
-	_G.ASWhere = tonumber(settings.AncientScript.W);
-	if _G.ASWhere == 3 and ShowAncientScript then _G.ASWhere = 1; settings.AncientScript.W = string.format("%.0f", _G.ASWhere); end
+	Show["AncientScript"] = settings.AncientScript.V;
+	BC.Alpha["AncientScript"] = tonumber(settings.AncientScript.A);
+	BC.Red["AncientScript"] = tonumber(settings.AncientScript.R);
+	BC.Green["AncientScript"] = tonumber(settings.AncientScript.G);
+	BC.Blue["AncientScript"] = tonumber(settings.AncientScript.B);
+	Position.Left["AncientScript"] = tonumber(settings.AncientScript.X);
+	Position.Top["AncientScript"] = tonumber(settings.AncientScript.Y);
+    Where["AncientScript"] = ParseWhere(settings, "AncientScript");
 
     if settings.BadgeOfTaste == nil then settings.BadgeOfTaste = {}; end
     if settings.BadgeOfTaste.V == nil then settings.BadgeOfTaste.V = false; end
@@ -1442,14 +1441,14 @@ function SaveSettings(str)
 		settings.MidsummerToken.W = string.format("%.0f", Where["MidsummerToken"]);
 		
 		settings.AncientScript = {};
-		settings.AncientScript.V = ShowAncientScript;
-		settings.AncientScript.A = string.format("%.3f", ASbcAlpha);
-		settings.AncientScript.R = string.format("%.3f", ASbcRed);
-		settings.AncientScript.G = string.format("%.3f", ASbcGreen);
-		settings.AncientScript.B = string.format("%.3f", ASbcBlue);
-		settings.AncientScript.X = string.format("%.0f", _G.ASLocX);
-		settings.AncientScript.Y = string.format("%.0f", _G.ASLocY);
-		settings.AncientScript.W = string.format("%.0f", _G.ASWhere);
+		settings.AncientScript.V = Show["AncientScript"];
+		settings.AncientScript.A = string.format("%.3f", BC.Alpha["AncientScript"]);
+		settings.AncientScript.R = string.format("%.3f", BC.Red["AncientScript"]);
+		settings.AncientScript.G = string.format("%.3f", BC.Green["AncientScript"]);
+		settings.AncientScript.B = string.format("%.3f", BC.Blue["AncientScript"]);
+		settings.AncientScript.X = string.format("%.0f", Position.Left["AncientScript"]);
+		settings.AncientScript.Y = string.format("%.0f", Position.Top["AncientScript"]);
+		settings.AncientScript.W = string.format("%.0f", Where["AncientScript"]);
 
 		settings.BadgeOfTaste = {};
 		settings.BadgeOfTaste.V = ShowBadgeOfTaste;
@@ -1526,8 +1525,8 @@ function ResetSettings()
 	Show["FarmersFaireToken"], BC.Alpha["FarmersFaireToken"], BC.Red["FarmersFaireToken"], BC.Green["FarmersFaireToken"], BC.Blue["FarmersFaireToken"], Position.Left["FarmersFaireToken"], Position.Top["FarmersFaireToken"], Where["FarmersFaireToken"] = false, tA, tR, tG, tB, tX, tY, tW; --for Farmers Festival Token Control
 	Show["SpringLeaf"], BC.Alpha["SpringLeaf"], BC.Red["SpringLeaf"], BC.Green["SpringLeaf"], BC.Blue["SpringLeaf"], Position.Left["SpringLeaf"], Position.Top["SpringLeaf"], Where["SpringLeaf"] = false, tA, tR, tG, tB, tX, tY, tW; --for Spring Leaf Control	
 	Show["MidsummerToken"], BC.Alpha["MidsummerToken"], BC.Red["MidsummerToken"], BC.Green["MidsummerToken"], BC.Blue["MidsummerToken"], Position.Left["MidsummerToken"], Position.Top["MidsummerToken"], Where["MidsummerToken"] = false, tA, tR, tG, tB, tX, tY, tW; --for  Midsummer Token Control
-	ShowAncientScript, ASbcAlpha, ASbcRed, ASbcGreen, ASbcBlue, _G.ASLocX, _G.ASLocY, _G.ASWhere = false, tA, tR, tG, tB, tX, tY, tW; --for  Ancient Script Control
     ShowBadgeOfTaste, BOTbcAlpha, BOTbcRed, BOTbcGreen, BOTbcBlue, _G.BOTLocX, _G.BOTLocY, _G.BOTWhere = false, tA, tR, tG, tB, tX, tY, tW; --for Badge of Taste Control 
+	Show["AncientScript"], BC.Alpha["AncientScript"], BC.Red["AncientScript"], BC.Green["AncientScript"], BC.Blue["AncientScript"], Position.Left["AncientScript"], Position.Top["AncientScript"], Where["AncientScript"] = false, tA, tR, tG, tB, tX, tY, tW; --for  Ancient Script Control
     ShowBadgeOfDishonour, BODbcAlpha, BODbcRed, BODbcGreen, BODbcBlue, _G.BODLocX, _G.BODLocY, _G.BODWhere = false, tA, tR, tG, tB, tX, tY, tW; --for Badge of Dishonour Control 
 
 	SaveSettings( true ); --True: Get & save all settings table to file. / False: only save settings table to file.
@@ -1733,9 +1732,9 @@ function ReplaceCtr()
 	if Show["MidsummerToken"] and Where["MidsummerToken"] == 1 then MST[ "Ctr" ]:SetPosition( Position.Left["MidsummerToken"], Position.Top["MidsummerToken"] ); end
 	
 	oldLocX = settings.AncientScript.X / oldScreenWidth;
-	_G.ASLocX = oldLocX * screenWidth;
-	settings.AncientScript.X = string.format("%.0f", _G.ASLocX);
-	if ShowAncientScript and _G.ASWhere == 1 then AS[ "Ctr" ]:SetPosition( _G.ASLocX, _G.ASLocY ); end
+	Position.Left["AncientScript"] = oldLocX * screenWidth;
+	settings.AncientScript.X = string.format("%.0f", Position.Left["AncientScript"]);
+	if Show["AncientScript"] and Where["AncientScript"] == 1 then AS[ "Ctr" ]:SetPosition( Position.Left["AncientScript"], Position.Top["AncientScript"] ); end
 
     oldLocX = settings.BadgeOfTaste.X / oldScreenWidth;
     _G.BOTLocX = oldLocX * screenWidth;
