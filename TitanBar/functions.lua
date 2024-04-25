@@ -468,7 +468,7 @@ end
 --**^
 --**v Update Shards currency on TitanBar v**
 function UpdateShards()
-	if _G.SPWhere == 1 then
+	if Where["Shards"] == 1 then
 		SP[ "Lbl" ]:SetText( GetCurrency( L[ "MSP" ] ) );
 		SP[ "Lbl" ]:SetSize( SP[ "Lbl" ]:GetTextLength() * NM, CTRHeight ); 
 		AjustIcon( "SP" );

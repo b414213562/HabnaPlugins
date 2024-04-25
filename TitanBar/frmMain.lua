@@ -162,7 +162,7 @@ function frmMain()
 
 	if PlayerAlign == 1 then
 		if PlayerWalletSize ~= nil or PlayerWalletSize ~= 0 then
-			if _G.SPWhere ~= 3 then ImportCtr( "SP" ); end
+			if Where["Shards"] ~= 3 then ImportCtr( "SP" ); end
 			if _G.SMWhere ~= 3 then ImportCtr( "SM" ); end
 			if _G.MCWhere ~= 3 then ImportCtr( "MC" ); end
 			if _G.YTWhere ~= 3 then ImportCtr( "YT" ); end
@@ -317,7 +317,7 @@ function frmMain()
 			--Detect if wallet size has changed
 			if PlayerWallet:GetSize() ~= PlayerWalletSize then -- Until I find the size changed event or something similar in wallet
 				LoadPlayerWallet();
-				if _G.SPWhere ~= 3 then ImportCtr( "SP" ); end
+				if Where["Shards"] ~= 3 then ImportCtr( "SP" ); end
 				if _G.SMWhere ~= 3 then ImportCtr( "SM" ); end
 				if _G.MCWhere ~= 3 then ImportCtr( "MC" ); end
 				if _G.YTWhere ~= 3 then ImportCtr( "YT" ); end

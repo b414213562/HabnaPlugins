@@ -43,11 +43,11 @@ function ImportCtr( value )
             RemoveCallback(PlayerAtt, "DestinyPointsChanged");
         end
     elseif value == "SP" then --Shards
-        if _G.SPWhere == 1 then
+        if Where["Shards"] == 1 then
             import (AppCtrWalletD.."Shards");
             SP[ "Ctr" ]:SetPosition( Position.Left["Shards"], Position.Top["Shards"] );
         end
-        if _G.SPWhere ~= 3 then UpdateShards(); end
+        if Where["Shards"] ~= 3 then UpdateShards(); end
     elseif value == "SM" then --Skirmish Marks
         if _G.SMWhere == 1 then
             import (AppCtrWalletD.."SkirmishMarks");

@@ -10,7 +10,7 @@ function UnloadControl( value )
 		if Show["Wallet"] then ShowHideWallet(); end
 		if Show["Money"] then Where["Money"] = 3; ShowHideMoney(); end
 		if Show["DestinyPoints"] then Where["DestinyPoints"] = 3; ShowHideDestinyPoints(); end
-		if Show["Shards"] then _G.SPWhere = 3; ShowHideShards(); end
+		if Show["Shards"] then Where["Shards"] = 3; ShowHideShards(); end
 		if ShowSkirmishMarks then _G.SMWhere = 3; ShowHideSkirmishMarks(); end
 		if ShowMithrilCoins then _G.MCWhere = 3; ShowHideMithrilCoins(); end
 		if ShowYuleToken then _G.YTWhere = 3; ShowHideYuleToken(); end
@@ -52,7 +52,7 @@ function UnloadControl( value )
 			if _G.sFromCtr == "WI" then ShowHideWallet();
 			elseif _G.sFromCtr == "Money" then Where["Money"] = 3; ShowHideMoney();
 			elseif _G.sFromCtr == "DP" then Where["DestinyPoints"] = 3; ShowHideDestinyPoints();
-			elseif _G.sFromCtr == "SP" then _G.SPWhere = 3; ShowHideShards();
+			elseif _G.sFromCtr == "SP" then Where["Shards"] = 3; ShowHideShards();
 			elseif _G.sFromCtr == "SM" then _G.SMWhere = 3; ShowHideSkirmishMarks();
 			elseif _G.sFromCtr == "MC" then _G.MCWhere = 3; ShowHideMithrilCoins();
 			elseif _G.sFromCtr == "YT" then _G.YTWhere = 3; ShowHideYuleToken();

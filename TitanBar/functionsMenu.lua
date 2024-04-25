@@ -56,7 +56,7 @@ end
 function ShowHideShards()
 	Show["Shards"] = not Show["Shards"];
 	settings.Shards.V = Show["Shards"];
-	settings.Shards.W = string.format("%.0f", _G.SPWhere);
+	settings.Shards.W = string.format("%.0f", Where["Shards"]);
 	SaveSettings( false );
 	ImportCtr( "SP" );
 	if Show["Shards"] then
