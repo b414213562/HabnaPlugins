@@ -641,7 +641,7 @@ end
 --**^
 --**v Update Farmers Faire Tokens currency on TitanBar v**
 function UpdateFarmersFaireToken()
-	if _G.FFATWhere == 1 then
+	if Where["FarmersFaireToken"] == 1 then
 		FFAT[ "Lbl" ]:SetText( GetCurrency( L[ "MFFAT" ] ) );
 		FFAT[ "Lbl" ]:SetSize( FFAT[ "Lbl" ]:GetTextLength() * NM, CTRHeight ); 
 		AjustIcon( "FFAT" );
@@ -1041,7 +1041,7 @@ function ChangeColor(tColor)
 		if Show["EmbersOfEnchantment"] then EOE[ "Ctr" ]:SetBackColor( tColor ); end
 		if Show["FigmentsOfSplendour"] then FOS[ "Ctr" ]:SetBackColor( tColor ); end
 		if Show["FallFestivalToken"] then FFT[ "Ctr" ]:SetBackColor( tColor ); end
-		if ShowFarmersFaireToken then FFAT[ "Ctr" ]:SetBackColor( tColor ); end
+		if Show["FarmersFaireToken"] then FFAT[ "Ctr" ]:SetBackColor( tColor ); end
 		if ShowSpringLeaf then SPL[ "Ctr" ]:SetBackColor( tColor ); end
 		if ShowMidsummerToken then MST[ "Ctr" ]:SetBackColor( tColor ); end
 		if ShowAncientScript then AS[ "Ctr" ]:SetBackColor( tColor ); end

@@ -180,7 +180,7 @@ function frmMain()
 			if Where["EmbersOfEnchantment"] ~= 3 then ImportCtr( "EOE" ); end
 			if Where["FigmentsOfSplendour"] ~= 3 then ImportCtr( "FOS" ); end
 			if Where["FallFestivalToken"] ~= 3 then ImportCtr( "FFT" ); end
-			if _G.FFATWhere ~= 3 then ImportCtr( "FFAT" ); end
+			if Where["FarmersFaireToken"] ~= 3 then ImportCtr( "FFAT" ); end
 			if _G.SPLWhere ~= 3 then ImportCtr( "SPL" ); end
 			if _G.MSTWhere ~= 3 then ImportCtr( "MST" ); end
 			if _G.ASWhere ~= 3 then ImportCtr( "AS" ); end
@@ -198,7 +198,7 @@ function frmMain()
 		Show["EmbersOfEnchantment"] = false;
 		Show["FigmentsOfSplendour"] = false;
 		Show["FallFestivalToken"] = false;
-		ShowFarmersFaireToken = false;
+		Show["FarmersFaireToken"] = false;
 		ShowSpringLeaf = false;
 		ShowMidsummerToken = false;
 		ShowAncientScript = false;
@@ -335,7 +335,7 @@ function frmMain()
 				if Where["EmbersOfEnchantment"] ~= 3 then ImportCtr( "EOE" ); end
 				if Where["FigmentsOfSplendour"] ~= 3 then ImportCtr( "FOS" ); end
 				if Where["FallFestivalToken"] ~= 3 then ImportCtr( "FFT" ); end
-				if _G.FFATWhere ~= 3 then ImportCtr( "FFAT" ); end
+				if Where["FarmersFaireToken"] ~= 3 then ImportCtr( "FFAT" ); end
 				if _G.SPLWhere ~= 3 then ImportCtr( "SPL" ); end
 				if _G.MSTWhere ~= 3 then ImportCtr( "MST" ); end
 				if _G.ASWhere ~= 3 then ImportCtr( "AS" ); end

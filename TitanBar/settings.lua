@@ -881,17 +881,16 @@ function LoadSettings()
 	if settings.FarmersFaireToken.X == nil then settings.FarmersFaireToken.X = string.format("%.0f", tX); end
 	if settings.FarmersFaireToken.Y == nil then settings.FarmersFaireToken.Y = string.format("%.0f", tY); end
 	if settings.FarmersFaireToken.W == nil then settings.FarmersFaireToken.W = string.format("%.0f", tW); end
-	ShowFarmersFaireToken = settings.FarmersFaireToken.V;
-	FFATbcAlpha = tonumber(settings.FarmersFaireToken.A);
-	FFATbcRed = tonumber(settings.FarmersFaireToken.R);
-	FFATbcGreen = tonumber(settings.FarmersFaireToken.G);
-	FFATbcBlue = tonumber(settings.FarmersFaireToken.B);
-	_G.FFATLocX = tonumber(settings.FarmersFaireToken.X);
-	_G.FFATLocY = tonumber(settings.FarmersFaireToken.Y);
-	_G.FFATWhere = tonumber(settings.FarmersFaireToken.W);
-	if _G.FFATWhere == 3 and ShowFarmersFaireToken then _G.FFATWhere = 1; settings.FarmersFaireToken.W = string.format("%.0f", _G.FFATWhere); end
-	
-	if settings.SpringLeaf == nil then settings.SpringLeaf= {}; end
+	Show["FarmersFaireToken"] = settings.FarmersFaireToken.V;
+	BC.Alpha["FarmersFaireToken"] = tonumber(settings.FarmersFaireToken.A);
+	BC.Red["FarmersFaireToken"] = tonumber(settings.FarmersFaireToken.R);
+	BC.Green["FarmersFaireToken"] = tonumber(settings.FarmersFaireToken.G);
+	BC.Blue["FarmersFaireToken"] = tonumber(settings.FarmersFaireToken.B);
+	Position.Left["FarmersFaireToken"] = tonumber(settings.FarmersFaireToken.X);
+	Position.Top["FarmersFaireToken"] = tonumber(settings.FarmersFaireToken.Y);
+	Where["FarmersFaireToken"] = ParseWhere(settings, "FarmersFaireToken");
+
+    if settings.SpringLeaf == nil then settings.SpringLeaf= {}; end
 	if settings.SpringLeaf.V == nil then settings.SpringLeaf.V = false; end
 	if settings.SpringLeaf.A == nil then settings.SpringLeaf.A = string.format("%.3f", tA); end
 	if settings.SpringLeaf.R == nil then settings.SpringLeaf.R = string.format("%.3f", tR); end
@@ -1415,14 +1414,14 @@ function SaveSettings(str)
 		settings.FallFestivalToken.W = string.format("%.0f", Where["FallFestivalToken"]);
 		
 		settings.FarmersFaireToken = {};
-		settings.FarmersFaireToken.V = ShowFarmersFaireToken;
-		settings.FarmersFaireToken.A = string.format("%.3f", FFATbcAlpha);
-		settings.FarmersFaireToken.R = string.format("%.3f", FFATbcRed);
-		settings.FarmersFaireToken.G = string.format("%.3f", FFATbcGreen);
-		settings.FarmersFaireToken.B = string.format("%.3f", FFATbcBlue);
-		settings.FarmersFaireToken.X = string.format("%.0f", _G.FFATLocX);
-		settings.FarmersFaireToken.Y = string.format("%.0f", _G.FFATLocY);
-		settings.FarmersFaireToken.W = string.format("%.0f", _G.FFATWhere);
+		settings.FarmersFaireToken.V = Show["FarmersFaireToken"];
+		settings.FarmersFaireToken.A = string.format("%.3f", BC.Alpha["FarmersFaireToken"]);
+		settings.FarmersFaireToken.R = string.format("%.3f", BC.Red["FarmersFaireToken"]);
+		settings.FarmersFaireToken.G = string.format("%.3f", BC.Green["FarmersFaireToken"]);
+		settings.FarmersFaireToken.B = string.format("%.3f", BC.Blue["FarmersFaireToken"]);
+		settings.FarmersFaireToken.X = string.format("%.0f", Position.Left["FarmersFaireToken"]);
+		settings.FarmersFaireToken.Y = string.format("%.0f", Position.Top["FarmersFaireToken"]);
+		settings.FarmersFaireToken.W = string.format("%.0f", Where["FarmersFaireToken"]);
 		
 		settings.SpringLeaf = {};
 		settings.SpringLeaf.V = ShowSpringLeaf;
@@ -1526,7 +1525,7 @@ function ResetSettings()
 	Show["EmbersOfEnchantment"], BC.Alpha["EmbersOfEnchantment"], BC.Red["EmbersOfEnchantment"], BC.Green["EmbersOfEnchantment"], BC.Blue["EmbersOfEnchantment"], Position.Left["EmbersOfEnchantment"], Position.Top["EmbersOfEnchantment"], Where["EmbersOfEnchantment"] = false, tA, tR, tG, tB, tX, tY, tW; --for Embers of Enchantment Control
 	Show["FigmentsOfSplendour"], BC.Alpha["FigmentsOfSplendour"], BC.Red["FigmentsOfSplendour"], BC.Green["FigmentsOfSplendour"], BC.Blue["FigmentsOfSplendour"], Position.Left["FigmentsOfSplendour"], Position.Top["FigmentsOfSplendour"], Where["FigmentsOfSplendour"] = false, tA, tR, tG, tB, tX, tY, tW; --for Figments of Splendour Control
 	Show["FallFestivalToken"], BC.Alpha["FallFestivalToken"], BC.Red["FallFestivalToken"], BC.Green["FallFestivalToken"], BC.Blue["FallFestivalToken"], Position.Left["FallFestivalToken"], Position.Top["FallFestivalToken"], Where["FallFestivalToken"] = false, tA, tR, tG, tB, tX, tY, tW; --for Fall Festival Tokens Control	
-	ShowFarmersFaireToken, FFATbcAlpha, FFATbcRed, FFATbcGreen, FFATbcBlue, _G.FFATLocX, _G.FFATLocY, _G.FFATWhere = false, tA, tR, tG, tB, tX, tY, tW; --for Farmers Festival Token Control
+	Show["FarmersFaireToken"], BC.Alpha["FarmersFaireToken"], BC.Red["FarmersFaireToken"], BC.Green["FarmersFaireToken"], BC.Blue["FarmersFaireToken"], Position.Left["FarmersFaireToken"], Position.Top["FarmersFaireToken"], Where["FarmersFaireToken"] = false, tA, tR, tG, tB, tX, tY, tW; --for Farmers Festival Token Control
 	ShowSpringLeaf, SPLbcAlpha, SPLbcRed, SPLbcGreen, SPLbcBlue, _G.SPLLocX, _G.SPLLocY, _G.SPLWhere = false, tA, tR, tG, tB, tX, tY, tW; --for Spring Leaf Control	
 	ShowMidsummerToken, MSTbcAlpha, MSTbcRed, MSTbcGreen, MSTbcBlue, _G.MSTLocX, _G.MSTLocY, _G.MSTWhere = false, tA, tR, tG, tB, tX, tY, tW; --for  Midsummer Token Control
 	ShowAncientScript, ASbcAlpha, ASbcRed, ASbcGreen, ASbcBlue, _G.ASLocX, _G.ASLocY, _G.ASWhere = false, tA, tR, tG, tB, tX, tY, tW; --for  Ancient Script Control
@@ -1721,9 +1720,9 @@ function ReplaceCtr()
 	if Show["FallFestivalToken"] and Where["FallFestivalToken"] == 1 then FFT[ "Ctr" ]:SetPosition( Position.Left["FallFestivalToken"], Position.Top["FallFestivalToken"] ); end
 	
 	oldLocX = settings.FarmersFaireToken.X / oldScreenWidth;
-	_G.FFATLocX = oldLocX * screenWidth;
-	settings.FarmersFaireToken.X = string.format("%.0f", _G.FFATLocX);
-	if ShowFarmersFaireToken and _G.FFATWhere == 1 then FFAT[ "Ctr" ]:SetPosition( _G.FFATLocX, _G.FFATLocY ); end
+	Position.Left["FarmersFaireToken"] = oldLocX * screenWidth;
+	settings.FarmersFaireToken.X = string.format("%.0f", Position.Left["FarmersFaireToken"]);
+	if Show["FarmersFaireToken"] and Where["FarmersFaireToken"] == 1 then FFAT[ "Ctr" ]:SetPosition( Position.Left["FarmersFaireToken"], Position.Top["FarmersFaireToken"] ); end
 	
 	oldLocX = settings.SpringLeaf.X / oldScreenWidth;
 	_G.SPLLocX = oldLocX * screenWidth;

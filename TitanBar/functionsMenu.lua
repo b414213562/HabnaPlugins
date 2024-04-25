@@ -551,15 +551,15 @@ function ShowHideFallFestivalToken()
 end
 
 function ShowHideFarmersFaireToken()
-	ShowFarmersFaireToken = not ShowFarmersFaireToken;
-	settings.FarmersFaireToken.V = ShowFarmersFaireToken;
-	settings.FarmersFaireToken.W = string.format( "%.0f", _G.FFATWhere );
+	Show["FarmersFaireToken"] = not Show["FarmersFaireToken"];
+	settings.FarmersFaireToken.V = Show["FarmersFaireToken"];
+	settings.FarmersFaireToken.W = string.format( "%.0f", Where["FarmersFaireToken"] );
 	SaveSettings( false );
 	ImportCtr( "FFAT" );
-	if ShowFarmersFaireToken then
-		FFAT[ "Ctr" ]:SetBackColor( Turbine.UI.Color( FFATbcAlpha, FFATbcRed, FFATbcGreen, FFATbcBlue ) );
+	if Show["FarmersFaireToken"] then
+		FFAT[ "Ctr" ]:SetBackColor( Turbine.UI.Color( BC.Alpha["FarmersFaireToken"], BC.Red["FarmersFaireToken"], BC.Green["FarmersFaireToken"], BC.Blue["FarmersFaireToken"] ) );
 	end
-	FFAT[ "Ctr" ]:SetVisible( ShowFarmersFaireToken);
+	FFAT[ "Ctr" ]:SetVisible( Show["FarmersFaireToken"]);
 end
 
 function ShowHideSpringLeaf()

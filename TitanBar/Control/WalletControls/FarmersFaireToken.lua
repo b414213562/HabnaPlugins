@@ -10,7 +10,7 @@ FFAT["Ctr"]:SetParent( TB["win"] );
 FFAT["Ctr"]:SetMouseVisible( false );
 FFAT["Ctr"]:SetZOrder( 2 );
 FFAT["Ctr"]:SetBlendMode( Turbine.UI.BlendMode.AlphaBlend );
-FFAT["Ctr"]:SetBackColor( Turbine.UI.Color( FFATbcAlpha, FFATbcRed, FFATbcGreen, FFATbcBlue ) );
+FFAT["Ctr"]:SetBackColor( Turbine.UI.Color( BC.Alpha["FarmersFaireToken"], BC.Red["FarmersFaireToken"], BC.Green["FarmersFaireToken"], BC.Blue["FarmersFaireToken"] ) );
 --**^
 --**v Farmers Faire Token & icon on TitanBar v**
 FFAT["Icon"] = Turbine.UI.Control();
@@ -89,10 +89,10 @@ end
 FFAT["Lbl"].MouseUp = function( sender, args )
 	FFAT["Ctr"]:SetZOrder( 2 );
 	dragging = false;
-	_G.FFATLocX = FFAT["Ctr"]:GetLeft();
-	settings.FarmersFaireToken.X = string.format("%.0f", _G.FFATLocX);
-	_G.FFATLocY = FFAT["Ctr"]:GetTop();
-	settings.FarmersFaireToken.Y = string.format("%.0f", _G.FFATLocY);
+	Position.Left["FarmersFaireToken"] = FFAT["Ctr"]:GetLeft();
+	settings.FarmersFaireToken.X = string.format("%.0f", Position.Left["FarmersFaireToken"]);
+	Position.Top["FarmersFaireToken"] = FFAT["Ctr"]:GetTop();
+	settings.FarmersFaireToken.Y = string.format("%.0f", Position.Top["FarmersFaireToken"]);
 	SaveSettings( false );
 end
 --**^
