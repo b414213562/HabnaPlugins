@@ -238,16 +238,15 @@ function LoadSettings()
 	if settings.SkirmishMarks.X == nil then settings.SkirmishMarks.X = string.format("%.0f", tX); end
 	if settings.SkirmishMarks.Y == nil then settings.SkirmishMarks.Y = string.format("%.0f", tY); end
 	if settings.SkirmishMarks.W == nil then settings.SkirmishMarks.W = string.format("%.0f", tW); end
-	ShowSkirmishMarks = settings.SkirmishMarks.V;
-	SMbcAlpha = tonumber(settings.SkirmishMarks.A);
-	SMbcRed = tonumber(settings.SkirmishMarks.R);
-	SMbcGreen = tonumber(settings.SkirmishMarks.G);
-	SMbcBlue = tonumber(settings.SkirmishMarks.B);
-	_G.SMLocX = tonumber(settings.SkirmishMarks.X);
-	_G.SMLocY = tonumber(settings.SkirmishMarks.Y);
-	_G.SMWhere = tonumber(settings.SkirmishMarks.W);
-	if _G.SMWhere == 3 and ShowSkirmishMarks then _G.SMWhere = 1; settings.SkirmishMarks.W = string.format("%.0f", _G.SMWhere); end --Remove after Oct, 15th 2013
-	
+	Show["SkirmishMarks"] = settings.SkirmishMarks.V;
+	BC.Alpha["SkirmishMarks"] = tonumber(settings.SkirmishMarks.A);
+	BC.Red["SkirmishMarks"] = tonumber(settings.SkirmishMarks.R);
+	BC.Green["SkirmishMarks"] = tonumber(settings.SkirmishMarks.G);
+	BC.Blue["SkirmishMarks"] = tonumber(settings.SkirmishMarks.B);
+	Position.Left["SkirmishMarks"] = tonumber(settings.SkirmishMarks.X);
+	Position.Top["SkirmishMarks"] = tonumber(settings.SkirmishMarks.Y);
+	Where["SkirmishMarks"] = ParseWhere(settings, "SkirmishMarks");
+
 	
 	if settings.MithrilCoins == nil then settings.MithrilCoins = {}; end
 	if settings.MithrilCoins.V == nil then settings.MithrilCoins.V = false; end
@@ -1098,14 +1097,14 @@ function SaveSettings(str)
 		settings.Shards.W = string.format("%.0f", Where["Shards"]);
 
 		settings.SkirmishMarks = {};
-		settings.SkirmishMarks.V = ShowSkirmishMarks;
-		settings.SkirmishMarks.A = string.format("%.3f", SMbcAlpha);
-		settings.SkirmishMarks.R = string.format("%.3f", SMbcRed);
-		settings.SkirmishMarks.G = string.format("%.3f", SMbcGreen);
-		settings.SkirmishMarks.B = string.format("%.3f", SMbcBlue);
-		settings.SkirmishMarks.X = string.format("%.0f", _G.SMLocX);
-		settings.SkirmishMarks.Y = string.format("%.0f", _G.SMLocY);
-		settings.SkirmishMarks.W = string.format("%.0f", _G.SMWhere);
+		settings.SkirmishMarks.V = Show["SkirmishMarks"];
+		settings.SkirmishMarks.A = string.format("%.3f", BC.Alpha["SkirmishMarks"]);
+		settings.SkirmishMarks.R = string.format("%.3f", BC.Red["SkirmishMarks"]);
+		settings.SkirmishMarks.G = string.format("%.3f", BC.Green["SkirmishMarks"]);
+		settings.SkirmishMarks.B = string.format("%.3f", BC.Blue["SkirmishMarks"]);
+		settings.SkirmishMarks.X = string.format("%.0f", Position.Left["SkirmishMarks"]);
+		settings.SkirmishMarks.Y = string.format("%.0f", Position.Top["SkirmishMarks"]);
+		settings.SkirmishMarks.W = string.format("%.0f", Where["SkirmishMarks"]);
 
 		settings.MithrilCoins = {};
 		settings.MithrilCoins.V = ShowMithrilCoins;
@@ -1517,7 +1516,7 @@ function ResetSettings()
 	Show["Money"], _G.STM, _G.SSS, _G.STS, BC.Alpha["Money"], BC.Red["Money"], BC.Green["Money"], BC.Blue["Money"], Position.Left["Money"], Position.Top["Money"], Where["Money"] = true, false, true, true, tA, tR, tG, tB, 400, tY, 1; --for Money Control
 	Show["DestinyPoints"], BC.Alpha["DestinyPoints"], BC.Red["DestinyPoints"], BC.Green["DestinyPoints"], BC.Blue["DestinyPoints"], Position.Left["DestinyPoints"], Position.Top["DestinyPoints"], Where["DestinyPoints"] = false, tA, tR, tG, tB, tX, tY, tW; --for Destiny points Control
 	Show["Shards"], BC.Alpha["Shards"], BC.Red["Shards"], BC.Green["Shards"], BC.Blue["Shards"], Position.Left["Shards"], Position.Top["Shards"], Where["Shards"] = false, tA, tR, tG, tB, tX, tY, tW; --for Shards Control
-	ShowSkirmishMarks, SMbcAlpha, SMbcRed, SMbcGreen, SMbcBlue, _G.SMLocX, _G.SMLocY, _G.SMWhere = false, tA, tR, tG, tB, tX, tY, tW; --for Skirmish marks Control
+	Show["SkirmishMarks"], BC.Alpha["SkirmishMarks"], BC.Red["SkirmishMarks"], BC.Green["SkirmishMarks"], BC.Blue["SkirmishMarks"], Position.Left["SkirmishMarks"], Position.Top["SkirmishMarks"], Where["SkirmishMarks"] = false, tA, tR, tG, tB, tX, tY, tW; --for Skirmish marks Control
 	ShowMithrilCoins, MCbcAlpha, MCbcRed, MCbcGreen, MCbcBlue, _G.MCLocX, _G.MCLocY, _G.MCWhere = false, tA, tR, tG, tB, tX, tY, tW; --for Mithril Coins Control
 	ShowYuleToken, YTbcAlpha, YTbcRed, YTbcGreen, YTbcBlue, _G.TLocX, _G.YTLocY, _G.YTWhere = false, tA, tR, tG, tB, tX, tY, tW; --for Yule Tokens Control
 	ShowHytboldTokens, HTbcAlpha, HTbcRed, HTbcGreen, HTbcBlue, _G.HTLocX, _G.HTLocY, _G.HTWhere = false, tA, tR, tG, tB, tX, tY, tW; --for Tokens of Hytbold Control
@@ -1588,9 +1587,9 @@ function ReplaceCtr()
 	if Show["Shards"] and Where["Shards"] == 1 then SP[ "Ctr" ]:SetPosition( Position.Left["Shards"], Position.Top["Shards"] ); end
 
 	oldLocX = settings.SkirmishMarks.X / oldScreenWidth;
-	_G.SMLocX = oldLocX * screenWidth;
-	settings.SkirmishMarks.X = string.format("%.0f", _G.SMLocX);
-	if ShowSkirmishMarks and _G.SMWhere == 1 then SM[ "Ctr" ]:SetPosition( _G.SMLocX, _G.SMLocY ); end
+	Position.Left["SkirmishMarks"] = oldLocX * screenWidth;
+	settings.SkirmishMarks.X = string.format("%.0f", Position.Left["SkirmishMarks"]);
+	if Show["SkirmishMarks"] and Where["SkirmishMarks"] == 1 then SM[ "Ctr" ]:SetPosition( Position.Left["SkirmishMarks"], Position.Top["SkirmishMarks"] ); end
 	
 	oldLocX = settings.MithrilCoins.X / oldScreenWidth;
 	_G.MCLocX = oldLocX * screenWidth;

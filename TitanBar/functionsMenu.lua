@@ -67,15 +67,15 @@ end
 -- **^
 -- **v Show/Hide Skirmish marks v**
 function ShowHideSkirmishMarks()
-	ShowSkirmishMarks = not ShowSkirmishMarks;
-	settings.SkirmishMarks.V = ShowSkirmishMarks;
-	settings.SkirmishMarks.W = string.format("%.0f", _G.SMWhere);
+	Show["SkirmishMarks"] = not Show["SkirmishMarks"];
+	settings.SkirmishMarks.V = Show["SkirmishMarks"];
+	settings.SkirmishMarks.W = string.format("%.0f", Where["SkirmishMarks"]);
 	SaveSettings( false );
 	ImportCtr( "SM" );
-	if ShowSkirmishMarks then
-		SM[ "Ctr" ]:SetBackColor( Turbine.UI.Color( SMbcAlpha, SMbcRed, SMbcGreen, SMbcBlue ) );
+	if Show["SkirmishMarks"] then
+		SM[ "Ctr" ]:SetBackColor( Turbine.UI.Color( BC.Alpha["SkirmishMarks"], BC.Red["SkirmishMarks"], BC.Green["SkirmishMarks"], BC.Blue["SkirmishMarks"] ) );
 	end
-	SM[ "Ctr" ]:SetVisible( ShowSkirmishMarks );
+	SM[ "Ctr" ]:SetVisible( Show["SkirmishMarks"] );
 end
 -- **^
 -- **v Show/Hide Mithril Coins v**

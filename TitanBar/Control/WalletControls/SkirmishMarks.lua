@@ -10,7 +10,7 @@ SM["Ctr"]:SetParent( TB["win"] );
 SM["Ctr"]:SetMouseVisible( false );
 SM["Ctr"]:SetZOrder( 2 );
 SM["Ctr"]:SetBlendMode( Turbine.UI.BlendMode.AlphaBlend );
-SM["Ctr"]:SetBackColor( Turbine.UI.Color( SMbcAlpha, SMbcRed, SMbcGreen, SMbcBlue ) );
+SM["Ctr"]:SetBackColor( Turbine.UI.Color( BC.Alpha["SkirmishMarks"], BC.Red["SkirmishMarks"], BC.Green["SkirmishMarks"], BC.Blue["SkirmishMarks"] ) );
 --SM["Ctr"]:SetBackColor( Color["red"] ); -- Debug purpose
 --**^
 --**v Destiny points & icon on TitanBar v**
@@ -92,10 +92,10 @@ end
 SM["Lbl"].MouseUp = function( sender, args )
 	SM["Ctr"]:SetZOrder( 2 );
 	dragging = false;
-	_G.SMLocX = SM["Ctr"]:GetLeft();
-	settings.SkirmishMarks.X = string.format("%.0f", _G.SMLocX);
-	_G.SMLocY = SM["Ctr"]:GetTop();
-	settings.SkirmishMarks.Y = string.format("%.0f", _G.SMLocY);
+	Position.Left["SkirmishMarks"] = SM["Ctr"]:GetLeft();
+	settings.SkirmishMarks.X = string.format("%.0f", Position.Left["SkirmishMarks"]);
+	Position.Top["SkirmishMarks"] = SM["Ctr"]:GetTop();
+	settings.SkirmishMarks.Y = string.format("%.0f", Position.Top["SkirmishMarks"]);
 	SaveSettings( false );
 end
 --**^

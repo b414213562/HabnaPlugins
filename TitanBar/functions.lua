@@ -477,7 +477,7 @@ end
 --**^
 --**v Update Marks currency on TitanBar v**
 function UpdateMarks()
-	if _G.SMWhere == 1 then
+	if Where["SkirmishMarks"] == 1 then
 		SM[ "Lbl" ]:SetText( GetCurrency( L[ "MSM" ] ) );
 		SM[ "Lbl" ]:SetSize( SM[ "Lbl" ]:GetTextLength() * NM, CTRHeight ); 
 		AjustIcon( "SM" );
@@ -1010,7 +1010,7 @@ function ChangeColor(tColor)
 		if Show["Money"] then MI[ "Ctr" ]:SetBackColor( tColor ); end
 		if Show["DestinyPoints"] then DP[ "Ctr" ]:SetBackColor( tColor ); end
 		if Show["Shards"] then SP[ "Ctr" ]:SetBackColor( tColor ); end
-		if ShowSkirmishMarks then SM[ "Ctr" ]:SetBackColor( tColor ); end
+		if Show["SkirmishMarks"] then SM[ "Ctr" ]:SetBackColor( tColor ); end
 		if ShowMithrilCoins then MC[ "Ctr" ]:SetBackColor( tColor ); end
 		if ShowYuleToken then YT[ "Ctr" ]:SetBackColor( tColor ); end
 		if ShowHytboldTokens then HT[ "Ctr" ]:SetBackColor( tColor ); end

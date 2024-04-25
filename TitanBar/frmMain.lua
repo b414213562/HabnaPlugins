@@ -163,7 +163,7 @@ function frmMain()
 	if PlayerAlign == 1 then
 		if PlayerWalletSize ~= nil or PlayerWalletSize ~= 0 then
 			if Where["Shards"] ~= 3 then ImportCtr( "SP" ); end
-			if _G.SMWhere ~= 3 then ImportCtr( "SM" ); end
+			if Where["SkirmishMarks"] ~= 3 then ImportCtr( "SM" ); end
 			if _G.MCWhere ~= 3 then ImportCtr( "MC" ); end
 			if _G.YTWhere ~= 3 then ImportCtr( "YT" ); end
 			if _G.HTWhere ~= 3 then ImportCtr( "HT" ); end
@@ -190,7 +190,7 @@ function frmMain()
 	else
 		-- Disable infos not useful in Monster Play
 		ShowDurabilityInfos, ShowEquipInfos, Show["DestinyPoints"], Show["Shards"] = false, false, false, false;
-		ShowYuleToken, ShowSkirmishMarks, ShowHytboldTokens, ShowMedallions = false, false, false, false;
+		ShowYuleToken, Show["SkirmishMarks"], ShowHytboldTokens, ShowMedallions = false, false, false, false;
 		ShowSeals, ShowVault, ShowSharedStorage, ShowAmrothSilverPiece = false, false, false, false;
 		ShowStarsofMerit, ShowCentralGondorSilverPiece, ShowGiftgiversBrand = false, false, false;
 		ShowBingoBadge, ShowAnniversaryToken, ShowReputation = false, false, false;
@@ -318,7 +318,7 @@ function frmMain()
 			if PlayerWallet:GetSize() ~= PlayerWalletSize then -- Until I find the size changed event or something similar in wallet
 				LoadPlayerWallet();
 				if Where["Shards"] ~= 3 then ImportCtr( "SP" ); end
-				if _G.SMWhere ~= 3 then ImportCtr( "SM" ); end
+				if Where["SkirmishMarks"] ~= 3 then ImportCtr( "SM" ); end
 				if _G.MCWhere ~= 3 then ImportCtr( "MC" ); end
 				if _G.YTWhere ~= 3 then ImportCtr( "YT" ); end
 				if _G.HTWhere ~= 3 then ImportCtr( "HT" ); end

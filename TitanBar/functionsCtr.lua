@@ -49,11 +49,11 @@ function ImportCtr( value )
         end
         if Where["Shards"] ~= 3 then UpdateShards(); end
     elseif value == "SM" then --Skirmish Marks
-        if _G.SMWhere == 1 then
+        if Where["SkirmishMarks"] == 1 then
             import (AppCtrWalletD.."SkirmishMarks");
-            SM[ "Ctr" ]:SetPosition( _G.SMLocX, _G.SMLocY );
+            SM[ "Ctr" ]:SetPosition( Position.Left["SkirmishMarks"], Position.Top["SkirmishMarks"] );
         end
-        if _G.SMWhere ~= 3 then UpdateMarks(); end
+        if Where["SkirmishMarks"] ~= 3 then UpdateMarks(); end
     elseif value == "MC" then --Mithril Coins
         if _G.MCWhere == 1 then
             import (AppCtrWalletD.."MithrilCoins");
@@ -1137,7 +1137,7 @@ end
 
 function UpdateCurrency( str )
     if str == L[ "MSP" ] and Show["Shards"] then UpdateShards(); end
-    if str == L[ "MSM" ] and ShowSkirmishMarks then UpdateMarks(); end
+    if str == L[ "MSM" ] and Show["SkirmishMarks"] then UpdateMarks(); end
     if str == L[ "MMP" ] and ShowMedallions then UpdateMedallions(); end
     if str == L[ "MSL" ] and ShowSeals then UpdateSeals(); end
     if str == L[ "MCP" ] and ShowCommendations then UpdateCommendations(); end
