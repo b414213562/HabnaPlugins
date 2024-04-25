@@ -38,7 +38,7 @@ function UnloadControl( value )
 		if Show["GiftgiversBrand"] then Where["GiftgiversBrand"] = 3; ShowHideGiftgiversBrand(); end
 		if Show["BingoBadge"] then Where["BingoBadge"] = 3; ShowHideBingoBadge(); end
 		if Show["AnniversaryToken"] then Where["AnniversaryToken"] = 3; ShowHideAnniversaryToken(); end
-		if ShowMotesOfEnchantment then _G.MOEWhere = 3; ShowHideMotesOfEnchantment(); end
+		if Show["MotesOfEnchantment"] then Where["MotesOfEnchantment"] = 3; ShowHideMotesOfEnchantment(); end
 		if Show["EmbersOfEnchantment"] then Where["EmbersOfEnchantment"] = 3; ShowHideEmbersOfEnchantment(); end
 		if ShowFigmentsOfSplendour then _G.FOSWhere = 3; ShowHideFigmentsOfSplendour(); end
 		if ShowFallFestivalToken then _G.FFTWhere = 3; ShowHideFallFestivalToken(); end
@@ -80,7 +80,7 @@ function UnloadControl( value )
 			elseif _G.sFromCtr == "GGB" then Where["GiftgiversBrand"] = 3; ShowHideGiftgiversBrand();
 			elseif _G.sFromCtr == "BB" then	Where["BingoBadge"] = 3; ShowHideBingoBadge();
 			elseif _G.sFromCtr == "LAT" then Where["AnniversaryToken"] = 3; ShowHideAnniversaryToken();
-			elseif _G.sFromCtr == "MOE" then _G.MOEWhere = 3; ShowHideMotesOfEnchantment();
+			elseif _G.sFromCtr == "MOE" then Where["MotesOfEnchantment"] = 3; ShowHideMotesOfEnchantment();
 			elseif _G.sFromCtr == "EOE" then Where["EmbersOfEnchantment"] = 3; ShowHideEmbersOfEnchantment();
 			elseif _G.sFromCtr == "FOS" then _G.FOSWhere = 3; ShowHideFigmentsOfSplendour();
 			elseif _G.sFromCtr == "FFT" then _G.FFTWhere = 3; ShowHideFallFestivalToken();
@@ -136,7 +136,7 @@ function BGColor( cmd, value )
 		elseif _G.sFromCtr == "GGB" then tA, tR, tG, tB = BC.Alpha["GiftgiversBrand"], BC.Red["GiftgiversBrand"], BC.Green["GiftgiversBrand"], BC.Blue["GiftgiversBrand"];
 		elseif _G.sFromCtr == "BB" then tA, tR, tG, tB = BC.Alpha["BingoBadge"], BC.Red["BingoBadge"], BC.Green["BingoBadge"], BC.Blue["BingoBadge"];
 		elseif _G.sFromCtr == "LAT" then tA, tR, tG, tB = BC.Alpha["AnniversaryToken"], BC.Red["AnniversaryToken"], BC.Green["AnniversaryToken"], BC.Blue["AnniversaryToken"];
-		elseif _G.sFromCtr == "MOE" then tA, tR, tG, tB = MOEbcAlpha, MOEbcRed, MOEbcGreen, MOEbcBlue;
+		elseif _G.sFromCtr == "MOE" then tA, tR, tG, tB = BC.Alpha["MotesOfEnchantment"], BC.Red["MotesOfEnchantment"], BC.Green["MotesOfEnchantment"], BC.Blue["MotesOfEnchantment"];
 		elseif _G.sFromCtr == "EOE" then tA, tR, tG, tB = BC.Alpha["EmbersOfEnchantment"], BC.Red["EmbersOfEnchantment"], BC.Green["EmbersOfEnchantment"], BC.Blue["EmbersOfEnchantment"];
 		elseif _G.sFromCtr == "FOS" then tA, tR, tG, tB = FOSbcAlpha, FOSbcRed, FOSbcGreen, FOSbcBlue;
 		elseif _G.sFromCtr == "FFT" then tA, tR, tG, tB = FFTbcAlpha, FFTbcRed, FFTbcGreen, FFTbcBlue;
@@ -212,8 +212,8 @@ function BGColor( cmd, value )
 		if Show["BingoBadge"] then BB[ "Ctr" ]:SetBackColor( Turbine.UI.Color( tA, tR, tG, tB ) ); end
 		BC.Alpha["AnniversaryToken"], BC.Red["AnniversaryToken"], BC.Green["AnniversaryToken"], BC.Blue["AnniversaryToken"] = tA, tR, tG, tB;
 		if Show["AnniversaryToken"] then LAT[ "Ctr" ]:SetBackColor( Turbine.UI.Color( tA, tR, tG, tB ) ); end
-		MOEbcAlpha, MOEbcRed, MOEbcGreen, MOEbcBlue = tA, tR, tG, tB;
-		if ShowMotesOfEnchantment then MOE[ "Ctr" ]:SetBackColor( Turbine.UI.Color( tA, tR, tG, tB ) ); end
+		BC.Alpha["MotesOfEnchantment"], BC.Red["MotesOfEnchantment"], BC.Green["MotesOfEnchantment"], BC.Blue["MotesOfEnchantment"] = tA, tR, tG, tB;
+		if Show["MotesOfEnchantment"] then MOE[ "Ctr" ]:SetBackColor( Turbine.UI.Color( tA, tR, tG, tB ) ); end
 		BC.Alpha["EmbersOfEnchantment"], BC.Red["EmbersOfEnchantment"], BC.Green["EmbersOfEnchantment"], BC.Blue["EmbersOfEnchantment"] = tA, tR, tG, tB;
 		if Show["EmbersOfEnchantment"] then EOE[ "Ctr" ]:SetBackColor( Turbine.UI.Color( tA, tR, tG, tB ) ); end
 		FOSbcAlpha, FOSbcRed, FOSbcGreen, FOSbcBlue = tA, tR, tG, tB;
@@ -330,7 +330,7 @@ function BGColor( cmd, value )
 			BC.Alpha["AnniversaryToken"], BC.Red["AnniversaryToken"], BC.Green["AnniversaryToken"], BC.Blue["AnniversaryToken"] = tA, tR, tG, tB;
 			LAT[ "Ctr" ]:SetBackColor( Turbine.UI.Color( tA, tR, tG, tB ) );
 		elseif _G.sFromCtr == "MOE" then
-			MOEbcAlpha, MOEbcRed, MOEbcGreen, MOEbcBlue = tA, tR, tG, tB;
+			BC.Alpha["MotesOfEnchantment"], BC.Red["MotesOfEnchantment"], BC.Green["MotesOfEnchantment"], BC.Blue["MotesOfEnchantment"] = tA, tR, tG, tB;
 			MOE[ "Ctr" ]:SetBackColor( Turbine.UI.Color( tA, tR, tG, tB ) );	
 		elseif _G.sFromCtr == "EOE" then
 			BC.Alpha["EmbersOfEnchantment"], BC.Red["EmbersOfEnchantment"], BC.Green["EmbersOfEnchantment"], BC.Blue["EmbersOfEnchantment"] = tA, tR, tG, tB;

@@ -367,11 +367,11 @@ function ImportCtr( value )
         end
         if Where["AnniversaryToken"] ~= 3 then UpdateAnniversaryToken(); end
 	elseif value == "MOE" then --Motes of Enchantment
-        if _G.MOEWhere == 1 then
+        if Where["MotesOfEnchantment"] == 1 then
             import (AppCtrWalletD.."MotesOfEnchantment");
-            MOE[ "Ctr" ]:SetPosition( _G.MOELocX, _G.MOELocY );
+            MOE[ "Ctr" ]:SetPosition( Position.Left["MotesOfEnchantment"], Position.Top["MotesOfEnchantment"] );
         end
-        if _G.MOEWhere ~= 3 then UpdateMotesOfEnchantment(); end	
+        if Where["MotesOfEnchantment"] ~= 3 then UpdateMotesOfEnchantment(); end	
 	elseif value == "EOE" then --Embers of Enchantment
         if Where["EmbersOfEnchantment"] == 1 then
             import (AppCtrWalletD.."EmbersOfEnchantment");
@@ -1150,7 +1150,7 @@ function UpdateCurrency( str )
     if str == L[ "MGGB" ] and Show["GiftgiversBrand"] then UpdateGiftgiversBrand(); end
     if str == L[ "MBB" ] and Show["BingoBadge"] then UpdateBingoBadge(); end
     if str == L[ "MLAT" ] and Show["AnniversaryToken"] then UpdateAnniversaryToken(); end
-	if str == L[ "MMOE" ] and ShowMotesOfEnchantment then UpdateMotesOfEnchantment(); end
+	if str == L[ "MMOE" ] and Show["MotesOfEnchantment"] then UpdateMotesOfEnchantment(); end
 	if str == L[ "MEOE" ] and Show["EmbersOfEnchantment"] then UpdateEmbersOfEnchantment(); end
 	if str == L[ "MFOS" ] and ShowFigmentsOfSplendour then UpdateFigmentsOfSplendour(); end
 	if str == L[ "MFFT" ] and ShowFallFestivalToken then UpdateFallFestivalToken(); end

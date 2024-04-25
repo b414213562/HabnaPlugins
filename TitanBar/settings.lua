@@ -808,17 +808,16 @@ function LoadSettings()
 	if settings.MotesOfEnchantment.X == nil then settings.MotesOfEnchantment.X = string.format("%.0f", tX); end
 	if settings.MotesOfEnchantment.Y == nil then settings.MotesOfEnchantment.Y = string.format("%.0f", tY); end
 	if settings.MotesOfEnchantment.W == nil then settings.MotesOfEnchantment.W = string.format("%.0f", tW); end
-	ShowMotesOfEnchantment = settings.MotesOfEnchantment.V;
-	MOEbcAlpha = tonumber(settings.MotesOfEnchantment.A);
-	MOEbcRed = tonumber(settings.MotesOfEnchantment.R);
-	MOEbcGreen = tonumber(settings.MotesOfEnchantment.G);
-	MOEbcAlphabcBlue = tonumber(settings.MotesOfEnchantment.B);
-	_G.MOELocX = tonumber(settings.MotesOfEnchantment.X);
-	_G.MOELocY = tonumber(settings.MotesOfEnchantment.Y);
-	_G.MOEWhere = tonumber(settings.MotesOfEnchantment.W);
-	if _G.MOEWhere == 3 and ShowMotesOfEnchantment then _G.MOEWhere = 1; settings.MotesOfEnchantment.W = string.format("%.0f", _G.MOEWhere); end	
+	Show["MotesOfEnchantment"] = settings.MotesOfEnchantment.V;
+	BC.Alpha["MotesOfEnchantment"] = tonumber(settings.MotesOfEnchantment.A);
+	BC.Red["MotesOfEnchantment"] = tonumber(settings.MotesOfEnchantment.R);
+	BC.Green["MotesOfEnchantment"] = tonumber(settings.MotesOfEnchantment.G);
+	BC.Blue["MotesOfEnchantment"] = tonumber(settings.MotesOfEnchantment.B);
+	Position.Left["MotesOfEnchantment"] = tonumber(settings.MotesOfEnchantment.X);
+	Position.Top["MotesOfEnchantment"] = tonumber(settings.MotesOfEnchantment.Y);
+	Where["MotesOfEnchantment"] = ParseWhere(settings, "MotesOfEnchantment");
 
-	if settings.EmbersOfEnchantment == nil then settings.EmbersOfEnchantment = {}; end
+    if settings.EmbersOfEnchantment == nil then settings.EmbersOfEnchantment = {}; end
 	if settings.EmbersOfEnchantment.V == nil then settings.EmbersOfEnchantment.V = false; end
 	if settings.EmbersOfEnchantment.A == nil then settings.EmbersOfEnchantment.A = string.format("%.3f", tA); end
 	if settings.EmbersOfEnchantment.R == nil then settings.EmbersOfEnchantment.R = string.format("%.3f", tR); end
@@ -1377,14 +1376,14 @@ function SaveSettings(str)
 		settings.AnniversaryToken.W = string.format("%.0f", Where["AnniversaryToken"]);
 		
 		settings.MotesOfEnchantment = {};
-		settings.MotesOfEnchantment.V = ShowMotesOfEnchantment;
-		settings.MotesOfEnchantment.A = string.format("%.3f", MOEbcAlpha);
-		settings.MotesOfEnchantment.R = string.format("%.3f", MOEbcRed);
-		settings.MotesOfEnchantment.G = string.format("%.3f", MOEbcGreen);
-		settings.MotesOfEnchantment.B = string.format("%.3f", MOEbcBlue);
-		settings.MotesOfEnchantment.X = string.format("%.0f", _G.MOELocX);
-		settings.MotesOfEnchantment.Y = string.format("%.0f", _G.MOELocY);
-		settings.MotesOfEnchantment.W = string.format("%.0f", _G.MOEWhere);
+		settings.MotesOfEnchantment.V = Show["MotesOfEnchantment"];
+		settings.MotesOfEnchantment.A = string.format("%.3f", BC.Alpha["MotesOfEnchantment"]);
+		settings.MotesOfEnchantment.R = string.format("%.3f", BC.Red["MotesOfEnchantment"]);
+		settings.MotesOfEnchantment.G = string.format("%.3f", BC.Green["MotesOfEnchantment"]);
+		settings.MotesOfEnchantment.B = string.format("%.3f", BC.Blue["MotesOfEnchantment"]);
+		settings.MotesOfEnchantment.X = string.format("%.0f", Position.Left["MotesOfEnchantment"]);
+		settings.MotesOfEnchantment.Y = string.format("%.0f", Position.Top["MotesOfEnchantment"]);
+		settings.MotesOfEnchantment.W = string.format("%.0f", Where["MotesOfEnchantment"]);
 		
 		settings.EmbersOfEnchantment = {};
 		settings.EmbersOfEnchantment.V = Show["EmbersOfEnchantment"];
@@ -1524,7 +1523,7 @@ function ResetSettings()
 	Show["GiftgiversBrand"], BC.Alpha["GiftgiversBrand"], BC.Red["GiftgiversBrand"], BC.Green["GiftgiversBrand"], BC.Blue["GiftgiversBrand"], Position.Left["GiftgiversBrand"], Position.Top["GiftgiversBrand"], Where["GiftgiversBrand"] = false, tA, tR, tG, tB, tX, tY, tW; --for Gift giver's Brand Control
 	Show["BingoBadge"], BC.Alpha["BingoBadge"], BC.Red["BingoBadge"], BC.Green["BingoBadge"], BC.Blue["BingoBadge"], Position.Left["BingoBadge"], Position.Top["BingoBadge"], Where["BingoBadge"] = false, tA, tR, tG, tB, tX, tY, tW; --for Bingo Badge Control
 	Show["AnniversaryToken"], BC.Alpha["AnniversaryToken"], BC.Red["AnniversaryToken"], BC.Green["AnniversaryToken"], BC.Blue["AnniversaryToken"], Position.Left["AnniversaryToken"], Position.Top["AnniversaryToken"], Where["AnniversaryToken"] = false, tA, tR, tG, tB, tX, tY, tW; --for Anniversary Token Control
-	ShowMotesOfEnchantment, MOEbcAlpha, MOEbcRed, MOEbcGreen, MOEbcBlue, _G.MOELocX, _G.MOELocY, _G.MOEWhere = false, tA, tR, tG, tB, tX, tY, tW; --for Motes of Enchantment Control
+	Show["MotesOfEnchantment"], BC.Alpha["MotesOfEnchantment"], BC.Red["MotesOfEnchantment"], BC.Green["MotesOfEnchantment"], BC.Blue["MotesOfEnchantment"], Position.Left["MotesOfEnchantment"], Position.Top["MotesOfEnchantment"], Where["MotesOfEnchantment"] = false, tA, tR, tG, tB, tX, tY, tW; --for Motes of Enchantment Control
 	Show["EmbersOfEnchantment"], BC.Alpha["EmbersOfEnchantment"], BC.Red["EmbersOfEnchantment"], BC.Green["EmbersOfEnchantment"], BC.Blue["EmbersOfEnchantment"], Position.Left["EmbersOfEnchantment"], Position.Top["EmbersOfEnchantment"], Where["EmbersOfEnchantment"] = false, tA, tR, tG, tB, tX, tY, tW; --for Embers of Enchantment Control
 	ShowFigmentsOfSplendour, FOSbcAlpha, FOSbcRed, FOSbcGreen, FOSbcBlue, _G.FOSLocX, _G.FOSLocY, _G.FOSWhere = false, tA, tR, tG, tB, tX, tY, tW; --for Figments of Splendour Control
 	ShowFallFestivalToken, FFTbcAlpha, FFTbcRed, FFTbcGreen, FFTbcBlue, _G.FFTLocX, _G.FFTLocY, _G.FFTWhere = false, tA, tR, tG, tB, tX, tY, tW; --for Fall Festival Tokens Control	
@@ -1703,9 +1702,9 @@ function ReplaceCtr()
 	if Show["AnniversaryToken"] and Where["AnniversaryToken"] == 1 then LAT[ "Ctr" ]:SetPosition( Position.Left["AnniversaryToken"], Position.Top["AnniversaryToken"] ); end
 	
 	oldLocX = settings.MotesOfEnchantment.X / oldScreenWidth;
-	_G.MOELocX = oldLocX * screenWidth;
-	settings.MotesOfEnchantment.X = string.format("%.0f", _G.MOELocX);
-	if ShowMotesOfEnchantment and _G.MOEWhere == 1 then MOE[ "Ctr" ]:SetPosition( _G.MOELocX, _G.MOELocY ); end
+	Position.Left["MotesOfEnchantment"] = oldLocX * screenWidth;
+	settings.MotesOfEnchantment.X = string.format("%.0f", Position.Left["MotesOfEnchantment"]);
+	if Show["MotesOfEnchantment"] and Where["MotesOfEnchantment"] == 1 then MOE[ "Ctr" ]:SetPosition( Position.Left["MotesOfEnchantment"], Position.Top["MotesOfEnchantment"] ); end
 	
 	oldLocX = settings.EmbersOfEnchantment.X / oldScreenWidth;
 	Position.Left["EmbersOfEnchantment"] = oldLocX * screenWidth;

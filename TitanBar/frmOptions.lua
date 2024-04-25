@@ -33,7 +33,7 @@ if CGSP ~= nil then WalletControls[ "CGSP" ] = { ShowHide = Show["CentralGondorS
 if GGB ~= nil then WalletControls[ "GGB" ] = { ShowHide = Show["GiftgiversBrand"], Control = GGB[ "Ctr" ] }; end
 if BB ~= nil then WalletControls[ "BB" ] = { ShowHide = Show["BingoBadge"], Control = BB[ "Ctr" ] }; end
 if LAT ~= nil then WalletControls[ "LAT" ] = { ShowHide = Show["AnniversaryToken"], Control = LAT[ "Ctr" ] }; end
-if MOE ~= nil then WalletControls[ "MOE" ] = { ShowHide = ShowMotesOfEnchantment, Control = MOE[ "Ctr" ] }; end
+if MOE ~= nil then WalletControls[ "MOE" ] = { ShowHide = Show["MotesOfEnchantment"], Control = MOE[ "Ctr" ] }; end
 if EOE ~= nil then WalletControls[ "EOE" ] = { ShowHide = Show["EmbersOfEnchantment"], Control = EOE[ "Ctr" ] }; end
 if FOS ~= nil then WalletControls[ "FOS" ] = { ShowHide = ShowFigmentsOfSplendour, Control = FOS[ "Ctr" ] }; end
 if FFT ~= nil then WalletControls[ "FFT" ] = { ShowHide = ShowFallFestivalToken, Control = FFT[ "Ctr" ] }; end

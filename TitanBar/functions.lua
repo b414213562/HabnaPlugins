@@ -605,7 +605,7 @@ end
 --**^
 --**v Update Motes of Enchantment currency on TitanBar v**
 function UpdateMotesOfEnchantment()
-	if _G.MOEWhere == 1 then
+	if Where["MotesOfEnchantment"] == 1 then
 		MOE[ "Lbl" ]:SetText( GetCurrency( L[ "MMOE" ] ) );
 		MOE[ "Lbl" ]:SetSize( MOE[ "Lbl" ]:GetTextLength() * NM, CTRHeight ); 
 		AjustIcon( "MOE" );
@@ -1036,8 +1036,8 @@ function ChangeColor(tColor)
 		if Show["CentralGondorSilverPiece"] then CGSP[ "Ctr" ]:SetBackColor( tColor ); end
 		if Show["GiftgiversBrand"] then GGB[ "Ctr" ]:SetBackColor( tColor ); end
 		if Show["BingoBadge"] then BB[ "Ctr" ]:SetBackColor( tColor ); end
-		if ShowMotesOfEnchantment then MOE[ "Ctr" ]:SetBackColor( tColor ); end
 		if Show["AnniversaryToken"] then LAT[ "Ctr" ]:SetBackColor( tColor ); end
+		if Show["MotesOfEnchantment"] then MOE[ "Ctr" ]:SetBackColor( tColor ); end
 		if Show["EmbersOfEnchantment"] then EOE[ "Ctr" ]:SetBackColor( tColor ); end
 		if ShowFigmentsOfSplendour then FOS[ "Ctr" ]:SetBackColor( tColor ); end
 		if ShowFallFestivalToken then FFT[ "Ctr" ]:SetBackColor( tColor ); end

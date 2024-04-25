@@ -10,7 +10,7 @@ MOE["Ctr"]:SetParent( TB["win"] );
 MOE["Ctr"]:SetMouseVisible( false );
 MOE["Ctr"]:SetZOrder( 2 );
 MOE["Ctr"]:SetBlendMode( Turbine.UI.BlendMode.AlphaBlend );
-MOE["Ctr"]:SetBackColor( Turbine.UI.Color( MOEbcAlpha, MOEbcRed, MOEbcGreen, MOEbcBlue ) );
+MOE["Ctr"]:SetBackColor( Turbine.UI.Color( BC.Alpha["MotesOfEnchantment"], BC.Red["MotesOfEnchantment"], BC.Green["MotesOfEnchantment"], BC.Blue["MotesOfEnchantment"] ) );
 --**^
 --**v Motes of Enchantment & icon on TitanBar v**
 MOE["Icon"] = Turbine.UI.Control();
@@ -89,10 +89,10 @@ end
 MOE["Lbl"].MouseUp = function( sender, args )
 	MOE["Ctr"]:SetZOrder( 2 );
 	dragging = false;
-	_G.MOELocX = MOE["Ctr"]:GetLeft();
-	settings.MotesOfEnchantment.X = string.format("%.0f", _G.MOELocX);
-	_G.MOELocY = MOE["Ctr"]:GetTop();
-	settings.MotesOfEnchantment.Y = string.format("%.0f", _G.MOELocY);
+	Position.Left["MotesOfEnchantment"] = MOE["Ctr"]:GetLeft();
+	settings.MotesOfEnchantment.X = string.format("%.0f", Position.Left["MotesOfEnchantment"]);
+	Position.Top["MotesOfEnchantment"] = MOE["Ctr"]:GetTop();
+	settings.MotesOfEnchantment.Y = string.format("%.0f", Position.Top["MotesOfEnchantment"]);
 	SaveSettings( false );
 end
 --**^

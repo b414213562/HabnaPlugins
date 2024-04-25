@@ -504,15 +504,15 @@ function ShowHideAnniversaryToken()
 	LAT[ "Ctr" ]:SetVisible( Show["AnniversaryToken"] );
 end
 function ShowHideMotesOfEnchantment()
-	ShowMotesOfEnchantment = not ShowMotesOfEnchantment;
-	settings.MotesOfEnchantment.V = ShowMotesOfEnchantment;
-	settings.MotesOfEnchantment.W = string.format( "%.0f", _G.MOEWhere );
+	Show["MotesOfEnchantment"] = not Show["MotesOfEnchantment"];
+	settings.MotesOfEnchantment.V = Show["MotesOfEnchantment"];
+	settings.MotesOfEnchantment.W = string.format( "%.0f", Where["MotesOfEnchantment"] );
 	SaveSettings( false );
 	ImportCtr( "MOE" );
-	if ShowMotesOfEnchantment then
-		MOE[ "Ctr" ]:SetBackColor( Turbine.UI.Color( MOEbcAlpha, MOEbcRed, MOEbcGreen, MOEbcBlue ) );
+	if Show["MotesOfEnchantment"] then
+		MOE[ "Ctr" ]:SetBackColor( Turbine.UI.Color( BC.Alpha["MotesOfEnchantment"], BC.Red["MotesOfEnchantment"], BC.Green["MotesOfEnchantment"], BC.Blue["MotesOfEnchantment"] ) );
 	end
-	MOE[ "Ctr" ]:SetVisible( ShowMotesOfEnchantment );
+	MOE[ "Ctr" ]:SetVisible( Show["MotesOfEnchantment"] );
 end
 function ShowHideEmbersOfEnchantment()
 	Show["EmbersOfEnchantment"] = not Show["EmbersOfEnchantment"];
