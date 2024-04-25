@@ -844,17 +844,16 @@ function LoadSettings()
 	if settings.FigmentsOfSplendour.X == nil then settings.FigmentsOfSplendour.X = string.format("%.0f", tX); end
 	if settings.FigmentsOfSplendour.Y == nil then settings.FigmentsOfSplendour.Y = string.format("%.0f", tY); end
 	if settings.FigmentsOfSplendour.W == nil then settings.FigmentsOfSplendour.W = string.format("%.0f", tW); end
-	ShowFigmentsOfSplendour = settings.FigmentsOfSplendour.V;
-	FOSbcAlpha = tonumber(settings.FigmentsOfSplendour.A);
-	FOSbcRed = tonumber(settings.FigmentsOfSplendour.R);
-	FOSbcGreen = tonumber(settings.FigmentsOfSplendour.G);
-	FOSbcBlue = tonumber(settings.FigmentsOfSplendour.B);
-	_G.FOSLocX = tonumber(settings.FigmentsOfSplendour.X);
-	_G.FOSLocY = tonumber(settings.FigmentsOfSplendour.Y);
-	_G.FOSWhere = tonumber(settings.FigmentsOfSplendour.W);
-	if _G.FOSWhere == 3 and ShowFigmentsOfSplendour then _G.FOSWhere = 1; settings.FigmentsOfSplendour.W = string.format("%.0f", _G.FOSWhere); end
-	
-	if settings.FallFestivalToken == nil then settings.FallFestivalToken = {}; end
+	Show["FigmentsOfSplendour"] = settings.FigmentsOfSplendour.V;
+	BC.Alpha["FigmentsOfSplendour"] = tonumber(settings.FigmentsOfSplendour.A);
+	BC.Red["FigmentsOfSplendour"] = tonumber(settings.FigmentsOfSplendour.R);
+	BC.Green["FigmentsOfSplendour"] = tonumber(settings.FigmentsOfSplendour.G);
+	BC.Blue["FigmentsOfSplendour"] = tonumber(settings.FigmentsOfSplendour.B);
+	Position.Left["FigmentsOfSplendour"] = tonumber(settings.FigmentsOfSplendour.X);
+	Position.Top["FigmentsOfSplendour"] = tonumber(settings.FigmentsOfSplendour.Y);
+    Where["FigmentsOfSplendour"] = ParseWhere(settings, "FigmentsOfSplendour");
+
+    if settings.FallFestivalToken == nil then settings.FallFestivalToken = {}; end
 	if settings.FallFestivalToken.V == nil then settings.FallFestivalToken.V = false; end
 	if settings.FallFestivalToken.A == nil then settings.FallFestivalToken.A = string.format("%.3f", tA); end
 	if settings.FallFestivalToken.R == nil then settings.FallFestivalToken.R = string.format("%.3f", tR); end
@@ -1396,14 +1395,14 @@ function SaveSettings(str)
 		settings.EmbersOfEnchantment.W = string.format("%.0f", Where["EmbersOfEnchantment"]);
 
 		settings.FigmentsOfSplendour = {};
-		settings.FigmentsOfSplendour.V = ShowFigmentsOfSplendour;
-		settings.FigmentsOfSplendour.A = string.format("%.3f", FOSbcAlpha);
-		settings.FigmentsOfSplendour.R = string.format("%.3f", FOSbcRed);
-		settings.FigmentsOfSplendour.G = string.format("%.3f", FOSbcGreen);
-		settings.FigmentsOfSplendour.B = string.format("%.3f", FOSbcBlue);
-		settings.FigmentsOfSplendour.X = string.format("%.0f", _G.FOSLocX);
-		settings.FigmentsOfSplendour.Y = string.format("%.0f", _G.FOSLocY);
-		settings.FigmentsOfSplendour.W = string.format("%.0f", _G.FOSWhere);
+		settings.FigmentsOfSplendour.V = Show["FigmentsOfSplendour"];
+		settings.FigmentsOfSplendour.A = string.format("%.3f", BC.Alpha["FigmentsOfSplendour"]);
+		settings.FigmentsOfSplendour.R = string.format("%.3f", BC.Red["FigmentsOfSplendour"]);
+		settings.FigmentsOfSplendour.G = string.format("%.3f", BC.Green["FigmentsOfSplendour"]);
+		settings.FigmentsOfSplendour.B = string.format("%.3f", BC.Blue["FigmentsOfSplendour"]);
+		settings.FigmentsOfSplendour.X = string.format("%.0f", Position.Left["FigmentsOfSplendour"]);
+		settings.FigmentsOfSplendour.Y = string.format("%.0f", Position.Top["FigmentsOfSplendour"]);
+		settings.FigmentsOfSplendour.W = string.format("%.0f", Where["FigmentsOfSplendour"]);
 		
 		settings.FallFestivalToken = {};
 		settings.FallFestivalToken.V = ShowFallFestivalToken;
@@ -1525,7 +1524,7 @@ function ResetSettings()
 	Show["AnniversaryToken"], BC.Alpha["AnniversaryToken"], BC.Red["AnniversaryToken"], BC.Green["AnniversaryToken"], BC.Blue["AnniversaryToken"], Position.Left["AnniversaryToken"], Position.Top["AnniversaryToken"], Where["AnniversaryToken"] = false, tA, tR, tG, tB, tX, tY, tW; --for Anniversary Token Control
 	Show["MotesOfEnchantment"], BC.Alpha["MotesOfEnchantment"], BC.Red["MotesOfEnchantment"], BC.Green["MotesOfEnchantment"], BC.Blue["MotesOfEnchantment"], Position.Left["MotesOfEnchantment"], Position.Top["MotesOfEnchantment"], Where["MotesOfEnchantment"] = false, tA, tR, tG, tB, tX, tY, tW; --for Motes of Enchantment Control
 	Show["EmbersOfEnchantment"], BC.Alpha["EmbersOfEnchantment"], BC.Red["EmbersOfEnchantment"], BC.Green["EmbersOfEnchantment"], BC.Blue["EmbersOfEnchantment"], Position.Left["EmbersOfEnchantment"], Position.Top["EmbersOfEnchantment"], Where["EmbersOfEnchantment"] = false, tA, tR, tG, tB, tX, tY, tW; --for Embers of Enchantment Control
-	ShowFigmentsOfSplendour, FOSbcAlpha, FOSbcRed, FOSbcGreen, FOSbcBlue, _G.FOSLocX, _G.FOSLocY, _G.FOSWhere = false, tA, tR, tG, tB, tX, tY, tW; --for Figments of Splendour Control
+	Show["FigmentsOfSplendour"], BC.Alpha["FigmentsOfSplendour"], BC.Red["FigmentsOfSplendour"], BC.Green["FigmentsOfSplendour"], BC.Blue["FigmentsOfSplendour"], Position.Left["FigmentsOfSplendour"], Position.Top["FigmentsOfSplendour"], Where["FigmentsOfSplendour"] = false, tA, tR, tG, tB, tX, tY, tW; --for Figments of Splendour Control
 	ShowFallFestivalToken, FFTbcAlpha, FFTbcRed, FFTbcGreen, FFTbcBlue, _G.FFTLocX, _G.FFTLocY, _G.FFTWhere = false, tA, tR, tG, tB, tX, tY, tW; --for Fall Festival Tokens Control	
 	ShowFarmersFaireToken, FFATbcAlpha, FFATbcRed, FFATbcGreen, FFATbcBlue, _G.FFATLocX, _G.FFATLocY, _G.FFATWhere = false, tA, tR, tG, tB, tX, tY, tW; --for Farmers Festival Token Control
 	ShowSpringLeaf, SPLbcAlpha, SPLbcRed, SPLbcGreen, SPLbcBlue, _G.SPLLocX, _G.SPLLocY, _G.SPLWhere = false, tA, tR, tG, tB, tX, tY, tW; --for Spring Leaf Control	
@@ -1712,9 +1711,9 @@ function ReplaceCtr()
 	if Show["EmbersOfEnchantment"] and Where["EmbersOfEnchantment"] == 1 then EOE[ "Ctr" ]:SetPosition( Position.Left["EmbersOfEnchantment"], Position.Top["EmbersOfEnchantment"] ); end
 	
 	oldLocX = settings.FigmentsOfSplendour.X / oldScreenWidth;
-	_G.FOSLocX = oldLocX * screenWidth;
-	settings.FigmentsOfSplendour.X = string.format("%.0f", _G.FOSLocX);
-	if ShowFigmentsOfSplendour and _G.FOSWhere == 1 then FOS[ "Ctr" ]:SetPosition( _G.FOSLocX, _G.FOSLocY ); end
+	Position.Left["FigmentsOfSplendour"] = oldLocX * screenWidth;
+	settings.FigmentsOfSplendour.X = string.format("%.0f", Position.Left["FigmentsOfSplendour"]);
+	if Show["FigmentsOfSplendour"] and Where["FigmentsOfSplendour"] == 1 then FOS[ "Ctr" ]:SetPosition( Position.Left["FigmentsOfSplendour"], Position.Top["FigmentsOfSplendour"] ); end
 	
 	oldLocX = settings.FallFestivalToken.X / oldScreenWidth;
 	_G.FFTLocX = oldLocX * screenWidth;

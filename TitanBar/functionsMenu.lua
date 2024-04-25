@@ -527,15 +527,15 @@ function ShowHideEmbersOfEnchantment()
 end
 
 function ShowHideFigmentsOfSplendour()
-	ShowFigmentsOfSplendour = not ShowFigmentsOfSplendour;
-	settings.FigmentsOfSplendour.V = ShowFigmentsOfSplendour;
-	settings.FigmentsOfSplendour.W = string.format( "%.0f", _G.FOSWhere );
+	Show["FigmentsOfSplendour"] = not Show["FigmentsOfSplendour"];
+	settings.FigmentsOfSplendour.V = Show["FigmentsOfSplendour"];
+	settings.FigmentsOfSplendour.W = string.format( "%.0f", Where["FigmentsOfSplendour"] );
 	SaveSettings( false );
 	ImportCtr( "FOS" );
-	if ShowFigmentsOfSplendour then
-		FOS[ "Ctr" ]:SetBackColor( Turbine.UI.Color( FOSbcAlpha, FOSbcRed, FOSbcGreen, FOSbcBlue ) );
+	if Show["FigmentsOfSplendour"] then
+		FOS[ "Ctr" ]:SetBackColor( Turbine.UI.Color( BC.Alpha["FigmentsOfSplendour"], BC.Red["FigmentsOfSplendour"], BC.Green["FigmentsOfSplendour"], BC.Blue["FigmentsOfSplendour"] ) );
 	end
-	FOS[ "Ctr" ]:SetVisible( ShowFigmentsOfSplendour );
+	FOS[ "Ctr" ]:SetVisible( Show["FigmentsOfSplendour"] );
 end
 
 function ShowHideFallFestivalToken()

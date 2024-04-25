@@ -10,7 +10,7 @@ FOS["Ctr"]:SetParent( TB["win"] );
 FOS["Ctr"]:SetMouseVisible( false );
 FOS["Ctr"]:SetZOrder( 2 );
 FOS["Ctr"]:SetBlendMode( Turbine.UI.BlendMode.AlphaBlend );
-FOS["Ctr"]:SetBackColor( Turbine.UI.Color( FOSbcAlpha, FOSbcRed, FOSbcGreen, FOSbcBlue ) );
+FOS["Ctr"]:SetBackColor( Turbine.UI.Color( BC.Alpha["FigmentsOfSplendour"], BC.Red["FigmentsOfSplendour"], BC.Green["FigmentsOfSplendour"], BC.Blue["FigmentsOfSplendour"] ) );
 --**^
 --**v Figments of Splendour & icon on TitanBar v**
 FOS["Icon"] = Turbine.UI.Control();
@@ -89,10 +89,10 @@ end
 FOS["Lbl"].MouseUp = function( sender, args )
 	FOS["Ctr"]:SetZOrder( 2 );
 	dragging = false;
-	_G.FOSLocX = FOS["Ctr"]:GetLeft();
-	settings.FigmentsOfSplendour.X = string.format("%.0f", _G.FOSLocX);
-	_G.FOSLocY = FOS["Ctr"]:GetTop();
-	settings.FigmentsOfSplendour.Y = string.format("%.0f", _G.FOSLocY);
+	Position.Left["FigmentsOfSplendour"] = FOS["Ctr"]:GetLeft();
+	settings.FigmentsOfSplendour.X = string.format("%.0f", Position.Left["FigmentsOfSplendour"]);
+	Position.Top["FigmentsOfSplendour"] = FOS["Ctr"]:GetTop();
+	settings.FigmentsOfSplendour.Y = string.format("%.0f", Position.Top["FigmentsOfSplendour"]);
 	SaveSettings( false );
 end
 --**^

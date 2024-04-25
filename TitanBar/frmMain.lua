@@ -178,7 +178,7 @@ function frmMain()
 			if Where["AnniversaryToken"] ~= 3 then ImportCtr( "LAT" ); end
 			if Where["MotesOfEnchantment"] ~= 3 then ImportCtr( "MOE" ); end
 			if Where["EmbersOfEnchantment"] ~= 3 then ImportCtr( "EOE" ); end
-			if _G.FOSWhere ~= 3 then ImportCtr( "FOS" ); end
+			if Where["FigmentsOfSplendour"] ~= 3 then ImportCtr( "FOS" ); end
 			if _G.FFTWhere ~= 3 then ImportCtr( "FFT" ); end
 			if _G.FFATWhere ~= 3 then ImportCtr( "FFAT" ); end
 			if _G.SPLWhere ~= 3 then ImportCtr( "SPL" ); end
@@ -196,7 +196,7 @@ function frmMain()
 		Show["BingoBadge"], Show["AnniversaryToken"], ShowReputation = false, false, false;
 		Show["MotesOfEnchantment"] = false;
 		Show["EmbersOfEnchantment"] = false;
-		ShowFigmentsOfSplendour = false;
+		Show["FigmentsOfSplendour"] = false;
 		ShowFallFestivalToken = false;
 		ShowFarmersFaireToken = false;
 		ShowSpringLeaf = false;
@@ -333,7 +333,7 @@ function frmMain()
 				if Where["AnniversaryToken"] ~= 3 then ImportCtr( "LAT" ); end
 				if Where["MotesOfEnchantment"] ~= 3 then ImportCtr( "MOE" ); end
 				if Where["EmbersOfEnchantment"] ~= 3 then ImportCtr( "EOE" ); end
-				if _G.FOSWhere ~= 3 then ImportCtr( "FOS" ); end
+				if Where["FigmentsOfSplendour"] ~= 3 then ImportCtr( "FOS" ); end
 				if _G.FFTWhere ~= 3 then ImportCtr( "FFT" ); end
 				if _G.FFATWhere ~= 3 then ImportCtr( "FFAT" ); end
 				if _G.SPLWhere ~= 3 then ImportCtr( "SPL" ); end

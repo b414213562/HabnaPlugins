@@ -623,7 +623,7 @@ end
 --**^
 --**v Update Figments of Splendour currency on TitanBar v**
 function UpdateFigmentsOfSplendour()
-	if _G.FOSWhere == 1 then
+	if Where["FigmentsOfSplendour"] == 1 then
 		FOS[ "Lbl" ]:SetText( GetCurrency( L[ "MFOS" ] ) );
 		FOS[ "Lbl" ]:SetSize( FOS[ "Lbl" ]:GetTextLength() * NM, CTRHeight ); 
 		AjustIcon( "FOS" );
@@ -1039,7 +1039,7 @@ function ChangeColor(tColor)
 		if Show["AnniversaryToken"] then LAT[ "Ctr" ]:SetBackColor( tColor ); end
 		if Show["MotesOfEnchantment"] then MOE[ "Ctr" ]:SetBackColor( tColor ); end
 		if Show["EmbersOfEnchantment"] then EOE[ "Ctr" ]:SetBackColor( tColor ); end
-		if ShowFigmentsOfSplendour then FOS[ "Ctr" ]:SetBackColor( tColor ); end
+		if Show["FigmentsOfSplendour"] then FOS[ "Ctr" ]:SetBackColor( tColor ); end
 		if ShowFallFestivalToken then FFT[ "Ctr" ]:SetBackColor( tColor ); end
 		if ShowFarmersFaireToken then FFAT[ "Ctr" ]:SetBackColor( tColor ); end
 		if ShowSpringLeaf then SPL[ "Ctr" ]:SetBackColor( tColor ); end
