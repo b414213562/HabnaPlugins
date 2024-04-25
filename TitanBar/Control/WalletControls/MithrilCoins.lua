@@ -10,7 +10,7 @@ MC["Ctr"]:SetParent( TB["win"] );
 MC["Ctr"]:SetMouseVisible( false );
 MC["Ctr"]:SetZOrder( 2 );
 MC["Ctr"]:SetBlendMode( Turbine.UI.BlendMode.AlphaBlend );
-MC["Ctr"]:SetBackColor( Turbine.UI.Color( MCbcAlpha, MCbcRed, MCbcGreen, MCbcBlue ) );
+MC["Ctr"]:SetBackColor( Turbine.UI.Color( BC.Alpha["MithrilCoins"], BC.Red["MithrilCoins"], BC.Green["MithrilCoins"], BC.Blue["MithrilCoins"] ) );
 --SM["Ctr"]:SetBackColor( Color["red"] ); -- Debug purpose
 --**^
 --**v Destiny points & icon on TitanBar v**
@@ -92,10 +92,10 @@ end
 MC["Lbl"].MouseUp = function( sender, args )
 	MC["Ctr"]:SetZOrder( 2 );
 	dragging = false;
-	_G.MCLocX = MC["Ctr"]:GetLeft();
-	settings.MithrilCoins.X = string.format("%.0f", _G.MCLocX);
-	_G.MCLocY = MC["Ctr"]:GetTop();
-	settings.MithrilCoins.Y = string.format("%.0f", _G.MCLocY);
+	Position.Left["MithrilCoins"] = MC["Ctr"]:GetLeft();
+	settings.MithrilCoins.X = string.format("%.0f", Position.Left["MithrilCoins"]);
+	Position.Top["MithrilCoins"] = MC["Ctr"]:GetTop();
+	settings.MithrilCoins.Y = string.format("%.0f", Position.Top["MithrilCoins"]);
 	SaveSettings( false );
 end
 --**^

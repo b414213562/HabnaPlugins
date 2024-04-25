@@ -80,15 +80,15 @@ end
 -- **^
 -- **v Show/Hide Mithril Coins v**
 function ShowHideMithrilCoins()
-	ShowMithrilCoins = not ShowMithrilCoins;
-	settings.MithrilCoins.V = ShowMithrilCoins;
+	Show["MithrilCoins"] = not Show["MithrilCoins"];
+	settings.MithrilCoins.V = Show["MithrilCoins"];
 	settings.MithrilCoins.W = string.format("%.0f", _G.MCWhere);
 	SaveSettings( false );
 	ImportCtr( "MC" );
-	if ShowMithrilCoins then
-		MC[ "Ctr" ]:SetBackColor( Turbine.UI.Color( MCbcAlpha, MCbcRed, MCbcGreen, MCbcBlue ) );
+	if Show["MithrilCoins"] then
+		MC[ "Ctr" ]:SetBackColor( Turbine.UI.Color( BC.Alpha["MithrilCoins"], BC.Red["MithrilCoins"], BC.Green["MithrilCoins"], BC.Blue["MithrilCoins"] ) );
 	end
-	MC[ "Ctr" ]:SetVisible( ShowMithrilCoins );
+	MC[ "Ctr" ]:SetVisible( Show["MithrilCoins"] );
 end
 -- **^
 -- **v Show/Hide Yule Tokens v**

@@ -257,16 +257,15 @@ function LoadSettings()
 	if settings.MithrilCoins.X == nil then settings.MithrilCoins.X = string.format("%.0f", tX); end
 	if settings.MithrilCoins.Y == nil then settings.MithrilCoins.Y = string.format("%.0f", tY); end
 	if settings.MithrilCoins.W == nil then settings.MithrilCoins.W = string.format("%.0f", tW); end
-	ShowMithrilCoins = settings.MithrilCoins.V;
-	MCbcAlpha = tonumber(settings.MithrilCoins.A);
-	MCbcRed = tonumber(settings.MithrilCoins.R);
-	MCbcGreen = tonumber(settings.MithrilCoins.G);
-	MCbcBlue = tonumber(settings.MithrilCoins.B);
-	_G.MCLocX = tonumber(settings.MithrilCoins.X);
-	_G.MCLocY = tonumber(settings.MithrilCoins.Y);
-	_G.MCWhere = tonumber(settings.MithrilCoins.W);
-	if _G.MCWhere == 3 and ShowMithrilCoins then _G.MCWhere = 1; settings.MithrilCoins.W = string.format("%.0f", _G.MCWhere); end --Remove after Oct, 15th 2013
-	
+	Show["MithrilCoins"] = settings.MithrilCoins.V;
+	BC.Alpha["MithrilCoins"] = tonumber(settings.MithrilCoins.A);
+	BC.Red["MithrilCoins"] = tonumber(settings.MithrilCoins.R);
+	BC.Green["MithrilCoins"] = tonumber(settings.MithrilCoins.G);
+	BC.Blue["MithrilCoins"] = tonumber(settings.MithrilCoins.B);
+	Position.Left["MithrilCoins"] = tonumber(settings.MithrilCoins.X);
+	Position.Top["MithrilCoins"] = tonumber(settings.MithrilCoins.Y);
+    Where["MithrilCoins"] = ParseWhere(settings, "MithrilCoins");
+
 	if settings.YuleToken == nil then settings.YuleToken = {}; end
 	if settings.YuleToken.V == nil then settings.YuleToken.V = false; end
 	if settings.YuleToken.A == nil then settings.YuleToken.A = string.format("%.3f", tA); end
@@ -1107,13 +1106,13 @@ function SaveSettings(str)
 		settings.SkirmishMarks.W = string.format("%.0f", Where["SkirmishMarks"]);
 
 		settings.MithrilCoins = {};
-		settings.MithrilCoins.V = ShowMithrilCoins;
-		settings.MithrilCoins.A = string.format("%.3f", MCbcAlpha);
-		settings.MithrilCoins.R = string.format("%.3f", MCbcRed);
-		settings.MithrilCoins.G = string.format("%.3f", MCbcGreen);
-		settings.MithrilCoins.B = string.format("%.3f", MCbcBlue);
-		settings.MithrilCoins.X = string.format("%.0f", _G.MCLocX);
-		settings.MithrilCoins.Y = string.format("%.0f", _G.MCLocY);
+		settings.MithrilCoins.V = Show["MithrilCoins"];
+		settings.MithrilCoins.A = string.format("%.3f", BC.Alpha["MithrilCoins"]);
+		settings.MithrilCoins.R = string.format("%.3f", BC.Red["MithrilCoins"]);
+		settings.MithrilCoins.G = string.format("%.3f", BC.Green["MithrilCoins"]);
+		settings.MithrilCoins.B = string.format("%.3f", BC.Blue["MithrilCoins"]);
+		settings.MithrilCoins.X = string.format("%.0f", Position.Left["MithrilCoins"]);
+		settings.MithrilCoins.Y = string.format("%.0f", Position.Top["MithrilCoins"]);
 		settings.MithrilCoins.W = string.format("%.0f", _G.MCWhere);
 
 		settings.YuleToken = {};
@@ -1517,7 +1516,7 @@ function ResetSettings()
 	Show["DestinyPoints"], BC.Alpha["DestinyPoints"], BC.Red["DestinyPoints"], BC.Green["DestinyPoints"], BC.Blue["DestinyPoints"], Position.Left["DestinyPoints"], Position.Top["DestinyPoints"], Where["DestinyPoints"] = false, tA, tR, tG, tB, tX, tY, tW; --for Destiny points Control
 	Show["Shards"], BC.Alpha["Shards"], BC.Red["Shards"], BC.Green["Shards"], BC.Blue["Shards"], Position.Left["Shards"], Position.Top["Shards"], Where["Shards"] = false, tA, tR, tG, tB, tX, tY, tW; --for Shards Control
 	Show["SkirmishMarks"], BC.Alpha["SkirmishMarks"], BC.Red["SkirmishMarks"], BC.Green["SkirmishMarks"], BC.Blue["SkirmishMarks"], Position.Left["SkirmishMarks"], Position.Top["SkirmishMarks"], Where["SkirmishMarks"] = false, tA, tR, tG, tB, tX, tY, tW; --for Skirmish marks Control
-	ShowMithrilCoins, MCbcAlpha, MCbcRed, MCbcGreen, MCbcBlue, _G.MCLocX, _G.MCLocY, _G.MCWhere = false, tA, tR, tG, tB, tX, tY, tW; --for Mithril Coins Control
+	Show["MithrilCoins"], BC.Alpha["MithrilCoins"], BC.Red["MithrilCoins"], BC.Green["MithrilCoins"], BC.Blue["MithrilCoins"], Position.Left["MithrilCoins"], Position.Top["MithrilCoins"], _G.MCWhere = false, tA, tR, tG, tB, tX, tY, tW; --for Mithril Coins Control
 	ShowYuleToken, YTbcAlpha, YTbcRed, YTbcGreen, YTbcBlue, _G.TLocX, _G.YTLocY, _G.YTWhere = false, tA, tR, tG, tB, tX, tY, tW; --for Yule Tokens Control
 	ShowHytboldTokens, HTbcAlpha, HTbcRed, HTbcGreen, HTbcBlue, _G.HTLocX, _G.HTLocY, _G.HTWhere = false, tA, tR, tG, tB, tX, tY, tW; --for Tokens of Hytbold Control
 	ShowMedallions, MPbcAlpha, MPbcRed, MPbcGreen, MPbcBlue, _G.MPLocX, _G.MPLocY, _G.MPWhere = false, tA, tR, tG, tB, tX, tY, tW; --for Medallions Control
@@ -1592,9 +1591,9 @@ function ReplaceCtr()
 	if Show["SkirmishMarks"] and Where["SkirmishMarks"] == 1 then SM[ "Ctr" ]:SetPosition( Position.Left["SkirmishMarks"], Position.Top["SkirmishMarks"] ); end
 	
 	oldLocX = settings.MithrilCoins.X / oldScreenWidth;
-	_G.MCLocX = oldLocX * screenWidth;
-	settings.MithrilCoins.X = string.format("%.0f", _G.MCLocX);
-	if ShowMithrilCoins and _G.MCWhere == 1 then MC[ "Ctr" ]:SetPosition( _G.MCLocX, _G.MCLocY ); end
+	Position.Left["MithrilCoins"] = oldLocX * screenWidth;
+	settings.MithrilCoins.X = string.format("%.0f", Position.Left["MithrilCoins"]);
+	if Show["MithrilCoins"] and _G.MCWhere == 1 then MC[ "Ctr" ]:SetPosition( Position.Left["MithrilCoins"], Position.Top["MithrilCoins"] ); end
 	
 	oldLocX = settings.YuleToken.X / oldScreenWidth;
 	_G.YTLocX = oldLocX * screenWidth;

@@ -1011,7 +1011,7 @@ function ChangeColor(tColor)
 		if Show["DestinyPoints"] then DP[ "Ctr" ]:SetBackColor( tColor ); end
 		if Show["Shards"] then SP[ "Ctr" ]:SetBackColor( tColor ); end
 		if Show["SkirmishMarks"] then SM[ "Ctr" ]:SetBackColor( tColor ); end
-		if ShowMithrilCoins then MC[ "Ctr" ]:SetBackColor( tColor ); end
+		if Show["MithrilCoins"] then MC[ "Ctr" ]:SetBackColor( tColor ); end
 		if ShowYuleToken then YT[ "Ctr" ]:SetBackColor( tColor ); end
 		if ShowHytboldTokens then HT[ "Ctr" ]:SetBackColor( tColor ); end
 		if ShowMedallions then MP[ "Ctr" ]:SetBackColor( tColor ); end

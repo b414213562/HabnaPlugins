@@ -57,7 +57,7 @@ function ImportCtr( value )
     elseif value == "MC" then --Mithril Coins
         if _G.MCWhere == 1 then
             import (AppCtrWalletD.."MithrilCoins");
-            MC[ "Ctr" ]:SetPosition( _G.MCLocX, _G.MCLocY );
+            MC[ "Ctr" ]:SetPosition( Position.Left["MithrilCoins"], Position.Top["MithrilCoins"] );
         end
         if _G.MCWhere ~= 3 then UpdateMithril(); end
     elseif value == "YT" then --Yule Tokens

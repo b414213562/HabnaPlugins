@@ -238,8 +238,8 @@ function frmWalletWindow()
 			else if Show["SkirmishMarks"] then ShowHideSkirmishMarks(); end end
 		elseif wcur == L["MMC"] then
 			_G.MCWhere = SelIndex; settings.MithrilCoins.W = string.format("%.0f", SelIndex);
-			if SelIndex == 1 then if not ShowMithrilCoins then ShowHideMithrilCoins(); end
-			else if ShowMithrilCoins then ShowHideMithrilCoins(); end end
+			if SelIndex == 1 then if not Show["MithrilCoins"] then ShowHideMithrilCoins(); end
+			else if Show["MithrilCoins"] then ShowHideMithrilCoins(); end end
 		elseif wcur == L["MYT"] then
 			_G.YTWhere = SelIndex; settings.YuleToken.W = string.format("%.0f", SelIndex);
 			if SelIndex == 1 then if not ShowYuleToken then ShowHideYuleToken(); end
