@@ -10,7 +10,7 @@ BB["Ctr"]:SetParent( TB["win"] );
 BB["Ctr"]:SetMouseVisible( false );
 BB["Ctr"]:SetZOrder( 2 );
 BB["Ctr"]:SetBlendMode( Turbine.UI.BlendMode.AlphaBlend );
-BB["Ctr"]:SetBackColor( Turbine.UI.Color( BBbcAlpha, BBbcRed, BBbcGreen, BBbcBlue ) );
+BB["Ctr"]:SetBackColor( Turbine.UI.Color( BC.Alpha["BingoBadge"], BC.Red["BingoBadge"], BC.Green["BingoBadge"], BC.Blue["BingoBadge"] ) );
 --**^
 --**v Bingo Badge & icon on TitanBar v**
 BB["Icon"] = Turbine.UI.Control();
@@ -89,10 +89,10 @@ end
 BB["Lbl"].MouseUp = function( sender, args )
 	BB["Ctr"]:SetZOrder( 2 );
 	dragging = false;
-	_G.BBLocX = BB["Ctr"]:GetLeft();
-	settings.BingoBadge.X = string.format("%.0f", _G.BBLocX);
-	_G.BBLocY = BB["Ctr"]:GetTop();
-	settings.BingoBadge.Y = string.format("%.0f", _G.BBLocY);
+	Position.Left["BingoBadge"] = BB["Ctr"]:GetLeft();
+	settings.BingoBadge.X = string.format("%.0f", Position.Left["BingoBadge"]);
+	Position.Top["BingoBadge"] = BB["Ctr"]:GetTop();
+	settings.BingoBadge.Y = string.format("%.0f", Position.Top["BingoBadge"]);
 	SaveSettings( false );
 end
 --**^

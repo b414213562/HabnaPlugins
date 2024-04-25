@@ -36,7 +36,7 @@ function UnloadControl( value )
 		if Show["StarsofMerit"] then Where["StarsofMerit"] = 3; ShowHideStarsofMerit(); end
 		if Show["CentralGondorSilverPiece"] then Where["CentralGondorSilverPiece"] = 3; ShowHideCentralGondorSilverPiece(); end
 		if Show["GiftgiversBrand"] then Where["GiftgiversBrand"] = 3; ShowHideGiftgiversBrand(); end
-		if ShowBingoBadge then _G.BBWhere = 3; ShowHideBingoBadge(); end
+		if Show["BingoBadge"] then Where["BingoBadge"] = 3; ShowHideBingoBadge(); end
 		if ShowAnniversaryToken then _G.LATWhere = 3; ShowHideAnniversaryToken(); end
 		if ShowMotesOfEnchantment then _G.MOEWhere = 3; ShowHideMotesOfEnchantment(); end
 		if ShowEmbersOfEnchantment then _G.EOEWhere = 3; ShowHideEmbersOfEnchantment(); end
@@ -78,7 +78,7 @@ function UnloadControl( value )
 			elseif _G.sFromCtr == "SOM" then Where["StarsofMerit"] = 3; ShowHideStarsofMerit();
 			elseif _G.sFromCtr == "CGSP" then Where["CentralGondorSilverPiece"] = 3; ShowHideCentralGondorSilverPiece();
 			elseif _G.sFromCtr == "GGB" then Where["GiftgiversBrand"] = 3; ShowHideGiftgiversBrand();
-			elseif _G.sFromCtr == "BB" then	_G.BBWhere = 3; ShowHideBingoBadge();
+			elseif _G.sFromCtr == "BB" then	Where["BingoBadge"] = 3; ShowHideBingoBadge();
 			elseif _G.sFromCtr == "LAT" then _G.LATWhere = 3; ShowHideAnniversaryToken();
 			elseif _G.sFromCtr == "MOE" then _G.MOEWhere = 3; ShowHideMotesOfEnchantment();
 			elseif _G.sFromCtr == "EOE" then _G.EOEWhere = 3; ShowHideEmbersOfEnchantment();
@@ -134,7 +134,7 @@ function BGColor( cmd, value )
 		elseif _G.sFromCtr == "SOM" then tA, tR, tG, tB = BC.Alpha["StarsofMerit"], BC.Red["StarsofMerit"], BC.Green["StarsofMerit"], BC.Blue["StarsofMerit"];
 		elseif _G.sFromCtr == "CGSP" then tA, tR, tG, tB = BC.Alpha["CentralGondorSilverPiece"], BC.Red["CentralGondorSilverPiece"], BC.Green["CentralGondorSilverPiece"], BC.Blue["CentralGondorSilverPiece"];
 		elseif _G.sFromCtr == "GGB" then tA, tR, tG, tB = BC.Alpha["GiftgiversBrand"], BC.Red["GiftgiversBrand"], BC.Green["GiftgiversBrand"], BC.Blue["GiftgiversBrand"];
-		elseif _G.sFromCtr == "BB" then tA, tR, tG, tB = BBbcAlpha, BBbcRed, BBbcGreen, BBbcBlue;
+		elseif _G.sFromCtr == "BB" then tA, tR, tG, tB = BC.Alpha["BingoBadge"], BC.Red["BingoBadge"], BC.Green["BingoBadge"], BC.Blue["BingoBadge"];
 		elseif _G.sFromCtr == "LAT" then tA, tR, tG, tB = LATbcAlpha, LATbcRed, LATbcGreen, LATbcBlue;
 		elseif _G.sFromCtr == "MOE" then tA, tR, tG, tB = MOEbcAlpha, MOEbcRed, MOEbcGreen, MOEbcBlue;
 		elseif _G.sFromCtr == "EOE" then tA, tR, tG, tB = EOEbcAlpha, EOEbcRed, EOEbcGreen, EOEbcBlue;
@@ -208,8 +208,8 @@ function BGColor( cmd, value )
 		if Show["CentralGondorSilverPiece"] then CGSP[ "Ctr" ]:SetBackColor( Turbine.UI.Color( tA, tR, tG, tB ) ); end
 		BC.Alpha["GiftgiversBrand"], BC.Red["GiftgiversBrand"], BC.Green["GiftgiversBrand"], BC.Blue["GiftgiversBrand"] = tA, tR, tG, tB;
 		if Show["GiftgiversBrand"] then GGB[ "Ctr" ]:SetBackColor( Turbine.UI.Color( tA, tR, tG, tB ) ); end
-		BBbcAlpha, BBbcRed, BBbcGreen, BBbcBlue = tA, tR, tG, tB;
-		if ShowBingoBadge then BB[ "Ctr" ]:SetBackColor( Turbine.UI.Color( tA, tR, tG, tB ) ); end
+		BC.Alpha["BingoBadge"], BC.Red["BingoBadge"], BC.Green["BingoBadge"], BC.Blue["BingoBadge"] = tA, tR, tG, tB;
+		if Show["BingoBadge"] then BB[ "Ctr" ]:SetBackColor( Turbine.UI.Color( tA, tR, tG, tB ) ); end
 		LATbcAlpha, LATbcRed, LATbcGreen, LATbcBlue = tA, tR, tG, tB;
 		if ShowAnniversaryToken then LAT[ "Ctr" ]:SetBackColor( Turbine.UI.Color( tA, tR, tG, tB ) ); end
 		MOEbcAlpha, MOEbcRed, MOEbcGreen, MOEbcBlue = tA, tR, tG, tB;
@@ -324,7 +324,7 @@ function BGColor( cmd, value )
 			BC.Alpha["GiftgiversBrand"], BC.Red["GiftgiversBrand"], BC.Green["GiftgiversBrand"], BC.Blue["GiftgiversBrand"] = tA, tR, tG, tB;
 			GGB[ "Ctr" ]:SetBackColor( Turbine.UI.Color( tA, tR, tG, tB ) );
 		elseif _G.sFromCtr == "BB" then
-			BBbcAlpha, BBbcRed, BBbcGreen, BBbcBlue = tA, tR, tG, tB;
+			BC.Alpha["BingoBadge"], BC.Red["BingoBadge"], BC.Green["BingoBadge"], BC.Blue["BingoBadge"] = tA, tR, tG, tB;
 			BB[ "Ctr" ]:SetBackColor( Turbine.UI.Color( tA, tR, tG, tB ) );
 		elseif _G.sFromCtr == "LAT" then
 			LATbcAlpha, LATbcRed, LATbcGreen, LATbcBlue = tA, tR, tG, tB;

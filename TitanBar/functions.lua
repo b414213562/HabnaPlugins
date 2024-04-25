@@ -587,7 +587,7 @@ end
 --**^
 --**v Update Bingo Badge currency on TitanBar v**
 function UpdateBingoBadge()
-	if _G.BBWhere == 1 then
+	if Where["BingoBadge"] == 1 then
 		BB[ "Lbl" ]:SetText( GetCurrency( L[ "MBB" ] ) );
 		BB[ "Lbl" ]:SetSize( BB[ "Lbl" ]:GetTextLength() * NM, CTRHeight ); 
 		AjustIcon( "BB" );
@@ -1035,7 +1035,7 @@ function ChangeColor(tColor)
 		if Show["StarsofMerit"] then SOM[ "Ctr" ]:SetBackColor( tColor ); end
 		if Show["CentralGondorSilverPiece"] then CGSP[ "Ctr" ]:SetBackColor( tColor ); end
 		if Show["GiftgiversBrand"] then GGB[ "Ctr" ]:SetBackColor( tColor ); end
-		if ShowBingoBadge then BB[ "Ctr" ]:SetBackColor( tColor ); end
+		if Show["BingoBadge"] then BB[ "Ctr" ]:SetBackColor( tColor ); end
 		if ShowAniversaryToken then LAT[ "Ctr" ]:SetBackColor( tColor ); end
 		if ShowMotesOfEnchantment then MOE[ "Ctr" ]:SetBackColor( tColor ); end
 		if ShowEmbersOfEnchantment then EOE[ "Ctr" ]:SetBackColor( tColor ); end

@@ -482,15 +482,15 @@ end
 -- **^
 -- **v Show/Hide Bingo Badges v**
 function ShowHideBingoBadge()
-	ShowBingoBadge = not ShowBingoBadge;
-	settings.BingoBadge.V = ShowBingoBadge;
-	settings.BingoBadge.W = string.format("%.0f", _G.BBWhere);
+	Show["BingoBadge"] = not Show["BingoBadge"];
+	settings.BingoBadge.V = Show["BingoBadge"];
+	settings.BingoBadge.W = string.format("%.0f", Where["BingoBadge"]);
 	SaveSettings( false );
 	ImportCtr( "BB" );
-	if ShowBingoBadge then
-		BB[ "Ctr" ]:SetBackColor( Turbine.UI.Color( BBbcAlpha, BBbcRed, BBbcGreen, BBbcBlue ) );
+	if Show["BingoBadge"] then
+		BB[ "Ctr" ]:SetBackColor( Turbine.UI.Color( BC.Alpha["BingoBadge"], BC.Red["BingoBadge"], BC.Green["BingoBadge"], BC.Blue["BingoBadge"] ) );
 	end
-	BB[ "Ctr" ]:SetVisible( ShowBingoBadge );
+	BB[ "Ctr" ]:SetVisible( Show["BingoBadge"] );
 end
 function ShowHideAnniversaryToken()
 	ShowAnniversaryToken = not ShowAnniversaryToken;
