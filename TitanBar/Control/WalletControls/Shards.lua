@@ -10,7 +10,7 @@ SP["Ctr"]:SetParent( TB["win"] );
 SP["Ctr"]:SetMouseVisible( false );
 SP["Ctr"]:SetZOrder( 2 );
 SP["Ctr"]:SetBlendMode( Turbine.UI.BlendMode.AlphaBlend );
-SP["Ctr"]:SetBackColor( Turbine.UI.Color( SPbcAlpha, SPbcRed, SPbcGreen, SPbcBlue ) );
+SP["Ctr"]:SetBackColor( Turbine.UI.Color( BC.Alpha["Shards"], BC.Red["Shards"], BC.Green["Shards"], BC.Blue["Shards"] ) );
 --SP["Ctr"]:SetBackColor( Color["red"] ); -- Debug purpose
 --**^
 --**v Shard & icon on TitanBar v**
@@ -92,10 +92,10 @@ end
 SP["Lbl"].MouseUp = function( sender, args )
 	SP["Ctr"]:SetZOrder( 2 );
 	dragging = false;
-	_G.SPLocX = SP["Ctr"]:GetLeft();
-	settings.Shards.X = string.format("%.0f", _G.SPLocX);
-	_G.SPLocY = SP["Ctr"]:GetTop();
-	settings.Shards.Y = string.format("%.0f", _G.SPLocY);
+	Position.Left["Shards"] = SP["Ctr"]:GetLeft();
+	settings.Shards.X = string.format("%.0f", Position.Left["Shards"]);
+	Position.Top["Shards"] = SP["Ctr"]:GetTop();
+	settings.Shards.Y = string.format("%.0f", Position.Top["Shards"]);
 	SaveSettings( false );
 end
 --**^

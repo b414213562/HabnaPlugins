@@ -45,7 +45,7 @@ function ImportCtr( value )
     elseif value == "SP" then --Shards
         if _G.SPWhere == 1 then
             import (AppCtrWalletD.."Shards");
-            SP[ "Ctr" ]:SetPosition( _G.SPLocX, _G.SPLocY );
+            SP[ "Ctr" ]:SetPosition( Position.Left["Shards"], Position.Top["Shards"] );
         end
         if _G.SPWhere ~= 3 then UpdateShards(); end
     elseif value == "SM" then --Skirmish Marks
@@ -1136,7 +1136,7 @@ function SavePlayerLOTROPoints()
 end
 
 function UpdateCurrency( str )
-    if str == L[ "MSP" ] and ShowShards then UpdateShards(); end
+    if str == L[ "MSP" ] and Show["Shards"] then UpdateShards(); end
     if str == L[ "MSM" ] and ShowSkirmishMarks then UpdateMarks(); end
     if str == L[ "MMP" ] and ShowMedallions then UpdateMedallions(); end
     if str == L[ "MSL" ] and ShowSeals then UpdateSeals(); end

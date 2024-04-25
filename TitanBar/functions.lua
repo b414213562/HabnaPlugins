@@ -1009,7 +1009,7 @@ function ChangeColor(tColor)
 		if Show["Wallet"] then WI[ "Ctr" ]:SetBackColor( tColor ); end
 		if Show["Money"] then MI[ "Ctr" ]:SetBackColor( tColor ); end
 		if Show["DestinyPoints"] then DP[ "Ctr" ]:SetBackColor( tColor ); end
-		if ShowShards then SP[ "Ctr" ]:SetBackColor( tColor ); end
+		if Show["Shards"] then SP[ "Ctr" ]:SetBackColor( tColor ); end
 		if ShowSkirmishMarks then SM[ "Ctr" ]:SetBackColor( tColor ); end
 		if ShowMithrilCoins then MC[ "Ctr" ]:SetBackColor( tColor ); end
 		if ShowYuleToken then YT[ "Ctr" ]:SetBackColor( tColor ); end

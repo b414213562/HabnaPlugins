@@ -236,15 +236,14 @@ function LoadSettings()
 	if settings.Shards.X == nil then settings.Shards.X = string.format("%.0f", tX); end
 	if settings.Shards.Y == nil then settings.Shards.Y = string.format("%.0f", tY); end
 	if settings.Shards.W == nil then settings.Shards.W = string.format("%.0f", tW); end
-	ShowShards = settings.Shards.V;
-	SPbcAlpha = tonumber(settings.Shards.A);
-	SPbcRed = tonumber(settings.Shards.R);
-	SPbcGreen = tonumber(settings.Shards.G);
-	SPbcBlue = tonumber(settings.Shards.B);
-	_G.SPLocX = tonumber(settings.Shards.X);
-	_G.SPLocY = tonumber(settings.Shards.Y);
-	_G.SPWhere = tonumber(settings.Shards.W);
-	if _G.SPWhere == 3 and ShowShards then _G.SPWhere = 1; settings.Shards.W = string.format("%.0f", _G.SPWhere); end --Remove after Oct, 15th 2013
+	Show["Shards"] = settings.Shards.V;
+	BC.Alpha["Shards"] = tonumber(settings.Shards.A);
+	BC.Red["Shards"] = tonumber(settings.Shards.R);
+	BC.Green["Shards"] = tonumber(settings.Shards.G);
+	BC.Blue["Shards"] = tonumber(settings.Shards.B);
+	Position.Left["Shards"] = tonumber(settings.Shards.X);
+	Position.Top["Shards"] = tonumber(settings.Shards.Y);
+    Where["Shards"] = ParseWhere(settings, "Shards");
 	
 
 	if settings.SkirmishMarks == nil then settings.SkirmishMarks = {}; end
@@ -1106,14 +1105,14 @@ function SaveSettings(str)
 		settings.DestinyPoints.W = string.format("%.0f", Where["DestinyPoints"]);
 
 		settings.Shards = {};
-		settings.Shards.V = ShowShards;
-		settings.Shards.A = string.format("%.3f", SPbcAlpha);
-		settings.Shards.R = string.format("%.3f", SPbcRed);
-		settings.Shards.G = string.format("%.3f", SPbcGreen);
-		settings.Shards.B = string.format("%.3f", SPbcBlue);
-		settings.Shards.X = string.format("%.0f", _G.SPLocX);
-		settings.Shards.Y = string.format("%.0f", _G.SPLocY);
-		settings.Shards.W = string.format("%.0f", _G.SPWhere);
+		settings.Shards.V = Show["Shards"];
+		settings.Shards.A = string.format("%.3f", BC.Alpha["Shards"]);
+		settings.Shards.R = string.format("%.3f", BC.Red["Shards"]);
+		settings.Shards.G = string.format("%.3f", BC.Green["Shards"]);
+		settings.Shards.B = string.format("%.3f", BC.Blue["Shards"]);
+		settings.Shards.X = string.format("%.0f", Position.Left["Shards"]);
+		settings.Shards.Y = string.format("%.0f", Position.Top["Shards"]);
+		settings.Shards.W = string.format("%.0f", Where["Shards"]);
 
 		settings.SkirmishMarks = {};
 		settings.SkirmishMarks.V = ShowSkirmishMarks;
@@ -1534,7 +1533,7 @@ function ResetSettings()
 	Show["Wallet"], BC.Alpha["Wallet"], BC.Red["Wallet"], BC.Green["Wallet"], BC.Blue["Wallet"], Position.Left["Wallet"], Position.Top["Wallet"] = false, tA, tR, tG, tB, tX, tY; --for Wallet Control
 	Show["Money"], _G.STM, _G.SSS, _G.STS, BC.Alpha["Money"], BC.Red["Money"], BC.Green["Money"], BC.Blue["Money"], Position.Left["Money"], Position.Top["Money"], Where["Money"] = true, false, true, true, tA, tR, tG, tB, 400, tY, 1; --for Money Control
 	Show["DestinyPoints"], BC.Alpha["DestinyPoints"], BC.Red["DestinyPoints"], BC.Green["DestinyPoints"], BC.Blue["DestinyPoints"], Position.Left["DestinyPoints"], Position.Top["DestinyPoints"], Where["DestinyPoints"] = false, tA, tR, tG, tB, tX, tY, tW; --for Destiny points Control
-	ShowShards, SPbcAlpha, SPbcRed, SPbcGreen, SPbcBlue, _G.SPLocX, _G.SPLocY, _G.SPWhere = false, tA, tR, tG, tB, tX, tY, tW; --for Shards Control
+	Show["Shards"], BC.Alpha["Shards"], BC.Red["Shards"], BC.Green["Shards"], BC.Blue["Shards"], Position.Left["Shards"], Position.Top["Shards"], Where["Shards"] = false, tA, tR, tG, tB, tX, tY, tW; --for Shards Control
 	ShowSkirmishMarks, SMbcAlpha, SMbcRed, SMbcGreen, SMbcBlue, _G.SMLocX, _G.SMLocY, _G.SMWhere = false, tA, tR, tG, tB, tX, tY, tW; --for Skirmish marks Control
 	ShowMithrilCoins, MCbcAlpha, MCbcRed, MCbcGreen, MCbcBlue, _G.MCLocX, _G.MCLocY, _G.MCWhere = false, tA, tR, tG, tB, tX, tY, tW; --for Mithril Coins Control
 	ShowYuleToken, YTbcAlpha, YTbcRed, YTbcGreen, YTbcBlue, _G.TLocX, _G.YTLocY, _G.YTWhere = false, tA, tR, tG, tB, tX, tY, tW; --for Yule Tokens Control
@@ -1601,9 +1600,9 @@ function ReplaceCtr()
 	if Show["DestinyPoints"] and Where["DestinyPoints"] == 1 then DP[ "Ctr" ]:SetPosition( Position.Left["DestinyPoints"], Position.Top["DestinyPoints"] ); end
 
 	oldLocX = settings.Shards.X / oldScreenWidth;
-	_G.SPLocX = oldLocX * screenWidth;
-	settings.Shards.X = string.format("%.0f", _G.SPLocX);
-	if ShowShards and _G.SPWhere == 1 then SP[ "Ctr" ]:SetPosition( _G.SPLocX, _G.SPLocY ); end
+	Position.Left["Shards"] = oldLocX * screenWidth;
+	settings.Shards.X = string.format("%.0f", Position.Left["Shards"]);
+	if Show["Shards"] and Where["Shards"] == 1 then SP[ "Ctr" ]:SetPosition( Position.Left["Shards"], Position.Top["Shards"] ); end
 
 	oldLocX = settings.SkirmishMarks.X / oldScreenWidth;
 	_G.SMLocX = oldLocX * screenWidth;

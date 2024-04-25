@@ -54,15 +54,15 @@ end
 -- **^
 -- **v Show/Hide Shards v**
 function ShowHideShards()
-	ShowShards = not ShowShards;
-	settings.Shards.V = ShowShards;
+	Show["Shards"] = not Show["Shards"];
+	settings.Shards.V = Show["Shards"];
 	settings.Shards.W = string.format("%.0f", _G.SPWhere);
 	SaveSettings( false );
 	ImportCtr( "SP" );
-	if ShowShards then
-		SP[ "Ctr" ]:SetBackColor( Turbine.UI.Color( SPbcAlpha, SPbcRed, SPbcGreen, SPbcBlue ) );
+	if Show["Shards"] then
+		SP[ "Ctr" ]:SetBackColor( Turbine.UI.Color( BC.Alpha["Shards"], BC.Red["Shards"], BC.Green["Shards"], BC.Blue["Shards"] ) );
 	end
-	SP[ "Ctr" ]:SetVisible( ShowShards );
+	SP[ "Ctr" ]:SetVisible( Show["Shards"] );
 end
 -- **^
 -- **v Show/Hide Skirmish marks v**

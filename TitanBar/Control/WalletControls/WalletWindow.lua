@@ -230,8 +230,8 @@ function frmWalletWindow()
 			else if Show["DestinyPoints"] then ShowHideDestinyPoints(); end end
 		elseif wcur == L["MSP"] then
 			_G.SPWhere = SelIndex; settings.Shards.W = string.format("%.0f", SelIndex);
-			if SelIndex == 1 then if not ShowShards then ShowHideShards(); end
-			else if ShowShards then ShowHideShards(); end end
+			if SelIndex == 1 then if not Show["Shards"] then ShowHideShards(); end
+			else if Show["Shards"] then ShowHideShards(); end end
 		elseif wcur == L["MSM"] then
 			_G.SMWhere = SelIndex; settings.SkirmishMarks.W = string.format("%.0f", SelIndex);
 			if SelIndex == 1 then if not ShowSkirmishMarks then ShowHideSkirmishMarks(); end
