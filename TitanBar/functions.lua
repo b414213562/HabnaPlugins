@@ -1036,8 +1036,8 @@ function ChangeColor(tColor)
 		if Show["CentralGondorSilverPiece"] then CGSP[ "Ctr" ]:SetBackColor( tColor ); end
 		if Show["GiftgiversBrand"] then GGB[ "Ctr" ]:SetBackColor( tColor ); end
 		if Show["BingoBadge"] then BB[ "Ctr" ]:SetBackColor( tColor ); end
-		if ShowAniversaryToken then LAT[ "Ctr" ]:SetBackColor( tColor ); end
 		if ShowMotesOfEnchantment then MOE[ "Ctr" ]:SetBackColor( tColor ); end
+		if Show["AnniversaryToken"] then LAT[ "Ctr" ]:SetBackColor( tColor ); end
 		if ShowEmbersOfEnchantment then EOE[ "Ctr" ]:SetBackColor( tColor ); end
 		if ShowFigmentsOfSplendour then FOS[ "Ctr" ]:SetBackColor( tColor ); end
 		if ShowFallFestivalToken then FFT[ "Ctr" ]:SetBackColor( tColor ); end
