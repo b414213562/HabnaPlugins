@@ -331,11 +331,11 @@ function ImportCtr( value )
         UpdateSharedStorage();
         SS[ "Ctr" ]:SetPosition( _G.SSLocX, _G.SSLocY );
     elseif value == "ASP" then --Amroth Silver Piece
-        if _G.ASPWhere == 1 then
+        if Where["AmrothSilverPiece"] == 1 then
             import (AppCtrWalletD.."AmrothSilverPiece");
-            ASP[ "Ctr" ]:SetPosition( _G.ASPLocX, _G.ASPLocY );
+            ASP[ "Ctr" ]:SetPosition( Position.Left["AmrothSilverPiece"], Position.Top["AmrothSilverPiece"] );
         end
-        if _G.ASPWhere ~= 3 then UpdateAmrothSilverPiece(); end
+        if Where["AmrothSilverPiece"] ~= 3 then UpdateAmrothSilverPiece(); end
     elseif value == "SOM" then --Stars of Merit
         if _G.SOMWhere == 1 then
             import (AppCtrWalletD.."StarsofMerit");
@@ -1144,7 +1144,7 @@ function UpdateCurrency( str )
     if str == L[ "MMC" ] and Show["MithrilCoins"] then UpdateMithril(); end
     if str == L[ "MYT" ] and Show["YuleToken"] then UpdateYuleToken(); end
     if str == L[ "MHT" ] and Show["HytboldTokens"] then UpdateHytboldTokens(); end
-    if str == L[ "MASP" ] and ShowAmrothSilverPiece then UpdateAmrothSilverPiece(); end
+    if str == L[ "MASP" ] and Show["AmrothSilverPiece"] then UpdateAmrothSilverPiece(); end
     if str == L[ "MSOM" ] and ShowStarsofMerit then UpdateStarsofMerit(); end
     if str == L[ "MCGSP" ] and ShowCentralGondorSilverPiece then UpdateCentralGondorSilverPiece(); end
     if str == L[ "MGGB" ] and ShowGiftgiversBrand then UpdateGiftgiversBrand(); end

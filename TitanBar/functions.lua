@@ -551,7 +551,7 @@ end
 -- AU3 MARKER 2 - DO NOT REMOVE
 --**v Update Amroth Silver Piece currency on TitanBar v**
 function UpdateAmrothSilverPiece()
-	if _G.ASPWhere == 1 then
+	if Where["AmrothSilverPiece"] == 1 then
 		ASP[ "Lbl" ]:SetText( GetCurrency( L[ "MASP" ] ) );
 		ASP[ "Lbl" ]:SetSize( ASP[ "Lbl" ]:GetTextLength() * NM, CTRHeight ); 
 		AjustIcon( "ASP" );
@@ -1031,7 +1031,7 @@ function ChangeColor(tColor)
 		if Show["LOTROPoints"] then LP[ "Ctr" ]:SetBackColor( tColor ); end
 		if ShowPlayerLoc then PL[ "Ctr" ]:SetBackColor( tColor ); end
 		if ShowGameTime then GT[ "Ctr" ]:SetBackColor( tColor ); end
-		if ShowAmrothSilverPiece then ASP[ "Ctr" ]:SetBackColor( tColor ); end
+		if Show["AmrothSilverPiece"] then ASP[ "Ctr" ]:SetBackColor( tColor ); end
 		if ShowStarsofMerit then SOM[ "Ctr" ]:SetBackColor( tColor ); end
 		if ShowCentralGondorSilverPiece then CGSP[ "Ctr" ]:SetBackColor( tColor ); end
 		if ShowGiftgiversBrand then GGB[ "Ctr" ]:SetBackColor( tColor ); end

@@ -10,7 +10,7 @@ ASP["Ctr"]:SetParent( TB["win"] );
 ASP["Ctr"]:SetMouseVisible( false );
 ASP["Ctr"]:SetZOrder( 2 );
 ASP["Ctr"]:SetBlendMode( Turbine.UI.BlendMode.AlphaBlend );
-ASP["Ctr"]:SetBackColor( Turbine.UI.Color( ASPbcAlpha, ASPbcRed, ASPbcGreen, ASPbcBlue ) );
+ASP["Ctr"]:SetBackColor( Turbine.UI.Color( BC.Alpha["AmrothSilverPiece"], BC.Red["AmrothSilverPiece"], BC.Green["AmrothSilverPiece"], BC.Blue["AmrothSilverPiece"] ) );
 --**^
 --**v Amroth Silver Piece & icon on TitanBar v**
 ASP["Icon"] = Turbine.UI.Control();
@@ -89,10 +89,10 @@ end
 ASP["Lbl"].MouseUp = function( sender, args )
 	ASP["Ctr"]:SetZOrder( 2 );
 	dragging = false;
-	_G.ASPLocX = ASP["Ctr"]:GetLeft();
-	settings.AmrothSilverPiece.X = string.format("%.0f", _G.ASPLocX);
-	_G.ASPLocY = ASP["Ctr"]:GetTop();
-	settings.AmrothSilverPiece.Y = string.format("%.0f", _G.ASPLocY);
+	Position.Left["AmrothSilverPiece"] = ASP["Ctr"]:GetLeft();
+	settings.AmrothSilverPiece.X = string.format("%.0f", Position.Left["AmrothSilverPiece"]);
+	Position.Top["AmrothSilverPiece"] = ASP["Ctr"]:GetTop();
+	settings.AmrothSilverPiece.Y = string.format("%.0f", Position.Top["AmrothSilverPiece"]);
 	SaveSettings( false );
 end
 --**^

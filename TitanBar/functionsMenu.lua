@@ -436,15 +436,15 @@ function AboutTitanBar()
 end
 --**^
 function ShowHideAmrothSilverPiece()
-	ShowAmrothSilverPiece = not ShowAmrothSilverPiece;
-	settings.AmrothSilverPiece.V = ShowAmrothSilverPiece;
-	settings.AmrothSilverPiece.W = string.format("%.0f", _G.ASPWhere);
+	Show["AmrothSilverPiece"] = not Show["AmrothSilverPiece"];
+	settings.AmrothSilverPiece.V = Show["AmrothSilverPiece"];
+	settings.AmrothSilverPiece.W = string.format("%.0f", Where["AmrothSilverPiece"]);
 	SaveSettings( false );
 	ImportCtr( "ASP" );
-	if ShowAmrothSilverPiece then
-		ASP[ "Ctr" ]:SetBackColor( Turbine.UI.Color( ASPbcAlpha, ASPbcRed, ASPbcGreen, ASPbcBlue ) );
+	if Show["AmrothSilverPiece"] then
+		ASP[ "Ctr" ]:SetBackColor( Turbine.UI.Color( BC.Alpha["AmrothSilverPiece"], BC.Red["AmrothSilverPiece"], BC.Green["AmrothSilverPiece"], BC.Blue["AmrothSilverPiece"] ) );
 	end
-	ASP[ "Ctr" ]:SetVisible( ShowAmrothSilverPiece );
+	ASP[ "Ctr" ]:SetVisible( Show["AmrothSilverPiece"] );
 end
 function ShowHideStarsofMerit()
 	ShowStarsofMerit = not ShowStarsofMerit;

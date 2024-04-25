@@ -261,9 +261,9 @@ function frmWalletWindow()
 			if SelIndex == 1 then if not Show["Commendations"] then ShowHideCommendations(); end
 			else if Show["Commendations"] then ShowHideCommendations(); end end
 		elseif wcur == L["MASP"] then
-			_G.ASPWhere = SelIndex; settings.AmrothSilverPiece.W = string.format("%.0f", SelIndex);
-			if SelIndex == 1 then if not ShowAmrothSilverPiece then ShowHideAmrothSilverPiece(); end
-			else if ShowAmrothSilverPiece then ShowHideAmrothSilverPiece(); end end
+			Where["AmrothSilverPiece"] = SelIndex; settings.AmrothSilverPiece.W = string.format("%.0f", SelIndex);
+			if SelIndex == 1 then if not Show["AmrothSilverPiece"] then ShowHideAmrothSilverPiece(); end
+			else if Show["AmrothSilverPiece"] then ShowHideAmrothSilverPiece(); end end
 		elseif wcur == L["MSOM"] then
 			_G.SOMWhere = SelIndex; settings.StarsofMerit.W = string.format("%.0f", SelIndex);
 			if SelIndex == 1 then if not ShowStarsofMerit then ShowHideStarsofMerit(); end
@@ -395,7 +395,7 @@ function RefreshWIListBox()
 				WItxtLOTROPTS:SetText( _G.LOTROPTS ); -- LOTRO Points
 				WItxtLOTROPTS:Focus(); -- LOTRO Points
 				WIbutSave:SetPosition( WIWCtr:GetWidth()/2 - WIbutSave:GetWidth()/2, LPWCtr:GetTop()+LPWCtr:GetHeight()+10); -- LOTRO Points
-				elseif wcur == L["MASP"] then tw = _G.ASPWhere; -- Amroth Silver Piece
+				elseif wcur == L["MASP"] then tw = Where["AmrothSilverPiece"]; -- Amroth Silver Piece
 				elseif wcur == L["MSOM"] then tw = _G.SOMWhere; -- Stars of Merit
 				elseif wcur == L["MCGSP"] then tw = _G.CGSPWhere; -- Central Gondor Silver Piece
 				elseif wcur == L["MGGB"] then tw = _G.GGBWhere; -- Gift Giver's Brand

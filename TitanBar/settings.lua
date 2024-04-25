@@ -700,16 +700,15 @@ function LoadSettings()
 	if settings.AmrothSilverPiece.X == nil then settings.AmrothSilverPiece.X = string.format("%.0f", tX); end
 	if settings.AmrothSilverPiece.Y == nil then settings.AmrothSilverPiece.Y = string.format("%.0f", tY); end
 	if settings.AmrothSilverPiece.W == nil then settings.AmrothSilverPiece.W = string.format("%.0f", tW); end
-	ShowAmrothSilverPiece = settings.AmrothSilverPiece.V;
-	ASPbcAlpha = tonumber(settings.AmrothSilverPiece.A);
-	ASPbcRed = tonumber(settings.AmrothSilverPiece.R);
-	ASPbcGreen = tonumber(settings.AmrothSilverPiece.G);
-	ASPbcBlue = tonumber(settings.AmrothSilverPiece.B);
-	_G.ASPLocX = tonumber(settings.AmrothSilverPiece.X);
-	_G.ASPLocY = tonumber(settings.AmrothSilverPiece.Y);
-	_G.ASPWhere = tonumber(settings.AmrothSilverPiece.W);
-	if _G.ASPWhere == 3 and ShowAmrothSilverPiece then _G.ASPWhere = 1; settings.AmrothSilverPiece.W = string.format("%.0f", _G.ASPWhere); end --Remove after Oct, 15th 2013
-	
+	Show["AmrothSilverPiece"] = settings.AmrothSilverPiece.V;
+	BC.Alpha["AmrothSilverPiece"] = tonumber(settings.AmrothSilverPiece.A);
+	BC.Red["AmrothSilverPiece"] = tonumber(settings.AmrothSilverPiece.R);
+	BC.Green["AmrothSilverPiece"] = tonumber(settings.AmrothSilverPiece.G);
+	BC.Blue["AmrothSilverPiece"] = tonumber(settings.AmrothSilverPiece.B);
+	Position.Left["AmrothSilverPiece"] = tonumber(settings.AmrothSilverPiece.X);
+	Position.Top["AmrothSilverPiece"] = tonumber(settings.AmrothSilverPiece.Y);
+    Where["AmrothSilverPiece"] = ParseWhere(settings, "AmrothSilverPiece");
+
 	if settings.StarsofMerit == nil then settings.StarsofMerit = {}; end
 	if settings.StarsofMerit.V == nil then settings.StarsofMerit.V = false; end
 	if settings.StarsofMerit.A == nil then settings.StarsofMerit.A = string.format("%.3f", tA); end
@@ -1324,14 +1323,14 @@ function SaveSettings(str)
 		if PlayerAlign == 1 then  settings.GameTime.T = string.format("%.0f", GTWTop); end
 		
 		settings.AmrothSilverPiece = {};
-		settings.AmrothSilverPiece.V = ShowAmrothSilverPiece;
-		settings.AmrothSilverPiece.A = string.format("%.3f", ASPbcAlpha);
-		settings.AmrothSilverPiece.R = string.format("%.3f", ASPbcRed);
-		settings.AmrothSilverPiece.G = string.format("%.3f", ASPbcGreen);
-		settings.AmrothSilverPiece.B = string.format("%.3f", ASPbcBlue);
-		settings.AmrothSilverPiece.X = string.format("%.0f", _G.ASPLocX);
-		settings.AmrothSilverPiece.Y = string.format("%.0f", _G.ASPLocY);
-		settings.AmrothSilverPiece.W = string.format("%.0f", _G.ASPWhere);
+		settings.AmrothSilverPiece.V = Show["AmrothSilverPiece"];
+		settings.AmrothSilverPiece.A = string.format("%.3f", BC.Alpha["AmrothSilverPiece"]);
+		settings.AmrothSilverPiece.R = string.format("%.3f", BC.Red["AmrothSilverPiece"]);
+		settings.AmrothSilverPiece.G = string.format("%.3f", BC.Green["AmrothSilverPiece"]);
+		settings.AmrothSilverPiece.B = string.format("%.3f", BC.Blue["AmrothSilverPiece"]);
+		settings.AmrothSilverPiece.X = string.format("%.0f", Position.Left["AmrothSilverPiece"]);
+		settings.AmrothSilverPiece.Y = string.format("%.0f", Position.Top["AmrothSilverPiece"]);
+		settings.AmrothSilverPiece.W = string.format("%.0f", Where["AmrothSilverPiece"]);
 		
 		settings.StarsofMerit = {};
 		settings.StarsofMerit.V = ShowStarsofMerit;
@@ -1525,7 +1524,7 @@ function ResetSettings()
 	Show["LOTROPoints"], BC.Alpha["LOTROPoints"], BC.Red["LOTROPoints"], BC.Green["LOTROPoints"], BC.Blue["LOTROPoints"], Position.Left["LOTROPoints"], Position.Top["LOTROPoints"], Where["LOTROPoints"] = false, tA, tR, tG, tB, tX, tY, tW; --for LOTRO points Control
 	ShowPlayerLoc, PLbcAlpha, PLbcRed, PLbcGreen, PLbcBlue, _G.PLLocX, _G.PLLocX = true, tA, tR, tG, tB, screenWidth - 205, tY; --for Player Location Control
 	ShowGameTime, _G.Clock24h, _G.ShowST, _G.ShowBT, GTbcAlpha, GTbcRed, GTbcGreen, GTbcBlue, _G.GTLocX, _G.GTLocX = true, false, false, false, tA, tR, tG, tB, screenWidth - 60, tY --for Game time Control
-	ShowAmrothSilverPiece, ASPbcAlpha, ASPbcRed, ASPbcGreen, ASPbcBlue, _G.ASPLocX, _G.ASPLocY, _G.ASPWhere = false, tA, tR, tG, tB, tX, tY, tW; --for Amroth Silver Piece Control
+	Show["AmrothSilverPiece"], BC.Alpha["AmrothSilverPiece"], BC.Red["AmrothSilverPiece"], BC.Green["AmrothSilverPiece"], BC.Blue["AmrothSilverPiece"], Position.Left["AmrothSilverPiece"], Position.Top["AmrothSilverPiece"], Where["AmrothSilverPiece"] = false, tA, tR, tG, tB, tX, tY, tW; --for Amroth Silver Piece Control
 	ShowStarsofMerit, SOMbcAlpha, SOMbcRed, SOMbcGreen, SOMbcBlue, _G.SOMLocX, _G.SOMLocY, _G.SOMWhere = false, tA, tR, tG, tB, tX, tY, tW; --for Stars of Merit Control
 	ShowCentralGondorSilverPiece, CGSPbcAlpha, CGSPbcRed, CGSPbcGreen, CGSPbcBlue, _G.CGSPLocX, _G.CGSPLocY, _G.CGSPWhere = false, tA, tR, tG, tB, tX, tY, tW; --for Central Gondor Silver Piece Control
 	ShowGiftgiversBrand, GGBbcAlpha, GGBbcRed, GGBbcGreen, GGBbcBlue, _G.GGBLocX, _G.GGBLocY, _G.GGBWhere = false, tA, tR, tG, tB, tX, tY, tW; --for Gift giver's Brand Control
@@ -1680,9 +1679,9 @@ function ReplaceCtr()
 	if ShowGameTime then GT[ "Ctr" ]:SetPosition( _G.GTLocX, _G.GTLocY ); end
 	
 	oldLocX = settings.AmrothSilverPiece.X / oldScreenWidth;
-	_G.ASPLocX = oldLocX * screenWidth;
-	settings.AmrothSilverPiece.X = string.format("%.0f", _G.ASPLocX);
-	if ShowAmrothSilverPiece and _G.ASPWhere == 1 then ASP[ "Ctr" ]:SetPosition( _G.ASPLocX, _G.ASPLocY ); end
+	Position.Left["AmrothSilverPiece"] = oldLocX * screenWidth;
+	settings.AmrothSilverPiece.X = string.format("%.0f", Position.Left["AmrothSilverPiece"]);
+	if Show["AmrothSilverPiece"] and Where["AmrothSilverPiece"] == 1 then ASP[ "Ctr" ]:SetPosition( Position.Left["AmrothSilverPiece"], Position.Top["AmrothSilverPiece"] ); end
 	
 	oldLocX = settings.StarsofMerit.X / oldScreenWidth;
 	_G.SOMLocX = oldLocX * screenWidth;
