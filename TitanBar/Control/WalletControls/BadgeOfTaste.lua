@@ -10,7 +10,7 @@ BOT["Ctr"]:SetParent( TB["win"] );
 BOT["Ctr"]:SetMouseVisible( false );
 BOT["Ctr"]:SetZOrder( 2 );
 BOT["Ctr"]:SetBlendMode( Turbine.UI.BlendMode.AlphaBlend );
-BOT["Ctr"]:SetBackColor( Turbine.UI.Color( BOTbcAlpha, BOTbcRed, BOTbcGreen, BOTbcBlue ) );
+BOT["Ctr"]:SetBackColor( Turbine.UI.Color( BC.Alpha["BadgeOfTaste"], BC.Red["BadgeOfTaste"], BC.Green["BadgeOfTaste"], BC.Blue["BadgeOfTaste"] ) );
 --**^
 --**v Badge of Taste & icon on TitanBar v**
 BOT["Icon"] = Turbine.UI.Control();
@@ -89,10 +89,10 @@ end
 BOT["Lbl"].MouseUp = function( sender, args )
 	BOT["Ctr"]:SetZOrder( 2 );
 	dragging = false;
-	_G.BOTLocX = BOT["Ctr"]:GetLeft();
-	settings.BadgeOfTaste.X = string.format("%.0f", _G.BOTLocX);
-	_G.BOTLocY = BOT["Ctr"]:GetTop();
-	settings.BadgeOfTaste.Y = string.format("%.0f", _G.BOTLocY);
+	Position.Left["BadgeOfTaste"] = BOT["Ctr"]:GetLeft();
+	settings.BadgeOfTaste.X = string.format("%.0f", Position.Left["BadgeOfTaste"]);
+	Position.Top["BadgeOfTaste"] = BOT["Ctr"]:GetTop();
+	settings.BadgeOfTaste.Y = string.format("%.0f", Position.Top["BadgeOfTaste"]);
 	SaveSettings( false );
 end
 --**^

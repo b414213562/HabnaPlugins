@@ -317,9 +317,9 @@ function frmWalletWindow()
 			if SelIndex == 1 then if not Show["AncientScript"] then ShowHideAncientScript(); end
 			else if Show["AncientScript"] then ShowHideAncientScript(); end end		
 		elseif wcur == L["MBOT"] then
-		    _G.BOTWhere = SelIndex; settings.BadgeOfTaste.W = string.format("%.0f", SelIndex);
-		    if SelIndex == 1 then if not ShowBadgeOfTaste then ShowHideBadgeOfTaste(); end
-		    else if ShowBadgeOfTaste then ShowHideBadgeOfTaste(); end end
+		    Where["BadgeOfTaste"] = SelIndex; settings.BadgeOfTaste.W = string.format("%.0f", SelIndex);
+		    if SelIndex == 1 then if not Show["BadgeOfTaste"] then ShowHideBadgeOfTaste(); end
+		    else if Show["BadgeOfTaste"] then ShowHideBadgeOfTaste(); end end
 		elseif wcur == L["MBOD"] then
 		    _G.BODWhere = SelIndex; settings.BadgeOfDishonour.W = string.format("%.0f", SelIndex);
 		    if SelIndex == 1 then if not ShowBadgeOfDishonour then ShowHideBadgeOfDishonour(); end
@@ -408,8 +408,8 @@ function RefreshWIListBox()
 				elseif wcur == L["MFFAT"] then tw = Where["FarmersFaireToken"]; -- Farmers Faire Token
 				elseif wcur == L["MSPL"] then tw = Where["SpringLeaf"]; -- Spring Leaf
 				elseif wcur == L["MMST"] then tw = Where["MidsummerToken"]; -- Midsummer Token
-				elseif wcur == L["MBOT"] then tw = _G.BOTWhere; -- Badge of Taste
 				elseif wcur == L["MAS"] then tw = Where["AncientScript"]; -- Ancient Script
+				elseif wcur == L["MBOT"] then tw = Where["BadgeOfTaste"]; -- Badge of Taste
 				elseif wcur == L["MBOD"] then tw = _G.BODWhere; -- Badge of Dishonour
 				end
 				for k, v in pairs(WICBO) do if k == tonumber(tw) then WIDD:SetSelection(k); end end

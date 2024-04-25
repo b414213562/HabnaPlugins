@@ -599,15 +599,15 @@ function ShowHideAncientScript()
 end
 
 function ShowHideBadgeOfTaste()
-	ShowBadgeOfTaste = not ShowBadgeOfTaste;
-	settings.BadgeOfTaste.V = ShowBadgeOfTaste;
-	settings.BadgeOfTaste.W = string.format( "%.0f", _G.BOTWhere );
+	Show["BadgeOfTaste"] = not Show["BadgeOfTaste"];
+	settings.BadgeOfTaste.V = Show["BadgeOfTaste"];
+	settings.BadgeOfTaste.W = string.format( "%.0f", Where["BadgeOfTaste"] );
 	SaveSettings( false );
 	ImportCtr( "BOT" );
-	if ShowBadgeOfTaste then
-		BOT[ "Ctr" ]:SetBackColor( Turbine.UI.Color( BOTbcAlpha, BOTbcRed, BOTbcGreen, BOTbcBlue ) );
+	if Show["BadgeOfTaste"] then
+		BOT[ "Ctr" ]:SetBackColor( Turbine.UI.Color( BC.Alpha["BadgeOfTaste"], BC.Red["BadgeOfTaste"], BC.Green["BadgeOfTaste"], BC.Blue["BadgeOfTaste"] ) );
 	end
-	BOT[ "Ctr" ]:SetVisible( ShowBadgeOfTaste );
+	BOT[ "Ctr" ]:SetVisible( Show["BadgeOfTaste"] );
 end
 
 function ShowHideBadgeOfDishonour()

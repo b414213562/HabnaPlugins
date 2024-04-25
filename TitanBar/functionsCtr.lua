@@ -415,11 +415,11 @@ function ImportCtr( value )
         end
         if Where["AncientScript"] ~= 3 then UpdateAncientScript(); end	
     elseif value == "BOT" then --Badge of Taste
-        if _G.BOTWhere == 1 then
+        if Where["BadgeOfTaste"] == 1 then
             import (AppCtrWalletD.."BadgeOfTaste");
-            BOT[ "Ctr" ]:SetPosition( _G.BOTLocX, _G.BOTLocY );
+            BOT[ "Ctr" ]:SetPosition( Position.Left["BadgeOfTaste"], Position.Top["BadgeOfTaste"] );
         end
-        if _G.BOTWhere ~= 3 then UpdateBadgeOfTaste(); end
+        if Where["BadgeOfTaste"] ~= 3 then UpdateBadgeOfTaste(); end
     elseif value == "BOD" then --Badge of Dishonour
         if _G.BODWhere == 1 then
             import (AppCtrWalletD.."BadgeOfDishonour");
@@ -1157,8 +1157,8 @@ function UpdateCurrency( str )
 	if str == L[ "MFFAT" ] and Show["FarmersFaireToken"] then UpdateFarmersFaireToken(); end
 	if str == L[ "MSPL" ] and Show["SpringLeaf"] then UpdateSpringLeaf(); end
 	if str == L[ "MMST" ] and Show["MidsummerToken"] then UpdateMidsummerToken(); end
-    if str == L[ "MBOT" ] and ShowBadgeOfTaste then UpdateBadgeOfTaste(); end
 	if str == L[ "MAS" ] and Show["AncientScript"] then UpdateAncientScript(); end
+    if str == L[ "MBOT" ] and Show["BadgeOfTaste"] then UpdateBadgeOfTaste(); end
     if str == L[ "MBOD" ] and ShowBadgeOfDishonour then UpdateBadgeOfDishonour(); end
 end
 

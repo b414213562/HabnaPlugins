@@ -677,7 +677,7 @@ end
 --**^
 --**v Update Badge of Taste currency on TitanBar v**
 function UpdateBadgeOfTaste()
-	if _G.BOTWhere == 1 then
+	if Where["BadgeOfTaste"] == 1 then
 		BOT[ "Lbl" ]:SetText( GetCurrency( L[ "MBOT" ] ) );
 		BOT[ "Lbl" ]:SetSize( BOT[ "Lbl" ]:GetTextLength() * NM, CTRHeight ); 
 		AjustIcon( "BOT" );
@@ -1044,8 +1044,8 @@ function ChangeColor(tColor)
 		if Show["FarmersFaireToken"] then FFAT[ "Ctr" ]:SetBackColor( tColor ); end
 		if Show["SpringLeaf"] then SPL[ "Ctr" ]:SetBackColor( tColor ); end
 		if Show["MidsummerToken"] then MST[ "Ctr" ]:SetBackColor( tColor ); end
-		if ShowBadgeOfTaste then BOT[ "Ctr" ]:SetBackColor( tColor ); end
 		if Show["AncientScript"] then AS[ "Ctr" ]:SetBackColor( tColor ); end
+		if Show["BadgeOfTaste"] then BOT[ "Ctr" ]:SetBackColor( tColor ); end
 		if ShowBadgeOfDishonour then BOD[ "Ctr" ]:SetBackColor( tColor ); end
 	else
 		if sFrom == "TitanBar" then TB["win"]:SetBackColor( tColor ); end
