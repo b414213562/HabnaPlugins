@@ -29,7 +29,7 @@ function UnloadControl( value )
 		--if ShowBank then ShowHideBank(); opt_BK:SetChecked( false ); end
 		if ShowDayNight then ShowHideDayNight(); opt_DN:SetChecked( false ); end
 		if ShowReputation then ShowHideReputation(); opt_RP:SetChecked( false ); end
-		if ShowLOTROPoints then _G.LPWhere = 3; ShowHideLOTROPoints(); end
+		if Show["LOTROPoints"] then Where["LOTROPoints"] = 3; ShowHideLOTROPoints(); end
 		if ShowPlayerLoc then ShowHidePlayerLoc(); opt_PL:SetChecked( false ); end
 		if ShowGameTime then ShowHideGameTime(); opt_GT:SetChecked( false ); end
 		if ShowAmrothSilverPiece then _G.ASPWhere = 3; ShowHideAmrothSilverPiece(); end
@@ -71,7 +71,7 @@ function UnloadControl( value )
 			--elseif _G.sFromCtr == "BK" then ShowHideBank(); opt_BK:SetChecked( false );
 			elseif _G.sFromCtr == "DN" then ShowHideDayNight(); opt_DN:SetChecked( false );
 			elseif _G.sFromCtr == "RP" then ShowHideReputation(); opt_RP:SetChecked( false );
-			elseif _G.sFromCtr == "LP" then _G.LPWhere = 3; ShowHideLOTROPoints();
+			elseif _G.sFromCtr == "LP" then Where["LOTROPoints"] = 3; ShowHideLOTROPoints();
 			elseif _G.sFromCtr == "PL" then ShowHidePlayerLoc(); opt_PL:SetChecked( false );
 			elseif _G.sFromCtr == "GT" then ShowHideGameTime(); opt_GT:SetChecked( false );
 			elseif _G.sFromCtr == "ASP" then _G.ASPWhere = 3; ShowHideAmrothSilverPiece();
@@ -127,7 +127,7 @@ function BGColor( cmd, value )
 --		elseif _G.sFromCtr == "BK" then tA, tR, tG, tB = BKbcAlpha, BKbcRed, BKbcGreen, BKbcBlue;
 		elseif _G.sFromCtr == "DN" then tA, tR, tG, tB = DNbcAlpha, DNbcRed, DNbcGreen, DNbcBlue;
 		elseif _G.sFromCtr == "RP" then tA, tR, tG, tB = RPbcAlpha, RPbcRed, RPbcGreen, RPbcBlue;
-		elseif _G.sFromCtr == "LP" then tA, tR, tG, tB = LPbcAlpha, LPbcRed, LPbcGreen, LPbcBlue;
+		elseif _G.sFromCtr == "LP" then tA, tR, tG, tB = BC.Alpha["LOTROPoints"], BC.Red["LOTROPoints"], BC.Green["LOTROPoints"], BC.Blue["LOTROPoints"];
 		elseif _G.sFromCtr == "PL" then tA, tR, tG, tB = PLbcAlpha, PLbcRed, PLbcGreen, PLbcBlue;
 		elseif _G.sFromCtr == "GT" then tA, tR, tG, tB = GTbcAlpha, GTbcRed, GTbcGreen, GTbcBlue;
 		elseif _G.sFromCtr == "ASP" then tA, tR, tG, tB = ASPbcAlpha, ASPbcRed, ASPbcGreen, ASPbcBlue;
@@ -194,8 +194,8 @@ function BGColor( cmd, value )
 		if ShowDayNight then DN[ "Ctr" ]:SetBackColor( Turbine.UI.Color( tA, tR, tG, tB ) ); end
 		RPbcAlpha, RPbcRed, RPbcGreen, RPbcBlue = tA, tR, tG, tB;
 		if ShowReputation then RP[ "Ctr" ]:SetBackColor( Turbine.UI.Color( tA, tR, tG, tB ) ); end
-		LPbcAlpha, LPbcRed, LPbcGreen, LPbcBlue = tA, tR, tG, tB;
-		if ShowLOTROPoints then LP[ "Ctr" ]:SetBackColor( Turbine.UI.Color( tA, tR, tG, tB ) ); end
+		BC.Alpha["LOTROPoints"], BC.Red["LOTROPoints"], BC.Green["LOTROPoints"], BC.Blue["LOTROPoints"] = tA, tR, tG, tB;
+		if Show["LOTROPoints"] then LP[ "Ctr" ]:SetBackColor( Turbine.UI.Color( tA, tR, tG, tB ) ); end
 		PLbcAlpha, PLbcRed, PLbcGreen, PLbcBlue = tA, tR, tG, tB;
 		if ShowPlayerLoc then PL[ "Ctr" ]:SetBackColor( Turbine.UI.Color( tA, tR, tG, tB ) ); end
 		GTbcAlpha, GTbcRed, GTbcGreen, GTbcBlue = tA, tR, tG, tB;
@@ -302,7 +302,7 @@ function BGColor( cmd, value )
 			RPbcAlpha, RPbcRed, RPbcGreen, RPbcBlue = tA, tR, tG, tB;
 			RP[ "Ctr" ]:SetBackColor( Turbine.UI.Color( tA, tR, tG, tB ) );
 		elseif _G.sFromCtr == "LP" then
-			LPbcAlpha, LPbcRed, LPbcGreen, LPbcBlue = tA, tR, tG, tB;
+			BC.Alpha["LOTROPoints"], BC.Red["LOTROPoints"], BC.Green["LOTROPoints"], BC.Blue["LOTROPoints"] = tA, tR, tG, tB;
 			LP[ "Ctr" ]:SetBackColor( Turbine.UI.Color( tA, tR, tG, tB ) );
 
 		elseif _G.sFromCtr == "PL" then

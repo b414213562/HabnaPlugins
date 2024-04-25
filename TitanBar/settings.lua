@@ -367,20 +367,18 @@ function LoadSettings()
 	if settings.LOTROPoints.L == nil then settings.LOTROPoints.L = string.format("%.0f", tL); end
 	if settings.LOTROPoints.T == nil then settings.LOTROPoints.T = string.format("%.0f", tT); end
 	if settings.LOTROPoints.W == nil then settings.LOTROPoints.W = string.format("%.0f", tW); end
-	ShowLOTROPoints = settings.LOTROPoints.V;
-	LPbcAlpha = tonumber(settings.LOTROPoints.A);
-	LPbcRed = tonumber(settings.LOTROPoints.R);
-	LPbcGreen = tonumber(settings.LOTROPoints.G);
-	LPbcBlue = tonumber(settings.LOTROPoints.B);
-	_G.LPLocX = tonumber(settings.LOTROPoints.X);
-	_G.LPLocY = tonumber(settings.LOTROPoints.Y);
-	LPWLeft = tonumber(settings.LOTROPoints.L);
-	LPWTop = tonumber(settings.LOTROPoints.T);
-	_G.LPWhere = tonumber(settings.LOTROPoints.W);
---	if _G.LPWhere == 3 and ShowLOTROPoints then _G.LPWhere = 1; settings.LOTROPoints.W = string.format("%.0f", _G.LPWhere); end --Removed 2017-02-07 (after 2013-10-15)
-	
+	Show["LOTROPoints"] = settings.LOTROPoints.V;
+	BC.Alpha["LOTROPoints"] = tonumber(settings.LOTROPoints.A);
+	BC.Red["LOTROPoints"] = tonumber(settings.LOTROPoints.R);
+	BC.Green["LOTROPoints"] = tonumber(settings.LOTROPoints.G);
+	BC.Blue["LOTROPoints"] = tonumber(settings.LOTROPoints.B);
+	Position.Left["LOTROPoints"] = tonumber(settings.LOTROPoints.X);
+	Position.Top["LOTROPoints"] = tonumber(settings.LOTROPoints.Y);
+	PositionW.Left["LOTROPoints"] = tonumber(settings.LOTROPoints.L);
+	PositionW.Top["LOTROPoints"] = tonumber(settings.LOTROPoints.T);
+    Where["LOTROPoints"] = ParseWhere(settings, "LOTROPoints");
 
-	if settings.BagInfos == nil then settings.BagInfos = {}; end
+    if settings.BagInfos == nil then settings.BagInfos = {}; end
 	if settings.BagInfos.V == nil then settings.BagInfos.V = true; end
 	if settings.BagInfos.A == nil then settings.BagInfos.A = string.format("%.3f", tA); end
 	if settings.BagInfos.R == nil then settings.BagInfos.R = string.format("%.3f", tR); end
@@ -1157,16 +1155,16 @@ function SaveSettings(str)
 		settings.Commendations.W = string.format("%.0f", Where["Commendations"]);
 
 		settings.LOTROPoints = {};
-		settings.LOTROPoints.V = ShowLOTROPoints;
-		settings.LOTROPoints.A = string.format("%.3f", LPbcAlpha);
-		settings.LOTROPoints.R = string.format("%.3f", LPbcRed);
-		settings.LOTROPoints.G = string.format("%.3f", LPbcGreen);
-		settings.LOTROPoints.B = string.format("%.3f", LPbcBlue);
-		settings.LOTROPoints.X = string.format("%.0f", _G.LPLocX);
-		settings.LOTROPoints.Y = string.format("%.0f", _G.LPLocY);
-		settings.LOTROPoints.L = string.format("%.0f", LPWLeft);
-		settings.LOTROPoints.T = string.format("%.0f", LPWTop);
-		settings.LOTROPoints.W = string.format("%.0f", _G.LPWhere);
+		settings.LOTROPoints.V = Show["LOTROPoints"];
+		settings.LOTROPoints.A = string.format("%.3f", BC.Alpha["LOTROPoints"]);
+		settings.LOTROPoints.R = string.format("%.3f", BC.Red["LOTROPoints"]);
+		settings.LOTROPoints.G = string.format("%.3f", BC.Green["LOTROPoints"]);
+		settings.LOTROPoints.B = string.format("%.3f", BC.Blue["LOTROPoints"]);
+		settings.LOTROPoints.X = string.format("%.0f", Position.Left["LOTROPoints"]);
+		settings.LOTROPoints.Y = string.format("%.0f", Position.Top["LOTROPoints"]);
+		settings.LOTROPoints.L = string.format("%.0f", PositionW.Left["LOTROPoints"]);
+		settings.LOTROPoints.T = string.format("%.0f", PositionW.Top["LOTROPoints"]);
+		settings.LOTROPoints.W = string.format("%.0f", Where["LOTROPoints"]);
 
 		settings.BagInfos = {};
 		settings.BagInfos.V = ShowBagInfos;
@@ -1524,7 +1522,7 @@ function ResetSettings()
 	--ShowBank, BKbcAlpha, BKbcRed, BKbcGreen, BKbcBlue, _G.BKLocX, _G.BKLocY = false, tA, tR, tG, tB, tX, tY --for Bank Control
 	ShowDayNight, _G.DNNextT, DNbcAlpha, DNbcRed, DNbcGreen, DNbcBlue, _G.DNLocX, _G.DNLocY = false, true, tA, tR, tG, tB, tX, tY --for DayNight Control
 	ShowReputation, RPbcAlpha, RPbcRed, RPbcGreen, RPbcBlue, _G.RPLocX, _G.RPLocY = false, tA, tR, tG, tB, tX, tY --for Reputation Control
-	ShowLOTROPoints, LPbcAlpha, LPbcRed, LPbcGreen, LPbcBlue, _G.LPLocX, _G.LPLocY, _G.LPWhere = false, tA, tR, tG, tB, tX, tY, tW; --for LOTRO points Control
+	Show["LOTROPoints"], BC.Alpha["LOTROPoints"], BC.Red["LOTROPoints"], BC.Green["LOTROPoints"], BC.Blue["LOTROPoints"], Position.Left["LOTROPoints"], Position.Top["LOTROPoints"], Where["LOTROPoints"] = false, tA, tR, tG, tB, tX, tY, tW; --for LOTRO points Control
 	ShowPlayerLoc, PLbcAlpha, PLbcRed, PLbcGreen, PLbcBlue, _G.PLLocX, _G.PLLocX = true, tA, tR, tG, tB, screenWidth - 205, tY; --for Player Location Control
 	ShowGameTime, _G.Clock24h, _G.ShowST, _G.ShowBT, GTbcAlpha, GTbcRed, GTbcGreen, GTbcBlue, _G.GTLocX, _G.GTLocX = true, false, false, false, tA, tR, tG, tB, screenWidth - 60, tY --for Game time Control
 	ShowAmrothSilverPiece, ASPbcAlpha, ASPbcRed, ASPbcGreen, ASPbcBlue, _G.ASPLocX, _G.ASPLocY, _G.ASPWhere = false, tA, tR, tG, tB, tX, tY, tW; --for Amroth Silver Piece Control
@@ -1672,9 +1670,9 @@ function ReplaceCtr()
 	if ShowReputation then RP[ "Ctr" ]:SetPosition( _G.RPLocX, _G.RPLocY ); end
 
 	oldLocX = settings.LOTROPoints.X / oldScreenWidth;
-	_G.LPLocX = oldLocX * screenWidth;
-	settings.LOTROPoints.X = string.format("%.0f", _G.LPLocX);
-	if ShowLOTROPoints and _G.LPWhere == 1 then LP[ "Ctr" ]:SetPosition( _G.LPLocX, _G.LPLocY ); end
+	Position.Left["LOTROPoints"] = oldLocX * screenWidth;
+	settings.LOTROPoints.X = string.format("%.0f", Position.Left["LOTROPoints"]);
+	if Show["LOTROPoints"] and Where["LOTROPoints"] == 1 then LP[ "Ctr" ]:SetPosition( Position.Left["LOTROPoints"], Position.Top["LOTROPoints"] ); end
 
 	oldLocX = settings.GameTime.X / oldScreenWidth;
 	_G.GTLocX = oldLocX * screenWidth;

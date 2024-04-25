@@ -204,8 +204,8 @@ function frmMain()
 		ShowAncientScript = false;
 		if PlayerWalletSize ~= nil or PlayerWalletSize ~= 0 then
 			if Show["Wallet"] then ImportCtr( "WI" ); end
-			if _G.LPWhere ~= 3 then ImportCtr( "LP" ); end
 			if Where["Commendations"] ~= 3 then ImportCtr( "CP" ); end
+			if Where["LOTROPoints"] ~= 3 then ImportCtr( "LP" ); end
 		end
 	end
 
@@ -219,7 +219,7 @@ function frmMain()
 	--if ShowBank then ImportCtr( "BK" ); end --Bank
 	if ShowDayNight then ImportCtr( "DN" ); end --Day & Night time
 	if ShowReputation then ImportCtr( "RP" ); end --Reputation Points
-	if _G.LPWhere ~= 3 then ImportCtr( "LP" ); end --LOTRO Points
+	if Where["LOTROPoints"] ~= 3 then ImportCtr( "LP" ); end --LOTRO Points
 
 	--**v Workaround for the ItemRemoved that fires before the backpack was updated (Turbine API issue) v**
 	ItemRemovedTimer = Turbine.UI.Control();
@@ -324,7 +324,7 @@ function frmMain()
 				if Where["HytboldTokens"] ~= 3 then ImportCtr( "HT" ); end
 				if Where["Medallions"] ~= 3 then ImportCtr( "MP" ); end
 				if Where["Seals"] ~= 3 then ImportCtr( "SL" ); end
-				if _G.LPWhere ~= 3 then ImportCtr( "CP" ); end
+				if Where["LOTROPoints"] ~= 3 then ImportCtr( "CP" ); end
 				if _G.ASPWhere ~= 3 then ImportCtr( "ASP" ); end
 				if _G.SOMWhere ~= 3 then ImportCtr( "SOM" ); end
 				if _G.CGSPWhere ~= 3 then ImportCtr( "CGSP" ); end

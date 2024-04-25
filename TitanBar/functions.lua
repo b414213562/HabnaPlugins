@@ -540,7 +540,7 @@ end
 --**^
 --**v Update LOTRO points on TitanBar v**
 function UpdateLOTROPoints()
-	if _G.LPWhere == 1 then
+	if Where["LOTROPoints"] == 1 then
 		LP[ "Lbl" ]:SetText( _G.LOTROPTS );
 		LP[ "Lbl" ]:SetSize( LP[ "Lbl" ]:GetTextLength() * NM, CTRHeight ); 
 		AjustIcon( "LP" );
@@ -1028,7 +1028,7 @@ function ChangeColor(tColor)
 		--if ShowBank then BK[ "Ctr" ]:SetBackColor( tColor ); end
 		if ShowDayNight then DN[ "Ctr" ]:SetBackColor( tColor ); end
 		if ShowReputation then RP[ "Ctr" ]:SetBackColor( tColor ); end
-		if ShowLOTROPoints then LP[ "Ctr" ]:SetBackColor( tColor ); end
+		if Show["LOTROPoints"] then LP[ "Ctr" ]:SetBackColor( tColor ); end
 		if ShowPlayerLoc then PL[ "Ctr" ]:SetBackColor( tColor ); end
 		if ShowGameTime then GT[ "Ctr" ]:SetBackColor( tColor ); end
 		if ShowAmrothSilverPiece then ASP[ "Ctr" ]:SetBackColor( tColor ); end

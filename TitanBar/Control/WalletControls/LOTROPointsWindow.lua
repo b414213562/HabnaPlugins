@@ -5,7 +5,7 @@
 function frmLOTROPointsWindow()
 	-- **v Set some window stuff v**
 	_G.wLP = Turbine.UI.Lotro.Window()
-	_G.wLP:SetPosition( LPWLeft, LPWTop );
+	_G.wLP:SetPosition( PositionW.Left["LOTROPoints"], PositionW.Top["LOTROPoints"] );
 	--_G.wLP:SetSize( 300, 80 );
 	_G.wLP:SetText( L["MLP"] );
 	_G.wLP:SetWantsKeyEvents( true );
@@ -26,7 +26,7 @@ function frmLOTROPointsWindow()
 	_G.wLP.MouseUp = function( sender, args )
 		settings.LOTROPoints.L = string.format("%.0f", _G.wLP:GetLeft());
 		settings.LOTROPoints.T = string.format("%.0f", _G.wLP:GetTop());
-		LPWLeft, LPWTop = _G.wLP:GetPosition();
+		PositionW.Left["LOTROPoints"], PositionW.Top["LOTROPoints"] = _G.wLP:GetPosition();
 		SaveSettings( false );
 	end
 

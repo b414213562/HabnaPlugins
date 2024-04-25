@@ -158,17 +158,17 @@ end
 -- **^
 -- **v Show/Hide LOTRO Points v**
 function ShowHideLOTROPoints()
-	ShowLOTROPoints = not ShowLOTROPoints;
-	settings.LOTROPoints.V = ShowLOTROPoints;
-	settings.LOTROPoints.W = string.format("%.0f", _G.LPWhere);
+	Show["LOTROPoints"] = not Show["LOTROPoints"];
+	settings.LOTROPoints.V = Show["LOTROPoints"];
+	settings.LOTROPoints.W = string.format("%.0f", Where["LOTROPoints"]);
 	SaveSettings( false );
 	ImportCtr( "LP" );
-	if ShowLOTROPoints then
-		LP[ "Ctr" ]:SetBackColor( Turbine.UI.Color( LPbcAlpha, LPbcRed, LPbcGreen, LPbcBlue ) );
+	if Show["LOTROPoints"] then
+		LP[ "Ctr" ]:SetBackColor( Turbine.UI.Color( BC.Alpha["LOTROPoints"], BC.Red["LOTROPoints"], BC.Green["LOTROPoints"], BC.Blue["LOTROPoints"] ) );
 	else
 		if _G.frmLP then wLP:Close(); end
 	end
-	LP[ "Ctr" ]:SetVisible( ShowLOTROPoints );
+	LP[ "Ctr" ]:SetVisible( Show["LOTROPoints"] );
 end
 -- **^
 -- **v Show/Hide backpack Infos v**

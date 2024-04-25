@@ -47,8 +47,8 @@ function RefreshWITTListBox()
 		elseif wttcur == L["MHT"] then ttw = Where["HytboldTokens"]; CtrIconCodeIs=WalletItem.TokensOfHytbold.Icon; CtrQteIs=GetCurrency( L[ "MHT" ] );
 		elseif wttcur == L["MMP"] then ttw = Where["Medallions"]; CtrIconCodeIs=WalletItem.Medallion.Icon; CtrQteIs=GetCurrency( L[ "MMP" ] );
 		elseif wttcur == L["MSL"] then ttw = Where["Seals"]; CtrIconCodeIs=WalletItem.Seal.Icon; CtrQteIs=GetCurrency( L[ "MSL" ] );
-		elseif wttcur == L["MLP"] then ttw = _G.LPWhere; CtrIconCodeIs=WalletItem.LOTROPTS.Icon; CtrQteIs=_G.LOTROPTS;
 		elseif wttcur == L["MCP"] then ttw = Where["Commendations"]; CtrIconCodeIs=WalletItem.Commendation.Icon; CtrQteIs=GetCurrency( L[ "MCP" ] );
+		elseif wttcur == L["MLP"] then ttw = Where["LOTROPoints"]; CtrIconCodeIs=WalletItem.LOTROPTS.Icon; CtrQteIs=_G.LOTROPTS;
 		elseif wttcur == L["MASP"] then ttw = _G.ASPWhere; CtrIconCodeIs=WalletItem.AmrothSilverPiece.Icon; CtrQteIs=GetCurrency( L[ "MASP" ] );
 		elseif wttcur == L["MSOM"] then ttw = _G.SOMWhere; CtrIconCodeIs=WalletItem.StarsofMerit.Icon; CtrQteIs=GetCurrency( L[ "MSOM" ] );
 		elseif wttcur == L["MCGSP"] then ttw = _G.CGSPWhere; CtrIconCodeIs=WalletItem.CentralGondorSilverPiece.Icon; CtrQteIs=GetCurrency( L[ "MCGSP" ] );

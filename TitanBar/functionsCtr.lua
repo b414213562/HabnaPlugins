@@ -262,12 +262,12 @@ function ImportCtr( value )
         UpdateDayNight();
         DN[ "Ctr" ]:SetPosition( _G.DNLocX, _G.DNLocY );
     elseif value == "LP" then --LOTRO points
-        if _G.LPWhere == 1 then
+        if Where["LOTROPoints"] == 1 then
             import (AppCtrWalletD.."LOTROPoints");
-            LP[ "Ctr" ]:SetPosition( _G.LPLocX, _G.LPLocY );
+            LP[ "Ctr" ]:SetPosition( Position.Left["LOTROPoints"], Position.Top["LOTROPoints"] );
             UpdateLOTROPoints();
         end
-        if _G.LPWhere ~= 3 then
+        if Where["LOTROPoints"] ~= 3 then
             --PlayerLP = Player:GetLOTROPoints();
             --AddCallback(PlayerLP, "LOTROPointsChanged",
             --    function(sender, args) UpdateLOTROPoints(); end
@@ -291,7 +291,7 @@ function ImportCtr( value )
                         if tmpLP ~= nil then
                             LPTS = tmpLP;
                             _G.LOTROPTS = _G.LOTROPTS + LPTS;
-                            if _G.LPWhere == 1 then UpdateLOTROPoints(); end
+                            if Where["LOTROPoints"] == 1 then UpdateLOTROPoints(); end
                             SavePlayerLOTROPoints();
                         end
                     end

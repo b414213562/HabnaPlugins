@@ -83,7 +83,7 @@ function frmBackground()
 	if sFrom == "BK" then curSelAlpha = BKbcAlpha; curSelRed = BKbcRed; curSelGreen = BKbcGreen; curSelBlue = BKbcBlue; end
 	if sFrom == "DN" then curSelAlpha = DNbcAlpha; curSelRed = DNbcRed; curSelGreen = DNbcGreen; curSelBlue = DNbcBlue; end
 	if sFrom == "RP" then curSelAlpha = RPbcAlpha; curSelRed = RPbcRed; curSelGreen = RPbcGreen; curSelBlue = RPbcBlue; end
-	if sFrom == "LP" then curSelAlpha = LPbcAlpha; curSelRed = LPbcRed; curSelGreen = LPbcGreen; curSelBlue = LPbcBlue; end
+	if sFrom == "LP" then curSelAlpha = BC.Alpha["LOTROPoints"]; curSelRed = BC.Red["LOTROPoints"]; curSelGreen = BC.Green["LOTROPoints"]; curSelBlue = BC.Blue["LOTROPoints"]; end
 	if sFrom == "PL" then curSelAlpha = PLbcAlpha; curSelRed = PLbcRed; curSelGreen = PLbcGreen; curSelBlue = PLbcBlue; end
 	if sFrom == "GT" then curSelAlpha = GTbcAlpha; curSelRed = GTbcRed; curSelGreen = GTbcGreen; curSelBlue = GTbcBlue; end
 	if sFrom == "ASP" then curSelAlpha =ASPbcAlpha; curSelRed = ASPbcRed; curSelGreen = ASPbcGreen; curSelBlue = ASPbcBlue; end
@@ -350,7 +350,7 @@ function UpdateBCvariable()
 		BKbcAlpha, BKbcRed, BKbcGreen, BKbcBlue = curSelAlpha, curSelRed, curSelGreen, curSelBlue;
 		DNbcAlpha, DNbcRed, DNbcGreen, DNbcBlue = curSelAlpha, curSelRed, curSelGreen, curSelBlue;
 		RPbcAlpha, RPbcRed, RPbcGreen, RPbcBlue = curSelAlpha, curSelRed, curSelGreen, curSelBlue;
-		LPbcAlpha, LPbcRed, LPbcGreen, LPbcBlue = curSelAlpha, curSelRed, curSelGreen, curSelBlue;
+		BC.Alpha["LOTROPoints"], BC.Red["LOTROPoints"], BC.Green["LOTROPoints"], BC.Blue["LOTROPoints"] = curSelAlpha, curSelRed, curSelGreen, curSelBlue;
 		PLbcAlpha, PLbcRed, PLbcGreen, PLbcBlue = curSelAlpha, curSelRed, curSelGreen, curSelBlue;
 		GTbcAlpha, GTbcRed, GTbcGreen, GTbcBlue = curSelAlpha, curSelRed, curSelGreen, curSelBlue;
 		BC.Alpha["YuleToken"], BC.Red["YuleToken"], BC.Green["YuleToken"], BC.Blue["YuleToken"] = curSelAlpha, curSelRed, curSelGreen, curSelBlue;
@@ -395,7 +395,7 @@ function UpdateBCvariable()
 		if sFrom == "BK" then BKbcAlpha = curSelAlpha; BKbcRed = curSelRed; BKbcGreen = curSelGreen; BKbcBlue = curSelBlue; end
 		if sFrom == "DN" then DNbcAlpha = curSelAlpha; DNbcRed = curSelRed; DNbcGreen = curSelGreen; DNbcBlue = curSelBlue; end
 		if sFrom == "RP" then RPbcAlpha = curSelAlpha; RPbcRed = curSelRed; RPbcGreen = curSelGreen; RPbcBlue = curSelBlue; end
-		if sFrom == "LP" then LPbcAlpha = curSelAlpha; LPbcRed = curSelRed; LPbcGreen = curSelGreen; LPbcBlue = curSelBlue; end
+		if sFrom == "LP" then BC.Alpha["LOTROPoints"] = curSelAlpha; BC.Red["LOTROPoints"] = curSelRed; BC.Green["LOTROPoints"] = curSelGreen; BC.Blue["LOTROPoints"] = curSelBlue; end
 		if sFrom == "PL" then PLbcAlpha = curSelAlpha; PLbcRed = curSelRed; PLbcGreen = curSelGreen; PLbcBlue = curSelBlue; end
 		if sFrom == "GT" then GTbcAlpha = curSelAlpha; GTbcRed = curSelRed; GTbcGreen = curSelGreen; GTbcBlue = curSelBlue; end
 		if sFrom == "ASP" then ASPbcAlpha = curSelAlpha; ASPbcRed = curSelRed; ASPbcGreen = curSelGreen; ASPbcBlue = curSelBlue; end

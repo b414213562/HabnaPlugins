@@ -10,7 +10,7 @@ LP["Ctr"]:SetParent( TB["win"] );
 LP["Ctr"]:SetMouseVisible( false );
 LP["Ctr"]:SetZOrder( 2 );
 LP["Ctr"]:SetBlendMode( Turbine.UI.BlendMode.AlphaBlend );
-LP["Ctr"]:SetBackColor( Turbine.UI.Color( LPbcAlpha, LPbcRed, LPbcGreen, LPbcBlue ) );
+LP["Ctr"]:SetBackColor( Turbine.UI.Color( BC.Alpha["LOTROPoints"], BC.Red["LOTROPoints"], BC.Green["LOTROPoints"], BC.Blue["LOTROPoints"] ) );
 --LP["Ctr"]:SetBackColor( Color["red"] ); -- Debug purpose
 --**^
 --**v Destiny points & icon on TitanBar v**
@@ -100,10 +100,10 @@ end
 LP["Lbl"].MouseUp = function( sender, args )
 	LP["Ctr"]:SetZOrder( 2 );
 	dragging = false;
-	_G.LPLocX = LP["Ctr"]:GetLeft();
-	settings.LOTROPoints.X = string.format("%.0f", _G.LPLocX);
-	_G.LPLocY = LP["Ctr"]:GetTop();
-	settings.LOTROPoints.Y = string.format("%.0f", _G.LPLocY);
+	Position.Left["LOTROPoints"] = LP["Ctr"]:GetLeft();
+	settings.LOTROPoints.X = string.format("%.0f", Position.Left["LOTROPoints"]);
+	Position.Top["LOTROPoints"] = LP["Ctr"]:GetTop();
+	settings.LOTROPoints.Y = string.format("%.0f", Position.Top["LOTROPoints"]);
 	SaveSettings( false );
 end
 --**^

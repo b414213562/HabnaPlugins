@@ -325,9 +325,9 @@ function frmWalletWindow()
 		    if SelIndex == 1 then if not ShowBadgeOfDishonour then ShowHideBadgeOfDishonour(); end
 		    else if ShowBadgeOfDishonour then ShowHideBadgeOfDishonour(); end end
 		elseif wcur == L["MLP"] then
-			_G.LPWhere = SelIndex; settings.LOTROPoints.W = string.format("%.0f", SelIndex);
-			if SelIndex == 1 then if not ShowLOTROPoints then ShowHideLOTROPoints(); end
-			else if ShowLOTROPoints then ShowHideLOTROPoints(); end end
+			Where["LOTROPoints"] = SelIndex; settings.LOTROPoints.W = string.format("%.0f", SelIndex);
+			if SelIndex == 1 then if not Show["LOTROPoints"] then ShowHideLOTROPoints(); end
+			else if Show["LOTROPoints"] then ShowHideLOTROPoints(); end end
 
 			local parsed_text = WItxtLOTROPTS:GetText();
 
@@ -341,7 +341,7 @@ function frmWalletWindow()
 			end
 			
 			_G.LOTROPTS = WItxtLOTROPTS:GetText();
-			if _G.LPWhere == 1 then UpdateLOTROPoints(); end
+			if Where["LOTROPoints"] == 1 then UpdateLOTROPoints(); end
 			SavePlayerLOTROPoints();
 		end
 
@@ -389,8 +389,8 @@ function RefreshWIListBox()
 				elseif wcur == L["MHT"] then tw = Where["HytboldTokens"]; -- Tokens of Hytbold
 				elseif wcur == L["MMP"] then tw = Where["Medallions"]; -- Medallions
 				elseif wcur == L["MSL"] then tw = Where["Seals"]; -- Seals
-				elseif wcur == L["MLP"] then tw = _G.LPWhere; -- LOTRO Points
 				elseif wcur == L["MCP"] then tw = Where["Commendations"]; -- Commendations
+				elseif wcur == L["MLP"] then tw = Where["LOTROPoints"]; -- LOTRO Points
 				LPWCtr:SetVisible( true ); -- LOTRO Points
 				WItxtLOTROPTS:SetText( _G.LOTROPTS ); -- LOTRO Points
 				WItxtLOTROPTS:Focus(); -- LOTRO Points
