@@ -39,7 +39,7 @@ function UnloadControl( value )
 		if Show["BingoBadge"] then Where["BingoBadge"] = 3; ShowHideBingoBadge(); end
 		if Show["AnniversaryToken"] then Where["AnniversaryToken"] = 3; ShowHideAnniversaryToken(); end
 		if ShowMotesOfEnchantment then _G.MOEWhere = 3; ShowHideMotesOfEnchantment(); end
-		if ShowEmbersOfEnchantment then _G.EOEWhere = 3; ShowHideEmbersOfEnchantment(); end
+		if Show["EmbersOfEnchantment"] then Where["EmbersOfEnchantment"] = 3; ShowHideEmbersOfEnchantment(); end
 		if ShowFigmentsOfSplendour then _G.FOSWhere = 3; ShowHideFigmentsOfSplendour(); end
 		if ShowFallFestivalToken then _G.FFTWhere = 3; ShowHideFallFestivalToken(); end
 		if ShowFarmersFaireToken then _G.FFATWhere = 3; ShowHideFarmersFaireToken(); end
@@ -81,7 +81,7 @@ function UnloadControl( value )
 			elseif _G.sFromCtr == "BB" then	Where["BingoBadge"] = 3; ShowHideBingoBadge();
 			elseif _G.sFromCtr == "LAT" then Where["AnniversaryToken"] = 3; ShowHideAnniversaryToken();
 			elseif _G.sFromCtr == "MOE" then _G.MOEWhere = 3; ShowHideMotesOfEnchantment();
-			elseif _G.sFromCtr == "EOE" then _G.EOEWhere = 3; ShowHideEmbersOfEnchantment();
+			elseif _G.sFromCtr == "EOE" then Where["EmbersOfEnchantment"] = 3; ShowHideEmbersOfEnchantment();
 			elseif _G.sFromCtr == "FOS" then _G.FOSWhere = 3; ShowHideFigmentsOfSplendour();
 			elseif _G.sFromCtr == "FFT" then _G.FFTWhere = 3; ShowHideFallFestivalToken();
 			elseif _G.sFromCtr == "FFAT" then _G.FFATWhere = 3; ShowHideFarmersFaireToken();
@@ -137,7 +137,7 @@ function BGColor( cmd, value )
 		elseif _G.sFromCtr == "BB" then tA, tR, tG, tB = BC.Alpha["BingoBadge"], BC.Red["BingoBadge"], BC.Green["BingoBadge"], BC.Blue["BingoBadge"];
 		elseif _G.sFromCtr == "LAT" then tA, tR, tG, tB = BC.Alpha["AnniversaryToken"], BC.Red["AnniversaryToken"], BC.Green["AnniversaryToken"], BC.Blue["AnniversaryToken"];
 		elseif _G.sFromCtr == "MOE" then tA, tR, tG, tB = MOEbcAlpha, MOEbcRed, MOEbcGreen, MOEbcBlue;
-		elseif _G.sFromCtr == "EOE" then tA, tR, tG, tB = EOEbcAlpha, EOEbcRed, EOEbcGreen, EOEbcBlue;
+		elseif _G.sFromCtr == "EOE" then tA, tR, tG, tB = BC.Alpha["EmbersOfEnchantment"], BC.Red["EmbersOfEnchantment"], BC.Green["EmbersOfEnchantment"], BC.Blue["EmbersOfEnchantment"];
 		elseif _G.sFromCtr == "FOS" then tA, tR, tG, tB = FOSbcAlpha, FOSbcRed, FOSbcGreen, FOSbcBlue;
 		elseif _G.sFromCtr == "FFT" then tA, tR, tG, tB = FFTbcAlpha, FFTbcRed, FFTbcGreen, FFTbcBlue;
 		elseif _G.sFromCtr == "FFAT" then tA, tR, tG, tB = FFATbcAlpha, FFATbcRed, FFATbcGreen, FFATbcBlue;
@@ -214,8 +214,8 @@ function BGColor( cmd, value )
 		if Show["AnniversaryToken"] then LAT[ "Ctr" ]:SetBackColor( Turbine.UI.Color( tA, tR, tG, tB ) ); end
 		MOEbcAlpha, MOEbcRed, MOEbcGreen, MOEbcBlue = tA, tR, tG, tB;
 		if ShowMotesOfEnchantment then MOE[ "Ctr" ]:SetBackColor( Turbine.UI.Color( tA, tR, tG, tB ) ); end
-		EOEbcAlpha, EOEbcRed, EOEbcGreen, EOEbcBlue = tA, tR, tG, tB;
-		if ShowEmbersOfEnchantment then EOE[ "Ctr" ]:SetBackColor( Turbine.UI.Color( tA, tR, tG, tB ) ); end
+		BC.Alpha["EmbersOfEnchantment"], BC.Red["EmbersOfEnchantment"], BC.Green["EmbersOfEnchantment"], BC.Blue["EmbersOfEnchantment"] = tA, tR, tG, tB;
+		if Show["EmbersOfEnchantment"] then EOE[ "Ctr" ]:SetBackColor( Turbine.UI.Color( tA, tR, tG, tB ) ); end
 		FOSbcAlpha, FOSbcRed, FOSbcGreen, FOSbcBlue = tA, tR, tG, tB;
 		if ShowFigmentsOfSplendour then FOS[ "Ctr" ]:SetBackColor( Turbine.UI.Color( tA, tR, tG, tB ) ); end
 		FFTbcAlpha, FFTbcRed, FFTbcGreen, FFTbcBlue = tA, tR, tG, tB;
@@ -333,7 +333,7 @@ function BGColor( cmd, value )
 			MOEbcAlpha, MOEbcRed, MOEbcGreen, MOEbcBlue = tA, tR, tG, tB;
 			MOE[ "Ctr" ]:SetBackColor( Turbine.UI.Color( tA, tR, tG, tB ) );	
 		elseif _G.sFromCtr == "EOE" then
-			EOEbcAlpha, EOEbcRed, EOEbcGreen, EOEbcBlue = tA, tR, tG, tB;
+			BC.Alpha["EmbersOfEnchantment"], BC.Red["EmbersOfEnchantment"], BC.Green["EmbersOfEnchantment"], BC.Blue["EmbersOfEnchantment"] = tA, tR, tG, tB;
 			EOE[ "Ctr" ]:SetBackColor( Turbine.UI.Color( tA, tR, tG, tB ) );
 		elseif _G.sFromCtr == "FOS" then
 			FOSbcAlpha, FOSbcRed, FOSbcGreen, FOSbcBlue = tA, tR, tG, tB;

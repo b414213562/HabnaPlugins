@@ -177,7 +177,7 @@ function frmMain()
 			if Where["BingoBadge"] ~= 3 then ImportCtr( "BB" ); end
 			if Where["AnniversaryToken"] ~= 3 then ImportCtr( "LAT" ); end
 			if _G.MOEWhere ~= 3 then ImportCtr( "MOE" ); end
-			if _G.EOEWhere ~= 3 then ImportCtr( "EOE" ); end
+			if Where["EmbersOfEnchantment"] ~= 3 then ImportCtr( "EOE" ); end
 			if _G.FOSWhere ~= 3 then ImportCtr( "FOS" ); end
 			if _G.FFTWhere ~= 3 then ImportCtr( "FFT" ); end
 			if _G.FFATWhere ~= 3 then ImportCtr( "FFAT" ); end
@@ -195,7 +195,7 @@ function frmMain()
 		Show["StarsofMerit"], Show["CentralGondorSilverPiece"], Show["GiftgiversBrand"] = false, false, false;
 		Show["BingoBadge"], Show["AnniversaryToken"], ShowReputation = false, false, false;
 		ShowMotesOfEnchantment = false;
-		ShowEmbersOfEnchantment = false;
+		Show["EmbersOfEnchantment"] = false;
 		ShowFigmentsOfSplendour = false;
 		ShowFallFestivalToken = false;
 		ShowFarmersFaireToken = false;
@@ -332,7 +332,7 @@ function frmMain()
 				if Where["BingoBadge"] ~= 3 then ImportCtr( "BB" ); end
 				if Where["AnniversaryToken"] ~= 3 then ImportCtr( "LAT" ); end
 				if _G.MOEWhere ~= 3 then ImportCtr( "MOE" ); end
-				if _G.EOEWhere ~= 3 then ImportCtr( "EOE" ); end
+				if Where["EmbersOfEnchantment"] ~= 3 then ImportCtr( "EOE" ); end
 				if _G.FOSWhere ~= 3 then ImportCtr( "FOS" ); end
 				if _G.FFTWhere ~= 3 then ImportCtr( "FFT" ); end
 				if _G.FFATWhere ~= 3 then ImportCtr( "FFAT" ); end

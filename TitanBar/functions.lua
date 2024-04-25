@@ -614,7 +614,7 @@ end
 --**^
 --**v Update Embers of Enchantment currency on TitanBar v**
 function UpdateEmbersOfEnchantment()
-	if _G.EOEWhere == 1 then
+	if Where["EmbersOfEnchantment"] == 1 then
 		EOE[ "Lbl" ]:SetText( GetCurrency( L[ "MEOE" ] ) );
 		EOE[ "Lbl" ]:SetSize( EOE[ "Lbl" ]:GetTextLength() * NM, CTRHeight ); 
 		AjustIcon( "EOE" );
@@ -1038,7 +1038,7 @@ function ChangeColor(tColor)
 		if Show["BingoBadge"] then BB[ "Ctr" ]:SetBackColor( tColor ); end
 		if ShowMotesOfEnchantment then MOE[ "Ctr" ]:SetBackColor( tColor ); end
 		if Show["AnniversaryToken"] then LAT[ "Ctr" ]:SetBackColor( tColor ); end
-		if ShowEmbersOfEnchantment then EOE[ "Ctr" ]:SetBackColor( tColor ); end
+		if Show["EmbersOfEnchantment"] then EOE[ "Ctr" ]:SetBackColor( tColor ); end
 		if ShowFigmentsOfSplendour then FOS[ "Ctr" ]:SetBackColor( tColor ); end
 		if ShowFallFestivalToken then FFT[ "Ctr" ]:SetBackColor( tColor ); end
 		if ShowFarmersFaireToken then FFAT[ "Ctr" ]:SetBackColor( tColor ); end

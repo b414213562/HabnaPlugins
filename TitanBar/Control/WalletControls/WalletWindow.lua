@@ -289,9 +289,9 @@ function frmWalletWindow()
 			if SelIndex == 1 then if not ShowMotesOfEnchantment then ShowHideMotesOfEnchantment(); end
 			else if ShowMotesOfEnchantment then ShowHideMotesOfEnchantment(); end end
 		elseif wcur == L["MEOE"] then
-			_G.EOEWhere = SelIndex; settings.EmbersOfEnchantment.W = string.format("%.0f", SelIndex);
-			if SelIndex == 1 then if not ShowEmbersOfEnchantment then ShowHideEmbersOfEnchantment(); end
-			else if ShowEmbersOfEnchantment then ShowHideEmbersOfEnchantment(); end end
+			Where["EmbersOfEnchantment"] = SelIndex; settings.EmbersOfEnchantment.W = string.format("%.0f", SelIndex);
+			if SelIndex == 1 then if not Show["EmbersOfEnchantment"] then ShowHideEmbersOfEnchantment(); end
+			else if Show["EmbersOfEnchantment"] then ShowHideEmbersOfEnchantment(); end end
 		elseif wcur == L["MFOS"] then
 			_G.FOSWhere = SelIndex; settings.FigmentsOfSplendour.W = string.format("%.0f", SelIndex);
 			if SelIndex == 1 then if not ShowFigmentsOfSplendour then ShowHideFigmentsOfSplendour(); end
@@ -402,7 +402,7 @@ function RefreshWIListBox()
 				elseif wcur == L["MBB"] then tw = Where["BingoBadge"]; -- Bingo Badges
 				elseif wcur == L["MLAT"] then tw = Where["AnniversaryToken"]; -- Anniversary Tokens
 				elseif wcur == L["MMOE"] then tw = _G.MOEWhere; -- Motes of Enchantment
-				elseif wcur == L["MEOE"] then tw = _G.EOEWhere; -- Embers of Enchantment
+				elseif wcur == L["MEOE"] then tw = Where["EmbersOfEnchantment"]; -- Embers of Enchantment
 				elseif wcur == L["MFOS"] then tw = _G.FOSWhere; -- Figments of Splendour
 				elseif wcur == L["MFFT"] then tw = _G.FFTWhere; -- Fall Festival Token
 				elseif wcur == L["MFFAT"] then tw = _G.FFATWhere; -- Farmers Faire Token

@@ -10,7 +10,7 @@ EOE["Ctr"]:SetParent( TB["win"] );
 EOE["Ctr"]:SetMouseVisible( false );
 EOE["Ctr"]:SetZOrder( 2 );
 EOE["Ctr"]:SetBlendMode( Turbine.UI.BlendMode.AlphaBlend );
-EOE["Ctr"]:SetBackColor( Turbine.UI.Color( EOEbcAlpha, EOEbcRed, EOEbcGreen, EOEbcBlue ) );
+EOE["Ctr"]:SetBackColor( Turbine.UI.Color( BC.Alpha["EmbersOfEnchantment"], BC.Red["EmbersOfEnchantment"], BC.Green["EmbersOfEnchantment"], BC.Blue["EmbersOfEnchantment"] ) );
 --**^
 --**v Embers of Enchantment & icon on TitanBar v**
 EOE["Icon"] = Turbine.UI.Control();
@@ -89,10 +89,10 @@ end
 EOE["Lbl"].MouseUp = function( sender, args )
 	EOE["Ctr"]:SetZOrder( 2 );
 	dragging = false;
-	_G.EOELocX = EOE["Ctr"]:GetLeft();
-	settings.EmbersOfEnchantment.X = string.format("%.0f", _G.EOELocX);
-	_G.EOELocY = EOE["Ctr"]:GetTop();
-	settings.EmbersOfEnchantment.Y = string.format("%.0f", _G.EOELocY);
+	Position.Left["EmbersOfEnchantment"] = EOE["Ctr"]:GetLeft();
+	settings.EmbersOfEnchantment.X = string.format("%.0f", Position.Left["EmbersOfEnchantment"]);
+	Position.Top["EmbersOfEnchantment"] = EOE["Ctr"]:GetTop();
+	settings.EmbersOfEnchantment.Y = string.format("%.0f", Position.Top["EmbersOfEnchantment"]);
 	SaveSettings( false );
 end
 --**^

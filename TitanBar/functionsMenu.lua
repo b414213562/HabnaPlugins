@@ -515,15 +515,15 @@ function ShowHideMotesOfEnchantment()
 	MOE[ "Ctr" ]:SetVisible( ShowMotesOfEnchantment );
 end
 function ShowHideEmbersOfEnchantment()
-	ShowEmbersOfEnchantment = not ShowEmbersOfEnchantment;
-	settings.EmbersOfEnchantment.V = ShowEmbersOfEnchantment;
-	settings.EmbersOfEnchantment.W = string.format( "%.0f", _G.EOEWhere );
+	Show["EmbersOfEnchantment"] = not Show["EmbersOfEnchantment"];
+	settings.EmbersOfEnchantment.V = Show["EmbersOfEnchantment"];
+	settings.EmbersOfEnchantment.W = string.format( "%.0f", Where["EmbersOfEnchantment"] );
 	SaveSettings( false );
 	ImportCtr( "EOE" );
-	if ShowEmbersOfEnchantment then
-		EOE[ "Ctr" ]:SetBackColor( Turbine.UI.Color( EOEbcAlpha, EOEbcRed, EOEbcGreen, EOEbcBlue ) );
+	if Show["EmbersOfEnchantment"] then
+		EOE[ "Ctr" ]:SetBackColor( Turbine.UI.Color( BC.Alpha["EmbersOfEnchantment"], BC.Red["EmbersOfEnchantment"], BC.Green["EmbersOfEnchantment"], BC.Blue["EmbersOfEnchantment"] ) );
 	end
-	EOE[ "Ctr" ]:SetVisible( ShowEmbersOfEnchantment );
+	EOE[ "Ctr" ]:SetVisible( Show["EmbersOfEnchantment"] );
 end
 
 function ShowHideFigmentsOfSplendour()
