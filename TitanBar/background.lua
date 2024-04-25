@@ -101,7 +101,7 @@ function frmBackground()
 	if sFrom == "MST" then curSelAlpha = BC.Alpha["MidsummerToken"]; curSelRed = BC.Red["MidsummerToken"]; curSelGreen = BC.Green["MidsummerToken"]; curSelBlue = BC.Blue["MidsummerToken"]; end
 	if sFrom == "AS" then curSelAlpha = BC.Alpha["AncientScript"]; curSelRed = BC.Red["AncientScript"]; curSelGreen = BC.Green["AncientScript"]; curSelBlue = BC.Blue["AncientScript"]; end
 	if sFrom == "BOT" then curSelAlpha = BC.Alpha["BadgeOfTaste"]; curSelRed = BC.Red["BadgeOfTaste"]; curSelGreen = BC.Green["BadgeOfTaste"]; curSelBlue = BC.Blue["BadgeOfTaste"]; end
-	if sFrom == "BOD" then curSelAlpha = BODbcAlpha; curSelRed = BODbcRed; curSelGreen = BODbcGreen; curSelBlue = BODbcBlue; end
+	if sFrom == "BOD" then curSelAlpha = BC.Alpha["BadgeOfDishonour"]; curSelRed = BC.Red["BadgeOfDishonour"]; curSelGreen = BC.Green["BadgeOfDishonour"]; curSelBlue = BC.Blue["BadgeOfDishonour"]; end
 	curAlpha, curColor.R, curColor.G, curColor.B = curSelAlpha, curSelRed, curSelGreen, curSelBlue;
 	curSelColor:SetBackColor( Turbine.UI.Color( curSelAlpha, curSelRed, curSelGreen, curSelBlue ) );
 	-- **^
@@ -369,7 +369,7 @@ function UpdateBCvariable()
 		BC.Alpha["MidsummerToken"], BC.Red["MidsummerToken"], BC.Green["MidsummerToken"], BC.Blue["MidsummerToken"] = curSelAlpha, curSelRed, curSelGreen, curSelBlue;
 		BC.Alpha["AncientScript"], BC.Red["AncientScript"], BC.Green["AncientScript"], BC.Blue["AncientScript"] = curSelAlpha, curSelRed, curSelGreen, curSelBlue;
 		BC.Alpha["BadgeOfTaste"], BC.Red["BadgeOfTaste"], BC.Green["BadgeOfTaste"], BC.Blue["BadgeOfTaste"] = curSelAlpha, curSelRed, curSelGreen, curSelBlue;
-		BODbcAlpha, BODbcRed, BODbcGreen, BODbcBlue = curSelAlpha, curSelRed, curSelGreen, curSelBlue;
+		BC.Alpha["BadgeOfDishonour"], BC.Red["BadgeOfDishonour"], BC.Green["BadgeOfDishonour"], BC.Blue["BadgeOfDishonour"] = curSelAlpha, curSelRed, curSelGreen, curSelBlue;
 
 	else
 		if sFrom == "TitanBar" then bcAlpha = curSelAlpha; bcRed = curSelRed; bcGreen = curSelGreen; bcBlue = curSelBlue; end
@@ -413,6 +413,6 @@ function UpdateBCvariable()
 		if sFrom == "MST" then BC.Alpha["MidsummerToken"] = curSelAlpha; BC.Red["MidsummerToken"] = curSelRed; BC.Green["MidsummerToken"] = curSelGreen; BC.Blue["MidsummerToken"] = curSelBlue; end
 		if sFrom == "AS" then BC.Alpha["AncientScript"] = curSelAlpha; BC.Red["AncientScript"] = curSelRed; BC.Green["AncientScript"] = curSelGreen; BC.Blue["AncientScript"] = curSelBlue; end
 		if sFrom == "BOT" then BC.Alpha["BadgeOfTaste"] = curSelAlpha; BC.Red["BadgeOfTaste"] = curSelRed; BC.Green["BadgeOfTaste"] = curSelGreen; BC.Blue["BadgeOfTaste"] = curSelBlue; end
-		if sFrom == "BOD" then BODbcAlpha = curSelAlpha; BODbcRed = curSelRed; BODbcGreen = curSelGreen; BODbcBlue = curSelBlue; end
+		if sFrom == "BOD" then BC.Alpha["BadgeOfDishonour"] = curSelAlpha; BC.Red["BadgeOfDishonour"] = curSelRed; BC.Green["BadgeOfDishonour"] = curSelGreen; BC.Blue["BadgeOfDishonour"] = curSelBlue; end
 	end
 end

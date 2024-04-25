@@ -321,9 +321,9 @@ function frmWalletWindow()
 		    if SelIndex == 1 then if not Show["BadgeOfTaste"] then ShowHideBadgeOfTaste(); end
 		    else if Show["BadgeOfTaste"] then ShowHideBadgeOfTaste(); end end
 		elseif wcur == L["MBOD"] then
-		    _G.BODWhere = SelIndex; settings.BadgeOfDishonour.W = string.format("%.0f", SelIndex);
-		    if SelIndex == 1 then if not ShowBadgeOfDishonour then ShowHideBadgeOfDishonour(); end
-		    else if ShowBadgeOfDishonour then ShowHideBadgeOfDishonour(); end end
+		    Where["BadgeOfDishonour"] = SelIndex; settings.BadgeOfDishonour.W = string.format("%.0f", SelIndex);
+		    if SelIndex == 1 then if not Show["BadgeOfDishonour"] then ShowHideBadgeOfDishonour(); end
+		    else if Show["BadgeOfDishonour"] then ShowHideBadgeOfDishonour(); end end
 		elseif wcur == L["MLP"] then
 			Where["LOTROPoints"] = SelIndex; settings.LOTROPoints.W = string.format("%.0f", SelIndex);
 			if SelIndex == 1 then if not Show["LOTROPoints"] then ShowHideLOTROPoints(); end
@@ -410,7 +410,7 @@ function RefreshWIListBox()
 				elseif wcur == L["MMST"] then tw = Where["MidsummerToken"]; -- Midsummer Token
 				elseif wcur == L["MAS"] then tw = Where["AncientScript"]; -- Ancient Script
 				elseif wcur == L["MBOT"] then tw = Where["BadgeOfTaste"]; -- Badge of Taste
-				elseif wcur == L["MBOD"] then tw = _G.BODWhere; -- Badge of Dishonour
+				elseif wcur == L["MBOD"] then tw = Where["BadgeOfDishonour"]; -- Badge of Dishonour
 				end
 				for k, v in pairs(WICBO) do if k == tonumber(tw) then WIDD:SetSelection(k); end end
 

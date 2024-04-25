@@ -971,15 +971,14 @@ function LoadSettings()
     if settings.BadgeOfDishonour.X == nil then settings.BadgeOfDishonour.X = string.format("%.0f", tX); end
     if settings.BadgeOfDishonour.Y == nil then settings.BadgeOfDishonour.Y = string.format("%.0f", tY); end
     if settings.BadgeOfDishonour.W == nil then settings.BadgeOfDishonour.W = string.format("%.0f", tW); end
-    ShowBadgeOfDishonour = settings.BadgeOfDishonour.V;
-    BODbcAlpha = tonumber(settings.BadgeOfDishonour.A);
-    BODbcRed = tonumber(settings.BadgeOfDishonour.R);
-    BODbcGreen = tonumber(settings.BadgeOfDishonour.G);
-    BODbcBlue = tonumber(settings.BadgeOfDishonour.B);
-    _G.BODLocX = tonumber(settings.BadgeOfDishonour.X);
-    _G.BODLocY = tonumber(settings.BadgeOfDishonour.Y);
-    _G.BODWhere = tonumber(settings.BadgeOfDishonour.W);
-    if _G.BODWhere == 3 and ShowBadgeOfDishonour then _G.BODWhere = 1; settings.BadgeOfDishonour.W = string.format("%.0f", _G.BODWhere); end
+    Show["BadgeOfDishonour"] = settings.BadgeOfDishonour.V;
+    BC.Alpha["BadgeOfDishonour"] = tonumber(settings.BadgeOfDishonour.A);
+    BC.Red["BadgeOfDishonour"] = tonumber(settings.BadgeOfDishonour.R);
+    BC.Green["BadgeOfDishonour"] = tonumber(settings.BadgeOfDishonour.G);
+    BC.Blue["BadgeOfDishonour"] = tonumber(settings.BadgeOfDishonour.B);
+    Position.Left["BadgeOfDishonour"] = tonumber(settings.BadgeOfDishonour.X);
+    Position.Top["BadgeOfDishonour"] = tonumber(settings.BadgeOfDishonour.Y);
+    Where["BadgeOfDishonour"] = ParseWhere(settings, "FigBadgeOfDishonourentsOfSplendour");
     
 	SaveSettings( false );
 	
@@ -1460,14 +1459,14 @@ function SaveSettings(str)
 		settings.BadgeOfTaste.W = string.format("%.0f", Where["BadgeOfTaste"]);
 
         settings.BadgeOfDishonour = {};
-        settings.BadgeOfDishonour.V = ShowBadgeOfDishonour;
-        settings.BadgeOfDishonour.A = string.format("%.3f", BODbcAlpha);
-        settings.BadgeOfDishonour.R = string.format("%.3f", BODbcRed);
-        settings.BadgeOfDishonour.G = string.format("%.3f", BODbcGreen);
-        settings.BadgeOfDishonour.B = string.format("%.3f", BODbcBlue);
-        settings.BadgeOfDishonour.X = string.format("%.0f", _G.BODLocX);
-        settings.BadgeOfDishonour.Y = string.format("%.0f", _G.BODLocY);
-        settings.BadgeOfDishonour.W = string.format("%.0f", _G.BODWhere);
+        settings.BadgeOfDishonour.V = Show["BadgeOfDishonour"];
+        settings.BadgeOfDishonour.A = string.format("%.3f", BC.Alpha["BadgeOfDishonour"]);
+        settings.BadgeOfDishonour.R = string.format("%.3f", BC.Red["BadgeOfDishonour"]);
+        settings.BadgeOfDishonour.G = string.format("%.3f", BC.Green["BadgeOfDishonour"]);
+        settings.BadgeOfDishonour.B = string.format("%.3f", BC.Blue["BadgeOfDishonour"]);
+        settings.BadgeOfDishonour.X = string.format("%.0f", Position.Left["BadgeOfDishonour"]);
+        settings.BadgeOfDishonour.Y = string.format("%.0f", Position.Top["BadgeOfDishonour"]);
+        settings.BadgeOfDishonour.W = string.format("%.0f", Where["BadgeOfDishonour"]);
 
 	end
 	
@@ -1526,7 +1525,7 @@ function ResetSettings()
 	Show["MidsummerToken"], BC.Alpha["MidsummerToken"], BC.Red["MidsummerToken"], BC.Green["MidsummerToken"], BC.Blue["MidsummerToken"], Position.Left["MidsummerToken"], Position.Top["MidsummerToken"], Where["MidsummerToken"] = false, tA, tR, tG, tB, tX, tY, tW; --for  Midsummer Token Control
 	Show["AncientScript"], BC.Alpha["AncientScript"], BC.Red["AncientScript"], BC.Green["AncientScript"], BC.Blue["AncientScript"], Position.Left["AncientScript"], Position.Top["AncientScript"], Where["AncientScript"] = false, tA, tR, tG, tB, tX, tY, tW; --for  Ancient Script Control
     Show["BadgeOfTaste"], BC.Alpha["BadgeOfTaste"], BC.Red["BadgeOfTaste"], BC.Green["BadgeOfTaste"], BC.Blue["BadgeOfTaste"], Position.Left["BadgeOfTaste"], Position.Top["BadgeOfTaste"], Where["BadgeOfTaste"] = false, tA, tR, tG, tB, tX, tY, tW; --for Badge of Taste Control 
-    ShowBadgeOfDishonour, BODbcAlpha, BODbcRed, BODbcGreen, BODbcBlue, _G.BODLocX, _G.BODLocY, _G.BODWhere = false, tA, tR, tG, tB, tX, tY, tW; --for Badge of Dishonour Control 
+    Show["BadgeOfDishonour"], BC.Alpha["BadgeOfDishonour"], BC.Red["BadgeOfDishonour"], BC.Green["BadgeOfDishonour"], BC.Blue["BadgeOfDishonour"], Position.Left["BadgeOfDishonour"], Position.Top["BadgeOfDishonour"], Where["BadgeOfDishonour"] = false, tA, tR, tG, tB, tX, tY, tW; --for Badge of Dishonour Control 
 
 	SaveSettings( true ); --True: Get & save all settings table to file. / False: only save settings table to file.
 	ReloadTitanBar();
@@ -1741,9 +1740,9 @@ function ReplaceCtr()
     if Show["BadgeOfTaste"] and Where["BadgeOfTaste"] == 1 then BOT[ "Ctr" ]:SetPosition( Position.Left["BadgeOfTaste"], Position.Top["BadgeOfTaste"] ); end
 
     oldLocX = settings.BadgeOfDishonour.X / oldScreenWidth;
-    _G.BODLocX = oldLocX * screenWidth;
-    settings.BadgeOfDishonour.X = string.format("%.0f", _G.BODLocX);
-    if ShowBadgeOfDishonour and _G.BODWhere == 1 then BOD[ "Ctr" ]:SetPosition( _G.BODLocX, _G.BODLocY ); end
+    Position.Left["BadgeOfDishonour"] = oldLocX * screenWidth;
+    settings.BadgeOfDishonour.X = string.format("%.0f", Position.Left["BadgeOfDishonour"]);
+    if Show["BadgeOfDishonour"] and Where["BadgeOfDishonour"] == 1 then BOD[ "Ctr" ]:SetPosition( Position.Left["BadgeOfDishonour"], Position.Top["BadgeOfDishonour"] ); end
 	
 	SaveSettings( false );
 	write( L["TBSSCD"] );

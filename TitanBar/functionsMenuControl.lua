@@ -47,7 +47,7 @@ function UnloadControl( value )
 		if Show["MidsummerToken"] then Where["MidsummerToken"] = 3; ShowHideMidsummerToken(); end
 		if Show["AncientScript"] then Where["AncientScript"] = 3; ShowHideAncientScript(); end
 		if Show["BadgeOfTaste"] then Where["BadgeOfTaste"] = 3; ShowHideBadgeOfTaste(); end
-		if ShowBadgeOfDishonour then _G.BODWhere = 3; ShowHideBadgeOfDishonour(); end
+		if Show["BadgeOfDishonour"] then Where["BadgeOfDishonour"] = 3; ShowHideBadgeOfDishonour(); end
 		elseif value == "this" then
 			if _G.sFromCtr == "WI" then ShowHideWallet();
 			elseif _G.sFromCtr == "Money" then Where["Money"] = 3; ShowHideMoney();
@@ -89,7 +89,7 @@ function UnloadControl( value )
 			elseif _G.sFromCtr == "MST" then Where["MidsummerToken"] = 3; ShowHideMidsummerToken();
 			elseif _G.sFromCtr == "AS" then Where["AncientScript"] = 3; ShowHideAncientScript();
 			elseif _G.sFromCtr == "BOT" then Where["BadgeOfTaste"] = 3; ShowHideBadgeOfTaste();
-			elseif _G.sFromCtr == "BOD" then _G.BODWhere = 3; ShowHideBadgeOfDishonour();
+			elseif _G.sFromCtr == "BOD" then Where["BadgeOfDishonour"] = 3; ShowHideBadgeOfDishonour();
 			end
 		end
 
@@ -145,7 +145,7 @@ function BGColor( cmd, value )
 		elseif _G.sFromCtr == "MST" then tA, tR, tG, tB = BC.Alpha["MidsummerToken"], BC.Red["MidsummerToken"], BC.Green["MidsummerToken"], BC.Blue["MidsummerToken"];
 		elseif _G.sFromCtr == "AS" then tA, tR, tG, tB = BC.Alpha["AncientScript"], BC.Red["AncientScript"], BC.Green["AncientScript"], BC.Blue["AncientScript"];
 		elseif _G.sFromCtr == "BOT" then tA, tR, tG, tB = BC.Alpha["BadgeOfTaste"], BC.Red["BadgeOfTaste"], BC.Green["BadgeOfTaste"], BC.Blue["BadgeOfTaste"];
-		elseif _G.sFromCtr == "BOD" then tA, tR, tG, tB = BODbcAlpha, BODbcRed, BODbcGreen, BODbcBlue;
+		elseif _G.sFromCtr == "BOD" then tA, tR, tG, tB = BC.Alpha["BadgeOfDishonour"], BC.Red["BadgeOfDishonour"], BC.Green["BadgeOfDishonour"], BC.Blue["BadgeOfDishonour"];
 		end
 	end
 	
@@ -230,8 +230,8 @@ function BGColor( cmd, value )
 		if Show["AncientScript"] then AS[ "Ctr" ]:SetBackColor( Turbine.UI.Color( tA, tR, tG, tB ) ); end
 		BC.Alpha["BadgeOfTaste"], BC.Red["BadgeOfTaste"], BC.Green["BadgeOfTaste"], BC.Blue["BadgeOfTaste"] = tA, tR, tG, tB;
 		if Show["BadgeOfTaste"] then BOT[ "Ctr" ]:SetBackColor( Turbine.UI.Color( tA, tR, tG, tB ) ); end
-		BODbcAlpha, BODbcRed, BODbcGreen, BODbcBlue = tA, tR, tG, tB;
-		if ShowBadgeOfDishonour then BOD[ "Ctr" ]:SetBackColor( Turbine.UI.Color( tA, tR, tG, tB ) ); end
+		BC.Alpha["BadgeOfDishonour"], BC.Red["BadgeOfDishonour"], BC.Green["BadgeOfDishonour"], BC.Blue["BadgeOfDishonour"] = tA, tR, tG, tB;
+		if Show["BadgeOfDishonour"] then BOD[ "Ctr" ]:SetBackColor( Turbine.UI.Color( tA, tR, tG, tB ) ); end
 	elseif value == "all" then
 		BGColor( cmd, "ctr" );
 		BGColor( cmd, "TitanBar" );
@@ -357,7 +357,7 @@ function BGColor( cmd, value )
 			BC.Alpha["BadgeOfTaste"], BC.Red["BadgeOfTaste"], BC.Green["BadgeOfTaste"], BC.Blue["BadgeOfTaste"] = tA, tR, tG, tB;
 			BOT[ "Ctr" ]:SetBackColor( Turbine.UI.Color( tA, tR, tG, tB ) );
 		elseif _G.sFromCtr == "BOD" then
-			BODbcAlpha, BODbcRed, BODbcGreen, BODbcBlue = tA, tR, tG, tB;
+			BC.Alpha["BadgeOfDishonour"], BC.Red["BadgeOfDishonour"], BC.Green["BadgeOfDishonour"], BC.Blue["BadgeOfDishonour"] = tA, tR, tG, tB;
 			BOD[ "Ctr" ]:SetBackColor( Turbine.UI.Color( tA, tR, tG, tB ) );
 		end
 	elseif value == "TitanBar" then

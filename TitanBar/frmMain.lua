@@ -185,7 +185,7 @@ function frmMain()
 			if Where["MidsummerToken"] ~= 3 then ImportCtr( "MST" ); end
 			if Where["AncientScript"] ~= 3 then ImportCtr( "AS" ); end
 			if Where["BadgeOfTaste"] ~= 3 then ImportCtr( "BOT" ); end
-			if _G.BODWhere ~= 3 then ImportCtr( "BOD" ); end
+			if Where["BadgeOfDishonour"] ~= 3 then ImportCtr( "BOD" ); end
 		end
 	else
 		-- Disable infos not useful in Monster Play
@@ -340,7 +340,7 @@ function frmMain()
 				if Where["MidsummerToken"] ~= 3 then ImportCtr( "MST" ); end
 				if Where["AncientScript"] ~= 3 then ImportCtr( "AS" ); end
 				if Where["BadgeOfTaste"] ~= 3 then ImportCtr( "BOT" ); end
-				if _G.BODWhere ~= 3 then ImportCtr( "BOD" ); end
+				if Where["BadgeOfDishonour"] ~= 3 then ImportCtr( "BOD" ); end
 			end
 
 			screenWidth, screenHeight = Turbine.UI.Display.GetSize();

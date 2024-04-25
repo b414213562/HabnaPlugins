@@ -686,7 +686,7 @@ end
 --**^
 --**v Update Badge of Dishonour currency on TitanBar v**
 function UpdateBadgeOfDishonour()
-	if _G.BODWhere == 1 then
+	if Where["BadgeOfDishonour"] == 1 then
 		BOD[ "Lbl" ]:SetText( GetCurrency( L[ "MBOD" ] ) );
 		BOD[ "Lbl" ]:SetSize( BOD[ "Lbl" ]:GetTextLength() * NM, CTRHeight ); 
 		AjustIcon( "BOD" );
@@ -1046,7 +1046,7 @@ function ChangeColor(tColor)
 		if Show["MidsummerToken"] then MST[ "Ctr" ]:SetBackColor( tColor ); end
 		if Show["AncientScript"] then AS[ "Ctr" ]:SetBackColor( tColor ); end
 		if Show["BadgeOfTaste"] then BOT[ "Ctr" ]:SetBackColor( tColor ); end
-		if ShowBadgeOfDishonour then BOD[ "Ctr" ]:SetBackColor( tColor ); end
+		if Show["BadgeOfDishonour"] then BOD[ "Ctr" ]:SetBackColor( tColor ); end
 	else
 		if sFrom == "TitanBar" then TB["win"]:SetBackColor( tColor ); end
 		if sFrom == "WI" then WI[ "Ctr" ]:SetBackColor( tColor ); end

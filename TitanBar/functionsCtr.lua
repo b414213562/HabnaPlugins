@@ -421,11 +421,11 @@ function ImportCtr( value )
         end
         if Where["BadgeOfTaste"] ~= 3 then UpdateBadgeOfTaste(); end
     elseif value == "BOD" then --Badge of Dishonour
-        if _G.BODWhere == 1 then
+        if Where["BadgeOfDishonour"] == 1 then
             import (AppCtrWalletD.."BadgeOfDishonour");
-            BOD[ "Ctr" ]:SetPosition( _G.BODLocX, _G.BODLocY );
+            BOD[ "Ctr" ]:SetPosition( Position.Left["BadgeOfDishonour"], Position.Top["BadgeOfDishonour"] );
         end
-        if _G.BODWhere ~= 3 then UpdateBadgeOfDishonour(); end
+        if Where["BadgeOfDishonour"] ~= 3 then UpdateBadgeOfDishonour(); end
 	elseif value == "RP" then --Reputation Points
         RPGR = { ['default'] = {
             [0] = 10000, [1] = 10000, [2] = 20000, [3] = 25000, [4] = 30000,
@@ -1159,7 +1159,7 @@ function UpdateCurrency( str )
 	if str == L[ "MMST" ] and Show["MidsummerToken"] then UpdateMidsummerToken(); end
 	if str == L[ "MAS" ] and Show["AncientScript"] then UpdateAncientScript(); end
     if str == L[ "MBOT" ] and Show["BadgeOfTaste"] then UpdateBadgeOfTaste(); end
-    if str == L[ "MBOD" ] and ShowBadgeOfDishonour then UpdateBadgeOfDishonour(); end
+    if str == L[ "MBOD" ] and Show["BadgeOfDishonour"] then UpdateBadgeOfDishonour(); end
 end
 
 function GetCurrency( str )

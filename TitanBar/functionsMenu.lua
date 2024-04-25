@@ -611,13 +611,13 @@ function ShowHideBadgeOfTaste()
 end
 
 function ShowHideBadgeOfDishonour()
-	ShowBadgeOfDishonour = not ShowBadgeOfDishonour;
-	settings.BadgeOfDishonour.V = ShowBadgeOfDishonour;
-	settings.BadgeOfDishonour.W = string.format( "%.0f", _G.BODWhere );
+	Show["BadgeOfDishonour"] = not Show["BadgeOfDishonour"];
+	settings.BadgeOfDishonour.V = Show["BadgeOfDishonour"];
+	settings.BadgeOfDishonour.W = string.format( "%.0f", Where["BadgeOfDishonour"] );
 	SaveSettings( false );
 	ImportCtr( "BOD" );
-	if ShowBadgeOfDishonour then
-		BOD[ "Ctr" ]:SetBackColor( Turbine.UI.Color( BODbcAlpha, BODbcRed, BODbcGreen, BODbcBlue ) );
+	if Show["BadgeOfDishonour"] then
+		BOD[ "Ctr" ]:SetBackColor( Turbine.UI.Color( BC.Alpha["BadgeOfDishonour"], BC.Red["BadgeOfDishonour"], BC.Green["BadgeOfDishonour"], BC.Blue["BadgeOfDishonour"] ) );
 	end
-	BOD[ "Ctr" ]:SetVisible( ShowBadgeOfDishonour );
+	BOD[ "Ctr" ]:SetVisible( Show["BadgeOfDishonour"] );
 end

@@ -10,7 +10,7 @@ BOD["Ctr"]:SetParent( TB["win"] );
 BOD["Ctr"]:SetMouseVisible( false );
 BOD["Ctr"]:SetZOrder( 2 );
 BOD["Ctr"]:SetBlendMode( Turbine.UI.BlendMode.AlphaBlend );
-BOD["Ctr"]:SetBackColor( Turbine.UI.Color( BODbcAlpha, BODbcRed, BODbcGreen, BODbcBlue ) );
+BOD["Ctr"]:SetBackColor( Turbine.UI.Color( BC.Alpha["BadgeOfDishonour"], BC.Red["BadgeOfDishonour"], BC.Green["BadgeOfDishonour"], BC.Blue["BadgeOfDishonour"] ) );
 --**^
 --**v Badge of Dishonour & icon on TitanBar v**
 BOD["Icon"] = Turbine.UI.Control();
@@ -89,10 +89,10 @@ end
 BOD["Lbl"].MouseUp = function( sender, args )
 	BOD["Ctr"]:SetZOrder( 2 );
 	dragging = false;
-	_G.BODLocX = BOD["Ctr"]:GetLeft();
-	settings.BadgeOfDishonour.X = string.format("%.0f", _G.BODLocX);
-	_G.BODLocY = BOD["Ctr"]:GetTop();
-	settings.BadgeOfDishonour.Y = string.format("%.0f", _G.BODLocY);
+	Position.Left["BadgeOfDishonour"] = BOD["Ctr"]:GetLeft();
+	settings.BadgeOfDishonour.X = string.format("%.0f", Position.Left["BadgeOfDishonour"]);
+	Position.Top["BadgeOfDishonour"] = BOD["Ctr"]:GetTop();
+	settings.BadgeOfDishonour.Y = string.format("%.0f", Position.Top["BadgeOfDishonour"]);
 	SaveSettings( false );
 end
 --**^
