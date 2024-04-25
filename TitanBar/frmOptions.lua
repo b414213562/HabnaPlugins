@@ -29,7 +29,7 @@ if RP ~= nil then WalletControls[ "RP" ] = { ShowHide = ShowReputation, Control 
 if LP ~= nil then WalletControls[ "LP" ] = { ShowHide = Show["LOTROPoints"], Control = LP[ "Ctr" ] }; end
 if ASP ~= nil then WalletControls[ "ASP" ] = { ShowHide = Show["AmrothSilverPiece"], Control = ASP[ "Ctr" ] }; end
 if SOM ~= nil then WalletControls[ "SOM" ] = { ShowHide = Show["StarsofMerit"], Control = SOM[ "Ctr" ] }; end
-if CGSP ~= nil then WalletControls[ "CGSP" ] = { ShowHide = ShowCentralGondorSilverPiece, Control = CGSP[ "Ctr" ] }; end
+if CGSP ~= nil then WalletControls[ "CGSP" ] = { ShowHide = Show["CentralGondorSilverPiece"], Control = CGSP[ "Ctr" ] }; end
 if GGB ~= nil then WalletControls[ "GGB" ] = { ShowHide = ShowGiftgiversBrand, Control = GGB[ "Ctr" ] }; end
 if BB ~= nil then WalletControls[ "BB" ] = { ShowHide = ShowBingoBadge, Control = BB[ "Ctr" ] }; end
 if LAT ~= nil then WalletControls[ "LAT" ] = { ShowHide = ShowAnniversaryToken, Control = LAT[ "Ctr" ] }; end

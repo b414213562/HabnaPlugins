@@ -569,7 +569,7 @@ end
 --**^
 --**v Update Central Gondor Silver Piece currency on TitanBar v**
 function UpdateCentralGondorSilverPiece()
-	if _G.CGSPWhere == 1 then
+	if Where["CentralGondorSilverPiece"] == 1 then
 		CGSP[ "Lbl" ]:SetText( GetCurrency( L[ "MCGSP" ] ) );
 		CGSP[ "Lbl" ]:SetSize( CGSP[ "Lbl" ]:GetTextLength() * NM, CTRHeight ); 
 		AjustIcon( "CGSP" );
@@ -1033,7 +1033,7 @@ function ChangeColor(tColor)
 		if ShowGameTime then GT[ "Ctr" ]:SetBackColor( tColor ); end
 		if Show["AmrothSilverPiece"] then ASP[ "Ctr" ]:SetBackColor( tColor ); end
 		if Show["StarsofMerit"] then SOM[ "Ctr" ]:SetBackColor( tColor ); end
-		if ShowCentralGondorSilverPiece then CGSP[ "Ctr" ]:SetBackColor( tColor ); end
+		if Show["CentralGondorSilverPiece"] then CGSP[ "Ctr" ]:SetBackColor( tColor ); end
 		if ShowGiftgiversBrand then GGB[ "Ctr" ]:SetBackColor( tColor ); end
 		if ShowBingoBadge then BB[ "Ctr" ]:SetBackColor( tColor ); end
 		if ShowAniversaryToken then LAT[ "Ctr" ]:SetBackColor( tColor ); end

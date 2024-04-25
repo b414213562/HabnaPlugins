@@ -736,15 +736,14 @@ function LoadSettings()
 	if settings.CentralGondorSilverPiece.X == nil then settings.CentralGondorSilverPiece.X = string.format("%.0f", tX); end
 	if settings.CentralGondorSilverPiece.Y == nil then settings.CentralGondorSilverPiece.Y = string.format("%.0f", tY); end
 	if settings.CentralGondorSilverPiece.W == nil then settings.CentralGondorSilverPiece.W = string.format("%.0f", tW); end
-	ShowCentralGondorSilverPiece = settings.CentralGondorSilverPiece.V;
-	CGSPbcAlpha = tonumber(settings.CentralGondorSilverPiece.A);
-	CGSPbcRed = tonumber(settings.CentralGondorSilverPiece.R);
-	CGSPbcGreen = tonumber(settings.CentralGondorSilverPiece.G);
-	CGSPbcBlue = tonumber(settings.CentralGondorSilverPiece.B);
-	_G.CGSPLocX = tonumber(settings.CentralGondorSilverPiece.X);
-	_G.CGSPLocY = tonumber(settings.CentralGondorSilverPiece.Y);
-	_G.CGSPWhere = tonumber(settings.CentralGondorSilverPiece.W);
-	if _G.CGSPWhere == 3 and ShowCentralGondorSilverPiece then _G.CGSPWhere = 1; settings.CentralGondorSilverPiece.W = string.format("%.0f", _G.CGSPWhere); end --Remove after Oct, 15th 2013
+	Show["CentralGondorSilverPiece"] = settings.CentralGondorSilverPiece.V;
+	BC.Alpha["CentralGondorSilverPiece"] = tonumber(settings.CentralGondorSilverPiece.A);
+	BC.Red["CentralGondorSilverPiece"] = tonumber(settings.CentralGondorSilverPiece.R);
+	BC.Green["CentralGondorSilverPiece"] = tonumber(settings.CentralGondorSilverPiece.G);
+	BC.Blue["CentralGondorSilverPiece"] = tonumber(settings.CentralGondorSilverPiece.B);
+	Position.Left["CentralGondorSilverPiece"] = tonumber(settings.CentralGondorSilverPiece.X);
+	Position.Top["CentralGondorSilverPiece"] = tonumber(settings.CentralGondorSilverPiece.Y);
+    Where["CentralGondorSilverPiece"] = ParseWhere(settings, "CentralGondorSilverPiece");
 
 	if settings.GiftgiversBrand == nil then settings.GiftgiversBrand = {}; end
 	if settings.GiftgiversBrand.V == nil then settings.GiftgiversBrand.V = false; end
@@ -1342,14 +1341,14 @@ function SaveSettings(str)
 		settings.StarsofMerit.W = string.format("%.0f", Where["StarsofMerit"]);
 		
 		settings.CentralGondorSilverPiece = {};
-		settings.CentralGondorSilverPiece.V = ShowCentralGondorSilverPiece;
-		settings.CentralGondorSilverPiece.A = string.format("%.3f", CGSPbcAlpha);
-		settings.CentralGondorSilverPiece.R = string.format("%.3f", CGSPbcRed);
-		settings.CentralGondorSilverPiece.G = string.format("%.3f", CGSPbcGreen);
-		settings.CentralGondorSilverPiece.B = string.format("%.3f", CGSPbcBlue);
-		settings.CentralGondorSilverPiece.X = string.format("%.0f", _G.CGSPLocX);
-		settings.CentralGondorSilverPiece.Y = string.format("%.0f", _G.CGSPLocY);
-		settings.CentralGondorSilverPiece.W = string.format("%.0f", _G.CGSPWhere);
+		settings.CentralGondorSilverPiece.V = Show["CentralGondorSilverPiece"];
+		settings.CentralGondorSilverPiece.A = string.format("%.3f", BC.Alpha["CentralGondorSilverPiece"]);
+		settings.CentralGondorSilverPiece.R = string.format("%.3f", BC.Red["CentralGondorSilverPiece"]);
+		settings.CentralGondorSilverPiece.G = string.format("%.3f", BC.Green["CentralGondorSilverPiece"]);
+		settings.CentralGondorSilverPiece.B = string.format("%.3f", BC.Blue["CentralGondorSilverPiece"]);
+		settings.CentralGondorSilverPiece.X = string.format("%.0f", Position.Left["CentralGondorSilverPiece"]);
+		settings.CentralGondorSilverPiece.Y = string.format("%.0f", Position.Top["CentralGondorSilverPiece"]);
+		settings.CentralGondorSilverPiece.W = string.format("%.0f", Where["CentralGondorSilverPiece"]);
 		
 		settings.GiftgiversBrand = {};
 		settings.GiftgiversBrand.V = ShowGiftgiversBrand;
@@ -1525,7 +1524,7 @@ function ResetSettings()
 	ShowGameTime, _G.Clock24h, _G.ShowST, _G.ShowBT, GTbcAlpha, GTbcRed, GTbcGreen, GTbcBlue, _G.GTLocX, _G.GTLocX = true, false, false, false, tA, tR, tG, tB, screenWidth - 60, tY --for Game time Control
 	Show["AmrothSilverPiece"], BC.Alpha["AmrothSilverPiece"], BC.Red["AmrothSilverPiece"], BC.Green["AmrothSilverPiece"], BC.Blue["AmrothSilverPiece"], Position.Left["AmrothSilverPiece"], Position.Top["AmrothSilverPiece"], Where["AmrothSilverPiece"] = false, tA, tR, tG, tB, tX, tY, tW; --for Amroth Silver Piece Control
 	Show["StarsofMerit"], BC.Alpha["StarsofMerit"], BC.Red["StarsofMerit"], BC.Green["StarsofMerit"], BC.Blue["StarsofMerit"], Position.Left["StarsofMerit"], Position.Top["StarsofMerit"], Where["StarsofMerit"] = false, tA, tR, tG, tB, tX, tY, tW; --for Stars of Merit Control
-	ShowCentralGondorSilverPiece, CGSPbcAlpha, CGSPbcRed, CGSPbcGreen, CGSPbcBlue, _G.CGSPLocX, _G.CGSPLocY, _G.CGSPWhere = false, tA, tR, tG, tB, tX, tY, tW; --for Central Gondor Silver Piece Control
+	Show["CentralGondorSilverPiece"], BC.Alpha["CentralGondorSilverPiece"], BC.Red["CentralGondorSilverPiece"], BC.Green["CentralGondorSilverPiece"], BC.Blue["CentralGondorSilverPiece"], Position.Left["CentralGondorSilverPiece"], Position.Top["CentralGondorSilverPiece"], Where["CentralGondorSilverPiece"] = false, tA, tR, tG, tB, tX, tY, tW; --for Central Gondor Silver Piece Control
 	ShowGiftgiversBrand, GGBbcAlpha, GGBbcRed, GGBbcGreen, GGBbcBlue, _G.GGBLocX, _G.GGBLocY, _G.GGBWhere = false, tA, tR, tG, tB, tX, tY, tW; --for Gift giver's Brand Control
 	ShowBingoBadge, BBbcAlpha, BBbcRed, BBbcGreen, BBbcBlue, _G.BBLocX, _G.BBLocY, _G.BBWhere = false, tA, tR, tG, tB, tX, tY, tW; --for Bingo Badge Control
 	ShowAnniversaryToken, LATbcAlpha, LATbcRed, LATbcGreen, LATbcBlue, _G.LATLocX, _G.LATLocY, _G.LATWhere = false, tA, tR, tG, tB, tX, tY, tW; --for Anniversary Token Control
@@ -1688,9 +1687,9 @@ function ReplaceCtr()
 	if Show["StarsofMerit"] and Where["StarsofMerit"] == 1 then SOM[ "Ctr" ]:SetPosition( Position.Left["StarsofMerit"], Position.Top["StarsofMerit"] ); end
 	
 	oldLocX = settings.CentralGondorSilverPiece.X / oldScreenWidth;
-	_G.CGSPLocX = oldLocX * screenWidth;
-	settings.CentralGondorSilverPiece.X = string.format("%.0f", _G.CGSPLocX);
-	if ShowCentralGondorSilverPiece and _G.CGSPWhere == 1 then CGSP[ "Ctr" ]:SetPosition( _G.CGSPLocX, _G.CGSPLocY ); end
+	Position.Left["CentralGondorSilverPiece"] = oldLocX * screenWidth;
+	settings.CentralGondorSilverPiece.X = string.format("%.0f", Position.Left["CentralGondorSilverPiece"]);
+	if Show["CentralGondorSilverPiece"] and Where["CentralGondorSilverPiece"] == 1 then CGSP[ "Ctr" ]:SetPosition( Position.Left["CentralGondorSilverPiece"], Position.Top["CentralGondorSilverPiece"] ); end
 	
 	oldLocX = settings.GiftgiversBrand.X / oldScreenWidth;
 	_G.GGBLocX = oldLocX * screenWidth;

@@ -10,7 +10,7 @@ CGSP["Ctr"]:SetParent( TB["win"] );
 CGSP["Ctr"]:SetMouseVisible( false );
 CGSP["Ctr"]:SetZOrder( 2 );
 CGSP["Ctr"]:SetBlendMode( Turbine.UI.BlendMode.AlphaBlend );
-CGSP["Ctr"]:SetBackColor( Turbine.UI.Color( CGSPbcAlpha, CGSPbcRed, CGSPbcGreen, CGSPbcBlue ) );
+CGSP["Ctr"]:SetBackColor( Turbine.UI.Color( BC.Alpha["CentralGondorSilverPiece"], BC.Red["CentralGondorSilverPiece"], BC.Green["CentralGondorSilverPiece"], BC.Blue["CentralGondorSilverPiece"] ) );
 --**^
 --**v Central Gondor Silver Piece & icon on TitanBar v**
 CGSP["Icon"] = Turbine.UI.Control();
@@ -89,10 +89,10 @@ end
 CGSP["Lbl"].MouseUp = function( sender, args )
 	CGSP["Ctr"]:SetZOrder( 2 );
 	dragging = false;
-	_G.CGSPLocX = CGSP["Ctr"]:GetLeft();
-	settings.CentralGondorSilverPiece.X = string.format("%.0f", _G.CGSPLocX);
-	_G.CGSPLocY = CGSP["Ctr"]:GetTop();
-	settings.CentralGondorSilverPiece.Y = string.format("%.0f", _G.CGSPLocY);
+	Position.Left["CentralGondorSilverPiece"] = CGSP["Ctr"]:GetLeft();
+	settings.CentralGondorSilverPiece.X = string.format("%.0f", Position.Left["CentralGondorSilverPiece"]);
+	Position.Top["CentralGondorSilverPiece"] = CGSP["Ctr"]:GetTop();
+	settings.CentralGondorSilverPiece.Y = string.format("%.0f", Position.Top["CentralGondorSilverPiece"]);
 	SaveSettings( false );
 end
 --**^

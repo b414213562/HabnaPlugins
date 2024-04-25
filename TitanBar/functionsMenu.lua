@@ -458,15 +458,15 @@ function ShowHideStarsofMerit()
 	SOM[ "Ctr" ]:SetVisible( Show["StarsofMerit"] );
 end
 function ShowHideCentralGondorSilverPiece()
-	ShowCentralGondorSilverPiece = not ShowCentralGondorSilverPiece;
-	settings.CentralGondorSilverPiece.V = ShowCentralGondorSilverPiece;
-	settings.CentralGondorSilverPiece.W = string.format("%.0f", _G.CGSPWhere);
+	Show["CentralGondorSilverPiece"] = not Show["CentralGondorSilverPiece"];
+	settings.CentralGondorSilverPiece.V = Show["CentralGondorSilverPiece"];
+	settings.CentralGondorSilverPiece.W = string.format("%.0f", Where["CentralGondorSilverPiece"]);
 	SaveSettings( false );
 	ImportCtr( "CGSP" );
-	if ShowCentralGondorSilverPiece then
-		CGSP[ "Ctr" ]:SetBackColor( Turbine.UI.Color( CGSPbcAlpha, CGSPbcRed, CGSPbcGreen, CGSPbcBlue ) );
+	if Show["CentralGondorSilverPiece"] then
+		CGSP[ "Ctr" ]:SetBackColor( Turbine.UI.Color( BC.Alpha["CentralGondorSilverPiece"], BC.Red["CentralGondorSilverPiece"], BC.Green["CentralGondorSilverPiece"], BC.Blue["CentralGondorSilverPiece"] ) );
 	end
-	CGSP[ "Ctr" ]:SetVisible( ShowCentralGondorSilverPiece );
+	CGSP[ "Ctr" ]:SetVisible( Show["CentralGondorSilverPiece"] );
 end
 function ShowHideGiftgiversBrand()
 	ShowGiftgiversBrand = not ShowGiftgiversBrand;

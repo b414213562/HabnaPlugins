@@ -88,7 +88,7 @@ function frmBackground()
 	if sFrom == "GT" then curSelAlpha = GTbcAlpha; curSelRed = GTbcRed; curSelGreen = GTbcGreen; curSelBlue = GTbcBlue; end
 	if sFrom == "ASP" then curSelAlpha =BC.Alpha["AmrothSilverPiece"]; curSelRed = BC.Red["AmrothSilverPiece"]; curSelGreen = BC.Green["AmrothSilverPiece"]; curSelBlue = BC.Blue["AmrothSilverPiece"]; end
 	if sFrom == "SOM" then curSelAlpha =BC.Alpha["StarsofMerit"]; curSelRed = BC.Red["StarsofMerit"]; curSelGreen = BC.Green["StarsofMerit"]; curSelBlue = BC.Blue["StarsofMerit"]; end
-	if sFrom == "CGSP" then curSelAlpha = CGSPbcAlpha; curSelRed = CGSPbcRed; curSelGreen = CGSPbcGreen; curSelBlue = CGSPbcBlue; end
+	if sFrom == "CGSP" then curSelAlpha = BC.Alpha["CentralGondorSilverPiece"]; curSelRed = BC.Red["CentralGondorSilverPiece"]; curSelGreen = BC.Green["CentralGondorSilverPiece"]; curSelBlue = BC.Blue["CentralGondorSilverPiece"]; end
 	if sFrom == "GGB" then curSelAlpha = GGBbcAlpha; curSelRed = GGBbcRed; curSelGreen = GGBbcGreen; curSelBlue = GGBbcBlue; end
 	if sFrom == "BB" then curSelAlpha = BBbcAlpha; curSelRed = BBbcRed; curSelGreen = BBbcGreen; curSelBlue = BBbcBlue; end
 	if sFrom == "LAT" then curSelAlpha = LATbcAlpha; curSelRed = LATbcRed; curSelGreen = LATbcGreen; curSelBlue = LATbcBlue; end
@@ -356,7 +356,7 @@ function UpdateBCvariable()
 		BC.Alpha["YuleToken"], BC.Red["YuleToken"], BC.Green["YuleToken"], BC.Blue["YuleToken"] = curSelAlpha, curSelRed, curSelGreen, curSelBlue;
 		BC.Alpha["AmrothSilverPiece"], BC.Red["AmrothSilverPiece"], BC.Green["AmrothSilverPiece"], BC.Blue["AmrothSilverPiece"] = curSelAlpha, curSelRed, curSelGreen, curSelBlue;
 		BC.Alpha["StarsofMerit"], BC.Red["StarsofMerit"], BC.Green["StarsofMerit"], BC.Blue["StarsofMerit"] = curSelAlpha, curSelRed, curSelGreen, curSelBlue;
-		CGSPbcAlpha, CGSPbcRed, CGSPbcGreen, CGSPbcBlue = curSelAlpha, curSelRed, curSelGreen, curSelBlue;
+		BC.Alpha["CentralGondorSilverPiece"], BC.Red["CentralGondorSilverPiece"], BC.Green["CentralGondorSilverPiece"], BC.Blue["CentralGondorSilverPiece"] = curSelAlpha, curSelRed, curSelGreen, curSelBlue;
 		GGBbcAlpha, GGBbcRed, GGBbcGreen, GGBbcBlue = curSelAlpha, curSelRed, curSelGreen, curSelBlue;
 		BBbcAlpha, BBbcRed, BBbcGreen, BBbcBlue = curSelAlpha, curSelRed, curSelGreen, curSelBlue;
 		LATbcAlpha, LATbcRed, LATbcGreen, LATbcBlue = curSelAlpha, curSelRed, curSelGreen, curSelBlue;
@@ -400,7 +400,7 @@ function UpdateBCvariable()
 		if sFrom == "GT" then GTbcAlpha = curSelAlpha; GTbcRed = curSelRed; GTbcGreen = curSelGreen; GTbcBlue = curSelBlue; end
 		if sFrom == "ASP" then BC.Alpha["AmrothSilverPiece"] = curSelAlpha; BC.Red["AmrothSilverPiece"] = curSelRed; BC.Green["AmrothSilverPiece"] = curSelGreen; BC.Blue["AmrothSilverPiece"] = curSelBlue; end
 		if sFrom == "SOM" then BC.Alpha["StarsofMerit"] = curSelAlpha; BC.Red["StarsofMerit"] = curSelRed; BC.Green["StarsofMerit"] = curSelGreen; BC.Blue["StarsofMerit"] = curSelBlue; end
-		if sFrom == "CGSP" then CGSPbcAlpha = curSelAlpha; CGSPbcRed = curSelRed; CGSPbcGreen = curSelGreen; CGSPbcBlue = curSelBlue; end
+		if sFrom == "CGSP" then BC.Alpha["CentralGondorSilverPiece"] = curSelAlpha; BC.Red["CentralGondorSilverPiece"] = curSelRed; BC.Green["CentralGondorSilverPiece"] = curSelGreen; BC.Blue["CentralGondorSilverPiece"] = curSelBlue; end
 		if sFrom == "GGB" then GGBbcAlpha = curSelAlpha; GGBbcRed = curSelRed; GGBbcGreen = curSelGreen; GGBbcBlue = curSelBlue; end
 		if sFrom == "BB" then BBbcAlpha = curSelAlpha; BBbcRed = curSelRed; BBbcGreen = curSelGreen; BBbcBlue = curSelBlue; end
 		if sFrom == "LAT" then LATbcAlpha = curSelAlpha; LATbcRed = curSelRed; LATbcGreen = curSelGreen; LATbcBlue = curSelBlue; end

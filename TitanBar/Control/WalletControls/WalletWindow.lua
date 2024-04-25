@@ -269,9 +269,9 @@ function frmWalletWindow()
 			if SelIndex == 1 then if not Show["StarsofMerit"] then ShowHideStarsofMerit(); end
 			else if Show["StarsofMerit"] then ShowHideStarsofMerit(); end end
 		elseif wcur == L["MCGSP"] then
-			_G.CGSPWhere = SelIndex; settings.CentralGondorSilverPiece.W = string.format("%.0f", SelIndex);
-			if SelIndex == 1 then if not ShowCentralGondorSilverPiece then ShowHideCentralGondorSilverPiece(); end
-			else if ShowCentralGondorSilverPiece then ShowHideCentralGondorSilverPiece(); end end
+			Where["CentralGondorSilverPiece"] = SelIndex; settings.CentralGondorSilverPiece.W = string.format("%.0f", SelIndex);
+			if SelIndex == 1 then if not Show["CentralGondorSilverPiece"] then ShowHideCentralGondorSilverPiece(); end
+			else if Show["CentralGondorSilverPiece"] then ShowHideCentralGondorSilverPiece(); end end
 		elseif wcur == L["MGGB"] then
 			_G.GGBWhere = SelIndex; settings.GiftgiversBrand.W = string.format("%.0f", SelIndex);
 			if SelIndex == 1 then if not ShowGiftgiversBrand then ShowHideGiftgiversBrand(); end
@@ -397,7 +397,7 @@ function RefreshWIListBox()
 				WIbutSave:SetPosition( WIWCtr:GetWidth()/2 - WIbutSave:GetWidth()/2, LPWCtr:GetTop()+LPWCtr:GetHeight()+10); -- LOTRO Points
 				elseif wcur == L["MASP"] then tw = Where["AmrothSilverPiece"]; -- Amroth Silver Piece
 				elseif wcur == L["MSOM"] then tw = Where["StarsofMerit"]; -- Stars of Merit
-				elseif wcur == L["MCGSP"] then tw = _G.CGSPWhere; -- Central Gondor Silver Piece
+				elseif wcur == L["MCGSP"] then tw = Where["CentralGondorSilverPiece"]; -- Central Gondor Silver Piece
 				elseif wcur == L["MGGB"] then tw = _G.GGBWhere; -- Gift Giver's Brand
 				elseif wcur == L["MBB"] then tw = _G.BBWhere; -- Bingo Badges
 				elseif wcur == L["MLAT"] then tw = _G.LATWhere; -- Anniversary Tokens
