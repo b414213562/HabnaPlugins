@@ -493,15 +493,15 @@ function ShowHideBingoBadge()
 	BB[ "Ctr" ]:SetVisible( Show["BingoBadge"] );
 end
 function ShowHideAnniversaryToken()
-	ShowAnniversaryToken = not ShowAnniversaryToken;
-	settings.AnniversaryToken.V = ShowAnniversaryToken;
-	settings.AnniversaryToken.W = string.format( "%.0f", _G.LATWhere );
+	Show["AnniversaryToken"] = not Show["AnniversaryToken"];
+	settings.AnniversaryToken.V = Show["AnniversaryToken"];
+	settings.AnniversaryToken.W = string.format( "%.0f", Where["AnniversaryToken"] );
 	SaveSettings( false );
 	ImportCtr( "LAT" );
-	if ShowAnniversaryToken then
-		LAT[ "Ctr" ]:SetBackColor( Turbine.UI.Color( LATbcAlpha, LATbcRed, LATbcGreen, LATbcBlue ) );
+	if Show["AnniversaryToken"] then
+		LAT[ "Ctr" ]:SetBackColor( Turbine.UI.Color( BC.Alpha["AnniversaryToken"], BC.Red["AnniversaryToken"], BC.Green["AnniversaryToken"], BC.Blue["AnniversaryToken"] ) );
 	end
-	LAT[ "Ctr" ]:SetVisible( ShowAnniversaryToken );
+	LAT[ "Ctr" ]:SetVisible( Show["AnniversaryToken"] );
 end
 function ShowHideMotesOfEnchantment()
 	ShowMotesOfEnchantment = not ShowMotesOfEnchantment;

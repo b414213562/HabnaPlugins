@@ -10,7 +10,7 @@ LAT["Ctr"]:SetParent( TB["win"] );
 LAT["Ctr"]:SetMouseVisible( false );
 LAT["Ctr"]:SetZOrder( 2 );
 LAT["Ctr"]:SetBlendMode( Turbine.UI.BlendMode.AlphaBlend );
-LAT["Ctr"]:SetBackColor( Turbine.UI.Color( LATbcAlpha, LATbcRed, LATbcGreen, LATbcBlue ) );
+LAT["Ctr"]:SetBackColor( Turbine.UI.Color( BC.Alpha["AnniversaryToken"], BC.Red["AnniversaryToken"], BC.Green["AnniversaryToken"], BC.Blue["AnniversaryToken"] ) );
 --**^
 --**v Anniversary Token & icon on TitanBar v**
 LAT["Icon"] = Turbine.UI.Control();
@@ -89,10 +89,10 @@ end
 LAT["Lbl"].MouseUp = function( sender, args )
 	LAT["Ctr"]:SetZOrder( 2 );
 	dragging = false;
-	_G.LATLocX = LAT["Ctr"]:GetLeft();
-	settings.AnniversaryToken.X = string.format("%.0f", _G.LATLocX);
-	_G.LATLocY = LAT["Ctr"]:GetTop();
-	settings.AnniversaryToken.Y = string.format("%.0f", _G.LATLocY);
+	Position.Left["AnniversaryToken"] = LAT["Ctr"]:GetLeft();
+	settings.AnniversaryToken.X = string.format("%.0f", Position.Left["AnniversaryToken"]);
+	Position.Top["AnniversaryToken"] = LAT["Ctr"]:GetTop();
+	settings.AnniversaryToken.Y = string.format("%.0f", Position.Top["AnniversaryToken"]);
 	SaveSettings( false );
 end
 --**^

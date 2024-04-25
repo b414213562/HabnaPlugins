@@ -281,9 +281,9 @@ function frmWalletWindow()
 			if SelIndex == 1 then if not Show["BingoBadge"] then ShowHideBingoBadge(); end
 			else if Show["BingoBadge"] then ShowHideBingoBadge(); end end
 		elseif wcur == L["MLAT"] then
-			_G.LATWhere = SelIndex; settings.AnniversaryToken.W = string.format("%.0f", SelIndex);
-			if SelIndex == 1 then if not ShowAnniversaryToken then ShowHideAnniversaryToken(); end
-			else if ShowAnniversaryToken then ShowHideAnniversaryToken(); end end
+			Where["AnniversaryToken"] = SelIndex; settings.AnniversaryToken.W = string.format("%.0f", SelIndex);
+			if SelIndex == 1 then if not Show["AnniversaryToken"] then ShowHideAnniversaryToken(); end
+			else if Show["AnniversaryToken"] then ShowHideAnniversaryToken(); end end
 		elseif wcur == L["MMOE"] then
 			_G.MOEWhere = SelIndex; settings.MotesOfEnchantment.W = string.format("%.0f", SelIndex);
 			if SelIndex == 1 then if not ShowMotesOfEnchantment then ShowHideMotesOfEnchantment(); end
@@ -400,7 +400,7 @@ function RefreshWIListBox()
 				elseif wcur == L["MCGSP"] then tw = Where["CentralGondorSilverPiece"]; -- Central Gondor Silver Piece
 				elseif wcur == L["MGGB"] then tw = Where["GiftgiversBrand"]; -- Gift Giver's Brand
 				elseif wcur == L["MBB"] then tw = Where["BingoBadge"]; -- Bingo Badges
-				elseif wcur == L["MLAT"] then tw = _G.LATWhere; -- Anniversary Tokens
+				elseif wcur == L["MLAT"] then tw = Where["AnniversaryToken"]; -- Anniversary Tokens
 				elseif wcur == L["MMOE"] then tw = _G.MOEWhere; -- Motes of Enchantment
 				elseif wcur == L["MEOE"] then tw = _G.EOEWhere; -- Embers of Enchantment
 				elseif wcur == L["MFOS"] then tw = _G.FOSWhere; -- Figments of Splendour

@@ -596,7 +596,7 @@ end
 --**^
 --**v Update Anniversary Token currency on TitanBar v**
 function UpdateAnniversaryToken()
-	if _G.LATWhere == 1 then
+	if Where["AnniversaryToken"] == 1 then
 		LAT[ "Lbl" ]:SetText( GetCurrency( L[ "MLAT" ] ) );
 		LAT[ "Lbl" ]:SetSize( LAT[ "Lbl" ]:GetTextLength() * NM, CTRHeight ); 
 		AjustIcon( "LAT" );

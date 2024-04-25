@@ -361,11 +361,11 @@ function ImportCtr( value )
         end
         if Where["BingoBadge"] ~= 3 then UpdateBingoBadge(); end
     elseif value == "LAT" then --Anniversary Token
-        if _G.LATWhere == 1 then
+        if Where["AnniversaryToken"] == 1 then
             import (AppCtrWalletD.."AnniversaryToken");
-            LAT[ "Ctr" ]:SetPosition( _G.LATLocX, _G.LATLocY );
+            LAT[ "Ctr" ]:SetPosition( Position.Left["AnniversaryToken"], Position.Top["AnniversaryToken"] );
         end
-        if _G.LATWhere ~= 3 then UpdateAnniversaryToken(); end
+        if Where["AnniversaryToken"] ~= 3 then UpdateAnniversaryToken(); end
 	elseif value == "MOE" then --Motes of Enchantment
         if _G.MOEWhere == 1 then
             import (AppCtrWalletD.."MotesOfEnchantment");
@@ -1149,7 +1149,7 @@ function UpdateCurrency( str )
     if str == L[ "MCGSP" ] and Show["CentralGondorSilverPiece"] then UpdateCentralGondorSilverPiece(); end
     if str == L[ "MGGB" ] and Show["GiftgiversBrand"] then UpdateGiftgiversBrand(); end
     if str == L[ "MBB" ] and Show["BingoBadge"] then UpdateBingoBadge(); end
-    if str == L[ "MLAT" ] and ShowAnniversaryToken then UpdateAnniversaryToken(); end
+    if str == L[ "MLAT" ] and Show["AnniversaryToken"] then UpdateAnniversaryToken(); end
 	if str == L[ "MMOE" ] and ShowMotesOfEnchantment then UpdateMotesOfEnchantment(); end
 	if str == L[ "MEOE" ] and ShowEmbersOfEnchantment then UpdateEmbersOfEnchantment(); end
 	if str == L[ "MFOS" ] and ShowFigmentsOfSplendour then UpdateFigmentsOfSplendour(); end

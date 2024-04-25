@@ -790,17 +790,16 @@ function LoadSettings()
 	if settings.AnniversaryToken.X == nil then settings.AnniversaryToken.X = string.format("%.0f", tX); end
 	if settings.AnniversaryToken.Y == nil then settings.AnniversaryToken.Y = string.format("%.0f", tY); end
 	if settings.AnniversaryToken.W == nil then settings.AnniversaryToken.W = string.format("%.0f", tW); end
-	ShowAnniversaryToken = settings.AnniversaryToken.V;
-	LATbcAlpha = tonumber(settings.AnniversaryToken.A);
-	LATbcRed = tonumber(settings.AnniversaryToken.R);
-	LATbcGreen = tonumber(settings.AnniversaryToken.G);
-	LATbcBlue = tonumber(settings.AnniversaryToken.B);
-	_G.LATLocX = tonumber(settings.AnniversaryToken.X);
-	_G.LATLocY = tonumber(settings.AnniversaryToken.Y);
-	_G.LATWhere = tonumber(settings.AnniversaryToken.W);
-	if _G.LATWhere == 3 and ShowAnniversaryToken then _G.LATWhere = 1; settings.AnniversaryToken.W = string.format("%.0f", _G.LATWhere); end
+	Show["AnniversaryToken"] = settings.AnniversaryToken.V;
+	BC.Alpha["AnniversaryToken"] = tonumber(settings.AnniversaryToken.A);
+	BC.Red["AnniversaryToken"] = tonumber(settings.AnniversaryToken.R);
+	BC.Green["AnniversaryToken"] = tonumber(settings.AnniversaryToken.G);
+	BC.Blue["AnniversaryToken"] = tonumber(settings.AnniversaryToken.B);
+	Position.Left["AnniversaryToken"] = tonumber(settings.AnniversaryToken.X);
+	Position.Top["AnniversaryToken"] = tonumber(settings.AnniversaryToken.Y);
+    Where["AnniversaryToken"] = ParseWhere(settings, "AnniversaryToken");
 
-	if settings.MotesOfEnchantment == nil then settings.MotesOfEnchantment = {}; end
+    if settings.MotesOfEnchantment == nil then settings.MotesOfEnchantment = {}; end
 	if settings.MotesOfEnchantment.V == nil then settings.MotesOfEnchantment.V = false; end
 	if settings.MotesOfEnchantment.A == nil then settings.MotesOfEnchantment.A = string.format("%.3f", tA); end
 	if settings.MotesOfEnchantment.R == nil then settings.MotesOfEnchantment.R = string.format("%.3f", tR); end
@@ -1369,14 +1368,14 @@ function SaveSettings(str)
 		settings.BingoBadge.W = string.format("%.0f", Where["BingoBadge"]);
 
 		settings.AnniversaryToken = {};
-		settings.AnniversaryToken.V = ShowAnniversaryToken;
-		settings.AnniversaryToken.A = string.format("%.3f", LATbcAlpha);
-		settings.AnniversaryToken.R = string.format("%.3f", LATbcRed);
-		settings.AnniversaryToken.G = string.format("%.3f", LATbcGreen);
-		settings.AnniversaryToken.B = string.format("%.3f", LATbcBlue);
-		settings.AnniversaryToken.X = string.format("%.0f", _G.LATLocX);
-		settings.AnniversaryToken.Y = string.format("%.0f", _G.LATLocY);
-		settings.AnniversaryToken.W = string.format("%.0f", _G.LATWhere);
+		settings.AnniversaryToken.V = Show["AnniversaryToken"];
+		settings.AnniversaryToken.A = string.format("%.3f", BC.Alpha["AnniversaryToken"]);
+		settings.AnniversaryToken.R = string.format("%.3f", BC.Red["AnniversaryToken"]);
+		settings.AnniversaryToken.G = string.format("%.3f", BC.Green["AnniversaryToken"]);
+		settings.AnniversaryToken.B = string.format("%.3f", BC.Blue["AnniversaryToken"]);
+		settings.AnniversaryToken.X = string.format("%.0f", Position.Left["AnniversaryToken"]);
+		settings.AnniversaryToken.Y = string.format("%.0f", Position.Top["AnniversaryToken"]);
+		settings.AnniversaryToken.W = string.format("%.0f", Where["AnniversaryToken"]);
 		
 		settings.MotesOfEnchantment = {};
 		settings.MotesOfEnchantment.V = ShowMotesOfEnchantment;
@@ -1525,7 +1524,7 @@ function ResetSettings()
 	Show["CentralGondorSilverPiece"], BC.Alpha["CentralGondorSilverPiece"], BC.Red["CentralGondorSilverPiece"], BC.Green["CentralGondorSilverPiece"], BC.Blue["CentralGondorSilverPiece"], Position.Left["CentralGondorSilverPiece"], Position.Top["CentralGondorSilverPiece"], Where["CentralGondorSilverPiece"] = false, tA, tR, tG, tB, tX, tY, tW; --for Central Gondor Silver Piece Control
 	Show["GiftgiversBrand"], BC.Alpha["GiftgiversBrand"], BC.Red["GiftgiversBrand"], BC.Green["GiftgiversBrand"], BC.Blue["GiftgiversBrand"], Position.Left["GiftgiversBrand"], Position.Top["GiftgiversBrand"], Where["GiftgiversBrand"] = false, tA, tR, tG, tB, tX, tY, tW; --for Gift giver's Brand Control
 	Show["BingoBadge"], BC.Alpha["BingoBadge"], BC.Red["BingoBadge"], BC.Green["BingoBadge"], BC.Blue["BingoBadge"], Position.Left["BingoBadge"], Position.Top["BingoBadge"], Where["BingoBadge"] = false, tA, tR, tG, tB, tX, tY, tW; --for Bingo Badge Control
-	ShowAnniversaryToken, LATbcAlpha, LATbcRed, LATbcGreen, LATbcBlue, _G.LATLocX, _G.LATLocY, _G.LATWhere = false, tA, tR, tG, tB, tX, tY, tW; --for Anniversary Token Control
+	Show["AnniversaryToken"], BC.Alpha["AnniversaryToken"], BC.Red["AnniversaryToken"], BC.Green["AnniversaryToken"], BC.Blue["AnniversaryToken"], Position.Left["AnniversaryToken"], Position.Top["AnniversaryToken"], Where["AnniversaryToken"] = false, tA, tR, tG, tB, tX, tY, tW; --for Anniversary Token Control
 	ShowMotesOfEnchantment, MOEbcAlpha, MOEbcRed, MOEbcGreen, MOEbcBlue, _G.MOELocX, _G.MOELocY, _G.MOEWhere = false, tA, tR, tG, tB, tX, tY, tW; --for Motes of Enchantment Control
 	ShowEmbersOfEnchantment, EOEbcAlpha, EOEbcRed, EOEbcGreen, EOEbcBlue, _G.EOELocX, _G.EOELocY, _G.EOEWhere = false, tA, tR, tG, tB, tX, tY, tW; --for Embers of Enchantment Control
 	ShowFigmentsOfSplendour, FOSbcAlpha, FOSbcRed, FOSbcGreen, FOSbcBlue, _G.FOSLocX, _G.FOSLocY, _G.FOSWhere = false, tA, tR, tG, tB, tX, tY, tW; --for Figments of Splendour Control
@@ -1700,9 +1699,9 @@ function ReplaceCtr()
 	if Show["BingoBadge"] and Where["BingoBadge"] == 1 then BB[ "Ctr" ]:SetPosition( Position.Left["BingoBadge"], Position.Top["BingoBadge"] ); end
 	
 	oldLocX = settings.AnniversaryToken.X / oldScreenWidth;
-	_G.LATLocX = oldLocX * screenWidth;
-	settings.AnniversaryToken.X = string.format("%.0f", _G.LATLocX);
-	if ShowAnniversaryToken and _G.LATWhere == 1 then LAT[ "Ctr" ]:SetPosition( _G.LATLocX, _G.LATLocY ); end
+	Position.Left["AnniversaryToken"] = oldLocX * screenWidth;
+	settings.AnniversaryToken.X = string.format("%.0f", Position.Left["AnniversaryToken"]);
+	if Show["AnniversaryToken"] and Where["AnniversaryToken"] == 1 then LAT[ "Ctr" ]:SetPosition( Position.Left["AnniversaryToken"], Position.Top["AnniversaryToken"] ); end
 	
 	oldLocX = settings.MotesOfEnchantment.X / oldScreenWidth;
 	_G.MOELocX = oldLocX * screenWidth;

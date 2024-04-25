@@ -55,7 +55,7 @@ function RefreshWITTListBox()
 		elseif wttcur == L["MGGB"] then ttw = Where["GiftgiversBrand"]; CtrIconCodeIs=WalletItem.GiftgiversBrand.Icon; CtrQteIs=GetCurrency( L[ "MGGB" ] );
 		elseif wttcur == L["MAOE"] then ttw = _G.AOEWhere; CtrIconCodeIs=WalletItem.AshOfEnchantment.Icon; CtrQteIs=GetCurrency( L[ "MAOE" ] );
 		elseif wttcur == L["MBB"] then ttw = Where["BingoBadge"]; CtrIconCodeIs=WalletItem.BingoBadge.Icon; CtrQteIs=GetCurrency( L[ "MBB" ] );
-		elseif wttcur == L["MLAT"] then ttw = _G.LATWhere; CtrIconCodeIs=WalletItem.AnniversaryToken.Icon; CtrQteIs=GetCurrency( L[ "MLAT" ] );
+		elseif wttcur == L["MLAT"] then ttw = Where["AnniversaryToken"]; CtrIconCodeIs=WalletItem.AnniversaryToken.Icon; CtrQteIs=GetCurrency( L[ "MLAT" ] );
 		elseif wttcur == L["MMOE"] then ttw = _G.MOEWhere; CtrIconCodeIs=WalletItem.MotesOfEnchantment.Icon; CtrQteIs=GetCurrency( L[ "MMOE" ] );
 		elseif wttcur == L["MEOE"] then ttw = _G.EOEWhere; CtrIconCodeIs=WalletItem.EmbersOfEnchantment.Icon; CtrQteIs=GetCurrency( L[ "MEOE" ] );
 		elseif wttcur == L["MFOS"] then ttw = _G.FOSWhere; CtrIconCodeIs=WalletItem.FigmentsOfSplendour.Icon; CtrQteIs=GetCurrency( L[ "MFOS" ] );
