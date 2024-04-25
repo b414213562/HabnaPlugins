@@ -305,9 +305,9 @@ function frmWalletWindow()
 			if SelIndex == 1 then if not Show["FarmersFaireToken"] then ShowHideFarmersFaireToken(); end
 			else if Show["FarmersFaireToken"] then ShowHideFarmersFaireToken(); end end	
 		elseif wcur == L["MSPL"] then
-			_G.SPLWhere = SelIndex; settings.SpringLeaf.W = string.format("%.0f", SelIndex);
-			if SelIndex == 1 then if not ShowSpringLeaf then ShowHideSpringLeaf(); end
-			else if ShowSpringLeaf then ShowHideSpringLeaf(); end end
+			Where["SpringLeaf"] = SelIndex; settings.SpringLeaf.W = string.format("%.0f", SelIndex);
+			if SelIndex == 1 then if not Show["SpringLeaf"] then ShowHideSpringLeaf(); end
+			else if Show["SpringLeaf"] then ShowHideSpringLeaf(); end end
 		elseif wcur == L["MMST"] then
 			_G.MSTWhere = SelIndex; settings.MidsummerToken.W = string.format("%.0f", SelIndex);
 			if SelIndex == 1 then if not ShowMidsummerToken then ShowHideMidsummerToken(); end
@@ -406,7 +406,7 @@ function RefreshWIListBox()
 				elseif wcur == L["MFOS"] then tw = Where["FigmentsOfSplendour"]; -- Figments of Splendour
 				elseif wcur == L["MFFT"] then tw = Where["FallFestivalToken"]; -- Fall Festival Token
 				elseif wcur == L["MFFAT"] then tw = Where["FarmersFaireToken"]; -- Farmers Faire Token
-				elseif wcur == L["MSPL"] then tw = _G.SPLWhere; -- Spring Leaf
+				elseif wcur == L["MSPL"] then tw = Where["SpringLeaf"]; -- Spring Leaf
 				elseif wcur == L["MMST"] then tw = _G.MSTWhere; -- Midsummer Token
 				elseif wcur == L["MAS"] then tw = _G.ASWhere; -- Ancient Script
 				elseif wcur == L["MBOT"] then tw = _G.BOTWhere; -- Badge of Taste

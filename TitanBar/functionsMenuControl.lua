@@ -43,7 +43,7 @@ function UnloadControl( value )
 		if Show["FigmentsOfSplendour"] then Where["FigmentsOfSplendour"] = 3; ShowHideFigmentsOfSplendour(); end
 		if Show["FallFestivalToken"] then Where["FallFestivalToken"] = 3; ShowHideFallFestivalToken(); end
 		if Show["FarmersFaireToken"] then Where["FarmersFaireToken"] = 3; ShowHideFarmersFaireToken(); end
-		if ShowSpringLeaf then _G.SPLWhere = 3; ShowHideSpringLeaf(); end
+		if Show["SpringLeaf"] then Where["SpringLeaf"] = 3; ShowHideSpringLeaf(); end
 		if ShowMidsummerToken then _G.MSTWhere = 3; ShowHideMidsummerToken(); end
 		if ShowAncientScript then _G.ASWhere = 3; ShowHideAncientScript(); end
 		if ShowBadgeOfTaste then _G.BOTWhere = 3; ShowHideBadgeOfTaste(); end
@@ -85,7 +85,7 @@ function UnloadControl( value )
 			elseif _G.sFromCtr == "FOS" then Where["FigmentsOfSplendour"] = 3; ShowHideFigmentsOfSplendour();
 			elseif _G.sFromCtr == "FFT" then Where["FallFestivalToken"] = 3; ShowHideFallFestivalToken();
 			elseif _G.sFromCtr == "FFAT" then Where["FarmersFaireToken"] = 3; ShowHideFarmersFaireToken();
-			elseif _G.sFromCtr == "SPL" then _G.SPLWhere = 3; ShowHideSpringLeaf();
+			elseif _G.sFromCtr == "SPL" then Where["SpringLeaf"] = 3; ShowHideSpringLeaf();
 			elseif _G.sFromCtr == "MST" then _G.MSTWhere = 3; ShowHideMidsummerToken();
 			elseif _G.sFromCtr == "AS" then _G.ASWhere = 3; ShowHideAncientScript();
 			elseif _G.sFromCtr == "BOT" then _G.BOTWhere = 3; ShowHideBadgeOfTaste();
@@ -141,7 +141,7 @@ function BGColor( cmd, value )
 		elseif _G.sFromCtr == "FOS" then tA, tR, tG, tB = BC.Alpha["FigmentsOfSplendour"], BC.Red["FigmentsOfSplendour"], BC.Green["FigmentsOfSplendour"], BC.Blue["FigmentsOfSplendour"];
 		elseif _G.sFromCtr == "FFT" then tA, tR, tG, tB = BC.Alpha["FallFestivalToken"], BC.Red["FallFestivalToken"], BC.Green["FallFestivalToken"], BC.Blue["FallFestivalToken"];
 		elseif _G.sFromCtr == "FFAT" then tA, tR, tG, tB = BC.Alpha["FarmersFaireToken"], BC.Red["FarmersFaireToken"], BC.Green["FarmersFaireToken"], BC.Blue["FarmersFaireToken"];
-		elseif _G.sFromCtr == "SPL" then tA, tR, tG, tB = SPLbcAlpha, SPLbcRed, SPLbcGreen, SPLbcBlue;
+		elseif _G.sFromCtr == "SPL" then tA, tR, tG, tB = BC.Alpha["SpringLeaf"], BC.Red["SpringLeaf"], BC.Green["SpringLeaf"], BC.Blue["SpringLeaf"];
 		elseif _G.sFromCtr == "MST" then tA, tR, tG, tB = MSTbcAlpha, MSTbcRed, MSTbcGreen, MSTbcBlue;
 		elseif _G.sFromCtr == "AS" then tA, tR, tG, tB = ASbcAlpha, ASbcRed, ASbcGreen, ASbcBlue;
 		elseif _G.sFromCtr == "BOT" then tA, tR, tG, tB = BOTbcAlpha, BOTbcRed, BOTbcGreen, BOTbcBlue;
@@ -222,8 +222,8 @@ function BGColor( cmd, value )
 		if Show["FallFestivalToken"] then FFT[ "Ctr" ]:SetBackColor( Turbine.UI.Color( tA, tR, tG, tB ) ); end
 		BC.Alpha["FarmersFaireToken"], BC.Red["FarmersFaireToken"], BC.Green["FarmersFaireToken"], BC.Blue["FarmersFaireToken"] = tA, tR, tG, tB;
 		if Show["FarmersFaireToken"] then FFAT[ "Ctr" ]:SetBackColor( Turbine.UI.Color( tA, tR, tG, tB ) ); end
-		SPLbcAlpha, SPLbcRed, SPLbcGreen, SPLbcBlue = tA, tR, tG, tB;
-		if ShowSpringLeaf then SPL[ "Ctr" ]:SetBackColor( Turbine.UI.Color( tA, tR, tG, tB ) ); end
+		BC.Alpha["SpringLeaf"], BC.Red["SpringLeaf"], BC.Green["SpringLeaf"], BC.Blue["SpringLeaf"] = tA, tR, tG, tB;
+		if Show["SpringLeaf"] then SPL[ "Ctr" ]:SetBackColor( Turbine.UI.Color( tA, tR, tG, tB ) ); end
 		MSTbcAlpha, MSTbcRed, MSTbcGreen, MSTbcBlue = tA, tR, tG, tB;
 		if ShowMidsummerToken then MST[ "Ctr" ]:SetBackColor( Turbine.UI.Color( tA, tR, tG, tB ) ); end
 		ASbcAlpha, ASbcRed, ASbcGreen, ASbcBlue = tA, tR, tG, tB;
@@ -345,7 +345,7 @@ function BGColor( cmd, value )
 			BC.Alpha["FarmersFaireToken"], BC.Red["FarmersFaireToken"], BC.Green["FarmersFaireToken"], BC.Blue["FarmersFaireToken"] = tA, tR, tG, tB;
 			FFAT[ "Ctr" ]:SetBackColor( Turbine.UI.Color( tA, tR, tG, tB ) );
 		elseif _G.sFromCtr == "SPL" then
-			SPLbcAlpha, SPLbcRed, SPLbcGreen, SPLbcBlue = tA, tR, tG, tB;
+			BC.Alpha["SpringLeaf"], BC.Red["SpringLeaf"], BC.Green["SpringLeaf"], BC.Blue["SpringLeaf"] = tA, tR, tG, tB;
 			SPL[ "Ctr" ]:SetBackColor( Turbine.UI.Color( tA, tR, tG, tB ) );
 		elseif _G.sFromCtr == "MST" then
 			MSTbcAlpha, MSTbcRed, MSTbcGreen, MSTbcBlue = tA, tR, tG, tB;

@@ -61,7 +61,7 @@ function RefreshWITTListBox()
 		elseif wttcur == L["MFOS"] then ttw = Where["FigmentsOfSplendour"]; CtrIconCodeIs=WalletItem.FigmentsOfSplendour.Icon; CtrQteIs=GetCurrency( L[ "MFOS" ] );
 		elseif wttcur == L["MFFT"] then ttw = Where["FallFestivalToken"]; CtrIconCodeIs=WalletItem.FallFestivalToken.Icon; CtrQteIs=GetCurrency( L[ "MFFT" ] );
 		elseif wttcur == L["MFFAT"] then ttw = Where["FarmersFaireToken"]; CtrIconCodeIs=WalletItem.FarmersFaireToken.Icon; CtrQteIs=GetCurrency( L[ "MFFAT" ] );	
-		elseif wttcur == L["MSPL"] then ttw = _G.SPLWhere; CtrIconCodeIs=WalletItem.SpringLeaf.Icon; CtrQteIs=GetCurrency( L[ "MSPL" ] );
+		elseif wttcur == L["MSPL"] then ttw = Where["SpringLeaf"]; CtrIconCodeIs=WalletItem.SpringLeaf.Icon; CtrQteIs=GetCurrency( L[ "MSPL" ] );
 		elseif wttcur == L["MMST"] then ttw = _G.MSTWhere; CtrIconCodeIs=WalletItem.MidsummerToken.Icon; CtrQteIs=GetCurrency( L[ "MMST" ] );
 		elseif wttcur == L["MAS"] then ttw = _G.ASWhere; CtrIconCodeIs=WalletItem.AncientScript.Icon; CtrQteIs=GetCurrency( L[ "MAS" ] );	
 		elseif wttcur == L["MBOT"] then ttw = _G.BOTWhere; CtrIconCodeIs=WalletItem.BadgeOfTaste.Icon; CtrQteIs=GetCurrency( L[ "MBOT" ] );

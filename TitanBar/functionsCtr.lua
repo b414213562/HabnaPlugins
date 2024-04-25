@@ -397,11 +397,11 @@ function ImportCtr( value )
         end
         if Where["FarmersFaireToken"] ~= 3 then UpdateFarmersFaireToken(); end
 	elseif value == "SPL" then --Spring Leaves
-        if _G.SPLWhere == 1 then
+        if Where["SpringLeaf"] == 1 then
             import (AppCtrWalletD.."SpringLeaf");
-            SPL[ "Ctr" ]:SetPosition( _G.SPLLocX, _G.SPLLocY );
+            SPL[ "Ctr" ]:SetPosition( Position.Left["SpringLeaf"], Position.Top["SpringLeaf"] );
         end
-        if _G.SPLWhere ~= 3 then UpdateSpringLeaf(); end	
+        if Where["SpringLeaf"] ~= 3 then UpdateSpringLeaf(); end	
 	elseif value == "MST" then --Midsummer Tokens
         if _G.MSTWhere == 1 then
             import (AppCtrWalletD.."MidsummerToken");
@@ -1155,7 +1155,7 @@ function UpdateCurrency( str )
 	if str == L[ "MFOS" ] and Show["FigmentsOfSplendour"] then UpdateFigmentsOfSplendour(); end
 	if str == L[ "MFFT" ] and Show["FallFestivalToken"] then UpdateFallFestivalToken(); end
 	if str == L[ "MFFAT" ] and Show["FarmersFaireToken"] then UpdateFarmersFaireToken(); end
-	if str == L[ "MSPL" ] and ShowSpringLeaf then UpdateSpringLeaf(); end
+	if str == L[ "MSPL" ] and Show["SpringLeaf"] then UpdateSpringLeaf(); end
 	if str == L[ "MMST" ] and ShowMidsummerToken then UpdateMidsummerToken(); end
 	if str == L[ "MAS" ] and ShowAncientScript then UpdateAncientScript(); end
     if str == L[ "MBOT" ] and ShowBadgeOfTaste then UpdateBadgeOfTaste(); end

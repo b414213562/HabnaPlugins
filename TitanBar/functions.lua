@@ -650,7 +650,7 @@ end
 --**^
 --**v Update Spring Leaves currency on TitanBar v**
 function UpdateSpringLeaf()
-	if _G.SPLWhere == 1 then
+	if Where["SpringLeaf"] == 1 then
 		SPL[ "Lbl" ]:SetText( GetCurrency( L[ "MSPL" ] ) );
 		SPL[ "Lbl" ]:SetSize( SPL[ "Lbl" ]:GetTextLength() * NM, CTRHeight ); 
 		AjustIcon( "SPL" );
@@ -1042,7 +1042,7 @@ function ChangeColor(tColor)
 		if Show["FigmentsOfSplendour"] then FOS[ "Ctr" ]:SetBackColor( tColor ); end
 		if Show["FallFestivalToken"] then FFT[ "Ctr" ]:SetBackColor( tColor ); end
 		if Show["FarmersFaireToken"] then FFAT[ "Ctr" ]:SetBackColor( tColor ); end
-		if ShowSpringLeaf then SPL[ "Ctr" ]:SetBackColor( tColor ); end
+		if Show["SpringLeaf"] then SPL[ "Ctr" ]:SetBackColor( tColor ); end
 		if ShowMidsummerToken then MST[ "Ctr" ]:SetBackColor( tColor ); end
 		if ShowAncientScript then AS[ "Ctr" ]:SetBackColor( tColor ); end
 		if ShowBadgeOfTaste then BOT[ "Ctr" ]:SetBackColor( tColor ); end

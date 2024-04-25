@@ -10,7 +10,7 @@ SPL["Ctr"]:SetParent( TB["win"] );
 SPL["Ctr"]:SetMouseVisible( false );
 SPL["Ctr"]:SetZOrder( 2 );
 SPL["Ctr"]:SetBlendMode( Turbine.UI.BlendMode.AlphaBlend );
-SPL["Ctr"]:SetBackColor( Turbine.UI.Color( SPLbcAlpha, SPLbcRed, SPLbcGreen, SPLbcBlue ) );
+SPL["Ctr"]:SetBackColor( Turbine.UI.Color( BC.Alpha["SpringLeaf"], BC.Red["SpringLeaf"], BC.Green["SpringLeaf"], BC.Blue["SpringLeaf"] ) );
 --**^
 --**v Spring Leaf & icon on TitanBar v**
 SPL["Icon"] = Turbine.UI.Control();
@@ -89,10 +89,10 @@ end
 SPL["Lbl"].MouseUp = function( sender, args )
 	SPL["Ctr"]:SetZOrder( 2 );
 	dragging = false;
-	_G.SPLLocX = SPL["Ctr"]:GetLeft();
-	settings.SpringLeaf.X = string.format("%.0f", _G.SPLLocX);
-	_G.SPLLocY = SPL["Ctr"]:GetTop();
-	settings.SpringLeaf.Y = string.format("%.0f", _G.SPLLocY);
+	Position.Left["SpringLeaf"] = SPL["Ctr"]:GetLeft();
+	settings.SpringLeaf.X = string.format("%.0f", Position.Left["SpringLeaf"]);
+	Position.Top["SpringLeaf"] = SPL["Ctr"]:GetTop();
+	settings.SpringLeaf.Y = string.format("%.0f", Position.Top["SpringLeaf"]);
 	SaveSettings( false );
 end
 --**^

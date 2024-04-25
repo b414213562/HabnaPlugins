@@ -38,7 +38,7 @@ if EOE ~= nil then WalletControls[ "EOE" ] = { ShowHide = Show["EmbersOfEnchantm
 if FOS ~= nil then WalletControls[ "FOS" ] = { ShowHide = Show["FigmentsOfSplendour"], Control = FOS[ "Ctr" ] }; end
 if FFT ~= nil then WalletControls[ "FFT" ] = { ShowHide = Show["FallFestivalToken"], Control = FFT[ "Ctr" ] }; end
 if FFAT ~= nil then WalletControls[ "FFAT" ] = { ShowHide = Show["FarmersFaireToken"], Control = FFAT[ "Ctr" ] }; end
-if SPL ~= nil then WalletControls[ "SPL" ] = { ShowHide = ShowSpringLeaf, Control = SPL[ "Ctr" ] }; end
+if SPL ~= nil then WalletControls[ "SPL" ] = { ShowHide = Show["SpringLeaf"], Control = SPL[ "Ctr" ] }; end
 if MST ~= nil then WalletControls[ "MST" ] = { ShowHide = ShowMidsummerToken, Control = MST[ "Ctr" ] }; end
 if AS ~= nil then WalletControls[ "AS" ] = { ShowHide = ShowAncientScript, Control = AS[ "Ctr" ] }; end
 if BOT ~= nil then WalletControls[ "BOT" ] = { ShowHide = ShowBadgeOfTaste, Control = BOT[ "Ctr" ] }; end

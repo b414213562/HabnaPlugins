@@ -563,15 +563,15 @@ function ShowHideFarmersFaireToken()
 end
 
 function ShowHideSpringLeaf()
-	ShowSpringLeaf = not ShowSpringLeaf;
-	settings.SpringLeaf.V = ShowSpringLeaf;
-	settings.SpringLeaf.W = string.format( "%.0f", _G.SPLWhere );
+	Show["SpringLeaf"] = not Show["SpringLeaf"];
+	settings.SpringLeaf.V = Show["SpringLeaf"];
+	settings.SpringLeaf.W = string.format( "%.0f", Where["SpringLeaf"] );
 	SaveSettings( false );
 	ImportCtr( "SPL" );
-	if ShowSpringLeaf then
-		SPL[ "Ctr" ]:SetBackColor( Turbine.UI.Color( SPLbcAlpha, SPLbcRed, SPLbcGreen, SPLbcBlue ) );
+	if Show["SpringLeaf"] then
+		SPL[ "Ctr" ]:SetBackColor( Turbine.UI.Color( BC.Alpha["SpringLeaf"], BC.Red["SpringLeaf"], BC.Green["SpringLeaf"], BC.Blue["SpringLeaf"] ) );
 	end
-	SPL[ "Ctr" ]:SetVisible( ShowSpringLeaf);
+	SPL[ "Ctr" ]:SetVisible( Show["SpringLeaf"]);
 end
 
 function ShowHideMidsummerToken()

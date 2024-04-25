@@ -899,15 +899,14 @@ function LoadSettings()
 	if settings.SpringLeaf.X == nil then settings.SpringLeaf.X = string.format("%.0f", tX); end
 	if settings.SpringLeaf.Y == nil then settings.SpringLeaf.Y = string.format("%.0f", tY); end
 	if settings.SpringLeaf.W == nil then settings.SpringLeaf.W = string.format("%.0f", tW); end
-	ShowSpringLeaf = settings.SpringLeaf.V;
-	SPLbcAlpha = tonumber(settings.SpringLeaf.A);
-	SPLbcRed = tonumber(settings.SpringLeaf.R);
-	SPLbcGreen = tonumber(settings.SpringLeaf.G);
-	SPLbcBlue = tonumber(settings.SpringLeaf.B);
-	_G.SPLLocX = tonumber(settings.SpringLeaf.X);
-	_G.SPLLocY = tonumber(settings.SpringLeaf.Y);
-	_G.SPLWhere = tonumber(settings.SpringLeaf.W);
-	if _G.SPLWhere == 3 and ShowSpringLeaf then _G.SPLWhere = 1; settings.SpringLeaf.W = string.format("%.0f", _G.SPLWhere); end
+	Show["SpringLeaf"] = settings.SpringLeaf.V;
+	BC.Alpha["SpringLeaf"] = tonumber(settings.SpringLeaf.A);
+	BC.Red["SpringLeaf"] = tonumber(settings.SpringLeaf.R);
+	BC.Green["SpringLeaf"] = tonumber(settings.SpringLeaf.G);
+	BC.Blue["SpringLeaf"] = tonumber(settings.SpringLeaf.B);
+	Position.Left["SpringLeaf"] = tonumber(settings.SpringLeaf.X);
+	Position.Top["SpringLeaf"] = tonumber(settings.SpringLeaf.Y);
+    Where["SpringLeaf"] = ParseWhere(settings, "SpringLeaf");
 	
 	if settings.MidsummerToken == nil then settings.MidsummerToken= {}; end
 	if settings.MidsummerToken.V == nil then settings.MidsummerToken.V = false; end
@@ -1424,14 +1423,14 @@ function SaveSettings(str)
 		settings.FarmersFaireToken.W = string.format("%.0f", Where["FarmersFaireToken"]);
 		
 		settings.SpringLeaf = {};
-		settings.SpringLeaf.V = ShowSpringLeaf;
-		settings.SpringLeaf.A = string.format("%.3f", SPLbcAlpha);
-		settings.SpringLeaf.R = string.format("%.3f", SPLbcRed);
-		settings.SpringLeaf.G = string.format("%.3f", SPLbcGreen);
-		settings.SpringLeaf.B = string.format("%.3f", SPLbcBlue);
-		settings.SpringLeaf.X = string.format("%.0f", _G.SPLLocX);
-		settings.SpringLeaf.Y = string.format("%.0f", _G.SPLLocY);
-		settings.SpringLeaf.W = string.format("%.0f", _G.SPLWhere);
+		settings.SpringLeaf.V = Show["SpringLeaf"];
+		settings.SpringLeaf.A = string.format("%.3f", BC.Alpha["SpringLeaf"]);
+		settings.SpringLeaf.R = string.format("%.3f", BC.Red["SpringLeaf"]);
+		settings.SpringLeaf.G = string.format("%.3f", BC.Green["SpringLeaf"]);
+		settings.SpringLeaf.B = string.format("%.3f", BC.Blue["SpringLeaf"]);
+		settings.SpringLeaf.X = string.format("%.0f", Position.Left["SpringLeaf"]);
+		settings.SpringLeaf.Y = string.format("%.0f", Position.Top["SpringLeaf"]);
+		settings.SpringLeaf.W = string.format("%.0f", Where["SpringLeaf"]);
 		
 		settings.MidsummerToken = {};
 		settings.MidsummerToken.V = ShowMidsummerToken;
@@ -1526,7 +1525,7 @@ function ResetSettings()
 	Show["FigmentsOfSplendour"], BC.Alpha["FigmentsOfSplendour"], BC.Red["FigmentsOfSplendour"], BC.Green["FigmentsOfSplendour"], BC.Blue["FigmentsOfSplendour"], Position.Left["FigmentsOfSplendour"], Position.Top["FigmentsOfSplendour"], Where["FigmentsOfSplendour"] = false, tA, tR, tG, tB, tX, tY, tW; --for Figments of Splendour Control
 	Show["FallFestivalToken"], BC.Alpha["FallFestivalToken"], BC.Red["FallFestivalToken"], BC.Green["FallFestivalToken"], BC.Blue["FallFestivalToken"], Position.Left["FallFestivalToken"], Position.Top["FallFestivalToken"], Where["FallFestivalToken"] = false, tA, tR, tG, tB, tX, tY, tW; --for Fall Festival Tokens Control	
 	Show["FarmersFaireToken"], BC.Alpha["FarmersFaireToken"], BC.Red["FarmersFaireToken"], BC.Green["FarmersFaireToken"], BC.Blue["FarmersFaireToken"], Position.Left["FarmersFaireToken"], Position.Top["FarmersFaireToken"], Where["FarmersFaireToken"] = false, tA, tR, tG, tB, tX, tY, tW; --for Farmers Festival Token Control
-	ShowSpringLeaf, SPLbcAlpha, SPLbcRed, SPLbcGreen, SPLbcBlue, _G.SPLLocX, _G.SPLLocY, _G.SPLWhere = false, tA, tR, tG, tB, tX, tY, tW; --for Spring Leaf Control	
+	Show["SpringLeaf"], BC.Alpha["SpringLeaf"], BC.Red["SpringLeaf"], BC.Green["SpringLeaf"], BC.Blue["SpringLeaf"], Position.Left["SpringLeaf"], Position.Top["SpringLeaf"], Where["SpringLeaf"] = false, tA, tR, tG, tB, tX, tY, tW; --for Spring Leaf Control	
 	ShowMidsummerToken, MSTbcAlpha, MSTbcRed, MSTbcGreen, MSTbcBlue, _G.MSTLocX, _G.MSTLocY, _G.MSTWhere = false, tA, tR, tG, tB, tX, tY, tW; --for  Midsummer Token Control
 	ShowAncientScript, ASbcAlpha, ASbcRed, ASbcGreen, ASbcBlue, _G.ASLocX, _G.ASLocY, _G.ASWhere = false, tA, tR, tG, tB, tX, tY, tW; --for  Ancient Script Control
     ShowBadgeOfTaste, BOTbcAlpha, BOTbcRed, BOTbcGreen, BOTbcBlue, _G.BOTLocX, _G.BOTLocY, _G.BOTWhere = false, tA, tR, tG, tB, tX, tY, tW; --for Badge of Taste Control 
@@ -1725,9 +1724,9 @@ function ReplaceCtr()
 	if Show["FarmersFaireToken"] and Where["FarmersFaireToken"] == 1 then FFAT[ "Ctr" ]:SetPosition( Position.Left["FarmersFaireToken"], Position.Top["FarmersFaireToken"] ); end
 	
 	oldLocX = settings.SpringLeaf.X / oldScreenWidth;
-	_G.SPLLocX = oldLocX * screenWidth;
-	settings.SpringLeaf.X = string.format("%.0f", _G.SPLLocX);
-	if ShowSpringLeaf and _G.SPLWhere == 1 then SPL[ "Ctr" ]:SetPosition( _G.SPLLocX, _G.SPLLocY ); end
+	Position.Left["SpringLeaf"] = oldLocX * screenWidth;
+	settings.SpringLeaf.X = string.format("%.0f", Position.Left["SpringLeaf"]);
+	if Show["SpringLeaf"] and Where["SpringLeaf"] == 1 then SPL[ "Ctr" ]:SetPosition( Position.Left["SpringLeaf"], Position.Top["SpringLeaf"] ); end
 	
 	oldLocX = settings.MidsummerToken.X / oldScreenWidth;
 	_G.MSTLocX = oldLocX * screenWidth;
