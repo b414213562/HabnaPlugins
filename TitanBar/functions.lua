@@ -522,7 +522,7 @@ end
 --**^
 --**v Update Seals currency on TitanBar v**
 function UpdateSeals()
-	if _G.SLWhere == 1 then
+	if Where["Seals"] == 1 then
 		SL[ "Lbl" ]:SetText( GetCurrency( L[ "MSL" ] ) );
 		SL[ "Lbl" ]:SetSize( SL[ "Lbl" ]:GetTextLength() * NM, CTRHeight ); 
 		AjustIcon( "SL" );
@@ -1015,7 +1015,7 @@ function ChangeColor(tColor)
 		if Show["YuleToken"] then YT[ "Ctr" ]:SetBackColor( tColor ); end
 		if Show["HytboldTokens"] then HT[ "Ctr" ]:SetBackColor( tColor ); end
 		if Show["Medallions"] then MP[ "Ctr" ]:SetBackColor( tColor ); end
-		if ShowSeals then SL[ "Ctr" ]:SetBackColor( tColor ); end
+		if Show["Seals"] then SL[ "Ctr" ]:SetBackColor( tColor ); end
 		if ShowCommendations then CP[ "Ctr" ]:SetBackColor( tColor ); end
 		if ShowBagInfos then BI[ "Ctr" ]:SetBackColor( tColor ); end
 		if ShowPlayerInfos then PI[ "Ctr" ]:SetBackColor( tColor ); end

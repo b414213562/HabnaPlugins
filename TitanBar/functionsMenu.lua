@@ -132,15 +132,15 @@ end
 -- **^
 -- **v Show/Hide Seals v**
 function ShowHideSeals()
-	ShowSeals = not ShowSeals;
-	settings.Seals.V = ShowSeals;
-	settings.Seals.W = string.format("%.0f", _G.SLWhere);
+	Show["Seals"] = not Show["Seals"];
+	settings.Seals.V = Show["Seals"];
+	settings.Seals.W = string.format("%.0f", Where["Seals"]);
 	SaveSettings( false );
 	ImportCtr( "SL" );
-	if ShowSeals then
-		SL[ "Ctr" ]:SetBackColor( Turbine.UI.Color( SLbcAlpha, SLbcRed, SLbcGreen, SLbcBlue ) );
+	if Show["Seals"] then
+		SL[ "Ctr" ]:SetBackColor( Turbine.UI.Color( BC.Alpha["Seals"], BC.Red["Seals"], BC.Green["Seals"], BC.Blue["Seals"] ) );
 	end
-	SL[ "Ctr" ]:SetVisible( ShowSeals );
+	SL[ "Ctr" ]:SetVisible( Show["Seals"] );
 end
 -- **^
 -- **v Show/Hide Commendations v**

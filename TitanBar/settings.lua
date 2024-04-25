@@ -329,18 +329,16 @@ function LoadSettings()
 	if settings.Seals.X == nil then settings.Seals.X = string.format("%.0f", tX); end
 	if settings.Seals.Y == nil then settings.Seals.Y = string.format("%.0f", tY); end
 	if settings.Seals.W == nil then settings.Seals.W = string.format("%.0f", tW); end
-	ShowSeals = settings.Seals.V;
-	SLbcAlpha = tonumber(settings.Seals.A);
-	SLbcRed = tonumber(settings.Seals.R);
-	SLbcGreen = tonumber(settings.Seals.G);
-	SLbcBlue = tonumber(settings.Seals.B);
-	_G.SLLocX = tonumber(settings.Seals.X);
-	_G.SLLocY = tonumber(settings.Seals.Y);
-	_G.SLWhere = tonumber(settings.Seals.W);
-	if _G.SLWhere == 3 and ShowSeals then _G.SLWhere = 1; settings.Seals.W = string.format("%.0f", _G.SLWhere); end --Remove after Oct, 15th 2013
+	Show["Seals"] = settings.Seals.V;
+	BC.Alpha["Seals"] = tonumber(settings.Seals.A);
+	BC.Red["Seals"] = tonumber(settings.Seals.R);
+	BC.Green["Seals"] = tonumber(settings.Seals.G);
+	BC.Blue["Seals"] = tonumber(settings.Seals.B);
+	Position.Left["Seals"] = tonumber(settings.Seals.X);
+	Position.Top["Seals"] = tonumber(settings.Seals.Y);
+    Where["Seals"] = ParseWhere(settings, "Seals");
 
-
-	if settings.Commendations == nil then settings.Commendations = {}; end
+    if settings.Commendations == nil then settings.Commendations = {}; end
 	if settings.Commendations.V == nil then settings.Commendations.V = false; end
 	if settings.Commendations.A == nil then settings.Commendations.A = string.format("%.3f", tA); end
 	if settings.Commendations.R == nil then settings.Commendations.R = string.format("%.3f", tR); end
@@ -1141,14 +1139,14 @@ function SaveSettings(str)
 		settings.Medallions.W = string.format("%.0f", Where["Medallions"]);
 
 		settings.Seals = {};
-		settings.Seals.V = ShowSeals;
-		settings.Seals.A = string.format("%.3f", SLbcAlpha);
-		settings.Seals.R = string.format("%.3f", SLbcRed);
-		settings.Seals.G = string.format("%.3f", SLbcGreen);
-		settings.Seals.B = string.format("%.3f", SLbcBlue);
-		settings.Seals.X = string.format("%.0f", _G.SLLocX);
-		settings.Seals.Y = string.format("%.0f", _G.SLLocY);
-		settings.Seals.W = string.format("%.0f", _G.SLWhere);
+		settings.Seals.V = Show["Seals"];
+		settings.Seals.A = string.format("%.3f", BC.Alpha["Seals"]);
+		settings.Seals.R = string.format("%.3f", BC.Red["Seals"]);
+		settings.Seals.G = string.format("%.3f", BC.Green["Seals"]);
+		settings.Seals.B = string.format("%.3f", BC.Blue["Seals"]);
+		settings.Seals.X = string.format("%.0f", Position.Left["Seals"]);
+		settings.Seals.Y = string.format("%.0f", Position.Top["Seals"]);
+		settings.Seals.W = string.format("%.0f", Where["Seals"]);
 
 		settings.Commendations = {};
 		settings.Commendations.V = ShowCommendations;
@@ -1516,7 +1514,7 @@ function ResetSettings()
 	Show["HytboldTokens"], BC.Alpha["HytboldTokens"], BC.Red["HytboldTokens"], BC.Green["HytboldTokens"], BC.Blue["HytboldTokens"], Position.Left["HytboldTokens"], Position.Top["HytboldTokens"], Where["HytboldTokens"] = false, tA, tR, tG, tB, tX, tY, tW; --for Tokens of Hytbold Control
 	Show["Medallions"], BC.Alpha["Medallions"], BC.Red["Medallions"], BC.Green["Medallions"], BC.Blue["Medallions"], Position.Left["Medallions"], Position.Top["Medallions"], Where["Medallions"] = false, tA, tR, tG, tB, tX, tY, tW; --for Medallions Control
 	ShowCommendations, CPbcAlpha, CPbcRed, CPbcGreen, CPbcBlue, _G.CPLocX, _G.CPLocY, _G.CPWhere = false, tA, tR, tG, tB, tX, tY, tW; --for Commendations Control
-	ShowSeals, SLbcAlpha, SLbcRed, SLbcGreen, SLbcBlue, _G.SLLocX, _G.SLLocY, _G.SLWhere = false, tA, tR, tG, tB, tX, tY, tW; --for Seal Control
+	Show["Seals"], BC.Alpha["Seals"], BC.Red["Seals"], BC.Green["Seals"], BC.Blue["Seals"], Position.Left["Seals"], Position.Top["Seals"], Where["Seals"] = false, tA, tR, tG, tB, tX, tY, tW; --for Seal Control
 	ShowBagInfos, _G.BIUsed, _G.BIMax, BIbcAlpha, BIbcRed, BIbcGreen, BIbcBlue, _G.BILocX, _G.BILocY = true, true, true, tA, tR, tG, tB, tX, tY; --for Bag info Control
 	ShowEquipInfos, EIbcAlpha, EIbcRed, EIbcGreen, EIbcBlue, _G.EILocX, _G.EILocY = true, tA, tR, tG, tB, 75, tY; --for Equipment infos Control
 	ShowDurabilityInfos, DIIcon, DIText, DIbcAlpha, DIbcRed, DIbcGreen, DIbcBlue, _G.DILocX, _G.DILocY = true, true, true, tA, tR, tG, tB, 145, tY; --for Durability infos Control
@@ -1606,9 +1604,9 @@ function ReplaceCtr()
 	if Show["Medallions"] and Where["Medallions"] == 1 then MP[ "Ctr" ]:SetPosition( Position.Left["Medallions"], Position.Top["Medallions"] ); end
 
 	oldLocX = settings.Seals.X / oldScreenWidth;
-	_G.SLLocX = oldLocX * screenWidth;
-	settings.Seals.X = string.format("%.0f", _G.SLLocX);
-	if ShowSeals and _G.SLWhere == 1 then SL[ "Ctr" ]:SetPosition( _G.SLLocX, _G.SLLocY ); end
+	Position.Left["Seals"] = oldLocX * screenWidth;
+	settings.Seals.X = string.format("%.0f", Position.Left["Seals"]);
+	if Show["Seals"] and Where["Seals"] == 1 then SL[ "Ctr" ]:SetPosition( Position.Left["Seals"], Position.Top["Seals"] ); end
 
 	oldLocX = settings.Commendations.X / oldScreenWidth;
 	_G.CPLocX = oldLocX * screenWidth;

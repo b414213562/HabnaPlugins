@@ -10,7 +10,7 @@ SL["Ctr"]:SetParent( TB["win"] );
 SL["Ctr"]:SetMouseVisible( false );
 SL["Ctr"]:SetZOrder( 2 );
 SL["Ctr"]:SetBlendMode( Turbine.UI.BlendMode.AlphaBlend );
-SL["Ctr"]:SetBackColor( Turbine.UI.Color( SLbcAlpha, SLbcRed, SLbcGreen, SLbcBlue ) );
+SL["Ctr"]:SetBackColor( Turbine.UI.Color( BC.Alpha["Seals"], BC.Red["Seals"], BC.Green["Seals"], BC.Blue["Seals"] ) );
 --SL["Ctr"]:SetBackColor( Color["red"] ); -- Debug purpose
 --**^
 --**v Seals & icon on TitanBar v**
@@ -92,10 +92,10 @@ end
 SL["Lbl"].MouseUp = function( sender, args )
 	SL["Ctr"]:SetZOrder( 2 );
 	dragging = false;
-	_G.SLLocX = SL["Ctr"]:GetLeft();
-	settings.Seals.X = string.format("%.0f", _G.SLLocX);
-	_G.SLLocY = SL["Ctr"]:GetTop();
-	settings.Seals.Y = string.format("%.0f", _G.SLLocY);
+	Position.Left["Seals"] = SL["Ctr"]:GetLeft();
+	settings.Seals.X = string.format("%.0f", Position.Left["Seals"]);
+	Position.Top["Seals"] = SL["Ctr"]:GetTop();
+	settings.Seals.Y = string.format("%.0f", Position.Top["Seals"]);
 	SaveSettings( false );
 end
 --**^

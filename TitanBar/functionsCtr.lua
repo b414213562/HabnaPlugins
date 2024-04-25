@@ -79,11 +79,11 @@ function ImportCtr( value )
         end
         if Where["Medallions"] ~= 3 then UpdateMedallions(); end
     elseif value == "SL" then --Seals
-        if _G.SLWhere == 1 then
+        if Where["Seals"] == 1 then
             import (AppCtrWalletD.."Seals");
-            SL[ "Ctr" ]:SetPosition( _G.SLLocX, _G.SLLocY );
+            SL[ "Ctr" ]:SetPosition( Position.Left["Seals"], Position.Top["Seals"] );
         end
-        if _G.SLWhere ~= 3 then UpdateSeals(); end
+        if Where["Seals"] ~= 3 then UpdateSeals(); end
     elseif value == "CP" then --Commendations
         if _G.CPWhere == 1 then
             import (AppCtrWalletD.."Commendations");
@@ -1139,7 +1139,7 @@ function UpdateCurrency( str )
     if str == L[ "MSP" ] and Show["Shards"] then UpdateShards(); end
     if str == L[ "MSM" ] and Show["SkirmishMarks"] then UpdateMarks(); end
     if str == L[ "MMP" ] and Show["Medallions"] then UpdateMedallions(); end
-    if str == L[ "MSL" ] and ShowSeals then UpdateSeals(); end
+    if str == L[ "MSL" ] and Show["Seals"] then UpdateSeals(); end
     if str == L[ "MCP" ] and ShowCommendations then UpdateCommendations(); end
     if str == L[ "MMC" ] and Show["MithrilCoins"] then UpdateMithril(); end
     if str == L[ "MYT" ] and Show["YuleToken"] then UpdateYuleToken(); end
