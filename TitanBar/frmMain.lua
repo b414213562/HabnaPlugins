@@ -182,7 +182,7 @@ function frmMain()
 			if Where["FallFestivalToken"] ~= 3 then ImportCtr( "FFT" ); end
 			if Where["FarmersFaireToken"] ~= 3 then ImportCtr( "FFAT" ); end
 			if Where["SpringLeaf"] ~= 3 then ImportCtr( "SPL" ); end
-			if _G.MSTWhere ~= 3 then ImportCtr( "MST" ); end
+			if Where["MidsummerToken"] ~= 3 then ImportCtr( "MST" ); end
 			if _G.ASWhere ~= 3 then ImportCtr( "AS" ); end
 			if _G.BOTWhere ~= 3 then ImportCtr( "BOT" ); end
 			if _G.BODWhere ~= 3 then ImportCtr( "BOD" ); end
@@ -200,7 +200,7 @@ function frmMain()
 		Show["FallFestivalToken"] = false;
 		Show["FarmersFaireToken"] = false;
 		Show["SpringLeaf"] = false;
-		ShowMidsummerToken = false;
+		Show["MidsummerToken"] = false;
 		ShowAncientScript = false;
 		if PlayerWalletSize ~= nil or PlayerWalletSize ~= 0 then
 			if Show["Wallet"] then ImportCtr( "WI" ); end
@@ -337,7 +337,7 @@ function frmMain()
 				if Where["FallFestivalToken"] ~= 3 then ImportCtr( "FFT" ); end
 				if Where["FarmersFaireToken"] ~= 3 then ImportCtr( "FFAT" ); end
 				if Where["SpringLeaf"] ~= 3 then ImportCtr( "SPL" ); end
-				if _G.MSTWhere ~= 3 then ImportCtr( "MST" ); end
+				if Where["MidsummerToken"] ~= 3 then ImportCtr( "MST" ); end
 				if _G.ASWhere ~= 3 then ImportCtr( "AS" ); end
 				if _G.BOTWhere ~= 3 then ImportCtr( "BOT" ); end
 				if _G.BODWhere ~= 3 then ImportCtr( "BOD" ); end

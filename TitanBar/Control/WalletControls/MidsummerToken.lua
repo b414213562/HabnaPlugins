@@ -10,7 +10,7 @@ MST["Ctr"]:SetParent( TB["win"] );
 MST["Ctr"]:SetMouseVisible( false );
 MST["Ctr"]:SetZOrder( 2 );
 MST["Ctr"]:SetBlendMode( Turbine.UI.BlendMode.AlphaBlend );
-MST["Ctr"]:SetBackColor( Turbine.UI.Color( MSTbcAlpha, MSTbcRed, MSTbcGreen, MSTbcBlue ) );
+MST["Ctr"]:SetBackColor( Turbine.UI.Color( BC.Alpha["MidsummerToken"], BC.Red["MidsummerToken"], BC.Green["MidsummerToken"], BC.Blue["MidsummerToken"] ) );
 --**^
 --**v Midsummer Token & icon on TitanBar v**
 MST["Icon"] = Turbine.UI.Control();
@@ -89,10 +89,10 @@ end
 MST["Lbl"].MouseUp = function( sender, args )
 	MST["Ctr"]:SetZOrder( 2 );
 	dragging = false;
-	_G.MSTLocX = MST["Ctr"]:GetLeft();
-	settings.MidsummerToken.X = string.format("%.0f", _G.MSTLocX);
-	_G.MSTLocY = MST["Ctr"]:GetTop();
-	settings.MidsummerToken.Y = string.format("%.0f", _G.MSTLocY);
+	Position.Left["MidsummerToken"] = MST["Ctr"]:GetLeft();
+	settings.MidsummerToken.X = string.format("%.0f", Position.Left["MidsummerToken"]);
+	Position.Top["MidsummerToken"] = MST["Ctr"]:GetTop();
+	settings.MidsummerToken.Y = string.format("%.0f", Position.Top["MidsummerToken"]);
 	SaveSettings( false );
 end
 --**^

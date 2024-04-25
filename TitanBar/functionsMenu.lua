@@ -575,15 +575,15 @@ function ShowHideSpringLeaf()
 end
 
 function ShowHideMidsummerToken()
-	ShowMidsummerToken = not ShowMidsummerToken;
-	settings.MidsummerToken.V = ShowMidsummerToken;
-	settings.MidsummerToken.W = string.format( "%.0f", _G.MSTWhere );
+	Show["MidsummerToken"] = not Show["MidsummerToken"];
+	settings.MidsummerToken.V = Show["MidsummerToken"];
+	settings.MidsummerToken.W = string.format( "%.0f", Where["MidsummerToken"] );
 	SaveSettings( false );
 	ImportCtr( "MST" );
-	if ShowMidsummerToken then
-		MST[ "Ctr" ]:SetBackColor( Turbine.UI.Color( MSTbcAlpha, MSTbcRed, MSTbcGreen, MSTbcBlue ) );
+	if Show["MidsummerToken"] then
+		MST[ "Ctr" ]:SetBackColor( Turbine.UI.Color( BC.Alpha["MidsummerToken"], BC.Red["MidsummerToken"], BC.Green["MidsummerToken"], BC.Blue["MidsummerToken"] ) );
 	end
-	MST[ "Ctr" ]:SetVisible( ShowMidsummerToken);
+	MST[ "Ctr" ]:SetVisible( Show["MidsummerToken"]);
 end
 
 function ShowHideAncientScript()

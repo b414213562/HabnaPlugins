@@ -403,11 +403,11 @@ function ImportCtr( value )
         end
         if Where["SpringLeaf"] ~= 3 then UpdateSpringLeaf(); end	
 	elseif value == "MST" then --Midsummer Tokens
-        if _G.MSTWhere == 1 then
+        if Where["MidsummerToken"] == 1 then
             import (AppCtrWalletD.."MidsummerToken");
-            MST[ "Ctr" ]:SetPosition( _G.MSTLocX, _G.MSTLocY );
+            MST[ "Ctr" ]:SetPosition( Position.Left["MidsummerToken"], Position.Top["MidsummerToken"] );
         end
-        if _G.MSTWhere ~= 3 then UpdateMidsummerToken(); end
+        if Where["MidsummerToken"] ~= 3 then UpdateMidsummerToken(); end
 	elseif value == "AS" then --Ancient Script
         if _G.ASWhere == 1 then
             import (AppCtrWalletD.."AncientScript");
@@ -1156,7 +1156,7 @@ function UpdateCurrency( str )
 	if str == L[ "MFFT" ] and Show["FallFestivalToken"] then UpdateFallFestivalToken(); end
 	if str == L[ "MFFAT" ] and Show["FarmersFaireToken"] then UpdateFarmersFaireToken(); end
 	if str == L[ "MSPL" ] and Show["SpringLeaf"] then UpdateSpringLeaf(); end
-	if str == L[ "MMST" ] and ShowMidsummerToken then UpdateMidsummerToken(); end
+	if str == L[ "MMST" ] and Show["MidsummerToken"] then UpdateMidsummerToken(); end
 	if str == L[ "MAS" ] and ShowAncientScript then UpdateAncientScript(); end
     if str == L[ "MBOT" ] and ShowBadgeOfTaste then UpdateBadgeOfTaste(); end
     if str == L[ "MBOD" ] and ShowBadgeOfDishonour then UpdateBadgeOfDishonour(); end

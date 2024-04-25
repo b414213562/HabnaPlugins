@@ -917,17 +917,16 @@ function LoadSettings()
 	if settings.MidsummerToken.X == nil then settings.MidsummerToken.X = string.format("%.0f", tX); end
 	if settings.MidsummerToken.Y == nil then settings.MidsummerToken.Y = string.format("%.0f", tY); end
 	if settings.MidsummerToken.W == nil then settings.MidsummerToken.W = string.format("%.0f", tW); end
-	ShowMidsummerToken = settings.MidsummerToken.V;
-	MSTbcAlpha = tonumber(settings.MidsummerToken.A);
-	MSTbcRed = tonumber(settings.MidsummerToken.R);
-	MSTbcGreen = tonumber(settings.MidsummerToken.G);
-	MSTbcBlue = tonumber(settings.MidsummerToken.B);
-	_G.MSTLocX = tonumber(settings.MidsummerToken.X);
-	_G.MSTLocY = tonumber(settings.MidsummerToken.Y);
-	_G.MSTWhere = tonumber(settings.MidsummerToken.W);
-	if _G.MSTWhere == 3 and ShowMidsummerToken then _G.MSTWhere = 1; settings.MidsummerToken.W = string.format("%.0f", _G.MSTWhere); end
-	
-	if settings.AncientScript == nil then settings.AncientScript= {}; end
+	Show["MidsummerToken"] = settings.MidsummerToken.V;
+	BC.Alpha["MidsummerToken"] = tonumber(settings.MidsummerToken.A);
+	BC.Red["MidsummerToken"] = tonumber(settings.MidsummerToken.R);
+	BC.Green["MidsummerToken"] = tonumber(settings.MidsummerToken.G);
+	BC.Blue["MidsummerToken"] = tonumber(settings.MidsummerToken.B);
+	Position.Left["MidsummerToken"] = tonumber(settings.MidsummerToken.X);
+	Position.Top["MidsummerToken"] = tonumber(settings.MidsummerToken.Y);
+    Where["MidsummerToken"] = ParseWhere(settings, "MidsummerToken");
+
+    if settings.AncientScript == nil then settings.AncientScript= {}; end
 	if settings.AncientScript.V == nil then settings.AncientScript.V = false; end
 	if settings.AncientScript.A == nil then settings.AncientScript.A = string.format("%.3f", tA); end
 	if settings.AncientScript.R == nil then settings.AncientScript.R = string.format("%.3f", tR); end
@@ -1433,14 +1432,14 @@ function SaveSettings(str)
 		settings.SpringLeaf.W = string.format("%.0f", Where["SpringLeaf"]);
 		
 		settings.MidsummerToken = {};
-		settings.MidsummerToken.V = ShowMidsummerToken;
-		settings.MidsummerToken.A = string.format("%.3f", MSTbcAlpha);
-		settings.MidsummerToken.R = string.format("%.3f", MSTbcRed);
-		settings.MidsummerToken.G = string.format("%.3f", MSTbcGreen);
-		settings.MidsummerToken.B = string.format("%.3f", MSTbcBlue);
-		settings.MidsummerToken.X = string.format("%.0f", _G.MSTLocX);
-		settings.MidsummerToken.Y = string.format("%.0f", _G.MSTLocY);
-		settings.MidsummerToken.W = string.format("%.0f", _G.MSTWhere);
+		settings.MidsummerToken.V = Show["MidsummerToken"];
+		settings.MidsummerToken.A = string.format("%.3f", BC.Alpha["MidsummerToken"]);
+		settings.MidsummerToken.R = string.format("%.3f", BC.Red["MidsummerToken"]);
+		settings.MidsummerToken.G = string.format("%.3f", BC.Green["MidsummerToken"]);
+		settings.MidsummerToken.B = string.format("%.3f", BC.Blue["MidsummerToken"]);
+		settings.MidsummerToken.X = string.format("%.0f", Position.Left["MidsummerToken"]);
+		settings.MidsummerToken.Y = string.format("%.0f", Position.Top["MidsummerToken"]);
+		settings.MidsummerToken.W = string.format("%.0f", Where["MidsummerToken"]);
 		
 		settings.AncientScript = {};
 		settings.AncientScript.V = ShowAncientScript;
@@ -1526,7 +1525,7 @@ function ResetSettings()
 	Show["FallFestivalToken"], BC.Alpha["FallFestivalToken"], BC.Red["FallFestivalToken"], BC.Green["FallFestivalToken"], BC.Blue["FallFestivalToken"], Position.Left["FallFestivalToken"], Position.Top["FallFestivalToken"], Where["FallFestivalToken"] = false, tA, tR, tG, tB, tX, tY, tW; --for Fall Festival Tokens Control	
 	Show["FarmersFaireToken"], BC.Alpha["FarmersFaireToken"], BC.Red["FarmersFaireToken"], BC.Green["FarmersFaireToken"], BC.Blue["FarmersFaireToken"], Position.Left["FarmersFaireToken"], Position.Top["FarmersFaireToken"], Where["FarmersFaireToken"] = false, tA, tR, tG, tB, tX, tY, tW; --for Farmers Festival Token Control
 	Show["SpringLeaf"], BC.Alpha["SpringLeaf"], BC.Red["SpringLeaf"], BC.Green["SpringLeaf"], BC.Blue["SpringLeaf"], Position.Left["SpringLeaf"], Position.Top["SpringLeaf"], Where["SpringLeaf"] = false, tA, tR, tG, tB, tX, tY, tW; --for Spring Leaf Control	
-	ShowMidsummerToken, MSTbcAlpha, MSTbcRed, MSTbcGreen, MSTbcBlue, _G.MSTLocX, _G.MSTLocY, _G.MSTWhere = false, tA, tR, tG, tB, tX, tY, tW; --for  Midsummer Token Control
+	Show["MidsummerToken"], BC.Alpha["MidsummerToken"], BC.Red["MidsummerToken"], BC.Green["MidsummerToken"], BC.Blue["MidsummerToken"], Position.Left["MidsummerToken"], Position.Top["MidsummerToken"], Where["MidsummerToken"] = false, tA, tR, tG, tB, tX, tY, tW; --for  Midsummer Token Control
 	ShowAncientScript, ASbcAlpha, ASbcRed, ASbcGreen, ASbcBlue, _G.ASLocX, _G.ASLocY, _G.ASWhere = false, tA, tR, tG, tB, tX, tY, tW; --for  Ancient Script Control
     ShowBadgeOfTaste, BOTbcAlpha, BOTbcRed, BOTbcGreen, BOTbcBlue, _G.BOTLocX, _G.BOTLocY, _G.BOTWhere = false, tA, tR, tG, tB, tX, tY, tW; --for Badge of Taste Control 
     ShowBadgeOfDishonour, BODbcAlpha, BODbcRed, BODbcGreen, BODbcBlue, _G.BODLocX, _G.BODLocY, _G.BODWhere = false, tA, tR, tG, tB, tX, tY, tW; --for Badge of Dishonour Control 
@@ -1729,9 +1728,9 @@ function ReplaceCtr()
 	if Show["SpringLeaf"] and Where["SpringLeaf"] == 1 then SPL[ "Ctr" ]:SetPosition( Position.Left["SpringLeaf"], Position.Top["SpringLeaf"] ); end
 	
 	oldLocX = settings.MidsummerToken.X / oldScreenWidth;
-	_G.MSTLocX = oldLocX * screenWidth;
-	settings.MidsummerToken.X = string.format("%.0f", _G.MSTLocX);
-	if ShowMidsummerToken and _G.MSTWhere == 1 then MST[ "Ctr" ]:SetPosition( _G.MSTLocX, _G.MSTLocY ); end
+	Position.Left["MidsummerToken"] = oldLocX * screenWidth;
+	settings.MidsummerToken.X = string.format("%.0f", Position.Left["MidsummerToken"]);
+	if Show["MidsummerToken"] and Where["MidsummerToken"] == 1 then MST[ "Ctr" ]:SetPosition( Position.Left["MidsummerToken"], Position.Top["MidsummerToken"] ); end
 	
 	oldLocX = settings.AncientScript.X / oldScreenWidth;
 	_G.ASLocX = oldLocX * screenWidth;

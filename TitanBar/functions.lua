@@ -659,7 +659,7 @@ end
 --**^
 --**v Update Midsummer Token currency on TitanBar v**
 function UpdateMidsummerToken()
-	if _G.MSTWhere == 1 then
+	if Where["MidsummerToken"] == 1 then
 		MST[ "Lbl" ]:SetText( GetCurrency( L[ "MMST" ] ) );
 		MST[ "Lbl" ]:SetSize( MST[ "Lbl" ]:GetTextLength() * NM, CTRHeight ); 
 		AjustIcon( "MST" );
@@ -1043,7 +1043,7 @@ function ChangeColor(tColor)
 		if Show["FallFestivalToken"] then FFT[ "Ctr" ]:SetBackColor( tColor ); end
 		if Show["FarmersFaireToken"] then FFAT[ "Ctr" ]:SetBackColor( tColor ); end
 		if Show["SpringLeaf"] then SPL[ "Ctr" ]:SetBackColor( tColor ); end
-		if ShowMidsummerToken then MST[ "Ctr" ]:SetBackColor( tColor ); end
+		if Show["MidsummerToken"] then MST[ "Ctr" ]:SetBackColor( tColor ); end
 		if ShowAncientScript then AS[ "Ctr" ]:SetBackColor( tColor ); end
 		if ShowBadgeOfTaste then BOT[ "Ctr" ]:SetBackColor( tColor ); end
 		if ShowBadgeOfDishonour then BOD[ "Ctr" ]:SetBackColor( tColor ); end
