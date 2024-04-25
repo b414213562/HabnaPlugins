@@ -257,9 +257,9 @@ function frmWalletWindow()
 			if SelIndex == 1 then if not Show["Seals"] then ShowHideSeals(); end
 			else if Show["Seals"] then ShowHideSeals(); end end
 		elseif wcur == L["MCP"] then
-			_G.CPWhere = SelIndex; settings.Commendations.W = string.format("%.0f", SelIndex);
-			if SelIndex == 1 then if not ShowCommendations then ShowHideCommendations(); end
-			else if ShowCommendations then ShowHideCommendations(); end end
+			Where["Commendations"] = SelIndex; settings.Commendations.W = string.format("%.0f", SelIndex);
+			if SelIndex == 1 then if not Show["Commendations"] then ShowHideCommendations(); end
+			else if Show["Commendations"] then ShowHideCommendations(); end end
 		elseif wcur == L["MASP"] then
 			_G.ASPWhere = SelIndex; settings.AmrothSilverPiece.W = string.format("%.0f", SelIndex);
 			if SelIndex == 1 then if not ShowAmrothSilverPiece then ShowHideAmrothSilverPiece(); end
@@ -389,8 +389,8 @@ function RefreshWIListBox()
 				elseif wcur == L["MHT"] then tw = Where["HytboldTokens"]; -- Tokens of Hytbold
 				elseif wcur == L["MMP"] then tw = Where["Medallions"]; -- Medallions
 				elseif wcur == L["MSL"] then tw = Where["Seals"]; -- Seals
-				elseif wcur == L["MCP"] then tw = _G.CPWhere; -- Commendations
 				elseif wcur == L["MLP"] then tw = _G.LPWhere; -- LOTRO Points
+				elseif wcur == L["MCP"] then tw = Where["Commendations"]; -- Commendations
 				LPWCtr:SetVisible( true ); -- LOTRO Points
 				WItxtLOTROPTS:SetText( _G.LOTROPTS ); -- LOTRO Points
 				WItxtLOTROPTS:Focus(); -- LOTRO Points

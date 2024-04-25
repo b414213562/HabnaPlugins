@@ -85,11 +85,11 @@ function ImportCtr( value )
         end
         if Where["Seals"] ~= 3 then UpdateSeals(); end
     elseif value == "CP" then --Commendations
-        if _G.CPWhere == 1 then
+        if Where["Commendations"] == 1 then
             import (AppCtrWalletD.."Commendations");
-            CP[ "Ctr" ]:SetPosition( _G.CPLocX, _G.CPLocY );
+            CP[ "Ctr" ]:SetPosition( Position.Left["Commendations"], Position.Top["Commendations"] );
         end
-        if _G.CPWhere ~= 3 then UpdateCommendations(); end
+        if Where["Commendations"] ~= 3 then UpdateCommendations(); end
     elseif value == "BI" then --Backpack Infos
         import (AppCtrD.."BagInfos");
         --import (AppCtrD.."BagInfosToolTip");
@@ -1140,7 +1140,7 @@ function UpdateCurrency( str )
     if str == L[ "MSM" ] and Show["SkirmishMarks"] then UpdateMarks(); end
     if str == L[ "MMP" ] and Show["Medallions"] then UpdateMedallions(); end
     if str == L[ "MSL" ] and Show["Seals"] then UpdateSeals(); end
-    if str == L[ "MCP" ] and ShowCommendations then UpdateCommendations(); end
+    if str == L[ "MCP" ] and Show["Commendations"] then UpdateCommendations(); end
     if str == L[ "MMC" ] and Show["MithrilCoins"] then UpdateMithril(); end
     if str == L[ "MYT" ] and Show["YuleToken"] then UpdateYuleToken(); end
     if str == L[ "MHT" ] and Show["HytboldTokens"] then UpdateHytboldTokens(); end

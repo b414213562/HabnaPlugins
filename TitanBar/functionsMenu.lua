@@ -145,15 +145,15 @@ end
 -- **^
 -- **v Show/Hide Commendations v**
 function ShowHideCommendations()
-	ShowCommendations = not ShowCommendations;
-	settings.Commendations.V = ShowCommendations;
-	settings.Commendations.W = string.format("%.0f", _G.CPWhere);
+	Show["Commendations"] = not Show["Commendations"];
+	settings.Commendations.V = Show["Commendations"];
+	settings.Commendations.W = string.format("%.0f", Where["Commendations"]);
 	SaveSettings( false );
 	ImportCtr( "CP" );
-	if ShowCommendations then
-		CP[ "Ctr" ]:SetBackColor( Turbine.UI.Color( CPbcAlpha, CPbcRed, CPbcGreen, CPbcBlue ) );
+	if Show["Commendations"] then
+		CP[ "Ctr" ]:SetBackColor( Turbine.UI.Color( BC.Alpha["Commendations"], BC.Red["Commendations"], BC.Green["Commendations"], BC.Blue["Commendations"] ) );
 	end
-	CP[ "Ctr" ]:SetVisible( ShowCommendations );
+	CP[ "Ctr" ]:SetVisible( Show["Commendations"] );
 end
 -- **^
 -- **v Show/Hide LOTRO Points v**

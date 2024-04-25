@@ -531,7 +531,7 @@ end
 --**^
 --**v Update Commendations currency on TitanBar v**
 function UpdateCommendations()
-	if _G.CPWhere == 1 then
+	if Where["Commendations"] == 1 then
 		CP[ "Lbl" ]:SetText( GetCurrency( L[ "MCP" ] ) );
 		CP[ "Lbl" ]:SetSize( CP[ "Lbl" ]:GetTextLength() * NM, CTRHeight ); 
 		AjustIcon( "CP" );
@@ -1016,7 +1016,7 @@ function ChangeColor(tColor)
 		if Show["HytboldTokens"] then HT[ "Ctr" ]:SetBackColor( tColor ); end
 		if Show["Medallions"] then MP[ "Ctr" ]:SetBackColor( tColor ); end
 		if Show["Seals"] then SL[ "Ctr" ]:SetBackColor( tColor ); end
-		if ShowCommendations then CP[ "Ctr" ]:SetBackColor( tColor ); end
+		if Show["Commendations"] then CP[ "Ctr" ]:SetBackColor( tColor ); end
 		if ShowBagInfos then BI[ "Ctr" ]:SetBackColor( tColor ); end
 		if ShowPlayerInfos then PI[ "Ctr" ]:SetBackColor( tColor ); end
 		if ShowEquipInfos then EI[ "Ctr" ]:SetBackColor( tColor ); end

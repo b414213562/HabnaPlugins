@@ -10,7 +10,7 @@ CP["Ctr"]:SetParent( TB["win"] );
 CP["Ctr"]:SetMouseVisible( false );
 CP["Ctr"]:SetZOrder( 2 );
 CP["Ctr"]:SetBlendMode( Turbine.UI.BlendMode.AlphaBlend );
-CP["Ctr"]:SetBackColor( Turbine.UI.Color( CPbcAlpha, CPbcRed, CPbcGreen, CPbcBlue ) );
+CP["Ctr"]:SetBackColor( Turbine.UI.Color( BC.Alpha["Commendations"], BC.Red["Commendations"], BC.Green["Commendations"], BC.Blue["Commendations"] ) );
 --CP["Ctr"]:SetBackColor( Color["red"] ); -- Debug purpose
 --**^
 --**v Commendation & icon on TitanBar v**
@@ -92,10 +92,10 @@ end
 CP["Lbl"].MouseUp = function( sender, args )
 	CP["Ctr"]:SetZOrder( 2 );
 	dragging = false;
-	_G.CPLocX = CP["Ctr"]:GetLeft();
-	settings.Commendations.X = string.format("%.0f", _G.CPLocX);
-	_G.CPLocY = CP["Ctr"]:GetTop();
-	settings.Commendations.Y = string.format("%.0f", _G.CPLocY);
+	Position.Left["Commendations"] = CP["Ctr"]:GetLeft();
+	settings.Commendations.X = string.format("%.0f", Position.Left["Commendations"]);
+	Position.Top["Commendations"] = CP["Ctr"]:GetTop();
+	settings.Commendations.Y = string.format("%.0f", Position.Top["Commendations"]);
 	SaveSettings( false );
 end
 --**^

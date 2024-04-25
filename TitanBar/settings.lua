@@ -347,18 +347,16 @@ function LoadSettings()
 	if settings.Commendations.X == nil then settings.Commendations.X = string.format("%.0f", tX); end
 	if settings.Commendations.Y == nil then settings.Commendations.Y = string.format("%.0f", tY); end
 	if settings.Commendations.W == nil then settings.Commendations.W = string.format("%.0f", tW); end
-	ShowCommendations = settings.Commendations.V;
-	CPbcAlpha = tonumber(settings.Commendations.A);
-	CPbcRed = tonumber(settings.Commendations.R);
-	CPbcGreen = tonumber(settings.Commendations.G);
-	CPbcBlue = tonumber(settings.Commendations.B);
-	_G.CPLocX = tonumber(settings.Commendations.X);
-	_G.CPLocY = tonumber(settings.Commendations.Y);
-	_G.CPWhere = tonumber(settings.Commendations.W);
-	if _G.CPWhere == 3 and ShowCommendations then _G.CPWhere = 1; settings.Commendations.W = string.format("%.0f", _G.CPWhere); end --Remove after Oct, 15th 2013
+	Show["Commendations"] = settings.Commendations.V;
+	BC.Alpha["Commendations"] = tonumber(settings.Commendations.A);
+	BC.Red["Commendations"] = tonumber(settings.Commendations.R);
+	BC.Green["Commendations"] = tonumber(settings.Commendations.G);
+	BC.Blue["Commendations"] = tonumber(settings.Commendations.B);
+	Position.Left["Commendations"] = tonumber(settings.Commendations.X);
+	Position.Top["Commendations"] = tonumber(settings.Commendations.Y);
+    Where["Commendations"] = ParseWhere(settings, "Commendations");
 
-
-	if settings.LOTROPoints == nil then settings.LOTROPoints = {}; end
+    if settings.LOTROPoints == nil then settings.LOTROPoints = {}; end
 	if settings.LOTROPoints.V == nil then settings.LOTROPoints.V = false; end
 	if settings.LOTROPoints.A == nil then settings.LOTROPoints.A = string.format("%.3f", tA); end
 	if settings.LOTROPoints.R == nil then settings.LOTROPoints.R = string.format("%.3f", tR); end
@@ -1149,14 +1147,14 @@ function SaveSettings(str)
 		settings.Seals.W = string.format("%.0f", Where["Seals"]);
 
 		settings.Commendations = {};
-		settings.Commendations.V = ShowCommendations;
-		settings.Commendations.A = string.format("%.3f", CPbcAlpha);
-		settings.Commendations.R = string.format("%.3f", CPbcRed);
-		settings.Commendations.G = string.format("%.3f", CPbcGreen);
-		settings.Commendations.B = string.format("%.3f", CPbcBlue);
-		settings.Commendations.X = string.format("%.0f", _G.CPLocX);
-		settings.Commendations.Y = string.format("%.0f", _G.CPLocY);
-		settings.Commendations.W = string.format("%.0f", _G.CPWhere);
+		settings.Commendations.V = Show["Commendations"];
+		settings.Commendations.A = string.format("%.3f", BC.Alpha["Commendations"]);
+		settings.Commendations.R = string.format("%.3f", BC.Red["Commendations"]);
+		settings.Commendations.G = string.format("%.3f", BC.Green["Commendations"]);
+		settings.Commendations.B = string.format("%.3f", BC.Blue["Commendations"]);
+		settings.Commendations.X = string.format("%.0f", Position.Left["Commendations"]);
+		settings.Commendations.Y = string.format("%.0f", Position.Top["Commendations"]);
+		settings.Commendations.W = string.format("%.0f", Where["Commendations"]);
 
 		settings.LOTROPoints = {};
 		settings.LOTROPoints.V = ShowLOTROPoints;
@@ -1513,7 +1511,7 @@ function ResetSettings()
 	Show["YuleToken"], BC.Alpha["YuleToken"], BC.Red["YuleToken"], BC.Green["YuleToken"], BC.Blue["YuleToken"], _G.TLocX, Position.Top["YuleToken"], Where["YuleToken"] = false, tA, tR, tG, tB, tX, tY, tW; --for Yule Tokens Control
 	Show["HytboldTokens"], BC.Alpha["HytboldTokens"], BC.Red["HytboldTokens"], BC.Green["HytboldTokens"], BC.Blue["HytboldTokens"], Position.Left["HytboldTokens"], Position.Top["HytboldTokens"], Where["HytboldTokens"] = false, tA, tR, tG, tB, tX, tY, tW; --for Tokens of Hytbold Control
 	Show["Medallions"], BC.Alpha["Medallions"], BC.Red["Medallions"], BC.Green["Medallions"], BC.Blue["Medallions"], Position.Left["Medallions"], Position.Top["Medallions"], Where["Medallions"] = false, tA, tR, tG, tB, tX, tY, tW; --for Medallions Control
-	ShowCommendations, CPbcAlpha, CPbcRed, CPbcGreen, CPbcBlue, _G.CPLocX, _G.CPLocY, _G.CPWhere = false, tA, tR, tG, tB, tX, tY, tW; --for Commendations Control
+	Show["Commendations"], BC.Alpha["Commendations"], BC.Red["Commendations"], BC.Green["Commendations"], BC.Blue["Commendations"], Position.Left["Commendations"], Position.Top["Commendations"], Where["Commendations"] = false, tA, tR, tG, tB, tX, tY, tW; --for Commendations Control
 	Show["Seals"], BC.Alpha["Seals"], BC.Red["Seals"], BC.Green["Seals"], BC.Blue["Seals"], Position.Left["Seals"], Position.Top["Seals"], Where["Seals"] = false, tA, tR, tG, tB, tX, tY, tW; --for Seal Control
 	ShowBagInfos, _G.BIUsed, _G.BIMax, BIbcAlpha, BIbcRed, BIbcGreen, BIbcBlue, _G.BILocX, _G.BILocY = true, true, true, tA, tR, tG, tB, tX, tY; --for Bag info Control
 	ShowEquipInfos, EIbcAlpha, EIbcRed, EIbcGreen, EIbcBlue, _G.EILocX, _G.EILocY = true, tA, tR, tG, tB, 75, tY; --for Equipment infos Control
@@ -1609,9 +1607,9 @@ function ReplaceCtr()
 	if Show["Seals"] and Where["Seals"] == 1 then SL[ "Ctr" ]:SetPosition( Position.Left["Seals"], Position.Top["Seals"] ); end
 
 	oldLocX = settings.Commendations.X / oldScreenWidth;
-	_G.CPLocX = oldLocX * screenWidth;
-	settings.Commendations.X = string.format("%.0f", _G.CPLocX);
-	if ShowCommendations and _G.CPWhere == 1 then CP[ "Ctr" ]:SetPosition( _G.CPLocX, _G.CPLocY ); end
+	Position.Left["Commendations"] = oldLocX * screenWidth;
+	settings.Commendations.X = string.format("%.0f", Position.Left["Commendations"]);
+	if Show["Commendations"] and Where["Commendations"] == 1 then CP[ "Ctr" ]:SetPosition( Position.Left["Commendations"], Position.Top["Commendations"] ); end
 
 	oldLocX = settings.BagInfos.X / oldScreenWidth;
 	_G.BILocX = oldLocX * screenWidth;
