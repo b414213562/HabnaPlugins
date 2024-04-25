@@ -10,7 +10,7 @@ YT["Ctr"]:SetParent( TB["win"] );
 YT["Ctr"]:SetMouseVisible( false );
 YT["Ctr"]:SetZOrder( 2 );
 YT["Ctr"]:SetBlendMode( Turbine.UI.BlendMode.AlphaBlend );
-YT["Ctr"]:SetBackColor( Turbine.UI.Color( YTbcAlpha, YTbcRed, YTbcGreen, YTbcBlue ) );
+YT["Ctr"]:SetBackColor( Turbine.UI.Color( BC.Alpha["YuleToken"], BC.Red["YuleToken"], BC.Green["YuleToken"], BC.Blue["YuleToken"] ) );
 --**^
 --**v Yule Token & icon on TitanBar v**
 YT["Icon"] = Turbine.UI.Control();
@@ -89,10 +89,10 @@ end
 YT["Lbl"].MouseUp = function( sender, args )
 	YT["Ctr"]:SetZOrder( 2 );
 	dragging = false;
-	_G.YTLocX = YT["Ctr"]:GetLeft();
-	settings.YuleToken.X = string.format("%.0f", _G.YTLocX);
-	_G.YTLocY = YT["Ctr"]:GetTop();
-	settings.YuleToken.Y = string.format("%.0f", _G.YTLocY);
+	Position.Left["YuleToken"] = YT["Ctr"]:GetLeft();
+	settings.YuleToken.X = string.format("%.0f", Position.Left["YuleToken"]);
+	Position.Top["YuleToken"] = YT["Ctr"]:GetTop();
+	settings.YuleToken.Y = string.format("%.0f", Position.Top["YuleToken"]);
 	SaveSettings( false );
 end
 --**^

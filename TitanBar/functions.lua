@@ -495,7 +495,7 @@ end
 --**^
 --**v Update Yule Tokens currency on TitanBar v**
 function UpdateYuleToken()
-	if _G.YTWhere == 1 then
+	if Where["YuleToken"] == 1 then
 		YT[ "Lbl" ]:SetText( GetCurrency( L[ "MYT" ] ) );
 		YT[ "Lbl" ]:SetSize( YT[ "Lbl" ]:GetTextLength() * NM, CTRHeight ); 
 		AjustIcon( "YT" );
@@ -1012,7 +1012,7 @@ function ChangeColor(tColor)
 		if Show["Shards"] then SP[ "Ctr" ]:SetBackColor( tColor ); end
 		if Show["SkirmishMarks"] then SM[ "Ctr" ]:SetBackColor( tColor ); end
 		if Show["MithrilCoins"] then MC[ "Ctr" ]:SetBackColor( tColor ); end
-		if ShowYuleToken then YT[ "Ctr" ]:SetBackColor( tColor ); end
+		if Show["YuleToken"] then YT[ "Ctr" ]:SetBackColor( tColor ); end
 		if ShowHytboldTokens then HT[ "Ctr" ]:SetBackColor( tColor ); end
 		if ShowMedallions then MP[ "Ctr" ]:SetBackColor( tColor ); end
 		if ShowSeals then SL[ "Ctr" ]:SetBackColor( tColor ); end

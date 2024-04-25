@@ -275,16 +275,15 @@ function LoadSettings()
 	if settings.YuleToken.X == nil then settings.YuleToken.X = string.format("%.0f", tX); end
 	if settings.YuleToken.Y == nil then settings.YuleToken.Y = string.format("%.0f", tY); end
 	if settings.YuleToken.W == nil then settings.YuleToken.W = string.format("%.0f", tW); end
-	ShowYuleToken = settings.YuleToken.V;
-	YTbcAlpha = tonumber(settings.YuleToken.A);
-	YTbcRed = tonumber(settings.YuleToken.R);
-	YTbcGreen = tonumber(settings.YuleToken.G);
-	YTbcBlue = tonumber(settings.YuleToken.B);
-	_G.YTLocX = tonumber(settings.YuleToken.X);
-	_G.YTLocY = tonumber(settings.YuleToken.Y);
-	_G.YTWhere = tonumber(settings.YuleToken.W);
-	if _G.YTWhere == 3 and ShowYuleToken then _G.YTWhere = 1; settings.YuleToken.W = string.format("%.0f", _G.YTWhere); end
-	
+	Show["YuleToken"] = settings.YuleToken.V;
+	BC.Alpha["YuleToken"] = tonumber(settings.YuleToken.A);
+	BC.Red["YuleToken"] = tonumber(settings.YuleToken.R);
+	BC.Green["YuleToken"] = tonumber(settings.YuleToken.G);
+	BC.Blue["YuleToken"] = tonumber(settings.YuleToken.B);
+	Position.Left["YuleToken"] = tonumber(settings.YuleToken.X);
+	Position.Top["YuleToken"] = tonumber(settings.YuleToken.Y);
+    Where["YuleToken"] = ParseWhere(settings, "YuleToken");
+
 	if settings.HytboldTokens == nil then settings.HytboldTokens = {}; end
 	if settings.HytboldTokens.V == nil then settings.HytboldTokens.V = false; end
 	if settings.HytboldTokens.A == nil then settings.HytboldTokens.A = string.format("%.3f", tA); end
@@ -1116,14 +1115,14 @@ function SaveSettings(str)
 		settings.MithrilCoins.W = string.format("%.0f", Where["MithrilCoins"]);
 
 		settings.YuleToken = {};
-		settings.YuleToken.V = ShowYuleToken;
-		settings.YuleToken.A = string.format("%.3f", YTbcAlpha);
-		settings.YuleToken.R = string.format("%.3f", YTbcRed);
-		settings.YuleToken.G = string.format("%.3f", YTbcGreen);
-		settings.YuleToken.B = string.format("%.3f", YTbcBlue);
-		settings.YuleToken.X = string.format("%.0f", _G.YTLocX);
-		settings.YuleToken.Y = string.format("%.0f", _G.YTLocY);
-		settings.YuleToken.W = string.format("%.0f", _G.YTWhere);
+		settings.YuleToken.V = Show["YuleToken"];
+		settings.YuleToken.A = string.format("%.3f", BC.Alpha["YuleToken"]);
+		settings.YuleToken.R = string.format("%.3f", BC.Red["YuleToken"]);
+		settings.YuleToken.G = string.format("%.3f", BC.Green["YuleToken"]);
+		settings.YuleToken.B = string.format("%.3f", BC.Blue["YuleToken"]);
+		settings.YuleToken.X = string.format("%.0f", Position.Left["YuleToken"]);
+		settings.YuleToken.Y = string.format("%.0f", Position.Top["YuleToken"]);
+		settings.YuleToken.W = string.format("%.0f", Where["YuleToken"]);
 		
 		settings.HytboldTokens = {};
 		settings.HytboldTokens.V = ShowHytboldTokens;
@@ -1516,8 +1515,8 @@ function ResetSettings()
 	Show["DestinyPoints"], BC.Alpha["DestinyPoints"], BC.Red["DestinyPoints"], BC.Green["DestinyPoints"], BC.Blue["DestinyPoints"], Position.Left["DestinyPoints"], Position.Top["DestinyPoints"], Where["DestinyPoints"] = false, tA, tR, tG, tB, tX, tY, tW; --for Destiny points Control
 	Show["Shards"], BC.Alpha["Shards"], BC.Red["Shards"], BC.Green["Shards"], BC.Blue["Shards"], Position.Left["Shards"], Position.Top["Shards"], Where["Shards"] = false, tA, tR, tG, tB, tX, tY, tW; --for Shards Control
 	Show["SkirmishMarks"], BC.Alpha["SkirmishMarks"], BC.Red["SkirmishMarks"], BC.Green["SkirmishMarks"], BC.Blue["SkirmishMarks"], Position.Left["SkirmishMarks"], Position.Top["SkirmishMarks"], Where["SkirmishMarks"] = false, tA, tR, tG, tB, tX, tY, tW; --for Skirmish marks Control
-	ShowYuleToken, YTbcAlpha, YTbcRed, YTbcGreen, YTbcBlue, _G.TLocX, _G.YTLocY, _G.YTWhere = false, tA, tR, tG, tB, tX, tY, tW; --for Yule Tokens Control
 	Show["MithrilCoins"], BC.Alpha["MithrilCoins"], BC.Red["MithrilCoins"], BC.Green["MithrilCoins"], BC.Blue["MithrilCoins"], Position.Left["MithrilCoins"], Position.Top["MithrilCoins"], Where["MithrilCoins"] = false, tA, tR, tG, tB, tX, tY, tW; --for Mithril Coins Control
+	Show["YuleToken"], BC.Alpha["YuleToken"], BC.Red["YuleToken"], BC.Green["YuleToken"], BC.Blue["YuleToken"], _G.TLocX, Position.Top["YuleToken"], Where["YuleToken"] = false, tA, tR, tG, tB, tX, tY, tW; --for Yule Tokens Control
 	ShowHytboldTokens, HTbcAlpha, HTbcRed, HTbcGreen, HTbcBlue, _G.HTLocX, _G.HTLocY, _G.HTWhere = false, tA, tR, tG, tB, tX, tY, tW; --for Tokens of Hytbold Control
 	ShowMedallions, MPbcAlpha, MPbcRed, MPbcGreen, MPbcBlue, _G.MPLocX, _G.MPLocY, _G.MPWhere = false, tA, tR, tG, tB, tX, tY, tW; --for Medallions Control
 	ShowCommendations, CPbcAlpha, CPbcRed, CPbcGreen, CPbcBlue, _G.CPLocX, _G.CPLocY, _G.CPWhere = false, tA, tR, tG, tB, tX, tY, tW; --for Commendations Control
@@ -1596,9 +1595,9 @@ function ReplaceCtr()
 	if Show["MithrilCoins"] and Where["MithrilCoins"] == 1 then MC[ "Ctr" ]:SetPosition( Position.Left["MithrilCoins"], Position.Top["MithrilCoins"] ); end
 	
 	oldLocX = settings.YuleToken.X / oldScreenWidth;
-	_G.YTLocX = oldLocX * screenWidth;
-	settings.YuleToken.X = string.format("%.0f", _G.YTLocX);
-	if ShowYuleToken and _G.YTWhere == 1 then YT[ "Ctr" ]:SetPosition( _G.YTLocX, _G.YTLocY ); end
+	Position.Left["YuleToken"] = oldLocX * screenWidth;
+	settings.YuleToken.X = string.format("%.0f", Position.Left["YuleToken"]);
+	if Show["YuleToken"] and Where["YuleToken"] == 1 then YT[ "Ctr" ]:SetPosition( Position.Left["YuleToken"], Position.Top["YuleToken"] ); end
 
 	ldLocX = settings.HytboldTokens.X / oldScreenWidth;
 	_G.HTLocX = oldLocX * screenWidth;

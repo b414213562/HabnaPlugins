@@ -61,11 +61,11 @@ function ImportCtr( value )
         end
         if Where["MithrilCoins"] ~= 3 then UpdateMithril(); end
     elseif value == "YT" then --Yule Tokens
-        if _G.YTWhere == 1 then
+        if Where["YuleToken"] == 1 then
             import (AppCtrWalletD.."YuleToken");
-            YT[ "Ctr" ]:SetPosition( _G.YTLocX, _G.YTLocY );
+            YT[ "Ctr" ]:SetPosition( Position.Left["YuleToken"], Position.Top["YuleToken"] );
         end
-        if _G.YTWhere ~= 3 then UpdateYuleToken(); end
+        if Where["YuleToken"] ~= 3 then UpdateYuleToken(); end
     elseif value == "HT" then --Tokens of Hytbold
         if _G.HTWhere == 1 then
             import (AppCtrWalletD.."TokensOfHytbold");
@@ -1142,7 +1142,7 @@ function UpdateCurrency( str )
     if str == L[ "MSL" ] and ShowSeals then UpdateSeals(); end
     if str == L[ "MCP" ] and ShowCommendations then UpdateCommendations(); end
     if str == L[ "MMC" ] and ShowMithril then UpdateMithril(); end
-    if str == L[ "MYT" ] and ShowYuleToken then UpdateYuleToken(); end
+    if str == L[ "MYT" ] and Show["YuleToken"] then UpdateYuleToken(); end
     if str == L[ "MHT" ] and ShowHytboldTokens then UpdateHytboldTokens(); end
     if str == L[ "MASP" ] and ShowAmrothSilverPiece then UpdateAmrothSilverPiece(); end
     if str == L[ "MSOM" ] and ShowStarsofMerit then UpdateStarsofMerit(); end

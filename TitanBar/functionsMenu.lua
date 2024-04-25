@@ -93,15 +93,15 @@ end
 -- **^
 -- **v Show/Hide Yule Tokens v**
 function ShowHideYuleToken()
-	ShowYuleToken = not ShowYuleToken;
-	settings.YuleToken.V = ShowYuleToken;
-	settings.YuleToken.W = string.format("%.0f", _G.YTWhere);
+	Show["YuleToken"] = not Show["YuleToken"];
+	settings.YuleToken.V = Show["YuleToken"];
+	settings.YuleToken.W = string.format("%.0f", Where["YuleToken"]);
 	SaveSettings( false );
 	ImportCtr( "YT" );
-	if ShowYuleToken then
-		YT[ "Ctr" ]:SetBackColor( Turbine.UI.Color( YTbcAlpha, YTbcRed, YTbcGreen, YTbcBlue ) );
+	if Show["YuleToken"] then
+		YT[ "Ctr" ]:SetBackColor( Turbine.UI.Color( BC.Alpha["YuleToken"], BC.Red["YuleToken"], BC.Green["YuleToken"], BC.Blue["YuleToken"] ) );
 	end
-	YT[ "Ctr" ]:SetVisible( ShowYuleToken );
+	YT[ "Ctr" ]:SetVisible( Show["YuleToken"] );
 end
 -- **^
 -- **v Show/Hide Tokens of Hytbold v**
