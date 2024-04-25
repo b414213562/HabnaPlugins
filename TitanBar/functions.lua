@@ -632,7 +632,7 @@ end
 --**^
 --**v Update Fall Festival Tokens currency on TitanBar v**
 function UpdateFallFestivalToken()
-	if _G.FFTWhere == 1 then
+	if Where["FallFestivalToken"] == 1 then
 		FFT[ "Lbl" ]:SetText( GetCurrency( L[ "MFFT" ] ) );
 		FFT[ "Lbl" ]:SetSize( FFT[ "Lbl" ]:GetTextLength() * NM, CTRHeight ); 
 		AjustIcon( "FFT" );
@@ -1040,7 +1040,7 @@ function ChangeColor(tColor)
 		if Show["MotesOfEnchantment"] then MOE[ "Ctr" ]:SetBackColor( tColor ); end
 		if Show["EmbersOfEnchantment"] then EOE[ "Ctr" ]:SetBackColor( tColor ); end
 		if Show["FigmentsOfSplendour"] then FOS[ "Ctr" ]:SetBackColor( tColor ); end
-		if ShowFallFestivalToken then FFT[ "Ctr" ]:SetBackColor( tColor ); end
+		if Show["FallFestivalToken"] then FFT[ "Ctr" ]:SetBackColor( tColor ); end
 		if ShowFarmersFaireToken then FFAT[ "Ctr" ]:SetBackColor( tColor ); end
 		if ShowSpringLeaf then SPL[ "Ctr" ]:SetBackColor( tColor ); end
 		if ShowMidsummerToken then MST[ "Ctr" ]:SetBackColor( tColor ); end

@@ -385,11 +385,11 @@ function ImportCtr( value )
         end
         if Where["FigmentsOfSplendour"] ~= 3 then UpdateFigmentsOfSplendour(); end
 	elseif value == "FFT" then --Fall Festival Tokens
-        if _G.FFTWhere == 1 then
+        if Where["FallFestivalToken"] == 1 then
             import (AppCtrWalletD.."FallFestivalToken");
-            FFT[ "Ctr" ]:SetPosition( _G.FFTLocX, _G.FFTLocY );
+            FFT[ "Ctr" ]:SetPosition( Position.Left["FallFestivalToken"], Position.Top["FallFestivalToken"] );
         end
-        if _G.FFTWhere ~= 3 then UpdateFallFestivalToken(); end
+        if Where["FallFestivalToken"] ~= 3 then UpdateFallFestivalToken(); end
 	elseif value == "FFAT" then --Farmers Faire Tokens
         if _G.FFATWhere == 1 then
             import (AppCtrWalletD.."FarmersFaireToken");
@@ -1153,7 +1153,7 @@ function UpdateCurrency( str )
 	if str == L[ "MMOE" ] and Show["MotesOfEnchantment"] then UpdateMotesOfEnchantment(); end
 	if str == L[ "MEOE" ] and Show["EmbersOfEnchantment"] then UpdateEmbersOfEnchantment(); end
 	if str == L[ "MFOS" ] and Show["FigmentsOfSplendour"] then UpdateFigmentsOfSplendour(); end
-	if str == L[ "MFFT" ] and ShowFallFestivalToken then UpdateFallFestivalToken(); end
+	if str == L[ "MFFT" ] and Show["FallFestivalToken"] then UpdateFallFestivalToken(); end
 	if str == L[ "MFFAT" ] and ShowFarmersFaireToken then UpdateFarmersFaireToken(); end
 	if str == L[ "MSPL" ] and ShowSpringLeaf then UpdateSpringLeaf(); end
 	if str == L[ "MMST" ] and ShowMidsummerToken then UpdateMidsummerToken(); end

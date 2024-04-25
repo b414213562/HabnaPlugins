@@ -297,9 +297,9 @@ function frmWalletWindow()
 			if SelIndex == 1 then if not Show["FigmentsOfSplendour"] then ShowHideFigmentsOfSplendour(); end
 			else if Show["FigmentsOfSplendour"] then ShowHideFigmentsOfSplendour(); end end
 		elseif wcur == L["MFFT"] then
-			_G.FFTWhere = SelIndex; settings.FallFestivalToken.W = string.format("%.0f", SelIndex);
-			if SelIndex == 1 then if not ShowFallFestivalToken then ShowHideFallFestivalToken(); end
-			else if ShowFallFestivalToken then ShowHideFallFestivalToken(); end end
+			Where["FallFestivalToken"] = SelIndex; settings.FallFestivalToken.W = string.format("%.0f", SelIndex);
+			if SelIndex == 1 then if not Show["FallFestivalToken"] then ShowHideFallFestivalToken(); end
+			else if Show["FallFestivalToken"] then ShowHideFallFestivalToken(); end end
 		elseif wcur == L["MFFAT"] then
 			_G.FFATWhere = SelIndex; settings.FarmersFaireToken.W = string.format("%.0f", SelIndex);
 			if SelIndex == 1 then if not ShowFarmersFaireToken then ShowHideFarmersFaireToken(); end
@@ -404,7 +404,7 @@ function RefreshWIListBox()
 				elseif wcur == L["MMOE"] then tw = Where["MotesOfEnchantment"]; -- Motes of Enchantment
 				elseif wcur == L["MEOE"] then tw = Where["EmbersOfEnchantment"]; -- Embers of Enchantment
 				elseif wcur == L["MFOS"] then tw = Where["FigmentsOfSplendour"]; -- Figments of Splendour
-				elseif wcur == L["MFFT"] then tw = _G.FFTWhere; -- Fall Festival Token
+				elseif wcur == L["MFFT"] then tw = Where["FallFestivalToken"]; -- Fall Festival Token
 				elseif wcur == L["MFFAT"] then tw = _G.FFATWhere; -- Farmers Faire Token
 				elseif wcur == L["MSPL"] then tw = _G.SPLWhere; -- Spring Leaf
 				elseif wcur == L["MMST"] then tw = _G.MSTWhere; -- Midsummer Token

@@ -95,7 +95,7 @@ function frmBackground()
 	if sFrom == "MOE" then curSelAlpha = BC.Alpha["MotesOfEnchantment"]; curSelRed = BC.Red["MotesOfEnchantment"]; curSelGreen = BC.Green["MotesOfEnchantment"]; curSelBlue = BC.Blue["MotesOfEnchantment"]; end
 	if sFrom == "EOE" then curSelAlpha = BC.Alpha["EmbersOfEnchantment"]; curSelRed = BC.Red["EmbersOfEnchantment"]; curSelGreen = BC.Green["EmbersOfEnchantment"]; curSelBlue = BC.Blue["EmbersOfEnchantment"]; end
 	if sFrom == "FOS" then curSelAlpha = BC.Alpha["FigmentsOfSplendour"]; curSelRed = BC.Red["FigmentsOfSplendour"]; curSelGreen = BC.Green["FigmentsOfSplendour"]; curSelBlue = BC.Blue["FigmentsOfSplendour"]; end
-	if sFrom == "FFT" then curSelAlpha = FFTbcAlpha; curSelRed = FFTbcRed; curSelGreen = FFTbcGreen; curSelBlue = FFTbcBlue; end
+	if sFrom == "FFT" then curSelAlpha = BC.Alpha["FallFestivalToken"]; curSelRed = BC.Red["FallFestivalToken"]; curSelGreen = BC.Green["FallFestivalToken"]; curSelBlue = BC.Blue["FallFestivalToken"]; end
 	if sFrom == "FFAT" then curSelAlpha = FFATbcAlpha; curSelRed = FFATbcRed; curSelGreen = FFATbcGreen; curSelBlue = FFATbcBlue; end
 	if sFrom == "SPL" then curSelAlpha = SPLbcAlpha; curSelRed = SPLbcRed; curSelGreen = SPLbcGreen; curSelBlue = SPLbcBlue; end
 	if sFrom == "MST" then curSelAlpha = MSTbcAlpha; curSelRed = MSTbcRed; curSelGreen = MSTbcGreen; curSelBlue = MSTbcBlue; end
@@ -363,7 +363,7 @@ function UpdateBCvariable()
 		BC.Alpha["MotesOfEnchantment"], BC.Red["MotesOfEnchantment"], BC.Green["MotesOfEnchantment"], BC.Blue["MotesOfEnchantment"] = curSelAlpha, curSelRed, curSelGreen, curSelBlue;
 		BC.Alpha["EmbersOfEnchantment"], BC.Red["EmbersOfEnchantment"], BC.Green["EmbersOfEnchantment"], BC.Blue["EmbersOfEnchantment"] = curSelAlpha, curSelRed, curSelGreen, curSelBlue;
 		BC.Alpha["FigmentsOfSplendour"], BC.Red["FigmentsOfSplendour"], BC.Green["FigmentsOfSplendour"], BC.Blue["FigmentsOfSplendour"] = curSelAlpha, curSelRed, curSelGreen, curSelBlue;
-		FFTbcAlpha, FFTbcRed, FFTbcGreen, FFTbcBlue = curSelAlpha, curSelRed, curSelGreen, curSelBlue;
+		BC.Alpha["FallFestivalToken"], BC.Red["FallFestivalToken"], BC.Green["FallFestivalToken"], BC.Blue["FallFestivalToken"] = curSelAlpha, curSelRed, curSelGreen, curSelBlue;
 		FFATbcAlpha, FFATbcRed, FFATbcGreen, FFATbcBlue = curSelAlpha, curSelRed, curSelGreen, curSelBlue;
 		SPLbcAlpha, SPLbcRed, SPLbcGreen, SPLbcBlue = curSelAlpha, curSelRed, curSelGreen, curSelBlue;
 		MSTbcAlpha, MSTbcRed, MSTbcGreen, MSTbcBlue = curSelAlpha, curSelRed, curSelGreen, curSelBlue;
@@ -407,7 +407,7 @@ function UpdateBCvariable()
 		if sFrom == "MOE" then BC.Alpha["MotesOfEnchantment"] = curSelAlpha; BC.Red["MotesOfEnchantment"] = curSelRed; BC.Green["MotesOfEnchantment"] = curSelGreen; BC.Blue["MotesOfEnchantment"] = curSelBlue; end
 		if sFrom == "EOE" then BC.Alpha["EmbersOfEnchantment"] = curSelAlpha; BC.Red["EmbersOfEnchantment"] = curSelRed; BC.Green["EmbersOfEnchantment"] = curSelGreen; BC.Blue["EmbersOfEnchantment"] = curSelBlue; end
 		if sFrom == "FOS" then BC.Alpha["FigmentsOfSplendour"] = curSelAlpha; BC.Red["FigmentsOfSplendour"] = curSelRed; BC.Green["FigmentsOfSplendour"] = curSelGreen; BC.Blue["FigmentsOfSplendour"] = curSelBlue; end
-		if sFrom == "FFT" then FFTbcAlpha = curSelAlpha; FFTbcRed = curSelRed; FFTbcGreen = curSelGreen; FFTbcBlue = curSelBlue; end
+		if sFrom == "FFT" then BC.Alpha["FallFestivalToken"] = curSelAlpha; BC.Red["FallFestivalToken"] = curSelRed; BC.Green["FallFestivalToken"] = curSelGreen; BC.Blue["FallFestivalToken"] = curSelBlue; end
 		if sFrom == "FFAT" then FFATbcAlpha = curSelAlpha; FFATbcRed = curSelRed; FFATbcGreen = curSelGreen; FFATbcBlue = curSelBlue; end
 		if sFrom == "SPL" then SPLbcAlpha = curSelAlpha; SPLbcRed = curSelRed; SPLbcGreen = curSelGreen; SPLbcBlue = curSelBlue; end
 		if sFrom == "MST" then MSTbcAlpha = curSelAlpha; MSTbcRed = curSelRed; MSTbcGreen = curSelGreen; MSTbcBlue = curSelBlue; end

@@ -10,7 +10,7 @@ FFT["Ctr"]:SetParent( TB["win"] );
 FFT["Ctr"]:SetMouseVisible( false );
 FFT["Ctr"]:SetZOrder( 2 );
 FFT["Ctr"]:SetBlendMode( Turbine.UI.BlendMode.AlphaBlend );
-FFT["Ctr"]:SetBackColor( Turbine.UI.Color( FFTbcAlpha, FFTbcRed, FFTbcGreen, FFTbcBlue ) );
+FFT["Ctr"]:SetBackColor( Turbine.UI.Color( BC.Alpha["FallFestivalToken"], BC.Red["FallFestivalToken"], BC.Green["FallFestivalToken"], BC.Blue["FallFestivalToken"] ) );
 --**^
 --**v Fall Festival Token & icon on TitanBar v**
 FFT["Icon"] = Turbine.UI.Control();
@@ -89,10 +89,10 @@ end
 FFT["Lbl"].MouseUp = function( sender, args )
 	FFT["Ctr"]:SetZOrder( 2 );
 	dragging = false;
-	_G.FFTLocX = FFT["Ctr"]:GetLeft();
-	settings.FallFestivalToken.X = string.format("%.0f", _G.FFTLocX);
-	_G.FFTLocY = FFT["Ctr"]:GetTop();
-	settings.FallFestivalToken.Y = string.format("%.0f", _G.FFTLocY);
+	Position.Left["FallFestivalToken"] = FFT["Ctr"]:GetLeft();
+	settings.FallFestivalToken.X = string.format("%.0f", Position.Left["FallFestivalToken"]);
+	Position.Top["FallFestivalToken"] = FFT["Ctr"]:GetTop();
+	settings.FallFestivalToken.Y = string.format("%.0f", Position.Top["FallFestivalToken"]);
 	SaveSettings( false );
 end
 --**^

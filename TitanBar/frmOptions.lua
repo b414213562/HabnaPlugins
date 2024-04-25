@@ -36,7 +36,7 @@ if LAT ~= nil then WalletControls[ "LAT" ] = { ShowHide = Show["AnniversaryToken
 if MOE ~= nil then WalletControls[ "MOE" ] = { ShowHide = Show["MotesOfEnchantment"], Control = MOE[ "Ctr" ] }; end
 if EOE ~= nil then WalletControls[ "EOE" ] = { ShowHide = Show["EmbersOfEnchantment"], Control = EOE[ "Ctr" ] }; end
 if FOS ~= nil then WalletControls[ "FOS" ] = { ShowHide = Show["FigmentsOfSplendour"], Control = FOS[ "Ctr" ] }; end
-if FFT ~= nil then WalletControls[ "FFT" ] = { ShowHide = ShowFallFestivalToken, Control = FFT[ "Ctr" ] }; end
+if FFT ~= nil then WalletControls[ "FFT" ] = { ShowHide = Show["FallFestivalToken"], Control = FFT[ "Ctr" ] }; end
 if FFAT ~= nil then WalletControls[ "FFAT" ] = { ShowHide = ShowFarmersFaireToken, Control = FFAT[ "Ctr" ] }; end
 if SPL ~= nil then WalletControls[ "SPL" ] = { ShowHide = ShowSpringLeaf, Control = SPL[ "Ctr" ] }; end
 if MST ~= nil then WalletControls[ "MST" ] = { ShowHide = ShowMidsummerToken, Control = MST[ "Ctr" ] }; end

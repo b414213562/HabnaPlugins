@@ -41,7 +41,7 @@ function UnloadControl( value )
 		if Show["MotesOfEnchantment"] then Where["MotesOfEnchantment"] = 3; ShowHideMotesOfEnchantment(); end
 		if Show["EmbersOfEnchantment"] then Where["EmbersOfEnchantment"] = 3; ShowHideEmbersOfEnchantment(); end
 		if Show["FigmentsOfSplendour"] then Where["FigmentsOfSplendour"] = 3; ShowHideFigmentsOfSplendour(); end
-		if ShowFallFestivalToken then _G.FFTWhere = 3; ShowHideFallFestivalToken(); end
+		if Show["FallFestivalToken"] then Where["FallFestivalToken"] = 3; ShowHideFallFestivalToken(); end
 		if ShowFarmersFaireToken then _G.FFATWhere = 3; ShowHideFarmersFaireToken(); end
 		if ShowSpringLeaf then _G.SPLWhere = 3; ShowHideSpringLeaf(); end
 		if ShowMidsummerToken then _G.MSTWhere = 3; ShowHideMidsummerToken(); end
@@ -83,7 +83,7 @@ function UnloadControl( value )
 			elseif _G.sFromCtr == "MOE" then Where["MotesOfEnchantment"] = 3; ShowHideMotesOfEnchantment();
 			elseif _G.sFromCtr == "EOE" then Where["EmbersOfEnchantment"] = 3; ShowHideEmbersOfEnchantment();
 			elseif _G.sFromCtr == "FOS" then Where["FigmentsOfSplendour"] = 3; ShowHideFigmentsOfSplendour();
-			elseif _G.sFromCtr == "FFT" then _G.FFTWhere = 3; ShowHideFallFestivalToken();
+			elseif _G.sFromCtr == "FFT" then Where["FallFestivalToken"] = 3; ShowHideFallFestivalToken();
 			elseif _G.sFromCtr == "FFAT" then _G.FFATWhere = 3; ShowHideFarmersFaireToken();
 			elseif _G.sFromCtr == "SPL" then _G.SPLWhere = 3; ShowHideSpringLeaf();
 			elseif _G.sFromCtr == "MST" then _G.MSTWhere = 3; ShowHideMidsummerToken();
@@ -139,7 +139,7 @@ function BGColor( cmd, value )
 		elseif _G.sFromCtr == "MOE" then tA, tR, tG, tB = BC.Alpha["MotesOfEnchantment"], BC.Red["MotesOfEnchantment"], BC.Green["MotesOfEnchantment"], BC.Blue["MotesOfEnchantment"];
 		elseif _G.sFromCtr == "EOE" then tA, tR, tG, tB = BC.Alpha["EmbersOfEnchantment"], BC.Red["EmbersOfEnchantment"], BC.Green["EmbersOfEnchantment"], BC.Blue["EmbersOfEnchantment"];
 		elseif _G.sFromCtr == "FOS" then tA, tR, tG, tB = BC.Alpha["FigmentsOfSplendour"], BC.Red["FigmentsOfSplendour"], BC.Green["FigmentsOfSplendour"], BC.Blue["FigmentsOfSplendour"];
-		elseif _G.sFromCtr == "FFT" then tA, tR, tG, tB = FFTbcAlpha, FFTbcRed, FFTbcGreen, FFTbcBlue;
+		elseif _G.sFromCtr == "FFT" then tA, tR, tG, tB = BC.Alpha["FallFestivalToken"], BC.Red["FallFestivalToken"], BC.Green["FallFestivalToken"], BC.Blue["FallFestivalToken"];
 		elseif _G.sFromCtr == "FFAT" then tA, tR, tG, tB = FFATbcAlpha, FFATbcRed, FFATbcGreen, FFATbcBlue;
 		elseif _G.sFromCtr == "SPL" then tA, tR, tG, tB = SPLbcAlpha, SPLbcRed, SPLbcGreen, SPLbcBlue;
 		elseif _G.sFromCtr == "MST" then tA, tR, tG, tB = MSTbcAlpha, MSTbcRed, MSTbcGreen, MSTbcBlue;
@@ -218,8 +218,8 @@ function BGColor( cmd, value )
 		if Show["EmbersOfEnchantment"] then EOE[ "Ctr" ]:SetBackColor( Turbine.UI.Color( tA, tR, tG, tB ) ); end
 		BC.Alpha["FigmentsOfSplendour"], BC.Red["FigmentsOfSplendour"], BC.Green["FigmentsOfSplendour"], BC.Blue["FigmentsOfSplendour"] = tA, tR, tG, tB;
 		if Show["FigmentsOfSplendour"] then FOS[ "Ctr" ]:SetBackColor( Turbine.UI.Color( tA, tR, tG, tB ) ); end
-		FFTbcAlpha, FFTbcRed, FFTbcGreen, FFTbcBlue = tA, tR, tG, tB;
-		if ShowFallFestivalToken then FFT[ "Ctr" ]:SetBackColor( Turbine.UI.Color( tA, tR, tG, tB ) ); end
+		BC.Alpha["FallFestivalToken"], BC.Red["FallFestivalToken"], BC.Green["FallFestivalToken"], BC.Blue["FallFestivalToken"] = tA, tR, tG, tB;
+		if Show["FallFestivalToken"] then FFT[ "Ctr" ]:SetBackColor( Turbine.UI.Color( tA, tR, tG, tB ) ); end
 		FFATbcAlpha, FFATbcRed, FFATbcGreen, FFATbcBlue = tA, tR, tG, tB;
 		if ShowFarmersFaireToken then FFAT[ "Ctr" ]:SetBackColor( Turbine.UI.Color( tA, tR, tG, tB ) ); end
 		SPLbcAlpha, SPLbcRed, SPLbcGreen, SPLbcBlue = tA, tR, tG, tB;
@@ -339,7 +339,7 @@ function BGColor( cmd, value )
 			BC.Alpha["FigmentsOfSplendour"], BC.Red["FigmentsOfSplendour"], BC.Green["FigmentsOfSplendour"], BC.Blue["FigmentsOfSplendour"] = tA, tR, tG, tB;
 			FOS[ "Ctr" ]:SetBackColor( Turbine.UI.Color( tA, tR, tG, tB ) );
 		elseif _G.sFromCtr == "FFT" then
-			FFTbcAlpha, FFTbcRed, FFTbcGreen, FFTbcBlue = tA, tR, tG, tB;
+			BC.Alpha["FallFestivalToken"], BC.Red["FallFestivalToken"], BC.Green["FallFestivalToken"], BC.Blue["FallFestivalToken"] = tA, tR, tG, tB;
 			FFT[ "Ctr" ]:SetBackColor( Turbine.UI.Color( tA, tR, tG, tB ) );
 		elseif _G.sFromCtr == "FFAT" then
 			FFATbcAlpha, FFATbcRed, FFATbcGreen, FFATbcBlue = tA, tR, tG, tB;

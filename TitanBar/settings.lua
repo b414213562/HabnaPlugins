@@ -29,10 +29,11 @@ Where = {}; -- Is currency on bar, tooltip, or hidden?
 HasWindow = {
     ["Wallet"] = true;
     ["Money"] = true;
+    ["LOTROPoints"] = true;
 };
 DoesNotHaveWhere = {
     ["Wallet"] = true;
-}; 
+};
 
 --- Parses an entry like settings.Money.W. Also checks for a discrepancy between Where and Show.
 ---@param where string
@@ -862,17 +863,16 @@ function LoadSettings()
 	if settings.FallFestivalToken.X == nil then settings.FallFestivalToken.X = string.format("%.0f", tX); end
 	if settings.FallFestivalToken.Y == nil then settings.FallFestivalToken.Y = string.format("%.0f", tY); end
 	if settings.FallFestivalToken.W == nil then settings.FallFestivalToken.W = string.format("%.0f", tW); end
-	ShowFallFestivalToken = settings.FallFestivalToken.V;
-	FFTbcAlpha = tonumber(settings.FallFestivalToken.A);
-	FFTbcRed = tonumber(settings.FallFestivalToken.R);
-	FFTbcGreen = tonumber(settings.FallFestivalToken.G);
-	FFTbcBlue = tonumber(settings.FallFestivalToken.B);
-	_G.FFTLocX = tonumber(settings.FallFestivalToken.X);
-	_G.FFTLocY = tonumber(settings.FallFestivalToken.Y);
-	_G.FFTWhere = tonumber(settings.FallFestivalToken.W);
-	if _G.FFTWhere == 3 and ShowFallFestivalToken then _G.FFTWhere = 1; settings.FallFestivalToken.W = string.format("%.0f", _G.FFTWhere); end
-	
-	if settings.FarmersFaireToken == nil then settings.FarmersFaireToken= {}; end
+	Show["FallFestivalToken"] = settings.FallFestivalToken.V;
+	BC.Alpha["FallFestivalToken"] = tonumber(settings.FallFestivalToken.A);
+	BC.Red["FallFestivalToken"] = tonumber(settings.FallFestivalToken.R);
+	BC.Green["FallFestivalToken"] = tonumber(settings.FallFestivalToken.G);
+	BC.Blue["FallFestivalToken"] = tonumber(settings.FallFestivalToken.B);
+	Position.Left["FallFestivalToken"] = tonumber(settings.FallFestivalToken.X);
+	Position.Top["FallFestivalToken"] = tonumber(settings.FallFestivalToken.Y);
+	Where["FallFestivalToken"] = ParseWhere(settings, "FallFestivalToken");
+
+    if settings.FarmersFaireToken == nil then settings.FarmersFaireToken= {}; end
 	if settings.FarmersFaireToken.V == nil then settings.FarmersFaireToken.V = false; end
 	if settings.FarmersFaireToken.A == nil then settings.FarmersFaireToken.A = string.format("%.3f", tA); end
 	if settings.FarmersFaireToken.R == nil then settings.FarmersFaireToken.R = string.format("%.3f", tR); end
@@ -1405,14 +1405,14 @@ function SaveSettings(str)
 		settings.FigmentsOfSplendour.W = string.format("%.0f", Where["FigmentsOfSplendour"]);
 		
 		settings.FallFestivalToken = {};
-		settings.FallFestivalToken.V = ShowFallFestivalToken;
-		settings.FallFestivalToken.A = string.format("%.3f", FFTbcAlpha);
-		settings.FallFestivalToken.R = string.format("%.3f", FFTbcRed);
-		settings.FallFestivalToken.G = string.format("%.3f", FFTbcGreen);
-		settings.FallFestivalToken.B = string.format("%.3f", FFTbcBlue);
-		settings.FallFestivalToken.X = string.format("%.0f", _G.FFTLocX);
-		settings.FallFestivalToken.Y = string.format("%.0f", _G.FFTLocY);
-		settings.FallFestivalToken.W = string.format("%.0f", _G.FFTWhere);
+		settings.FallFestivalToken.V = Show["FallFestivalToken"];
+		settings.FallFestivalToken.A = string.format("%.3f", BC.Alpha["FallFestivalToken"]);
+		settings.FallFestivalToken.R = string.format("%.3f", BC.Red["FallFestivalToken"]);
+		settings.FallFestivalToken.G = string.format("%.3f", BC.Green["FallFestivalToken"]);
+		settings.FallFestivalToken.B = string.format("%.3f", BC.Blue["FallFestivalToken"]);
+		settings.FallFestivalToken.X = string.format("%.0f", Position.Left["FallFestivalToken"]);
+		settings.FallFestivalToken.Y = string.format("%.0f", Position.Top["FallFestivalToken"]);
+		settings.FallFestivalToken.W = string.format("%.0f", Where["FallFestivalToken"]);
 		
 		settings.FarmersFaireToken = {};
 		settings.FarmersFaireToken.V = ShowFarmersFaireToken;
@@ -1525,7 +1525,7 @@ function ResetSettings()
 	Show["MotesOfEnchantment"], BC.Alpha["MotesOfEnchantment"], BC.Red["MotesOfEnchantment"], BC.Green["MotesOfEnchantment"], BC.Blue["MotesOfEnchantment"], Position.Left["MotesOfEnchantment"], Position.Top["MotesOfEnchantment"], Where["MotesOfEnchantment"] = false, tA, tR, tG, tB, tX, tY, tW; --for Motes of Enchantment Control
 	Show["EmbersOfEnchantment"], BC.Alpha["EmbersOfEnchantment"], BC.Red["EmbersOfEnchantment"], BC.Green["EmbersOfEnchantment"], BC.Blue["EmbersOfEnchantment"], Position.Left["EmbersOfEnchantment"], Position.Top["EmbersOfEnchantment"], Where["EmbersOfEnchantment"] = false, tA, tR, tG, tB, tX, tY, tW; --for Embers of Enchantment Control
 	Show["FigmentsOfSplendour"], BC.Alpha["FigmentsOfSplendour"], BC.Red["FigmentsOfSplendour"], BC.Green["FigmentsOfSplendour"], BC.Blue["FigmentsOfSplendour"], Position.Left["FigmentsOfSplendour"], Position.Top["FigmentsOfSplendour"], Where["FigmentsOfSplendour"] = false, tA, tR, tG, tB, tX, tY, tW; --for Figments of Splendour Control
-	ShowFallFestivalToken, FFTbcAlpha, FFTbcRed, FFTbcGreen, FFTbcBlue, _G.FFTLocX, _G.FFTLocY, _G.FFTWhere = false, tA, tR, tG, tB, tX, tY, tW; --for Fall Festival Tokens Control	
+	Show["FallFestivalToken"], BC.Alpha["FallFestivalToken"], BC.Red["FallFestivalToken"], BC.Green["FallFestivalToken"], BC.Blue["FallFestivalToken"], Position.Left["FallFestivalToken"], Position.Top["FallFestivalToken"], Where["FallFestivalToken"] = false, tA, tR, tG, tB, tX, tY, tW; --for Fall Festival Tokens Control	
 	ShowFarmersFaireToken, FFATbcAlpha, FFATbcRed, FFATbcGreen, FFATbcBlue, _G.FFATLocX, _G.FFATLocY, _G.FFATWhere = false, tA, tR, tG, tB, tX, tY, tW; --for Farmers Festival Token Control
 	ShowSpringLeaf, SPLbcAlpha, SPLbcRed, SPLbcGreen, SPLbcBlue, _G.SPLLocX, _G.SPLLocY, _G.SPLWhere = false, tA, tR, tG, tB, tX, tY, tW; --for Spring Leaf Control	
 	ShowMidsummerToken, MSTbcAlpha, MSTbcRed, MSTbcGreen, MSTbcBlue, _G.MSTLocX, _G.MSTLocY, _G.MSTWhere = false, tA, tR, tG, tB, tX, tY, tW; --for  Midsummer Token Control
@@ -1716,9 +1716,9 @@ function ReplaceCtr()
 	if Show["FigmentsOfSplendour"] and Where["FigmentsOfSplendour"] == 1 then FOS[ "Ctr" ]:SetPosition( Position.Left["FigmentsOfSplendour"], Position.Top["FigmentsOfSplendour"] ); end
 	
 	oldLocX = settings.FallFestivalToken.X / oldScreenWidth;
-	_G.FFTLocX = oldLocX * screenWidth;
-	settings.FallFestivalToken.X = string.format("%.0f", _G.FFTLocX);
-	if ShowFallFestivalToken and _G.FFTWhere == 1 then FFT[ "Ctr" ]:SetPosition( _G.FFTLocX, _G.FFTLocY ); end
+	Position.Left["FallFestivalToken"] = oldLocX * screenWidth;
+	settings.FallFestivalToken.X = string.format("%.0f", Position.Left["FallFestivalToken"]);
+	if Show["FallFestivalToken"] and Where["FallFestivalToken"] == 1 then FFT[ "Ctr" ]:SetPosition( Position.Left["FallFestivalToken"], Position.Top["FallFestivalToken"] ); end
 	
 	oldLocX = settings.FarmersFaireToken.X / oldScreenWidth;
 	_G.FFATLocX = oldLocX * screenWidth;
