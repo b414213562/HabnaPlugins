@@ -35,6 +35,37 @@ DoesNotHaveWhere = {
     ["Wallet"] = true;
 };
 
+Currencies = {
+    "Wallet",
+    "Money",
+    "DestinyPoints",
+    "Shards",
+    "SkirmishMarks",
+    "MithrilCoins",
+    "YuleToken",
+    "HytboldTokens",
+    "Medallions",
+    "Seals",
+    "Commendations",
+    "LOTROPoints",
+    "AmrothSilverPiece",
+    "StarsofMerit",
+    "CentralGondorSilverPiece",
+    "GiftgiversBrand",
+    "BingoBadge",
+    "AnniversaryToken",
+    "MotesOfEnchantment",
+    "EmbersOfEnchantment",
+    "FigmentsOfSplendour",
+    "FallFestivalToken",
+    "FarmersFaireToken",
+    "SpringLeaf",
+    "MidsummerToken",
+    "AncientScript",
+    "BadgeOfTaste",
+    "BadgeOfDishonour",
+}
+
 --- Parses an entry like settings.Money.W. Also checks for a discrepancy between Where and Show.
 ---@param where string
 ---@param show boolean
@@ -216,9 +247,13 @@ function LoadSettings()
 	BGWTop = tonumber(settings.Background.T);
 	BGWToAll = settings.Background.A;
 
-    InitializeControlSettings(settings, "Wallet");
+    -- Initialize each currency:
+    for key, value in ipairs(Currencies) do
+        InitializeControlSettings(settings, value);
+    end
 
-    InitializeControlSettings(settings, "Money");
+    -- Handle currency-specific initializations:
+    -- Money:
 	if settings.Money.S == nil then settings.Money.S = false; end --Show Total Money of all character on TitanBar Money control.
 	if settings.Money.SS == nil then settings.Money.SS = true; end --Show sessions statistics
 	if settings.Money.TS == nil then settings.Money.TS = true; end --Show today statistics
@@ -226,17 +261,7 @@ function LoadSettings()
 	_G.SSS = settings.Money.SS;
 	_G.STS = settings.Money.TS;
 
-    InitializeControlSettings(settings, "DestinyPoints");
-
-    InitializeControlSettings(settings, "Shards");
-    InitializeControlSettings(settings, "SkirmishMarks");
-    InitializeControlSettings(settings, "MithrilCoins");
-    InitializeControlSettings(settings, "YuleToken");
-    InitializeControlSettings(settings, "HytboldTokens");
-    InitializeControlSettings(settings, "Medallions");
-    InitializeControlSettings(settings, "Seals");
-    InitializeControlSettings(settings, "Commendations");
-    InitializeControlSettings(settings, "LOTROPoints");
+    -- End currency initialization
 
     if settings.BagInfos == nil then settings.BagInfos = {}; end
 	if settings.BagInfos.V == nil then settings.BagInfos.V = true; end
@@ -549,26 +574,6 @@ function LoadSettings()
 	_G.UserGMT = settings.GameTime.M;
 	GTWLeft = tonumber(settings.GameTime.L);
 	GTWTop = tonumber(settings.GameTime.T);
-	
-
-	-- AU3 MARKER 4 - DO NOT REMOVE
-    InitializeControlSettings(settings, "AmrothSilverPiece");
-
-    InitializeControlSettings(settings, "StarsofMerit");
-    InitializeControlSettings(settings, "CentralGondorSilverPiece");
-    InitializeControlSettings(settings, "GiftgiversBrand");
-    InitializeControlSettings(settings, "BingoBadge");
-    InitializeControlSettings(settings, "AnniversaryToken");
-    InitializeControlSettings(settings, "MotesOfEnchantment");
-    InitializeControlSettings(settings, "EmbersOfEnchantment");
-    InitializeControlSettings(settings, "FigmentsOfSplendour");
-    InitializeControlSettings(settings, "FallFestivalToken");
-    InitializeControlSettings(settings, "FarmersFaireToken");
-    InitializeControlSettings(settings, "SpringLeaf");
-    InitializeControlSettings(settings, "MidsummerToken");
-    InitializeControlSettings(settings, "AncientScript");
-    InitializeControlSettings(settings, "BadgeOfTaste");
-    InitializeControlSettings(settings, "BadgeOfDishonour");
 
 	SaveSettings( false );
 
