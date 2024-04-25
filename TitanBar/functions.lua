@@ -486,7 +486,7 @@ end
 --**^
 --**v Update Mithril Coins currency on TitanBar v**
 function UpdateMithril()
-	if _G.MCWhere == 1 then
+	if Where["MithrilCoins"] == 1 then
 		MC[ "Lbl" ]:SetText( GetCurrency( L[ "MMC" ] ) );
 		MC[ "Lbl" ]:SetSize( MC[ "Lbl" ]:GetTextLength() * NM, CTRHeight ); 
 		AjustIcon( "MC" );

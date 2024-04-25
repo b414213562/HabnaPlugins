@@ -164,8 +164,8 @@ function frmMain()
 		if PlayerWalletSize ~= nil or PlayerWalletSize ~= 0 then
 			if Where["Shards"] ~= 3 then ImportCtr( "SP" ); end
 			if Where["SkirmishMarks"] ~= 3 then ImportCtr( "SM" ); end
-			if _G.MCWhere ~= 3 then ImportCtr( "MC" ); end
 			if _G.YTWhere ~= 3 then ImportCtr( "YT" ); end
+			if Where["MithrilCoins"] ~= 3 then ImportCtr( "MC" ); end
 			if _G.HTWhere ~= 3 then ImportCtr( "HT" ); end
 			if _G.MPWhere ~= 3 then ImportCtr( "MP" ); end
 			if _G.SLWhere ~= 3 then ImportCtr( "SL" ); end
@@ -319,8 +319,8 @@ function frmMain()
 				LoadPlayerWallet();
 				if Where["Shards"] ~= 3 then ImportCtr( "SP" ); end
 				if Where["SkirmishMarks"] ~= 3 then ImportCtr( "SM" ); end
-				if _G.MCWhere ~= 3 then ImportCtr( "MC" ); end
 				if _G.YTWhere ~= 3 then ImportCtr( "YT" ); end
+				if Where["MithrilCoins"] ~= 3 then ImportCtr( "MC" ); end
 				if _G.HTWhere ~= 3 then ImportCtr( "HT" ); end
 				if _G.MPWhere ~= 3 then ImportCtr( "MP" ); end
 				if _G.SLWhere ~= 3 then ImportCtr( "SL" ); end

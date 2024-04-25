@@ -12,8 +12,8 @@ function UnloadControl( value )
 		if Show["DestinyPoints"] then Where["DestinyPoints"] = 3; ShowHideDestinyPoints(); end
 		if Show["Shards"] then Where["Shards"] = 3; ShowHideShards(); end
 		if Show["SkirmishMarks"] then Where["SkirmishMarks"] = 3; ShowHideSkirmishMarks(); end
-		if Show["MithrilCoins"] then _G.MCWhere = 3; ShowHideMithrilCoins(); end
 		if ShowYuleToken then _G.YTWhere = 3; ShowHideYuleToken(); end
+		if Show["MithrilCoins"] then Where["MithrilCoins"] = 3; ShowHideMithrilCoins(); end
 		if ShowHytboldTokens then _G.HTWhere = 3; ShowHideHytboldTokens(); end
 		if ShowMedallions then _G.MPWhere = 3; ShowHideMedallions(); end
 		if ShowSeals then _G.SLWhere = 3; ShowHideSeals(); end
@@ -54,8 +54,8 @@ function UnloadControl( value )
 			elseif _G.sFromCtr == "DP" then Where["DestinyPoints"] = 3; ShowHideDestinyPoints();
 			elseif _G.sFromCtr == "SP" then Where["Shards"] = 3; ShowHideShards();
 			elseif _G.sFromCtr == "SM" then Where["SkirmishMarks"] = 3; ShowHideSkirmishMarks();
-			elseif _G.sFromCtr == "MC" then _G.MCWhere = 3; ShowHideMithrilCoins();
 			elseif _G.sFromCtr == "YT" then _G.YTWhere = 3; ShowHideYuleToken();
+			elseif _G.sFromCtr == "MC" then Where["MithrilCoins"] = 3; ShowHideMithrilCoins();
 			elseif _G.sFromCtr == "HT" then _G.HTWhere = 3; ShowHideHytboldTokens();
 			elseif _G.sFromCtr == "MP" then _G.MPWhere = 3; ShowHideMedallions();
 			elseif _G.sFromCtr == "SL" then _G.SLWhere = 3; ShowHideSeals();

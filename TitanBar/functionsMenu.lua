@@ -82,7 +82,7 @@ end
 function ShowHideMithrilCoins()
 	Show["MithrilCoins"] = not Show["MithrilCoins"];
 	settings.MithrilCoins.V = Show["MithrilCoins"];
-	settings.MithrilCoins.W = string.format("%.0f", _G.MCWhere);
+	settings.MithrilCoins.W = string.format("%.0f", Where["MithrilCoins"]);
 	SaveSettings( false );
 	ImportCtr( "MC" );
 	if Show["MithrilCoins"] then

@@ -55,11 +55,11 @@ function ImportCtr( value )
         end
         if Where["SkirmishMarks"] ~= 3 then UpdateMarks(); end
     elseif value == "MC" then --Mithril Coins
-        if _G.MCWhere == 1 then
+        if Where["MithrilCoins"] == 1 then
             import (AppCtrWalletD.."MithrilCoins");
             MC[ "Ctr" ]:SetPosition( Position.Left["MithrilCoins"], Position.Top["MithrilCoins"] );
         end
-        if _G.MCWhere ~= 3 then UpdateMithril(); end
+        if Where["MithrilCoins"] ~= 3 then UpdateMithril(); end
     elseif value == "YT" then --Yule Tokens
         if _G.YTWhere == 1 then
             import (AppCtrWalletD.."YuleToken");

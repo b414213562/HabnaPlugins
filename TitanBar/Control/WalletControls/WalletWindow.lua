@@ -237,7 +237,7 @@ function frmWalletWindow()
 			if SelIndex == 1 then if not Show["SkirmishMarks"] then ShowHideSkirmishMarks(); end
 			else if Show["SkirmishMarks"] then ShowHideSkirmishMarks(); end end
 		elseif wcur == L["MMC"] then
-			_G.MCWhere = SelIndex; settings.MithrilCoins.W = string.format("%.0f", SelIndex);
+			Where["MithrilCoins"] = SelIndex; settings.MithrilCoins.W = string.format("%.0f", SelIndex);
 			if SelIndex == 1 then if not Show["MithrilCoins"] then ShowHideMithrilCoins(); end
 			else if Show["MithrilCoins"] then ShowHideMithrilCoins(); end end
 		elseif wcur == L["MYT"] then
@@ -384,8 +384,8 @@ function RefreshWIListBox()
 				elseif wcur == L["MDP"] then tw = Where["DestinyPoints"]; -- Destiny Points
 				elseif wcur == L["MSP"] then tw = Where["Shards"]; -- Shards
 				elseif wcur == L["MSM"] then tw = Where["SkirmishMarks"]; -- Skirmish marks
-				elseif wcur == L["MMC"] then tw = _G.MCWhere; -- Mithril Coins
 				elseif wcur == L["MYT"] then tw = _G.YTWhere; -- Yule Tokens
+				elseif wcur == L["MMC"] then tw = Where["MithrilCoins"]; -- Mithril Coins
 				elseif wcur == L["MHT"] then tw = _G.HTWhere; -- Tokens of Hytbold
 				elseif wcur == L["MMP"] then tw = _G.MPWhere; -- Medallions
 				elseif wcur == L["MSL"] then tw = _G.SLWhere; -- Seals
