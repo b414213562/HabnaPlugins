@@ -171,7 +171,7 @@ function frmMain()
 			if Where["Seals"] ~= 3 then ImportCtr( "SL" ); end
 			if Where["Commendations"] ~= 3 then ImportCtr( "CP" ); end
 			if Where["AmrothSilverPiece"] ~= 3 then ImportCtr( "ASP" ); end
-			if _G.SOMWhere ~= 3 then ImportCtr( "SOM" ); end
+			if Where["StarsofMerit"] ~= 3 then ImportCtr( "SOM" ); end
 			if _G.CGSPWhere ~= 3 then ImportCtr( "CGSP" ); end
 			if _G.GGBWhere ~= 3 then ImportCtr( "GGB" ); end
 			if _G.BBWhere ~= 3 then ImportCtr( "BB" ); end
@@ -192,7 +192,7 @@ function frmMain()
 		ShowDurabilityInfos, ShowEquipInfos, Show["DestinyPoints"], Show["Shards"] = false, false, false, false;
 		Show["YuleToken"], Show["SkirmishMarks"], Show["HytboldTokens"], Show["Medallions"] = false, false, false, false;
 		Show["Seals"], ShowVault, ShowSharedStorage, Show["AmrothSilverPiece"] = false, false, false, false;
-		ShowStarsofMerit, ShowCentralGondorSilverPiece, ShowGiftgiversBrand = false, false, false;
+		Show["StarsofMerit"], ShowCentralGondorSilverPiece, ShowGiftgiversBrand = false, false, false;
 		ShowBingoBadge, ShowAnniversaryToken, ShowReputation = false, false, false;
 		ShowMotesOfEnchantment = false;
 		ShowEmbersOfEnchantment = false;
@@ -326,7 +326,7 @@ function frmMain()
 				if Where["Seals"] ~= 3 then ImportCtr( "SL" ); end
 				if Where["LOTROPoints"] ~= 3 then ImportCtr( "CP" ); end
 				if Where["AmrothSilverPiece"] ~= 3 then ImportCtr( "ASP" ); end
-				if _G.SOMWhere ~= 3 then ImportCtr( "SOM" ); end
+				if Where["StarsofMerit"] ~= 3 then ImportCtr( "SOM" ); end
 				if _G.CGSPWhere ~= 3 then ImportCtr( "CGSP" ); end
 				if _G.GGBWhere ~= 3 then ImportCtr( "GGB" ); end
 				if _G.BBWhere ~= 3 then ImportCtr( "BB" ); end

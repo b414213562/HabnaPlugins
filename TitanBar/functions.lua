@@ -560,7 +560,7 @@ end
 --**^
 --**v Update Stars of Merit currency on TitanBar v**
 function UpdateStarsofMerit()
-	if _G.SOMWhere == 1 then
+	if Where["StarsofMerit"] == 1 then
 		SOM[ "Lbl" ]:SetText( GetCurrency( L[ "MSOM" ] ) );
 		SOM[ "Lbl" ]:SetSize( SOM[ "Lbl" ]:GetTextLength() * NM, CTRHeight ); 
 		AjustIcon( "SOM" );
@@ -1032,7 +1032,7 @@ function ChangeColor(tColor)
 		if ShowPlayerLoc then PL[ "Ctr" ]:SetBackColor( tColor ); end
 		if ShowGameTime then GT[ "Ctr" ]:SetBackColor( tColor ); end
 		if Show["AmrothSilverPiece"] then ASP[ "Ctr" ]:SetBackColor( tColor ); end
-		if ShowStarsofMerit then SOM[ "Ctr" ]:SetBackColor( tColor ); end
+		if Show["StarsofMerit"] then SOM[ "Ctr" ]:SetBackColor( tColor ); end
 		if ShowCentralGondorSilverPiece then CGSP[ "Ctr" ]:SetBackColor( tColor ); end
 		if ShowGiftgiversBrand then GGB[ "Ctr" ]:SetBackColor( tColor ); end
 		if ShowBingoBadge then BB[ "Ctr" ]:SetBackColor( tColor ); end

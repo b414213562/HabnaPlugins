@@ -718,17 +718,16 @@ function LoadSettings()
 	if settings.StarsofMerit.X == nil then settings.StarsofMerit.X = string.format("%.0f", tX); end
 	if settings.StarsofMerit.Y == nil then settings.StarsofMerit.Y = string.format("%.0f", tY); end
 	if settings.StarsofMerit.W == nil then settings.StarsofMerit.W = string.format("%.0f", tW); end
-	ShowStarsofMerit = settings.StarsofMerit.V;
-	SOMbcAlpha = tonumber(settings.StarsofMerit.A);
-	SOMbcRed = tonumber(settings.StarsofMerit.R);
-	SOMbcGreen = tonumber(settings.StarsofMerit.G);
-	SOMbcBlue = tonumber(settings.StarsofMerit.B);
-	_G.SOMLocX = tonumber(settings.StarsofMerit.X);
-	_G.SOMLocY = tonumber(settings.StarsofMerit.Y);
-	_G.SOMWhere = tonumber(settings.StarsofMerit.W);
-	if _G.SOMWhere == 3 and ShowStarsofMerit then _G.SOMWhere = 1; settings.StarsofMerit.W = string.format("%.0f", _G.SOMWhere); end --Remove after Oct, 15th 2013
+	Show["StarsofMerit"] = settings.StarsofMerit.V;
+	BC.Alpha["StarsofMerit"] = tonumber(settings.StarsofMerit.A);
+	BC.Red["StarsofMerit"] = tonumber(settings.StarsofMerit.R);
+	BC.Green["StarsofMerit"] = tonumber(settings.StarsofMerit.G);
+	BC.Blue["StarsofMerit"] = tonumber(settings.StarsofMerit.B);
+	Position.Left["StarsofMerit"] = tonumber(settings.StarsofMerit.X);
+	Position.Top["StarsofMerit"] = tonumber(settings.StarsofMerit.Y);
+    Where["StarsofMerit"] = ParseWhere(settings, "StarsofMerit");
 
-	if settings.CentralGondorSilverPiece == nil then settings.CentralGondorSilverPiece = {}; end
+    if settings.CentralGondorSilverPiece == nil then settings.CentralGondorSilverPiece = {}; end
 	if settings.CentralGondorSilverPiece.V == nil then settings.CentralGondorSilverPiece.V = false; end
 	if settings.CentralGondorSilverPiece.A == nil then settings.CentralGondorSilverPiece.A = string.format("%.3f", tA); end
 	if settings.CentralGondorSilverPiece.R == nil then settings.CentralGondorSilverPiece.R = string.format("%.3f", tR); end
@@ -1333,14 +1332,14 @@ function SaveSettings(str)
 		settings.AmrothSilverPiece.W = string.format("%.0f", Where["AmrothSilverPiece"]);
 		
 		settings.StarsofMerit = {};
-		settings.StarsofMerit.V = ShowStarsofMerit;
-		settings.StarsofMerit.A = string.format("%.3f", SOMbcAlpha);
-		settings.StarsofMerit.R = string.format("%.3f", SOMbcRed);
-		settings.StarsofMerit.G = string.format("%.3f", SOMbcGreen);
-		settings.StarsofMerit.B = string.format("%.3f", SOMbcBlue);
-		settings.StarsofMerit.X = string.format("%.0f", _G.SOMLocX);
-		settings.StarsofMerit.Y = string.format("%.0f", _G.SOMLocY);
-		settings.StarsofMerit.W = string.format("%.0f", _G.SOMWhere);
+		settings.StarsofMerit.V = Show["StarsofMerit"];
+		settings.StarsofMerit.A = string.format("%.3f", BC.Alpha["StarsofMerit"]);
+		settings.StarsofMerit.R = string.format("%.3f", BC.Red["StarsofMerit"]);
+		settings.StarsofMerit.G = string.format("%.3f", BC.Green["StarsofMerit"]);
+		settings.StarsofMerit.B = string.format("%.3f", BC.Blue["StarsofMerit"]);
+		settings.StarsofMerit.X = string.format("%.0f", Position.Left["StarsofMerit"]);
+		settings.StarsofMerit.Y = string.format("%.0f", Position.Top["StarsofMerit"]);
+		settings.StarsofMerit.W = string.format("%.0f", Where["StarsofMerit"]);
 		
 		settings.CentralGondorSilverPiece = {};
 		settings.CentralGondorSilverPiece.V = ShowCentralGondorSilverPiece;
@@ -1525,7 +1524,7 @@ function ResetSettings()
 	ShowPlayerLoc, PLbcAlpha, PLbcRed, PLbcGreen, PLbcBlue, _G.PLLocX, _G.PLLocX = true, tA, tR, tG, tB, screenWidth - 205, tY; --for Player Location Control
 	ShowGameTime, _G.Clock24h, _G.ShowST, _G.ShowBT, GTbcAlpha, GTbcRed, GTbcGreen, GTbcBlue, _G.GTLocX, _G.GTLocX = true, false, false, false, tA, tR, tG, tB, screenWidth - 60, tY --for Game time Control
 	Show["AmrothSilverPiece"], BC.Alpha["AmrothSilverPiece"], BC.Red["AmrothSilverPiece"], BC.Green["AmrothSilverPiece"], BC.Blue["AmrothSilverPiece"], Position.Left["AmrothSilverPiece"], Position.Top["AmrothSilverPiece"], Where["AmrothSilverPiece"] = false, tA, tR, tG, tB, tX, tY, tW; --for Amroth Silver Piece Control
-	ShowStarsofMerit, SOMbcAlpha, SOMbcRed, SOMbcGreen, SOMbcBlue, _G.SOMLocX, _G.SOMLocY, _G.SOMWhere = false, tA, tR, tG, tB, tX, tY, tW; --for Stars of Merit Control
+	Show["StarsofMerit"], BC.Alpha["StarsofMerit"], BC.Red["StarsofMerit"], BC.Green["StarsofMerit"], BC.Blue["StarsofMerit"], Position.Left["StarsofMerit"], Position.Top["StarsofMerit"], Where["StarsofMerit"] = false, tA, tR, tG, tB, tX, tY, tW; --for Stars of Merit Control
 	ShowCentralGondorSilverPiece, CGSPbcAlpha, CGSPbcRed, CGSPbcGreen, CGSPbcBlue, _G.CGSPLocX, _G.CGSPLocY, _G.CGSPWhere = false, tA, tR, tG, tB, tX, tY, tW; --for Central Gondor Silver Piece Control
 	ShowGiftgiversBrand, GGBbcAlpha, GGBbcRed, GGBbcGreen, GGBbcBlue, _G.GGBLocX, _G.GGBLocY, _G.GGBWhere = false, tA, tR, tG, tB, tX, tY, tW; --for Gift giver's Brand Control
 	ShowBingoBadge, BBbcAlpha, BBbcRed, BBbcGreen, BBbcBlue, _G.BBLocX, _G.BBLocY, _G.BBWhere = false, tA, tR, tG, tB, tX, tY, tW; --for Bingo Badge Control
@@ -1684,9 +1683,9 @@ function ReplaceCtr()
 	if Show["AmrothSilverPiece"] and Where["AmrothSilverPiece"] == 1 then ASP[ "Ctr" ]:SetPosition( Position.Left["AmrothSilverPiece"], Position.Top["AmrothSilverPiece"] ); end
 	
 	oldLocX = settings.StarsofMerit.X / oldScreenWidth;
-	_G.SOMLocX = oldLocX * screenWidth;
-	settings.StarsofMerit.X = string.format("%.0f", _G.SOMLocX);
-	if ShowStarsofMerit and _G.SOMWhere == 1 then SOM[ "Ctr" ]:SetPosition( _G.SOMLocX, _G.SOMLocY ); end
+	Position.Left["StarsofMerit"] = oldLocX * screenWidth;
+	settings.StarsofMerit.X = string.format("%.0f", Position.Left["StarsofMerit"]);
+	if Show["StarsofMerit"] and Where["StarsofMerit"] == 1 then SOM[ "Ctr" ]:SetPosition( Position.Left["StarsofMerit"], Position.Top["StarsofMerit"] ); end
 	
 	oldLocX = settings.CentralGondorSilverPiece.X / oldScreenWidth;
 	_G.CGSPLocX = oldLocX * screenWidth;

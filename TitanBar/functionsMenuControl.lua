@@ -33,7 +33,7 @@ function UnloadControl( value )
 		if ShowPlayerLoc then ShowHidePlayerLoc(); opt_PL:SetChecked( false ); end
 		if ShowGameTime then ShowHideGameTime(); opt_GT:SetChecked( false ); end
 		if Show["AmrothSilverPiece"] then Where["AmrothSilverPiece"] = 3; ShowHideAmrothSilverPiece(); end
-		if ShowStarsofMerit then _G.SOMWhere = 3; ShowHideStarsofMerit(); end
+		if Show["StarsofMerit"] then Where["StarsofMerit"] = 3; ShowHideStarsofMerit(); end
 		if ShowCentralGondorSilverPiece then _G.CGSPWhere = 3; ShowHideCentralGondorSilverPiece(); end
 		if ShowGiftgiversBrand then _G.GGBWhere = 3; ShowHideGiftgiversBrand(); end
 		if ShowBingoBadge then _G.BBWhere = 3; ShowHideBingoBadge(); end
@@ -75,7 +75,7 @@ function UnloadControl( value )
 			elseif _G.sFromCtr == "PL" then ShowHidePlayerLoc(); opt_PL:SetChecked( false );
 			elseif _G.sFromCtr == "GT" then ShowHideGameTime(); opt_GT:SetChecked( false );
 			elseif _G.sFromCtr == "ASP" then Where["AmrothSilverPiece"] = 3; ShowHideAmrothSilverPiece();
-			elseif _G.sFromCtr == "SOM" then _G.SOMWhere = 3; ShowHideStarsofMerit();
+			elseif _G.sFromCtr == "SOM" then Where["StarsofMerit"] = 3; ShowHideStarsofMerit();
 			elseif _G.sFromCtr == "CGSP" then _G.CGSPWhere = 3; ShowHideCentralGondorSilverPiece();
 			elseif _G.sFromCtr == "GGB" then _G.GGBWhere = 3; ShowHideGiftgiversBrand();
 			elseif _G.sFromCtr == "BB" then	_G.BBWhere = 3; ShowHideBingoBadge();
@@ -131,7 +131,7 @@ function BGColor( cmd, value )
 		elseif _G.sFromCtr == "PL" then tA, tR, tG, tB = PLbcAlpha, PLbcRed, PLbcGreen, PLbcBlue;
 		elseif _G.sFromCtr == "GT" then tA, tR, tG, tB = GTbcAlpha, GTbcRed, GTbcGreen, GTbcBlue;
 		elseif _G.sFromCtr == "ASP" then tA, tR, tG, tB = BC.Alpha["AmrothSilverPiece"], BC.Red["AmrothSilverPiece"], BC.Green["AmrothSilverPiece"], BC.Blue["AmrothSilverPiece"];
-		elseif _G.sFromCtr == "SOM" then tA, tR, tG, tB = SOMbcAlpha, SOMbcRed, SOMbcGreen, SOMbcBlue;
+		elseif _G.sFromCtr == "SOM" then tA, tR, tG, tB = BC.Alpha["StarsofMerit"], BC.Red["StarsofMerit"], BC.Green["StarsofMerit"], BC.Blue["StarsofMerit"];
 		elseif _G.sFromCtr == "CGSP" then tA, tR, tG, tB = CGSPbcAlpha, CGSPbcRed, CGSPbcGreen, CGSPbcBlue;
 		elseif _G.sFromCtr == "GGB" then tA, tR, tG, tB = GGBbcAlpha, GGBbcRed, GGBbcGreen, GGBbcBlue;
 		elseif _G.sFromCtr == "BB" then tA, tR, tG, tB = BBbcAlpha, BBbcRed, BBbcGreen, BBbcBlue;
@@ -202,8 +202,8 @@ function BGColor( cmd, value )
 		if ShowGameTime then GT[ "Ctr" ]:SetBackColor( Turbine.UI.Color( tA, tR, tG, tB ) );	end
 		BC.Alpha["AmrothSilverPiece"], BC.Red["AmrothSilverPiece"], BC.Green["AmrothSilverPiece"], BC.Blue["AmrothSilverPiece"] = tA, tR, tG, tB;
 		if Show["AmrothSilverPiece"] then ASP[ "Ctr" ]:SetBackColor( Turbine.UI.Color( tA, tR, tG, tB ) ); end
-		SOMbcAlpha, SOMbcRed, SOMbcGreen, SOMbcBlue = tA, tR, tG, tB;
-		if ShowStarsofMerit then SOM[ "Ctr" ]:SetBackColor( Turbine.UI.Color( tA, tR, tG, tB ) ); end
+		BC.Alpha["StarsofMerit"], BC.Red["StarsofMerit"], BC.Green["StarsofMerit"], BC.Blue["StarsofMerit"] = tA, tR, tG, tB;
+		if Show["StarsofMerit"] then SOM[ "Ctr" ]:SetBackColor( Turbine.UI.Color( tA, tR, tG, tB ) ); end
 		CGSPbcAlpha, CGSPbcRed, CGSPbcGreen, CGSPbcBlue = tA, tR, tG, tB;
 		if ShowCentralGondorSilverPiece then CGSP[ "Ctr" ]:SetBackColor( Turbine.UI.Color( tA, tR, tG, tB ) ); end
 		GGBbcAlpha, GGBbcRed, GGBbcGreen, GGBbcBlue = tA, tR, tG, tB;
@@ -315,7 +315,7 @@ function BGColor( cmd, value )
 			BC.Alpha["AmrothSilverPiece"], BC.Red["AmrothSilverPiece"], BC.Green["AmrothSilverPiece"], BC.Blue["AmrothSilverPiece"] = tA, tR, tG, tB;
 			ASP[ "Ctr" ]:SetBackColor( Turbine.UI.Color( tA, tR, tG, tB ) );
 		elseif _G.sFromCtr == "SOM" then
-			SOMbcAlpha, SOMbcRed, SOMbcGreen, SOMbcBlue = tA, tR, tG, tB;
+			BC.Alpha["StarsofMerit"], BC.Red["StarsofMerit"], BC.Green["StarsofMerit"], BC.Blue["StarsofMerit"] = tA, tR, tG, tB;
 			SOM[ "Ctr" ]:SetBackColor( Turbine.UI.Color( tA, tR, tG, tB ) );
 		elseif _G.sFromCtr == "CGSP" then
 			CGSPbcAlpha, CGSPbcRed, CGSPbcGreen, CGSPbcBlue = tA, tR, tG, tB;

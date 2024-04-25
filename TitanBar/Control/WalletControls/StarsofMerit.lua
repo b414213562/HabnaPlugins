@@ -10,7 +10,7 @@ SOM["Ctr"]:SetParent( TB["win"] );
 SOM["Ctr"]:SetMouseVisible( false );
 SOM["Ctr"]:SetZOrder( 2 );
 SOM["Ctr"]:SetBlendMode( Turbine.UI.BlendMode.AlphaBlend );
-SOM["Ctr"]:SetBackColor( Turbine.UI.Color( SOMbcAlpha, SOMbcRed, SOMbcGreen, SOMbcBlue ) );
+SOM["Ctr"]:SetBackColor( Turbine.UI.Color( BC.Alpha["StarsofMerit"], BC.Red["StarsofMerit"], BC.Green["StarsofMerit"], BC.Blue["StarsofMerit"] ) );
 --**^
 --**v Stars of Merit & icon on TitanBar v**
 SOM["Icon"] = Turbine.UI.Control();
@@ -89,10 +89,10 @@ end
 SOM["Lbl"].MouseUp = function( sender, args )
 	SOM["Ctr"]:SetZOrder( 2 );
 	dragging = false;
-	_G.SOMLocX = SOM["Ctr"]:GetLeft();
-	settings.StarsofMerit.X = string.format("%.0f", _G.SOMLocX);
-	_G.SOMLocY = SOM["Ctr"]:GetTop();
-	settings.StarsofMerit.Y = string.format("%.0f", _G.SOMLocY);
+	Position.Left["StarsofMerit"] = SOM["Ctr"]:GetLeft();
+	settings.StarsofMerit.X = string.format("%.0f", Position.Left["StarsofMerit"]);
+	Position.Top["StarsofMerit"] = SOM["Ctr"]:GetTop();
+	settings.StarsofMerit.Y = string.format("%.0f", Position.Top["StarsofMerit"]);
 	SaveSettings( false );
 end
 --**^

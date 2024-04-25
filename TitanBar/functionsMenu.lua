@@ -447,15 +447,15 @@ function ShowHideAmrothSilverPiece()
 	ASP[ "Ctr" ]:SetVisible( Show["AmrothSilverPiece"] );
 end
 function ShowHideStarsofMerit()
-	ShowStarsofMerit = not ShowStarsofMerit;
-	settings.StarsofMerit.V = ShowStarsofMerit;
-	settings.StarsofMerit.W = string.format("%.0f", _G.SOMWhere);
+	Show["StarsofMerit"] = not Show["StarsofMerit"];
+	settings.StarsofMerit.V = Show["StarsofMerit"];
+	settings.StarsofMerit.W = string.format("%.0f", Where["StarsofMerit"]);
 	SaveSettings( false );
 	ImportCtr( "SOM" );
-	if ShowStarsofMerit then
-		SOM[ "Ctr" ]:SetBackColor( Turbine.UI.Color( SOMbcAlpha, SOMbcRed, SOMbcGreen, SOMbcBlue ) );
+	if Show["StarsofMerit"] then
+		SOM[ "Ctr" ]:SetBackColor( Turbine.UI.Color( BC.Alpha["StarsofMerit"], BC.Red["StarsofMerit"], BC.Green["StarsofMerit"], BC.Blue["StarsofMerit"] ) );
 	end
-	SOM[ "Ctr" ]:SetVisible( ShowStarsofMerit );
+	SOM[ "Ctr" ]:SetVisible( Show["StarsofMerit"] );
 end
 function ShowHideCentralGondorSilverPiece()
 	ShowCentralGondorSilverPiece = not ShowCentralGondorSilverPiece;
