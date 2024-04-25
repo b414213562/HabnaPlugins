@@ -10,7 +10,7 @@ HT["Ctr"]:SetParent( TB["win"] );
 HT["Ctr"]:SetMouseVisible( false );
 HT["Ctr"]:SetZOrder( 2 );
 HT["Ctr"]:SetBlendMode( Turbine.UI.BlendMode.AlphaBlend );
-HT["Ctr"]:SetBackColor( Turbine.UI.Color( HTbcAlpha, HTbcRed, HTbcGreen, HTbcBlue ) );
+HT["Ctr"]:SetBackColor( Turbine.UI.Color( BC.Alpha["HytboldTokens"], BC.Red["HytboldTokens"], BC.Green["HytboldTokens"], BC.Blue["HytboldTokens"] ) );
 --SM["Ctr"]:SetBackColor( Color["red"] ); -- Debug purpose
 --**^
 --**v Destiny points & icon on TitanBar v**
@@ -92,10 +92,10 @@ end
 HT["Lbl"].MouseUp = function( sender, args )
 	HT["Ctr"]:SetZOrder( 2 );
 	dragging = false;
-	_G.HTLocX = HT["Ctr"]:GetLeft();
-	settings.HytboldTokens.X = string.format("%.0f", _G.HTLocX);
-	_G.HTLocY = HT["Ctr"]:GetTop();
-	settings.HytboldTokens.Y = string.format("%.0f", _G.HTLocY);
+	Position.Left["HytboldTokens"] = HT["Ctr"]:GetLeft();
+	settings.HytboldTokens.X = string.format("%.0f", Position.Left["HytboldTokens"]);
+	Position.Top["HytboldTokens"] = HT["Ctr"]:GetTop();
+	settings.HytboldTokens.Y = string.format("%.0f", Position.Top["HytboldTokens"]);
 	SaveSettings( false );
 end
 --**^

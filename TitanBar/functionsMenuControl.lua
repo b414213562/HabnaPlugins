@@ -14,7 +14,7 @@ function UnloadControl( value )
 		if Show["SkirmishMarks"] then Where["SkirmishMarks"] = 3; ShowHideSkirmishMarks(); end
 		if Show["MithrilCoins"] then Where["MithrilCoins"] = 3; ShowHideMithrilCoins(); end
 		if Show["YuleToken"] then Where["YuleToken"] = 3; ShowHideYuleToken(); end
-		if ShowHytboldTokens then _G.HTWhere = 3; ShowHideHytboldTokens(); end
+		if Show["HytboldTokens"] then Where["HytboldTokens"] = 3; ShowHideHytboldTokens(); end
 		if ShowMedallions then _G.MPWhere = 3; ShowHideMedallions(); end
 		if ShowSeals then _G.SLWhere = 3; ShowHideSeals(); end
 		if ShowCommendations then _G.CPWhere = 3; ShowHideCommendations(); end
@@ -56,7 +56,7 @@ function UnloadControl( value )
 			elseif _G.sFromCtr == "SM" then Where["SkirmishMarks"] = 3; ShowHideSkirmishMarks();
 			elseif _G.sFromCtr == "MC" then Where["MithrilCoins"] = 3; ShowHideMithrilCoins();
 			elseif _G.sFromCtr == "YT" then Where["YuleToken"] = 3; ShowHideYuleToken();
-			elseif _G.sFromCtr == "HT" then _G.HTWhere = 3; ShowHideHytboldTokens();
+			elseif _G.sFromCtr == "HT" then Where["HytboldTokens"] = 3; ShowHideHytboldTokens();
 			elseif _G.sFromCtr == "MP" then _G.MPWhere = 3; ShowHideMedallions();
 			elseif _G.sFromCtr == "SL" then _G.SLWhere = 3; ShowHideSeals();
 			elseif _G.sFromCtr == "CP" then _G.CPWhere = 3; ShowHideCommendations();
@@ -112,7 +112,7 @@ function BGColor( cmd, value )
 		elseif _G.sFromCtr == "SM" then tA, tR, tG, tB = BC.Alpha["SkirmishMarks"], BC.Red["SkirmishMarks"], BC.Green["SkirmishMarks"], BC.Blue["SkirmishMarks"];
 		elseif _G.sFromCtr == "MC" then tA, tR, tG, tB = BC.Alpha["MithrilCoins"], BC.Red["MithrilCoins"], BC.Green["MithrilCoins"], BC.Blue["MithrilCoins"];
 		elseif _G.sFromCtr == "YT" then tA, tR, tG, tB = BC.Alpha["YuleToken"], BC.Red["YuleToken"], BC.Green["YuleToken"], BC.Blue["YuleToken"];
-		elseif _G.sFromCtr == "HT" then tA, tR, tG, tB = HTbcAlpha, HTbcRed, HTbcGreen, HTbcBlue;
+		elseif _G.sFromCtr == "HT" then tA, tR, tG, tB = BC.Alpha["HytboldTokens"], BC.Red["HytboldTokens"], BC.Green["HytboldTokens"], BC.Blue["HytboldTokens"];
 		elseif _G.sFromCtr == "MP" then tA, tR, tG, tB = MPbcAlpha, MPbcRed, MPbcGreen, MPbcBlue;
 		elseif _G.sFromCtr == "SL" then tA, tR, tG, tB = SLbcAlpha, SLbcRed, SLbcGreen, SLbcBlue;
 		elseif _G.sFromCtr == "CP" then tA, tR, tG, tB = CPbcAlpha, CPbcRed, CPbcGreen, CPbcBlue;
@@ -164,8 +164,8 @@ function BGColor( cmd, value )
 		if Show["MithrilCoins"] then MC[ "Ctr" ]:SetBackColor( Turbine.UI.Color( tA, tR, tG, tB ) ); end
 		BC.Alpha["YuleToken"], BC.Red["YuleToken"], BC.Green["YuleToken"], BC.Blue["YuleToken"] = tA, tR, tG, tB;
 		if Show["YuleToken"] then YT[ "Ctr" ]:SetBackColor( Turbine.UI.Color( tA, tR, tG, tB ) ); end
-		HTbcAlpha, HTbcRed, HTbcGreen, HTbcBlue = tA, tR, tG, tB;
-		if ShowHytboldTokens then HT[ "Ctr" ]:SetBackColor( Turbine.UI.Color( tA, tR, tG, tB ) ); end
+		BC.Alpha["HytboldTokens"], BC.Red["HytboldTokens"], BC.Green["HytboldTokens"], BC.Blue["HytboldTokens"] = tA, tR, tG, tB;
+		if Show["HytboldTokens"] then HT[ "Ctr" ]:SetBackColor( Turbine.UI.Color( tA, tR, tG, tB ) ); end
 		MPbcAlpha, MPbcRed, MPbcGreen, MPbcBlue = tA, tR, tG, tB;
 		if ShowMedallions then MP[ "Ctr" ]:SetBackColor( Turbine.UI.Color( tA, tR, tG, tB ) ); end
 		SLbcAlpha, SLbcRed, SLbcGreen, SLbcBlue = tA, tR, tG, tB;
@@ -257,7 +257,7 @@ function BGColor( cmd, value )
 			BC.Alpha["YuleToken"], BC.Red["YuleToken"], BC.Green["YuleToken"], BC.Blue["YuleToken"] = tA, tR, tG, tB;
 			YT[ "Ctr" ]:SetBackColor( Turbine.UI.Color( tA, tR, tG, tB ) );
 		elseif _G.sFromCtr == "HT" then
-			HTbcAlpha, HTbcRed, HTbcGreen, HTbcBlue = tA, tR, tG, tB;
+			BC.Alpha["HytboldTokens"], BC.Red["HytboldTokens"], BC.Green["HytboldTokens"], BC.Blue["HytboldTokens"] = tA, tR, tG, tB;
 			HT[ "Ctr" ]:SetBackColor( Turbine.UI.Color( tA, tR, tG, tB ) );
 		elseif _G.sFromCtr == "MP" then
 			MPbcAlpha, MPbcRed, MPbcGreen, MPbcBlue = tA, tR, tG, tB;

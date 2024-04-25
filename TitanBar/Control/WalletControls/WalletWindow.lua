@@ -245,9 +245,9 @@ function frmWalletWindow()
 			if SelIndex == 1 then if not Show["YuleToken"] then ShowHideYuleToken(); end
 			else if Show["YuleToken"] then ShowHideYuleToken(); end end
 		elseif wcur == L["MHT"] then
-			_G.HTWhere = SelIndex; settings.HytboldTokens.W = string.format("%.0f", SelIndex);
-			if SelIndex == 1 then if not ShowHytboldTokens then ShowHideHytboldTokens(); end
-			else if ShowHytboldTokens then ShowHideHytboldTokens(); end end
+			Where["HytboldTokens"] = SelIndex; settings.HytboldTokens.W = string.format("%.0f", SelIndex);
+			if SelIndex == 1 then if not Show["HytboldTokens"] then ShowHideHytboldTokens(); end
+			else if Show["HytboldTokens"] then ShowHideHytboldTokens(); end end
 		elseif wcur == L["MMP"] then
 			_G.MPWhere = SelIndex; settings.Medallions.W = string.format("%.0f", SelIndex);
 			if SelIndex == 1 then if not ShowMedallions then ShowHideMedallions(); end
@@ -386,7 +386,7 @@ function RefreshWIListBox()
 				elseif wcur == L["MSM"] then tw = Where["SkirmishMarks"]; -- Skirmish marks
 				elseif wcur == L["MMC"] then tw = Where["MithrilCoins"]; -- Mithril Coins
 				elseif wcur == L["MYT"] then tw = Where["YuleToken"]; -- Yule Tokens
-				elseif wcur == L["MHT"] then tw = _G.HTWhere; -- Tokens of Hytbold
+				elseif wcur == L["MHT"] then tw = Where["HytboldTokens"]; -- Tokens of Hytbold
 				elseif wcur == L["MMP"] then tw = _G.MPWhere; -- Medallions
 				elseif wcur == L["MSL"] then tw = _G.SLWhere; -- Seals
 				elseif wcur == L["MCP"] then tw = _G.CPWhere; -- Commendations

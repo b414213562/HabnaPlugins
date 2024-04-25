@@ -504,7 +504,7 @@ end
 --**^
 --**v Update Tokens of Hytbold currency on TitanBar v**
 function UpdateHytboldTokens()
-	if _G.HTWhere == 1 then
+	if Where["HytboldTokens"] == 1 then
 		HT[ "Lbl" ]:SetText( GetCurrency( L[ "MHT" ] ) );
 		HT[ "Lbl" ]:SetSize( HT[ "Lbl" ]:GetTextLength() * NM, CTRHeight ); 
 		AjustIcon( "HT" );
@@ -1013,7 +1013,7 @@ function ChangeColor(tColor)
 		if Show["SkirmishMarks"] then SM[ "Ctr" ]:SetBackColor( tColor ); end
 		if Show["MithrilCoins"] then MC[ "Ctr" ]:SetBackColor( tColor ); end
 		if Show["YuleToken"] then YT[ "Ctr" ]:SetBackColor( tColor ); end
-		if ShowHytboldTokens then HT[ "Ctr" ]:SetBackColor( tColor ); end
+		if Show["HytboldTokens"] then HT[ "Ctr" ]:SetBackColor( tColor ); end
 		if ShowMedallions then MP[ "Ctr" ]:SetBackColor( tColor ); end
 		if ShowSeals then SL[ "Ctr" ]:SetBackColor( tColor ); end
 		if ShowCommendations then CP[ "Ctr" ]:SetBackColor( tColor ); end

@@ -293,17 +293,15 @@ function LoadSettings()
 	if settings.HytboldTokens.X == nil then settings.HytboldTokens.X = string.format("%.0f", tX); end
 	if settings.HytboldTokens.Y == nil then settings.HytboldTokens.Y = string.format("%.0f", tY); end
 	if settings.HytboldTokens.W == nil then settings.HytboldTokens.W = string.format("%.0f", tW); end
-	ShowHytboldTokens = settings.HytboldTokens.V;
-	HTbcAlpha = tonumber(settings.HytboldTokens.A);
-	HTbcRed = tonumber(settings.HytboldTokens.R);
-	HTbcGreen = tonumber(settings.HytboldTokens.G);
-	HTbcBlue = tonumber(settings.HytboldTokens.B);
-	_G.HTLocX = tonumber(settings.HytboldTokens.X);
-	_G.HTLocY = tonumber(settings.HytboldTokens.Y);
-	_G.HTWhere = tonumber(settings.HytboldTokens.W);
-	if _G.HTWhere == 3 and ShowHytboldTokens then _G.HTWhere = 1; settings.HytboldTokens.W = string.format("%.0f", _G.HTWhere); end --Remove after Oct, 15th 2013
+	Show["HytboldTokens"] = settings.HytboldTokens.V;
+	BC.Alpha["HytboldTokens"] = tonumber(settings.HytboldTokens.A);
+	BC.Red["HytboldTokens"] = tonumber(settings.HytboldTokens.R);
+	BC.Green["HytboldTokens"] = tonumber(settings.HytboldTokens.G);
+	BC.Blue["HytboldTokens"] = tonumber(settings.HytboldTokens.B);
+	Position.Left["HytboldTokens"] = tonumber(settings.HytboldTokens.X);
+	Position.Top["HytboldTokens"] = tonumber(settings.HytboldTokens.Y);
+    Where["HytboldTokens"] = ParseWhere(settings, "HytboldTokens");
 
-	
 	if settings.Medallions == nil then settings.Medallions = {}; end
 	if settings.Medallions.V == nil then settings.Medallions.V = false; end
 	if settings.Medallions.A == nil then settings.Medallions.A = string.format("%.3f", tA); end
@@ -1125,14 +1123,14 @@ function SaveSettings(str)
 		settings.YuleToken.W = string.format("%.0f", Where["YuleToken"]);
 		
 		settings.HytboldTokens = {};
-		settings.HytboldTokens.V = ShowHytboldTokens;
-		settings.HytboldTokens.A = string.format("%.3f", HTbcAlpha);
-		settings.HytboldTokens.R = string.format("%.3f", HTbcRed);
-		settings.HytboldTokens.G = string.format("%.3f", HTbcGreen);
-		settings.HytboldTokens.B = string.format("%.3f", HTbcBlue);
-		settings.HytboldTokens.X = string.format("%.0f", _G.HTLocX);
-		settings.HytboldTokens.Y = string.format("%.0f", _G.HTLocY);
-		settings.HytboldTokens.W = string.format("%.0f", _G.HTWhere);
+		settings.HytboldTokens.V = Show["HytboldTokens"];
+		settings.HytboldTokens.A = string.format("%.3f", BC.Alpha["HytboldTokens"]);
+		settings.HytboldTokens.R = string.format("%.3f", BC.Red["HytboldTokens"]);
+		settings.HytboldTokens.G = string.format("%.3f", BC.Green["HytboldTokens"]);
+		settings.HytboldTokens.B = string.format("%.3f", BC.Blue["HytboldTokens"]);
+		settings.HytboldTokens.X = string.format("%.0f", Position.Left["HytboldTokens"]);
+		settings.HytboldTokens.Y = string.format("%.0f", Position.Top["HytboldTokens"]);
+		settings.HytboldTokens.W = string.format("%.0f", Where["HytboldTokens"]);
 		
 		settings.Medallions = {};
 		settings.Medallions.V = ShowMedallions;
@@ -1517,7 +1515,7 @@ function ResetSettings()
 	Show["SkirmishMarks"], BC.Alpha["SkirmishMarks"], BC.Red["SkirmishMarks"], BC.Green["SkirmishMarks"], BC.Blue["SkirmishMarks"], Position.Left["SkirmishMarks"], Position.Top["SkirmishMarks"], Where["SkirmishMarks"] = false, tA, tR, tG, tB, tX, tY, tW; --for Skirmish marks Control
 	Show["MithrilCoins"], BC.Alpha["MithrilCoins"], BC.Red["MithrilCoins"], BC.Green["MithrilCoins"], BC.Blue["MithrilCoins"], Position.Left["MithrilCoins"], Position.Top["MithrilCoins"], Where["MithrilCoins"] = false, tA, tR, tG, tB, tX, tY, tW; --for Mithril Coins Control
 	Show["YuleToken"], BC.Alpha["YuleToken"], BC.Red["YuleToken"], BC.Green["YuleToken"], BC.Blue["YuleToken"], _G.TLocX, Position.Top["YuleToken"], Where["YuleToken"] = false, tA, tR, tG, tB, tX, tY, tW; --for Yule Tokens Control
-	ShowHytboldTokens, HTbcAlpha, HTbcRed, HTbcGreen, HTbcBlue, _G.HTLocX, _G.HTLocY, _G.HTWhere = false, tA, tR, tG, tB, tX, tY, tW; --for Tokens of Hytbold Control
+	Show["HytboldTokens"], BC.Alpha["HytboldTokens"], BC.Red["HytboldTokens"], BC.Green["HytboldTokens"], BC.Blue["HytboldTokens"], Position.Left["HytboldTokens"], Position.Top["HytboldTokens"], Where["HytboldTokens"] = false, tA, tR, tG, tB, tX, tY, tW; --for Tokens of Hytbold Control
 	ShowMedallions, MPbcAlpha, MPbcRed, MPbcGreen, MPbcBlue, _G.MPLocX, _G.MPLocY, _G.MPWhere = false, tA, tR, tG, tB, tX, tY, tW; --for Medallions Control
 	ShowCommendations, CPbcAlpha, CPbcRed, CPbcGreen, CPbcBlue, _G.CPLocX, _G.CPLocY, _G.CPWhere = false, tA, tR, tG, tB, tX, tY, tW; --for Commendations Control
 	ShowSeals, SLbcAlpha, SLbcRed, SLbcGreen, SLbcBlue, _G.SLLocX, _G.SLLocY, _G.SLWhere = false, tA, tR, tG, tB, tX, tY, tW; --for Seal Control
@@ -1600,9 +1598,9 @@ function ReplaceCtr()
 	if Show["YuleToken"] and Where["YuleToken"] == 1 then YT[ "Ctr" ]:SetPosition( Position.Left["YuleToken"], Position.Top["YuleToken"] ); end
 
 	ldLocX = settings.HytboldTokens.X / oldScreenWidth;
-	_G.HTLocX = oldLocX * screenWidth;
-	settings.HytboldTokens.X = string.format("%.0f", _G.HTLocX);
-	if ShowHytboldTokens and _G.HTWhere == 1 then HT[ "Ctr" ]:SetPosition( _G.HTLocX, _G.HTLocY ); end
+	Position.Left["HytboldTokens"] = oldLocX * screenWidth;
+	settings.HytboldTokens.X = string.format("%.0f", Position.Left["HytboldTokens"]);
+	if Show["HytboldTokens"] and Where["HytboldTokens"] == 1 then HT[ "Ctr" ]:SetPosition( Position.Left["HytboldTokens"], Position.Top["HytboldTokens"] ); end
 	
 	oldLocX = settings.Medallions.X / oldScreenWidth;
 	_G.MPLocX = oldLocX * screenWidth;

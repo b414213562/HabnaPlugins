@@ -106,15 +106,15 @@ end
 -- **^
 -- **v Show/Hide Tokens of Hytbold v**
 function ShowHideHytboldTokens()
-	ShowHytboldTokens = not ShowHytboldTokens;
-	settings.HytboldTokens.V = ShowHytboldTokens;
-	settings.HytboldTokens.W = string.format("%.0f", _G.HTWhere);
+	Show["HytboldTokens"] = not Show["HytboldTokens"];
+	settings.HytboldTokens.V = Show["HytboldTokens"];
+	settings.HytboldTokens.W = string.format("%.0f", Where["HytboldTokens"]);
 	SaveSettings( false );
 	ImportCtr( "HT" );
-	if ShowHytboldTokens then
-		HT[ "Ctr" ]:SetBackColor( Turbine.UI.Color( HTbcAlpha, HTbcRed, HTbcGreen, HTbcBlue ) );
+	if Show["HytboldTokens"] then
+		HT[ "Ctr" ]:SetBackColor( Turbine.UI.Color( BC.Alpha["HytboldTokens"], BC.Red["HytboldTokens"], BC.Green["HytboldTokens"], BC.Blue["HytboldTokens"] ) );
 	end
-	HT[ "Ctr" ]:SetVisible( ShowHytboldTokens );
+	HT[ "Ctr" ]:SetVisible( Show["HytboldTokens"] );
 end
 -- **^
 -- **v Show/Hide Medallions v**

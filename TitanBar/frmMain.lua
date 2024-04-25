@@ -166,7 +166,7 @@ function frmMain()
 			if Where["SkirmishMarks"] ~= 3 then ImportCtr( "SM" ); end
 			if Where["MithrilCoins"] ~= 3 then ImportCtr( "MC" ); end
 			if Where["YuleToken"] ~= 3 then ImportCtr( "YT" ); end
-			if _G.HTWhere ~= 3 then ImportCtr( "HT" ); end
+			if Where["HytboldTokens"] ~= 3 then ImportCtr( "HT" ); end
 			if _G.MPWhere ~= 3 then ImportCtr( "MP" ); end
 			if _G.SLWhere ~= 3 then ImportCtr( "SL" ); end
 			if _G.CPWhere ~= 3 then ImportCtr( "CP" ); end
@@ -190,7 +190,7 @@ function frmMain()
 	else
 		-- Disable infos not useful in Monster Play
 		ShowDurabilityInfos, ShowEquipInfos, Show["DestinyPoints"], Show["Shards"] = false, false, false, false;
-		Show["YuleToken"], Show["SkirmishMarks"], ShowHytboldTokens, ShowMedallions = false, false, false, false;
+		Show["YuleToken"], Show["SkirmishMarks"], Show["HytboldTokens"], ShowMedallions = false, false, false, false;
 		ShowSeals, ShowVault, ShowSharedStorage, ShowAmrothSilverPiece = false, false, false, false;
 		ShowStarsofMerit, ShowCentralGondorSilverPiece, ShowGiftgiversBrand = false, false, false;
 		ShowBingoBadge, ShowAnniversaryToken, ShowReputation = false, false, false;
@@ -321,7 +321,7 @@ function frmMain()
 				if Where["SkirmishMarks"] ~= 3 then ImportCtr( "SM" ); end
 				if Where["MithrilCoins"] ~= 3 then ImportCtr( "MC" ); end
 				if Where["YuleToken"] ~= 3 then ImportCtr( "YT" ); end
-				if _G.HTWhere ~= 3 then ImportCtr( "HT" ); end
+				if Where["HytboldTokens"] ~= 3 then ImportCtr( "HT" ); end
 				if _G.MPWhere ~= 3 then ImportCtr( "MP" ); end
 				if _G.SLWhere ~= 3 then ImportCtr( "SL" ); end
 				if _G.LPWhere ~= 3 then ImportCtr( "CP" ); end

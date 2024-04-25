@@ -67,11 +67,11 @@ function ImportCtr( value )
         end
         if Where["YuleToken"] ~= 3 then UpdateYuleToken(); end
     elseif value == "HT" then --Tokens of Hytbold
-        if _G.HTWhere == 1 then
+        if Where["HytboldTokens"] == 1 then
             import (AppCtrWalletD.."TokensOfHytbold");
-            HT[ "Ctr" ]:SetPosition( _G.HTLocX, _G.HTLocY );
+            HT[ "Ctr" ]:SetPosition( Position.Left["HytboldTokens"], Position.Top["HytboldTokens"] );
         end
-        if _G.HTWhere ~= 3 then UpdateHytboldTokens(); end
+        if Where["HytboldTokens"] ~= 3 then UpdateHytboldTokens(); end
     elseif value == "MP" then --Medallions
         if _G.MPWhere == 1 then
             import (AppCtrWalletD.."Medallions");
@@ -1141,9 +1141,9 @@ function UpdateCurrency( str )
     if str == L[ "MMP" ] and ShowMedallions then UpdateMedallions(); end
     if str == L[ "MSL" ] and ShowSeals then UpdateSeals(); end
     if str == L[ "MCP" ] and ShowCommendations then UpdateCommendations(); end
-    if str == L[ "MMC" ] and ShowMithril then UpdateMithril(); end
+    if str == L[ "MMC" ] and Show["MithrilCoins"] then UpdateMithril(); end
     if str == L[ "MYT" ] and Show["YuleToken"] then UpdateYuleToken(); end
-    if str == L[ "MHT" ] and ShowHytboldTokens then UpdateHytboldTokens(); end
+    if str == L[ "MHT" ] and Show["HytboldTokens"] then UpdateHytboldTokens(); end
     if str == L[ "MASP" ] and ShowAmrothSilverPiece then UpdateAmrothSilverPiece(); end
     if str == L[ "MSOM" ] and ShowStarsofMerit then UpdateStarsofMerit(); end
     if str == L[ "MCGSP" ] and ShowCentralGondorSilverPiece then UpdateCentralGondorSilverPiece(); end
