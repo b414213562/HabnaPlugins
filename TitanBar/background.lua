@@ -69,7 +69,7 @@ function frmBackground()
 	if sFrom == "MC" then curSelAlpha = BC.Alpha["MithrilCoins"]; curSelRed = BC.Red["MithrilCoins"]; curSelGreen = BC.Green["MithrilCoins"]; curSelBlue = BC.Blue["MithrilCoins"]; end
 	if sFrom == "YT" then curSelAlpha = BC.Alpha["YuleToken"]; curSelRed = BC.Red["YuleToken"]; curSelGreen = BC.Green["YuleToken"]; curSelBlue = BC.Blue["YuleToken"]; end
 	if sFrom == "HT" then curSelAlpha = BC.Alpha["HytboldTokens"]; curSelRed = BC.Red["HytboldTokens"]; curSelGreen = BC.Green["HytboldTokens"]; curSelBlue = BC.Blue["HytboldTokens"]; end
-	if sFrom == "MP" then curSelAlpha = MPbcAlpha; curSelRed = MPbcRed; curSelGreen = MPbcGreen; curSelBlue = MPbcBlue; end
+	if sFrom == "MP" then curSelAlpha = BC.Alpha["Medallions"]; curSelRed = BC.Red["Medallions"]; curSelGreen = BC.Green["Medallions"]; curSelBlue = BC.Blue["Medallions"]; end
 	if sFrom == "SL" then curSelAlpha = SLbcAlpha; curSelRed = SLbcRed; curSelGreen = SLbcGreen; curSelBlue = SLbcBlue; end
 	if sFrom == "CP" then curSelAlpha = CPbcAlpha; curSelRed = CPbcRed; curSelGreen = CPbcGreen; curSelBlue = CPbcBlue; end
 	if sFrom == "BI" then curSelAlpha = BIbcAlpha; curSelRed = BIbcRed; curSelGreen = BIbcGreen; curSelBlue = BIbcBlue; end
@@ -336,7 +336,7 @@ function UpdateBCvariable()
 		BC.Alpha["SkirmishMarks"], BC.Red["SkirmishMarks"], BC.Green["SkirmishMarks"], BC.Blue["SkirmishMarks"] = curSelAlpha, curSelRed, curSelGreen, curSelBlue;
 		BC.Alpha["MithrilCoins"], BC.Red["MithrilCoins"], BC.Green["MithrilCoins"], BC.Blue["MithrilCoins"] = curSelAlpha, curSelRed, curSelGreen, curSelBlue;
 		BC.Alpha["HytboldTokens"], BC.Red["HytboldTokens"], BC.Green["HytboldTokens"], BC.Blue["HytboldTokens"] = curSelAlpha, curSelRed, curSelGreen, curSelBlue;
-		MPbcAlpha, MPbcRed, MPbcGreen, MPbcBlue = curSelAlpha, curSelRed, curSelGreen, curSelBlue;
+		BC.Alpha["Medallions"], BC.Red["Medallions"], BC.Green["Medallions"], BC.Blue["Medallions"] = curSelAlpha, curSelRed, curSelGreen, curSelBlue;
 		SLbcAlpha, SLbcRed, SLbcGreen, SLbcBlue = curSelAlpha, curSelRed, curSelGreen, curSelBlue;
 		CPbcAlpha, CPbcRed, CPbcGreen, CPbcBlue = curSelAlpha, curSelRed, curSelGreen, curSelBlue;
 		BIbcAlpha, BIbcRed, BIbcGreen, BIbcBlue = curSelAlpha, curSelRed, curSelGreen, curSelBlue;
@@ -381,7 +381,7 @@ function UpdateBCvariable()
 		if sFrom == "MC" then BC.Alpha["MithrilCoins"] = curSelAlpha; BC.Red["MithrilCoins"] = curSelRed; BC.Green["MithrilCoins"] = curSelGreen; BC.Blue["MithrilCoins"] = curSelBlue; end
 		if sFrom == "YT" then BC.Alpha["YuleToken"] = curSelAlpha; BC.Red["YuleToken"] = curSelRed; BC.Green["YuleToken"] = curSelGreen; BC.Blue["YuleToken"] = curSelBlue; end
 		if sFrom == "HT" then BC.Alpha["HytboldTokens"] = curSelAlpha; BC.Red["HytboldTokens"] = curSelRed; BC.Green["HytboldTokens"] = curSelGreen; BC.Blue["HytboldTokens"] = curSelBlue; end
-		if sFrom == "MP" then MPbcAlpha = curSelAlpha; MPbcRed = curSelRed; MPbcGreen = curSelGreen; MPbcBlue = curSelBlue; end
+		if sFrom == "MP" then BC.Alpha["Medallions"] = curSelAlpha; BC.Red["Medallions"] = curSelRed; BC.Green["Medallions"] = curSelGreen; BC.Blue["Medallions"] = curSelBlue; end
 		if sFrom == "SL" then SLbcAlpha = curSelAlpha; SLbcRed = curSelRed; SLbcGreen = curSelGreen; SLbcBlue = curSelBlue; end
 		if sFrom == "CP" then CPbcAlpha = curSelAlpha; CPbcRed = curSelRed; CPbcGreen = curSelGreen; CPbcBlue = curSelBlue; end
 		if sFrom == "BI" then BIbcAlpha = curSelAlpha; BIbcRed = curSelRed; BIbcGreen = curSelGreen; BIbcBlue = curSelBlue; end

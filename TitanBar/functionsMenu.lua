@@ -119,15 +119,15 @@ end
 -- **^
 -- **v Show/Hide Medallions v**
 function ShowHideMedallions()
-	ShowMedallions = not ShowMedallions;
-	settings.Medallions.V = ShowMedallions;
-	settings.Medallions.W = string.format("%.0f", _G.MPWhere);
+	Show["Medallions"] = not Show["Medallions"];
+	settings.Medallions.V = Show["Medallions"];
+	settings.Medallions.W = string.format("%.0f", Where["Medallions"]);
 	SaveSettings( false );
 	ImportCtr( "MP" );
-	if ShowMedallions then
-		MP[ "Ctr" ]:SetBackColor( Turbine.UI.Color( MPbcAlpha, MPbcRed, MPbcGreen, MPbcBlue ) );
+	if Show["Medallions"] then
+		MP[ "Ctr" ]:SetBackColor( Turbine.UI.Color( BC.Alpha["Medallions"], BC.Red["Medallions"], BC.Green["Medallions"], BC.Blue["Medallions"] ) );
 	end
-	MP[ "Ctr" ]:SetVisible( ShowMedallions );
+	MP[ "Ctr" ]:SetVisible( Show["Medallions"] );
 end
 -- **^
 -- **v Show/Hide Seals v**

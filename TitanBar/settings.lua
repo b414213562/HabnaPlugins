@@ -311,16 +311,14 @@ function LoadSettings()
 	if settings.Medallions.X == nil then settings.Medallions.X = string.format("%.0f", tX); end
 	if settings.Medallions.Y == nil then settings.Medallions.Y = string.format("%.0f", tY); end
 	if settings.Medallions.W == nil then settings.Medallions.W = string.format("%.0f", tW); end
-	ShowMedallions = settings.Medallions.V;
-	MPbcAlpha = tonumber(settings.Medallions.A);
-	MPbcRed = tonumber(settings.Medallions.R);
-	MPbcGreen = tonumber(settings.Medallions.G);
-	MPbcBlue = tonumber(settings.Medallions.B);
-	_G.MPLocX = tonumber(settings.Medallions.X);
-	_G.MPLocY = tonumber(settings.Medallions.Y);
-	_G.MPWhere = tonumber(settings.Medallions.W);
-	if _G.MPWhere == 3 and ShowMedallions then _G.MPWhere = 1; settings.Medallions.W = string.format("%.0f", _G.MPWhere); end --Remove after Oct, 15th 2013
-
+	Show["Medallions"] = settings.Medallions.V;
+	BC.Alpha["Medallions"] = tonumber(settings.Medallions.A);
+	BC.Red["Medallions"] = tonumber(settings.Medallions.R);
+	BC.Green["Medallions"] = tonumber(settings.Medallions.G);
+	BC.Blue["Medallions"] = tonumber(settings.Medallions.B);
+	Position.Left["Medallions"] = tonumber(settings.Medallions.X);
+	Position.Top["Medallions"] = tonumber(settings.Medallions.Y);
+    Where["Medallions"] = ParseWhere(settings, "Medallions");
 
 	if settings.Seals == nil then settings.Seals = {}; end
 	if settings.Seals.V == nil then settings.Seals.V = false; end
@@ -1133,14 +1131,14 @@ function SaveSettings(str)
 		settings.HytboldTokens.W = string.format("%.0f", Where["HytboldTokens"]);
 		
 		settings.Medallions = {};
-		settings.Medallions.V = ShowMedallions;
-		settings.Medallions.A = string.format("%.3f", MPbcAlpha);
-		settings.Medallions.R = string.format("%.3f", MPbcRed);
-		settings.Medallions.G = string.format("%.3f", MPbcGreen);
-		settings.Medallions.B = string.format("%.3f", MPbcBlue);
-		settings.Medallions.X = string.format("%.0f", _G.MPLocX);
-		settings.Medallions.Y = string.format("%.0f", _G.MPLocY);
-		settings.Medallions.W = string.format("%.0f", _G.MPWhere);
+		settings.Medallions.V = Show["Medallions"];
+		settings.Medallions.A = string.format("%.3f", BC.Alpha["Medallions"]);
+		settings.Medallions.R = string.format("%.3f", BC.Red["Medallions"]);
+		settings.Medallions.G = string.format("%.3f", BC.Green["Medallions"]);
+		settings.Medallions.B = string.format("%.3f", BC.Blue["Medallions"]);
+		settings.Medallions.X = string.format("%.0f", Position.Left["Medallions"]);
+		settings.Medallions.Y = string.format("%.0f", Position.Top["Medallions"]);
+		settings.Medallions.W = string.format("%.0f", Where["Medallions"]);
 
 		settings.Seals = {};
 		settings.Seals.V = ShowSeals;
@@ -1516,7 +1514,7 @@ function ResetSettings()
 	Show["MithrilCoins"], BC.Alpha["MithrilCoins"], BC.Red["MithrilCoins"], BC.Green["MithrilCoins"], BC.Blue["MithrilCoins"], Position.Left["MithrilCoins"], Position.Top["MithrilCoins"], Where["MithrilCoins"] = false, tA, tR, tG, tB, tX, tY, tW; --for Mithril Coins Control
 	Show["YuleToken"], BC.Alpha["YuleToken"], BC.Red["YuleToken"], BC.Green["YuleToken"], BC.Blue["YuleToken"], _G.TLocX, Position.Top["YuleToken"], Where["YuleToken"] = false, tA, tR, tG, tB, tX, tY, tW; --for Yule Tokens Control
 	Show["HytboldTokens"], BC.Alpha["HytboldTokens"], BC.Red["HytboldTokens"], BC.Green["HytboldTokens"], BC.Blue["HytboldTokens"], Position.Left["HytboldTokens"], Position.Top["HytboldTokens"], Where["HytboldTokens"] = false, tA, tR, tG, tB, tX, tY, tW; --for Tokens of Hytbold Control
-	ShowMedallions, MPbcAlpha, MPbcRed, MPbcGreen, MPbcBlue, _G.MPLocX, _G.MPLocY, _G.MPWhere = false, tA, tR, tG, tB, tX, tY, tW; --for Medallions Control
+	Show["Medallions"], BC.Alpha["Medallions"], BC.Red["Medallions"], BC.Green["Medallions"], BC.Blue["Medallions"], Position.Left["Medallions"], Position.Top["Medallions"], Where["Medallions"] = false, tA, tR, tG, tB, tX, tY, tW; --for Medallions Control
 	ShowCommendations, CPbcAlpha, CPbcRed, CPbcGreen, CPbcBlue, _G.CPLocX, _G.CPLocY, _G.CPWhere = false, tA, tR, tG, tB, tX, tY, tW; --for Commendations Control
 	ShowSeals, SLbcAlpha, SLbcRed, SLbcGreen, SLbcBlue, _G.SLLocX, _G.SLLocY, _G.SLWhere = false, tA, tR, tG, tB, tX, tY, tW; --for Seal Control
 	ShowBagInfos, _G.BIUsed, _G.BIMax, BIbcAlpha, BIbcRed, BIbcGreen, BIbcBlue, _G.BILocX, _G.BILocY = true, true, true, tA, tR, tG, tB, tX, tY; --for Bag info Control
@@ -1603,9 +1601,9 @@ function ReplaceCtr()
 	if Show["HytboldTokens"] and Where["HytboldTokens"] == 1 then HT[ "Ctr" ]:SetPosition( Position.Left["HytboldTokens"], Position.Top["HytboldTokens"] ); end
 	
 	oldLocX = settings.Medallions.X / oldScreenWidth;
-	_G.MPLocX = oldLocX * screenWidth;
-	settings.Medallions.X = string.format("%.0f", _G.MPLocX);
-	if ShowMedallions and _G.MPWhere == 1 then MP[ "Ctr" ]:SetPosition( _G.MPLocX, _G.MPLocY ); end
+	Position.Left["Medallions"] = oldLocX * screenWidth;
+	settings.Medallions.X = string.format("%.0f", Position.Left["Medallions"]);
+	if Show["Medallions"] and Where["Medallions"] == 1 then MP[ "Ctr" ]:SetPosition( Position.Left["Medallions"], Position.Top["Medallions"] ); end
 
 	oldLocX = settings.Seals.X / oldScreenWidth;
 	_G.SLLocX = oldLocX * screenWidth;

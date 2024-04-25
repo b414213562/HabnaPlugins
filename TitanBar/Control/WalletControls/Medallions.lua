@@ -10,7 +10,7 @@ MP["Ctr"]:SetParent( TB["win"] );
 MP["Ctr"]:SetMouseVisible( false );
 MP["Ctr"]:SetZOrder( 2 );
 MP["Ctr"]:SetBlendMode( Turbine.UI.BlendMode.AlphaBlend );
-MP["Ctr"]:SetBackColor( Turbine.UI.Color( MPbcAlpha, MPbcRed, MPbcGreen, MPbcBlue ) );
+MP["Ctr"]:SetBackColor( Turbine.UI.Color( BC.Alpha["Medallions"], BC.Red["Medallions"], BC.Green["Medallions"], BC.Blue["Medallions"] ) );
 --MP["Ctr"]:SetBackColor( Color["red"] ); -- Debug purpose
 --**^
 --**v Destiny points & icon on TitanBar v**
@@ -92,10 +92,10 @@ end
 MP["Lbl"].MouseUp = function( sender, args )
 	MP["Ctr"]:SetZOrder( 2 );
 	dragging = false;
-	_G.MPLocX = MP["Ctr"]:GetLeft();
-	settings.Medallions.X = string.format("%.0f", _G.MPLocX);
-	_G.MPLocY = MP["Ctr"]:GetTop();
-	settings.Medallions.Y = string.format("%.0f", _G.MPLocY);
+	Position.Left["Medallions"] = MP["Ctr"]:GetLeft();
+	settings.Medallions.X = string.format("%.0f", Position.Left["Medallions"]);
+	Position.Top["Medallions"] = MP["Ctr"]:GetTop();
+	settings.Medallions.Y = string.format("%.0f", Position.Top["Medallions"]);
 	SaveSettings( false );
 end
 --**^

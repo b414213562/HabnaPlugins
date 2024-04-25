@@ -513,7 +513,7 @@ end
 --**^
 --**v Update Medallions currency on TitanBar v**
 function UpdateMedallions()
-	if _G.MPWhere == 1 then
+	if Where["Medallions"] == 1 then
 		MP[ "Lbl" ]:SetText( GetCurrency( L[ "MMP" ] ) );
 		MP[ "Lbl" ]:SetSize( MP[ "Lbl" ]:GetTextLength() * NM, CTRHeight ); 
 		AjustIcon( "MP" );
@@ -1014,7 +1014,7 @@ function ChangeColor(tColor)
 		if Show["MithrilCoins"] then MC[ "Ctr" ]:SetBackColor( tColor ); end
 		if Show["YuleToken"] then YT[ "Ctr" ]:SetBackColor( tColor ); end
 		if Show["HytboldTokens"] then HT[ "Ctr" ]:SetBackColor( tColor ); end
-		if ShowMedallions then MP[ "Ctr" ]:SetBackColor( tColor ); end
+		if Show["Medallions"] then MP[ "Ctr" ]:SetBackColor( tColor ); end
 		if ShowSeals then SL[ "Ctr" ]:SetBackColor( tColor ); end
 		if ShowCommendations then CP[ "Ctr" ]:SetBackColor( tColor ); end
 		if ShowBagInfos then BI[ "Ctr" ]:SetBackColor( tColor ); end

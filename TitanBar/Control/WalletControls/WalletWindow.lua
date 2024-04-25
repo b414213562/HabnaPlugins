@@ -249,9 +249,9 @@ function frmWalletWindow()
 			if SelIndex == 1 then if not Show["HytboldTokens"] then ShowHideHytboldTokens(); end
 			else if Show["HytboldTokens"] then ShowHideHytboldTokens(); end end
 		elseif wcur == L["MMP"] then
-			_G.MPWhere = SelIndex; settings.Medallions.W = string.format("%.0f", SelIndex);
-			if SelIndex == 1 then if not ShowMedallions then ShowHideMedallions(); end
-			else if ShowMedallions then ShowHideMedallions(); end end
+			Where["Medallions"] = SelIndex; settings.Medallions.W = string.format("%.0f", SelIndex);
+			if SelIndex == 1 then if not Show["Medallions"] then ShowHideMedallions(); end
+			else if Show["Medallions"] then ShowHideMedallions(); end end
 		elseif wcur == L["MSL"] then
 			_G.SLWhere = SelIndex; settings.Seals.W = string.format("%.0f", SelIndex);
 			if SelIndex == 1 then if not ShowSeals then ShowHideSeals(); end
@@ -387,7 +387,7 @@ function RefreshWIListBox()
 				elseif wcur == L["MMC"] then tw = Where["MithrilCoins"]; -- Mithril Coins
 				elseif wcur == L["MYT"] then tw = Where["YuleToken"]; -- Yule Tokens
 				elseif wcur == L["MHT"] then tw = Where["HytboldTokens"]; -- Tokens of Hytbold
-				elseif wcur == L["MMP"] then tw = _G.MPWhere; -- Medallions
+				elseif wcur == L["MMP"] then tw = Where["Medallions"]; -- Medallions
 				elseif wcur == L["MSL"] then tw = _G.SLWhere; -- Seals
 				elseif wcur == L["MCP"] then tw = _G.CPWhere; -- Commendations
 				elseif wcur == L["MLP"] then tw = _G.LPWhere; -- LOTRO Points

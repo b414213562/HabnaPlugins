@@ -45,7 +45,7 @@ function RefreshWITTListBox()
 		elseif wttcur == L["MMC"] then ttw = Where["MithrilCoins"]; CtrIconCodeIs=WalletItem.Mithril.Icon; CtrQteIs=GetCurrency( L[ "MMC" ] );
 		elseif wttcur == L["MYT"] then ttw = Where["YuleToken"]; CtrIconCodeIs=WalletItem.YuleToken.Icon; CtrQteIs=GetCurrency( L[ "MYT" ] );
 		elseif wttcur == L["MHT"] then ttw = Where["HytboldTokens"]; CtrIconCodeIs=WalletItem.TokensOfHytbold.Icon; CtrQteIs=GetCurrency( L[ "MHT" ] );
-		elseif wttcur == L["MMP"] then ttw = _G.MPWhere; CtrIconCodeIs=WalletItem.Medallion.Icon; CtrQteIs=GetCurrency( L[ "MMP" ] );
+		elseif wttcur == L["MMP"] then ttw = Where["Medallions"]; CtrIconCodeIs=WalletItem.Medallion.Icon; CtrQteIs=GetCurrency( L[ "MMP" ] );
 		elseif wttcur == L["MSL"] then ttw = _G.SLWhere; CtrIconCodeIs=WalletItem.Seal.Icon; CtrQteIs=GetCurrency( L[ "MSL" ] );
 		elseif wttcur == L["MCP"] then ttw = _G.CPWhere; CtrIconCodeIs=WalletItem.Commendation.Icon; CtrQteIs=GetCurrency( L[ "MCP" ] );
 		elseif wttcur == L["MLP"] then ttw = _G.LPWhere; CtrIconCodeIs=WalletItem.LOTROPTS.Icon; CtrQteIs=_G.LOTROPTS;

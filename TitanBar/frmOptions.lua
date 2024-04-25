@@ -12,7 +12,7 @@ if SM ~= nil then WalletControls[ "SM" ] = { ShowHide = Show["SkirmishMarks"], C
 if MC ~= nil then WalletControls[ "MC" ] = { ShowHide = Show["MithrilCoins"], Control = MC[ "Ctr" ] }; end
 if YT ~= nil then WalletControls[ "YT" ] = { ShowHide = Show["YuleToken"], Control = YT[ "Ctr" ] }; end
 if HT ~= nil then WalletControls[ "HT" ] = { ShowHide = Show["HytboldTokens"], Control = HT[ "Ctr" ] }; end
-if MP ~= nil then WalletControls[ "MP" ] = { ShowHide = ShowMedallions, Control = MP[ "Ctr" ] }; end
+if MP ~= nil then WalletControls[ "MP" ] = { ShowHide = Show["Medallions"], Control = MP[ "Ctr" ] }; end
 if SL ~= nil then WalletControls[ "SL" ] = { ShowHide = ShowSeals, Control = SL[ "Ctr" ] }; end
 if CP ~= nil then WalletControls[ "CP" ] = { ShowHide = ShowCommendations, Control = CP[ "Ctr" ] }; end
 if BI ~= nil then WalletControls[ "BI" ] = { ShowHide = ShowBagInfos, Control = BI[ "Ctr" ] }; end
