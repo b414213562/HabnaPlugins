@@ -273,9 +273,9 @@ function frmWalletWindow()
 			if SelIndex == 1 then if not Show["CentralGondorSilverPiece"] then ShowHideCentralGondorSilverPiece(); end
 			else if Show["CentralGondorSilverPiece"] then ShowHideCentralGondorSilverPiece(); end end
 		elseif wcur == L["MGGB"] then
-			_G.GGBWhere = SelIndex; settings.GiftgiversBrand.W = string.format("%.0f", SelIndex);
-			if SelIndex == 1 then if not ShowGiftgiversBrand then ShowHideGiftgiversBrand(); end
-			else if ShowGiftgiversBrand then ShowHideGiftgiversBrand(); end end
+			Where["GiftgiversBrand"] = SelIndex; settings.GiftgiversBrand.W = string.format("%.0f", SelIndex);
+			if SelIndex == 1 then if not Show["GiftgiversBrand"] then ShowHideGiftgiversBrand(); end
+			else if Show["GiftgiversBrand"] then ShowHideGiftgiversBrand(); end end
 		elseif wcur == L["MBB"] then
 			_G.BBWhere = SelIndex; settings.BingoBadge.W = string.format("%.0f", SelIndex);
 			if SelIndex == 1 then if not ShowBingoBadge then ShowHideBingoBadge(); end
@@ -398,7 +398,7 @@ function RefreshWIListBox()
 				elseif wcur == L["MASP"] then tw = Where["AmrothSilverPiece"]; -- Amroth Silver Piece
 				elseif wcur == L["MSOM"] then tw = Where["StarsofMerit"]; -- Stars of Merit
 				elseif wcur == L["MCGSP"] then tw = Where["CentralGondorSilverPiece"]; -- Central Gondor Silver Piece
-				elseif wcur == L["MGGB"] then tw = _G.GGBWhere; -- Gift Giver's Brand
+				elseif wcur == L["MGGB"] then tw = Where["GiftgiversBrand"]; -- Gift Giver's Brand
 				elseif wcur == L["MBB"] then tw = _G.BBWhere; -- Bingo Badges
 				elseif wcur == L["MLAT"] then tw = _G.LATWhere; -- Anniversary Tokens
 				elseif wcur == L["MMOE"] then tw = _G.MOEWhere; -- Motes of Enchantment

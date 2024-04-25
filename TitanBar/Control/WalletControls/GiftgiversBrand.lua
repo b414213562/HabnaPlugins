@@ -10,7 +10,7 @@ GGB["Ctr"]:SetParent( TB["win"] );
 GGB["Ctr"]:SetMouseVisible( false );
 GGB["Ctr"]:SetZOrder( 2 );
 GGB["Ctr"]:SetBlendMode( Turbine.UI.BlendMode.AlphaBlend );
-GGB["Ctr"]:SetBackColor( Turbine.UI.Color( GGBbcAlpha, GGBbcRed, GGBbcGreen, GGBbcBlue ) );
+GGB["Ctr"]:SetBackColor( Turbine.UI.Color( BC.Alpha["GiftgiversBrand"], BC.Red["GiftgiversBrand"], BC.Green["GiftgiversBrand"], BC.Blue["GiftgiversBrand"] ) );
 --**^
 --**v Gift giver's Brand & icon on TitanBar v**
 GGB["Icon"] = Turbine.UI.Control();
@@ -89,10 +89,10 @@ end
 GGB["Lbl"].MouseUp = function( sender, args )
 	GGB["Ctr"]:SetZOrder( 2 );
 	dragging = false;
-	_G.GGBLocX = GGB["Ctr"]:GetLeft();
-	settings.GiftgiversBrand.X = string.format("%.0f", _G.GGBLocX);
-	_G.GGBLocY = GGB["Ctr"]:GetTop();
-	settings.GiftgiversBrand.Y = string.format("%.0f", _G.GGBLocY);
+	Position.Left["GiftgiversBrand"] = GGB["Ctr"]:GetLeft();
+	settings.GiftgiversBrand.X = string.format("%.0f", Position.Left["GiftgiversBrand"]);
+	Position.Top["GiftgiversBrand"] = GGB["Ctr"]:GetTop();
+	settings.GiftgiversBrand.Y = string.format("%.0f", Position.Top["GiftgiversBrand"]);
 	SaveSettings( false );
 end
 --**^

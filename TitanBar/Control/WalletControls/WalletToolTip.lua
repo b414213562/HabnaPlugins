@@ -52,7 +52,7 @@ function RefreshWITTListBox()
 		elseif wttcur == L["MASP"] then ttw = Where["AmrothSilverPiece"]; CtrIconCodeIs=WalletItem.AmrothSilverPiece.Icon; CtrQteIs=GetCurrency( L[ "MASP" ] );
 		elseif wttcur == L["MSOM"] then ttw = Where["StarsofMerit"]; CtrIconCodeIs=WalletItem.StarsofMerit.Icon; CtrQteIs=GetCurrency( L[ "MSOM" ] );
 		elseif wttcur == L["MCGSP"] then ttw = Where["CentralGondorSilverPiece"]; CtrIconCodeIs=WalletItem.CentralGondorSilverPiece.Icon; CtrQteIs=GetCurrency( L[ "MCGSP" ] );
-		elseif wttcur == L["MGGB"] then ttw = _G.GGBWhere; CtrIconCodeIs=WalletItem.GiftgiversBrand.Icon; CtrQteIs=GetCurrency( L[ "MGGB" ] );
+		elseif wttcur == L["MGGB"] then ttw = Where["GiftgiversBrand"]; CtrIconCodeIs=WalletItem.GiftgiversBrand.Icon; CtrQteIs=GetCurrency( L[ "MGGB" ] );
 		elseif wttcur == L["MAOE"] then ttw = _G.AOEWhere; CtrIconCodeIs=WalletItem.AshOfEnchantment.Icon; CtrQteIs=GetCurrency( L[ "MAOE" ] );
 		elseif wttcur == L["MBB"] then ttw = _G.BBWhere; CtrIconCodeIs=WalletItem.BingoBadge.Icon; CtrQteIs=GetCurrency( L[ "MBB" ] );
 		elseif wttcur == L["MLAT"] then ttw = _G.LATWhere; CtrIconCodeIs=WalletItem.AnniversaryToken.Icon; CtrQteIs=GetCurrency( L[ "MLAT" ] );

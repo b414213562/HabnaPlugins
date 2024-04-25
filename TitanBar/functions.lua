@@ -578,7 +578,7 @@ end
 --**^
 --**v Update Gift giver's Brand currency on TitanBar v**
 function UpdateGiftgiversBrand()
-	if _G.GGBWhere == 1 then
+	if Where["GiftgiversBrand"] == 1 then
 		GGB[ "Lbl" ]:SetText( GetCurrency( L[ "MGGB" ] ) );
 		GGB[ "Lbl" ]:SetSize( GGB[ "Lbl" ]:GetTextLength() * NM, CTRHeight ); 
 		AjustIcon( "GGB" );
@@ -1034,7 +1034,7 @@ function ChangeColor(tColor)
 		if Show["AmrothSilverPiece"] then ASP[ "Ctr" ]:SetBackColor( tColor ); end
 		if Show["StarsofMerit"] then SOM[ "Ctr" ]:SetBackColor( tColor ); end
 		if Show["CentralGondorSilverPiece"] then CGSP[ "Ctr" ]:SetBackColor( tColor ); end
-		if ShowGiftgiversBrand then GGB[ "Ctr" ]:SetBackColor( tColor ); end
+		if Show["GiftgiversBrand"] then GGB[ "Ctr" ]:SetBackColor( tColor ); end
 		if ShowBingoBadge then BB[ "Ctr" ]:SetBackColor( tColor ); end
 		if ShowAniversaryToken then LAT[ "Ctr" ]:SetBackColor( tColor ); end
 		if ShowMotesOfEnchantment then MOE[ "Ctr" ]:SetBackColor( tColor ); end

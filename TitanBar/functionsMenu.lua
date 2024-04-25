@@ -469,15 +469,15 @@ function ShowHideCentralGondorSilverPiece()
 	CGSP[ "Ctr" ]:SetVisible( Show["CentralGondorSilverPiece"] );
 end
 function ShowHideGiftgiversBrand()
-	ShowGiftgiversBrand = not ShowGiftgiversBrand;
-	settings.GiftgiversBrand.V = ShowGiftgiversBrand;
-	settings.GiftgiversBrand.W = string.format("%.0f", _G.GGBWhere);
+	Show["GiftgiversBrand"] = not Show["GiftgiversBrand"];
+	settings.GiftgiversBrand.V = Show["GiftgiversBrand"];
+	settings.GiftgiversBrand.W = string.format("%.0f", Where["GiftgiversBrand"]);
 	SaveSettings( false );
 	ImportCtr( "GGB" );
-	if ShowGiftgiversBrand then
-		GGB[ "Ctr" ]:SetBackColor( Turbine.UI.Color( GGBbcAlpha, GGBbcRed, GGBbcGreen, GGBbcBlue ) );
+	if Show["GiftgiversBrand"] then
+		GGB[ "Ctr" ]:SetBackColor( Turbine.UI.Color( BC.Alpha["GiftgiversBrand"], BC.Red["GiftgiversBrand"], BC.Green["GiftgiversBrand"], BC.Blue["GiftgiversBrand"] ) );
 	end
-	GGB[ "Ctr" ]:SetVisible( ShowGiftgiversBrand );
+	GGB[ "Ctr" ]:SetVisible( Show["GiftgiversBrand"] );
 end
 -- **^
 -- **v Show/Hide Bingo Badges v**

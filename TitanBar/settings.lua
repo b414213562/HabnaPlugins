@@ -754,17 +754,16 @@ function LoadSettings()
 	if settings.GiftgiversBrand.X == nil then settings.GiftgiversBrand.X = string.format("%.0f", tX); end
 	if settings.GiftgiversBrand.Y == nil then settings.GiftgiversBrand.Y = string.format("%.0f", tY); end
 	if settings.GiftgiversBrand.W == nil then settings.GiftgiversBrand.W = string.format("%.0f", tW); end
-	ShowGiftgiversBrand = settings.GiftgiversBrand.V;
-	GGBbcAlpha = tonumber(settings.GiftgiversBrand.A);
-	GGBbcRed = tonumber(settings.GiftgiversBrand.R);
-	GGBbcGreen = tonumber(settings.GiftgiversBrand.G);
-	GGBbcBlue = tonumber(settings.GiftgiversBrand.B);
-	_G.GGBLocX = tonumber(settings.GiftgiversBrand.X);
-	_G.GGBLocY = tonumber(settings.GiftgiversBrand.Y);
-	_G.GGBWhere = tonumber(settings.GiftgiversBrand.W);
-	if _G.GGBWhere == 3 and ShowGiftgiversBrand then _G.GGBWhere = 1; settings.GiftgiversBrand.W = string.format("%.0f", _G.GGBWhere); end --Remove after Oct, 15th 2013
+	Show["GiftgiversBrand"] = settings.GiftgiversBrand.V;
+	BC.Alpha["GiftgiversBrand"] = tonumber(settings.GiftgiversBrand.A);
+	BC.Red["GiftgiversBrand"] = tonumber(settings.GiftgiversBrand.R);
+	BC.Green["GiftgiversBrand"] = tonumber(settings.GiftgiversBrand.G);
+	BC.Blue["GiftgiversBrand"] = tonumber(settings.GiftgiversBrand.B);
+	Position.Left["GiftgiversBrand"] = tonumber(settings.GiftgiversBrand.X);
+	Position.Top["GiftgiversBrand"] = tonumber(settings.GiftgiversBrand.Y);
+    Where["GiftgiversBrand"] = ParseWhere(settings, "GiftgiversBrand");
 
-	if settings.BingoBadge == nil then settings.BingoBadge = {}; end
+    if settings.BingoBadge == nil then settings.BingoBadge = {}; end
 	if settings.BingoBadge.V == nil then settings.BingoBadge.V = false; end
 	if settings.BingoBadge.A == nil then settings.BingoBadge.A = string.format("%.3f", tA); end
 	if settings.BingoBadge.R == nil then settings.BingoBadge.R = string.format("%.3f", tR); end
@@ -1351,14 +1350,14 @@ function SaveSettings(str)
 		settings.CentralGondorSilverPiece.W = string.format("%.0f", Where["CentralGondorSilverPiece"]);
 		
 		settings.GiftgiversBrand = {};
-		settings.GiftgiversBrand.V = ShowGiftgiversBrand;
-		settings.GiftgiversBrand.A = string.format("%.3f", GGBbcAlpha);
-		settings.GiftgiversBrand.R = string.format("%.3f", GGBbcRed);
-		settings.GiftgiversBrand.G = string.format("%.3f", GGBbcGreen);
-		settings.GiftgiversBrand.B = string.format("%.3f", GGBbcBlue);
-		settings.GiftgiversBrand.X = string.format("%.0f", _G.GGBLocX);
-		settings.GiftgiversBrand.Y = string.format("%.0f", _G.GGBLocY);
-		settings.GiftgiversBrand.W = string.format("%.0f", _G.GGBWhere);
+		settings.GiftgiversBrand.V = Show["GiftgiversBrand"];
+		settings.GiftgiversBrand.A = string.format("%.3f", BC.Alpha["GiftgiversBrand"]);
+		settings.GiftgiversBrand.R = string.format("%.3f", BC.Red["GiftgiversBrand"]);
+		settings.GiftgiversBrand.G = string.format("%.3f", BC.Green["GiftgiversBrand"]);
+		settings.GiftgiversBrand.B = string.format("%.3f", BC.Blue["GiftgiversBrand"]);
+		settings.GiftgiversBrand.X = string.format("%.0f", Position.Left["GiftgiversBrand"]);
+		settings.GiftgiversBrand.Y = string.format("%.0f", Position.Top["GiftgiversBrand"]);
+		settings.GiftgiversBrand.W = string.format("%.0f", Where["GiftgiversBrand"]);
 		
 		settings.BingoBadge = {};
 		settings.BingoBadge.V = ShowBingoBadge;
@@ -1525,7 +1524,7 @@ function ResetSettings()
 	Show["AmrothSilverPiece"], BC.Alpha["AmrothSilverPiece"], BC.Red["AmrothSilverPiece"], BC.Green["AmrothSilverPiece"], BC.Blue["AmrothSilverPiece"], Position.Left["AmrothSilverPiece"], Position.Top["AmrothSilverPiece"], Where["AmrothSilverPiece"] = false, tA, tR, tG, tB, tX, tY, tW; --for Amroth Silver Piece Control
 	Show["StarsofMerit"], BC.Alpha["StarsofMerit"], BC.Red["StarsofMerit"], BC.Green["StarsofMerit"], BC.Blue["StarsofMerit"], Position.Left["StarsofMerit"], Position.Top["StarsofMerit"], Where["StarsofMerit"] = false, tA, tR, tG, tB, tX, tY, tW; --for Stars of Merit Control
 	Show["CentralGondorSilverPiece"], BC.Alpha["CentralGondorSilverPiece"], BC.Red["CentralGondorSilverPiece"], BC.Green["CentralGondorSilverPiece"], BC.Blue["CentralGondorSilverPiece"], Position.Left["CentralGondorSilverPiece"], Position.Top["CentralGondorSilverPiece"], Where["CentralGondorSilverPiece"] = false, tA, tR, tG, tB, tX, tY, tW; --for Central Gondor Silver Piece Control
-	ShowGiftgiversBrand, GGBbcAlpha, GGBbcRed, GGBbcGreen, GGBbcBlue, _G.GGBLocX, _G.GGBLocY, _G.GGBWhere = false, tA, tR, tG, tB, tX, tY, tW; --for Gift giver's Brand Control
+	Show["GiftgiversBrand"], BC.Alpha["GiftgiversBrand"], BC.Red["GiftgiversBrand"], BC.Green["GiftgiversBrand"], BC.Blue["GiftgiversBrand"], Position.Left["GiftgiversBrand"], Position.Top["GiftgiversBrand"], Where["GiftgiversBrand"] = false, tA, tR, tG, tB, tX, tY, tW; --for Gift giver's Brand Control
 	ShowBingoBadge, BBbcAlpha, BBbcRed, BBbcGreen, BBbcBlue, _G.BBLocX, _G.BBLocY, _G.BBWhere = false, tA, tR, tG, tB, tX, tY, tW; --for Bingo Badge Control
 	ShowAnniversaryToken, LATbcAlpha, LATbcRed, LATbcGreen, LATbcBlue, _G.LATLocX, _G.LATLocY, _G.LATWhere = false, tA, tR, tG, tB, tX, tY, tW; --for Anniversary Token Control
 	ShowMotesOfEnchantment, MOEbcAlpha, MOEbcRed, MOEbcGreen, MOEbcBlue, _G.MOELocX, _G.MOELocY, _G.MOEWhere = false, tA, tR, tG, tB, tX, tY, tW; --for Motes of Enchantment Control
@@ -1692,9 +1691,9 @@ function ReplaceCtr()
 	if Show["CentralGondorSilverPiece"] and Where["CentralGondorSilverPiece"] == 1 then CGSP[ "Ctr" ]:SetPosition( Position.Left["CentralGondorSilverPiece"], Position.Top["CentralGondorSilverPiece"] ); end
 	
 	oldLocX = settings.GiftgiversBrand.X / oldScreenWidth;
-	_G.GGBLocX = oldLocX * screenWidth;
-	settings.GiftgiversBrand.X = string.format("%.0f", _G.GGBLocX);
-	if ShowGiftgiversBrand and _G.GGBWhere == 1 then GGB[ "Ctr" ]:SetPosition( _G.GGBLocX, _G.GGBLocY ); end
+	Position.Left["GiftgiversBrand"] = oldLocX * screenWidth;
+	settings.GiftgiversBrand.X = string.format("%.0f", Position.Left["GiftgiversBrand"]);
+	if Show["GiftgiversBrand"] and Where["GiftgiversBrand"] == 1 then GGB[ "Ctr" ]:SetPosition( Position.Left["GiftgiversBrand"], Position.Top["GiftgiversBrand"] ); end
 	
 	oldLocX = settings.BingoBadge.X / oldScreenWidth;
 	_G.BBLocX = oldLocX * screenWidth;
