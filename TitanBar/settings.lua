@@ -227,24 +227,7 @@ function LoadSettings()
 
     InitializeControlSettings(settings, "DestinyPoints");
 
-	if settings.Shards == nil then settings.Shards = {}; end
-	if settings.Shards.V == nil then settings.Shards.V = false; end
-	if settings.Shards.A == nil then settings.Shards.A = string.format("%.3f", tA); end
-	if settings.Shards.R == nil then settings.Shards.R = string.format("%.3f", tR); end
-	if settings.Shards.G == nil then settings.Shards.G = string.format("%.3f", tG); end
-	if settings.Shards.B == nil then settings.Shards.B = string.format("%.3f", tB); end
-	if settings.Shards.X == nil then settings.Shards.X = string.format("%.0f", tX); end
-	if settings.Shards.Y == nil then settings.Shards.Y = string.format("%.0f", tY); end
-	if settings.Shards.W == nil then settings.Shards.W = string.format("%.0f", tW); end
-	Show["Shards"] = settings.Shards.V;
-	BC.Alpha["Shards"] = tonumber(settings.Shards.A);
-	BC.Red["Shards"] = tonumber(settings.Shards.R);
-	BC.Green["Shards"] = tonumber(settings.Shards.G);
-	BC.Blue["Shards"] = tonumber(settings.Shards.B);
-	Position.Left["Shards"] = tonumber(settings.Shards.X);
-	Position.Top["Shards"] = tonumber(settings.Shards.Y);
-    Where["Shards"] = ParseWhere(settings, "Shards");
-	
+    InitializeControlSettings(settings, "Shards");
 
 	if settings.SkirmishMarks == nil then settings.SkirmishMarks = {}; end
 	if settings.SkirmishMarks.V == nil then settings.SkirmishMarks.V = false; end
