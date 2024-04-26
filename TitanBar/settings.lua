@@ -140,6 +140,24 @@ function ParseWhere(settings, key)
     return where;
 end
 
+function SaveControlSettings(settings, key)
+    settings[key] = {};
+    settings[key].V = Show[key];
+    settings[key].A = string.format("%.3f", BC.Alpha[key]);
+    settings[key].R = string.format("%.3f", BC.Red[key]);
+    settings[key].G = string.format("%.3f", BC.Green[key]);
+    settings[key].B = string.format("%.3f", BC.Blue[key]);
+    settings[key].X = string.format("%.0f", Position.Left[key]);
+    settings[key].Y = string.format("%.0f", Position.Top[key]);
+    if (HasWindow[key]) then
+        settings[key].L = string.format("%.0f", PositionW.Left[key]);
+        settings[key].T = string.format("%.0f", PositionW.Top[key]);
+    end
+    if (not DoesNotHaveWhere[key]) then
+		settings[key].W = string.format("%.0f", Where[key]);
+    end
+end
+
 
 -- **v Load / update / set default settings v**
 -- I'm confused as to what most of this is... Most of these strings should be in localization files, and I believe they are - so why are they here too?  Deprecated code that hasn't been cleaned up yet?
@@ -618,133 +636,17 @@ function SaveSettings(str)
 		settings.Background.T = string.format("%.0f", BGWTop);
 		settings.Background.A = BGWToAll;
 
-		settings.Wallet = {};
-		settings.Wallet.V = Show["Wallet"];
-		settings.Wallet.A = string.format("%.3f", BC.Alpha["Wallet"]);
-		settings.Wallet.R = string.format("%.3f", BC.Red["Wallet"]);
-		settings.Wallet.G = string.format("%.3f", BC.Green["Wallet"]);
-		settings.Wallet.B = string.format("%.3f", BC.Blue["Wallet"]);
-		settings.Wallet.X = string.format("%.0f", Position.Left["Wallet"]);
-		settings.Wallet.Y = string.format("%.0f", Position.Top["Wallet"]);
-		settings.Wallet.L = string.format("%.0f", PositionW.Left["Wallet"]);
-		settings.Wallet.T = string.format("%.0f", PositionW.Top["Wallet"]);
+        -- Save currency-specific data:
+        for key, value in ipairs(Currencies) do
+            SaveControlSettings(settings, value);
+        end
 
-		settings.Money = {};
-		settings.Money.V = Show["Money"];
-		settings.Money.A = string.format("%.3f", BC.Alpha["Money"]);
-		settings.Money.R = string.format("%.3f", BC.Red["Money"]);
-		settings.Money.G = string.format("%.3f", BC.Green["Money"]);
-		settings.Money.B = string.format("%.3f", BC.Blue["Money"]);
-		settings.Money.X = string.format("%.0f", Position.Left["Money"]);
-		settings.Money.Y = string.format("%.0f", Position.Top["Money"]);
-		settings.Money.W = string.format("%.0f", Where["Money"]);
+        -- Money-specific settings:
 		settings.Money.S = _G.STM; --Show Total Money of all character on TitanBar Money control.
 		settings.Money.SS = _G.SSS; --Show sessions statistics in money tooltip.
 		settings.Money.TS = _G.STS; --Show today statistics in money tooltip
 		if PlayerAlign == 1 then settings.Money.L = string.format("%.0f", PositionW.Left["Money"]); end
 		if PlayerAlign == 1 then settings.Money.T = string.format("%.0f", PositionW.Top["Money"]); end
-
-		settings.DestinyPoints = {};
-		settings.DestinyPoints.V = Show["DestinyPoints"];
-		settings.DestinyPoints.A = string.format("%.3f", BC.Alpha["DestinyPoints"]);
-		settings.DestinyPoints.R = string.format("%.3f", BC.Red["DestinyPoints"]);
-		settings.DestinyPoints.G = string.format("%.3f", BC.Green["DestinyPoints"]);
-		settings.DestinyPoints.B = string.format("%.3f", BC.Blue["DestinyPoints"]);
-		settings.DestinyPoints.X = string.format("%.0f", Position.Left["DestinyPoints"]);
-		settings.DestinyPoints.Y = string.format("%.0f", Position.Top["DestinyPoints"]);
-		settings.DestinyPoints.W = string.format("%.0f", Where["DestinyPoints"]);
-
-		settings.Shards = {};
-		settings.Shards.V = Show["Shards"];
-		settings.Shards.A = string.format("%.3f", BC.Alpha["Shards"]);
-		settings.Shards.R = string.format("%.3f", BC.Red["Shards"]);
-		settings.Shards.G = string.format("%.3f", BC.Green["Shards"]);
-		settings.Shards.B = string.format("%.3f", BC.Blue["Shards"]);
-		settings.Shards.X = string.format("%.0f", Position.Left["Shards"]);
-		settings.Shards.Y = string.format("%.0f", Position.Top["Shards"]);
-		settings.Shards.W = string.format("%.0f", Where["Shards"]);
-
-		settings.SkirmishMarks = {};
-		settings.SkirmishMarks.V = Show["SkirmishMarks"];
-		settings.SkirmishMarks.A = string.format("%.3f", BC.Alpha["SkirmishMarks"]);
-		settings.SkirmishMarks.R = string.format("%.3f", BC.Red["SkirmishMarks"]);
-		settings.SkirmishMarks.G = string.format("%.3f", BC.Green["SkirmishMarks"]);
-		settings.SkirmishMarks.B = string.format("%.3f", BC.Blue["SkirmishMarks"]);
-		settings.SkirmishMarks.X = string.format("%.0f", Position.Left["SkirmishMarks"]);
-		settings.SkirmishMarks.Y = string.format("%.0f", Position.Top["SkirmishMarks"]);
-		settings.SkirmishMarks.W = string.format("%.0f", Where["SkirmishMarks"]);
-
-		settings.MithrilCoins = {};
-		settings.MithrilCoins.V = Show["MithrilCoins"];
-		settings.MithrilCoins.A = string.format("%.3f", BC.Alpha["MithrilCoins"]);
-		settings.MithrilCoins.R = string.format("%.3f", BC.Red["MithrilCoins"]);
-		settings.MithrilCoins.G = string.format("%.3f", BC.Green["MithrilCoins"]);
-		settings.MithrilCoins.B = string.format("%.3f", BC.Blue["MithrilCoins"]);
-		settings.MithrilCoins.X = string.format("%.0f", Position.Left["MithrilCoins"]);
-		settings.MithrilCoins.Y = string.format("%.0f", Position.Top["MithrilCoins"]);
-		settings.MithrilCoins.W = string.format("%.0f", Where["MithrilCoins"]);
-
-		settings.YuleToken = {};
-		settings.YuleToken.V = Show["YuleToken"];
-		settings.YuleToken.A = string.format("%.3f", BC.Alpha["YuleToken"]);
-		settings.YuleToken.R = string.format("%.3f", BC.Red["YuleToken"]);
-		settings.YuleToken.G = string.format("%.3f", BC.Green["YuleToken"]);
-		settings.YuleToken.B = string.format("%.3f", BC.Blue["YuleToken"]);
-		settings.YuleToken.X = string.format("%.0f", Position.Left["YuleToken"]);
-		settings.YuleToken.Y = string.format("%.0f", Position.Top["YuleToken"]);
-		settings.YuleToken.W = string.format("%.0f", Where["YuleToken"]);
-		
-		settings.HytboldTokens = {};
-		settings.HytboldTokens.V = Show["HytboldTokens"];
-		settings.HytboldTokens.A = string.format("%.3f", BC.Alpha["HytboldTokens"]);
-		settings.HytboldTokens.R = string.format("%.3f", BC.Red["HytboldTokens"]);
-		settings.HytboldTokens.G = string.format("%.3f", BC.Green["HytboldTokens"]);
-		settings.HytboldTokens.B = string.format("%.3f", BC.Blue["HytboldTokens"]);
-		settings.HytboldTokens.X = string.format("%.0f", Position.Left["HytboldTokens"]);
-		settings.HytboldTokens.Y = string.format("%.0f", Position.Top["HytboldTokens"]);
-		settings.HytboldTokens.W = string.format("%.0f", Where["HytboldTokens"]);
-		
-		settings.Medallions = {};
-		settings.Medallions.V = Show["Medallions"];
-		settings.Medallions.A = string.format("%.3f", BC.Alpha["Medallions"]);
-		settings.Medallions.R = string.format("%.3f", BC.Red["Medallions"]);
-		settings.Medallions.G = string.format("%.3f", BC.Green["Medallions"]);
-		settings.Medallions.B = string.format("%.3f", BC.Blue["Medallions"]);
-		settings.Medallions.X = string.format("%.0f", Position.Left["Medallions"]);
-		settings.Medallions.Y = string.format("%.0f", Position.Top["Medallions"]);
-		settings.Medallions.W = string.format("%.0f", Where["Medallions"]);
-
-		settings.Seals = {};
-		settings.Seals.V = Show["Seals"];
-		settings.Seals.A = string.format("%.3f", BC.Alpha["Seals"]);
-		settings.Seals.R = string.format("%.3f", BC.Red["Seals"]);
-		settings.Seals.G = string.format("%.3f", BC.Green["Seals"]);
-		settings.Seals.B = string.format("%.3f", BC.Blue["Seals"]);
-		settings.Seals.X = string.format("%.0f", Position.Left["Seals"]);
-		settings.Seals.Y = string.format("%.0f", Position.Top["Seals"]);
-		settings.Seals.W = string.format("%.0f", Where["Seals"]);
-
-		settings.Commendations = {};
-		settings.Commendations.V = Show["Commendations"];
-		settings.Commendations.A = string.format("%.3f", BC.Alpha["Commendations"]);
-		settings.Commendations.R = string.format("%.3f", BC.Red["Commendations"]);
-		settings.Commendations.G = string.format("%.3f", BC.Green["Commendations"]);
-		settings.Commendations.B = string.format("%.3f", BC.Blue["Commendations"]);
-		settings.Commendations.X = string.format("%.0f", Position.Left["Commendations"]);
-		settings.Commendations.Y = string.format("%.0f", Position.Top["Commendations"]);
-		settings.Commendations.W = string.format("%.0f", Where["Commendations"]);
-
-		settings.LOTROPoints = {};
-		settings.LOTROPoints.V = Show["LOTROPoints"];
-		settings.LOTROPoints.A = string.format("%.3f", BC.Alpha["LOTROPoints"]);
-		settings.LOTROPoints.R = string.format("%.3f", BC.Red["LOTROPoints"]);
-		settings.LOTROPoints.G = string.format("%.3f", BC.Green["LOTROPoints"]);
-		settings.LOTROPoints.B = string.format("%.3f", BC.Blue["LOTROPoints"]);
-		settings.LOTROPoints.X = string.format("%.0f", Position.Left["LOTROPoints"]);
-		settings.LOTROPoints.Y = string.format("%.0f", Position.Top["LOTROPoints"]);
-		settings.LOTROPoints.L = string.format("%.0f", PositionW.Left["LOTROPoints"]);
-		settings.LOTROPoints.T = string.format("%.0f", PositionW.Top["LOTROPoints"]);
-		settings.LOTROPoints.W = string.format("%.0f", Where["LOTROPoints"]);
 
 		settings.BagInfos = {};
 		settings.BagInfos.V = ShowBagInfos;
@@ -902,166 +804,6 @@ function SaveSettings(str)
 		settings.GameTime.M = string.format("%.0f", _G.UserGMT);
 		if PlayerAlign == 1 then settings.GameTime.L = string.format("%.0f", GTWLeft); end
 		if PlayerAlign == 1 then  settings.GameTime.T = string.format("%.0f", GTWTop); end
-		
-		settings.AmrothSilverPiece = {};
-		settings.AmrothSilverPiece.V = Show["AmrothSilverPiece"];
-		settings.AmrothSilverPiece.A = string.format("%.3f", BC.Alpha["AmrothSilverPiece"]);
-		settings.AmrothSilverPiece.R = string.format("%.3f", BC.Red["AmrothSilverPiece"]);
-		settings.AmrothSilverPiece.G = string.format("%.3f", BC.Green["AmrothSilverPiece"]);
-		settings.AmrothSilverPiece.B = string.format("%.3f", BC.Blue["AmrothSilverPiece"]);
-		settings.AmrothSilverPiece.X = string.format("%.0f", Position.Left["AmrothSilverPiece"]);
-		settings.AmrothSilverPiece.Y = string.format("%.0f", Position.Top["AmrothSilverPiece"]);
-		settings.AmrothSilverPiece.W = string.format("%.0f", Where["AmrothSilverPiece"]);
-		
-		settings.StarsofMerit = {};
-		settings.StarsofMerit.V = Show["StarsofMerit"];
-		settings.StarsofMerit.A = string.format("%.3f", BC.Alpha["StarsofMerit"]);
-		settings.StarsofMerit.R = string.format("%.3f", BC.Red["StarsofMerit"]);
-		settings.StarsofMerit.G = string.format("%.3f", BC.Green["StarsofMerit"]);
-		settings.StarsofMerit.B = string.format("%.3f", BC.Blue["StarsofMerit"]);
-		settings.StarsofMerit.X = string.format("%.0f", Position.Left["StarsofMerit"]);
-		settings.StarsofMerit.Y = string.format("%.0f", Position.Top["StarsofMerit"]);
-		settings.StarsofMerit.W = string.format("%.0f", Where["StarsofMerit"]);
-		
-		settings.CentralGondorSilverPiece = {};
-		settings.CentralGondorSilverPiece.V = Show["CentralGondorSilverPiece"];
-		settings.CentralGondorSilverPiece.A = string.format("%.3f", BC.Alpha["CentralGondorSilverPiece"]);
-		settings.CentralGondorSilverPiece.R = string.format("%.3f", BC.Red["CentralGondorSilverPiece"]);
-		settings.CentralGondorSilverPiece.G = string.format("%.3f", BC.Green["CentralGondorSilverPiece"]);
-		settings.CentralGondorSilverPiece.B = string.format("%.3f", BC.Blue["CentralGondorSilverPiece"]);
-		settings.CentralGondorSilverPiece.X = string.format("%.0f", Position.Left["CentralGondorSilverPiece"]);
-		settings.CentralGondorSilverPiece.Y = string.format("%.0f", Position.Top["CentralGondorSilverPiece"]);
-		settings.CentralGondorSilverPiece.W = string.format("%.0f", Where["CentralGondorSilverPiece"]);
-		
-		settings.GiftgiversBrand = {};
-		settings.GiftgiversBrand.V = Show["GiftgiversBrand"];
-		settings.GiftgiversBrand.A = string.format("%.3f", BC.Alpha["GiftgiversBrand"]);
-		settings.GiftgiversBrand.R = string.format("%.3f", BC.Red["GiftgiversBrand"]);
-		settings.GiftgiversBrand.G = string.format("%.3f", BC.Green["GiftgiversBrand"]);
-		settings.GiftgiversBrand.B = string.format("%.3f", BC.Blue["GiftgiversBrand"]);
-		settings.GiftgiversBrand.X = string.format("%.0f", Position.Left["GiftgiversBrand"]);
-		settings.GiftgiversBrand.Y = string.format("%.0f", Position.Top["GiftgiversBrand"]);
-		settings.GiftgiversBrand.W = string.format("%.0f", Where["GiftgiversBrand"]);
-		
-		settings.BingoBadge = {};
-		settings.BingoBadge.V = Show["BingoBadge"];
-		settings.BingoBadge.A = string.format("%.3f", BC.Alpha["BingoBadge"]);
-		settings.BingoBadge.R = string.format("%.3f", BC.Red["BingoBadge"]);
-		settings.BingoBadge.G = string.format("%.3f", BC.Green["BingoBadge"]);
-		settings.BingoBadge.B = string.format("%.3f", BC.Blue["BingoBadge"]);
-		settings.BingoBadge.X = string.format("%.0f", Position.Left["BingoBadge"]);
-		settings.BingoBadge.Y = string.format("%.0f", Position.Top["BingoBadge"]);
-		settings.BingoBadge.W = string.format("%.0f", Where["BingoBadge"]);
-
-		settings.AnniversaryToken = {};
-		settings.AnniversaryToken.V = Show["AnniversaryToken"];
-		settings.AnniversaryToken.A = string.format("%.3f", BC.Alpha["AnniversaryToken"]);
-		settings.AnniversaryToken.R = string.format("%.3f", BC.Red["AnniversaryToken"]);
-		settings.AnniversaryToken.G = string.format("%.3f", BC.Green["AnniversaryToken"]);
-		settings.AnniversaryToken.B = string.format("%.3f", BC.Blue["AnniversaryToken"]);
-		settings.AnniversaryToken.X = string.format("%.0f", Position.Left["AnniversaryToken"]);
-		settings.AnniversaryToken.Y = string.format("%.0f", Position.Top["AnniversaryToken"]);
-		settings.AnniversaryToken.W = string.format("%.0f", Where["AnniversaryToken"]);
-		
-		settings.MotesOfEnchantment = {};
-		settings.MotesOfEnchantment.V = Show["MotesOfEnchantment"];
-		settings.MotesOfEnchantment.A = string.format("%.3f", BC.Alpha["MotesOfEnchantment"]);
-		settings.MotesOfEnchantment.R = string.format("%.3f", BC.Red["MotesOfEnchantment"]);
-		settings.MotesOfEnchantment.G = string.format("%.3f", BC.Green["MotesOfEnchantment"]);
-		settings.MotesOfEnchantment.B = string.format("%.3f", BC.Blue["MotesOfEnchantment"]);
-		settings.MotesOfEnchantment.X = string.format("%.0f", Position.Left["MotesOfEnchantment"]);
-		settings.MotesOfEnchantment.Y = string.format("%.0f", Position.Top["MotesOfEnchantment"]);
-		settings.MotesOfEnchantment.W = string.format("%.0f", Where["MotesOfEnchantment"]);
-		
-		settings.EmbersOfEnchantment = {};
-		settings.EmbersOfEnchantment.V = Show["EmbersOfEnchantment"];
-		settings.EmbersOfEnchantment.A = string.format("%.3f", BC.Alpha["EmbersOfEnchantment"]);
-		settings.EmbersOfEnchantment.R = string.format("%.3f", BC.Red["EmbersOfEnchantment"]);
-		settings.EmbersOfEnchantment.G = string.format("%.3f", BC.Green["EmbersOfEnchantment"]);
-		settings.EmbersOfEnchantment.B = string.format("%.3f", BC.Blue["EmbersOfEnchantment"]);
-		settings.EmbersOfEnchantment.X = string.format("%.0f", Position.Left["EmbersOfEnchantment"]);
-		settings.EmbersOfEnchantment.Y = string.format("%.0f", Position.Top["EmbersOfEnchantment"]);
-		settings.EmbersOfEnchantment.W = string.format("%.0f", Where["EmbersOfEnchantment"]);
-
-		settings.FigmentsOfSplendour = {};
-		settings.FigmentsOfSplendour.V = Show["FigmentsOfSplendour"];
-		settings.FigmentsOfSplendour.A = string.format("%.3f", BC.Alpha["FigmentsOfSplendour"]);
-		settings.FigmentsOfSplendour.R = string.format("%.3f", BC.Red["FigmentsOfSplendour"]);
-		settings.FigmentsOfSplendour.G = string.format("%.3f", BC.Green["FigmentsOfSplendour"]);
-		settings.FigmentsOfSplendour.B = string.format("%.3f", BC.Blue["FigmentsOfSplendour"]);
-		settings.FigmentsOfSplendour.X = string.format("%.0f", Position.Left["FigmentsOfSplendour"]);
-		settings.FigmentsOfSplendour.Y = string.format("%.0f", Position.Top["FigmentsOfSplendour"]);
-		settings.FigmentsOfSplendour.W = string.format("%.0f", Where["FigmentsOfSplendour"]);
-		
-		settings.FallFestivalToken = {};
-		settings.FallFestivalToken.V = Show["FallFestivalToken"];
-		settings.FallFestivalToken.A = string.format("%.3f", BC.Alpha["FallFestivalToken"]);
-		settings.FallFestivalToken.R = string.format("%.3f", BC.Red["FallFestivalToken"]);
-		settings.FallFestivalToken.G = string.format("%.3f", BC.Green["FallFestivalToken"]);
-		settings.FallFestivalToken.B = string.format("%.3f", BC.Blue["FallFestivalToken"]);
-		settings.FallFestivalToken.X = string.format("%.0f", Position.Left["FallFestivalToken"]);
-		settings.FallFestivalToken.Y = string.format("%.0f", Position.Top["FallFestivalToken"]);
-		settings.FallFestivalToken.W = string.format("%.0f", Where["FallFestivalToken"]);
-		
-		settings.FarmersFaireToken = {};
-		settings.FarmersFaireToken.V = Show["FarmersFaireToken"];
-		settings.FarmersFaireToken.A = string.format("%.3f", BC.Alpha["FarmersFaireToken"]);
-		settings.FarmersFaireToken.R = string.format("%.3f", BC.Red["FarmersFaireToken"]);
-		settings.FarmersFaireToken.G = string.format("%.3f", BC.Green["FarmersFaireToken"]);
-		settings.FarmersFaireToken.B = string.format("%.3f", BC.Blue["FarmersFaireToken"]);
-		settings.FarmersFaireToken.X = string.format("%.0f", Position.Left["FarmersFaireToken"]);
-		settings.FarmersFaireToken.Y = string.format("%.0f", Position.Top["FarmersFaireToken"]);
-		settings.FarmersFaireToken.W = string.format("%.0f", Where["FarmersFaireToken"]);
-		
-		settings.SpringLeaf = {};
-		settings.SpringLeaf.V = Show["SpringLeaf"];
-		settings.SpringLeaf.A = string.format("%.3f", BC.Alpha["SpringLeaf"]);
-		settings.SpringLeaf.R = string.format("%.3f", BC.Red["SpringLeaf"]);
-		settings.SpringLeaf.G = string.format("%.3f", BC.Green["SpringLeaf"]);
-		settings.SpringLeaf.B = string.format("%.3f", BC.Blue["SpringLeaf"]);
-		settings.SpringLeaf.X = string.format("%.0f", Position.Left["SpringLeaf"]);
-		settings.SpringLeaf.Y = string.format("%.0f", Position.Top["SpringLeaf"]);
-		settings.SpringLeaf.W = string.format("%.0f", Where["SpringLeaf"]);
-		
-		settings.MidsummerToken = {};
-		settings.MidsummerToken.V = Show["MidsummerToken"];
-		settings.MidsummerToken.A = string.format("%.3f", BC.Alpha["MidsummerToken"]);
-		settings.MidsummerToken.R = string.format("%.3f", BC.Red["MidsummerToken"]);
-		settings.MidsummerToken.G = string.format("%.3f", BC.Green["MidsummerToken"]);
-		settings.MidsummerToken.B = string.format("%.3f", BC.Blue["MidsummerToken"]);
-		settings.MidsummerToken.X = string.format("%.0f", Position.Left["MidsummerToken"]);
-		settings.MidsummerToken.Y = string.format("%.0f", Position.Top["MidsummerToken"]);
-		settings.MidsummerToken.W = string.format("%.0f", Where["MidsummerToken"]);
-		
-		settings.AncientScript = {};
-		settings.AncientScript.V = Show["AncientScript"];
-		settings.AncientScript.A = string.format("%.3f", BC.Alpha["AncientScript"]);
-		settings.AncientScript.R = string.format("%.3f", BC.Red["AncientScript"]);
-		settings.AncientScript.G = string.format("%.3f", BC.Green["AncientScript"]);
-		settings.AncientScript.B = string.format("%.3f", BC.Blue["AncientScript"]);
-		settings.AncientScript.X = string.format("%.0f", Position.Left["AncientScript"]);
-		settings.AncientScript.Y = string.format("%.0f", Position.Top["AncientScript"]);
-		settings.AncientScript.W = string.format("%.0f", Where["AncientScript"]);
-
-		settings.BadgeOfTaste = {};
-		settings.BadgeOfTaste.V = Show["BadgeOfTaste"];
-		settings.BadgeOfTaste.A = string.format("%.3f", BC.Alpha["BadgeOfTaste"]);
-		settings.BadgeOfTaste.R = string.format("%.3f", BC.Red["BadgeOfTaste"]);
-		settings.BadgeOfTaste.G = string.format("%.3f", BC.Green["BadgeOfTaste"]);
-		settings.BadgeOfTaste.B = string.format("%.3f", BC.Blue["BadgeOfTaste"]);
-		settings.BadgeOfTaste.X = string.format("%.0f", Position.Left["BadgeOfTaste"]);
-		settings.BadgeOfTaste.Y = string.format("%.0f", Position.Top["BadgeOfTaste"]);
-		settings.BadgeOfTaste.W = string.format("%.0f", Where["BadgeOfTaste"]);
-
-        settings.BadgeOfDishonour = {};
-        settings.BadgeOfDishonour.V = Show["BadgeOfDishonour"];
-        settings.BadgeOfDishonour.A = string.format("%.3f", BC.Alpha["BadgeOfDishonour"]);
-        settings.BadgeOfDishonour.R = string.format("%.3f", BC.Red["BadgeOfDishonour"]);
-        settings.BadgeOfDishonour.G = string.format("%.3f", BC.Green["BadgeOfDishonour"]);
-        settings.BadgeOfDishonour.B = string.format("%.3f", BC.Blue["BadgeOfDishonour"]);
-        settings.BadgeOfDishonour.X = string.format("%.0f", Position.Left["BadgeOfDishonour"]);
-        settings.BadgeOfDishonour.Y = string.format("%.0f", Position.Top["BadgeOfDishonour"]);
-        settings.BadgeOfDishonour.W = string.format("%.0f", Where["BadgeOfDishonour"]);
 
 	end
 	
