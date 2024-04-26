@@ -24,7 +24,6 @@ The controls also populate tables, like this:
 In order that we stop polluting the global table,
 	maybe put them in something like _G.TokenControls["LAT"].
 
-Get rid of WalletOrder, it's not doing anything now, and makes things harder.
 
 ----
 
