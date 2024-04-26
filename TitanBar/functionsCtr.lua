@@ -757,7 +757,7 @@ function SavePlayerMoney( save )
 
     wallet[PN].Show = _G.SCM;
     wallet[PN].ShowToAll = _G.SCMA;
-    wallet[PN].Money = tostring( PlayerAtt:GetMoney() );
+    wallet[PN].Money = tostring( Player:GetAttributes():GetMoney() );
 
     -- Calculate Gold/Silver/Copper Total
     GoldTot, SilverTot, CopperTot = 0, 0, 0;

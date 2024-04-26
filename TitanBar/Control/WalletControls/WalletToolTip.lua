@@ -32,6 +32,7 @@ function ShowWIToolTip()
 end
 
 function RefreshWITTListBox()
+    local PlayerAtt = Turbine.Gameplay.LocalPlayer.GetInstance():GetAttributes();
 	WITTListBox:ClearItems();
 	WITTPosY, totWidth = 0, 0;
 	local bFound = false;

@@ -8,23 +8,25 @@
 tA, tR, tG, tB, tX, tY, tW = 0.3, 0.3, 0.3, 0.3, 0, 0, 3; --Default alpha, red, green, blue, X, Y pos of control, Show where
 tL, tT = 100, 100; --Default position of control window
 
-Show = {}; -- Visibility boolean for Controls
+-- Note: This are in _G for now, but once controls are finished take them back out.
+_G.Show = {}; -- Visibility boolean for Controls
 
-BC = {}; -- Background Color of Controls
+_G.BC = {}; -- Background Color of Controls
 BC.Alpha = {};
 BC.Red = {};
 BC.Green = {};
 BC.Blue = {};
 
-Position = {}; -- Position of Controls
+_G.Position = {}; -- Position of Controls
 Position.Left = {};
 Position.Top = {};
 
-PositionW = {}; -- Position of Windows
+_G.PositionW = {}; -- Position of Windows
 PositionW.Left = {};
 PositionW.Top = {};
 
-Where = {}; -- Is currency on bar, tooltip, or hidden?
+_G.Where = {}; -- Is currency on bar, tooltip, or hidden?
+-- End Note on _G.
 
 HasWindow = {
     ["Wallet"] = true;
