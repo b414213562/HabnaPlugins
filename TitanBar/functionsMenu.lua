@@ -12,7 +12,7 @@ function ShowHideWallet()
 	if Show["Wallet"] then
 		--write( "TitanBar: Showing wallet control");
 		ImportCtr( "WI" );
-		WI[ "Ctr" ]:SetBackColor( Turbine.UI.Color( BC.Alpha["Wallet"], BC.Red["Wallet"], BC.Green["Wallet"], BC.Blue["Wallet"] ) );
+		WI[ "Ctr" ]:SetBackColor( GetBGColor("Wallet") );
 	else
 		--write( "TitanBar: Hiding wallet control");
 		if _G.frmWI then wWI:Close(); end
@@ -31,7 +31,7 @@ function ShowHideMoney()
 	if Show["Money"] then
 		--write( "TitanBar: Showing money");
 		--ImportCtr( "MI" );
-		MI[ "Ctr" ]:SetBackColor( Turbine.UI.Color( BC.Alpha["Money"], BC.Red["Money"], BC.Green["Money"], BC.Blue["Money"] ) );
+		MI[ "Ctr" ]:SetBackColor( GetBGColor("Money") );
 	else
 		--write( "TitanBar: Hiding money");
 		if _G.frmMI then wMI:Close(); end
@@ -47,7 +47,7 @@ function ShowHideDestinyPoints()
 	SaveSettings( false );
 	ImportCtr( "DP" );
 	if Show["DestinyPoints"] then
-		DP[ "Ctr" ]:SetBackColor( Turbine.UI.Color( BC.Alpha["DestinyPoints"], BC.Red["DestinyPoints"], BC.Green["DestinyPoints"], BC.Blue["DestinyPoints"] ) );
+		DP[ "Ctr" ]:SetBackColor( GetBGColor("DestinyPoints") );
 	end
 	DP[ "Ctr" ]:SetVisible( Show["DestinyPoints"] );
 end
@@ -60,7 +60,7 @@ function ShowHideShards()
 	SaveSettings( false );
 	ImportCtr( "SP" );
 	if Show["Shards"] then
-		SP[ "Ctr" ]:SetBackColor( Turbine.UI.Color( BC.Alpha["Shards"], BC.Red["Shards"], BC.Green["Shards"], BC.Blue["Shards"] ) );
+		SP[ "Ctr" ]:SetBackColor( GetBGColor("Shards") );
 	end
 	SP[ "Ctr" ]:SetVisible( Show["Shards"] );
 end
@@ -73,7 +73,7 @@ function ShowHideSkirmishMarks()
 	SaveSettings( false );
 	ImportCtr( "SM" );
 	if Show["SkirmishMarks"] then
-		SM[ "Ctr" ]:SetBackColor( Turbine.UI.Color( BC.Alpha["SkirmishMarks"], BC.Red["SkirmishMarks"], BC.Green["SkirmishMarks"], BC.Blue["SkirmishMarks"] ) );
+		SM[ "Ctr" ]:SetBackColor( GetBGColor("SkirmishMarks") );
 	end
 	SM[ "Ctr" ]:SetVisible( Show["SkirmishMarks"] );
 end
@@ -86,7 +86,7 @@ function ShowHideMithrilCoins()
 	SaveSettings( false );
 	ImportCtr( "MC" );
 	if Show["MithrilCoins"] then
-		MC[ "Ctr" ]:SetBackColor( Turbine.UI.Color( BC.Alpha["MithrilCoins"], BC.Red["MithrilCoins"], BC.Green["MithrilCoins"], BC.Blue["MithrilCoins"] ) );
+		MC[ "Ctr" ]:SetBackColor( GetBGColor("MithrilCoins") );
 	end
 	MC[ "Ctr" ]:SetVisible( Show["MithrilCoins"] );
 end
@@ -99,7 +99,7 @@ function ShowHideYuleToken()
 	SaveSettings( false );
 	ImportCtr( "YT" );
 	if Show["YuleToken"] then
-		YT[ "Ctr" ]:SetBackColor( Turbine.UI.Color( BC.Alpha["YuleToken"], BC.Red["YuleToken"], BC.Green["YuleToken"], BC.Blue["YuleToken"] ) );
+		YT[ "Ctr" ]:SetBackColor( GetBGColor("YuleToken") );
 	end
 	YT[ "Ctr" ]:SetVisible( Show["YuleToken"] );
 end
@@ -112,7 +112,7 @@ function ShowHideHytboldTokens()
 	SaveSettings( false );
 	ImportCtr( "HT" );
 	if Show["HytboldTokens"] then
-		HT[ "Ctr" ]:SetBackColor( Turbine.UI.Color( BC.Alpha["HytboldTokens"], BC.Red["HytboldTokens"], BC.Green["HytboldTokens"], BC.Blue["HytboldTokens"] ) );
+		HT[ "Ctr" ]:SetBackColor( GetBGColor("HytboldTokens") );
 	end
 	HT[ "Ctr" ]:SetVisible( Show["HytboldTokens"] );
 end
@@ -125,7 +125,7 @@ function ShowHideMedallions()
 	SaveSettings( false );
 	ImportCtr( "MP" );
 	if Show["Medallions"] then
-		MP[ "Ctr" ]:SetBackColor( Turbine.UI.Color( BC.Alpha["Medallions"], BC.Red["Medallions"], BC.Green["Medallions"], BC.Blue["Medallions"] ) );
+		MP[ "Ctr" ]:SetBackColor( GetBGColor("Medallions") );
 	end
 	MP[ "Ctr" ]:SetVisible( Show["Medallions"] );
 end
@@ -138,7 +138,7 @@ function ShowHideSeals()
 	SaveSettings( false );
 	ImportCtr( "SL" );
 	if Show["Seals"] then
-		SL[ "Ctr" ]:SetBackColor( Turbine.UI.Color( BC.Alpha["Seals"], BC.Red["Seals"], BC.Green["Seals"], BC.Blue["Seals"] ) );
+		SL[ "Ctr" ]:SetBackColor( GetBGColor("Seals") );
 	end
 	SL[ "Ctr" ]:SetVisible( Show["Seals"] );
 end
@@ -151,7 +151,7 @@ function ShowHideCommendations()
 	SaveSettings( false );
 	ImportCtr( "CP" );
 	if Show["Commendations"] then
-		CP[ "Ctr" ]:SetBackColor( Turbine.UI.Color( BC.Alpha["Commendations"], BC.Red["Commendations"], BC.Green["Commendations"], BC.Blue["Commendations"] ) );
+		CP[ "Ctr" ]:SetBackColor( GetBGColor("Commendations") );
 	end
 	CP[ "Ctr" ]:SetVisible( Show["Commendations"] );
 end
@@ -164,7 +164,7 @@ function ShowHideLOTROPoints()
 	SaveSettings( false );
 	ImportCtr( "LP" );
 	if Show["LOTROPoints"] then
-		LP[ "Ctr" ]:SetBackColor( Turbine.UI.Color( BC.Alpha["LOTROPoints"], BC.Red["LOTROPoints"], BC.Green["LOTROPoints"], BC.Blue["LOTROPoints"] ) );
+		LP[ "Ctr" ]:SetBackColor( GetBGColor("LOTROPoints") );
 	else
 		if _G.frmLP then wLP:Close(); end
 	end
@@ -442,7 +442,7 @@ function ShowHideAmrothSilverPiece()
 	SaveSettings( false );
 	ImportCtr( "ASP" );
 	if Show["AmrothSilverPiece"] then
-		ASP[ "Ctr" ]:SetBackColor( Turbine.UI.Color( BC.Alpha["AmrothSilverPiece"], BC.Red["AmrothSilverPiece"], BC.Green["AmrothSilverPiece"], BC.Blue["AmrothSilverPiece"] ) );
+		ASP[ "Ctr" ]:SetBackColor( GetBGColor("AmrothSilverPiece") );
 	end
 	ASP[ "Ctr" ]:SetVisible( Show["AmrothSilverPiece"] );
 end
@@ -453,7 +453,7 @@ function ShowHideStarsofMerit()
 	SaveSettings( false );
 	ImportCtr( "SOM" );
 	if Show["StarsofMerit"] then
-		SOM[ "Ctr" ]:SetBackColor( Turbine.UI.Color( BC.Alpha["StarsofMerit"], BC.Red["StarsofMerit"], BC.Green["StarsofMerit"], BC.Blue["StarsofMerit"] ) );
+		SOM[ "Ctr" ]:SetBackColor( GetBGColor("StarsofMerit") );
 	end
 	SOM[ "Ctr" ]:SetVisible( Show["StarsofMerit"] );
 end
@@ -464,7 +464,7 @@ function ShowHideCentralGondorSilverPiece()
 	SaveSettings( false );
 	ImportCtr( "CGSP" );
 	if Show["CentralGondorSilverPiece"] then
-		CGSP[ "Ctr" ]:SetBackColor( Turbine.UI.Color( BC.Alpha["CentralGondorSilverPiece"], BC.Red["CentralGondorSilverPiece"], BC.Green["CentralGondorSilverPiece"], BC.Blue["CentralGondorSilverPiece"] ) );
+		CGSP[ "Ctr" ]:SetBackColor( GetBGColor("CentralGondorSilverPiece") );
 	end
 	CGSP[ "Ctr" ]:SetVisible( Show["CentralGondorSilverPiece"] );
 end
@@ -475,7 +475,7 @@ function ShowHideGiftgiversBrand()
 	SaveSettings( false );
 	ImportCtr( "GGB" );
 	if Show["GiftgiversBrand"] then
-		GGB[ "Ctr" ]:SetBackColor( Turbine.UI.Color( BC.Alpha["GiftgiversBrand"], BC.Red["GiftgiversBrand"], BC.Green["GiftgiversBrand"], BC.Blue["GiftgiversBrand"] ) );
+		GGB[ "Ctr" ]:SetBackColor( GetBGColor("GiftgiversBrand") );
 	end
 	GGB[ "Ctr" ]:SetVisible( Show["GiftgiversBrand"] );
 end
@@ -488,7 +488,7 @@ function ShowHideBingoBadge()
 	SaveSettings( false );
 	ImportCtr( "BB" );
 	if Show["BingoBadge"] then
-		BB[ "Ctr" ]:SetBackColor( Turbine.UI.Color( BC.Alpha["BingoBadge"], BC.Red["BingoBadge"], BC.Green["BingoBadge"], BC.Blue["BingoBadge"] ) );
+		BB[ "Ctr" ]:SetBackColor( GetBGColor("BingoBadge") );
 	end
 	BB[ "Ctr" ]:SetVisible( Show["BingoBadge"] );
 end
@@ -499,7 +499,7 @@ function ShowHideAnniversaryToken()
 	SaveSettings( false );
 	ImportCtr( "LAT" );
 	if Show["AnniversaryToken"] then
-		LAT[ "Ctr" ]:SetBackColor( Turbine.UI.Color( BC.Alpha["AnniversaryToken"], BC.Red["AnniversaryToken"], BC.Green["AnniversaryToken"], BC.Blue["AnniversaryToken"] ) );
+		LAT[ "Ctr" ]:SetBackColor( GetBGColor("AnniversaryToken") );
 	end
 	LAT[ "Ctr" ]:SetVisible( Show["AnniversaryToken"] );
 end
@@ -510,7 +510,7 @@ function ShowHideMotesOfEnchantment()
 	SaveSettings( false );
 	ImportCtr( "MOE" );
 	if Show["MotesOfEnchantment"] then
-		MOE[ "Ctr" ]:SetBackColor( Turbine.UI.Color( BC.Alpha["MotesOfEnchantment"], BC.Red["MotesOfEnchantment"], BC.Green["MotesOfEnchantment"], BC.Blue["MotesOfEnchantment"] ) );
+		MOE[ "Ctr" ]:SetBackColor( GetBGColor("MotesOfEnchantment") );
 	end
 	MOE[ "Ctr" ]:SetVisible( Show["MotesOfEnchantment"] );
 end
@@ -521,7 +521,7 @@ function ShowHideEmbersOfEnchantment()
 	SaveSettings( false );
 	ImportCtr( "EOE" );
 	if Show["EmbersOfEnchantment"] then
-		EOE[ "Ctr" ]:SetBackColor( Turbine.UI.Color( BC.Alpha["EmbersOfEnchantment"], BC.Red["EmbersOfEnchantment"], BC.Green["EmbersOfEnchantment"], BC.Blue["EmbersOfEnchantment"] ) );
+		EOE[ "Ctr" ]:SetBackColor( GetBGColor("EmbersOfEnchantment") );
 	end
 	EOE[ "Ctr" ]:SetVisible( Show["EmbersOfEnchantment"] );
 end
@@ -533,7 +533,7 @@ function ShowHideFigmentsOfSplendour()
 	SaveSettings( false );
 	ImportCtr( "FOS" );
 	if Show["FigmentsOfSplendour"] then
-		FOS[ "Ctr" ]:SetBackColor( Turbine.UI.Color( BC.Alpha["FigmentsOfSplendour"], BC.Red["FigmentsOfSplendour"], BC.Green["FigmentsOfSplendour"], BC.Blue["FigmentsOfSplendour"] ) );
+		FOS[ "Ctr" ]:SetBackColor( GetBGColor("FigmentsOfSplendour") );
 	end
 	FOS[ "Ctr" ]:SetVisible( Show["FigmentsOfSplendour"] );
 end
@@ -545,7 +545,7 @@ function ShowHideFallFestivalToken()
 	SaveSettings( false );
 	ImportCtr( "FFT" );
 	if Show["FallFestivalToken"] then
-		FFT[ "Ctr" ]:SetBackColor( Turbine.UI.Color( BC.Alpha["FallFestivalToken"], BC.Red["FallFestivalToken"], BC.Green["FallFestivalToken"], BC.Blue["FallFestivalToken"] ) );
+		FFT[ "Ctr" ]:SetBackColor( GetBGColor("FallFestivalToken") );
 	end
 	FFT[ "Ctr" ]:SetVisible( Show["FallFestivalToken"] );
 end
@@ -557,7 +557,7 @@ function ShowHideFarmersFaireToken()
 	SaveSettings( false );
 	ImportCtr( "FFAT" );
 	if Show["FarmersFaireToken"] then
-		FFAT[ "Ctr" ]:SetBackColor( Turbine.UI.Color( BC.Alpha["FarmersFaireToken"], BC.Red["FarmersFaireToken"], BC.Green["FarmersFaireToken"], BC.Blue["FarmersFaireToken"] ) );
+		FFAT[ "Ctr" ]:SetBackColor( GetBGColor("FarmersFaireToken") );
 	end
 	FFAT[ "Ctr" ]:SetVisible( Show["FarmersFaireToken"]);
 end
@@ -569,7 +569,7 @@ function ShowHideSpringLeaf()
 	SaveSettings( false );
 	ImportCtr( "SPL" );
 	if Show["SpringLeaf"] then
-		SPL[ "Ctr" ]:SetBackColor( Turbine.UI.Color( BC.Alpha["SpringLeaf"], BC.Red["SpringLeaf"], BC.Green["SpringLeaf"], BC.Blue["SpringLeaf"] ) );
+		SPL[ "Ctr" ]:SetBackColor( GetBGColor("SpringLeaf") );
 	end
 	SPL[ "Ctr" ]:SetVisible( Show["SpringLeaf"]);
 end
@@ -581,7 +581,7 @@ function ShowHideMidsummerToken()
 	SaveSettings( false );
 	ImportCtr( "MST" );
 	if Show["MidsummerToken"] then
-		MST[ "Ctr" ]:SetBackColor( Turbine.UI.Color( BC.Alpha["MidsummerToken"], BC.Red["MidsummerToken"], BC.Green["MidsummerToken"], BC.Blue["MidsummerToken"] ) );
+		MST[ "Ctr" ]:SetBackColor( GetBGColor("MidsummerToken") );
 	end
 	MST[ "Ctr" ]:SetVisible( Show["MidsummerToken"]);
 end
@@ -593,7 +593,7 @@ function ShowHideAncientScript()
 	SaveSettings( false );
 	ImportCtr( "AS" );
 	if Show["AncientScript"] then
-		AS[ "Ctr" ]:SetBackColor( Turbine.UI.Color( BC.Alpha["AncientScript"], BC.Red["AncientScript"], BC.Green["AncientScript"], BC.Blue["AncientScript"] ) );
+		AS[ "Ctr" ]:SetBackColor( GetBGColor("AncientScript") );
 	end
 	AS[ "Ctr" ]:SetVisible( Show["AncientScript"]);
 end
@@ -605,7 +605,7 @@ function ShowHideBadgeOfTaste()
 	SaveSettings( false );
 	ImportCtr( "BOT" );
 	if Show["BadgeOfTaste"] then
-		BOT[ "Ctr" ]:SetBackColor( Turbine.UI.Color( BC.Alpha["BadgeOfTaste"], BC.Red["BadgeOfTaste"], BC.Green["BadgeOfTaste"], BC.Blue["BadgeOfTaste"] ) );
+		BOT[ "Ctr" ]:SetBackColor( GetBGColor("BadgeOfTaste") );
 	end
 	BOT[ "Ctr" ]:SetVisible( Show["BadgeOfTaste"] );
 end
@@ -617,7 +617,7 @@ function ShowHideBadgeOfDishonour()
 	SaveSettings( false );
 	ImportCtr( "BOD" );
 	if Show["BadgeOfDishonour"] then
-		BOD[ "Ctr" ]:SetBackColor( Turbine.UI.Color( BC.Alpha["BadgeOfDishonour"], BC.Red["BadgeOfDishonour"], BC.Green["BadgeOfDishonour"], BC.Blue["BadgeOfDishonour"] ) );
+		BOD[ "Ctr" ]:SetBackColor( GetBGColor("BadgeOfDishonour") );
 	end
 	BOD[ "Ctr" ]:SetVisible( Show["BadgeOfDishonour"] );
 end

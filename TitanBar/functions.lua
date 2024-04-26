@@ -1458,3 +1458,11 @@ function GetTotalItems( MyTable )
 	for k, v in pairs( MyTable ) do counter = counter + 1; end
 	return counter;
 end
+
+---comment
+---@param key string The lookup key for this control.
+---@return Color # The resulting Turbine.UI.Color.
+function GetBGColor(key)
+    local color = Turbine.UI.Color( BC.Alpha[key], BC.Red[key], BC.Green[key], BC.Blue[key] );
+    return color;
+end
