@@ -66,6 +66,37 @@ Currencies = {
     "BadgeOfDishonour",
 }
 
+CurrencyCodeToKey = {
+    ["WI"] = "Wallet",
+    ["Money"] = "Money",
+    ["DP"] = "DestinyPoints",
+    ["SP"] = "Shards",
+    ["SM"] = "SkirmishMarks",
+    ["MC"] = "MithrilCoins",
+    ["YT"] = "YuleToken",
+    ["HT"] = "HytboldTokens",
+    ["MP"] = "Medallions",
+    ["SL"] = "Seals",
+    ["CP"] = "Commendations",
+    ["LP"] = "LOTROPoints",
+    ["ASP"] = "AmrothSilverPiece",
+    ["SOM"] = "StarsofMerit",
+    ["CGSP"] = "CentralGondorSilverPiece",
+    ["GGB"] = "GiftgiversBrand",
+    ["BB"] = "BingoBadge",
+    ["LAT"] = "AnniversaryToken",
+    ["MOE"] = "MotesOfEnchantment",
+    ["EOE"] = "EmbersOfEnchantment",
+    ["FOS"] = "FigmentsOfSplendour",
+    ["FFT"] = "FallFestivalToken",
+    ["FFAT"] = "FarmersFaireToken",
+    ["SPL"] = "SpringLeaf",
+    ["MST"] = "MidsummerToken",
+    ["AS"] = "AncientScript",
+    ["BOT"] = "BadgeOfTaste",
+    ["BOD"] = "BadgeOfDishonour",
+}
+
 --- Parses an entry like settings.Money.W. Also checks for a discrepancy between Where and Show.
 ---@param where string
 ---@param show boolean
