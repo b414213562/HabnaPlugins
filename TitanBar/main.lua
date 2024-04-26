@@ -88,21 +88,21 @@ frmMain();
 if PlayerAlign == 1 then 
     MenuItem = { 
 	-- Coin
-	L["MGSC"], L["MCP"], L["MDP"], L["MLP"], L["MMC"],
+	L["Money"], L["Commendations"], L["DestinyPoints"], L["LOTROPoints"], L["MithrilCoins"],
 	-- Currency
-	L["MMOE"], L["MFOS"], L["MEOE"], L["MAS"],
+	L["MotesOfEnchantment"], L["FigmentsOfSplendour"], L["EmbersOfEnchantment"], L["AncientScript"],
 	-- Instances and Skirmishes
-	L["MSM"], L["MMP"], L["MSL"], L["MSOM"],
+	L["SkirmishMarks"], L["Medallions"], L["Seals"], L["StarsofMerit"],
 	-- Festivals and Events
-	L["MLAT"], L["MFFT"], L["MFFAT"], L["MMST"], L["MSPL"], L["MYT"],
+	L["AnniversaryToken"], L["FallFestivalToken"], L["FarmersFaireToken"], L["MidsummerToken"], L["SpringLeaf"], L["YuleToken"],
 	-- Inn League and Ale Association
-	L["MBOT"], L["MBOD"],
+	L["BadgeOfTaste"], L["BadgeOfDishonour"],
 	-- Item Advancement
-	L["MSP"],
+	L["Shards"],
 	-- Other   
-    L["MASP"], L["MBB"], L["MCGSP"], L["MGGB"], L["MHT"],
+    L["AmrothSilverPiece"], L["BingoBadge"], L["CentralGondorSilverPiece"], L["GiftgiversBrand"], L["HytboldTokens"],
 	};
-else MenuItem = { L["MCP"], L["MLP"] }; end
+else MenuItem = { L["Commendations"], L["LOTROPoints"] }; end
 
 TitanBarCommand = Turbine.ShellCommand()
 

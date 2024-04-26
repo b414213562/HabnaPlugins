@@ -1136,30 +1136,30 @@ function SavePlayerLOTROPoints()
 end
 
 function UpdateCurrency( str )
-    if str == L[ "MSP" ] and Show["Shards"] then UpdateShards(); end
-    if str == L[ "MSM" ] and Show["SkirmishMarks"] then UpdateMarks(); end
-    if str == L[ "MMP" ] and Show["Medallions"] then UpdateMedallions(); end
-    if str == L[ "MSL" ] and Show["Seals"] then UpdateSeals(); end
-    if str == L[ "MCP" ] and Show["Commendations"] then UpdateCommendations(); end
-    if str == L[ "MMC" ] and Show["MithrilCoins"] then UpdateMithril(); end
-    if str == L[ "MYT" ] and Show["YuleToken"] then UpdateYuleToken(); end
-    if str == L[ "MHT" ] and Show["HytboldTokens"] then UpdateHytboldTokens(); end
-    if str == L[ "MASP" ] and Show["AmrothSilverPiece"] then UpdateAmrothSilverPiece(); end
-    if str == L[ "MSOM" ] and Show["StarsofMerit"] then UpdateStarsofMerit(); end
-    if str == L[ "MCGSP" ] and Show["CentralGondorSilverPiece"] then UpdateCentralGondorSilverPiece(); end
-    if str == L[ "MGGB" ] and Show["GiftgiversBrand"] then UpdateGiftgiversBrand(); end
-    if str == L[ "MBB" ] and Show["BingoBadge"] then UpdateBingoBadge(); end
-    if str == L[ "MLAT" ] and Show["AnniversaryToken"] then UpdateAnniversaryToken(); end
-	if str == L[ "MMOE" ] and Show["MotesOfEnchantment"] then UpdateMotesOfEnchantment(); end
-	if str == L[ "MEOE" ] and Show["EmbersOfEnchantment"] then UpdateEmbersOfEnchantment(); end
-	if str == L[ "MFOS" ] and Show["FigmentsOfSplendour"] then UpdateFigmentsOfSplendour(); end
-	if str == L[ "MFFT" ] and Show["FallFestivalToken"] then UpdateFallFestivalToken(); end
-	if str == L[ "MFFAT" ] and Show["FarmersFaireToken"] then UpdateFarmersFaireToken(); end
-	if str == L[ "MSPL" ] and Show["SpringLeaf"] then UpdateSpringLeaf(); end
-	if str == L[ "MMST" ] and Show["MidsummerToken"] then UpdateMidsummerToken(); end
-	if str == L[ "MAS" ] and Show["AncientScript"] then UpdateAncientScript(); end
-    if str == L[ "MBOT" ] and Show["BadgeOfTaste"] then UpdateBadgeOfTaste(); end
-    if str == L[ "MBOD" ] and Show["BadgeOfDishonour"] then UpdateBadgeOfDishonour(); end
+    if str == L[ "Shards" ] and Show["Shards"] then UpdateShards(); end
+    if str == L[ "SkirmishMarks" ] and Show["SkirmishMarks"] then UpdateMarks(); end
+    if str == L[ "Medallions" ] and Show["Medallions"] then UpdateMedallions(); end
+    if str == L[ "Seals" ] and Show["Seals"] then UpdateSeals(); end
+    if str == L[ "Commendations" ] and Show["Commendations"] then UpdateCommendations(); end
+    if str == L[ "MithrilCoins" ] and Show["MithrilCoins"] then UpdateMithril(); end
+    if str == L[ "YuleToken" ] and Show["YuleToken"] then UpdateYuleToken(); end
+    if str == L[ "HytboldTokens" ] and Show["HytboldTokens"] then UpdateHytboldTokens(); end
+    if str == L[ "AmrothSilverPiece" ] and Show["AmrothSilverPiece"] then UpdateAmrothSilverPiece(); end
+    if str == L[ "StarsofMerit" ] and Show["StarsofMerit"] then UpdateStarsofMerit(); end
+    if str == L[ "CentralGondorSilverPiece" ] and Show["CentralGondorSilverPiece"] then UpdateCentralGondorSilverPiece(); end
+    if str == L[ "GiftgiversBrand" ] and Show["GiftgiversBrand"] then UpdateGiftgiversBrand(); end
+    if str == L[ "BingoBadge" ] and Show["BingoBadge"] then UpdateBingoBadge(); end
+    if str == L[ "AnniversaryToken" ] and Show["AnniversaryToken"] then UpdateAnniversaryToken(); end
+	if str == L[ "MotesOfEnchantment" ] and Show["MotesOfEnchantment"] then UpdateMotesOfEnchantment(); end
+	if str == L[ "EmbersOfEnchantment" ] and Show["EmbersOfEnchantment"] then UpdateEmbersOfEnchantment(); end
+	if str == L[ "FigmentsOfSplendour" ] and Show["FigmentsOfSplendour"] then UpdateFigmentsOfSplendour(); end
+	if str == L[ "FallFestivalToken" ] and Show["FallFestivalToken"] then UpdateFallFestivalToken(); end
+	if str == L[ "FarmersFaireToken" ] and Show["FarmersFaireToken"] then UpdateFarmersFaireToken(); end
+	if str == L[ "SpringLeaf" ] and Show["SpringLeaf"] then UpdateSpringLeaf(); end
+	if str == L[ "MidsummerToken" ] and Show["MidsummerToken"] then UpdateMidsummerToken(); end
+	if str == L[ "AncientScript" ] and Show["AncientScript"] then UpdateAncientScript(); end
+    if str == L[ "BadgeOfTaste" ] and Show["BadgeOfTaste"] then UpdateBadgeOfTaste(); end
+    if str == L[ "BadgeOfDishonour" ] and Show["BadgeOfDishonour"] then UpdateBadgeOfDishonour(); end
 end
 
 function GetCurrency( str )

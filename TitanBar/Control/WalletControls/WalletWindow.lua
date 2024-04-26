@@ -13,7 +13,7 @@ function frmWalletWindow()
 	if GLocale == "de" then w = 300; else w = 280; end
 	_G.wWI:SetSize( w, 640 ); --280x260
     _G.wWI:SetPosition( PositionW.Left["Wallet"], PositionW.Top["Wallet"] );
-	_G.wWI:SetText( L["MBag"] );
+	_G.wWI:SetText( L["Wallet"] );
 	_G.wWI:SetVisible( true );
 	_G.wWI:SetWantsKeyEvents( true );
 	--_G.wWI:SetZOrder( 2 );
@@ -167,7 +167,7 @@ function frmWalletWindow()
 	local WIlblLOTROPTS = Turbine.UI.Label();
 	WIlblLOTROPTS:SetParent( LPWCtr );
 	--WIlblLOTROPTS:SetFont( Turbine.UI.Lotro.Font.TrajanPro14 );
-	WIlblLOTROPTS:SetText( L["MLP"] );
+	WIlblLOTROPTS:SetText( L["LOTROPoints"] );
 	WIlblLOTROPTS:SetPosition( 0, 2 );
 	WIlblLOTROPTS:SetSize( WIlblLOTROPTS:GetTextLength() * 7.5, 15 ); --Auto size with text lenght
 	WIlblLOTROPTS:SetForeColor( Color["rustedgold"] );
@@ -220,111 +220,111 @@ function frmWalletWindow()
 
 		SelIndex = WIDD:GetSelection();
 		--Where-> 1: On TitanBar / 2: In wallet control tooltip / 3: Don't show
-		if wcur == L["MGSC"] then
+		if wcur == L["Money"] then
 			Where["Money"] = SelIndex; settings.Money.W = string.format("%.0f", SelIndex);
 			if SelIndex == 1 then if not Show["Money"] then ShowHideCurrency("Money"); end
 			else if Show["Money"] then ShowHideCurrency("Money"); end end
-		elseif wcur == L["MDP"] then
+		elseif wcur == L["DestinyPoints"] then
 			Where["DestinyPoints"] = SelIndex; settings.DestinyPoints.W = string.format("%.0f", SelIndex);
 			if SelIndex == 1 then if not Show["DestinyPoints"] then ShowHideCurrency("DestinyPoints"); end
 			else if Show["DestinyPoints"] then ShowHideCurrency("DestinyPoints"); end end
-		elseif wcur == L["MSP"] then
+		elseif wcur == L["Shards"] then
 			Where["Shards"] = SelIndex; settings.Shards.W = string.format("%.0f", SelIndex);
 			if SelIndex == 1 then if not Show["Shards"] then ShowHideCurrency("Shards"); end
 			else if Show["Shards"] then ShowHideCurrency("Shards"); end end
-		elseif wcur == L["MSM"] then
+		elseif wcur == L["SkirmishMarks"] then
 			Where["SkirmishMarks"] = SelIndex; settings.SkirmishMarks.W = string.format("%.0f", SelIndex);
 			if SelIndex == 1 then if not Show["SkirmishMarks"] then ShowHideCurrency("SkirmishMarks"); end
 			else if Show["SkirmishMarks"] then ShowHideCurrency("SkirmishMarks"); end end
-		elseif wcur == L["MMC"] then
+		elseif wcur == L["MithrilCoins"] then
 			Where["MithrilCoins"] = SelIndex; settings.MithrilCoins.W = string.format("%.0f", SelIndex);
 			if SelIndex == 1 then if not Show["MithrilCoins"] then ShowHideCurrency("MithrilCoins"); end
 			else if Show["MithrilCoins"] then ShowHideCurrency("MithrilCoins"); end end
-		elseif wcur == L["MYT"] then
+		elseif wcur == L["YuleToken"] then
 			Where["YuleToken"] = SelIndex; settings.YuleToken.W = string.format("%.0f", SelIndex);
 			if SelIndex == 1 then if not Show["YuleToken"] then ShowHideCurrency("YuleToken"); end
 			else if Show["YuleToken"] then ShowHideCurrency("YuleToken"); end end
-		elseif wcur == L["MHT"] then
+		elseif wcur == L["HytboldTokens"] then
 			Where["HytboldTokens"] = SelIndex; settings.HytboldTokens.W = string.format("%.0f", SelIndex);
 			if SelIndex == 1 then if not Show["HytboldTokens"] then ShowHideCurrency("HytboldTokens"); end
 			else if Show["HytboldTokens"] then ShowHideCurrency("HytboldTokens"); end end
-		elseif wcur == L["MMP"] then
+		elseif wcur == L["Medallions"] then
 			Where["Medallions"] = SelIndex; settings.Medallions.W = string.format("%.0f", SelIndex);
 			if SelIndex == 1 then if not Show["Medallions"] then ShowHideCurrency("Medallions"); end
 			else if Show["Medallions"] then ShowHideCurrency("Medallions"); end end
-		elseif wcur == L["MSL"] then
+		elseif wcur == L["Seals"] then
 			Where["Seals"] = SelIndex; settings.Seals.W = string.format("%.0f", SelIndex);
 			if SelIndex == 1 then if not Show["Seals"] then ShowHideCurrency("Seals"); end
 			else if Show["Seals"] then ShowHideCurrency("Seals"); end end
-		elseif wcur == L["MCP"] then
+		elseif wcur == L["Commendations"] then
 			Where["Commendations"] = SelIndex; settings.Commendations.W = string.format("%.0f", SelIndex);
 			if SelIndex == 1 then if not Show["Commendations"] then ShowHideCurrency("Commendations"); end
 			else if Show["Commendations"] then ShowHideCurrency("Commendations"); end end
-		elseif wcur == L["MASP"] then
+		elseif wcur == L["AmrothSilverPiece"] then
 			Where["AmrothSilverPiece"] = SelIndex; settings.AmrothSilverPiece.W = string.format("%.0f", SelIndex);
 			if SelIndex == 1 then if not Show["AmrothSilverPiece"] then ShowHideCurrency("AmrothSilverPiece"); end
 			else if Show["AmrothSilverPiece"] then ShowHideCurrency("AmrothSilverPiece"); end end
-		elseif wcur == L["MSOM"] then
+		elseif wcur == L["StarsofMerit"] then
 			Where["StarsofMerit"] = SelIndex; settings.StarsofMerit.W = string.format("%.0f", SelIndex);
 			if SelIndex == 1 then if not Show["StarsofMerit"] then ShowHideCurrency("StarsofMerit"); end
 			else if Show["StarsofMerit"] then ShowHideCurrency("StarsofMerit"); end end
-		elseif wcur == L["MCGSP"] then
+		elseif wcur == L["CentralGondorSilverPiece"] then
 			Where["CentralGondorSilverPiece"] = SelIndex; settings.CentralGondorSilverPiece.W = string.format("%.0f", SelIndex);
 			if SelIndex == 1 then if not Show["CentralGondorSilverPiece"] then ShowHideCurrency("CentralGondorSilverPiece"); end
 			else if Show["CentralGondorSilverPiece"] then ShowHideCurrency("CentralGondorSilverPiece"); end end
-		elseif wcur == L["MGGB"] then
+		elseif wcur == L["GiftgiversBrand"] then
 			Where["GiftgiversBrand"] = SelIndex; settings.GiftgiversBrand.W = string.format("%.0f", SelIndex);
 			if SelIndex == 1 then if not Show["GiftgiversBrand"] then ShowHideCurrency("GiftgiversBrand"); end
 			else if Show["GiftgiversBrand"] then ShowHideCurrency("GiftgiversBrand"); end end
-		elseif wcur == L["MBB"] then
+		elseif wcur == L["BingoBadge"] then
 			Where["BingoBadge"] = SelIndex; settings.BingoBadge.W = string.format("%.0f", SelIndex);
 			if SelIndex == 1 then if not Show["BingoBadge"] then ShowHideCurrency("BingoBadge"); end
 			else if Show["BingoBadge"] then ShowHideCurrency("BingoBadge"); end end
-		elseif wcur == L["MLAT"] then
+		elseif wcur == L["AnniversaryToken"] then
 			Where["AnniversaryToken"] = SelIndex; settings.AnniversaryToken.W = string.format("%.0f", SelIndex);
 			if SelIndex == 1 then if not Show["AnniversaryToken"] then ShowHideCurrency("AnniversaryToken"); end
 			else if Show["AnniversaryToken"] then ShowHideCurrency("AnniversaryToken"); end end
-		elseif wcur == L["MMOE"] then
+		elseif wcur == L["MotesOfEnchantment"] then
 			Where["MotesOfEnchantment"] = SelIndex; settings.MotesOfEnchantment.W = string.format("%.0f", SelIndex);
 			if SelIndex == 1 then if not Show["MotesOfEnchantment"] then ShowHideCurrency("MotesOfEnchantment"); end
 			else if Show["MotesOfEnchantment"] then ShowHideCurrency("MotesOfEnchantment"); end end
-		elseif wcur == L["MEOE"] then
+		elseif wcur == L["EmbersOfEnchantment"] then
 			Where["EmbersOfEnchantment"] = SelIndex; settings.EmbersOfEnchantment.W = string.format("%.0f", SelIndex);
 			if SelIndex == 1 then if not Show["EmbersOfEnchantment"] then ShowHideCurrency("EmbersOfEnchantment"); end
 			else if Show["EmbersOfEnchantment"] then ShowHideCurrency("EmbersOfEnchantment"); end end
-		elseif wcur == L["MFOS"] then
+		elseif wcur == L["FigmentsOfSplendour"] then
 			Where["FigmentsOfSplendour"] = SelIndex; settings.FigmentsOfSplendour.W = string.format("%.0f", SelIndex);
 			if SelIndex == 1 then if not Show["FigmentsOfSplendour"] then ShowHideCurrency("FigmentsOfSplendour"); end
 			else if Show["FigmentsOfSplendour"] then ShowHideCurrency("FigmentsOfSplendour"); end end
-		elseif wcur == L["MFFT"] then
+		elseif wcur == L["FallFestivalToken"] then
 			Where["FallFestivalToken"] = SelIndex; settings.FallFestivalToken.W = string.format("%.0f", SelIndex);
 			if SelIndex == 1 then if not Show["FallFestivalToken"] then ShowHideCurrency("FallFestivalToken"); end
 			else if Show["FallFestivalToken"] then ShowHideCurrency("FallFestivalToken"); end end
-		elseif wcur == L["MFFAT"] then
+		elseif wcur == L["FarmersFaireToken"] then
 			Where["FarmersFaireToken"] = SelIndex; settings.FarmersFaireToken.W = string.format("%.0f", SelIndex);
 			if SelIndex == 1 then if not Show["FarmersFaireToken"] then ShowHideCurrency("FarmersFaireToken"); end
 			else if Show["FarmersFaireToken"] then ShowHideCurrency("FarmersFaireToken"); end end	
-		elseif wcur == L["MSPL"] then
+		elseif wcur == L["SpringLeaf"] then
 			Where["SpringLeaf"] = SelIndex; settings.SpringLeaf.W = string.format("%.0f", SelIndex);
 			if SelIndex == 1 then if not Show["SpringLeaf"] then ShowHideCurrency("SpringLeaf"); end
 			else if Show["SpringLeaf"] then ShowHideCurrency("SpringLeaf"); end end
-		elseif wcur == L["MMST"] then
+		elseif wcur == L["MidsummerToken"] then
 			Where["MidsummerToken"] = SelIndex; settings.MidsummerToken.W = string.format("%.0f", SelIndex);
 			if SelIndex == 1 then if not Show["MidsummerToken"] then ShowHideCurrency("MidsummerToken"); end
 			else if Show["MidsummerToken"] then ShowHideCurrency("MidsummerToken"); end end
-		elseif wcur == L["MAS"] then
+		elseif wcur == L["AncientScript"] then
 			Where["AncientScript"] = SelIndex; settings.AncientScript.W = string.format("%.0f", SelIndex);
 			if SelIndex == 1 then if not Show["AncientScript"] then ShowHideCurrency("AncientScript"); end
 			else if Show["AncientScript"] then ShowHideCurrency("AncientScript"); end end		
-		elseif wcur == L["MBOT"] then
+		elseif wcur == L["BadgeOfTaste"] then
 		    Where["BadgeOfTaste"] = SelIndex; settings.BadgeOfTaste.W = string.format("%.0f", SelIndex);
 		    if SelIndex == 1 then if not Show["BadgeOfTaste"] then ShowHideCurrency("BadgeOfTaste"); end
 		    else if Show["BadgeOfTaste"] then ShowHideCurrency("BadgeOfTaste"); end end
-		elseif wcur == L["MBOD"] then
+		elseif wcur == L["BadgeOfDishonour"] then
 		    Where["BadgeOfDishonour"] = SelIndex; settings.BadgeOfDishonour.W = string.format("%.0f", SelIndex);
 		    if SelIndex == 1 then if not Show["BadgeOfDishonour"] then ShowHideCurrency("BadgeOfDishonour"); end
 		    else if Show["BadgeOfDishonour"] then ShowHideCurrency("BadgeOfDishonour"); end end
-		elseif wcur == L["MLP"] then
+		elseif wcur == L["LOTROPoints"] then
 			Where["LOTROPoints"] = SelIndex; settings.LOTROPoints.W = string.format("%.0f", SelIndex);
 			if SelIndex == 1 then if not Show["LOTROPoints"] then ShowHideCurrency("LOTROPoints"); end
 			else if Show["LOTROPoints"] then ShowHideCurrency("LOTROPoints"); end end
@@ -380,37 +380,37 @@ function RefreshWIListBox()
 				LPWCtr:SetVisible( false );
 				WIbutSave:SetPosition( WIWCtr:GetWidth()/2 - WIbutSave:GetWidth()/2, WIDD:GetTop()+WIDD:GetHeight()+10 );
 
-				if wcur == L["MGSC"] then tw = Where["Money"]; -- 
-				elseif wcur == L["MDP"] then tw = Where["DestinyPoints"]; -- Destiny Points
-				elseif wcur == L["MSP"] then tw = Where["Shards"]; -- Shards
-				elseif wcur == L["MSM"] then tw = Where["SkirmishMarks"]; -- Skirmish marks
-				elseif wcur == L["MMC"] then tw = Where["MithrilCoins"]; -- Mithril Coins
-				elseif wcur == L["MYT"] then tw = Where["YuleToken"]; -- Yule Tokens
-				elseif wcur == L["MHT"] then tw = Where["HytboldTokens"]; -- Tokens of Hytbold
-				elseif wcur == L["MMP"] then tw = Where["Medallions"]; -- Medallions
-				elseif wcur == L["MSL"] then tw = Where["Seals"]; -- Seals
-				elseif wcur == L["MCP"] then tw = Where["Commendations"]; -- Commendations
-				elseif wcur == L["MLP"] then tw = Where["LOTROPoints"]; -- LOTRO Points
+				if wcur == L["Money"] then tw = Where["Money"]; -- 
+				elseif wcur == L["DestinyPoints"] then tw = Where["DestinyPoints"]; -- Destiny Points
+				elseif wcur == L["Shards"] then tw = Where["Shards"]; -- Shards
+				elseif wcur == L["SkirmishMarks"] then tw = Where["SkirmishMarks"]; -- Skirmish marks
+				elseif wcur == L["MithrilCoins"] then tw = Where["MithrilCoins"]; -- Mithril Coins
+				elseif wcur == L["YuleToken"] then tw = Where["YuleToken"]; -- Yule Tokens
+				elseif wcur == L["HytboldTokens"] then tw = Where["HytboldTokens"]; -- Tokens of Hytbold
+				elseif wcur == L["Medallions"] then tw = Where["Medallions"]; -- Medallions
+				elseif wcur == L["Seals"] then tw = Where["Seals"]; -- Seals
+				elseif wcur == L["Commendations"] then tw = Where["Commendations"]; -- Commendations
+				elseif wcur == L["LOTROPoints"] then tw = Where["LOTROPoints"]; -- LOTRO Points
 				LPWCtr:SetVisible( true ); -- LOTRO Points
 				WItxtLOTROPTS:SetText( _G.LOTROPTS ); -- LOTRO Points
 				WItxtLOTROPTS:Focus(); -- LOTRO Points
 				WIbutSave:SetPosition( WIWCtr:GetWidth()/2 - WIbutSave:GetWidth()/2, LPWCtr:GetTop()+LPWCtr:GetHeight()+10); -- LOTRO Points
-				elseif wcur == L["MASP"] then tw = Where["AmrothSilverPiece"]; -- Amroth Silver Piece
-				elseif wcur == L["MSOM"] then tw = Where["StarsofMerit"]; -- Stars of Merit
-				elseif wcur == L["MCGSP"] then tw = Where["CentralGondorSilverPiece"]; -- Central Gondor Silver Piece
-				elseif wcur == L["MGGB"] then tw = Where["GiftgiversBrand"]; -- Gift Giver's Brand
-				elseif wcur == L["MBB"] then tw = Where["BingoBadge"]; -- Bingo Badges
-				elseif wcur == L["MLAT"] then tw = Where["AnniversaryToken"]; -- Anniversary Tokens
-				elseif wcur == L["MMOE"] then tw = Where["MotesOfEnchantment"]; -- Motes of Enchantment
-				elseif wcur == L["MEOE"] then tw = Where["EmbersOfEnchantment"]; -- Embers of Enchantment
-				elseif wcur == L["MFOS"] then tw = Where["FigmentsOfSplendour"]; -- Figments of Splendour
-				elseif wcur == L["MFFT"] then tw = Where["FallFestivalToken"]; -- Fall Festival Token
-				elseif wcur == L["MFFAT"] then tw = Where["FarmersFaireToken"]; -- Farmers Faire Token
-				elseif wcur == L["MSPL"] then tw = Where["SpringLeaf"]; -- Spring Leaf
-				elseif wcur == L["MMST"] then tw = Where["MidsummerToken"]; -- Midsummer Token
-				elseif wcur == L["MAS"] then tw = Where["AncientScript"]; -- Ancient Script
-				elseif wcur == L["MBOT"] then tw = Where["BadgeOfTaste"]; -- Badge of Taste
-				elseif wcur == L["MBOD"] then tw = Where["BadgeOfDishonour"]; -- Badge of Dishonour
+				elseif wcur == L["AmrothSilverPiece"] then tw = Where["AmrothSilverPiece"]; -- Amroth Silver Piece
+				elseif wcur == L["StarsofMerit"] then tw = Where["StarsofMerit"]; -- Stars of Merit
+				elseif wcur == L["CentralGondorSilverPiece"] then tw = Where["CentralGondorSilverPiece"]; -- Central Gondor Silver Piece
+				elseif wcur == L["GiftgiversBrand"] then tw = Where["GiftgiversBrand"]; -- Gift Giver's Brand
+				elseif wcur == L["BingoBadge"] then tw = Where["BingoBadge"]; -- Bingo Badges
+				elseif wcur == L["AnniversaryToken"] then tw = Where["AnniversaryToken"]; -- Anniversary Tokens
+				elseif wcur == L["MotesOfEnchantment"] then tw = Where["MotesOfEnchantment"]; -- Motes of Enchantment
+				elseif wcur == L["EmbersOfEnchantment"] then tw = Where["EmbersOfEnchantment"]; -- Embers of Enchantment
+				elseif wcur == L["FigmentsOfSplendour"] then tw = Where["FigmentsOfSplendour"]; -- Figments of Splendour
+				elseif wcur == L["FallFestivalToken"] then tw = Where["FallFestivalToken"]; -- Fall Festival Token
+				elseif wcur == L["FarmersFaireToken"] then tw = Where["FarmersFaireToken"]; -- Farmers Faire Token
+				elseif wcur == L["SpringLeaf"] then tw = Where["SpringLeaf"]; -- Spring Leaf
+				elseif wcur == L["MidsummerToken"] then tw = Where["MidsummerToken"]; -- Midsummer Token
+				elseif wcur == L["AncientScript"] then tw = Where["AncientScript"]; -- Ancient Script
+				elseif wcur == L["BadgeOfTaste"] then tw = Where["BadgeOfTaste"]; -- Badge of Taste
+				elseif wcur == L["BadgeOfDishonour"] then tw = Where["BadgeOfDishonour"]; -- Badge of Dishonour
 				end
 				for k, v in pairs(WICBO) do if k == tonumber(tw) then WIDD:SetSelection(k); end end
 

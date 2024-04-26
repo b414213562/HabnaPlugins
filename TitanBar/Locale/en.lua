@@ -17,8 +17,8 @@ L[ "ButDel" ] = "Delete information of this character";
 --L[ "" ] = "";
 
 -- TitanBar Menu
-L[ "MBag" ] = "Wallet";
-L[ "MGSC" ] = "Money";
+L[ "Wallet" ] = "Wallet";
+L[ "Money" ] = "Money";
 L[ "MBI" ] = "Backpack infos";
 L[ "MPI" ] = "Player infos";
 L[ "MEI" ] = "Equipment infos";
@@ -47,82 +47,82 @@ L[ "MReputation" ] = "Reputation";
 
 -- Wallet Currency Controls
 -- LOTRO Points control
-L[ "MLP" ] = "LOTRO points";
-L[ "LPh" ] = "These are your LOTRO points";
+L[ "LOTROPoints" ] = "LOTRO points";
+L[ "LOTROPoints_tooltip" ] = "These are your LOTRO points";
 -- Mithril Coins control
-L[ "MMC" ] = "Mithril Coin";
-L[ "MCh" ] = "These are your Mitril coins";
+L[ "MithrilCoins" ] = "Mithril Coin";
+L[ "MithrilCoins_tooltip" ] = "These are your Mithril coins";
 -- Yule Tokens control
-L[ "MYT" ] = "Yule Festival Token";
-L[ "YTh" ] = "These are your Yule Festival Tokens";
+L[ "YuleToken" ] = "Yule Festival Token";
+L[ "YuleToken_tooltip" ] = "These are your Yule Festival Tokens";
 -- Anniversary Tokens control
-L[ "MLAT" ] = "Anniversary Token";
-L[ "LATh" ] = "These are your Anniversary Tokens";
+L[ "AnniversaryToken" ] = "Anniversary Token";
+L[ "AnniversaryToken_tooltip" ] = "These are your Anniversary Tokens";
 -- Bingo Badge control
-L[ "MBB" ] = "Bingo Badge";
-L[ "BBh" ] = "These are your Bingo Badges";
+L[ "BingoBadge" ] = "Bingo Badge";
+L[ "BingoBadge_tooltip" ] = "These are your Bingo Badges";
 -- Skirmish marks control
-L[ "MSM" ] = "Mark";
-L[ "SMh" ] = "These are your skirmish marks";
+L[ "SkirmishMarks" ] = "Mark";
+L[ "SkirmishMarks_tooltip" ] = "These are your skirmish marks";
 -- Destiny Points control
-L[ "MDP" ] = "Destiny point";
-L[ "DPh" ] = "These are your destiny points";
+L[ "DestinyPoints" ] = "Destiny point";
+L[ "DestinyPoints_tooltip" ] = "These are your destiny points";
 -- Shards control
-L[ "MSP" ] = "Shard";
-L[ "SPh" ] = "These are your shard";
+L[ "Shards" ] = "Shard";
+L[ "Shards_tooltip" ] = "These are your shard";
 -- Tokens of Hytbold control
-L[ "MHT" ] = "Token of Hytbold";
-L[ "HTh" ] = "These are your Tokens of Hytbold";
+L[ "HytboldTokens" ] = "Token of Hytbold";
+L[ "HytboldTokens_tooltip" ] = "These are your Tokens of Hytbold";
 -- Medallions control
-L[ "MMP" ] = "Medallion";
-L[ "MPh" ] = "These are your medallions";
+L[ "Medallions" ] = "Medallion";
+L[ "Medallions_tooltip" ] = "These are your medallions";
 -- Seals control
-L[ "MSL" ] = "Seal";
-L[ "SLh" ] = "These are your seals";
+L[ "Seals" ] = "Seal";
+L[ "Seals_tooltip" ] = "These are your seals";
 -- Commendations control
-L[ "MCP" ] = "Commendation";
-L[ "CPh" ] = "These are your Commendations";
+L[ "Commendations" ] = "Commendation";
+L[ "Commendations_tooltip" ] = "These are your Commendations";
 -- Amroth Silver Piece control
-L[ "MASP" ] = "Amroth Silver Piece";
-L[ "ASPh" ] = "These are your Amroth Silver Pieces";
+L[ "AmrothSilverPiece" ] = "Amroth Silver Piece";
+L[ "AmrothSilverPiece_tooltip" ] = "These are your Amroth Silver Pieces";
 -- Stars of Merit control
-L[ "MSOM" ] = "Star of Merit";
-L[ "SOMh" ] = "These are your Stars of Merit";
+L[ "StarsofMerit" ] = "Star of Merit";
+L[ "StarsofMerit_tooltip" ] = "These are your Stars of Merit";
 -- Central Gondor Silver Piece control
-L[ "MCGSP" ] = "Central Gondor Silver Piece";
-L[ "CGSPh" ] = "These are your Central Gondor Silver Pieces";
+L[ "CentralGondorSilverPiece" ] = "Central Gondor Silver Piece";
+L[ "CentralGondorSilverPiece_tooltip" ] = "These are your Central Gondor Silver Pieces";
 -- Gift giver's Brand control
-L[ "MGGB" ] = "Gift-giver's Brand";
-L[ "GGBh" ] = "These are your Gift-giver's Brands";
+L[ "GiftgiversBrand" ] = "Gift-giver's Brand";
+L[ "GiftgiversBrand_tooltip" ] = "These are your Gift-giver's Brands";
 -- Motes of Enchantment control
-L[ "MMOE" ] = "Motes of Enchantment";
-L[ "MOEh" ] = "These are your Motes of Enchantment";
+L[ "MotesOfEnchantment" ] = "Motes of Enchantment";
+L[ "MotesOfEnchantment_tooltip" ] = "These are your Motes of Enchantment";
 -- Embers of Enchantment control
-L[ "MEOE" ] = "Embers of Enchantment";
-L[ "EOEh" ] = "These are your Embers of Enchantment";
+L[ "EmbersOfEnchantment" ] = "Embers of Enchantment";
+L[ "EmbersOfEnchantment_tooltip" ] = "These are your Embers of Enchantment";
 -- Figments of Splendour control
-L[ "MFOS" ] = "Figments of Splendour";
-L[ "FOSh" ] = "These are your Figments of Splendour";
+L[ "FigmentsOfSplendour" ] = "Figments of Splendour";
+L[ "FigmentsOfSplendour_tooltip" ] = "These are your Figments of Splendour";
 -- Fall Festival Tokens control
-L[ "MFFT" ] = "Fall Festival Token";
-L[ "FFTh" ] = "These are your Fall Festival Tokens";
+L[ "FallFestivalToken" ] = "Fall Festival Token";
+L[ "FallFestivalToken_tooltip" ] = "These are your Fall Festival Tokens";
 -- Farmers Faire Tokens control
-L[ "MFFAT" ] = "Farmers Faire Token";
-L[ "FFATh" ] = "These are your Farmers Faire Tokens";
+L[ "FarmersFaireToken" ] = "Farmers Faire Token";
+L[ "FarmersFaireToken_tooltip" ] = "These are your Farmers Faire Tokens";
 -- Spring Leaves control
-L[ "MSPL" ] = "Spring Leaf";
-L[ "SPLh" ] = "These are your Spring Leaves";
+L[ "SpringLeaf" ] = "Spring Leaf";
+L[ "SpringLeaf_tooltip" ] = "These are your Spring Leaves";
 -- Midsummer Tokens control
-L[ "MMST" ] = "Midsummer Token";
-L[ "MSTh" ] = "These are your Midsummer Tokens";
+L[ "MidsummerToken" ] = "Midsummer Token";
+L[ "MidsummerToken_tooltip" ] = "These are your Midsummer Tokens";
 -- Ancient Script control
-L[ "MAS" ] = "Ancient Script";
-L[ "ASh" ] = "These are your Ancient Scripts";
+L[ "AncientScript" ] = "Ancient Script";
+L[ "AncientScript_tooltip" ] = "These are your Ancient Scripts";
 -- Inn League / Ale Association control
-L[ "MBOT" ] = "Badge of Taste";
-L[ "BOTh" ] = "These are your Badges of Taste";
-L[ "MBOD" ] = "Badge of Dishonour";
-L[ "BODh" ] = "These are your Badges of Dishonour";
+L[ "BadgeOfTaste" ] = "Badge of Taste";
+L[ "BadgeOfTaste_tooltip" ] = "These are your Badges of Taste";
+L[ "BadgeOfDishonour" ] = "Badge of Dishonour";
+L[ "BadgeOfDishonour_tooltip" ] = "These are your Badges of Dishonour";
 
 -- Control Menu
 L[ "MCU" ] = "Unload ...";

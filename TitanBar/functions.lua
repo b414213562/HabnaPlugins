@@ -171,7 +171,7 @@ function ShowToolTipWin( ToShow )
 		if w + mouseX > screenWidth then bblTo = "right"; x = w - 10; end
 		h = 65;
 		if not TBTop then y = h; end
-		TTW = createToolTipWin( x, y, w, h, bblTo, L["DPh"], L["EIt2"], L["EIt3"] );
+		TTW = createToolTipWin( x, y, w, h, bblTo, L["DestinyPoints_tooltip"], L["EIt2"], L["EIt3"] );
 	elseif ToShow == "BI" then -- Bag Infos
 		if w + mouseX > screenWidth then bblTo = "right"; x = w - 10; end
 		h = 80;
@@ -181,47 +181,47 @@ function ShowToolTipWin( ToShow )
 		if w + mouseX > screenWidth then bblTo = "right"; x = w - 10; end
 		h = 65;
 		if not TBTop then y = h; end
-		TTW = createToolTipWin( x, y, w, h, bblTo, L["SPh"], L["EIt2"], L["EIt3"] );
+		TTW = createToolTipWin( x, y, w, h, bblTo, L["Shards_tooltip"], L["EIt2"], L["EIt3"] );
 	elseif ToShow == "SM" then -- Skirmish marks
 		if w + mouseX > screenWidth then bblTo = "right"; x = w - 10; end
 		h = 65;
 		if not TBTop then y = h; end
-		TTW = createToolTipWin( x, y, w, h, bblTo, L["SMh"], L["EIt2"], L["EIt3"] );
+		TTW = createToolTipWin( x, y, w, h, bblTo, L["SkirmishMarks_tooltip"], L["EIt2"], L["EIt3"] );
 	elseif ToShow == "MC" then -- Mithril Coins
 		if w + mouseX > screenWidth then bblTo = "right"; x = w - 10; end
 		h = 65;
 		if not TBTop then y = h; end
-		TTW = createToolTipWin( x, y, w, h, bblTo, L["MCh"], L["EIt2"], 
+		TTW = createToolTipWin( x, y, w, h, bblTo, L["MithrilCoins_tooltip"], L["EIt2"], 
             L["EIt3"] );
 	elseif ToShow == "YT" then -- Yule Tokens
 		if w + mouseX > screenWidth then bblTo = "right"; x = w - 10; end
 		h = 65;
 		if not TBTop then y = h; end
-		TTW = createToolTipWin( x, y, w, h, bblTo, L["YTh"], L["EIt2"], 
+		TTW = createToolTipWin( x, y, w, h, bblTo, L["YuleToken_tooltip"], L["EIt2"], 
             L["EIt3"] );
 	elseif ToShow == "HT" then -- Tokens of Hytbold
 		if w + mouseX > screenWidth then bblTo = "right"; x = w - 10; end
 		h = 65;
 		if not TBTop then y = h; end
-		TTW = createToolTipWin( x, y, w, h, bblTo, L["HTh"], L["EIt2"], 
+		TTW = createToolTipWin( x, y, w, h, bblTo, L["HytboldTokens_tooltip"], L["EIt2"], 
             L["EIt3"] );
 	elseif ToShow == "MP" then -- Medallions
 		if w + mouseX > screenWidth then bblTo = "right"; x = w - 10; end
 		h = 65;
 		if not TBTop then y = h; end
-		TTW = createToolTipWin( x, y, w, h, bblTo, L["MPh"], L["EIt2"], 
+		TTW = createToolTipWin( x, y, w, h, bblTo, L["Medallions_tooltip"], L["EIt2"], 
             L["EIt3"] );
 	elseif ToShow == "SL" then -- Seals
 		if w + mouseX > screenWidth then bblTo = "right"; x = w - 10; end
 		h = 65;
 		if not TBTop then y = h; end
-		TTW = createToolTipWin( x, y, w, h, bblTo, L["SLh"], L["EIt2"], 
+		TTW = createToolTipWin( x, y, w, h, bblTo, L["Seals_tooltip"], L["EIt2"], 
             L["EIt3"] );
 	elseif ToShow == "CP" then -- Commendations
 		if w + mouseX > screenWidth then bblTo = "right"; x = w - 10; end
 		h = 65;
 		if not TBTop then y = h; end
-		TTW = createToolTipWin( x, y, w, h, bblTo, L["CPh"], L["EIt2"], 
+		TTW = createToolTipWin( x, y, w, h, bblTo, L["Commendations_tooltip"], L["EIt2"], 
             L["EIt3"] );
 	elseif ToShow == "PL" then -- Player Location
 		if w + mouseX > screenWidth then bblTo = "right"; x = w - 10; end
@@ -263,93 +263,93 @@ function ShowToolTipWin( ToShow )
 		if w + mouseX > screenWidth then bblTo = "right"; x = w - 10; end
 		h = 80;
 		if not TBTop then y = h; end
-		TTW = createToolTipWin( x, y, w, h, bblTo, L["LPh"], L["EIt1"], 
+		TTW = createToolTipWin( x, y, w, h, bblTo, L["LOTROPoints_tooltip"], L["EIt1"], 
             L["EIt2"], L["EIt3"] );
 	elseif ToShow == "ASP" then -- Amroth Silver Piece
 		if w + mouseX > screenWidth then bblTo = "right"; x = w - 10; end
 		h = 65;
 		if not TBTop then y = h; end
-		TTW = createToolTipWin( x, y, w, h, bblTo, L["ASPh"], L["EIt2"], 
+		TTW = createToolTipWin( x, y, w, h, bblTo, L["AmrothSilverPiece_tooltip"], L["EIt2"], 
             L["EIt3"] );
 	elseif ToShow == "SOM" then -- Stars of Merit
 		if w + mouseX > screenWidth then bblTo = "right"; x = w - 10; end
 		h = 65;
 		if not TBTop then y = h; end
-		TTW = createToolTipWin( x, y, w, h, bblTo, L["SOMh"], L["EIt2"], 
+		TTW = createToolTipWin( x, y, w, h, bblTo, L["StarsofMerit_tooltip"], L["EIt2"], 
             L["EIt3"] );
 	elseif ToShow == "CGSP" then -- Central Gondor Silver Piece
 		if w + mouseX > screenWidth then bblTo = "right"; x = w - 10; end
 		h = 65;
 		if not TBTop then y = h; end
-		TTW = createToolTipWin( x, y, w+30, h, bblTo, L["CGSPh"], L["EIt2"], 
+		TTW = createToolTipWin( x, y, w+30, h, bblTo, L["CentralGondorSilverPiece_tooltip"], L["EIt2"], 
             L["EIt3"] );
 	elseif ToShow == "GGB" then -- Gift giver's Brand
 		if w + mouseX > screenWidth then bblTo = "right"; x = w - 10; end
 		h = 65;
 		if not TBTop then y = h; end
-		TTW = createToolTipWin( x, y, w, h, bblTo, L["GGBh"], L["EIt2"], 
+		TTW = createToolTipWin( x, y, w, h, bblTo, L["GiftgiversBrand_tooltip"], L["EIt2"], 
             L["EIt3"] );
 	elseif ToShow == "BB" then -- Bingo Badge
 		if w + mouseX > screenWidth then bblTo = "right"; x = w - 10; end
 		h = 65;
 		if not TBTop then y = h; end
-		TTW = createToolTipWin( x, y, w, h, bblTo, L["BBh"], L["EIt2"], 
+		TTW = createToolTipWin( x, y, w, h, bblTo, L["BingoBadge_tooltip"], L["EIt2"], 
             L["EIt3"] );
 	elseif ToShow == "LAT" then -- Anniversary Token
 		if w + mouseX > screenWidth then bblTo = "right"; x = w - 10; end
 		h = 65;
 		if not TBTop then y = h; end
-		TTW = createToolTipWin( x, y, w, h, bblTo, L["LATh"], L["EIt2"], L["EIt3"] );
+		TTW = createToolTipWin( x, y, w, h, bblTo, L["AnniversaryToken_tooltip"], L["EIt2"], L["EIt3"] );
 	elseif ToShow == "MOE" then -- Motes of Enchantment
 		if w + mouseX > screenWidth then bblTo = "right"; x = w - 10; end
 		h = 65;
 		if not TBTop then y = h; end
-		TTW = createToolTipWin( x, y, w, h, bblTo, L["MOEh"], L["EIt2"], L["EIt3"] );	
+		TTW = createToolTipWin( x, y, w, h, bblTo, L["MotesOfEnchantment_tooltip"], L["EIt2"], L["EIt3"] );	
 	elseif ToShow == "EOE" then -- Embers of Enchantment
 		if w + mouseX > screenWidth then bblTo = "right"; x = w - 10; end
 		h = 65;
 		if not TBTop then y = h; end
-		TTW = createToolTipWin( x, y, w, h, bblTo, L["EOEh"], L["EIt2"], L["EIt3"] );
+		TTW = createToolTipWin( x, y, w, h, bblTo, L["EmbersOfEnchantment_tooltip"], L["EIt2"], L["EIt3"] );
 	elseif ToShow == "FOS" then -- Figments of Splendour
 		if w + mouseX > screenWidth then bblTo = "right"; x = w - 10; end
 		h = 65;
 		if not TBTop then y = h; end
-		TTW = createToolTipWin( x, y, w, h, bblTo, L["FOSh"], L["EIt2"], L["EIt3"] );
+		TTW = createToolTipWin( x, y, w, h, bblTo, L["FigmentsOfSplendour_tooltip"], L["EIt2"], L["EIt3"] );
 	elseif ToShow == "FFT" then -- Fall Festival Tokens
 		if w + mouseX > screenWidth then bblTo = "right"; x = w - 10; end
 		h = 65;
 		if not TBTop then y = h; end
-		TTW = createToolTipWin( x, y, w, h, bblTo, L["FFTh"], L["EIt2"], L["EIt3"] );
+		TTW = createToolTipWin( x, y, w, h, bblTo, L["FallFestivalToken_tooltip"], L["EIt2"], L["EIt3"] );
 	elseif ToShow == "FFAT" then -- Farmers Faire Token
 		if w + mouseX > screenWidth then bblTo = "right"; x = w - 10; end
 		h = 65;
 		if not TBTop then y = h; end
-		TTW = createToolTipWin( x, y, w, h, bblTo, L["FFATh"], L["EIt2"], L["EIt3"] );
+		TTW = createToolTipWin( x, y, w, h, bblTo, L["FarmersFaireToken_tooltip"], L["EIt2"], L["EIt3"] );
 	elseif ToShow == "SPL" then -- Spring Leaves
 		if w + mouseX > screenWidth then bblTo = "right"; x = w - 10; end
 		h = 65;
 		if not TBTop then y = h; end
-		TTW = createToolTipWin( x, y, w, h, bblTo, L["SPLh"], L["EIt2"], L["EIt3"] );
+		TTW = createToolTipWin( x, y, w, h, bblTo, L["SpringLeaf_tooltip"], L["EIt2"], L["EIt3"] );
 	elseif ToShow == "MST" then -- Midsummer Tokens
 		if w + mouseX > screenWidth then bblTo = "right"; x = w - 10; end
 		h = 65;
 		if not TBTop then y = h; end
-		TTW = createToolTipWin( x, y, w, h, bblTo, L["MSTh"], L["EIt2"], L["EIt3"] );
+		TTW = createToolTipWin( x, y, w, h, bblTo, L["MidsummerToken_tooltip"], L["EIt2"], L["EIt3"] );
 	elseif ToShow == "AS" then -- Ancient Script
 		if w + mouseX > screenWidth then bblTo = "right"; x = w - 10; end
 		h = 65;
 		if not TBTop then y = h; end
-		TTW = createToolTipWin( x, y, w, h, bblTo, L["ASh"], L["EIt2"], L["EIt3"] );			
+		TTW = createToolTipWin( x, y, w, h, bblTo, L["AncientScript_tooltip"], L["EIt2"], L["EIt3"] );			
 	elseif ToShow == "BOT" then -- Badge of Taste
 		if w + mouseX > screenWidth then bblTo = "right"; x = w - 10; end
 		h = 65;
 		if not TBTop then y = h; end
-		TTW = createToolTipWin( x, y, w, h, bblTo, L["BOTh"], L["EIt2"], L["EIt3"] );
+		TTW = createToolTipWin( x, y, w, h, bblTo, L["BadgeOfTaste_tooltip"], L["EIt2"], L["EIt3"] );
 	elseif ToShow == "BOD" then -- Badge of Dishonour
 		if w + mouseX > screenWidth then bblTo = "right"; x = w - 10; end
 		h = 65;
 		if not TBTop then y = h; end
-		TTW = createToolTipWin( x, y, w, h, bblTo, L["BODh"], L["EIt2"], L["EIt3"] );
+		TTW = createToolTipWin( x, y, w, h, bblTo, L["BadgeOfDishonour_tooltip"], L["EIt2"], L["EIt3"] );
 	end
 
 	_G.ToolTipWin:SetPosition( mouseX - _G.ToolTipWin.xOffset, mouseY - 
@@ -469,7 +469,7 @@ end
 --**v Update Shards currency on TitanBar v**
 function UpdateShards()
 	if Where["Shards"] == 1 then
-		SP[ "Lbl" ]:SetText( GetCurrency( L[ "MSP" ] ) );
+		SP[ "Lbl" ]:SetText( GetCurrency( L[ "Shards" ] ) );
 		SP[ "Lbl" ]:SetSize( SP[ "Lbl" ]:GetTextLength() * NM, CTRHeight ); 
 		AjustIcon( "SP" );
 	end
@@ -478,7 +478,7 @@ end
 --**v Update Marks currency on TitanBar v**
 function UpdateMarks()
 	if Where["SkirmishMarks"] == 1 then
-		SM[ "Lbl" ]:SetText( GetCurrency( L[ "MSM" ] ) );
+		SM[ "Lbl" ]:SetText( GetCurrency( L[ "SkirmishMarks" ] ) );
 		SM[ "Lbl" ]:SetSize( SM[ "Lbl" ]:GetTextLength() * NM, CTRHeight ); 
 		AjustIcon( "SM" );
 	end
@@ -487,7 +487,7 @@ end
 --**v Update Mithril Coins currency on TitanBar v**
 function UpdateMithril()
 	if Where["MithrilCoins"] == 1 then
-		MC[ "Lbl" ]:SetText( GetCurrency( L[ "MMC" ] ) );
+		MC[ "Lbl" ]:SetText( GetCurrency( L[ "MithrilCoins" ] ) );
 		MC[ "Lbl" ]:SetSize( MC[ "Lbl" ]:GetTextLength() * NM, CTRHeight ); 
 		AjustIcon( "MC" );
 	end
@@ -496,7 +496,7 @@ end
 --**v Update Yule Tokens currency on TitanBar v**
 function UpdateYuleToken()
 	if Where["YuleToken"] == 1 then
-		YT[ "Lbl" ]:SetText( GetCurrency( L[ "MYT" ] ) );
+		YT[ "Lbl" ]:SetText( GetCurrency( L[ "YuleToken" ] ) );
 		YT[ "Lbl" ]:SetSize( YT[ "Lbl" ]:GetTextLength() * NM, CTRHeight ); 
 		AjustIcon( "YT" );
 	end
@@ -505,7 +505,7 @@ end
 --**v Update Tokens of Hytbold currency on TitanBar v**
 function UpdateHytboldTokens()
 	if Where["HytboldTokens"] == 1 then
-		HT[ "Lbl" ]:SetText( GetCurrency( L[ "MHT" ] ) );
+		HT[ "Lbl" ]:SetText( GetCurrency( L[ "HytboldTokens" ] ) );
 		HT[ "Lbl" ]:SetSize( HT[ "Lbl" ]:GetTextLength() * NM, CTRHeight ); 
 		AjustIcon( "HT" );
 	end
@@ -514,7 +514,7 @@ end
 --**v Update Medallions currency on TitanBar v**
 function UpdateMedallions()
 	if Where["Medallions"] == 1 then
-		MP[ "Lbl" ]:SetText( GetCurrency( L[ "MMP" ] ) );
+		MP[ "Lbl" ]:SetText( GetCurrency( L[ "Medallions" ] ) );
 		MP[ "Lbl" ]:SetSize( MP[ "Lbl" ]:GetTextLength() * NM, CTRHeight ); 
 		AjustIcon( "MP" );
 	end
@@ -523,7 +523,7 @@ end
 --**v Update Seals currency on TitanBar v**
 function UpdateSeals()
 	if Where["Seals"] == 1 then
-		SL[ "Lbl" ]:SetText( GetCurrency( L[ "MSL" ] ) );
+		SL[ "Lbl" ]:SetText( GetCurrency( L[ "Seals" ] ) );
 		SL[ "Lbl" ]:SetSize( SL[ "Lbl" ]:GetTextLength() * NM, CTRHeight ); 
 		AjustIcon( "SL" );
 	end
@@ -532,7 +532,7 @@ end
 --**v Update Commendations currency on TitanBar v**
 function UpdateCommendations()
 	if Where["Commendations"] == 1 then
-		CP[ "Lbl" ]:SetText( GetCurrency( L[ "MCP" ] ) );
+		CP[ "Lbl" ]:SetText( GetCurrency( L[ "Commendations" ] ) );
 		CP[ "Lbl" ]:SetSize( CP[ "Lbl" ]:GetTextLength() * NM, CTRHeight ); 
 		AjustIcon( "CP" );
 	end
@@ -552,7 +552,7 @@ end
 --**v Update Amroth Silver Piece currency on TitanBar v**
 function UpdateAmrothSilverPiece()
 	if Where["AmrothSilverPiece"] == 1 then
-		ASP[ "Lbl" ]:SetText( GetCurrency( L[ "MASP" ] ) );
+		ASP[ "Lbl" ]:SetText( GetCurrency( L[ "AmrothSilverPiece" ] ) );
 		ASP[ "Lbl" ]:SetSize( ASP[ "Lbl" ]:GetTextLength() * NM, CTRHeight ); 
 		AjustIcon( "ASP" );
 	end
@@ -561,7 +561,7 @@ end
 --**v Update Stars of Merit currency on TitanBar v**
 function UpdateStarsofMerit()
 	if Where["StarsofMerit"] == 1 then
-		SOM[ "Lbl" ]:SetText( GetCurrency( L[ "MSOM" ] ) );
+		SOM[ "Lbl" ]:SetText( GetCurrency( L[ "StarsofMerit" ] ) );
 		SOM[ "Lbl" ]:SetSize( SOM[ "Lbl" ]:GetTextLength() * NM, CTRHeight ); 
 		AjustIcon( "SOM" );
 	end
@@ -570,7 +570,7 @@ end
 --**v Update Central Gondor Silver Piece currency on TitanBar v**
 function UpdateCentralGondorSilverPiece()
 	if Where["CentralGondorSilverPiece"] == 1 then
-		CGSP[ "Lbl" ]:SetText( GetCurrency( L[ "MCGSP" ] ) );
+		CGSP[ "Lbl" ]:SetText( GetCurrency( L[ "CentralGondorSilverPiece" ] ) );
 		CGSP[ "Lbl" ]:SetSize( CGSP[ "Lbl" ]:GetTextLength() * NM, CTRHeight ); 
 		AjustIcon( "CGSP" );
 	end
@@ -579,7 +579,7 @@ end
 --**v Update Gift giver's Brand currency on TitanBar v**
 function UpdateGiftgiversBrand()
 	if Where["GiftgiversBrand"] == 1 then
-		GGB[ "Lbl" ]:SetText( GetCurrency( L[ "MGGB" ] ) );
+		GGB[ "Lbl" ]:SetText( GetCurrency( L[ "GiftgiversBrand" ] ) );
 		GGB[ "Lbl" ]:SetSize( GGB[ "Lbl" ]:GetTextLength() * NM, CTRHeight ); 
 		AjustIcon( "GGB" );
 	end
@@ -588,7 +588,7 @@ end
 --**v Update Bingo Badge currency on TitanBar v**
 function UpdateBingoBadge()
 	if Where["BingoBadge"] == 1 then
-		BB[ "Lbl" ]:SetText( GetCurrency( L[ "MBB" ] ) );
+		BB[ "Lbl" ]:SetText( GetCurrency( L[ "BingoBadge" ] ) );
 		BB[ "Lbl" ]:SetSize( BB[ "Lbl" ]:GetTextLength() * NM, CTRHeight ); 
 		AjustIcon( "BB" );
 	end
@@ -597,7 +597,7 @@ end
 --**v Update Anniversary Token currency on TitanBar v**
 function UpdateAnniversaryToken()
 	if Where["AnniversaryToken"] == 1 then
-		LAT[ "Lbl" ]:SetText( GetCurrency( L[ "MLAT" ] ) );
+		LAT[ "Lbl" ]:SetText( GetCurrency( L[ "AnniversaryToken" ] ) );
 		LAT[ "Lbl" ]:SetSize( LAT[ "Lbl" ]:GetTextLength() * NM, CTRHeight ); 
 		AjustIcon( "LAT" );
 	end
@@ -606,7 +606,7 @@ end
 --**v Update Motes of Enchantment currency on TitanBar v**
 function UpdateMotesOfEnchantment()
 	if Where["MotesOfEnchantment"] == 1 then
-		MOE[ "Lbl" ]:SetText( GetCurrency( L[ "MMOE" ] ) );
+		MOE[ "Lbl" ]:SetText( GetCurrency( L[ "MotesOfEnchantment" ] ) );
 		MOE[ "Lbl" ]:SetSize( MOE[ "Lbl" ]:GetTextLength() * NM, CTRHeight ); 
 		AjustIcon( "MOE" );
 	end
@@ -615,7 +615,7 @@ end
 --**v Update Embers of Enchantment currency on TitanBar v**
 function UpdateEmbersOfEnchantment()
 	if Where["EmbersOfEnchantment"] == 1 then
-		EOE[ "Lbl" ]:SetText( GetCurrency( L[ "MEOE" ] ) );
+		EOE[ "Lbl" ]:SetText( GetCurrency( L[ "EmbersOfEnchantment" ] ) );
 		EOE[ "Lbl" ]:SetSize( EOE[ "Lbl" ]:GetTextLength() * NM, CTRHeight ); 
 		AjustIcon( "EOE" );
 	end
@@ -624,7 +624,7 @@ end
 --**v Update Figments of Splendour currency on TitanBar v**
 function UpdateFigmentsOfSplendour()
 	if Where["FigmentsOfSplendour"] == 1 then
-		FOS[ "Lbl" ]:SetText( GetCurrency( L[ "MFOS" ] ) );
+		FOS[ "Lbl" ]:SetText( GetCurrency( L[ "FigmentsOfSplendour" ] ) );
 		FOS[ "Lbl" ]:SetSize( FOS[ "Lbl" ]:GetTextLength() * NM, CTRHeight ); 
 		AjustIcon( "FOS" );
 	end
@@ -633,7 +633,7 @@ end
 --**v Update Fall Festival Tokens currency on TitanBar v**
 function UpdateFallFestivalToken()
 	if Where["FallFestivalToken"] == 1 then
-		FFT[ "Lbl" ]:SetText( GetCurrency( L[ "MFFT" ] ) );
+		FFT[ "Lbl" ]:SetText( GetCurrency( L[ "FallFestivalToken" ] ) );
 		FFT[ "Lbl" ]:SetSize( FFT[ "Lbl" ]:GetTextLength() * NM, CTRHeight ); 
 		AjustIcon( "FFT" );
 	end
@@ -642,7 +642,7 @@ end
 --**v Update Farmers Faire Tokens currency on TitanBar v**
 function UpdateFarmersFaireToken()
 	if Where["FarmersFaireToken"] == 1 then
-		FFAT[ "Lbl" ]:SetText( GetCurrency( L[ "MFFAT" ] ) );
+		FFAT[ "Lbl" ]:SetText( GetCurrency( L[ "FarmersFaireToken" ] ) );
 		FFAT[ "Lbl" ]:SetSize( FFAT[ "Lbl" ]:GetTextLength() * NM, CTRHeight ); 
 		AjustIcon( "FFAT" );
 	end
@@ -651,7 +651,7 @@ end
 --**v Update Spring Leaves currency on TitanBar v**
 function UpdateSpringLeaf()
 	if Where["SpringLeaf"] == 1 then
-		SPL[ "Lbl" ]:SetText( GetCurrency( L[ "MSPL" ] ) );
+		SPL[ "Lbl" ]:SetText( GetCurrency( L[ "SpringLeaf" ] ) );
 		SPL[ "Lbl" ]:SetSize( SPL[ "Lbl" ]:GetTextLength() * NM, CTRHeight ); 
 		AjustIcon( "SPL" );
 	end
@@ -660,7 +660,7 @@ end
 --**v Update Midsummer Token currency on TitanBar v**
 function UpdateMidsummerToken()
 	if Where["MidsummerToken"] == 1 then
-		MST[ "Lbl" ]:SetText( GetCurrency( L[ "MMST" ] ) );
+		MST[ "Lbl" ]:SetText( GetCurrency( L[ "MidsummerToken" ] ) );
 		MST[ "Lbl" ]:SetSize( MST[ "Lbl" ]:GetTextLength() * NM, CTRHeight ); 
 		AjustIcon( "MST" );
 	end
@@ -669,7 +669,7 @@ end
 --**v Update Ancient Script currency on TitanBar v**
 function UpdateAncientScript()
 	if Where["AncientScript"] == 1 then
-		AS[ "Lbl" ]:SetText( GetCurrency( L[ "MAS" ] ) );
+		AS[ "Lbl" ]:SetText( GetCurrency( L[ "AncientScript" ] ) );
 		AS[ "Lbl" ]:SetSize( AS[ "Lbl" ]:GetTextLength() * NM, CTRHeight ); 
 		AjustIcon( "AS" );
 	end
@@ -678,7 +678,7 @@ end
 --**v Update Badge of Taste currency on TitanBar v**
 function UpdateBadgeOfTaste()
 	if Where["BadgeOfTaste"] == 1 then
-		BOT[ "Lbl" ]:SetText( GetCurrency( L[ "MBOT" ] ) );
+		BOT[ "Lbl" ]:SetText( GetCurrency( L[ "BadgeOfTaste" ] ) );
 		BOT[ "Lbl" ]:SetSize( BOT[ "Lbl" ]:GetTextLength() * NM, CTRHeight ); 
 		AjustIcon( "BOT" );
 	end
@@ -687,7 +687,7 @@ end
 --**v Update Badge of Dishonour currency on TitanBar v**
 function UpdateBadgeOfDishonour()
 	if Where["BadgeOfDishonour"] == 1 then
-		BOD[ "Lbl" ]:SetText( GetCurrency( L[ "MBOD" ] ) );
+		BOD[ "Lbl" ]:SetText( GetCurrency( L[ "BadgeOfDishonour" ] ) );
 		BOD[ "Lbl" ]:SetSize( BOD[ "Lbl" ]:GetTextLength() * NM, CTRHeight ); 
 		AjustIcon( "BOD" );
 	end
