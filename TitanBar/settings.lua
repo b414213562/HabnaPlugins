@@ -158,6 +158,24 @@ function SaveControlSettings(settings, key)
     end
 end
 
+function ResetControlSettings(key)
+	Show[key] = false;
+    BC.Alpha[key] = tA;
+    BC.Red[key] = tR;
+    BC.Green[key] = tG;
+    BC.Blue[key] = tB;
+    Position.Left[key] = tX;
+    Position.Top[key] = tY;
+    if (HasWindow[key]) then
+        PositionW.Left[key] = tL;
+        PositionW.Top[key] = tT;
+    end
+    if (not DoesNotHaveWhere[key]) then
+        local where = tW;
+        if (key == "Money") then where = 1; end
+		Where[key] = where;
+    end
+end
 
 -- **v Load / update / set default settings v**
 -- I'm confused as to what most of this is... Most of these strings should be in localization files, and I believe they are - so why are they here too?  Deprecated code that hasn't been cleaned up yet?
@@ -822,17 +840,17 @@ function ResetSettings()
 	tL, tT = 100, 100;
 	
 	TBHeight, _G.TBFont, TBFontT, TBTop, TBAutoHide, TBIconSize, bcAlpha, bcRed, bcGreen, bcBlue = 30, 1107296268, "TrajanPro14", true, L["OPAHC"], 32, tA, tR, tG, tB; --Backcolor & default X Location for TitanBar
-	Show["Wallet"], BC.Alpha["Wallet"], BC.Red["Wallet"], BC.Green["Wallet"], BC.Blue["Wallet"], Position.Left["Wallet"], Position.Top["Wallet"] = false, tA, tR, tG, tB, tX, tY; --for Wallet Control
-	Show["Money"], _G.STM, _G.SSS, _G.STS, BC.Alpha["Money"], BC.Red["Money"], BC.Green["Money"], BC.Blue["Money"], Position.Left["Money"], Position.Top["Money"], Where["Money"] = true, false, true, true, tA, tR, tG, tB, 400, tY, 1; --for Money Control
-	Show["DestinyPoints"], BC.Alpha["DestinyPoints"], BC.Red["DestinyPoints"], BC.Green["DestinyPoints"], BC.Blue["DestinyPoints"], Position.Left["DestinyPoints"], Position.Top["DestinyPoints"], Where["DestinyPoints"] = false, tA, tR, tG, tB, tX, tY, tW; --for Destiny points Control
-	Show["Shards"], BC.Alpha["Shards"], BC.Red["Shards"], BC.Green["Shards"], BC.Blue["Shards"], Position.Left["Shards"], Position.Top["Shards"], Where["Shards"] = false, tA, tR, tG, tB, tX, tY, tW; --for Shards Control
-	Show["SkirmishMarks"], BC.Alpha["SkirmishMarks"], BC.Red["SkirmishMarks"], BC.Green["SkirmishMarks"], BC.Blue["SkirmishMarks"], Position.Left["SkirmishMarks"], Position.Top["SkirmishMarks"], Where["SkirmishMarks"] = false, tA, tR, tG, tB, tX, tY, tW; --for Skirmish marks Control
-	Show["MithrilCoins"], BC.Alpha["MithrilCoins"], BC.Red["MithrilCoins"], BC.Green["MithrilCoins"], BC.Blue["MithrilCoins"], Position.Left["MithrilCoins"], Position.Top["MithrilCoins"], Where["MithrilCoins"] = false, tA, tR, tG, tB, tX, tY, tW; --for Mithril Coins Control
-	Show["YuleToken"], BC.Alpha["YuleToken"], BC.Red["YuleToken"], BC.Green["YuleToken"], BC.Blue["YuleToken"], _G.TLocX, Position.Top["YuleToken"], Where["YuleToken"] = false, tA, tR, tG, tB, tX, tY, tW; --for Yule Tokens Control
-	Show["HytboldTokens"], BC.Alpha["HytboldTokens"], BC.Red["HytboldTokens"], BC.Green["HytboldTokens"], BC.Blue["HytboldTokens"], Position.Left["HytboldTokens"], Position.Top["HytboldTokens"], Where["HytboldTokens"] = false, tA, tR, tG, tB, tX, tY, tW; --for Tokens of Hytbold Control
-	Show["Medallions"], BC.Alpha["Medallions"], BC.Red["Medallions"], BC.Green["Medallions"], BC.Blue["Medallions"], Position.Left["Medallions"], Position.Top["Medallions"], Where["Medallions"] = false, tA, tR, tG, tB, tX, tY, tW; --for Medallions Control
-	Show["Commendations"], BC.Alpha["Commendations"], BC.Red["Commendations"], BC.Green["Commendations"], BC.Blue["Commendations"], Position.Left["Commendations"], Position.Top["Commendations"], Where["Commendations"] = false, tA, tR, tG, tB, tX, tY, tW; --for Commendations Control
-	Show["Seals"], BC.Alpha["Seals"], BC.Red["Seals"], BC.Green["Seals"], BC.Blue["Seals"], Position.Left["Seals"], Position.Top["Seals"], Where["Seals"] = false, tA, tR, tG, tB, tX, tY, tW; --for Seal Control
+
+    -- Reset each currency:
+    for key, value in ipairs(Currencies) do
+        ResetControlSettings(value);
+    end
+
+    -- Money-specific reset:
+	_G.STM, _G.SSS, _G.STS = false, true, true;
+
+    -- End currency initialization
+
 	ShowBagInfos, _G.BIUsed, _G.BIMax, BIbcAlpha, BIbcRed, BIbcGreen, BIbcBlue, _G.BILocX, _G.BILocY = true, true, true, tA, tR, tG, tB, tX, tY; --for Bag info Control
 	ShowEquipInfos, EIbcAlpha, EIbcRed, EIbcGreen, EIbcBlue, _G.EILocX, _G.EILocY = true, tA, tR, tG, tB, 75, tY; --for Equipment infos Control
 	ShowDurabilityInfos, DIIcon, DIText, DIbcAlpha, DIbcRed, DIbcGreen, DIbcBlue, _G.DILocX, _G.DILocY = true, true, true, tA, tR, tG, tB, 145, tY; --for Durability infos Control
@@ -844,25 +862,8 @@ function ResetSettings()
 	--ShowBank, BKbcAlpha, BKbcRed, BKbcGreen, BKbcBlue, _G.BKLocX, _G.BKLocY = false, tA, tR, tG, tB, tX, tY --for Bank Control
 	ShowDayNight, _G.DNNextT, DNbcAlpha, DNbcRed, DNbcGreen, DNbcBlue, _G.DNLocX, _G.DNLocY = false, true, tA, tR, tG, tB, tX, tY --for DayNight Control
 	ShowReputation, RPbcAlpha, RPbcRed, RPbcGreen, RPbcBlue, _G.RPLocX, _G.RPLocY = false, tA, tR, tG, tB, tX, tY --for Reputation Control
-	Show["LOTROPoints"], BC.Alpha["LOTROPoints"], BC.Red["LOTROPoints"], BC.Green["LOTROPoints"], BC.Blue["LOTROPoints"], Position.Left["LOTROPoints"], Position.Top["LOTROPoints"], Where["LOTROPoints"] = false, tA, tR, tG, tB, tX, tY, tW; --for LOTRO points Control
 	ShowPlayerLoc, PLbcAlpha, PLbcRed, PLbcGreen, PLbcBlue, _G.PLLocX, _G.PLLocX = true, tA, tR, tG, tB, screenWidth - 205, tY; --for Player Location Control
 	ShowGameTime, _G.Clock24h, _G.ShowST, _G.ShowBT, GTbcAlpha, GTbcRed, GTbcGreen, GTbcBlue, _G.GTLocX, _G.GTLocX = true, false, false, false, tA, tR, tG, tB, screenWidth - 60, tY --for Game time Control
-	Show["AmrothSilverPiece"], BC.Alpha["AmrothSilverPiece"], BC.Red["AmrothSilverPiece"], BC.Green["AmrothSilverPiece"], BC.Blue["AmrothSilverPiece"], Position.Left["AmrothSilverPiece"], Position.Top["AmrothSilverPiece"], Where["AmrothSilverPiece"] = false, tA, tR, tG, tB, tX, tY, tW; --for Amroth Silver Piece Control
-	Show["StarsofMerit"], BC.Alpha["StarsofMerit"], BC.Red["StarsofMerit"], BC.Green["StarsofMerit"], BC.Blue["StarsofMerit"], Position.Left["StarsofMerit"], Position.Top["StarsofMerit"], Where["StarsofMerit"] = false, tA, tR, tG, tB, tX, tY, tW; --for Stars of Merit Control
-	Show["CentralGondorSilverPiece"], BC.Alpha["CentralGondorSilverPiece"], BC.Red["CentralGondorSilverPiece"], BC.Green["CentralGondorSilverPiece"], BC.Blue["CentralGondorSilverPiece"], Position.Left["CentralGondorSilverPiece"], Position.Top["CentralGondorSilverPiece"], Where["CentralGondorSilverPiece"] = false, tA, tR, tG, tB, tX, tY, tW; --for Central Gondor Silver Piece Control
-	Show["GiftgiversBrand"], BC.Alpha["GiftgiversBrand"], BC.Red["GiftgiversBrand"], BC.Green["GiftgiversBrand"], BC.Blue["GiftgiversBrand"], Position.Left["GiftgiversBrand"], Position.Top["GiftgiversBrand"], Where["GiftgiversBrand"] = false, tA, tR, tG, tB, tX, tY, tW; --for Gift giver's Brand Control
-	Show["BingoBadge"], BC.Alpha["BingoBadge"], BC.Red["BingoBadge"], BC.Green["BingoBadge"], BC.Blue["BingoBadge"], Position.Left["BingoBadge"], Position.Top["BingoBadge"], Where["BingoBadge"] = false, tA, tR, tG, tB, tX, tY, tW; --for Bingo Badge Control
-	Show["AnniversaryToken"], BC.Alpha["AnniversaryToken"], BC.Red["AnniversaryToken"], BC.Green["AnniversaryToken"], BC.Blue["AnniversaryToken"], Position.Left["AnniversaryToken"], Position.Top["AnniversaryToken"], Where["AnniversaryToken"] = false, tA, tR, tG, tB, tX, tY, tW; --for Anniversary Token Control
-	Show["MotesOfEnchantment"], BC.Alpha["MotesOfEnchantment"], BC.Red["MotesOfEnchantment"], BC.Green["MotesOfEnchantment"], BC.Blue["MotesOfEnchantment"], Position.Left["MotesOfEnchantment"], Position.Top["MotesOfEnchantment"], Where["MotesOfEnchantment"] = false, tA, tR, tG, tB, tX, tY, tW; --for Motes of Enchantment Control
-	Show["EmbersOfEnchantment"], BC.Alpha["EmbersOfEnchantment"], BC.Red["EmbersOfEnchantment"], BC.Green["EmbersOfEnchantment"], BC.Blue["EmbersOfEnchantment"], Position.Left["EmbersOfEnchantment"], Position.Top["EmbersOfEnchantment"], Where["EmbersOfEnchantment"] = false, tA, tR, tG, tB, tX, tY, tW; --for Embers of Enchantment Control
-	Show["FigmentsOfSplendour"], BC.Alpha["FigmentsOfSplendour"], BC.Red["FigmentsOfSplendour"], BC.Green["FigmentsOfSplendour"], BC.Blue["FigmentsOfSplendour"], Position.Left["FigmentsOfSplendour"], Position.Top["FigmentsOfSplendour"], Where["FigmentsOfSplendour"] = false, tA, tR, tG, tB, tX, tY, tW; --for Figments of Splendour Control
-	Show["FallFestivalToken"], BC.Alpha["FallFestivalToken"], BC.Red["FallFestivalToken"], BC.Green["FallFestivalToken"], BC.Blue["FallFestivalToken"], Position.Left["FallFestivalToken"], Position.Top["FallFestivalToken"], Where["FallFestivalToken"] = false, tA, tR, tG, tB, tX, tY, tW; --for Fall Festival Tokens Control	
-	Show["FarmersFaireToken"], BC.Alpha["FarmersFaireToken"], BC.Red["FarmersFaireToken"], BC.Green["FarmersFaireToken"], BC.Blue["FarmersFaireToken"], Position.Left["FarmersFaireToken"], Position.Top["FarmersFaireToken"], Where["FarmersFaireToken"] = false, tA, tR, tG, tB, tX, tY, tW; --for Farmers Festival Token Control
-	Show["SpringLeaf"], BC.Alpha["SpringLeaf"], BC.Red["SpringLeaf"], BC.Green["SpringLeaf"], BC.Blue["SpringLeaf"], Position.Left["SpringLeaf"], Position.Top["SpringLeaf"], Where["SpringLeaf"] = false, tA, tR, tG, tB, tX, tY, tW; --for Spring Leaf Control	
-	Show["MidsummerToken"], BC.Alpha["MidsummerToken"], BC.Red["MidsummerToken"], BC.Green["MidsummerToken"], BC.Blue["MidsummerToken"], Position.Left["MidsummerToken"], Position.Top["MidsummerToken"], Where["MidsummerToken"] = false, tA, tR, tG, tB, tX, tY, tW; --for  Midsummer Token Control
-	Show["AncientScript"], BC.Alpha["AncientScript"], BC.Red["AncientScript"], BC.Green["AncientScript"], BC.Blue["AncientScript"], Position.Left["AncientScript"], Position.Top["AncientScript"], Where["AncientScript"] = false, tA, tR, tG, tB, tX, tY, tW; --for  Ancient Script Control
-    Show["BadgeOfTaste"], BC.Alpha["BadgeOfTaste"], BC.Red["BadgeOfTaste"], BC.Green["BadgeOfTaste"], BC.Blue["BadgeOfTaste"], Position.Left["BadgeOfTaste"], Position.Top["BadgeOfTaste"], Where["BadgeOfTaste"] = false, tA, tR, tG, tB, tX, tY, tW; --for Badge of Taste Control 
-    Show["BadgeOfDishonour"], BC.Alpha["BadgeOfDishonour"], BC.Red["BadgeOfDishonour"], BC.Green["BadgeOfDishonour"], BC.Blue["BadgeOfDishonour"], Position.Left["BadgeOfDishonour"], Position.Top["BadgeOfDishonour"], Where["BadgeOfDishonour"] = false, tA, tR, tG, tB, tX, tY, tW; --for Badge of Dishonour Control 
 
 	SaveSettings( true ); --True: Get & save all settings table to file. / False: only save settings table to file.
 	ReloadTitanBar();
