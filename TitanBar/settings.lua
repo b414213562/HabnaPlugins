@@ -946,61 +946,17 @@ function ReplaceCtr()
 	local oldScreenWidth = settings.TitanBar.W;
 	TBWidth = screenWidth;
 	settings.TitanBar.W = string.format("%.0f", screenWidth);
-	
-	local oldLocX = settings.Wallet.X / oldScreenWidth;
-	Position.Left["Wallet"] = oldLocX * screenWidth;
-	settings.Wallet.X = string.format("%.0f", Position.Left["Wallet"]);
-	if Show["Wallet"] then WI[ "Ctr" ]:SetPosition( Position.Left["Wallet"], Position.Top["Wallet"] ); end
 
-	oldLocX = settings.Money.X / oldScreenWidth;
-	Position.Left["Money"] = oldLocX * screenWidth;
-	settings.Money.X = string.format("%.0f", Position.Left["Money"]);
-	if Show["Money"] and Where["Money"] == 1 then MI[ "Ctr" ]:SetPosition( Position.Left["Money"], Position.Top["Money"] ); end
-	
-	oldLocX = settings.DestinyPoints.X / oldScreenWidth;
-	Position.Left["DestinyPoints"] = oldLocX * screenWidth;
-	settings.DestinyPoints.X = string.format("%.0f", Position.Left["DestinyPoints"]);
-	if Show["DestinyPoints"] and Where["DestinyPoints"] == 1 then DP[ "Ctr" ]:SetPosition( Position.Left["DestinyPoints"], Position.Top["DestinyPoints"] ); end
+    for index, key in ipairs(Currencies) do
+        local code = CurrencyKeyToCode[key];
 
-	oldLocX = settings.Shards.X / oldScreenWidth;
-	Position.Left["Shards"] = oldLocX * screenWidth;
-	settings.Shards.X = string.format("%.0f", Position.Left["Shards"]);
-	if Show["Shards"] and Where["Shards"] == 1 then SP[ "Ctr" ]:SetPosition( Position.Left["Shards"], Position.Top["Shards"] ); end
+        local oldLocX = settings[key].X / oldScreenWidth;
+        Position.Left[key] = oldLocX * screenWidth;
+        settings[key].X = string.format("%.0f", Position.Left[key]);
 
-	oldLocX = settings.SkirmishMarks.X / oldScreenWidth;
-	Position.Left["SkirmishMarks"] = oldLocX * screenWidth;
-	settings.SkirmishMarks.X = string.format("%.0f", Position.Left["SkirmishMarks"]);
-	if Show["SkirmishMarks"] and Where["SkirmishMarks"] == 1 then SM[ "Ctr" ]:SetPosition( Position.Left["SkirmishMarks"], Position.Top["SkirmishMarks"] ); end
-	
-	oldLocX = settings.MithrilCoins.X / oldScreenWidth;
-	Position.Left["MithrilCoins"] = oldLocX * screenWidth;
-	settings.MithrilCoins.X = string.format("%.0f", Position.Left["MithrilCoins"]);
-	if Show["MithrilCoins"] and Where["MithrilCoins"] == 1 then MC[ "Ctr" ]:SetPosition( Position.Left["MithrilCoins"], Position.Top["MithrilCoins"] ); end
-	
-	oldLocX = settings.YuleToken.X / oldScreenWidth;
-	Position.Left["YuleToken"] = oldLocX * screenWidth;
-	settings.YuleToken.X = string.format("%.0f", Position.Left["YuleToken"]);
-	if Show["YuleToken"] and Where["YuleToken"] == 1 then YT[ "Ctr" ]:SetPosition( Position.Left["YuleToken"], Position.Top["YuleToken"] ); end
-
-	ldLocX = settings.HytboldTokens.X / oldScreenWidth;
-	Position.Left["HytboldTokens"] = oldLocX * screenWidth;
-	settings.HytboldTokens.X = string.format("%.0f", Position.Left["HytboldTokens"]);
-	if Show["HytboldTokens"] and Where["HytboldTokens"] == 1 then HT[ "Ctr" ]:SetPosition( Position.Left["HytboldTokens"], Position.Top["HytboldTokens"] ); end
-	
-	oldLocX = settings.Medallions.X / oldScreenWidth;
-	Position.Left["Medallions"] = oldLocX * screenWidth;
-	settings.Medallions.X = string.format("%.0f", Position.Left["Medallions"]);
-	if Show["Medallions"] and Where["Medallions"] == 1 then MP[ "Ctr" ]:SetPosition( Position.Left["Medallions"], Position.Top["Medallions"] ); end
-
-	oldLocX = settings.Seals.X / oldScreenWidth;
-	Position.Left["Seals"] = oldLocX * screenWidth;
-	settings.Seals.X = string.format("%.0f", Position.Left["Seals"]);
-	if Show["Seals"] and Where["Seals"] == 1 then SL[ "Ctr" ]:SetPosition( Position.Left["Seals"], Position.Top["Seals"] ); end
-
-	oldLocX = settings.Commendations.X / oldScreenWidth;
-	Position.Left["Commendations"] = oldLocX * screenWidth;
-	settings.Commendations.X = string.format("%.0f", Position.Left["Commendations"]);
-	if Show["Commendations"] and Where["Commendations"] == 1 then CP[ "Ctr" ]:SetPosition( Position.Left["Commendations"], Position.Top["Commendations"] ); end
+        local visible = Show[key] and (DoesNotHaveWhere[key] or Where[key] == 1);
+        if visible then _G[code][ "Ctr" ]:SetPosition( Position.Left[key], Position.Top[key] ); end
+    end
 
 	oldLocX = settings.BagInfos.X / oldScreenWidth;
 	_G.BILocX = oldLocX * screenWidth;
@@ -1062,96 +1018,11 @@ function ReplaceCtr()
 	settings.Reputation.X = string.format("%.0f", _G.RPLocX);
 	if ShowReputation then RP[ "Ctr" ]:SetPosition( _G.RPLocX, _G.RPLocY ); end
 
-	oldLocX = settings.LOTROPoints.X / oldScreenWidth;
-	Position.Left["LOTROPoints"] = oldLocX * screenWidth;
-	settings.LOTROPoints.X = string.format("%.0f", Position.Left["LOTROPoints"]);
-	if Show["LOTROPoints"] and Where["LOTROPoints"] == 1 then LP[ "Ctr" ]:SetPosition( Position.Left["LOTROPoints"], Position.Top["LOTROPoints"] ); end
-
 	oldLocX = settings.GameTime.X / oldScreenWidth;
 	_G.GTLocX = oldLocX * screenWidth;
 	settings.GameTime.X = string.format("%.0f", _G.GTLocX);
 	if ShowGameTime then GT[ "Ctr" ]:SetPosition( _G.GTLocX, _G.GTLocY ); end
-	
-	oldLocX = settings.AmrothSilverPiece.X / oldScreenWidth;
-	Position.Left["AmrothSilverPiece"] = oldLocX * screenWidth;
-	settings.AmrothSilverPiece.X = string.format("%.0f", Position.Left["AmrothSilverPiece"]);
-	if Show["AmrothSilverPiece"] and Where["AmrothSilverPiece"] == 1 then ASP[ "Ctr" ]:SetPosition( Position.Left["AmrothSilverPiece"], Position.Top["AmrothSilverPiece"] ); end
-	
-	oldLocX = settings.StarsofMerit.X / oldScreenWidth;
-	Position.Left["StarsofMerit"] = oldLocX * screenWidth;
-	settings.StarsofMerit.X = string.format("%.0f", Position.Left["StarsofMerit"]);
-	if Show["StarsofMerit"] and Where["StarsofMerit"] == 1 then SOM[ "Ctr" ]:SetPosition( Position.Left["StarsofMerit"], Position.Top["StarsofMerit"] ); end
-	
-	oldLocX = settings.CentralGondorSilverPiece.X / oldScreenWidth;
-	Position.Left["CentralGondorSilverPiece"] = oldLocX * screenWidth;
-	settings.CentralGondorSilverPiece.X = string.format("%.0f", Position.Left["CentralGondorSilverPiece"]);
-	if Show["CentralGondorSilverPiece"] and Where["CentralGondorSilverPiece"] == 1 then CGSP[ "Ctr" ]:SetPosition( Position.Left["CentralGondorSilverPiece"], Position.Top["CentralGondorSilverPiece"] ); end
-	
-	oldLocX = settings.GiftgiversBrand.X / oldScreenWidth;
-	Position.Left["GiftgiversBrand"] = oldLocX * screenWidth;
-	settings.GiftgiversBrand.X = string.format("%.0f", Position.Left["GiftgiversBrand"]);
-	if Show["GiftgiversBrand"] and Where["GiftgiversBrand"] == 1 then GGB[ "Ctr" ]:SetPosition( Position.Left["GiftgiversBrand"], Position.Top["GiftgiversBrand"] ); end
-	
-	oldLocX = settings.BingoBadge.X / oldScreenWidth;
-	Position.Left["BingoBadge"] = oldLocX * screenWidth;
-	settings.BingoBadge.X = string.format("%.0f", Position.Left["BingoBadge"]);
-	if Show["BingoBadge"] and Where["BingoBadge"] == 1 then BB[ "Ctr" ]:SetPosition( Position.Left["BingoBadge"], Position.Top["BingoBadge"] ); end
-	
-	oldLocX = settings.AnniversaryToken.X / oldScreenWidth;
-	Position.Left["AnniversaryToken"] = oldLocX * screenWidth;
-	settings.AnniversaryToken.X = string.format("%.0f", Position.Left["AnniversaryToken"]);
-	if Show["AnniversaryToken"] and Where["AnniversaryToken"] == 1 then LAT[ "Ctr" ]:SetPosition( Position.Left["AnniversaryToken"], Position.Top["AnniversaryToken"] ); end
-	
-	oldLocX = settings.MotesOfEnchantment.X / oldScreenWidth;
-	Position.Left["MotesOfEnchantment"] = oldLocX * screenWidth;
-	settings.MotesOfEnchantment.X = string.format("%.0f", Position.Left["MotesOfEnchantment"]);
-	if Show["MotesOfEnchantment"] and Where["MotesOfEnchantment"] == 1 then MOE[ "Ctr" ]:SetPosition( Position.Left["MotesOfEnchantment"], Position.Top["MotesOfEnchantment"] ); end
-	
-	oldLocX = settings.EmbersOfEnchantment.X / oldScreenWidth;
-	Position.Left["EmbersOfEnchantment"] = oldLocX * screenWidth;
-	settings.EmbersOfEnchantment.X = string.format("%.0f", Position.Left["EmbersOfEnchantment"]);
-	if Show["EmbersOfEnchantment"] and Where["EmbersOfEnchantment"] == 1 then EOE[ "Ctr" ]:SetPosition( Position.Left["EmbersOfEnchantment"], Position.Top["EmbersOfEnchantment"] ); end
-	
-	oldLocX = settings.FigmentsOfSplendour.X / oldScreenWidth;
-	Position.Left["FigmentsOfSplendour"] = oldLocX * screenWidth;
-	settings.FigmentsOfSplendour.X = string.format("%.0f", Position.Left["FigmentsOfSplendour"]);
-	if Show["FigmentsOfSplendour"] and Where["FigmentsOfSplendour"] == 1 then FOS[ "Ctr" ]:SetPosition( Position.Left["FigmentsOfSplendour"], Position.Top["FigmentsOfSplendour"] ); end
-	
-	oldLocX = settings.FallFestivalToken.X / oldScreenWidth;
-	Position.Left["FallFestivalToken"] = oldLocX * screenWidth;
-	settings.FallFestivalToken.X = string.format("%.0f", Position.Left["FallFestivalToken"]);
-	if Show["FallFestivalToken"] and Where["FallFestivalToken"] == 1 then FFT[ "Ctr" ]:SetPosition( Position.Left["FallFestivalToken"], Position.Top["FallFestivalToken"] ); end
-	
-	oldLocX = settings.FarmersFaireToken.X / oldScreenWidth;
-	Position.Left["FarmersFaireToken"] = oldLocX * screenWidth;
-	settings.FarmersFaireToken.X = string.format("%.0f", Position.Left["FarmersFaireToken"]);
-	if Show["FarmersFaireToken"] and Where["FarmersFaireToken"] == 1 then FFAT[ "Ctr" ]:SetPosition( Position.Left["FarmersFaireToken"], Position.Top["FarmersFaireToken"] ); end
-	
-	oldLocX = settings.SpringLeaf.X / oldScreenWidth;
-	Position.Left["SpringLeaf"] = oldLocX * screenWidth;
-	settings.SpringLeaf.X = string.format("%.0f", Position.Left["SpringLeaf"]);
-	if Show["SpringLeaf"] and Where["SpringLeaf"] == 1 then SPL[ "Ctr" ]:SetPosition( Position.Left["SpringLeaf"], Position.Top["SpringLeaf"] ); end
-	
-	oldLocX = settings.MidsummerToken.X / oldScreenWidth;
-	Position.Left["MidsummerToken"] = oldLocX * screenWidth;
-	settings.MidsummerToken.X = string.format("%.0f", Position.Left["MidsummerToken"]);
-	if Show["MidsummerToken"] and Where["MidsummerToken"] == 1 then MST[ "Ctr" ]:SetPosition( Position.Left["MidsummerToken"], Position.Top["MidsummerToken"] ); end
-	
-	oldLocX = settings.AncientScript.X / oldScreenWidth;
-	Position.Left["AncientScript"] = oldLocX * screenWidth;
-	settings.AncientScript.X = string.format("%.0f", Position.Left["AncientScript"]);
-	if Show["AncientScript"] and Where["AncientScript"] == 1 then AS[ "Ctr" ]:SetPosition( Position.Left["AncientScript"], Position.Top["AncientScript"] ); end
 
-    oldLocX = settings.BadgeOfTaste.X / oldScreenWidth;
-    Position.Left["BadgeOfTaste"] = oldLocX * screenWidth;
-    settings.BadgeOfTaste.X = string.format("%.0f", Position.Left["BadgeOfTaste"]);
-    if Show["BadgeOfTaste"] and Where["BadgeOfTaste"] == 1 then BOT[ "Ctr" ]:SetPosition( Position.Left["BadgeOfTaste"], Position.Top["BadgeOfTaste"] ); end
-
-    oldLocX = settings.BadgeOfDishonour.X / oldScreenWidth;
-    Position.Left["BadgeOfDishonour"] = oldLocX * screenWidth;
-    settings.BadgeOfDishonour.X = string.format("%.0f", Position.Left["BadgeOfDishonour"]);
-    if Show["BadgeOfDishonour"] and Where["BadgeOfDishonour"] == 1 then BOD[ "Ctr" ]:SetPosition( Position.Left["BadgeOfDishonour"], Position.Top["BadgeOfDishonour"] ); end
-	
 	SaveSettings( false );
 	write( L["TBSSCD"] );
 end
