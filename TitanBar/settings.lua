@@ -68,7 +68,7 @@ Currencies = {
 
 CurrencyCodeToKey = {
     ["WI"] = "Wallet",
-    ["Money"] = "Money",
+    ["MI"] = "Money",
     ["DP"] = "DestinyPoints",
     ["SP"] = "Shards",
     ["SM"] = "SkirmishMarks",
@@ -95,6 +95,37 @@ CurrencyCodeToKey = {
     ["AS"] = "AncientScript",
     ["BOT"] = "BadgeOfTaste",
     ["BOD"] = "BadgeOfDishonour",
+}
+
+CurrencyKeyToCode = {
+    ["Wallet"] = "WI",
+    ["Money"] = "MI",
+    ["DestinyPoints"] = "DP",
+    ["Shards"] = "SP",
+    ["SkirmishMarks"] = "SM",
+    ["MithrilCoins"] = "MC",
+    ["YuleToken"] = "YT",
+    ["HytboldTokens"] = "HT",
+    ["Medallions"] = "MP",
+    ["Seals"] = "SL",
+    ["Commendations"] = "CP",
+    ["LOTROPoints"] = "LP",
+    ["AmrothSilverPiece"] = "ASP",
+    ["StarsofMerit"] = "SOM",
+    ["CentralGondorSilverPiece"] = "CGSP",
+    ["GiftgiversBrand"] = "GGB",
+    ["BingoBadge"] = "BB",
+    ["AnniversaryToken"] = "LAT",
+    ["MotesOfEnchantment"] = "MOE",
+    ["EmbersOfEnchantment"] = "EOE",
+    ["FigmentsOfSplendour"] = "FOS",
+    ["FallFestivalToken"] = "FFT",
+    ["FarmersFaireToken"] = "FFAT",
+    ["SpringLeaf"] = "SPL",
+    ["MidsummerToken"] = "MST",
+    ["AncientScript"] = "AS",
+    ["BadgeOfTaste"] = "BOT",
+    ["BadgeOfDishonour"] = "BOD",
 }
 
 --- Parses an entry like settings.Money.W. Also checks for a discrepancy between Where and Show.

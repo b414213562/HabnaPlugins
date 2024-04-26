@@ -7,17 +7,17 @@
 --**v Unload control v**
 function UnloadControl( value )
 	if value == "ctr" then
-		if Show["Wallet"] then ShowHideWallet(); end
-		if Show["Money"] then Where["Money"] = 3; ShowHideMoney(); end
-		if Show["DestinyPoints"] then Where["DestinyPoints"] = 3; ShowHideDestinyPoints(); end
-		if Show["Shards"] then Where["Shards"] = 3; ShowHideShards(); end
-		if Show["SkirmishMarks"] then Where["SkirmishMarks"] = 3; ShowHideSkirmishMarks(); end
-		if Show["MithrilCoins"] then Where["MithrilCoins"] = 3; ShowHideMithrilCoins(); end
-		if Show["YuleToken"] then Where["YuleToken"] = 3; ShowHideYuleToken(); end
-		if Show["HytboldTokens"] then Where["HytboldTokens"] = 3; ShowHideHytboldTokens(); end
-		if Show["Medallions"] then Where["Medallions"] = 3; ShowHideMedallions(); end
-		if Show["Seals"] then Where["Seals"] = 3; ShowHideSeals(); end
-		if Show["Commendations"] then Where["Commendations"] = 3; ShowHideCommendations(); end
+		if Show["Wallet"] then ShowHideCurrency("Wallet"); end
+		if Show["Money"] then Where["Money"] = 3; ShowHideCurrency("Money"); end
+		if Show["DestinyPoints"] then Where["DestinyPoints"] = 3; ShowHideCurrency("DestinyPoints"); end
+		if Show["Shards"] then Where["Shards"] = 3; ShowHideCurrency("Shards"); end
+		if Show["SkirmishMarks"] then Where["SkirmishMarks"] = 3; ShowHideCurrency("SkirmishMarks"); end
+		if Show["MithrilCoins"] then Where["MithrilCoins"] = 3; ShowHideCurrency("MithrilCoins"); end
+		if Show["YuleToken"] then Where["YuleToken"] = 3; ShowHideCurrency("YuleToken"); end
+		if Show["HytboldTokens"] then Where["HytboldTokens"] = 3; ShowHideCurrency("HytboldTokens"); end
+		if Show["Medallions"] then Where["Medallions"] = 3; ShowHideCurrency("Medallions"); end
+		if Show["Seals"] then Where["Seals"] = 3; ShowHideCurrency("Seals"); end
+		if Show["Commendations"] then Where["Commendations"] = 3; ShowHideCurrency("Commendations"); end
 		if ShowBagInfos then ShowHideBackpackInfos(); opt_BI:SetChecked( false ); end
 		if ShowPlayerInfos then ShowHidePlayerInfos(); opt_PI:SetChecked( false ); end
 		if ShowEquipInfos then ShowHideEquipInfos(); opt_EI:SetChecked( false ); end
@@ -29,37 +29,37 @@ function UnloadControl( value )
 		--if ShowBank then ShowHideBank(); opt_BK:SetChecked( false ); end
 		if ShowDayNight then ShowHideDayNight(); opt_DN:SetChecked( false ); end
 		if ShowReputation then ShowHideReputation(); opt_RP:SetChecked( false ); end
-		if Show["LOTROPoints"] then Where["LOTROPoints"] = 3; ShowHideLOTROPoints(); end
+		if Show["LOTROPoints"] then Where["LOTROPoints"] = 3; ShowHideCurrency("LOTROPoints"); end
 		if ShowPlayerLoc then ShowHidePlayerLoc(); opt_PL:SetChecked( false ); end
 		if ShowGameTime then ShowHideGameTime(); opt_GT:SetChecked( false ); end
-		if Show["AmrothSilverPiece"] then Where["AmrothSilverPiece"] = 3; ShowHideAmrothSilverPiece(); end
-		if Show["StarsofMerit"] then Where["StarsofMerit"] = 3; ShowHideStarsofMerit(); end
-		if Show["CentralGondorSilverPiece"] then Where["CentralGondorSilverPiece"] = 3; ShowHideCentralGondorSilverPiece(); end
-		if Show["GiftgiversBrand"] then Where["GiftgiversBrand"] = 3; ShowHideGiftgiversBrand(); end
-		if Show["BingoBadge"] then Where["BingoBadge"] = 3; ShowHideBingoBadge(); end
-		if Show["AnniversaryToken"] then Where["AnniversaryToken"] = 3; ShowHideAnniversaryToken(); end
-		if Show["MotesOfEnchantment"] then Where["MotesOfEnchantment"] = 3; ShowHideMotesOfEnchantment(); end
-		if Show["EmbersOfEnchantment"] then Where["EmbersOfEnchantment"] = 3; ShowHideEmbersOfEnchantment(); end
-		if Show["FigmentsOfSplendour"] then Where["FigmentsOfSplendour"] = 3; ShowHideFigmentsOfSplendour(); end
-		if Show["FallFestivalToken"] then Where["FallFestivalToken"] = 3; ShowHideFallFestivalToken(); end
-		if Show["FarmersFaireToken"] then Where["FarmersFaireToken"] = 3; ShowHideFarmersFaireToken(); end
-		if Show["SpringLeaf"] then Where["SpringLeaf"] = 3; ShowHideSpringLeaf(); end
-		if Show["MidsummerToken"] then Where["MidsummerToken"] = 3; ShowHideMidsummerToken(); end
-		if Show["AncientScript"] then Where["AncientScript"] = 3; ShowHideAncientScript(); end
-		if Show["BadgeOfTaste"] then Where["BadgeOfTaste"] = 3; ShowHideBadgeOfTaste(); end
-		if Show["BadgeOfDishonour"] then Where["BadgeOfDishonour"] = 3; ShowHideBadgeOfDishonour(); end
+		if Show["AmrothSilverPiece"] then Where["AmrothSilverPiece"] = 3; ShowHideCurrency("AmrothSilverPiece"); end
+		if Show["StarsofMerit"] then Where["StarsofMerit"] = 3; ShowHideCurrency("StarsofMerit"); end
+		if Show["CentralGondorSilverPiece"] then Where["CentralGondorSilverPiece"] = 3; ShowHideCurrency("CentralGondorSilverPiece"); end
+		if Show["GiftgiversBrand"] then Where["GiftgiversBrand"] = 3; ShowHideCurrency("GiftgiversBrand"); end
+		if Show["BingoBadge"] then Where["BingoBadge"] = 3; ShowHideCurrency("BingoBadge"); end
+		if Show["AnniversaryToken"] then Where["AnniversaryToken"] = 3; ShowHideCurrency("AnniversaryToken"); end
+		if Show["MotesOfEnchantment"] then Where["MotesOfEnchantment"] = 3; ShowHideCurrency("MotesOfEnchantment"); end
+		if Show["EmbersOfEnchantment"] then Where["EmbersOfEnchantment"] = 3; ShowHideCurrency("EmbersOfEnchantment"); end
+		if Show["FigmentsOfSplendour"] then Where["FigmentsOfSplendour"] = 3; ShowHideCurrency("FigmentsOfSplendour"); end
+		if Show["FallFestivalToken"] then Where["FallFestivalToken"] = 3; ShowHideCurrency("FallFestivalToken"); end
+		if Show["FarmersFaireToken"] then Where["FarmersFaireToken"] = 3; ShowHideCurrency("FarmersFaireToken"); end
+		if Show["SpringLeaf"] then Where["SpringLeaf"] = 3; ShowHideCurrency("SpringLeaf"); end
+		if Show["MidsummerToken"] then Where["MidsummerToken"] = 3; ShowHideCurrency("MidsummerToken"); end
+		if Show["AncientScript"] then Where["AncientScript"] = 3; ShowHideCurrency("AncientScript"); end
+		if Show["BadgeOfTaste"] then Where["BadgeOfTaste"] = 3; ShowHideCurrency("BadgeOfTaste"); end
+		if Show["BadgeOfDishonour"] then Where["BadgeOfDishonour"] = 3; ShowHideCurrency("BadgeOfDishonour"); end
 		elseif value == "this" then
-			if _G.sFromCtr == "WI" then ShowHideWallet();
-			elseif _G.sFromCtr == "Money" then Where["Money"] = 3; ShowHideMoney();
-			elseif _G.sFromCtr == "DP" then Where["DestinyPoints"] = 3; ShowHideDestinyPoints();
-			elseif _G.sFromCtr == "SP" then Where["Shards"] = 3; ShowHideShards();
-			elseif _G.sFromCtr == "SM" then Where["SkirmishMarks"] = 3; ShowHideSkirmishMarks();
-			elseif _G.sFromCtr == "MC" then Where["MithrilCoins"] = 3; ShowHideMithrilCoins();
-			elseif _G.sFromCtr == "YT" then Where["YuleToken"] = 3; ShowHideYuleToken();
-			elseif _G.sFromCtr == "HT" then Where["HytboldTokens"] = 3; ShowHideHytboldTokens();
-			elseif _G.sFromCtr == "MP" then Where["Medallions"] = 3; ShowHideMedallions();
-			elseif _G.sFromCtr == "SL" then Where["Seals"] = 3; ShowHideSeals();
-			elseif _G.sFromCtr == "CP" then Where["Commendations"] = 3; ShowHideCommendations();
+			if _G.sFromCtr == "WI" then ShowHideCurrency("Wallet");
+			elseif _G.sFromCtr == "Money" then Where["Money"] = 3; ShowHideCurrency("Money");
+			elseif _G.sFromCtr == "DP" then Where["DestinyPoints"] = 3; ShowHideCurrency("DestinyPoints");
+			elseif _G.sFromCtr == "SP" then Where["Shards"] = 3; ShowHideCurrency("Shards");
+			elseif _G.sFromCtr == "SM" then Where["SkirmishMarks"] = 3; ShowHideCurrency("SkirmishMarks");
+			elseif _G.sFromCtr == "MC" then Where["MithrilCoins"] = 3; ShowHideCurrency("MithrilCoins");
+			elseif _G.sFromCtr == "YT" then Where["YuleToken"] = 3; ShowHideCurrency("YuleToken");
+			elseif _G.sFromCtr == "HT" then Where["HytboldTokens"] = 3; ShowHideCurrency("HytboldTokens");
+			elseif _G.sFromCtr == "MP" then Where["Medallions"] = 3; ShowHideCurrency("Medallions");
+			elseif _G.sFromCtr == "SL" then Where["Seals"] = 3; ShowHideCurrency("Seals");
+			elseif _G.sFromCtr == "CP" then Where["Commendations"] = 3; ShowHideCurrency("Commendations");
 			elseif _G.sFromCtr == "BI" then ShowHideBackpackInfos(); opt_BI:SetChecked( false );
 			elseif _G.sFromCtr == "PI" then ShowHidePlayerInfos(); opt_PI:SetChecked( false );
 			elseif _G.sFromCtr == "EI" then ShowHideEquipInfos(); opt_EI:SetChecked( false );
@@ -71,25 +71,25 @@ function UnloadControl( value )
 			--elseif _G.sFromCtr == "BK" then ShowHideBank(); opt_BK:SetChecked( false );
 			elseif _G.sFromCtr == "DN" then ShowHideDayNight(); opt_DN:SetChecked( false );
 			elseif _G.sFromCtr == "RP" then ShowHideReputation(); opt_RP:SetChecked( false );
-			elseif _G.sFromCtr == "LP" then Where["LOTROPoints"] = 3; ShowHideLOTROPoints();
+			elseif _G.sFromCtr == "LP" then Where["LOTROPoints"] = 3; ShowHideCurrency("LOTROPoints");
 			elseif _G.sFromCtr == "PL" then ShowHidePlayerLoc(); opt_PL:SetChecked( false );
 			elseif _G.sFromCtr == "GT" then ShowHideGameTime(); opt_GT:SetChecked( false );
-			elseif _G.sFromCtr == "ASP" then Where["AmrothSilverPiece"] = 3; ShowHideAmrothSilverPiece();
-			elseif _G.sFromCtr == "SOM" then Where["StarsofMerit"] = 3; ShowHideStarsofMerit();
-			elseif _G.sFromCtr == "CGSP" then Where["CentralGondorSilverPiece"] = 3; ShowHideCentralGondorSilverPiece();
-			elseif _G.sFromCtr == "GGB" then Where["GiftgiversBrand"] = 3; ShowHideGiftgiversBrand();
-			elseif _G.sFromCtr == "BB" then	Where["BingoBadge"] = 3; ShowHideBingoBadge();
-			elseif _G.sFromCtr == "LAT" then Where["AnniversaryToken"] = 3; ShowHideAnniversaryToken();
-			elseif _G.sFromCtr == "MOE" then Where["MotesOfEnchantment"] = 3; ShowHideMotesOfEnchantment();
-			elseif _G.sFromCtr == "EOE" then Where["EmbersOfEnchantment"] = 3; ShowHideEmbersOfEnchantment();
-			elseif _G.sFromCtr == "FOS" then Where["FigmentsOfSplendour"] = 3; ShowHideFigmentsOfSplendour();
-			elseif _G.sFromCtr == "FFT" then Where["FallFestivalToken"] = 3; ShowHideFallFestivalToken();
-			elseif _G.sFromCtr == "FFAT" then Where["FarmersFaireToken"] = 3; ShowHideFarmersFaireToken();
-			elseif _G.sFromCtr == "SPL" then Where["SpringLeaf"] = 3; ShowHideSpringLeaf();
-			elseif _G.sFromCtr == "MST" then Where["MidsummerToken"] = 3; ShowHideMidsummerToken();
-			elseif _G.sFromCtr == "AS" then Where["AncientScript"] = 3; ShowHideAncientScript();
-			elseif _G.sFromCtr == "BOT" then Where["BadgeOfTaste"] = 3; ShowHideBadgeOfTaste();
-			elseif _G.sFromCtr == "BOD" then Where["BadgeOfDishonour"] = 3; ShowHideBadgeOfDishonour();
+			elseif _G.sFromCtr == "ASP" then Where["AmrothSilverPiece"] = 3; ShowHideCurrency("AmrothSilverPiece");
+			elseif _G.sFromCtr == "SOM" then Where["StarsofMerit"] = 3; ShowHideCurrency("StarsofMerit");
+			elseif _G.sFromCtr == "CGSP" then Where["CentralGondorSilverPiece"] = 3; ShowHideCurrency("CentralGondorSilverPiece");
+			elseif _G.sFromCtr == "GGB" then Where["GiftgiversBrand"] = 3; ShowHideCurrency("GiftgiversBrand");
+			elseif _G.sFromCtr == "BB" then	Where["BingoBadge"] = 3; ShowHideCurrency("BingoBadge");
+			elseif _G.sFromCtr == "LAT" then Where["AnniversaryToken"] = 3; ShowHideCurrency("AnniversaryToken");
+			elseif _G.sFromCtr == "MOE" then Where["MotesOfEnchantment"] = 3; ShowHideCurrency("MotesOfEnchantment");
+			elseif _G.sFromCtr == "EOE" then Where["EmbersOfEnchantment"] = 3; ShowHideCurrency("EmbersOfEnchantment");
+			elseif _G.sFromCtr == "FOS" then Where["FigmentsOfSplendour"] = 3; ShowHideCurrency("FigmentsOfSplendour");
+			elseif _G.sFromCtr == "FFT" then Where["FallFestivalToken"] = 3; ShowHideCurrency("FallFestivalToken");
+			elseif _G.sFromCtr == "FFAT" then Where["FarmersFaireToken"] = 3; ShowHideCurrency("FarmersFaireToken");
+			elseif _G.sFromCtr == "SPL" then Where["SpringLeaf"] = 3; ShowHideCurrency("SpringLeaf");
+			elseif _G.sFromCtr == "MST" then Where["MidsummerToken"] = 3; ShowHideCurrency("MidsummerToken");
+			elseif _G.sFromCtr == "AS" then Where["AncientScript"] = 3; ShowHideCurrency("AncientScript");
+			elseif _G.sFromCtr == "BOT" then Where["BadgeOfTaste"] = 3; ShowHideCurrency("BadgeOfTaste");
+			elseif _G.sFromCtr == "BOD" then Where["BadgeOfDishonour"] = 3; ShowHideCurrency("BadgeOfDishonour");
 			end
 		end
 
