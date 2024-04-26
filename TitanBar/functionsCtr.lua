@@ -36,9 +36,9 @@ function ImportCtr( value )
         if Where["DestinyPoints"] ~= 3 then
             PlayerAtt = Player:GetAttributes();
             AddCallback(PlayerAtt, "DestinyPointsChanged",
-                function(sender, args) UpdateDestinyPoints(); end
+                function(sender, args) UpdateCurrency("DestinyPoints"); end
                 );
-            UpdateDestinyPoints();
+            UpdateCurrency("DestinyPoints");
         else
             RemoveCallback(PlayerAtt, "DestinyPointsChanged");
         end
@@ -47,49 +47,49 @@ function ImportCtr( value )
             import (AppCtrWalletD.."Shards");
             SP[ "Ctr" ]:SetPosition( Position.Left["Shards"], Position.Top["Shards"] );
         end
-        if Where["Shards"] ~= 3 then UpdateShards(); end
+        if Where["Shards"] ~= 3 then UpdateCurrency("Shards"); end
     elseif value == "SM" then --Skirmish Marks
         if Where["SkirmishMarks"] == 1 then
             import (AppCtrWalletD.."SkirmishMarks");
             SM[ "Ctr" ]:SetPosition( Position.Left["SkirmishMarks"], Position.Top["SkirmishMarks"] );
         end
-        if Where["SkirmishMarks"] ~= 3 then UpdateMarks(); end
+        if Where["SkirmishMarks"] ~= 3 then UpdateCurrency("SkirmishMarks"); end
     elseif value == "MC" then --Mithril Coins
         if Where["MithrilCoins"] == 1 then
             import (AppCtrWalletD.."MithrilCoins");
             MC[ "Ctr" ]:SetPosition( Position.Left["MithrilCoins"], Position.Top["MithrilCoins"] );
         end
-        if Where["MithrilCoins"] ~= 3 then UpdateMithril(); end
+        if Where["MithrilCoins"] ~= 3 then UpdateCurrency("MithrilCoins"); end
     elseif value == "YT" then --Yule Tokens
         if Where["YuleToken"] == 1 then
             import (AppCtrWalletD.."YuleToken");
             YT[ "Ctr" ]:SetPosition( Position.Left["YuleToken"], Position.Top["YuleToken"] );
         end
-        if Where["YuleToken"] ~= 3 then UpdateYuleToken(); end
+        if Where["YuleToken"] ~= 3 then UpdateCurrency("YuleToken"); end
     elseif value == "HT" then --Tokens of Hytbold
         if Where["HytboldTokens"] == 1 then
             import (AppCtrWalletD.."TokensOfHytbold");
             HT[ "Ctr" ]:SetPosition( Position.Left["HytboldTokens"], Position.Top["HytboldTokens"] );
         end
-        if Where["HytboldTokens"] ~= 3 then UpdateHytboldTokens(); end
+        if Where["HytboldTokens"] ~= 3 then UpdateCurrency("HytboldTokens"); end
     elseif value == "MP" then --Medallions
         if Where["Medallions"] == 1 then
             import (AppCtrWalletD.."Medallions");
             MP[ "Ctr" ]:SetPosition( Position.Left["Medallions"], Position.Top["Medallions"] );
         end
-        if Where["Medallions"] ~= 3 then UpdateMedallions(); end
+        if Where["Medallions"] ~= 3 then UpdateCurrency("Medallions"); end
     elseif value == "SL" then --Seals
         if Where["Seals"] == 1 then
             import (AppCtrWalletD.."Seals");
             SL[ "Ctr" ]:SetPosition( Position.Left["Seals"], Position.Top["Seals"] );
         end
-        if Where["Seals"] ~= 3 then UpdateSeals(); end
+        if Where["Seals"] ~= 3 then UpdateCurrency("Seals"); end
     elseif value == "CP" then --Commendations
         if Where["Commendations"] == 1 then
             import (AppCtrWalletD.."Commendations");
             CP[ "Ctr" ]:SetPosition( Position.Left["Commendations"], Position.Top["Commendations"] );
         end
-        if Where["Commendations"] ~= 3 then UpdateCommendations(); end
+        if Where["Commendations"] ~= 3 then UpdateCurrency("Commendations"); end
     elseif value == "BI" then --Backpack Infos
         import (AppCtrD.."BagInfos");
         --import (AppCtrD.."BagInfosToolTip");
@@ -335,97 +335,97 @@ function ImportCtr( value )
             import (AppCtrWalletD.."AmrothSilverPiece");
             ASP[ "Ctr" ]:SetPosition( Position.Left["AmrothSilverPiece"], Position.Top["AmrothSilverPiece"] );
         end
-        if Where["AmrothSilverPiece"] ~= 3 then UpdateAmrothSilverPiece(); end
+        if Where["AmrothSilverPiece"] ~= 3 then UpdateCurrency("AmrothSilverPiece"); end
     elseif value == "SOM" then --Stars of Merit
         if Where["StarsofMerit"] == 1 then
             import (AppCtrWalletD.."StarsofMerit");
             SOM[ "Ctr" ]:SetPosition( Position.Left["StarsofMerit"], Position.Top["StarsofMerit"] );
         end
-        if Where["StarsofMerit"] ~= 3 then UpdateStarsofMerit(); end
+        if Where["StarsofMerit"] ~= 3 then UpdateCurrency("StarsofMerit"); end
     elseif value == "CGSP" then --Central Gondor Silver Piece
         if Where["CentralGondorSilverPiece"] == 1 then
             import (AppCtrWalletD.."CentralGondorSilverPiece");
             CGSP[ "Ctr" ]:SetPosition( Position.Left["CentralGondorSilverPiece"], Position.Top["CentralGondorSilverPiece"] );
         end
-        if Where["CentralGondorSilverPiece"] ~= 3 then UpdateCentralGondorSilverPiece(); end
+        if Where["CentralGondorSilverPiece"] ~= 3 then UpdateCurrency("CentralGondorSilverPiece"); end
     elseif value == "GGB" then --Gift giver's Brand
         if Where["GiftgiversBrand"] == 1 then
             import (AppCtrWalletD.."GiftgiversBrand");
             GGB[ "Ctr" ]:SetPosition( Position.Left["GiftgiversBrand"], Position.Top["GiftgiversBrand"] );
         end
-        if Where["GiftgiversBrand"] ~= 3 then UpdateGiftgiversBrand(); end
+        if Where["GiftgiversBrand"] ~= 3 then UpdateCurrency("GiftgiversBrand"); end
     elseif value == "BB" then --Bingo Badge
         if Where["BingoBadge"] == 1 then
             import (AppCtrWalletD.."BingoBadge");
             BB[ "Ctr" ]:SetPosition( Position.Left["BingoBadge"], Position.Top["BingoBadge"] );
         end
-        if Where["BingoBadge"] ~= 3 then UpdateBingoBadge(); end
+        if Where["BingoBadge"] ~= 3 then UpdateCurrency("BingoBadge"); end
     elseif value == "LAT" then --Anniversary Token
         if Where["AnniversaryToken"] == 1 then
             import (AppCtrWalletD.."AnniversaryToken");
             LAT[ "Ctr" ]:SetPosition( Position.Left["AnniversaryToken"], Position.Top["AnniversaryToken"] );
         end
-        if Where["AnniversaryToken"] ~= 3 then UpdateAnniversaryToken(); end
+        if Where["AnniversaryToken"] ~= 3 then UpdateCurrency("AnniversaryToken"); end
 	elseif value == "MOE" then --Motes of Enchantment
         if Where["MotesOfEnchantment"] == 1 then
             import (AppCtrWalletD.."MotesOfEnchantment");
             MOE[ "Ctr" ]:SetPosition( Position.Left["MotesOfEnchantment"], Position.Top["MotesOfEnchantment"] );
         end
-        if Where["MotesOfEnchantment"] ~= 3 then UpdateMotesOfEnchantment(); end	
+        if Where["MotesOfEnchantment"] ~= 3 then UpdateCurrency("MotesOfEnchantment"); end	
 	elseif value == "EOE" then --Embers of Enchantment
         if Where["EmbersOfEnchantment"] == 1 then
             import (AppCtrWalletD.."EmbersOfEnchantment");
             EOE[ "Ctr" ]:SetPosition( Position.Left["EmbersOfEnchantment"], Position.Top["EmbersOfEnchantment"] );
         end
-        if Where["EmbersOfEnchantment"] ~= 3 then UpdateEmbersOfEnchantment(); end
+        if Where["EmbersOfEnchantment"] ~= 3 then UpdateCurrency("EmbersOfEnchantment"); end
 	elseif value == "FOS" then --Figments of Splendour
         if Where["FigmentsOfSplendour"] == 1 then
             import (AppCtrWalletD.."FigmentsOfSplendour");
             FOS[ "Ctr" ]:SetPosition( Position.Left["FigmentsOfSplendour"], Position.Top["FigmentsOfSplendour"] );
         end
-        if Where["FigmentsOfSplendour"] ~= 3 then UpdateFigmentsOfSplendour(); end
+        if Where["FigmentsOfSplendour"] ~= 3 then UpdateCurrency("FigmentsOfSplendour"); end
 	elseif value == "FFT" then --Fall Festival Tokens
         if Where["FallFestivalToken"] == 1 then
             import (AppCtrWalletD.."FallFestivalToken");
             FFT[ "Ctr" ]:SetPosition( Position.Left["FallFestivalToken"], Position.Top["FallFestivalToken"] );
         end
-        if Where["FallFestivalToken"] ~= 3 then UpdateFallFestivalToken(); end
+        if Where["FallFestivalToken"] ~= 3 then UpdateCurrency("FallFestivalToken"); end
 	elseif value == "FFAT" then --Farmers Faire Tokens
         if Where["FarmersFaireToken"] == 1 then
             import (AppCtrWalletD.."FarmersFaireToken");
             FFAT[ "Ctr" ]:SetPosition( Position.Left["FarmersFaireToken"], Position.Top["FarmersFaireToken"] );
         end
-        if Where["FarmersFaireToken"] ~= 3 then UpdateFarmersFaireToken(); end
+        if Where["FarmersFaireToken"] ~= 3 then UpdateCurrency("FarmersFaireToken"); end
 	elseif value == "SPL" then --Spring Leaves
         if Where["SpringLeaf"] == 1 then
             import (AppCtrWalletD.."SpringLeaf");
             SPL[ "Ctr" ]:SetPosition( Position.Left["SpringLeaf"], Position.Top["SpringLeaf"] );
         end
-        if Where["SpringLeaf"] ~= 3 then UpdateSpringLeaf(); end	
+        if Where["SpringLeaf"] ~= 3 then UpdateCurrency("SpringLeaf"); end	
 	elseif value == "MST" then --Midsummer Tokens
         if Where["MidsummerToken"] == 1 then
             import (AppCtrWalletD.."MidsummerToken");
             MST[ "Ctr" ]:SetPosition( Position.Left["MidsummerToken"], Position.Top["MidsummerToken"] );
         end
-        if Where["MidsummerToken"] ~= 3 then UpdateMidsummerToken(); end
+        if Where["MidsummerToken"] ~= 3 then UpdateCurrency("MidsummerToken"); end
 	elseif value == "AS" then --Ancient Script
         if Where["AncientScript"] == 1 then
             import (AppCtrWalletD.."AncientScript");
             AS[ "Ctr" ]:SetPosition( Position.Left["AncientScript"], Position.Top["AncientScript"] );
         end
-        if Where["AncientScript"] ~= 3 then UpdateAncientScript(); end	
+        if Where["AncientScript"] ~= 3 then UpdateCurrency("AncientScript"); end	
     elseif value == "BOT" then --Badge of Taste
         if Where["BadgeOfTaste"] == 1 then
             import (AppCtrWalletD.."BadgeOfTaste");
             BOT[ "Ctr" ]:SetPosition( Position.Left["BadgeOfTaste"], Position.Top["BadgeOfTaste"] );
         end
-        if Where["BadgeOfTaste"] ~= 3 then UpdateBadgeOfTaste(); end
+        if Where["BadgeOfTaste"] ~= 3 then UpdateCurrency("BadgeOfTaste"); end
     elseif value == "BOD" then --Badge of Dishonour
         if Where["BadgeOfDishonour"] == 1 then
             import (AppCtrWalletD.."BadgeOfDishonour");
             BOD[ "Ctr" ]:SetPosition( Position.Left["BadgeOfDishonour"], Position.Top["BadgeOfDishonour"] );
         end
-        if Where["BadgeOfDishonour"] ~= 3 then UpdateBadgeOfDishonour(); end
+        if Where["BadgeOfDishonour"] ~= 3 then UpdateCurrency("BadgeOfDishonour"); end
 	elseif value == "RP" then --Reputation Points
         RPGR = { ['default'] = {
             [0] = 10000, [1] = 10000, [2] = 20000, [3] = 25000, [4] = 30000,
@@ -806,12 +806,13 @@ function LoadPlayerWallet()
     for i = 1, PlayerWalletSize do
         local CurItem = PlayerWallet:GetItem(i);
         local CurName = PlayerWallet:GetItem(i):GetName();
+        local key = CurrencyNameToKey[CurName];
 
         PlayerCurrency[CurName] = CurItem;
         if PlayerCurrencyHandler[CurName] == nil then
             PlayerCurrencyHandler[CurName] = AddCallback(
                 PlayerCurrency[CurName], "QuantityChanged",
-                function(sender, args) UpdateCurrency(CurName); end
+                function(sender, args) UpdateCurrency(key); end
             );
         end
     end
@@ -1135,40 +1136,19 @@ function SavePlayerLOTROPoints()
         Turbine.DataScope.Account, "TitanBarLOTROPoints", PlayerLOTROPoints);
 end
 
-function UpdateCurrency( str )
-    if str == L[ "Shards" ] and Show["Shards"] then UpdateShards(); end
-    if str == L[ "SkirmishMarks" ] and Show["SkirmishMarks"] then UpdateMarks(); end
-    if str == L[ "Medallions" ] and Show["Medallions"] then UpdateMedallions(); end
-    if str == L[ "Seals" ] and Show["Seals"] then UpdateSeals(); end
-    if str == L[ "Commendations" ] and Show["Commendations"] then UpdateCommendations(); end
-    if str == L[ "MithrilCoins" ] and Show["MithrilCoins"] then UpdateMithril(); end
-    if str == L[ "YuleToken" ] and Show["YuleToken"] then UpdateYuleToken(); end
-    if str == L[ "HytboldTokens" ] and Show["HytboldTokens"] then UpdateHytboldTokens(); end
-    if str == L[ "AmrothSilverPiece" ] and Show["AmrothSilverPiece"] then UpdateAmrothSilverPiece(); end
-    if str == L[ "StarsofMerit" ] and Show["StarsofMerit"] then UpdateStarsofMerit(); end
-    if str == L[ "CentralGondorSilverPiece" ] and Show["CentralGondorSilverPiece"] then UpdateCentralGondorSilverPiece(); end
-    if str == L[ "GiftgiversBrand" ] and Show["GiftgiversBrand"] then UpdateGiftgiversBrand(); end
-    if str == L[ "BingoBadge" ] and Show["BingoBadge"] then UpdateBingoBadge(); end
-    if str == L[ "AnniversaryToken" ] and Show["AnniversaryToken"] then UpdateAnniversaryToken(); end
-	if str == L[ "MotesOfEnchantment" ] and Show["MotesOfEnchantment"] then UpdateMotesOfEnchantment(); end
-	if str == L[ "EmbersOfEnchantment" ] and Show["EmbersOfEnchantment"] then UpdateEmbersOfEnchantment(); end
-	if str == L[ "FigmentsOfSplendour" ] and Show["FigmentsOfSplendour"] then UpdateFigmentsOfSplendour(); end
-	if str == L[ "FallFestivalToken" ] and Show["FallFestivalToken"] then UpdateFallFestivalToken(); end
-	if str == L[ "FarmersFaireToken" ] and Show["FarmersFaireToken"] then UpdateFarmersFaireToken(); end
-	if str == L[ "SpringLeaf" ] and Show["SpringLeaf"] then UpdateSpringLeaf(); end
-	if str == L[ "MidsummerToken" ] and Show["MidsummerToken"] then UpdateMidsummerToken(); end
-	if str == L[ "AncientScript" ] and Show["AncientScript"] then UpdateAncientScript(); end
-    if str == L[ "BadgeOfTaste" ] and Show["BadgeOfTaste"] then UpdateBadgeOfTaste(); end
-    if str == L[ "BadgeOfDishonour" ] and Show["BadgeOfDishonour"] then UpdateBadgeOfDishonour(); end
-end
-
+--- Gets the count of an item in the wallet
+---@param str The translated name of the item.
+---@return number # How many are in the wallet.
 function GetCurrency( str )
     CurQuantity = 0;
-
-    for k,v in pairs( PlayerCurrency ) do
-        if k == str then
-            CurQuantity = PlayerCurrency[ str ]:GetQuantity();
-            break
+    if (str == L[ "DestinyPoints" ]) then
+        CurQuantity = PlayerAtt:GetDestinyPoints();
+    else
+        for k,v in pairs( PlayerCurrency ) do
+            if k == str then
+                CurQuantity = PlayerCurrency[ str ]:GetQuantity();
+                break
+            end
         end
     end
 

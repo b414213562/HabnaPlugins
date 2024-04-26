@@ -363,6 +363,12 @@ function LoadSettings()
 
     -- End currency initialization
 
+    -- Make a lookup table from translated name (e.g. "Mithril Coin") to key (e.g. "MithrilCoins"):
+    CurrencyNameToKey = {}
+    for key, value in ipairs(Currencies) do
+        CurrencyNameToKey[L[value]] = vaue;
+    end
+
     if settings.BagInfos == nil then settings.BagInfos = {}; end
 	if settings.BagInfos.V == nil then settings.BagInfos.V = true; end
 	if settings.BagInfos.A == nil then settings.BagInfos.A = string.format("%.3f", tA); end

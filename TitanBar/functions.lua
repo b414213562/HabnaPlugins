@@ -457,87 +457,6 @@ function UpdateMoney()
 	end
 end
 --**^
---**v Update destiny point currency on TitanBar v**
-function UpdateDestinyPoints()
-	if Where["DestinyPoints"] == 1 then
-		DP[ "Lbl" ]:SetText( PlayerAtt:GetDestinyPoints() );
-		DP[ "Lbl" ]:SetSize( DP[ "Lbl" ]:GetTextLength() * NM, CTRHeight ); 
-		AjustIcon( "DP" );
-	end
-end
---**^
---**v Update Shards currency on TitanBar v**
-function UpdateShards()
-	if Where["Shards"] == 1 then
-		SP[ "Lbl" ]:SetText( GetCurrency( L[ "Shards" ] ) );
-		SP[ "Lbl" ]:SetSize( SP[ "Lbl" ]:GetTextLength() * NM, CTRHeight ); 
-		AjustIcon( "SP" );
-	end
-end
---**^
---**v Update Marks currency on TitanBar v**
-function UpdateMarks()
-	if Where["SkirmishMarks"] == 1 then
-		SM[ "Lbl" ]:SetText( GetCurrency( L[ "SkirmishMarks" ] ) );
-		SM[ "Lbl" ]:SetSize( SM[ "Lbl" ]:GetTextLength() * NM, CTRHeight ); 
-		AjustIcon( "SM" );
-	end
-end
---**^
---**v Update Mithril Coins currency on TitanBar v**
-function UpdateMithril()
-	if Where["MithrilCoins"] == 1 then
-		MC[ "Lbl" ]:SetText( GetCurrency( L[ "MithrilCoins" ] ) );
-		MC[ "Lbl" ]:SetSize( MC[ "Lbl" ]:GetTextLength() * NM, CTRHeight ); 
-		AjustIcon( "MC" );
-	end
-end
---**^
---**v Update Yule Tokens currency on TitanBar v**
-function UpdateYuleToken()
-	if Where["YuleToken"] == 1 then
-		YT[ "Lbl" ]:SetText( GetCurrency( L[ "YuleToken" ] ) );
-		YT[ "Lbl" ]:SetSize( YT[ "Lbl" ]:GetTextLength() * NM, CTRHeight ); 
-		AjustIcon( "YT" );
-	end
-end
---**^
---**v Update Tokens of Hytbold currency on TitanBar v**
-function UpdateHytboldTokens()
-	if Where["HytboldTokens"] == 1 then
-		HT[ "Lbl" ]:SetText( GetCurrency( L[ "HytboldTokens" ] ) );
-		HT[ "Lbl" ]:SetSize( HT[ "Lbl" ]:GetTextLength() * NM, CTRHeight ); 
-		AjustIcon( "HT" );
-	end
-end
---**^
---**v Update Medallions currency on TitanBar v**
-function UpdateMedallions()
-	if Where["Medallions"] == 1 then
-		MP[ "Lbl" ]:SetText( GetCurrency( L[ "Medallions" ] ) );
-		MP[ "Lbl" ]:SetSize( MP[ "Lbl" ]:GetTextLength() * NM, CTRHeight ); 
-		AjustIcon( "MP" );
-	end
-end
---**^
---**v Update Seals currency on TitanBar v**
-function UpdateSeals()
-	if Where["Seals"] == 1 then
-		SL[ "Lbl" ]:SetText( GetCurrency( L[ "Seals" ] ) );
-		SL[ "Lbl" ]:SetSize( SL[ "Lbl" ]:GetTextLength() * NM, CTRHeight ); 
-		AjustIcon( "SL" );
-	end
-end
---**^
---**v Update Commendations currency on TitanBar v**
-function UpdateCommendations()
-	if Where["Commendations"] == 1 then
-		CP[ "Lbl" ]:SetText( GetCurrency( L[ "Commendations" ] ) );
-		CP[ "Lbl" ]:SetSize( CP[ "Lbl" ]:GetTextLength() * NM, CTRHeight ); 
-		AjustIcon( "CP" );
-	end
-end
---**^
 --**v Update LOTRO points on TitanBar v**
 function UpdateLOTROPoints()
 	if Where["LOTROPoints"] == 1 then
@@ -548,151 +467,24 @@ function UpdateLOTROPoints()
 	SavePlayerLOTROPoints();
 end
 --**^
--- AU3 MARKER 2 - DO NOT REMOVE
---**v Update Amroth Silver Piece currency on TitanBar v**
-function UpdateAmrothSilverPiece()
-	if Where["AmrothSilverPiece"] == 1 then
-		ASP[ "Lbl" ]:SetText( GetCurrency( L[ "AmrothSilverPiece" ] ) );
-		ASP[ "Lbl" ]:SetSize( ASP[ "Lbl" ]:GetTextLength() * NM, CTRHeight ); 
-		AjustIcon( "ASP" );
+
+--- Function to update the details for currencies on the bar.
+--- Does nothing if the currency is not currently on the bar.
+---@param key string The key (e.g. "DestinyPoints" for the currency)
+function UpdateCurrency(key)
+    if (not Show[key]) then return; end
+
+    local code = CurrencyKeyToCode[key];
+    local table = _G[code];
+    local label = table["Lbl"];
+
+	if Where[key] == 1 then
+		label:SetText( GetCurrency( L[ key ] ) );
+		label:SetSize( label:GetTextLength() * NM, CTRHeight );
+		AjustIcon( code );
 	end
 end
---**^
---**v Update Stars of Merit currency on TitanBar v**
-function UpdateStarsofMerit()
-	if Where["StarsofMerit"] == 1 then
-		SOM[ "Lbl" ]:SetText( GetCurrency( L[ "StarsofMerit" ] ) );
-		SOM[ "Lbl" ]:SetSize( SOM[ "Lbl" ]:GetTextLength() * NM, CTRHeight ); 
-		AjustIcon( "SOM" );
-	end
-end
---**^
---**v Update Central Gondor Silver Piece currency on TitanBar v**
-function UpdateCentralGondorSilverPiece()
-	if Where["CentralGondorSilverPiece"] == 1 then
-		CGSP[ "Lbl" ]:SetText( GetCurrency( L[ "CentralGondorSilverPiece" ] ) );
-		CGSP[ "Lbl" ]:SetSize( CGSP[ "Lbl" ]:GetTextLength() * NM, CTRHeight ); 
-		AjustIcon( "CGSP" );
-	end
-end
---**^
---**v Update Gift giver's Brand currency on TitanBar v**
-function UpdateGiftgiversBrand()
-	if Where["GiftgiversBrand"] == 1 then
-		GGB[ "Lbl" ]:SetText( GetCurrency( L[ "GiftgiversBrand" ] ) );
-		GGB[ "Lbl" ]:SetSize( GGB[ "Lbl" ]:GetTextLength() * NM, CTRHeight ); 
-		AjustIcon( "GGB" );
-	end
-end
---**^
---**v Update Bingo Badge currency on TitanBar v**
-function UpdateBingoBadge()
-	if Where["BingoBadge"] == 1 then
-		BB[ "Lbl" ]:SetText( GetCurrency( L[ "BingoBadge" ] ) );
-		BB[ "Lbl" ]:SetSize( BB[ "Lbl" ]:GetTextLength() * NM, CTRHeight ); 
-		AjustIcon( "BB" );
-	end
-end
---**^
---**v Update Anniversary Token currency on TitanBar v**
-function UpdateAnniversaryToken()
-	if Where["AnniversaryToken"] == 1 then
-		LAT[ "Lbl" ]:SetText( GetCurrency( L[ "AnniversaryToken" ] ) );
-		LAT[ "Lbl" ]:SetSize( LAT[ "Lbl" ]:GetTextLength() * NM, CTRHeight ); 
-		AjustIcon( "LAT" );
-	end
-end
---**^
---**v Update Motes of Enchantment currency on TitanBar v**
-function UpdateMotesOfEnchantment()
-	if Where["MotesOfEnchantment"] == 1 then
-		MOE[ "Lbl" ]:SetText( GetCurrency( L[ "MotesOfEnchantment" ] ) );
-		MOE[ "Lbl" ]:SetSize( MOE[ "Lbl" ]:GetTextLength() * NM, CTRHeight ); 
-		AjustIcon( "MOE" );
-	end
-end
---**^
---**v Update Embers of Enchantment currency on TitanBar v**
-function UpdateEmbersOfEnchantment()
-	if Where["EmbersOfEnchantment"] == 1 then
-		EOE[ "Lbl" ]:SetText( GetCurrency( L[ "EmbersOfEnchantment" ] ) );
-		EOE[ "Lbl" ]:SetSize( EOE[ "Lbl" ]:GetTextLength() * NM, CTRHeight ); 
-		AjustIcon( "EOE" );
-	end
-end
---**^
---**v Update Figments of Splendour currency on TitanBar v**
-function UpdateFigmentsOfSplendour()
-	if Where["FigmentsOfSplendour"] == 1 then
-		FOS[ "Lbl" ]:SetText( GetCurrency( L[ "FigmentsOfSplendour" ] ) );
-		FOS[ "Lbl" ]:SetSize( FOS[ "Lbl" ]:GetTextLength() * NM, CTRHeight ); 
-		AjustIcon( "FOS" );
-	end
-end
---**^
---**v Update Fall Festival Tokens currency on TitanBar v**
-function UpdateFallFestivalToken()
-	if Where["FallFestivalToken"] == 1 then
-		FFT[ "Lbl" ]:SetText( GetCurrency( L[ "FallFestivalToken" ] ) );
-		FFT[ "Lbl" ]:SetSize( FFT[ "Lbl" ]:GetTextLength() * NM, CTRHeight ); 
-		AjustIcon( "FFT" );
-	end
-end
---**^
---**v Update Farmers Faire Tokens currency on TitanBar v**
-function UpdateFarmersFaireToken()
-	if Where["FarmersFaireToken"] == 1 then
-		FFAT[ "Lbl" ]:SetText( GetCurrency( L[ "FarmersFaireToken" ] ) );
-		FFAT[ "Lbl" ]:SetSize( FFAT[ "Lbl" ]:GetTextLength() * NM, CTRHeight ); 
-		AjustIcon( "FFAT" );
-	end
-end
---**^
---**v Update Spring Leaves currency on TitanBar v**
-function UpdateSpringLeaf()
-	if Where["SpringLeaf"] == 1 then
-		SPL[ "Lbl" ]:SetText( GetCurrency( L[ "SpringLeaf" ] ) );
-		SPL[ "Lbl" ]:SetSize( SPL[ "Lbl" ]:GetTextLength() * NM, CTRHeight ); 
-		AjustIcon( "SPL" );
-	end
-end
---**^
---**v Update Midsummer Token currency on TitanBar v**
-function UpdateMidsummerToken()
-	if Where["MidsummerToken"] == 1 then
-		MST[ "Lbl" ]:SetText( GetCurrency( L[ "MidsummerToken" ] ) );
-		MST[ "Lbl" ]:SetSize( MST[ "Lbl" ]:GetTextLength() * NM, CTRHeight ); 
-		AjustIcon( "MST" );
-	end
-end
---**^
---**v Update Ancient Script currency on TitanBar v**
-function UpdateAncientScript()
-	if Where["AncientScript"] == 1 then
-		AS[ "Lbl" ]:SetText( GetCurrency( L[ "AncientScript" ] ) );
-		AS[ "Lbl" ]:SetSize( AS[ "Lbl" ]:GetTextLength() * NM, CTRHeight ); 
-		AjustIcon( "AS" );
-	end
-end
---**^
---**v Update Badge of Taste currency on TitanBar v**
-function UpdateBadgeOfTaste()
-	if Where["BadgeOfTaste"] == 1 then
-		BOT[ "Lbl" ]:SetText( GetCurrency( L[ "BadgeOfTaste" ] ) );
-		BOT[ "Lbl" ]:SetSize( BOT[ "Lbl" ]:GetTextLength() * NM, CTRHeight ); 
-		AjustIcon( "BOT" );
-	end
-end
---**^
---**v Update Badge of Dishonour currency on TitanBar v**
-function UpdateBadgeOfDishonour()
-	if Where["BadgeOfDishonour"] == 1 then
-		BOD[ "Lbl" ]:SetText( GetCurrency( L[ "BadgeOfDishonour" ] ) );
-		BOD[ "Lbl" ]:SetSize( BOD[ "Lbl" ]:GetTextLength() * NM, CTRHeight ); 
-		AjustIcon( "BOD" );
-	end
-end
---**^
+
 --**v Update backpack infos on TitanBar v**
 function UpdateBackpackInfos()
 	local max = backpack:GetSize();
