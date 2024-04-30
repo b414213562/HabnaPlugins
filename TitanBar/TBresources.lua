@@ -41,33 +41,33 @@ _G.resources = {
 };
 
 _G.WalletItem = {
-	AmrothSilverPiece = { Icon = 0x41152875 },
-	Commendation = { Icon = 0x41123495 },
-	DestinyPoints = { Icon = 0x4100a682 },
-	Mark = { Icon = 0x4111c446 },
-	Medallion = { Icon = 0x4111c43d },
-	Mithril = { Icon = 0x411348E1 },
-	YuleToken = { Icon = 0x410FA62D },
-	Seal = { Icon = 0x4111c449 }, 
-	Shard = { Icon = 0x41110d5b },
-	SkirmishMarks = { Icon = 0x4111c446 },
-	TokensOfHytbold = { Icon = 0x41127D0C },
-	StarsofMerit = { Icon = 0x4115bea4 },
-	CentralGondorSilverPiece = { Icon = 0x41155957 },
-	GiftgiversBrand = { Icon = 0x4115c888 },
-	BingoBadge = { Icon = 0x410E6EE4 },
-	AnniversaryToken = { Icon = 0x4110E2E7 },
-	LOTROPTS = { Icon = 0x4113478C },
-	MotesOfEnchantment = { Icon = 0x411B91DD },
-	EmbersOfEnchantment = { Icon = 0x411CE971 },
-	FigmentsOfSplendour = { Icon = 0x411CF13B },
-	FallFestivalToken = { Icon = 0x410D85DE },
-	FarmersFaireToken = { Icon = 0x410E7BD6 },
-	SpringLeaf = { Icon = 0x410D74CB },
-	MidsummerToken = { Icon = 0x411EE829 },
-	AncientScript = { Icon = 0x41212E84 },
-	BadgeOfTaste = { Icon = 0x41002B2C },
-	BadgeOfDishonour = { Icon = 0x410D4316 }
+    DestinyPoints = { Icon = 0x4100a682 },
+    Shard = { Icon = 0x41110d5b }, -- => Shards
+    SkirmishMarks = { Icon = 0x4111c446 },
+    Mark = { Icon = 0x4111c446 }, -- => duplicate of SkirmishMarks, delete
+    Mithril = { Icon = 0x411348E1 }, -- => MithrilCoins
+    YuleToken = { Icon = 0x410FA62D },
+    TokensOfHytbold = { Icon = 0x41127D0C }, -- => HytboldTokens
+    Medallion = { Icon = 0x4111c43d }, -- => Medallions
+    Seal = { Icon = 0x4111c449 }, -- => Seals
+    Commendation = { Icon = 0x41123495 }, -- => Commendations
+    LOTROPTS = { Icon = 0x4113478C }, -- => LOTROPoints
+    AmrothSilverPiece = { Icon = 0x41152875 },
+    StarsofMerit = { Icon = 0x4115bea4 },
+    CentralGondorSilverPiece = { Icon = 0x41155957 },
+    GiftgiversBrand = { Icon = 0x4115c888 },
+    BingoBadge = { Icon = 0x410E6EE4 },
+    AnniversaryToken = { Icon = 0x4110E2E7 },
+    MotesOfEnchantment = { Icon = 0x411B91DD },
+    EmbersOfEnchantment = { Icon = 0x411CE971 },
+    FigmentsOfSplendour = { Icon = 0x411CF13B },
+    FallFestivalToken = { Icon = 0x410D85DE },
+    FarmersFaireToken = { Icon = 0x410E7BD6 },
+    SpringLeaf = { Icon = 0x410D74CB },
+    MidsummerToken = { Icon = 0x411EE829 },
+    AncientScript = { Icon = 0x41212E84 },
+    BadgeOfTaste = { Icon = 0x41002B2C },
+    BadgeOfDishonour = { Icon = 0x410D4316 }
 };
 
 _G.DurabilitySlotsBG = { 0x41007eed, 0x41007ef6, 0x41007ef7, 0x41007eef, 0x41007eee, 0x41007ee9, 0x41007ef0, 0x41007ef9, 0x41007ef8,
