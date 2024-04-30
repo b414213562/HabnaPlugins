@@ -1,20 +1,9 @@
 TitanBar thoughts:
+    Next: function ImportCtr( value ) <= Change the parameter here from things like "MC" to "MithrilCoins".
 
 Each Currency has two main keys associated:
 	core abbreviation, e.g. "MC"
 	settings name, e.g. "MithrilCoins"
-
-The settings for each currency are copied to globals:
-	ShowMithrilCoins
-	MCbcAlpha
-	MCbcRed
-	MCbcGreen
-	MCbcBlue
-	_G.MCLocX
-	_G.MCLocY
-	_G.MCWhere
-I'd like to put these into a table, like Show = {}, and Show[currencyKey] can genericize access.
-	This might apply to more than currencies. That's probably ok?
 
 Once the variables are made into a table,
 that should allow for a lot of looping instead of stating every variable name.
@@ -24,6 +13,7 @@ The controls also populate tables, like this:
 In order that we stop polluting the global table,
 	maybe put them in something like _G.TokenControls["LAT"].
 
+change values of sFrom from things like "WI" to "Wallet". Then background.lua gets more straightforward.
 
 ----
 
@@ -35,12 +25,23 @@ Notes:
     Reorder the items in functionsCtr.lua 
         function ImportCtr( value )
         to sort the wallet items together
+    Do currencies need both Show and Where?
+    If we can match up the currency icon to stuff in your wallet, do we even need the localized name?
 
 Maybe fix how often we're using string.format for updating a setting?
 
+LOTROPTS is different than LOTROPoints
+
+Probably caused by my changes:
+
+Seen 2024-04-30 on-stream:
+    Start a fresh TitanBar experience (no save files), add Motes/Embers/Etc. to TitanBar, and they glitch out.
+
 
 ---
+8 globals changed?
 
+Wallet - 
 -- Coin -- 
 L["MGSC"] -- Money
 L["MCP"] -- Commendation
