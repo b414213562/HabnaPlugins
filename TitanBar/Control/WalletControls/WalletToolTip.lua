@@ -38,35 +38,12 @@ function RefreshWITTListBox()
 	local bFound = false;
 	
 	for i = 1, #MenuItem do
-		wttcur = MenuItem[i];
-		if wttcur == "Money" then ttw = Where["Money"];
-		elseif wttcur == "DestinyPoints" then ttw = Where["DestinyPoints"]; CtrIconCodeIs=WalletItem.DestinyPoints.Icon; CtrQteIs=PlayerAtt:GetDestinyPoints();
-		elseif wttcur == "Shards" then ttw = Where["Shards"]; CtrIconCodeIs=WalletItem.Shard.Icon; CtrQteIs=GetCurrency( "Shards" );
-		elseif wttcur == "SkirmishMarks" then ttw = Where["SkirmishMarks"]; CtrIconCodeIs=WalletItem.Mark.Icon; CtrQteIs=GetCurrency( "SkirmishMarks" );
-		elseif wttcur == "MithrilCoins" then ttw = Where["MithrilCoins"]; CtrIconCodeIs=WalletItem.Mithril.Icon; CtrQteIs=GetCurrency( "MithrilCoins" );
-		elseif wttcur == "YuleToken" then ttw = Where["YuleToken"]; CtrIconCodeIs=WalletItem.YuleToken.Icon; CtrQteIs=GetCurrency( "YuleToken" );
-		elseif wttcur == "HytboldTokens" then ttw = Where["HytboldTokens"]; CtrIconCodeIs=WalletItem.TokensOfHytbold.Icon; CtrQteIs=GetCurrency( "HytboldTokens" );
-		elseif wttcur == "Medallions" then ttw = Where["Medallions"]; CtrIconCodeIs=WalletItem.Medallion.Icon; CtrQteIs=GetCurrency( "Medallions" );
-		elseif wttcur == "Seals" then ttw = Where["Seals"]; CtrIconCodeIs=WalletItem.Seal.Icon; CtrQteIs=GetCurrency( "Seals" );
-		elseif wttcur == "Commendations" then ttw = Where["Commendations"]; CtrIconCodeIs=WalletItem.Commendation.Icon; CtrQteIs=GetCurrency( "Commendations" );
-		elseif wttcur == "LOTROPoints" then ttw = Where["LOTROPoints"]; CtrIconCodeIs=WalletItem.LOTROPTS.Icon; CtrQteIs=_G.LOTROPTS;
-		elseif wttcur == "AmrothSilverPiece" then ttw = Where["AmrothSilverPiece"]; CtrIconCodeIs=WalletItem.AmrothSilverPiece.Icon; CtrQteIs=GetCurrency( "AmrothSilverPiece" );
-		elseif wttcur == "StarsofMerit" then ttw = Where["StarsofMerit"]; CtrIconCodeIs=WalletItem.StarsofMerit.Icon; CtrQteIs=GetCurrency( "StarsofMerit" );
-		elseif wttcur == "CentralGondorSilverPiece" then ttw = Where["CentralGondorSilverPiece"]; CtrIconCodeIs=WalletItem.CentralGondorSilverPiece.Icon; CtrQteIs=GetCurrency( "CentralGondorSilverPiece" );
-		elseif wttcur == "GiftgiversBrand" then ttw = Where["GiftgiversBrand"]; CtrIconCodeIs=WalletItem.GiftgiversBrand.Icon; CtrQteIs=GetCurrency( "GiftgiversBrand" );
-		elseif wttcur == "MAOE" then ttw = _G.AOEWhere; CtrIconCodeIs=WalletItem.AshOfEnchantment.Icon; CtrQteIs=GetCurrency( "MAOE" );
-		elseif wttcur == "BingoBadge" then ttw = Where["BingoBadge"]; CtrIconCodeIs=WalletItem.BingoBadge.Icon; CtrQteIs=GetCurrency( "BingoBadge" );
-		elseif wttcur == "AnniversaryToken" then ttw = Where["AnniversaryToken"]; CtrIconCodeIs=WalletItem.AnniversaryToken.Icon; CtrQteIs=GetCurrency( "AnniversaryToken" );
-		elseif wttcur == "MotesOfEnchantment" then ttw = Where["MotesOfEnchantment"]; CtrIconCodeIs=WalletItem.MotesOfEnchantment.Icon; CtrQteIs=GetCurrency( "MotesOfEnchantment" );
-		elseif wttcur == "EmbersOfEnchantment" then ttw = Where["EmbersOfEnchantment"]; CtrIconCodeIs=WalletItem.EmbersOfEnchantment.Icon; CtrQteIs=GetCurrency( "EmbersOfEnchantment" );
-		elseif wttcur == "FigmentsOfSplendour" then ttw = Where["FigmentsOfSplendour"]; CtrIconCodeIs=WalletItem.FigmentsOfSplendour.Icon; CtrQteIs=GetCurrency( "FigmentsOfSplendour" );
-		elseif wttcur == "FallFestivalToken" then ttw = Where["FallFestivalToken"]; CtrIconCodeIs=WalletItem.FallFestivalToken.Icon; CtrQteIs=GetCurrency( "FallFestivalToken" );
-		elseif wttcur == "FarmersFaireToken" then ttw = Where["FarmersFaireToken"]; CtrIconCodeIs=WalletItem.FarmersFaireToken.Icon; CtrQteIs=GetCurrency( "FarmersFaireToken" );	
-		elseif wttcur == "SpringLeaf" then ttw = Where["SpringLeaf"]; CtrIconCodeIs=WalletItem.SpringLeaf.Icon; CtrQteIs=GetCurrency( "SpringLeaf" );
-		elseif wttcur == "MidsummerToken" then ttw = Where["MidsummerToken"]; CtrIconCodeIs=WalletItem.MidsummerToken.Icon; CtrQteIs=GetCurrency( "MidsummerToken" );
-		elseif wttcur == "AncientScript" then ttw = Where["AncientScript"]; CtrIconCodeIs=WalletItem.AncientScript.Icon; CtrQteIs=GetCurrency( "AncientScript" );	
-		elseif wttcur == "BadgeOfTaste" then ttw = Where["BadgeOfTaste"]; CtrIconCodeIs=WalletItem.BadgeOfTaste.Icon; CtrQteIs=GetCurrency( "BadgeOfTaste" );
-		elseif wttcur == "BadgeOfDishonour" then ttw = Where["BadgeOfDishonour"]; CtrIconCodeIs=WalletItem.BadgeOfDishonour.Icon; CtrQteIs=GetCurrency( "BadgeOfDishonour" );
+		local wttcur = MenuItem[i];
+        local ttw = Where[wttcur];
+
+        if (wttcur ~= "Money") then
+            CtrIconCodeIs = WalletItem[wttcur].Icon;
+            CtrQteIs = GetCurrency( wttcur );
 		end
 		
 		if tonumber(ttw) == 2 then
