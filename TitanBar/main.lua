@@ -87,21 +87,21 @@ frmMain();
 if PlayerAlign == 1 then 
     MenuItem = { 
 	-- Coin
-	L["Money"], L["Commendations"], L["DestinyPoints"], L["LOTROPoints"], L["MithrilCoins"],
+	"Money", "Commendations", "DestinyPoints", "LOTROPoints", "MithrilCoins",
 	-- Currency
-	L["MotesOfEnchantment"], L["FigmentsOfSplendour"], L["EmbersOfEnchantment"], L["AncientScript"],
+	"MotesOfEnchantment", "FigmentsOfSplendour", "EmbersOfEnchantment", "AncientScript",
 	-- Instances and Skirmishes
-	L["SkirmishMarks"], L["Medallions"], L["Seals"], L["StarsofMerit"],
+	"SkirmishMarks", "Medallions", "Seals", "StarsofMerit",
 	-- Festivals and Events
-	L["AnniversaryToken"], L["FallFestivalToken"], L["FarmersFaireToken"], L["MidsummerToken"], L["SpringLeaf"], L["YuleToken"],
+	"AnniversaryToken", "FallFestivalToken", "FarmersFaireToken", "MidsummerToken", "SpringLeaf", "YuleToken",
 	-- Inn League and Ale Association
-	L["BadgeOfTaste"], L["BadgeOfDishonour"],
+	"BadgeOfTaste", "BadgeOfDishonour",
 	-- Item Advancement
-	L["Shards"],
+	"Shards",
 	-- Other   
-    L["AmrothSilverPiece"], L["BingoBadge"], L["CentralGondorSilverPiece"], L["GiftgiversBrand"], L["HytboldTokens"],
+    "AmrothSilverPiece", "BingoBadge", "CentralGondorSilverPiece", "GiftgiversBrand", "HytboldTokens",
 	};
-else MenuItem = { L["Commendations"], L["LOTROPoints"] }; end
+else MenuItem = { "Commendations", "LOTROPoints" }; end
 
 TitanBarCommand = Turbine.ShellCommand()
 

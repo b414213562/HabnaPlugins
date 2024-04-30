@@ -1137,20 +1137,24 @@ function SavePlayerLOTROPoints()
 end
 
 --- Gets the count of an item in the wallet
----@param str The translated name of the item.
+---@param str string The key of the item.
 ---@return number # How many are in the wallet.
 function GetCurrency( str )
-    CurQuantity = 0;
-    if (str == L[ "DestinyPoints" ]) then
-        CurQuantity = PlayerAtt:GetDestinyPoints();
+    local currentQuantity = 0;
+
+    if (str == "DestinyPoints") then
+        currentQuantity = PlayerAtt:GetDestinyPoints();
+    elseif (str == "LOTROPoints") then
+        currentQuantity = tonumber(_G.LOTROPTS) or 0;
     else
+        local localizedName = L[str];
         for k,v in pairs( PlayerCurrency ) do
-            if k == str then
-                CurQuantity = PlayerCurrency[ str ]:GetQuantity();
+            if k == localizedName then
+                currentQuantity = PlayerCurrency[ localizedName ]:GetQuantity();
                 break
             end
         end
     end
 
-    return CurQuantity
+    return currentQuantity;
 end

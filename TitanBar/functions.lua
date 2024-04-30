@@ -479,7 +479,7 @@ function UpdateCurrency(key)
     local label = table["Lbl"];
 
 	if Where[key] == 1 then
-		label:SetText( GetCurrency( L[ key ] ) );
+		label:SetText( GetCurrency( key ) );
 		label:SetSize( label:GetTextLength() * NM, CTRHeight );
 		AjustIcon( code );
 	end
