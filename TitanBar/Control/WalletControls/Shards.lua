@@ -18,7 +18,7 @@ SP["Icon"] = Turbine.UI.Control();
 SP["Icon"]:SetParent( SP["Ctr"] );
 SP["Icon"]:SetBlendMode( Turbine.UI.BlendMode.AlphaBlend );
 SP["Icon"]:SetSize( 32, 32 );
-SP["Icon"]:SetBackground( WalletItem.Shard.Icon );-- in-game icon 32x32
+SP["Icon"]:SetBackground( WalletItem.Shards.Icon );-- in-game icon 32x32
 --SP["Icon"]:SetBackColor( Color["blue"] ); -- Debug purpose
 
 SP["Icon"].MouseMove = function( sender, args )

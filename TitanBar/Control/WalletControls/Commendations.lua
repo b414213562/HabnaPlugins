@@ -18,7 +18,7 @@ CP["Icon"] = Turbine.UI.Control();
 CP["Icon"]:SetParent( CP["Ctr"] );
 --CP["Icon"]:SetBlendMode( Turbine.UI.BlendMode.AlphaBlend );
 CP["Icon"]:SetSize( 32, 32 );
-CP["Icon"]:SetBackground( WalletItem.Commendation.Icon );-- in-game icon 32x32
+CP["Icon"]:SetBackground( WalletItem.Commendations.Icon );-- in-game icon 32x32
 --CP["Icon"]:SetBackColor( Color["blue"] ); -- Debug purpose
 
 CP["Icon"].MouseMove = function( sender, args )

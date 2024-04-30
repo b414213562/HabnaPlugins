@@ -18,7 +18,7 @@ SL["Icon"] = Turbine.UI.Control();
 SL["Icon"]:SetParent( SL["Ctr"] );
 SL["Icon"]:SetBlendMode( Turbine.UI.BlendMode.AlphaBlend );
 SL["Icon"]:SetSize( 32, 32 );
-SL["Icon"]:SetBackground( WalletItem.Seal.Icon );
+SL["Icon"]:SetBackground( WalletItem.Seals.Icon );
 --SL["Icon"]:SetBackColor( Color["blue"] ); -- Debug purpose
 
 SL["Icon"].MouseMove = function( sender, args )

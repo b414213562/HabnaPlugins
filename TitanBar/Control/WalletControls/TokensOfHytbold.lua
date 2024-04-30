@@ -18,7 +18,7 @@ HT["Icon"] = Turbine.UI.Control();
 HT["Icon"]:SetParent( HT["Ctr"] );
 HT["Icon"]:SetBlendMode( Turbine.UI.BlendMode.AlphaBlend );
 HT["Icon"]:SetSize( 32, 32 );
-HT["Icon"]:SetBackground( WalletItem.TokensOfHytbold.Icon );-- in-game icon 32x32
+HT["Icon"]:SetBackground( WalletItem.HytboldTokens.Icon );-- in-game icon 32x32
 --SM["Icon"]:SetBackColor( Color["blue"] ); -- Debug purpose
 
 HT["Icon"].MouseMove = function( sender, args )

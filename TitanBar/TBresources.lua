@@ -32,26 +32,22 @@ _G.resources = {
 	Storage = { Shared = 0x41003830, Vault = 0x41005e9d }, --0x410e76b7 in-game icon 16x16 (Need 32x32)
 	Sun = 0x4101f898, Moon = 0x4101f89a,
 	TrackItems = 0x410d42cc, -- in-game icon 32x32 (0x41005bd6 / 0x410d42cc)
-	LOTROPoints = 0x4113478C,
 	Wallet = 0x41004641, --0x41007f7c,
 	WalletWindow = 0x4100014c,
 	WalletWindowRefresh = 0x4100013B
-	
-	
 };
 
 _G.WalletItem = {
     DestinyPoints = { Icon = 0x4100a682 },
-    Shard = { Icon = 0x41110d5b }, -- => Shards
+    Shards = { Icon = 0x41110d5b },
     SkirmishMarks = { Icon = 0x4111c446 },
-    Mark = { Icon = 0x4111c446 }, -- => duplicate of SkirmishMarks, delete
-    Mithril = { Icon = 0x411348E1 }, -- => MithrilCoins
+    MithrilCoins = { Icon = 0x411348E1 },
     YuleToken = { Icon = 0x410FA62D },
-    TokensOfHytbold = { Icon = 0x41127D0C }, -- => HytboldTokens
-    Medallion = { Icon = 0x4111c43d }, -- => Medallions
-    Seal = { Icon = 0x4111c449 }, -- => Seals
-    Commendation = { Icon = 0x41123495 }, -- => Commendations
-    LOTROPTS = { Icon = 0x4113478C }, -- => LOTROPoints
+    HytboldTokens = { Icon = 0x41127D0C },
+    Medallions = { Icon = 0x4111c43d },
+    Seals = { Icon = 0x4111c449 },
+    Commendations = { Icon = 0x41123495 },
+    LOTROPoints = { Icon = 0x4113478C },
     AmrothSilverPiece = { Icon = 0x41152875 },
     StarsofMerit = { Icon = 0x4115bea4 },
     CentralGondorSilverPiece = { Icon = 0x41155957 },
