@@ -368,7 +368,7 @@ function ImportCtr( value )
         if Where["AnniversaryToken"] ~= 3 then UpdateCurrency("AnniversaryToken"); end
 	elseif value == "MOE" then --Motes of Enchantment
         if Where["MotesOfEnchantment"] == 1 then
-            import (AppCtrWalletD.."MotesOfEnchantment");
+            import (AppCtrD.."MotesOfEnchantment");
             MOE[ "Ctr" ]:SetPosition( Position.Left["MotesOfEnchantment"], Position.Top["MotesOfEnchantment"] );
         end
         if Where["MotesOfEnchantment"] ~= 3 then UpdateCurrency("MotesOfEnchantment"); end	
