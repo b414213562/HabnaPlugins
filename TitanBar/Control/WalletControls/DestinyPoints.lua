@@ -18,7 +18,7 @@ DP["Icon"] = Turbine.UI.Control();
 DP["Icon"]:SetParent( DP["Ctr"] );
 DP["Icon"]:SetBlendMode( Turbine.UI.BlendMode.AlphaBlend );
 DP["Icon"]:SetSize( 21, 22 );
-DP["Icon"]:SetBackground( 0x4100a682 );-- in-game icon 21x22
+DP["Icon"]:SetBackground( WalletItem.DestinyPoints.Icon );-- in-game icon 21x22
 --DP["Icon"]:SetBackColor( Color["blue"] ); -- Debug purpose
 
 DP["Icon"].MouseMove = function( sender, args )

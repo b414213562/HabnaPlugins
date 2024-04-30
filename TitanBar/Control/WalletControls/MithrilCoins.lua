@@ -18,7 +18,7 @@ MC["Icon"] = Turbine.UI.Control();
 MC["Icon"]:SetParent( MC["Ctr"] );
 MC["Icon"]:SetBlendMode( Turbine.UI.BlendMode.AlphaBlend );
 MC["Icon"]:SetSize( 32, 32 );
-MC["Icon"]:SetBackground( 0x411348E1 );-- in-game icon 32x32
+MC["Icon"]:SetBackground( WalletItem.MithrilCoins.Icon );-- in-game icon 32x32
 --SM["Icon"]:SetBackColor( Color["blue"] ); -- Debug purpose
 
 MC["Icon"].MouseMove = function( sender, args )

@@ -17,7 +17,7 @@ ASP["Icon"] = Turbine.UI.Control();
 ASP["Icon"]:SetParent( ASP["Ctr"] );
 ASP["Icon"]:SetBlendMode( Turbine.UI.BlendMode.AlphaBlend );
 ASP["Icon"]:SetSize( 32, 32 );
-ASP["Icon"]:SetBackground( 0x41152875 );-- in-game icon 32x32
+ASP["Icon"]:SetBackground( WalletItem.AmrothSilverPiece.Icon );-- in-game icon 32x32
 --**^
 
 ASP["Icon"].MouseMove = function( sender, args )
