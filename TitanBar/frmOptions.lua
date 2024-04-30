@@ -2,19 +2,16 @@
 -- written by Habna
 -- rewritten by many
 
-
+-- Note: WalletControls is misnamed, this (should) hold all possible controls so they
+-- can be notified if the TitanBar height changes or the icon size changes.
 local WalletControls = { };
-if WI ~= nil then WalletControls[ "WI" ] = { ShowHide = Show["Wallet"], Control = WI[ "Ctr" ] }; end
-if MI ~= nil then WalletControls[ "MI" ] = { ShowHide = Show["Money"], Control = MI[ "Ctr" ] }; end
-if DP ~= nil then WalletControls[ "DP" ] = { ShowHide = Show["DestinyPoints"], Control = DP[ "Ctr" ] }; end
-if SP ~= nil then WalletControls[ "SP" ] = { ShowHide = Show["Shards"], Control = SP[ "Ctr" ] }; end
-if SM ~= nil then WalletControls[ "SM" ] = { ShowHide = Show["SkirmishMarks"], Control = SM[ "Ctr" ] }; end
-if MC ~= nil then WalletControls[ "MC" ] = { ShowHide = Show["MithrilCoins"], Control = MC[ "Ctr" ] }; end
-if YT ~= nil then WalletControls[ "YT" ] = { ShowHide = Show["YuleToken"], Control = YT[ "Ctr" ] }; end
-if HT ~= nil then WalletControls[ "HT" ] = { ShowHide = Show["HytboldTokens"], Control = HT[ "Ctr" ] }; end
-if MP ~= nil then WalletControls[ "MP" ] = { ShowHide = Show["Medallions"], Control = MP[ "Ctr" ] }; end
-if SL ~= nil then WalletControls[ "SL" ] = { ShowHide = Show["Seals"], Control = SL[ "Ctr" ] }; end
-if CP ~= nil then WalletControls[ "CP" ] = { ShowHide = Show["Commendations"], Control = CP[ "Ctr" ] }; end
+-- code,key = (e.g.) "MC", "MithrilCoins"
+for code,key in pairs(CurrencyCodeToKey) do
+    local table = _G[code];
+
+    if table ~= nil then WalletControls[ code ] = { ShowHide = Show[key], Control = table[ "Ctr" ] }; end
+end
+
 if BI ~= nil then WalletControls[ "BI" ] = { ShowHide = ShowBagInfos, Control = BI[ "Ctr" ] }; end
 if PI ~= nil then WalletControls[ "PI" ] = { ShowHide = ShowPlayerInfos, Control = PI[ "Ctr" ] }; end
 if EI ~= nil then WalletControls[ "EI" ] = { ShowHide = ShowEquipInfos, Control = EI[ "Ctr" ] }; end
@@ -26,23 +23,6 @@ if SS ~= nil then WalletControls[ "SS" ] = { ShowHide = ShowSharedStorage, Contr
 --if BK ~= nil then WalletControls[ "BK" ] = { ShowHide = ShowBank, Control = BK[ "Ctr" ] }; end
 if DN ~= nil then WalletControls[ "DN" ] = { ShowHide = ShowDayNight, Control = DN[ "Ctr" ] }; end
 if RP ~= nil then WalletControls[ "RP" ] = { ShowHide = ShowReputation, Control = RP[ "Ctr" ] }; end
-if LP ~= nil then WalletControls[ "LP" ] = { ShowHide = Show["LOTROPoints"], Control = LP[ "Ctr" ] }; end
-if ASP ~= nil then WalletControls[ "ASP" ] = { ShowHide = Show["AmrothSilverPiece"], Control = ASP[ "Ctr" ] }; end
-if SOM ~= nil then WalletControls[ "SOM" ] = { ShowHide = Show["StarsofMerit"], Control = SOM[ "Ctr" ] }; end
-if CGSP ~= nil then WalletControls[ "CGSP" ] = { ShowHide = Show["CentralGondorSilverPiece"], Control = CGSP[ "Ctr" ] }; end
-if GGB ~= nil then WalletControls[ "GGB" ] = { ShowHide = Show["GiftgiversBrand"], Control = GGB[ "Ctr" ] }; end
-if BB ~= nil then WalletControls[ "BB" ] = { ShowHide = Show["BingoBadge"], Control = BB[ "Ctr" ] }; end
-if LAT ~= nil then WalletControls[ "LAT" ] = { ShowHide = Show["AnniversaryToken"], Control = LAT[ "Ctr" ] }; end
-if MOE ~= nil then WalletControls[ "MOE" ] = { ShowHide = Show["MotesOfEnchantment"], Control = MOE[ "Ctr" ] }; end
-if EOE ~= nil then WalletControls[ "EOE" ] = { ShowHide = Show["EmbersOfEnchantment"], Control = EOE[ "Ctr" ] }; end
-if FOS ~= nil then WalletControls[ "FOS" ] = { ShowHide = Show["FigmentsOfSplendour"], Control = FOS[ "Ctr" ] }; end
-if FFT ~= nil then WalletControls[ "FFT" ] = { ShowHide = Show["FallFestivalToken"], Control = FFT[ "Ctr" ] }; end
-if FFAT ~= nil then WalletControls[ "FFAT" ] = { ShowHide = Show["FarmersFaireToken"], Control = FFAT[ "Ctr" ] }; end
-if SPL ~= nil then WalletControls[ "SPL" ] = { ShowHide = Show["SpringLeaf"], Control = SPL[ "Ctr" ] }; end
-if MST ~= nil then WalletControls[ "MST" ] = { ShowHide = Show["MidsummerToken"], Control = MST[ "Ctr" ] }; end
-if AS ~= nil then WalletControls[ "AS" ] = { ShowHide = Show["AncientScript"], Control = AS[ "Ctr" ] }; end
-if BOT ~= nil then WalletControls[ "BOT" ] = { ShowHide = Show["BadgeOfTaste"], Control = BOT[ "Ctr" ] }; end
-if BOD ~= nil then WalletControls[ "BOD" ] = { ShowHide = Show["BadgeOfDishonour"], Control = BOD[ "Ctr" ] }; end
 
 tFonts = { "Arial12", "TrajanPro13", "TrajanPro14", "TrajanPro15", "TrajanPro16", "TrajanPro18", "TrajanPro19", "TrajanPro20", "TrajanPro21",
 			"TrajanPro23", "TrajanPro24", "TrajanPro25", "TrajanPro26", "TrajanPro28", "TrajanProBold16", "TrajanProBold22", "TrajanProBold24",

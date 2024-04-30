@@ -64,7 +64,7 @@ Add a new currency:
 For each point after this: Search through the files and every time the existing currencies are listed, add the new currency.
 - Add currency in 'functions.lua', in 'functionsCtr.lua', 'functionsMenuControl.lua, & in 'functionsMenu.lua'
 - Add currency in 'settings.lua'
-- Add currency in 'frmOptions.lua' & 'frmMain.lua'
+- Add currency in 'frmMain.lua'
 - Add currency in 'background.lua'
 - Add currency in 'WalletToolTip.lua' & 'WalletWindow.lua' (control directory)
 
