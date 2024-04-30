@@ -761,10 +761,9 @@ function SavePlayerMoney( save )
 
     -- Calculate Gold/Silver/Copper Total
     GoldTot, SilverTot, CopperTot = 0, 0, 0;
-    gold, silver, copper = 0, 0, 0;
 
     for k,v in pairs( wallet ) do
-        DecryptMoney( v.Money );
+        local gold, silver, copper = DecryptMoney( v.Money );
         if k == PN then
             if v.Show then
                 GoldTot = GoldTot + gold;

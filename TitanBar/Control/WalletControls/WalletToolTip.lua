@@ -60,7 +60,7 @@ function RefreshWITTListBox()
 			if wttcur == "Money" then --Money control
 				local wiPosX, tmWidth = 0, 0;
 				local wmoney = PlayerAtt:GetMoney();
-				DecryptMoney(wmoney);
+				local gold, silver, copper = DecryptMoney(wmoney);
 				local twmoney = { gold, silver, copper };
 				--local twmoneyi = { 0x41007e7b, 0x41007e7c, 0x41007e7d }; --gold, silver, copper icon 27x21
 				for w = 1, 3 do

@@ -366,7 +366,7 @@ end
 function UpdateMoney()
 	if Where["Money"] == 1 then
 		local money = PlayerAtt:GetMoney();
-		DecryptMoney( money );
+		local gold, silver, copper = DecryptMoney( money );
 	
 		MI[ "GLbl" ]:SetText( string.format( "%.0f", gold ) );
 		MI[ "SLbl" ]:SetText( string.format( "%.0f", silver ) );
@@ -1188,9 +1188,10 @@ function DecryptMoney( v )
 		write( '<rgb=#FF0000>ERROR:</rgb> <rgb=#FF7777>function.lua DecryptMoney() passed a <rgb=#0000FF>nil</rgb>value.  Assuming <rgb=#FF8000>0</rgb>.</rgb>' );
 		v = 0;
 	end
-	gold = math.floor( v / 100000);
-	silver = math.floor( v / 100) - gold * 1000;
-	copper = v - gold * 100000 - silver * 100;
+	local gold = math.floor( v / 100000);
+	local silver = math.floor( v / 100) - gold * 1000;
+	local copper = v - gold * 100000 - silver * 100;
+    return gold, silver, copper;
 end
 
 
