@@ -81,7 +81,7 @@ function RefreshWITTListBox()
 					ttIcon:SetPosition( lblQte:GetLeft()+lblQte:GetWidth()-2, 5 );
 					ttIcon:SetSize( 27, 21 );
 					ttIcon:SetBlendMode( Turbine.UI.BlendMode.AlphaBlend );
-					ttIcon:SetBackground( resources.MoneyIcon[w] ); --tonumber(twmoneyi[w]) );
+					ttIcon:SetBackground( resources.MoneyIcons[4 - w] ); --tonumber(twmoneyi[w]) );
 					tmWidth = tmWidth + ttIcon:GetWidth()-2;
 					--ttIcon:SetBackColor( Color["blue"] ); -- Debug purpose
 					--**^

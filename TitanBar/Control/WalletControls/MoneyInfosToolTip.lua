@@ -2,8 +2,6 @@
 -- written by Habna
 -- refacotred by 4andreas
 
-MoneyIcons = {resources.MoneyIcon.Copper, resources.MoneyIcon.Silver, resources.MoneyIcon.Gold};
-
 function ShowMIWindow()
 	_G.ToolTipWin = Turbine.UI.Window();
 	_G.ToolTipWin:SetZOrder( 1 );
@@ -226,7 +224,7 @@ function MITTShowData(parent,l,m,lc,mc,showDelIcon) -- l = label, m = money, lc 
         NewIcon:SetSize(27, 21);
         NewIcon:SetPosition(pos - 34, -2);
         NewIcon:SetBlendMode(Turbine.UI.BlendMode.AlphaBlend);
-        NewIcon:SetBackground(MoneyIcons[i]);
+        NewIcon:SetBackground(resources.MoneyIcons[i]);
 
         local NewLbl = Turbine.UI.Label();
         NewLbl:SetParent(MoneyCtr);

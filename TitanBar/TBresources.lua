@@ -36,6 +36,8 @@ _G.resources = {
 	WalletWindow = 0x4100014c,
 	WalletWindowRefresh = 0x4100013B
 };
+_G.resources.MoneyIcons = {resources.MoneyIcon.Copper, resources.MoneyIcon.Silver, resources.MoneyIcon.Gold};
+
 
 _G.WalletItem = {
     DestinyPoints = { Icon = 0x4100a682 },
