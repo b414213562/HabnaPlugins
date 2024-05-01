@@ -43,8 +43,6 @@ function MIRefreshMITTListBox()
     --for i,n in ipairs(a) do write(n) end --degug purpose
 
 	for i = 1, #a do
-		DecryptMoney(wallet[a[i]].Money);
-
 		if a[i] == Player:GetName() then
 			if wallet[a[i]].Show then 
         MITTShowData(MITTListBox, a[i], wallet[a[i]].Money, Color["green"], Color["green"]);
