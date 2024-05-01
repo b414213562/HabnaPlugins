@@ -327,7 +327,7 @@ MI["CLbl"].MouseClick = function( sender, args )
 			end
 		end
 	elseif ( args.Button == Turbine.UI.MouseButton.Right ) then
-		_G.sFromCtr = "Money";
+		_G.sFromCtr = "MI";
 		ControlMenu:ShowMenu();
 	end
 	WasDrag = false;

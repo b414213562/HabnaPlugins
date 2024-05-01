@@ -50,7 +50,7 @@ function UnloadControl( value )
 		if Show["BadgeOfDishonour"] then Where["BadgeOfDishonour"] = 3; ShowHideCurrency("BadgeOfDishonour"); end
 		elseif value == "this" then
 			if _G.sFromCtr == "WI" then ShowHideCurrency("Wallet");
-			elseif _G.sFromCtr == "Money" then Where["Money"] = 3; ShowHideCurrency("Money");
+			elseif _G.sFromCtr == "MI" then Where["Money"] = 3; ShowHideCurrency("Money");
 			elseif _G.sFromCtr == "DP" then Where["DestinyPoints"] = 3; ShowHideCurrency("DestinyPoints");
 			elseif _G.sFromCtr == "SP" then Where["Shards"] = 3; ShowHideCurrency("Shards");
 			elseif _G.sFromCtr == "SM" then Where["SkirmishMarks"] = 3; ShowHideCurrency("SkirmishMarks");
@@ -106,7 +106,7 @@ function BGColor( cmd, value )
 		tA, tR, tG, tB = bcAlpha, bcRed, bcGreen, bcBlue;
 	elseif cmd == "apply" then
 		if _G.sFromCtr == "WI" then tA, tR, tG, tB = BC.Alpha["Wallet"], BC.Red["Wallet"], BC.Green["Wallet"], BC.Blue["Wallet"];
-		elseif _G.sFromCtr == "Money" then tA, tR, tG, tB = BC.Alpha["Money"], BC.Red["Money"], BC.Green["Money"], BC.Blue["Money"];
+		elseif _G.sFromCtr == "MI" then tA, tR, tG, tB = BC.Alpha["Money"], BC.Red["Money"], BC.Green["Money"], BC.Blue["Money"];
 		elseif _G.sFromCtr == "DP" then tA, tR, tG, tB = BC.Alpha["DestinyPoints"], BC.Red["DestinyPoints"], BC.Green["DestinyPoints"], BC.Blue["DestinyPoints"];
 		elseif _G.sFromCtr == "SP" then tA, tR, tG, tB = BC.Alpha["Shards"], BC.Red["Shards"], BC.Green["Shards"], BC.Blue["Shards"];
 		elseif _G.sFromCtr == "SM" then tA, tR, tG, tB = BC.Alpha["SkirmishMarks"], BC.Red["SkirmishMarks"], BC.Green["SkirmishMarks"], BC.Blue["SkirmishMarks"];
@@ -238,7 +238,7 @@ function BGColor( cmd, value )
 	elseif value == "this" then
 		if _G.sFromCtr == "WI" then
 			WI[ "Ctr" ]:SetBackColor( Turbine.UI.Color( tA, tR, tG, tB ) );
-		elseif _G.sFromCtr == "Money" then
+		elseif _G.sFromCtr == "MI" then
 			BC.Alpha["Money"], BC.Red["Money"], BC.Green["Money"], BC.Blue["Money"] = tA, tR, tG, tB;
 			MI[ "Ctr" ]:SetBackColor( Turbine.UI.Color( tA, tR, tG, tB ) );
 		elseif _G.sFromCtr == "DP" then
