@@ -4,93 +4,104 @@
 
 
 function ImportCtr( value )
-    if value == "WI" then --Wallet infos
-        import (AppCtrWalletD.."Wallet");
-        import (AppCtrWalletD.."WalletToolTip");
-        UpdateWallet();
-        WI[ "Ctr" ]:SetPosition( Position.Left["Wallet"], Position.Top["Wallet"] );
-    elseif value == "MI" then --Money Infos
-        if Where["Money"] == 1 then
-            import (AppCtrWalletD.."Money");
-            import (AppCtrWalletD.."MoneyToolTip");
-            MI[ "Ctr" ]:SetPosition( Position.Left["Money"], Position.Top["Money"] );
-        end
-        if Where["Money"] ~= 3 then
-            PlayerAtt = Player:GetAttributes();
-            AddCallback(PlayerAtt, "MoneyChanged",
-                function(sender, args) UpdateMoney(); end
-                );
-            AddCallback(sspack, "CountChanged", UpdateSharedStorageGold);
-            -- ^^ Thx Heridian!
-            UpdateMoney();
+    -- Handle currencies:
+    local key = CurrencyCodeToKey[value];
+    if (key) then
+        -- Currency-specific code:
+        if (key == "Wallet") then
+            import (AppCtrWalletD.."Wallet");
+            import (AppCtrWalletD.."WalletToolTip");
+            UpdateWallet();
+            WI[ "Ctr" ]:SetPosition( Position.Left["Wallet"], Position.Top["Wallet"] );
+        elseif (key == "Money") then
+            if Where["Money"] == 1 then
+                import (AppCtrWalletD.."Money");
+                import (AppCtrWalletD.."MoneyToolTip");
+                MI[ "Ctr" ]:SetPosition( Position.Left["Money"], Position.Top["Money"] );
+            end
+            if Where["Money"] ~= 3 then
+                PlayerAtt = Player:GetAttributes();
+                AddCallback(PlayerAtt, "MoneyChanged",
+                    function(sender, args) UpdateMoney(); end
+                    );
+                AddCallback(sspack, "CountChanged", UpdateSharedStorageGold);
+                -- ^^ Thx Heridian!
+                UpdateMoney();
+            else
+                RemoveCallback(PlayerAtt, "MoneyChanged");
+                RemoveCallback(sspack, "CountChanged", UpdateSharedStorageGold);
+                -- ^^ Thx Heridian!
+            end
+        elseif (key == "DestinyPoints") then
+            if Where["DestinyPoints"] == 1 then
+                import (AppCtrWalletD.."DestinyPoints");
+                DP[ "Ctr" ]:SetPosition( Position.Left["DestinyPoints"], Position.Top["DestinyPoints"] );
+            end
+            if Where["DestinyPoints"] ~= 3 then
+                PlayerAtt = Player:GetAttributes();
+                AddCallback(PlayerAtt, "DestinyPointsChanged",
+                    function(sender, args) UpdateCurrency("DestinyPoints"); end
+                    );
+                UpdateCurrency("DestinyPoints");
+            else
+                RemoveCallback(PlayerAtt, "DestinyPointsChanged");
+            end    
+        elseif (key == "LOTROPoints") then
+            if Where["LOTROPoints"] == 1 then
+                import (AppCtrWalletD.."LOTROPoints");
+                LP[ "Ctr" ]:SetPosition( Position.Left["LOTROPoints"], Position.Top["LOTROPoints"] );
+                UpdateLOTROPoints();
+            end
+            if Where["LOTROPoints"] ~= 3 then
+                --PlayerLP = Player:GetLOTROPoints();
+                --AddCallback(PlayerLP, "LOTROPointsChanged",
+                --    function(sender, args) UpdateLOTROPoints(); end
+                --);
+                LPcb = AddCallback(Turbine.Chat, "Received",
+                    function(sender, args)
+                        -- Note: We are only detecting earned, because currently there is
+                        --       no chat output identifying how much LP we spend.
+                    if args.ChatType == Turbine.ChatType.Advancement then
+                        tpMess = args.Message;
+                        if tpMess ~= nil then
+                            local tpPattern;
+                            if GLocale == "en" then
+                                tpPattern = "earned ([%d%p]*) LOTRO Points";
+                            elseif GLocale == "fr" then
+                                tpPattern = "gagn\195\169 ([%d%p]*) points LOTRO";
+                            elseif GLocale == "de" then
+                                tpPattern = "habt ([%d%p]*) Punkte erhalten";
+                            end
+                            local tmpLP = string.match(tpMess,tpPattern);
+                            if tmpLP ~= nil then
+                                LPTS = tmpLP;
+                                _G.LOTROPTS = _G.LOTROPTS + LPTS;
+                                if Where["LOTROPoints"] == 1 then UpdateLOTROPoints(); end
+                                SavePlayerLOTROPoints();
+                            end
+                        end
+                    end
+                    end);
+            else
+                RemoveCallback(Turbine.Chat, "Received", LPcb);
+            end
         else
-            RemoveCallback(PlayerAtt, "MoneyChanged");
-            RemoveCallback(sspack, "CountChanged", UpdateSharedStorageGold);
-            -- ^^ Thx Heridian!
+            if Where[key] == 1 then
+                local dir = AppCtrWalletD;
+                if (key == "MotesOfEnchantment") then dir = AppCtrD; end
+
+                import (dir .. key);
+                _G[value][ "Ctr" ]:SetPosition( Position.Left[key], Position.Top[key] );
+            end
+            if Where[key] ~= 3 then
+                UpdateCurrency(key);
+            end
         end
-    elseif value == "DP" then --Destiny Points
-        if Where["DestinyPoints"] == 1 then
-            import (AppCtrWalletD.."DestinyPoints");
-            DP[ "Ctr" ]:SetPosition( Position.Left["DestinyPoints"], Position.Top["DestinyPoints"] );
-        end
-        if Where["DestinyPoints"] ~= 3 then
-            PlayerAtt = Player:GetAttributes();
-            AddCallback(PlayerAtt, "DestinyPointsChanged",
-                function(sender, args) UpdateCurrency("DestinyPoints"); end
-                );
-            UpdateCurrency("DestinyPoints");
-        else
-            RemoveCallback(PlayerAtt, "DestinyPointsChanged");
-        end
-    elseif value == "SP" then --Shards
-        if Where[key] == 1 then
-            import (AppCtrWalletD..key);
-            _G[value][ "Ctr" ]:SetPosition( Position.Left[key], Position.Top[key] );
-        end
-        if Where[key] ~= 3 then UpdateCurrency(key); end
-    elseif value == "SM" then --Skirmish Marks
-        if Where[key] == 1 then
-            import (AppCtrWalletD..key);
-            _G[value][ "Ctr" ]:SetPosition( Position.Left[key], Position.Top[key] );
-        end
-        if Where[key] ~= 3 then UpdateCurrency(key); end
-    elseif value == "MC" then --Mithril Coins
-        if Where[key] == 1 then
-            import (AppCtrWalletD..key);
-            _G[value][ "Ctr" ]:SetPosition( Position.Left[key], Position.Top[key] );
-        end
-        if Where[key] ~= 3 then UpdateCurrency(key); end
-    elseif value == "YT" then --Yule Tokens
-        if Where[key] == 1 then
-            import (AppCtrWalletD..key);
-            _G[value][ "Ctr" ]:SetPosition( Position.Left[key], Position.Top[key] );
-        end
-        if Where[key] ~= 3 then UpdateCurrency(key); end
-    elseif value == "HT" then --Tokens of Hytbold
-        if Where[key] == 1 then
-            import (AppCtrWalletD..key);
-            _G[value][ "Ctr" ]:SetPosition( Position.Left[key], Position.Top[key] );
-        end
-        if Where[key] ~= 3 then UpdateCurrency(key); end
-    elseif value == "MP" then --Medallions
-        if Where[key] == 1 then
-            import (AppCtrWalletD..key);
-            _G[value][ "Ctr" ]:SetPosition( Position.Left[key], Position.Top[key] );
-        end
-        if Where[key] ~= 3 then UpdateCurrency(key); end
-    elseif value == "SL" then --Seals
-        if Where[key] == 1 then
-            import (AppCtrWalletD..key);
-            _G[value][ "Ctr" ]:SetPosition( Position.Left[key], Position.Top[key] );
-        end
-        if Where[key] ~= 3 then UpdateCurrency(key); end
-    elseif value == "CP" then --Commendations
-        if Where[key] == 1 then
-            import (AppCtrWalletD..key);
-            _G[value][ "Ctr" ]:SetPosition( Position.Left[key], Position.Top[key] );
-        end
-        if Where[key] ~= 3 then UpdateCurrency(key); end
-    elseif value == "BI" then --Backpack Infos
+
+    end
+
+    -- Handle non-currencies:
+    if value == "BI" then --Backpack Infos
         import (AppCtrD.."BagInfos");
         --import (AppCtrD.."BagInfosToolTip");
         AddCallback(backpack, "ItemAdded",
@@ -261,45 +272,6 @@ function ImportCtr( value )
         import (AppCtrD.."DayNight");
         UpdateDayNight();
         DN[ "Ctr" ]:SetPosition( _G.DNLocX, _G.DNLocY );
-    elseif value == "LP" then --LOTRO points
-        if Where["LOTROPoints"] == 1 then
-            import (AppCtrWalletD.."LOTROPoints");
-            LP[ "Ctr" ]:SetPosition( Position.Left["LOTROPoints"], Position.Top["LOTROPoints"] );
-            UpdateLOTROPoints();
-        end
-        if Where["LOTROPoints"] ~= 3 then
-            --PlayerLP = Player:GetLOTROPoints();
-            --AddCallback(PlayerLP, "LOTROPointsChanged",
-            --    function(sender, args) UpdateLOTROPoints(); end
-            --);
-            LPcb = AddCallback(Turbine.Chat, "Received",
-                function(sender, args)
-                    -- Note: We are only detecting earned, because currently there is
-                    --       no chat output identifying how much LP we spend.
-                if args.ChatType == Turbine.ChatType.Advancement then
-                    tpMess = args.Message;
-                    if tpMess ~= nil then
-                        local tpPattern;
-                        if GLocale == "en" then
-                            tpPattern = "earned ([%d%p]*) LOTRO Points";
-                        elseif GLocale == "fr" then
-                            tpPattern = "gagn\195\169 ([%d%p]*) points LOTRO";
-                        elseif GLocale == "de" then
-                            tpPattern = "habt ([%d%p]*) Punkte erhalten";
-                        end
-                        local tmpLP = string.match(tpMess,tpPattern);
-                        if tmpLP ~= nil then
-                            LPTS = tmpLP;
-                            _G.LOTROPTS = _G.LOTROPTS + LPTS;
-                            if Where["LOTROPoints"] == 1 then UpdateLOTROPoints(); end
-                            SavePlayerLOTROPoints();
-                        end
-                    end
-                end
-                end);
-        else
-            RemoveCallback(Turbine.Chat, "Received", LPcb);
-        end
     elseif value == "GT" then --Game Time
         import (AppCtrD.."GameTime");
         --import (AppCtrD.."GameTimeToolTip");
@@ -330,102 +302,6 @@ function ImportCtr( value )
             );
         UpdateSharedStorage();
         SS[ "Ctr" ]:SetPosition( _G.SSLocX, _G.SSLocY );
-    elseif value == "ASP" then --Amroth Silver Piece
-        if Where[key] == 1 then
-            import (AppCtrWalletD..key);
-            _G[value][ "Ctr" ]:SetPosition( Position.Left[key], Position.Top[key] );
-        end
-        if Where[key] ~= 3 then UpdateCurrency(key); end
-    elseif value == "SOM" then --Stars of Merit
-        if Where[key] == 1 then
-            import (AppCtrWalletD..key);
-            _G[value][ "Ctr" ]:SetPosition( Position.Left[key], Position.Top[key] );
-        end
-        if Where[key] ~= 3 then UpdateCurrency(key); end
-    elseif value == "CGSP" then --Central Gondor Silver Piece
-        if Where[key] == 1 then
-            import (AppCtrWalletD..key);
-            _G[value][ "Ctr" ]:SetPosition( Position.Left[key], Position.Top[key] );
-        end
-        if Where[key] ~= 3 then UpdateCurrency(key); end
-    elseif value == "GGB" then --Gift giver's Brand
-        if Where[key] == 1 then
-            import (AppCtrWalletD..key);
-            _G[value][ "Ctr" ]:SetPosition( Position.Left[key], Position.Top[key] );
-        end
-        if Where[key] ~= 3 then UpdateCurrency(key); end
-    elseif value == "BB" then --Bingo Badge
-        if Where[key] == 1 then
-            import (AppCtrWalletD..key);
-            _G[value][ "Ctr" ]:SetPosition( Position.Left[key], Position.Top[key] );
-        end
-        if Where[key] ~= 3 then UpdateCurrency(key); end
-    elseif value == "LAT" then --Anniversary Token
-        if Where[key] == 1 then
-            import (AppCtrWalletD..key);
-            _G[value][ "Ctr" ]:SetPosition( Position.Left[key], Position.Top[key] );
-        end
-        if Where[key] ~= 3 then UpdateCurrency(key); end
-	elseif value == "MOE" then --Motes of Enchantment
-        if Where[key] == 1 then
-            import (AppCtrD..key);
-            _G[value][ "Ctr" ]:SetPosition( Position.Left[key], Position.Top[key] );
-        end
-        if Where[key] ~= 3 then UpdateCurrency(key); end	
-	elseif value == "EOE" then --Embers of Enchantment
-        if Where[key] == 1 then
-            import (AppCtrWalletD..key);
-            _G[value][ "Ctr" ]:SetPosition( Position.Left[key], Position.Top[key] );
-        end
-        if Where[key] ~= 3 then UpdateCurrency(key); end
-	elseif value == "FOS" then --Figments of Splendour
-        if Where[key] == 1 then
-            import (AppCtrWalletD..key);
-            _G[value][ "Ctr" ]:SetPosition( Position.Left[key], Position.Top[key] );
-        end
-        if Where[key] ~= 3 then UpdateCurrency(key); end
-	elseif value == "FFT" then --Fall Festival Tokens
-        if Where[key] == 1 then
-            import (AppCtrWalletD..key);
-            _G[value][ "Ctr" ]:SetPosition( Position.Left[key], Position.Top[key] );
-        end
-        if Where[key] ~= 3 then UpdateCurrency(key); end
-	elseif value == "FFAT" then --Farmers Faire Tokens
-        if Where[key] == 1 then
-            import (AppCtrWalletD..key);
-            _G[value][ "Ctr" ]:SetPosition( Position.Left[key], Position.Top[key] );
-        end
-        if Where[key] ~= 3 then UpdateCurrency(key); end
-	elseif value == "SPL" then --Spring Leaves
-        if Where[key] == 1 then
-            import (AppCtrWalletD..key);
-            _G[value][ "Ctr" ]:SetPosition( Position.Left[key], Position.Top[key] );
-        end
-        if Where[key] ~= 3 then UpdateCurrency(key); end
-	elseif value == "MST" then --Midsummer Tokens
-        if Where[key] == 1 then
-            import (AppCtrWalletD..key);
-            _G[value][ "Ctr" ]:SetPosition( Position.Left[key], Position.Top[key] );
-        end
-        if Where[key] ~= 3 then UpdateCurrency(key); end
-	elseif value == "AS" then --Ancient Script
-        if Where[key] == 1 then
-            import (AppCtrWalletD..key);
-            _G[value][ "Ctr" ]:SetPosition( Position.Left[key], Position.Top[key] );
-        end
-        if Where[key] ~= 3 then UpdateCurrency(key); end	
-    elseif value == "BOT" then --Badge of Taste
-        if Where[key] == 1 then
-            import (AppCtrWalletD..key);
-            _G[value][ "Ctr" ]:SetPosition( Position.Left[key], Position.Top[key] );
-        end
-        if Where[key] ~= 3 then UpdateCurrency(key); end
-    elseif value == "BOD" then --Badge of Dishonour
-        if Where[key] == 1 then
-            import (AppCtrWalletD..key);
-            _G[value][ "Ctr" ]:SetPosition( Position.Left[key], Position.Top[key] );
-        end
-        if Where[key] ~= 3 then UpdateCurrency(key); end
 	elseif value == "RP" then --Reputation Points
         RPGR = { ['default'] = {
             [0] = 10000, [1] = 10000, [2] = 20000, [3] = 25000, [4] = 30000,
