@@ -160,34 +160,7 @@ function frmMain()
 
 	if TBAutoHide == L["OPAHE"] then AutoHideCtr:SetWantsUpdates( true ); end --Auto hide if needed
 
-	if PlayerAlign == 1 then
-		if PlayerWalletSize ~= nil or PlayerWalletSize ~= 0 then
-			if Where["Shards"] ~= 3 then ImportCtr( "SP" ); end
-			if Where["SkirmishMarks"] ~= 3 then ImportCtr( "SM" ); end
-			if Where["MithrilCoins"] ~= 3 then ImportCtr( "MC" ); end
-			if Where["YuleToken"] ~= 3 then ImportCtr( "YT" ); end
-			if Where["HytboldTokens"] ~= 3 then ImportCtr( "HT" ); end
-			if Where["Medallions"] ~= 3 then ImportCtr( "MP" ); end
-			if Where["Seals"] ~= 3 then ImportCtr( "SL" ); end
-			if Where["Commendations"] ~= 3 then ImportCtr( "CP" ); end
-			if Where["AmrothSilverPiece"] ~= 3 then ImportCtr( "ASP" ); end
-			if Where["StarsofMerit"] ~= 3 then ImportCtr( "SOM" ); end
-			if Where["CentralGondorSilverPiece"] ~= 3 then ImportCtr( "CGSP" ); end
-			if Where["GiftgiversBrand"] ~= 3 then ImportCtr( "GGB" ); end
-			if Where["BingoBadge"] ~= 3 then ImportCtr( "BB" ); end
-			if Where["AnniversaryToken"] ~= 3 then ImportCtr( "LAT" ); end
-			if Where["MotesOfEnchantment"] ~= 3 then ImportCtr( "MOE" ); end
-			if Where["EmbersOfEnchantment"] ~= 3 then ImportCtr( "EOE" ); end
-			if Where["FigmentsOfSplendour"] ~= 3 then ImportCtr( "FOS" ); end
-			if Where["FallFestivalToken"] ~= 3 then ImportCtr( "FFT" ); end
-			if Where["FarmersFaireToken"] ~= 3 then ImportCtr( "FFAT" ); end
-			if Where["SpringLeaf"] ~= 3 then ImportCtr( "SPL" ); end
-			if Where["MidsummerToken"] ~= 3 then ImportCtr( "MST" ); end
-			if Where["AncientScript"] ~= 3 then ImportCtr( "AS" ); end
-			if Where["BadgeOfTaste"] ~= 3 then ImportCtr( "BOT" ); end
-			if Where["BadgeOfDishonour"] ~= 3 then ImportCtr( "BOD" ); end
-		end
-	else
+    if PlayerAlign ~= 1 then
 		-- Disable infos not useful in Monster Play
         for index, key in ipairs(CurrenciesNotUsedInMonsterPlay) do
             Show[key] = false;
@@ -199,9 +172,13 @@ function frmMain()
 		ShowReputation = false;
 	end
 
-	if Show["Wallet"] then ImportCtr( "WI" ); end
-	if Where["Money"] ~= 3 then ImportCtr( "MI" ); end
-	if Where["DestinyPoints"] ~= 3 then ImportCtr( "DP" ); end
+    for index, key in ipairs(Currencies) do
+        local isActive = Where[key] ~= 3;
+        if (key == "Wallet") then isActive = Show[key]; end
+
+        if isActive then ImportCtr(CurrencyKeyToCode[key]); end
+    end
+
 	if ShowTrackItems then ImportCtr( "TI" ); end --Track Items
 	if ShowInfamy then ImportCtr( "IF" ); end --Infamy/Renown
 	if ShowVault then ImportCtr( "VT" ); end --Vault
@@ -209,7 +186,6 @@ function frmMain()
 	--if ShowBank then ImportCtr( "BK" ); end --Bank
 	if ShowDayNight then ImportCtr( "DN" ); end --Day & Night time
 	if ShowReputation then ImportCtr( "RP" ); end --Reputation Points
-	if Where["LOTROPoints"] ~= 3 then ImportCtr( "LP" ); end --LOTRO Points
 
 	--**v Workaround for the ItemRemoved that fires before the backpack was updated (Turbine API issue) v**
 	ItemRemovedTimer = Turbine.UI.Control();
@@ -307,30 +283,13 @@ function frmMain()
 			--Detect if wallet size has changed
 			if PlayerWallet:GetSize() ~= PlayerWalletSize then -- Until I find the size changed event or something similar in wallet
 				LoadPlayerWallet();
-				if Where["Shards"] ~= 3 then ImportCtr( "SP" ); end
-				if Where["SkirmishMarks"] ~= 3 then ImportCtr( "SM" ); end
-				if Where["MithrilCoins"] ~= 3 then ImportCtr( "MC" ); end
-				if Where["YuleToken"] ~= 3 then ImportCtr( "YT" ); end
-				if Where["HytboldTokens"] ~= 3 then ImportCtr( "HT" ); end
-				if Where["Medallions"] ~= 3 then ImportCtr( "MP" ); end
-				if Where["Seals"] ~= 3 then ImportCtr( "SL" ); end
-				if Where["LOTROPoints"] ~= 3 then ImportCtr( "CP" ); end
-				if Where["AmrothSilverPiece"] ~= 3 then ImportCtr( "ASP" ); end
-				if Where["StarsofMerit"] ~= 3 then ImportCtr( "SOM" ); end
-				if Where["CentralGondorSilverPiece"] ~= 3 then ImportCtr( "CGSP" ); end
-				if Where["GiftgiversBrand"] ~= 3 then ImportCtr( "GGB" ); end
-				if Where["BingoBadge"] ~= 3 then ImportCtr( "BB" ); end
-				if Where["AnniversaryToken"] ~= 3 then ImportCtr( "LAT" ); end
-				if Where["MotesOfEnchantment"] ~= 3 then ImportCtr( "MOE" ); end
-				if Where["EmbersOfEnchantment"] ~= 3 then ImportCtr( "EOE" ); end
-				if Where["FigmentsOfSplendour"] ~= 3 then ImportCtr( "FOS" ); end
-				if Where["FallFestivalToken"] ~= 3 then ImportCtr( "FFT" ); end
-				if Where["FarmersFaireToken"] ~= 3 then ImportCtr( "FFAT" ); end
-				if Where["SpringLeaf"] ~= 3 then ImportCtr( "SPL" ); end
-				if Where["MidsummerToken"] ~= 3 then ImportCtr( "MST" ); end
-				if Where["AncientScript"] ~= 3 then ImportCtr( "AS" ); end
-				if Where["BadgeOfTaste"] ~= 3 then ImportCtr( "BOT" ); end
-				if Where["BadgeOfDishonour"] ~= 3 then ImportCtr( "BOD" ); end
+
+                for index, key in ipairs(Currencies) do
+                    local isActive = Where[key] ~= 3;
+                    if (key == "Wallet") then isActive = Show[key]; end
+            
+                    if isActive then ImportCtr(CurrencyKeyToCode[key]); end
+                end
 			end
 
 			screenWidth, screenHeight = Turbine.UI.Display.GetSize();
