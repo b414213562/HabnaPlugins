@@ -189,24 +189,14 @@ function frmMain()
 		end
 	else
 		-- Disable infos not useful in Monster Play
-		ShowDurabilityInfos, ShowEquipInfos, Show["DestinyPoints"], Show["Shards"] = false, false, false, false;
-		Show["YuleToken"], Show["SkirmishMarks"], Show["HytboldTokens"], Show["Medallions"] = false, false, false, false;
-		Show["Seals"], ShowVault, ShowSharedStorage, Show["AmrothSilverPiece"] = false, false, false, false;
-		Show["StarsofMerit"], Show["CentralGondorSilverPiece"], Show["GiftgiversBrand"] = false, false, false;
-		Show["BingoBadge"], Show["AnniversaryToken"], ShowReputation = false, false, false;
-		Show["MotesOfEnchantment"] = false;
-		Show["EmbersOfEnchantment"] = false;
-		Show["FigmentsOfSplendour"] = false;
-		Show["FallFestivalToken"] = false;
-		Show["FarmersFaireToken"] = false;
-		Show["SpringLeaf"] = false;
-		Show["MidsummerToken"] = false;
-		Show["AncientScript"] = false;
-		if PlayerWalletSize ~= nil or PlayerWalletSize ~= 0 then
-			if Show["Wallet"] then ImportCtr( "WI" ); end
-			if Where["Commendations"] ~= 3 then ImportCtr( "CP" ); end
-			if Where["LOTROPoints"] ~= 3 then ImportCtr( "LP" ); end
-		end
+        for index, key in ipairs(CurrenciesNotUsedInMonsterPlay) do
+            Show[key] = false;
+        end
+		ShowDurabilityInfos = false;
+        ShowEquipInfos = false;
+		ShowVault = false;
+        ShowSharedStorage = false;
+		ShowReputation = false;
 	end
 
 	if Show["Wallet"] then ImportCtr( "WI" ); end

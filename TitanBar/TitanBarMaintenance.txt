@@ -63,15 +63,13 @@ Add a new currency:
 
 For each point after this: Search through the files and every time the existing currencies are listed, add the new currency.
 - Add currency in 'functions.lua', in 'functionsCtr.lua', 'functionsMenuControl.lua, & in 'functionsMenu.lua'
-- Add currency in 'settings.lua'
-- Add currency in 'frmMain.lua'
-- Add currency in 'background.lua'
+- Add currency in 'settings.lua' => Currencies and other lookup tables
 
 
 To add a new control (from Technical_13):
 - Add  text names to the 'de', 'en', and 'fr' localization files
 - Add control in 'menu.lua'
-- Add control in 'functions.lua', in 'functionsCtr.lua', 'functionsMenuControl.lua, & in 'functionsMenu.lua'
+- Add control in 'functions.lua', in 'functionsCtr.lua', 'functionsMenuControl.lua'
 - Add control in 'settings.lua'
 - Add control in 'frmOptions.lua'
 - Add control in 'background.lua'

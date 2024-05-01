@@ -68,6 +68,32 @@ Currencies = {
     "BadgeOfDishonour",
 }
 
+CurrenciesNotUsedInMonsterPlay = {
+    "DestinyPoints",
+    "Shards",
+    "SkirmishMarks",
+    "YuleToken",
+    "HytboldTokens",
+    "Medallions",
+    "Seals",
+    "AmrothSilverPiece",
+    "StarsofMerit",
+    "CentralGondorSilverPiece",
+    "GiftgiversBrand",
+    "BingoBadge",
+    "AnniversaryToken",
+    "MotesOfEnchantment",
+    "EmbersOfEnchantment",
+    "FigmentsOfSplendour",
+    "FallFestivalToken",
+    "FarmersFaireToken",
+    "SpringLeaf",
+    "MidsummerToken",
+    "AncientScript",
+    "BadgeOfTaste",
+    "BadgeOfDishonour",
+};
+
 CurrencyCodeToKey = {
     ["WI"] = "Wallet",
     ["MI"] = "Money",
