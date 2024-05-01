@@ -69,7 +69,7 @@ For each point after this: Search through the files and every time the existing 
 To add a new control (from Technical_13):
 - Add  text names to the 'de', 'en', and 'fr' localization files
 - Add control in 'menu.lua'
-- Add control in 'functions.lua', in 'functionsCtr.lua', 'functionsMenuControl.lua'
+- Add control in 'functions.lua', in 'functionsCtr.lua'
 - Add control in 'settings.lua'
 - Add control in 'frmOptions.lua'
 - Add control in 'background.lua'
