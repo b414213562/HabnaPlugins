@@ -68,7 +68,7 @@ function ImportCtr( value )
         if Where["YuleToken"] ~= 3 then UpdateCurrency("YuleToken"); end
     elseif value == "HT" then --Tokens of Hytbold
         if Where["HytboldTokens"] == 1 then
-            import (AppCtrWalletD.."TokensOfHytbold");
+            import (AppCtrWalletD.."HytboldTokens");
             HT[ "Ctr" ]:SetPosition( Position.Left["HytboldTokens"], Position.Top["HytboldTokens"] );
         end
         if Where["HytboldTokens"] ~= 3 then UpdateCurrency("HytboldTokens"); end
