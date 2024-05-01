@@ -290,37 +290,37 @@ function RefreshWIListBox()
 				LPWCtr:SetVisible( false );
 				WIbutSave:SetPosition( WIWCtr:GetWidth()/2 - WIbutSave:GetWidth()/2, WIDD:GetTop()+WIDD:GetHeight()+10 );
 
-				if wcur == "Money" then tw = Where["Money"]; -- 
-				elseif wcur == "DestinyPoints" then tw = Where["DestinyPoints"]; -- Destiny Points
-				elseif wcur == "Shards" then tw = Where["Shards"]; -- Shards
-				elseif wcur == "SkirmishMarks" then tw = Where["SkirmishMarks"]; -- Skirmish marks
-				elseif wcur == "MithrilCoins" then tw = Where["MithrilCoins"]; -- Mithril Coins
-				elseif wcur == "YuleToken" then tw = Where["YuleToken"]; -- Yule Tokens
-				elseif wcur == "HytboldTokens" then tw = Where["HytboldTokens"]; -- Tokens of Hytbold
-				elseif wcur == "Medallions" then tw = Where["Medallions"]; -- Medallions
-				elseif wcur == "Seals" then tw = Where["Seals"]; -- Seals
-				elseif wcur == "Commendations" then tw = Where["Commendations"]; -- Commendations
-				elseif wcur == "LOTROPoints" then tw = Where["LOTROPoints"]; -- LOTRO Points
-				LPWCtr:SetVisible( true ); -- LOTRO Points
-				WItxtLOTROPTS:SetText( _G.LOTROPTS ); -- LOTRO Points
-				WItxtLOTROPTS:Focus(); -- LOTRO Points
-				WIbutSave:SetPosition( WIWCtr:GetWidth()/2 - WIbutSave:GetWidth()/2, LPWCtr:GetTop()+LPWCtr:GetHeight()+10); -- LOTRO Points
-				elseif wcur == "AmrothSilverPiece" then tw = Where["AmrothSilverPiece"]; -- Amroth Silver Piece
-				elseif wcur == "StarsofMerit" then tw = Where["StarsofMerit"]; -- Stars of Merit
-				elseif wcur == "CentralGondorSilverPiece" then tw = Where["CentralGondorSilverPiece"]; -- Central Gondor Silver Piece
-				elseif wcur == "GiftgiversBrand" then tw = Where["GiftgiversBrand"]; -- Gift Giver's Brand
-				elseif wcur == "BingoBadge" then tw = Where["BingoBadge"]; -- Bingo Badges
-				elseif wcur == "AnniversaryToken" then tw = Where["AnniversaryToken"]; -- Anniversary Tokens
-				elseif wcur == "MotesOfEnchantment" then tw = Where["MotesOfEnchantment"]; -- Motes of Enchantment
-				elseif wcur == "EmbersOfEnchantment" then tw = Where["EmbersOfEnchantment"]; -- Embers of Enchantment
-				elseif wcur == "FigmentsOfSplendour" then tw = Where["FigmentsOfSplendour"]; -- Figments of Splendour
-				elseif wcur == "FallFestivalToken" then tw = Where["FallFestivalToken"]; -- Fall Festival Token
-				elseif wcur == "FarmersFaireToken" then tw = Where["FarmersFaireToken"]; -- Farmers Faire Token
-				elseif wcur == "SpringLeaf" then tw = Where["SpringLeaf"]; -- Spring Leaf
-				elseif wcur == "MidsummerToken" then tw = Where["MidsummerToken"]; -- Midsummer Token
-				elseif wcur == "AncientScript" then tw = Where["AncientScript"]; -- Ancient Script
-				elseif wcur == "BadgeOfTaste" then tw = Where["BadgeOfTaste"]; -- Badge of Taste
-				elseif wcur == "BadgeOfDishonour" then tw = Where["BadgeOfDishonour"]; -- Badge of Dishonour
+				if wcur == "Money" then tw = Where[wcur]; -- 
+				elseif wcur == "DestinyPoints" then tw = Where[wcur]; -- Destiny Points
+				elseif wcur == "Shards" then tw = Where[wcur]; -- Shards
+				elseif wcur == "SkirmishMarks" then tw = Where[wcur]; -- Skirmish marks
+				elseif wcur == "MithrilCoins" then tw = Where[wcur]; -- Mithril Coins
+				elseif wcur == "YuleToken" then tw = Where[wcur]; -- Yule Tokens
+				elseif wcur == "HytboldTokens" then tw = Where[wcur]; -- Tokens of Hytbold
+				elseif wcur == "Medallions" then tw = Where[wcur]; -- Medallions
+				elseif wcur == "Seals" then tw = Where[wcur]; -- Seals
+				elseif wcur == "Commendations" then tw = Where[wcur]; -- Commendations
+				elseif wcur == "LOTROPoints" then tw = Where[wcur]; -- LOTRO Points
+                    LPWCtr:SetVisible( true ); -- LOTRO Points
+                    WItxtLOTROPTS:SetText( _G.LOTROPTS ); -- LOTRO Points
+                    WItxtLOTROPTS:Focus(); -- LOTRO Points
+                    WIbutSave:SetPosition( WIWCtr:GetWidth()/2 - WIbutSave:GetWidth()/2, LPWCtr:GetTop()+LPWCtr:GetHeight()+10); -- LOTRO Points
+				elseif wcur == "AmrothSilverPiece" then tw = Where[wcur]; -- Amroth Silver Piece
+				elseif wcur == "StarsofMerit" then tw = Where[wcur]; -- Stars of Merit
+				elseif wcur == "CentralGondorSilverPiece" then tw = Where[wcur]; -- Central Gondor Silver Piece
+				elseif wcur == "GiftgiversBrand" then tw = Where[wcur]; -- Gift Giver's Brand
+				elseif wcur == "BingoBadge" then tw = Where[wcur]; -- Bingo Badges
+				elseif wcur == "AnniversaryToken" then tw = Where[wcur]; -- Anniversary Tokens
+				elseif wcur == "MotesOfEnchantment" then tw = Where[wcur]; -- Motes of Enchantment
+				elseif wcur == "EmbersOfEnchantment" then tw = Where[wcur]; -- Embers of Enchantment
+				elseif wcur == "FigmentsOfSplendour" then tw = Where[wcur]; -- Figments of Splendour
+				elseif wcur == "FallFestivalToken" then tw = Where[wcur]; -- Fall Festival Token
+				elseif wcur == "FarmersFaireToken" then tw = Where[wcur]; -- Farmers Faire Token
+				elseif wcur == "SpringLeaf" then tw = Where[wcur]; -- Spring Leaf
+				elseif wcur == "MidsummerToken" then tw = Where[wcur]; -- Midsummer Token
+				elseif wcur == "AncientScript" then tw = Where[wcur]; -- Ancient Script
+				elseif wcur == "BadgeOfTaste" then tw = Where[wcur]; -- Badge of Taste
+				elseif wcur == "BadgeOfDishonour" then tw = Where[wcur]; -- Badge of Dishonour
 				end
 				for k, v in pairs(WICBO) do if k == tonumber(tw) then WIDD:SetSelection(k); end end
 
