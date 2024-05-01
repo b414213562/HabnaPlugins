@@ -71,7 +71,7 @@ CGSP["Lbl"].MouseClick = function( sender, args )
 			
 		end
 	elseif ( args.Button == Turbine.UI.MouseButton.Right ) then
-		_G.sFromPtr = "CGSP";
+		_G.sFromCtr = "CGSP";
 		ControlMenu:ShowMenu();
 	end
 	WasDrag = false;
