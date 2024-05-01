@@ -1,4 +1,4 @@
--- MoneyInfos.lua
+-- Money.lua
 -- Written by Habna
 
 
@@ -322,8 +322,8 @@ MI["CLbl"].MouseClick = function( sender, args )
 			if _G.frmMI then _G.frmMI = false; wMI:Close();
 			else
 				_G.frmMI = true;
-				import (AppCtrWalletD.."MoneyInfosWindow");
-				frmMoneyInfosWindow();
+				import (AppCtrWalletD.."MoneyWindow");
+				frmMoneyWindow();
 			end
 		end
 	elseif ( args.Button == Turbine.UI.MouseButton.Right ) then

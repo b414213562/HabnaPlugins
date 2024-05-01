@@ -1,4 +1,4 @@
--- MoneyInfosToolTip.lua
+-- MoneyToolTip.lua
 -- written by Habna
 -- refactored by 4andreas
 

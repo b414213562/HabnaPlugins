@@ -1,8 +1,8 @@
--- MoneyInfosWindow.lua
+-- MoneyWindow.lua
 -- written by Habna
 -- refactored by 4andreas
 
-function frmMoneyInfosWindow()
+function frmMoneyWindow()
 	-- **v Set some window stuff v**
 	_G.wMI = Turbine.UI.Lotro.Window()
 	_G.wMI:SetText( L["MIWTitle"] );

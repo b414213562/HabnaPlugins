@@ -11,8 +11,8 @@ function ImportCtr( value )
         WI[ "Ctr" ]:SetPosition( Position.Left["Wallet"], Position.Top["Wallet"] );
     elseif value == "MI" then --Money Infos
         if Where["Money"] == 1 then
-            import (AppCtrWalletD.."MoneyInfos");
-            import (AppCtrWalletD.."MoneyInfosToolTip");
+            import (AppCtrWalletD.."Money");
+            import (AppCtrWalletD.."MoneyToolTip");
             MI[ "Ctr" ]:SetPosition( Position.Left["Money"], Position.Top["Money"] );
         end
         if Where["Money"] ~= 3 then
