@@ -71,7 +71,7 @@ ASP["Lbl"].MouseClick = function( sender, args )
 			
 		end
 	elseif ( args.Button == Turbine.UI.MouseButton.Right ) then
-		_G.sFroASPtr = "ASP";
+		_G.sFromPtr = "ASP";
 		ControlMenu:ShowMenu();
 	end
 	WasDrag = false;

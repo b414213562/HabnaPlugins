@@ -71,7 +71,7 @@ EOE["Lbl"].MouseClick = function( sender, args )
 			
 		end
 	elseif ( args.Button == Turbine.UI.MouseButton.Right ) then
-		_G.sFroEOEtr = "EOE";
+		_G.sFromCtr = "EOE";
 		ControlMenu:ShowMenu();
 	end
 	WasDrag = false;

@@ -71,7 +71,7 @@ SOM["Lbl"].MouseClick = function( sender, args )
 			
 		end
 	elseif ( args.Button == Turbine.UI.MouseButton.Right ) then
-		_G.sFroSOMtr = "SOM";
+		_G.sFromCtr = "SOM";
 		ControlMenu:ShowMenu();
 	end
 	WasDrag = false;

@@ -71,7 +71,7 @@ GGB["Lbl"].MouseClick = function( sender, args )
 			
 		end
 	elseif ( args.Button == Turbine.UI.MouseButton.Right ) then
-		_G.sFroGGBtr = "GGB";
+		_G.sFromCtr = "GGB";
 		ControlMenu:ShowMenu();
 	end
 	WasDrag = false;

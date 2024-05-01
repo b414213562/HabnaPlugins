@@ -71,7 +71,7 @@ FOS["Lbl"].MouseClick = function( sender, args )
 			
 		end
 	elseif ( args.Button == Turbine.UI.MouseButton.Right ) then
-		_G.sFroFOStr = "FOS";
+		_G.sFromCtr = "FOS";
 		ControlMenu:ShowMenu();
 	end
 	WasDrag = false;
