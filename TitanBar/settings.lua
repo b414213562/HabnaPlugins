@@ -97,7 +97,7 @@ CurrencyCodeToKey = {
     ["AS"] = "AncientScript",
     ["BOT"] = "BadgeOfTaste",
     ["BOD"] = "BadgeOfDishonour",
-}
+};
 
 CurrencyKeyToCode = {
     ["Wallet"] = "WI",
@@ -128,7 +128,7 @@ CurrencyKeyToCode = {
     ["AncientScript"] = "AS",
     ["BadgeOfTaste"] = "BOT",
     ["BadgeOfDishonour"] = "BOD",
-}
+};
 
 --- Parses an entry like settings.Money.W. Also checks for a discrepancy between Where and Show.
 ---@param where string
