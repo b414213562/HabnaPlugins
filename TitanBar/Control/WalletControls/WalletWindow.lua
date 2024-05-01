@@ -219,116 +219,25 @@ function frmWalletWindow()
 		WIWCtr:SetZOrder( 0 );
 
 		SelIndex = WIDD:GetSelection();
-		--Where-> 1: On TitanBar / 2: In wallet control tooltip / 3: Don't show
-		if wcur == "Money" then
-			Where[wcur] = SelIndex; settings[wcur].W = string.format("%.0f", SelIndex);
-			if SelIndex == 1 then if not Show[wcur] then ShowHideCurrency(wcur); end
-			else if Show[wcur] then ShowHideCurrency(wcur); end end
-		elseif wcur == "DestinyPoints" then
-			Where[wcur] = SelIndex; settings[wcur].W = string.format("%.0f", SelIndex);
-			if SelIndex == 1 then if not Show[wcur] then ShowHideCurrency(wcur); end
-			else if Show[wcur] then ShowHideCurrency(wcur); end end
-		elseif wcur == "Shards" then
-			Where[wcur] = SelIndex; settings[wcur].W = string.format("%.0f", SelIndex);
-			if SelIndex == 1 then if not Show[wcur] then ShowHideCurrency(wcur); end
-			else if Show[wcur] then ShowHideCurrency(wcur); end end
-		elseif wcur == "SkirmishMarks" then
-			Where[wcur] = SelIndex; settings[wcur].W = string.format("%.0f", SelIndex);
-			if SelIndex == 1 then if not Show[wcur] then ShowHideCurrency(wcur); end
-			else if Show[wcur] then ShowHideCurrency(wcur); end end
-		elseif wcur == "MithrilCoins" then
-			Where[wcur] = SelIndex; settings[wcur].W = string.format("%.0f", SelIndex);
-			if SelIndex == 1 then if not Show[wcur] then ShowHideCurrency(wcur); end
-			else if Show[wcur] then ShowHideCurrency(wcur); end end
-		elseif wcur == "YuleToken" then
-			Where[wcur] = SelIndex; settings[wcur].W = string.format("%.0f", SelIndex);
-			if SelIndex == 1 then if not Show[wcur] then ShowHideCurrency(wcur); end
-			else if Show[wcur] then ShowHideCurrency(wcur); end end
-		elseif wcur == "HytboldTokens" then
-			Where[wcur] = SelIndex; settings[wcur].W = string.format("%.0f", SelIndex);
-			if SelIndex == 1 then if not Show[wcur] then ShowHideCurrency(wcur); end
-			else if Show[wcur] then ShowHideCurrency(wcur); end end
-		elseif wcur == "Medallions" then
-			Where[wcur] = SelIndex; settings[wcur].W = string.format("%.0f", SelIndex);
-			if SelIndex == 1 then if not Show[wcur] then ShowHideCurrency(wcur); end
-			else if Show[wcur] then ShowHideCurrency(wcur); end end
-		elseif wcur == "Seals" then
-			Where[wcur] = SelIndex; settings[wcur].W = string.format("%.0f", SelIndex);
-			if SelIndex == 1 then if not Show[wcur] then ShowHideCurrency(wcur); end
-			else if Show[wcur] then ShowHideCurrency(wcur); end end
-		elseif wcur == "Commendations" then
-			Where[wcur] = SelIndex; settings[wcur].W = string.format("%.0f", SelIndex);
-			if SelIndex == 1 then if not Show[wcur] then ShowHideCurrency(wcur); end
-			else if Show[wcur] then ShowHideCurrency(wcur); end end
-		elseif wcur == "AmrothSilverPiece" then
-			Where[wcur] = SelIndex; settings[wcur].W = string.format("%.0f", SelIndex);
-			if SelIndex == 1 then if not Show[wcur] then ShowHideCurrency(wcur); end
-			else if Show[wcur] then ShowHideCurrency(wcur); end end
-		elseif wcur == "StarsofMerit" then
-			Where[wcur] = SelIndex; settings[wcur].W = string.format("%.0f", SelIndex);
-			if SelIndex == 1 then if not Show[wcur] then ShowHideCurrency(wcur); end
-			else if Show[wcur] then ShowHideCurrency(wcur); end end
-		elseif wcur == "CentralGondorSilverPiece" then
-			Where[wcur] = SelIndex; settings[wcur].W = string.format("%.0f", SelIndex);
-			if SelIndex == 1 then if not Show[wcur] then ShowHideCurrency(wcur); end
-			else if Show[wcur] then ShowHideCurrency(wcur); end end
-		elseif wcur == "GiftgiversBrand" then
-			Where[wcur] = SelIndex; settings[wcur].W = string.format("%.0f", SelIndex);
-			if SelIndex == 1 then if not Show[wcur] then ShowHideCurrency(wcur); end
-			else if Show[wcur] then ShowHideCurrency(wcur); end end
-		elseif wcur == "BingoBadge" then
-			Where[wcur] = SelIndex; settings[wcur].W = string.format("%.0f", SelIndex);
-			if SelIndex == 1 then if not Show[wcur] then ShowHideCurrency(wcur); end
-			else if Show[wcur] then ShowHideCurrency(wcur); end end
-		elseif wcur == "AnniversaryToken" then
-			Where[wcur] = SelIndex; settings[wcur].W = string.format("%.0f", SelIndex);
-			if SelIndex == 1 then if not Show[wcur] then ShowHideCurrency(wcur); end
-			else if Show[wcur] then ShowHideCurrency(wcur); end end
-		elseif wcur == "MotesOfEnchantment" then
-			Where[wcur] = SelIndex; settings[wcur].W = string.format("%.0f", SelIndex);
-			if SelIndex == 1 then if not Show[wcur] then ShowHideCurrency(wcur); end
-			else if Show[wcur] then ShowHideCurrency(wcur); end end
-		elseif wcur == "EmbersOfEnchantment" then
-			Where[wcur] = SelIndex; settings[wcur].W = string.format("%.0f", SelIndex);
-			if SelIndex == 1 then if not Show[wcur] then ShowHideCurrency(wcur); end
-			else if Show[wcur] then ShowHideCurrency(wcur); end end
-		elseif wcur == "FigmentsOfSplendour" then
-			Where[wcur] = SelIndex; settings[wcur].W = string.format("%.0f", SelIndex);
-			if SelIndex == 1 then if not Show[wcur] then ShowHideCurrency(wcur); end
-			else if Show[wcur] then ShowHideCurrency(wcur); end end
-		elseif wcur == "FallFestivalToken" then
-			Where[wcur] = SelIndex; settings[wcur].W = string.format("%.0f", SelIndex);
-			if SelIndex == 1 then if not Show[wcur] then ShowHideCurrency(wcur); end
-			else if Show[wcur] then ShowHideCurrency(wcur); end end
-		elseif wcur == "FarmersFaireToken" then
-			Where[wcur] = SelIndex; settings[wcur].W = string.format("%.0f", SelIndex);
-			if SelIndex == 1 then if not Show[wcur] then ShowHideCurrency(wcur); end
-			else if Show[wcur] then ShowHideCurrency(wcur); end end	
-		elseif wcur == "SpringLeaf" then
-			Where[wcur] = SelIndex; settings[wcur].W = string.format("%.0f", SelIndex);
-			if SelIndex == 1 then if not Show[wcur] then ShowHideCurrency(wcur); end
-			else if Show[wcur] then ShowHideCurrency(wcur); end end
-		elseif wcur == "MidsummerToken" then
-			Where[wcur] = SelIndex; settings[wcur].W = string.format("%.0f", SelIndex);
-			if SelIndex == 1 then if not Show[wcur] then ShowHideCurrency(wcur); end
-			else if Show[wcur] then ShowHideCurrency(wcur); end end
-		elseif wcur == "AncientScript" then
-			Where[wcur] = SelIndex; settings[wcur].W = string.format("%.0f", SelIndex);
-			if SelIndex == 1 then if not Show[wcur] then ShowHideCurrency(wcur); end
-			else if Show[wcur] then ShowHideCurrency(wcur); end end		
-		elseif wcur == "BadgeOfTaste" then
-		    Where[wcur] = SelIndex; settings[wcur].W = string.format("%.0f", SelIndex);
-		    if SelIndex == 1 then if not Show[wcur] then ShowHideCurrency(wcur); end
-		    else if Show[wcur] then ShowHideCurrency(wcur); end end
-		elseif wcur == "BadgeOfDishonour" then
-		    Where[wcur] = SelIndex; settings[wcur].W = string.format("%.0f", SelIndex);
-		    if SelIndex == 1 then if not Show[wcur] then ShowHideCurrency(wcur); end
-		    else if Show[wcur] then ShowHideCurrency(wcur); end end
-		elseif wcur == "LOTROPoints" then
-			Where[wcur] = SelIndex; settings[wcur].W = string.format("%.0f", SelIndex);
-			if SelIndex == 1 then if not Show[wcur] then ShowHideCurrency(wcur); end
-			else if Show[wcur] then ShowHideCurrency(wcur); end end
 
+        -- Update the Where settings for this currency,
+        -- then call ShowHideCurrency if appropriate:
+
+		--Where-> 1: On TitanBar / 2: In wallet control tooltip / 3: Don't show
+        Where[wcur] = SelIndex;
+        settings[wcur].W = string.format("%.0f", SelIndex);
+        if SelIndex == 1 then
+            if not Show[wcur] then
+                ShowHideCurrency(wcur);
+            end
+        else
+            if Show[wcur] then
+                ShowHideCurrency(wcur);
+            end
+        end
+
+        -- Do currency-specific items here:
+        if wcur == "LOTROPoints" then
 			local parsed_text = WItxtLOTROPTS:GetText();
 
 			if parsed_text == "" then
@@ -344,6 +253,7 @@ function frmWalletWindow()
 			if Where["LOTROPoints"] == 1 then UpdateLOTROPoints(); end
 			SavePlayerLOTROPoints();
 		end
+        -- End currency-specific section.
 
 		SaveSettings( false );
 	end
