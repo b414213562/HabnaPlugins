@@ -17,10 +17,6 @@ change values of sFrom from things like "WI" to "Wallet". Then background.lua ge
 
 ----
 
-Problems seen while working on this:
-    When moving money to tooltip, it stayed behind on bar as well until reload
-
-
 Notes:
     Is WalletControl the generic thing I've been wanting to make?!?
     Reorder the items in functionsCtr.lua 
@@ -35,11 +31,6 @@ Notes:
 Maybe fix how often we're using string.format for updating a setting?
 
 LOTROPTS is different than LOTROPoints
-
-Probably caused by my changes:
-
-Seen 2024-04-30 on-stream:
-    Start a fresh TitanBar experience (no save files), add Motes/Embers/Etc. to TitanBar, and they glitch out.
 
 
 ---

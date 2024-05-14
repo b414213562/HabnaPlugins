@@ -179,12 +179,24 @@ end
 ---@param key any
 function InitializeDefaultControlSettings(settings, key)
 	if settings[key] == nil then settings[key] = {}; end
-	if settings[key].V == nil then settings[key].V = false; end
+	if settings[key].V == nil then
+        if (key == "Money") then
+            settings[key].V = true;
+        else
+            settings[key].V = false;
+        end
+    end
 	if settings[key].A == nil then settings[key].A = string.format("%.3f", tA); end
 	if settings[key].R == nil then settings[key].R = string.format("%.3f", tR); end
 	if settings[key].G == nil then settings[key].G = string.format("%.3f", tG); end
 	if settings[key].B == nil then settings[key].B = string.format("%.3f", tB); end
-	if settings[key].X == nil then settings[key].X = string.format("%.0f", tX); end
+    if settings[key].X == nil then
+        if (key == "Money") then
+            settings[key].X = string.format("%.0f", 400);
+        else
+            settings[key].X = string.format("%.0f", tX);
+        end
+    end
 	if settings[key].Y == nil then settings[key].Y = string.format("%.0f", tY); end
     if (HasWindow[key]) then
         if settings[key].L == nil then settings[key].L = string.format("%.0f", tL); end --X position of window
