@@ -5,8 +5,42 @@
 -- Globals that are used by Settings:
 
 -- default values:
+DEFAULT = "DEFAULT";
+Default = {
+    ["V"] = {
+        [DEFAULT] = false;
+        ["Money"] = true;
+    };
+    ["X"] = {
+        [DEFAULT] = 0;
+        ["Money"] = 400;
+    };
+    ["W"] = {
+        [DEFAULT] = 3;
+        ["Money"] = 1;
+    };
+};
 tA, tR, tG, tB, tX, tY, tW = 0.3, 0.3, 0.3, 0.3, 0, 0, 3; --Default alpha, red, green, blue, X, Y pos of control, Show where
 tL, tT = 100, 100; --Default position of control window
+
+---Returns the default value for the specified setting
+---@param setting string The type of setting, e.g. V, A, R, G
+---@param key string The currency in question, e.g. "Money", "AncientScript"
+---@return any
+function GetDefault(setting, key)
+    local value = nil;
+    if (Default[setting]) then
+        if (Default[setting][key]) then
+            value = Default[setting][key];
+        else
+            value = Default[setting][DEFAULT];
+        end
+    end
+    if (key == "Money") then
+        Turbine.Shell.WriteLine("Default value for '" .. dump(setting) .. "', '" .. dump(key) .. "': '" .. dump(value) .. "'");
+    end
+    return value;
+end
 
 -- Note: This are in _G for now, but once controls are finished take them back out.
 _G.Show = {}; -- Visibility boolean for Controls
@@ -179,33 +213,19 @@ end
 ---@param key any
 function InitializeDefaultControlSettings(settings, key)
 	if settings[key] == nil then settings[key] = {}; end
-	if settings[key].V == nil then
-        if (key == "Money") then
-            settings[key].V = true;
-        else
-            settings[key].V = false;
-        end
-    end
+	if settings[key].V == nil then settings[key].V = GetDefault("V", key); end
 	if settings[key].A == nil then settings[key].A = string.format("%.3f", tA); end
 	if settings[key].R == nil then settings[key].R = string.format("%.3f", tR); end
 	if settings[key].G == nil then settings[key].G = string.format("%.3f", tG); end
 	if settings[key].B == nil then settings[key].B = string.format("%.3f", tB); end
-    if settings[key].X == nil then
-        if (key == "Money") then
-            settings[key].X = string.format("%.0f", 400);
-        else
-            settings[key].X = string.format("%.0f", tX);
-        end
-    end
+    if settings[key].X == nil then settings[key].X = string.format("%.0f", GetDefault("X", key)); end
 	if settings[key].Y == nil then settings[key].Y = string.format("%.0f", tY); end
     if (HasWindow[key]) then
         if settings[key].L == nil then settings[key].L = string.format("%.0f", tL); end --X position of window
         if settings[key].T == nil then settings[key].T = string.format("%.0f", tT); end --Y position of window
     end
     if (not DoesNotHaveWhere[key]) then
-        local value = tW;
-        if (key == "Money") then value = 1; end
-        if settings[key].W == nil then settings[key].W = string.format("%.0f", value); end
+        if settings[key].W == nil then settings[key].W = string.format("%.0f", GetDefault("W", key)); end
     end
 end
 
@@ -273,9 +293,7 @@ function ResetControlSettings(key)
         PositionW.Top[key] = tT;
     end
     if (not DoesNotHaveWhere[key]) then
-        local where = tW;
-        if (key == "Money") then where = 1; end
-		Where[key] = where;
+		Where[key] = GetDefault("W", key);
     end
 end
 
