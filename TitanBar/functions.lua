@@ -469,11 +469,9 @@ end
 --**^
 
 --- Function to update the details for currencies on the bar.
---- Does nothing if the currency is not currently on the bar.
+--- Does nothing if the currency is not currently on the bar (Where = 1) or in the tooltip (Where = 2).
 ---@param key string The key (e.g. "DestinyPoints" for the currency)
 function UpdateCurrency(key)
-    if (not Show[key]) then return; end
-
     local code = CurrencyKeyToCode[key];
     local table = _G[code];
     local label = table["Lbl"];

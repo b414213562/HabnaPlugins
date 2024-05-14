@@ -686,9 +686,13 @@ function LoadPlayerWallet()
         PlayerCurrency[CurName] = CurItem;
         if PlayerCurrencyHandler[CurName] == nil then
             PlayerCurrencyHandler[CurName] = AddCallback(
-                PlayerCurrency[CurName], "QuantityChanged",
-                function(sender, args) UpdateCurrency(key); end
-            );
+                PlayerCurrency[CurName],
+                "QuantityChanged",
+                function(sender, args)
+                    if (Show[key]) then
+                        UpdateCurrency(key);
+                    end
+                end);
         end
     end
 end
