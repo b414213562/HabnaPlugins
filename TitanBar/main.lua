@@ -68,10 +68,10 @@ end
 import (AppDirD.."TBresources");
 import (AppClassD.."Class");
 import (AppDir);
+import (AppDirD.."functions");
 import (AppDirD.."color");
 import (AppDirD.."settings");
 LoadSettings();
-import (AppDirD.."functions");
 import (AppDirD.."functionsCtr");
 import (AppDirD.."functionsMenu");
 import (AppDirD.."functionsMenuControl");
