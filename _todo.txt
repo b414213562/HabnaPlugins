@@ -18,7 +18,9 @@ change values of sFrom from things like "WI" to "Wallet". Then background.lua ge
 ----
 
 Problems seen while working on this:
-    MCh is the tooltip for both Mithril Coins and Copper Coins.
+    Loading currencies results in an incorrect icon and no number. Loading TitanBar with them already present and it works.
+    When moving money to tooltip, it stayed behind on bar as well until reload
+
 
 Notes:
     Is WalletControl the generic thing I've been wanting to make?!?
@@ -28,6 +30,8 @@ Notes:
     Do currencies need both Show and Where?
     If we can match up the currency icon to stuff in your wallet, do we even need the localized name?
     DecryptMoney and MoneyToCoins do essentially the same job. Combine them, and prefer the name MoneyToCoins.
+    Commendations comments out this line. Is that correct? :
+        --table["Icon"]:SetBlendMode( Turbine.UI.BlendMode.AlphaBlend );
 
 Maybe fix how often we're using string.format for updating a setting?
 
