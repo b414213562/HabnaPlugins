@@ -18,7 +18,6 @@ change values of sFrom from things like "WI" to "Wallet". Then background.lua ge
 ----
 
 Problems seen while working on this:
-    Loading currencies results in an incorrect icon and no number. Loading TitanBar with them already present and it works.
     When moving money to tooltip, it stayed behind on bar as well until reload
 
 
