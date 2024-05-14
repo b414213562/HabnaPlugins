@@ -36,9 +36,6 @@ function GetDefault(setting, key)
             value = Default[setting][DEFAULT];
         end
     end
-    if (key == "Money") then
-        Turbine.Shell.WriteLine("Default value for '" .. dump(setting) .. "', '" .. dump(key) .. "': '" .. dump(value) .. "'");
-    end
     return value;
 end
 
