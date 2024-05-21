@@ -32,20 +32,6 @@ function ImportCtr( value )
                 RemoveCallback(sspack, "CountChanged", UpdateSharedStorageGold);
                 -- ^^ Thx Heridian!
             end
-        elseif (key == "DestinyPoints") then
-            if Where["DestinyPoints"] == 1 then
-                import (AppCtrWalletD.."DestinyPoints");
-                DP[ "Ctr" ]:SetPosition( Position.Left["DestinyPoints"], Position.Top["DestinyPoints"] );
-            end
-            if Where["DestinyPoints"] ~= 3 then
-                PlayerAtt = Player:GetAttributes();
-                AddCallback(PlayerAtt, "DestinyPointsChanged",
-                    function(sender, args) UpdateCurrency("DestinyPoints"); end
-                    );
-                UpdateCurrency("DestinyPoints");
-            else
-                RemoveCallback(PlayerAtt, "DestinyPointsChanged");
-            end    
         elseif (key == "LOTROPoints") then
             if Where["LOTROPoints"] == 1 then
                 import (AppCtrWalletD.."LOTROPoints");
@@ -87,10 +73,10 @@ function ImportCtr( value )
             end
         else
             if Where[key] == 1 then
-                local dir = AppCtrWalletD;
-                if (key == "MotesOfEnchantment") then dir = AppCtrD; end
-
-                import (dir .. key);
+                -- Any wallet control that is not generic
+                -- must have a custom block above
+                -- (e.g. Wallet, Money, LOTROPoints).
+                MakeWalletControl(key);
                 _G[value][ "Ctr" ]:SetPosition( Position.Left[key], Position.Top[key] );
             end
             if Where[key] ~= 3 then
@@ -695,6 +681,18 @@ function LoadPlayerWallet()
                 end);
         end
     end
+
+    -- Destiny is tracked differently:
+    if PlayerCurrencyHandler["DestinyPoints"] == nil then
+        PlayerAtt = Player:GetAttributes();
+        PlayerCurrencyHandler["DestinyPoints"] = AddCallback(
+            PlayerAtt,
+            "DestinyPointsChanged",
+            function(sender, args)
+                UpdateCurrency("DestinyPoints");
+            end);
+    end
+
 end
 
 function LoadPlayerVault()
