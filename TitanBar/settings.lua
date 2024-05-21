@@ -418,8 +418,8 @@ function LoadSettings()
 
     -- Make a lookup table from translated name (e.g. "Mithril Coin") to key (e.g. "MithrilCoins"):
     CurrencyNameToKey = {}
-    for key, value in ipairs(Currencies) do
-        CurrencyNameToKey[L[value]] = vaue;
+    for index, key in ipairs(Currencies) do
+        CurrencyNameToKey[L[key]] = key;
     end
 
     if settings.BagInfos == nil then settings.BagInfos = {}; end
