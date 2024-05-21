@@ -71,6 +71,7 @@ import (AppDir);
 import (AppDirD.."functions");
 import (AppDirD.."color");
 import (AppDirD.."settings");
+import (AppCtrD.."WalletControlFactory");
 LoadSettings();
 import (AppDirD.."functionsCtr");
 import (AppDirD.."functionsMenu");
