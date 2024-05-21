@@ -1,3 +1,6 @@
+Known bugs:
+    When  buying 1,000 figments of splendor for 1,000 Motes of Enchantment, Titanbar values don't update. (They are correct after a reload though.)
+
 TitanBar thoughts:
     Next: function ImportCtr( value ) <= Change the parameter here from things like "MC" to "MithrilCoins".
 
