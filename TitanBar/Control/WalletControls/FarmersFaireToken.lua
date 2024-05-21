@@ -1,113 +1,118 @@
 -- Farmers Faire Token.lua
 -- Written by Duriel
 
+local code = "FFAT";
+local key = "FarmersFaireToken";
+_G[code] = {};
+local table = _G[code];
+local labelAlignment = Turbine.UI.ContentAlignment.MiddleRight;
+local iconWidth = 32; -- in-game icon 32x32
+local iconHeight = 32;
 
-_G.FFAT = {}; -- Farmers Faire Token table in _G
-
---**v Control of Farmers Faire Token v**
-FFAT["Ctr"] = Turbine.UI.Control();
-FFAT["Ctr"]:SetParent( TB["win"] );
-FFAT["Ctr"]:SetMouseVisible( false );
-FFAT["Ctr"]:SetZOrder( 2 );
-FFAT["Ctr"]:SetBlendMode( Turbine.UI.BlendMode.AlphaBlend );
-FFAT["Ctr"]:SetBackColor( Turbine.UI.Color( BC.Alpha["FarmersFaireToken"], BC.Red["FarmersFaireToken"], BC.Green["FarmersFaireToken"], BC.Blue["FarmersFaireToken"] ) );
+--**v Control for this currency v**
+table["Ctr"] = Turbine.UI.Control();
+table["Ctr"]:SetParent( TB["win"] );
+table["Ctr"]:SetMouseVisible( false );
+table["Ctr"]:SetZOrder( 2 );
+table["Ctr"]:SetBlendMode( Turbine.UI.BlendMode.AlphaBlend );
+table["Ctr"]:SetBackColor( Turbine.UI.Color( BC.Alpha[key], BC.Red[key], BC.Green[key], BC.Blue[key] ) );
 --**^
---**v Farmers Faire Token & icon on TitanBar v**
-FFAT["Icon"] = Turbine.UI.Control();
-FFAT["Icon"]:SetParent( FFAT["Ctr"] );
-FFAT["Icon"]:SetBlendMode( Turbine.UI.BlendMode.AlphaBlend );
-FFAT["Icon"]:SetSize( 32, 32 );
-FFAT["Icon"]:SetBackground( WalletItem.FarmersFaireToken.Icon );-- in-game icon 32x32
+--**v Currency icon on TitanBar v**
+table["Icon"] = Turbine.UI.Control();
+table["Icon"]:SetParent( table["Ctr"] );
+table["Icon"]:SetBlendMode( Turbine.UI.BlendMode.AlphaBlend );
+table["Icon"]:SetSize( iconWidth, iconHeight );
+table["Icon"]:SetBackground( WalletItem[key].Icon );
 --**^
 
-FFAT["Icon"].MouseMove = function( sender, args )
-	FFAT["Lbl"].MouseLeave( sender, args );
+table["Icon"].MouseMove = function( sender, args )
+	table["Lbl"].MouseLeave( sender, args );
 	TB["win"].MouseMove();
-	if dragging then MoveFFATCtr(sender, args); end
+	if dragging then table["MoveCtr"](sender, args); end
 end
 
-FFAT["Icon"].MouseLeave = function( sender, args )
-	FFAT["Lbl"].MouseLeave( sender, args );
+table["Icon"].MouseLeave = function( sender, args )
+	table["Lbl"].MouseLeave( sender, args );
 end
 
-FFAT["Icon"].MouseClick = function( sender, args )
-	FFAT["Lbl"].MouseClick( sender, args );
+table["Icon"].MouseClick = function( sender, args )
+	table["Lbl"].MouseClick( sender, args );
 end
 
-FFAT["Icon"].MouseDown = function( sender, args )
-	FFAT["Lbl"].MouseDown( sender, args );
+table["Icon"].MouseDown = function( sender, args )
+	table["Lbl"].MouseDown( sender, args );
 end
 
-FFAT["Icon"].MouseUp = function( sender, args )
-	FFAT["Lbl"].MouseUp( sender, args );
+table["Icon"].MouseUp = function( sender, args )
+	table["Lbl"].MouseUp( sender, args );
 end
 
 
-FFAT["Lbl"] = Turbine.UI.Label();
-FFAT["Lbl"]:SetParent( FFAT["Ctr"] );
-FFAT["Lbl"]:SetFont( _G.TBFont );
-FFAT["Lbl"]:SetPosition( 0, 0 );
-FFAT["Lbl"]:SetFontStyle( Turbine.UI.FontStyle.Outline );
-FFAT["Lbl"]:SetTextAlignment( Turbine.UI.ContentAlignment.MiddleRight );
+table["Lbl"] = Turbine.UI.Label();
+table["Lbl"]:SetParent( table["Ctr"] );
+table["Lbl"]:SetFont( _G.TBFont );
+table["Lbl"]:SetPosition( 0, 0 );
+table["Lbl"]:SetFontStyle( Turbine.UI.FontStyle.Outline );
+table["Lbl"]:SetTextAlignment( labelAlignment );
 
-FFAT["Lbl"].MouseMove = function( sender, args )
-	FFAT["Lbl"].MouseLeave( sender, args );
+table["Lbl"].MouseMove = function( sender, args )
+	table["Lbl"].MouseLeave( sender, args );
 	TB["win"].MouseMove();
 	if dragging then
-		MoveFFATCtr(sender, args);
+		table["MoveCtr"](sender, args);
 	else
-		ShowToolTipWin( "FFAT" );
+		ShowToolTipWin( code );
 	end
 end
 
-FFAT["Lbl"].MouseLeave = function( sender, args )
+table["Lbl"].MouseLeave = function( sender, args )
 	ResetToolTipWin();
 end
 
-FFAT["Lbl"].MouseClick = function( sender, args )
+table["Lbl"].MouseClick = function( sender, args )
 	TB["win"].MouseMove();
 	if ( args.Button == Turbine.UI.MouseButton.Left ) then
 		if not WasDrag then
 			
 		end
 	elseif ( args.Button == Turbine.UI.MouseButton.Right ) then
-		_G.sFromCtr = "FFAT";
+		_G.sFromCtr = code;
 		ControlMenu:ShowMenu();
 	end
 	WasDrag = false;
 end
 
-FFAT["Lbl"].MouseDown = function( sender, args )
+table["Lbl"].MouseDown = function( sender, args )
 	if ( args.Button == Turbine.UI.MouseButton.Left ) then
-		FFAT["Ctr"]:SetZOrder( 3 );
+		table["Ctr"]:SetZOrder( 3 );
 		dragStartX = args.X;
 		dragStartY = args.Y;
 		dragging = true;
 	end
 end
 
-FFAT["Lbl"].MouseUp = function( sender, args )
-	FFAT["Ctr"]:SetZOrder( 2 );
+table["Lbl"].MouseUp = function( sender, args )
+	table["Ctr"]:SetZOrder( 2 );
 	dragging = false;
-	Position.Left["FarmersFaireToken"] = FFAT["Ctr"]:GetLeft();
-	settings.FarmersFaireToken.X = string.format("%.0f", Position.Left["FarmersFaireToken"]);
-	Position.Top["FarmersFaireToken"] = FFAT["Ctr"]:GetTop();
-	settings.FarmersFaireToken.Y = string.format("%.0f", Position.Top["FarmersFaireToken"]);
+	Position.Left[key] = table["Ctr"]:GetLeft();
+	settings[key].X = string.format("%.0f", Position.Left[key]);
+	Position.Top[key] = table["Ctr"]:GetTop();
+	settings[key].Y = string.format("%.0f", Position.Top[key]);
 	SaveSettings( false );
 end
 --**^
 
-function MoveFFATCtr(sender, args)
-	local CtrLocX = FFAT["Ctr"]:GetLeft();
-	local CtrWidth = FFAT["Ctr"]:GetWidth();
+table["MoveCtr"] = function(sender, args)
+	local CtrLocX = table["Ctr"]:GetLeft();
+	local CtrWidth = table["Ctr"]:GetWidth();
 	CtrLocX = CtrLocX + ( args.X - dragStartX );
 	if CtrLocX < 0 then CtrLocX = 0; elseif CtrLocX + CtrWidth > screenWidth then CtrLocX = screenWidth - CtrWidth; end
 	
-	local CtrLocY = FFAT["Ctr"]:GetTop();
-	local CtrHeight = FFAT["Ctr"]:GetHeight();
+	local CtrLocY = table["Ctr"]:GetTop();
+	local CtrHeight = table["Ctr"]:GetHeight();
 	CtrLocY = CtrLocY + ( args.Y - dragStartY );
 	if CtrLocY < 0 then CtrLocY = 0; elseif CtrLocY + CtrHeight > TB["win"]:GetHeight() then CtrLocY = TB["win"]:GetHeight() - CtrHeight; end
 
-	FFAT["Ctr"]:SetPosition( CtrLocX, CtrLocY );
+	table["Ctr"]:SetPosition( CtrLocX, CtrLocY );
 	WasDrag = true;
 end

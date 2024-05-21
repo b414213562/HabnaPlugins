@@ -1,113 +1,118 @@
 -- Embers of Enchantment.lua
 -- Written by Duriel
 
+local code = "EOE";
+local key = "EmbersOfEnchantment";
+_G[code] = {};
+local table = _G[code];
+local labelAlignment = Turbine.UI.ContentAlignment.MiddleRight;
+local iconWidth = 32; -- in-game icon 32x32
+local iconHeight = 32;
 
-_G.EOE = {};
-
---**v Control of Embers of Enchantment v**
-EOE["Ctr"] = Turbine.UI.Control();
-EOE["Ctr"]:SetParent( TB["win"] );
-EOE["Ctr"]:SetMouseVisible( false );
-EOE["Ctr"]:SetZOrder( 2 );
-EOE["Ctr"]:SetBlendMode( Turbine.UI.BlendMode.AlphaBlend );
-EOE["Ctr"]:SetBackColor( Turbine.UI.Color( BC.Alpha["EmbersOfEnchantment"], BC.Red["EmbersOfEnchantment"], BC.Green["EmbersOfEnchantment"], BC.Blue["EmbersOfEnchantment"] ) );
+--**v Control for this currency v**
+table["Ctr"] = Turbine.UI.Control();
+table["Ctr"]:SetParent( TB["win"] );
+table["Ctr"]:SetMouseVisible( false );
+table["Ctr"]:SetZOrder( 2 );
+table["Ctr"]:SetBlendMode( Turbine.UI.BlendMode.AlphaBlend );
+table["Ctr"]:SetBackColor( Turbine.UI.Color( BC.Alpha[key], BC.Red[key], BC.Green[key], BC.Blue[key] ) );
 --**^
---**v Embers of Enchantment & icon on TitanBar v**
-EOE["Icon"] = Turbine.UI.Control();
-EOE["Icon"]:SetParent( EOE["Ctr"] );
-EOE["Icon"]:SetBlendMode( Turbine.UI.BlendMode.AlphaBlend );
-EOE["Icon"]:SetSize( 32, 32 );
-EOE["Icon"]:SetBackground( WalletItem.EmbersOfEnchantment.Icon );-- in-game icon 32x32
+--**v Currency icon on TitanBar v**
+table["Icon"] = Turbine.UI.Control();
+table["Icon"]:SetParent( table["Ctr"] );
+table["Icon"]:SetBlendMode( Turbine.UI.BlendMode.AlphaBlend );
+table["Icon"]:SetSize( iconWidth, iconHeight );
+table["Icon"]:SetBackground( WalletItem[key].Icon );
 --**^
 
-EOE["Icon"].MouseMove = function( sender, args )
-	EOE["Lbl"].MouseLeave( sender, args );
+table["Icon"].MouseMove = function( sender, args )
+	table["Lbl"].MouseLeave( sender, args );
 	TB["win"].MouseMove();
-	if dragging then MoveEOECtr(sender, args); end
+	if dragging then table["MoveCtr"](sender, args); end
 end
 
-EOE["Icon"].MouseLeave = function( sender, args )
-	EOE["Lbl"].MouseLeave( sender, args );
+table["Icon"].MouseLeave = function( sender, args )
+	table["Lbl"].MouseLeave( sender, args );
 end
 
-EOE["Icon"].MouseClick = function( sender, args )
-	EOE["Lbl"].MouseClick( sender, args );
+table["Icon"].MouseClick = function( sender, args )
+	table["Lbl"].MouseClick( sender, args );
 end
 
-EOE["Icon"].MouseDown = function( sender, args )
-	EOE["Lbl"].MouseDown( sender, args );
+table["Icon"].MouseDown = function( sender, args )
+	table["Lbl"].MouseDown( sender, args );
 end
 
-EOE["Icon"].MouseUp = function( sender, args )
-	EOE["Lbl"].MouseUp( sender, args );
+table["Icon"].MouseUp = function( sender, args )
+	table["Lbl"].MouseUp( sender, args );
 end
 
 
-EOE["Lbl"] = Turbine.UI.Label();
-EOE["Lbl"]:SetParent( EOE["Ctr"] );
-EOE["Lbl"]:SetFont( _G.TBFont );
-EOE["Lbl"]:SetPosition( 0, 0 );
-EOE["Lbl"]:SetFontStyle( Turbine.UI.FontStyle.Outline );
-EOE["Lbl"]:SetTextAlignment( Turbine.UI.ContentAlignment.MiddleRight );
+table["Lbl"] = Turbine.UI.Label();
+table["Lbl"]:SetParent( table["Ctr"] );
+table["Lbl"]:SetFont( _G.TBFont );
+table["Lbl"]:SetPosition( 0, 0 );
+table["Lbl"]:SetFontStyle( Turbine.UI.FontStyle.Outline );
+table["Lbl"]:SetTextAlignment( labelAlignment );
 
-EOE["Lbl"].MouseMove = function( sender, args )
-	EOE["Lbl"].MouseLeave( sender, args );
+table["Lbl"].MouseMove = function( sender, args )
+	table["Lbl"].MouseLeave( sender, args );
 	TB["win"].MouseMove();
 	if dragging then
-		MoveEOECtr(sender, args);
+		table["MoveCtr"](sender, args);
 	else
-		ShowToolTipWin( "EOE" );
+		ShowToolTipWin( code );
 	end
 end
 
-EOE["Lbl"].MouseLeave = function( sender, args )
+table["Lbl"].MouseLeave = function( sender, args )
 	ResetToolTipWin();
 end
 
-EOE["Lbl"].MouseClick = function( sender, args )
+table["Lbl"].MouseClick = function( sender, args )
 	TB["win"].MouseMove();
 	if ( args.Button == Turbine.UI.MouseButton.Left ) then
 		if not WasDrag then
 			
 		end
 	elseif ( args.Button == Turbine.UI.MouseButton.Right ) then
-		_G.sFromCtr = "EOE";
+		_G.sFromCtr = code;
 		ControlMenu:ShowMenu();
 	end
 	WasDrag = false;
 end
 
-EOE["Lbl"].MouseDown = function( sender, args )
+table["Lbl"].MouseDown = function( sender, args )
 	if ( args.Button == Turbine.UI.MouseButton.Left ) then
-		EOE["Ctr"]:SetZOrder( 3 );
+		table["Ctr"]:SetZOrder( 3 );
 		dragStartX = args.X;
 		dragStartY = args.Y;
 		dragging = true;
 	end
 end
 
-EOE["Lbl"].MouseUp = function( sender, args )
-	EOE["Ctr"]:SetZOrder( 2 );
+table["Lbl"].MouseUp = function( sender, args )
+	table["Ctr"]:SetZOrder( 2 );
 	dragging = false;
-	Position.Left["EmbersOfEnchantment"] = EOE["Ctr"]:GetLeft();
-	settings.EmbersOfEnchantment.X = string.format("%.0f", Position.Left["EmbersOfEnchantment"]);
-	Position.Top["EmbersOfEnchantment"] = EOE["Ctr"]:GetTop();
-	settings.EmbersOfEnchantment.Y = string.format("%.0f", Position.Top["EmbersOfEnchantment"]);
+	Position.Left[key] = table["Ctr"]:GetLeft();
+	settings[key].X = string.format("%.0f", Position.Left[key]);
+	Position.Top[key] = table["Ctr"]:GetTop();
+	settings[key].Y = string.format("%.0f", Position.Top[key]);
 	SaveSettings( false );
 end
 --**^
 
-function MoveEOECtr(sender, args)
-	local CtrLocX = EOE["Ctr"]:GetLeft();
-	local CtrWidth = EOE["Ctr"]:GetWidth();
+table["MoveCtr"] = function(sender, args)
+	local CtrLocX = table["Ctr"]:GetLeft();
+	local CtrWidth = table["Ctr"]:GetWidth();
 	CtrLocX = CtrLocX + ( args.X - dragStartX );
 	if CtrLocX < 0 then CtrLocX = 0; elseif CtrLocX + CtrWidth > screenWidth then CtrLocX = screenWidth - CtrWidth; end
 	
-	local CtrLocY = EOE["Ctr"]:GetTop();
-	local CtrHeight = EOE["Ctr"]:GetHeight();
+	local CtrLocY = table["Ctr"]:GetTop();
+	local CtrHeight = table["Ctr"]:GetHeight();
 	CtrLocY = CtrLocY + ( args.Y - dragStartY );
 	if CtrLocY < 0 then CtrLocY = 0; elseif CtrLocY + CtrHeight > TB["win"]:GetHeight() then CtrLocY = TB["win"]:GetHeight() - CtrHeight; end
 
-	EOE["Ctr"]:SetPosition( CtrLocX, CtrLocY );
+	table["Ctr"]:SetPosition( CtrLocX, CtrLocY );
 	WasDrag = true;
 end

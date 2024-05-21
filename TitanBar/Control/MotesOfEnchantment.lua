@@ -1,113 +1,118 @@
 -- Motes of Enchantment.lua
 -- Written by Duriel
 
+local code = "MOE";
+local key = "MotesOfEnchantment";
+_G[code] = {};
+local table = _G[code];
+local labelAlignment = Turbine.UI.ContentAlignment.MiddleRight;
+local iconWidth = 32; -- in-game icon 32x32
+local iconHeight = 32;
 
-_G.MOE = {};
-
---**v Control of Motes of Enchantment v**
-MOE["Ctr"] = Turbine.UI.Control();
-MOE["Ctr"]:SetParent( TB["win"] );
-MOE["Ctr"]:SetMouseVisible( false );
-MOE["Ctr"]:SetZOrder( 2 );
-MOE["Ctr"]:SetBlendMode( Turbine.UI.BlendMode.AlphaBlend );
-MOE["Ctr"]:SetBackColor( Turbine.UI.Color( BC.Alpha["MotesOfEnchantment"], BC.Red["MotesOfEnchantment"], BC.Green["MotesOfEnchantment"], BC.Blue["MotesOfEnchantment"] ) );
+--**v Control for this currency v**
+table["Ctr"] = Turbine.UI.Control();
+table["Ctr"]:SetParent( TB["win"] );
+table["Ctr"]:SetMouseVisible( false );
+table["Ctr"]:SetZOrder( 2 );
+table["Ctr"]:SetBlendMode( Turbine.UI.BlendMode.AlphaBlend );
+table["Ctr"]:SetBackColor( Turbine.UI.Color( BC.Alpha[key], BC.Red[key], BC.Green[key], BC.Blue[key] ) );
 --**^
---**v Motes of Enchantment & icon on TitanBar v**
-MOE["Icon"] = Turbine.UI.Control();
-MOE["Icon"]:SetParent( MOE["Ctr"] );
-MOE["Icon"]:SetBlendMode( Turbine.UI.BlendMode.AlphaBlend );
-MOE["Icon"]:SetSize( 32, 32 );
-MOE["Icon"]:SetBackground( WalletItem.MotesOfEnchantment.Icon );-- in-game icon 32x32
+--**v Currency icon on TitanBar v**
+table["Icon"] = Turbine.UI.Control();
+table["Icon"]:SetParent( table["Ctr"] );
+table["Icon"]:SetBlendMode( Turbine.UI.BlendMode.AlphaBlend );
+table["Icon"]:SetSize( iconWidth, iconHeight );
+table["Icon"]:SetBackground( WalletItem[key].Icon );
 --**^
 
-MOE["Icon"].MouseMove = function( sender, args )
-	MOE["Lbl"].MouseLeave( sender, args );
+table["Icon"].MouseMove = function( sender, args )
+	table["Lbl"].MouseLeave( sender, args );
 	TB["win"].MouseMove();
-	if dragging then MoveMOECtr(sender, args); end
+	if dragging then table["MoveCtr"](sender, args); end
 end
 
-MOE["Icon"].MouseLeave = function( sender, args )
-	MOE["Lbl"].MouseLeave( sender, args );
+table["Icon"].MouseLeave = function( sender, args )
+	table["Lbl"].MouseLeave( sender, args );
 end
 
-MOE["Icon"].MouseClick = function( sender, args )
-	MOE["Lbl"].MouseClick( sender, args );
+table["Icon"].MouseClick = function( sender, args )
+	table["Lbl"].MouseClick( sender, args );
 end
 
-MOE["Icon"].MouseDown = function( sender, args )
-	MOE["Lbl"].MouseDown( sender, args );
+table["Icon"].MouseDown = function( sender, args )
+	table["Lbl"].MouseDown( sender, args );
 end
 
-MOE["Icon"].MouseUp = function( sender, args )
-	MOE["Lbl"].MouseUp( sender, args );
+table["Icon"].MouseUp = function( sender, args )
+	table["Lbl"].MouseUp( sender, args );
 end
 
 
-MOE["Lbl"] = Turbine.UI.Label();
-MOE["Lbl"]:SetParent( MOE["Ctr"] );
-MOE["Lbl"]:SetFont( _G.TBFont );
-MOE["Lbl"]:SetPosition( 0, 0 );
-MOE["Lbl"]:SetFontStyle( Turbine.UI.FontStyle.Outline );
-MOE["Lbl"]:SetTextAlignment( Turbine.UI.ContentAlignment.MiddleRight );
+table["Lbl"] = Turbine.UI.Label();
+table["Lbl"]:SetParent( table["Ctr"] );
+table["Lbl"]:SetFont( _G.TBFont );
+table["Lbl"]:SetPosition( 0, 0 );
+table["Lbl"]:SetFontStyle( Turbine.UI.FontStyle.Outline );
+table["Lbl"]:SetTextAlignment( labelAlignment );
 
-MOE["Lbl"].MouseMove = function( sender, args )
-	MOE["Lbl"].MouseLeave( sender, args );
+table["Lbl"].MouseMove = function( sender, args )
+	table["Lbl"].MouseLeave( sender, args );
 	TB["win"].MouseMove();
 	if dragging then
-		MoveMOECtr(sender, args);
+		table["MoveCtr"](sender, args);
 	else
-		ShowToolTipWin( "MOE" );
+		ShowToolTipWin( code );
 	end
 end
 
-MOE["Lbl"].MouseLeave = function( sender, args )
+table["Lbl"].MouseLeave = function( sender, args )
 	ResetToolTipWin();
 end
 
-MOE["Lbl"].MouseClick = function( sender, args )
+table["Lbl"].MouseClick = function( sender, args )
 	TB["win"].MouseMove();
 	if ( args.Button == Turbine.UI.MouseButton.Left ) then
 		if not WasDrag then
 			
 		end
 	elseif ( args.Button == Turbine.UI.MouseButton.Right ) then
-		_G.sFroMOEtr = "MOE";
+		_G.sFromCtr = code;
 		ControlMenu:ShowMenu();
 	end
 	WasDrag = false;
 end
 
-MOE["Lbl"].MouseDown = function( sender, args )
+table["Lbl"].MouseDown = function( sender, args )
 	if ( args.Button == Turbine.UI.MouseButton.Left ) then
-		MOE["Ctr"]:SetZOrder( 3 );
+		table["Ctr"]:SetZOrder( 3 );
 		dragStartX = args.X;
 		dragStartY = args.Y;
 		dragging = true;
 	end
 end
 
-MOE["Lbl"].MouseUp = function( sender, args )
-	MOE["Ctr"]:SetZOrder( 2 );
+table["Lbl"].MouseUp = function( sender, args )
+	table["Ctr"]:SetZOrder( 2 );
 	dragging = false;
-	Position.Left["MotesOfEnchantment"] = MOE["Ctr"]:GetLeft();
-	settings.MotesOfEnchantment.X = string.format("%.0f", Position.Left["MotesOfEnchantment"]);
-	Position.Top["MotesOfEnchantment"] = MOE["Ctr"]:GetTop();
-	settings.MotesOfEnchantment.Y = string.format("%.0f", Position.Top["MotesOfEnchantment"]);
+	Position.Left[key] = table["Ctr"]:GetLeft();
+	settings[key].X = string.format("%.0f", Position.Left[key]);
+	Position.Top[key] = table["Ctr"]:GetTop();
+	settings[key].Y = string.format("%.0f", Position.Top[key]);
 	SaveSettings( false );
 end
 --**^
 
-function MoveMOECtr(sender, args)
-	local CtrLocX = MOE["Ctr"]:GetLeft();
-	local CtrWidth = MOE["Ctr"]:GetWidth();
+table["MoveCtr"] = function(sender, args)
+	local CtrLocX = table["Ctr"]:GetLeft();
+	local CtrWidth = table["Ctr"]:GetWidth();
 	CtrLocX = CtrLocX + ( args.X - dragStartX );
 	if CtrLocX < 0 then CtrLocX = 0; elseif CtrLocX + CtrWidth > screenWidth then CtrLocX = screenWidth - CtrWidth; end
 	
-	local CtrLocY = MOE["Ctr"]:GetTop();
-	local CtrHeight = MOE["Ctr"]:GetHeight();
+	local CtrLocY = table["Ctr"]:GetTop();
+	local CtrHeight = table["Ctr"]:GetHeight();
 	CtrLocY = CtrLocY + ( args.Y - dragStartY );
 	if CtrLocY < 0 then CtrLocY = 0; elseif CtrLocY + CtrHeight > TB["win"]:GetHeight() then CtrLocY = TB["win"]:GetHeight() - CtrHeight; end
 
-	MOE["Ctr"]:SetPosition( CtrLocX, CtrLocY );
+	table["Ctr"]:SetPosition( CtrLocX, CtrLocY );
 	WasDrag = true;
 end

@@ -1,113 +1,118 @@
 -- Badge of Taste.lua
 -- Written by b414213562
 
+local code = "BOT";
+local key = "BadgeOfTaste";
+_G[code] = {};
+local table = _G[code];
+local labelAlignment = Turbine.UI.ContentAlignment.MiddleRight;
+local iconWidth = 32; -- in-game icon 32x32
+local iconHeight = 32;
 
-_G.BOT = {}; -- Badge of Taste table in _G
-
---**v Control of Badge of Taste v**
-BOT["Ctr"] = Turbine.UI.Control();
-BOT["Ctr"]:SetParent( TB["win"] );
-BOT["Ctr"]:SetMouseVisible( false );
-BOT["Ctr"]:SetZOrder( 2 );
-BOT["Ctr"]:SetBlendMode( Turbine.UI.BlendMode.AlphaBlend );
-BOT["Ctr"]:SetBackColor( Turbine.UI.Color( BC.Alpha["BadgeOfTaste"], BC.Red["BadgeOfTaste"], BC.Green["BadgeOfTaste"], BC.Blue["BadgeOfTaste"] ) );
+--**v Control for this currency v**
+table["Ctr"] = Turbine.UI.Control();
+table["Ctr"]:SetParent( TB["win"] );
+table["Ctr"]:SetMouseVisible( false );
+table["Ctr"]:SetZOrder( 2 );
+table["Ctr"]:SetBlendMode( Turbine.UI.BlendMode.AlphaBlend );
+table["Ctr"]:SetBackColor( Turbine.UI.Color( BC.Alpha[key], BC.Red[key], BC.Green[key], BC.Blue[key] ) );
 --**^
---**v Badge of Taste & icon on TitanBar v**
-BOT["Icon"] = Turbine.UI.Control();
-BOT["Icon"]:SetParent( BOT["Ctr"] );
-BOT["Icon"]:SetBlendMode( Turbine.UI.BlendMode.AlphaBlend );
-BOT["Icon"]:SetSize( 32, 32 );
-BOT["Icon"]:SetBackground( WalletItem.BadgeOfTaste.Icon );-- in-game icon 32x32
+--**v Currency icon on TitanBar v**
+table["Icon"] = Turbine.UI.Control();
+table["Icon"]:SetParent( table["Ctr"] );
+table["Icon"]:SetBlendMode( Turbine.UI.BlendMode.AlphaBlend );
+table["Icon"]:SetSize( iconWidth, iconHeight );
+table["Icon"]:SetBackground( WalletItem[key].Icon );
 --**^
 
-BOT["Icon"].MouseMove = function( sender, args )
-	BOT["Lbl"].MouseLeave( sender, args );
+table["Icon"].MouseMove = function( sender, args )
+	table["Lbl"].MouseLeave( sender, args );
 	TB["win"].MouseMove();
-	if dragging then MoveBOTCtr(sender, args); end
+	if dragging then table["MoveCtr"](sender, args); end
 end
 
-BOT["Icon"].MouseLeave = function( sender, args )
-	BOT["Lbl"].MouseLeave( sender, args );
+table["Icon"].MouseLeave = function( sender, args )
+	table["Lbl"].MouseLeave( sender, args );
 end
 
-BOT["Icon"].MouseClick = function( sender, args )
-	BOT["Lbl"].MouseClick( sender, args );
+table["Icon"].MouseClick = function( sender, args )
+	table["Lbl"].MouseClick( sender, args );
 end
 
-BOT["Icon"].MouseDown = function( sender, args )
-	BOT["Lbl"].MouseDown( sender, args );
+table["Icon"].MouseDown = function( sender, args )
+	table["Lbl"].MouseDown( sender, args );
 end
 
-BOT["Icon"].MouseUp = function( sender, args )
-	BOT["Lbl"].MouseUp( sender, args );
+table["Icon"].MouseUp = function( sender, args )
+	table["Lbl"].MouseUp( sender, args );
 end
 
 
-BOT["Lbl"] = Turbine.UI.Label();
-BOT["Lbl"]:SetParent( BOT["Ctr"] );
-BOT["Lbl"]:SetFont( _G.TBFont );
-BOT["Lbl"]:SetPosition( 0, 0 );
-BOT["Lbl"]:SetFontStyle( Turbine.UI.FontStyle.Outline );
-BOT["Lbl"]:SetTextAlignment( Turbine.UI.ContentAlignment.MiddleRight );
+table["Lbl"] = Turbine.UI.Label();
+table["Lbl"]:SetParent( table["Ctr"] );
+table["Lbl"]:SetFont( _G.TBFont );
+table["Lbl"]:SetPosition( 0, 0 );
+table["Lbl"]:SetFontStyle( Turbine.UI.FontStyle.Outline );
+table["Lbl"]:SetTextAlignment( labelAlignment );
 
-BOT["Lbl"].MouseMove = function( sender, args )
-	BOT["Lbl"].MouseLeave( sender, args );
+table["Lbl"].MouseMove = function( sender, args )
+	table["Lbl"].MouseLeave( sender, args );
 	TB["win"].MouseMove();
 	if dragging then
-		MoveBOTCtr(sender, args);
+		table["MoveCtr"](sender, args);
 	else
-		ShowToolTipWin( "BOT" );
+		ShowToolTipWin( code );
 	end
 end
 
-BOT["Lbl"].MouseLeave = function( sender, args )
+table["Lbl"].MouseLeave = function( sender, args )
 	ResetToolTipWin();
 end
 
-BOT["Lbl"].MouseClick = function( sender, args )
+table["Lbl"].MouseClick = function( sender, args )
 	TB["win"].MouseMove();
 	if ( args.Button == Turbine.UI.MouseButton.Left ) then
 		if not WasDrag then
 			
 		end
 	elseif ( args.Button == Turbine.UI.MouseButton.Right ) then
-		_G.sFromCtr = "BOT";
+		_G.sFromCtr = code;
 		ControlMenu:ShowMenu();
 	end
 	WasDrag = false;
 end
 
-BOT["Lbl"].MouseDown = function( sender, args )
+table["Lbl"].MouseDown = function( sender, args )
 	if ( args.Button == Turbine.UI.MouseButton.Left ) then
-		BOT["Ctr"]:SetZOrder( 3 );
+		table["Ctr"]:SetZOrder( 3 );
 		dragStartX = args.X;
 		dragStartY = args.Y;
 		dragging = true;
 	end
 end
 
-BOT["Lbl"].MouseUp = function( sender, args )
-	BOT["Ctr"]:SetZOrder( 2 );
+table["Lbl"].MouseUp = function( sender, args )
+	table["Ctr"]:SetZOrder( 2 );
 	dragging = false;
-	Position.Left["BadgeOfTaste"] = BOT["Ctr"]:GetLeft();
-	settings.BadgeOfTaste.X = string.format("%.0f", Position.Left["BadgeOfTaste"]);
-	Position.Top["BadgeOfTaste"] = BOT["Ctr"]:GetTop();
-	settings.BadgeOfTaste.Y = string.format("%.0f", Position.Top["BadgeOfTaste"]);
+	Position.Left[key] = table["Ctr"]:GetLeft();
+	settings[key].X = string.format("%.0f", Position.Left[key]);
+	Position.Top[key] = table["Ctr"]:GetTop();
+	settings[key].Y = string.format("%.0f", Position.Top[key]);
 	SaveSettings( false );
 end
 --**^
 
-function MoveBOTCtr(sender, args)
-	local CtrLocX = BOT["Ctr"]:GetLeft();
-	local CtrWidth = BOT["Ctr"]:GetWidth();
+table["MoveCtr"] = function(sender, args)
+	local CtrLocX = table["Ctr"]:GetLeft();
+	local CtrWidth = table["Ctr"]:GetWidth();
 	CtrLocX = CtrLocX + ( args.X - dragStartX );
 	if CtrLocX < 0 then CtrLocX = 0; elseif CtrLocX + CtrWidth > screenWidth then CtrLocX = screenWidth - CtrWidth; end
 	
-	local CtrLocY = BOT["Ctr"]:GetTop();
-	local CtrHeight = BOT["Ctr"]:GetHeight();
+	local CtrLocY = table["Ctr"]:GetTop();
+	local CtrHeight = table["Ctr"]:GetHeight();
 	CtrLocY = CtrLocY + ( args.Y - dragStartY );
 	if CtrLocY < 0 then CtrLocY = 0; elseif CtrLocY + CtrHeight > TB["win"]:GetHeight() then CtrLocY = TB["win"]:GetHeight() - CtrHeight; end
 
-	BOT["Ctr"]:SetPosition( CtrLocX, CtrLocY );
+	table["Ctr"]:SetPosition( CtrLocX, CtrLocY );
 	WasDrag = true;
 end

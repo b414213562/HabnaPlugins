@@ -1,113 +1,118 @@
 -- Figments of Splendour.lua
 -- Written by Duriel
 
+local code = "FOS";
+local key = "FigmentsOfSplendour";
+_G[code] = {};
+local table = _G[code];
+local labelAlignment = Turbine.UI.ContentAlignment.MiddleRight;
+local iconWidth = 32; -- in-game icon 32x32
+local iconHeight = 32;
 
-_G.FOS = {};
-
---**v Control of Figments of Splendour v**
-FOS["Ctr"] = Turbine.UI.Control();
-FOS["Ctr"]:SetParent( TB["win"] );
-FOS["Ctr"]:SetMouseVisible( false );
-FOS["Ctr"]:SetZOrder( 2 );
-FOS["Ctr"]:SetBlendMode( Turbine.UI.BlendMode.AlphaBlend );
-FOS["Ctr"]:SetBackColor( Turbine.UI.Color( BC.Alpha["FigmentsOfSplendour"], BC.Red["FigmentsOfSplendour"], BC.Green["FigmentsOfSplendour"], BC.Blue["FigmentsOfSplendour"] ) );
+--**v Control for this currency v**
+table["Ctr"] = Turbine.UI.Control();
+table["Ctr"]:SetParent( TB["win"] );
+table["Ctr"]:SetMouseVisible( false );
+table["Ctr"]:SetZOrder( 2 );
+table["Ctr"]:SetBlendMode( Turbine.UI.BlendMode.AlphaBlend );
+table["Ctr"]:SetBackColor( Turbine.UI.Color( BC.Alpha[key], BC.Red[key], BC.Green[key], BC.Blue[key] ) );
 --**^
---**v Figments of Splendour & icon on TitanBar v**
-FOS["Icon"] = Turbine.UI.Control();
-FOS["Icon"]:SetParent( FOS["Ctr"] );
-FOS["Icon"]:SetBlendMode( Turbine.UI.BlendMode.AlphaBlend );
-FOS["Icon"]:SetSize( 32, 32 );
-FOS["Icon"]:SetBackground( WalletItem.FigmentsOfSplendour.Icon );-- in-game icon 32x32
+--**v Currency icon on TitanBar v**
+table["Icon"] = Turbine.UI.Control();
+table["Icon"]:SetParent( table["Ctr"] );
+table["Icon"]:SetBlendMode( Turbine.UI.BlendMode.AlphaBlend );
+table["Icon"]:SetSize( iconWidth, iconHeight );
+table["Icon"]:SetBackground( WalletItem[key].Icon );
 --**^
 
-FOS["Icon"].MouseMove = function( sender, args )
-	FOS["Lbl"].MouseLeave( sender, args );
+table["Icon"].MouseMove = function( sender, args )
+	table["Lbl"].MouseLeave( sender, args );
 	TB["win"].MouseMove();
-	if dragging then MoveFOSCtr(sender, args); end
+	if dragging then table["MoveCtr"](sender, args); end
 end
 
-FOS["Icon"].MouseLeave = function( sender, args )
-	FOS["Lbl"].MouseLeave( sender, args );
+table["Icon"].MouseLeave = function( sender, args )
+	table["Lbl"].MouseLeave( sender, args );
 end
 
-FOS["Icon"].MouseClick = function( sender, args )
-	FOS["Lbl"].MouseClick( sender, args );
+table["Icon"].MouseClick = function( sender, args )
+	table["Lbl"].MouseClick( sender, args );
 end
 
-FOS["Icon"].MouseDown = function( sender, args )
-	FOS["Lbl"].MouseDown( sender, args );
+table["Icon"].MouseDown = function( sender, args )
+	table["Lbl"].MouseDown( sender, args );
 end
 
-FOS["Icon"].MouseUp = function( sender, args )
-	FOS["Lbl"].MouseUp( sender, args );
+table["Icon"].MouseUp = function( sender, args )
+	table["Lbl"].MouseUp( sender, args );
 end
 
 
-FOS["Lbl"] = Turbine.UI.Label();
-FOS["Lbl"]:SetParent( FOS["Ctr"] );
-FOS["Lbl"]:SetFont( _G.TBFont );
-FOS["Lbl"]:SetPosition( 0, 0 );
-FOS["Lbl"]:SetFontStyle( Turbine.UI.FontStyle.Outline );
-FOS["Lbl"]:SetTextAlignment( Turbine.UI.ContentAlignment.MiddleRight );
+table["Lbl"] = Turbine.UI.Label();
+table["Lbl"]:SetParent( table["Ctr"] );
+table["Lbl"]:SetFont( _G.TBFont );
+table["Lbl"]:SetPosition( 0, 0 );
+table["Lbl"]:SetFontStyle( Turbine.UI.FontStyle.Outline );
+table["Lbl"]:SetTextAlignment( labelAlignment );
 
-FOS["Lbl"].MouseMove = function( sender, args )
-	FOS["Lbl"].MouseLeave( sender, args );
+table["Lbl"].MouseMove = function( sender, args )
+	table["Lbl"].MouseLeave( sender, args );
 	TB["win"].MouseMove();
 	if dragging then
-		MoveFOSCtr(sender, args);
+		table["MoveCtr"](sender, args);
 	else
-		ShowToolTipWin( "FOS" );
+		ShowToolTipWin( code );
 	end
 end
 
-FOS["Lbl"].MouseLeave = function( sender, args )
+table["Lbl"].MouseLeave = function( sender, args )
 	ResetToolTipWin();
 end
 
-FOS["Lbl"].MouseClick = function( sender, args )
+table["Lbl"].MouseClick = function( sender, args )
 	TB["win"].MouseMove();
 	if ( args.Button == Turbine.UI.MouseButton.Left ) then
 		if not WasDrag then
 			
 		end
 	elseif ( args.Button == Turbine.UI.MouseButton.Right ) then
-		_G.sFromCtr = "FOS";
+		_G.sFromCtr = code;
 		ControlMenu:ShowMenu();
 	end
 	WasDrag = false;
 end
 
-FOS["Lbl"].MouseDown = function( sender, args )
+table["Lbl"].MouseDown = function( sender, args )
 	if ( args.Button == Turbine.UI.MouseButton.Left ) then
-		FOS["Ctr"]:SetZOrder( 3 );
+		table["Ctr"]:SetZOrder( 3 );
 		dragStartX = args.X;
 		dragStartY = args.Y;
 		dragging = true;
 	end
 end
 
-FOS["Lbl"].MouseUp = function( sender, args )
-	FOS["Ctr"]:SetZOrder( 2 );
+table["Lbl"].MouseUp = function( sender, args )
+	table["Ctr"]:SetZOrder( 2 );
 	dragging = false;
-	Position.Left["FigmentsOfSplendour"] = FOS["Ctr"]:GetLeft();
-	settings.FigmentsOfSplendour.X = string.format("%.0f", Position.Left["FigmentsOfSplendour"]);
-	Position.Top["FigmentsOfSplendour"] = FOS["Ctr"]:GetTop();
-	settings.FigmentsOfSplendour.Y = string.format("%.0f", Position.Top["FigmentsOfSplendour"]);
+	Position.Left[key] = table["Ctr"]:GetLeft();
+	settings[key].X = string.format("%.0f", Position.Left[key]);
+	Position.Top[key] = table["Ctr"]:GetTop();
+	settings[key].Y = string.format("%.0f", Position.Top[key]);
 	SaveSettings( false );
 end
 --**^
 
-function MoveFOSCtr(sender, args)
-	local CtrLocX = FOS["Ctr"]:GetLeft();
-	local CtrWidth = FOS["Ctr"]:GetWidth();
+table["MoveCtr"] = function(sender, args)
+	local CtrLocX = table["Ctr"]:GetLeft();
+	local CtrWidth = table["Ctr"]:GetWidth();
 	CtrLocX = CtrLocX + ( args.X - dragStartX );
 	if CtrLocX < 0 then CtrLocX = 0; elseif CtrLocX + CtrWidth > screenWidth then CtrLocX = screenWidth - CtrWidth; end
 	
-	local CtrLocY = FOS["Ctr"]:GetTop();
-	local CtrHeight = FOS["Ctr"]:GetHeight();
+	local CtrLocY = table["Ctr"]:GetTop();
+	local CtrHeight = table["Ctr"]:GetHeight();
 	CtrLocY = CtrLocY + ( args.Y - dragStartY );
 	if CtrLocY < 0 then CtrLocY = 0; elseif CtrLocY + CtrHeight > TB["win"]:GetHeight() then CtrLocY = TB["win"]:GetHeight() - CtrHeight; end
 
-	FOS["Ctr"]:SetPosition( CtrLocX, CtrLocY );
+	table["Ctr"]:SetPosition( CtrLocX, CtrLocY );
 	WasDrag = true;
 end

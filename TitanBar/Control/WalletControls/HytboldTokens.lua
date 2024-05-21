@@ -1,116 +1,118 @@
 -- HytboldTokens.lua
 -- Written by Habna
 
+local code = "HT";
+local key = "HytboldTokens";
+_G[code] = {};
+local table = _G[code];
+local labelAlignment = Turbine.UI.ContentAlignment.MiddleRight;
+local iconWidth = 32; -- in-game icon 32x32
+local iconHeight = 32;
 
-_G.HT = {}; -- Shards table in _G
-
---**v Control of Destiny points v**
-HT["Ctr"] = Turbine.UI.Control();
-HT["Ctr"]:SetParent( TB["win"] );
-HT["Ctr"]:SetMouseVisible( false );
-HT["Ctr"]:SetZOrder( 2 );
-HT["Ctr"]:SetBlendMode( Turbine.UI.BlendMode.AlphaBlend );
-HT["Ctr"]:SetBackColor( Turbine.UI.Color( BC.Alpha["HytboldTokens"], BC.Red["HytboldTokens"], BC.Green["HytboldTokens"], BC.Blue["HytboldTokens"] ) );
---SM["Ctr"]:SetBackColor( Color["red"] ); -- Debug purpose
+--**v Control for this currency v**
+table["Ctr"] = Turbine.UI.Control();
+table["Ctr"]:SetParent( TB["win"] );
+table["Ctr"]:SetMouseVisible( false );
+table["Ctr"]:SetZOrder( 2 );
+table["Ctr"]:SetBlendMode( Turbine.UI.BlendMode.AlphaBlend );
+table["Ctr"]:SetBackColor( Turbine.UI.Color( BC.Alpha[key], BC.Red[key], BC.Green[key], BC.Blue[key] ) );
 --**^
---**v Destiny points & icon on TitanBar v**
-HT["Icon"] = Turbine.UI.Control();
-HT["Icon"]:SetParent( HT["Ctr"] );
-HT["Icon"]:SetBlendMode( Turbine.UI.BlendMode.AlphaBlend );
-HT["Icon"]:SetSize( 32, 32 );
-HT["Icon"]:SetBackground( WalletItem.HytboldTokens.Icon );-- in-game icon 32x32
---SM["Icon"]:SetBackColor( Color["blue"] ); -- Debug purpose
+--**v Currency icon on TitanBar v**
+table["Icon"] = Turbine.UI.Control();
+table["Icon"]:SetParent( table["Ctr"] );
+table["Icon"]:SetBlendMode( Turbine.UI.BlendMode.AlphaBlend );
+table["Icon"]:SetSize( iconWidth, iconHeight );
+table["Icon"]:SetBackground( WalletItem[key].Icon );
+--**^
 
-HT["Icon"].MouseMove = function( sender, args )
-	HT["Lbl"].MouseLeave( sender, args );
+table["Icon"].MouseMove = function( sender, args )
+	table["Lbl"].MouseLeave( sender, args );
 	TB["win"].MouseMove();
-	if dragging then MoveHTCtr(sender, args); end
+	if dragging then table["MoveCtr"](sender, args); end
 end
 
-HT["Icon"].MouseLeave = function( sender, args )
-	HT["Lbl"].MouseLeave( sender, args );
+table["Icon"].MouseLeave = function( sender, args )
+	table["Lbl"].MouseLeave( sender, args );
 end
 
-HT["Icon"].MouseClick = function( sender, args )
-	HT["Lbl"].MouseClick( sender, args );
+table["Icon"].MouseClick = function( sender, args )
+	table["Lbl"].MouseClick( sender, args );
 end
 
-HT["Icon"].MouseDown = function( sender, args )
-	HT["Lbl"].MouseDown( sender, args );
+table["Icon"].MouseDown = function( sender, args )
+	table["Lbl"].MouseDown( sender, args );
 end
 
-HT["Icon"].MouseUp = function( sender, args )
-	HT["Lbl"].MouseUp( sender, args );
+table["Icon"].MouseUp = function( sender, args )
+	table["Lbl"].MouseUp( sender, args );
 end
 
 
-HT["Lbl"] = Turbine.UI.Label();
-HT["Lbl"]:SetParent( HT["Ctr"] );
-HT["Lbl"]:SetFont( _G.TBFont );
-HT["Lbl"]:SetPosition( 0, 0 );
---SM["Lbl"]:SetForeColor( Color["white"] );
-HT["Lbl"]:SetFontStyle( Turbine.UI.FontStyle.Outline );
-HT["Lbl"]:SetTextAlignment( Turbine.UI.ContentAlignment.MiddleRight );
---SM["Lbl"]:SetBackColor( Color["white"] ); -- Debug purpose
+table["Lbl"] = Turbine.UI.Label();
+table["Lbl"]:SetParent( table["Ctr"] );
+table["Lbl"]:SetFont( _G.TBFont );
+table["Lbl"]:SetPosition( 0, 0 );
+table["Lbl"]:SetFontStyle( Turbine.UI.FontStyle.Outline );
+table["Lbl"]:SetTextAlignment( labelAlignment );
 
-HT["Lbl"].MouseMove = function( sender, args )
-	HT["Lbl"].MouseLeave( sender, args );
+table["Lbl"].MouseMove = function( sender, args )
+	table["Lbl"].MouseLeave( sender, args );
 	TB["win"].MouseMove();
 	if dragging then
-		MoveHTCtr(sender, args);
+		table["MoveCtr"](sender, args);
 	else
-		ShowToolTipWin( "HT" );
+		ShowToolTipWin( code );
 	end
 end
 
-HT["Lbl"].MouseLeave = function( sender, args )
+table["Lbl"].MouseLeave = function( sender, args )
 	ResetToolTipWin();
 end
 
-HT["Lbl"].MouseClick = function( sender, args )
+table["Lbl"].MouseClick = function( sender, args )
 	TB["win"].MouseMove();
 	if ( args.Button == Turbine.UI.MouseButton.Left ) then
 		if not WasDrag then
 			
 		end
 	elseif ( args.Button == Turbine.UI.MouseButton.Right ) then
-		_G.sFromCtr = "HT";
+		_G.sFromCtr = code;
 		ControlMenu:ShowMenu();
 	end
 	WasDrag = false;
 end
 
-HT["Lbl"].MouseDown = function( sender, args )
+table["Lbl"].MouseDown = function( sender, args )
 	if ( args.Button == Turbine.UI.MouseButton.Left ) then
-		HT["Ctr"]:SetZOrder( 3 );
+		table["Ctr"]:SetZOrder( 3 );
 		dragStartX = args.X;
 		dragStartY = args.Y;
 		dragging = true;
 	end
 end
 
-HT["Lbl"].MouseUp = function( sender, args )
-	HT["Ctr"]:SetZOrder( 2 );
+table["Lbl"].MouseUp = function( sender, args )
+	table["Ctr"]:SetZOrder( 2 );
 	dragging = false;
-	Position.Left["HytboldTokens"] = HT["Ctr"]:GetLeft();
-	settings.HytboldTokens.X = string.format("%.0f", Position.Left["HytboldTokens"]);
-	Position.Top["HytboldTokens"] = HT["Ctr"]:GetTop();
-	settings.HytboldTokens.Y = string.format("%.0f", Position.Top["HytboldTokens"]);
+	Position.Left[key] = table["Ctr"]:GetLeft();
+	settings[key].X = string.format("%.0f", Position.Left[key]);
+	Position.Top[key] = table["Ctr"]:GetTop();
+	settings[key].Y = string.format("%.0f", Position.Top[key]);
 	SaveSettings( false );
 end
 --**^
 
-function MoveHTCtr(sender, args)
-	local CtrLocX = HT["Ctr"]:GetLeft();
-	local CtrWidth = HT["Ctr"]:GetWidth();
+table["MoveCtr"] = function(sender, args)
+	local CtrLocX = table["Ctr"]:GetLeft();
+	local CtrWidth = table["Ctr"]:GetWidth();
 	CtrLocX = CtrLocX + ( args.X - dragStartX );
 	if CtrLocX < 0 then CtrLocX = 0; elseif CtrLocX + CtrWidth > screenWidth then CtrLocX = screenWidth - CtrWidth; end
 	
-	local CtrLocY = HT["Ctr"]:GetTop();
-	local CtrHeight = HT["Ctr"]:GetHeight();
+	local CtrLocY = table["Ctr"]:GetTop();
+	local CtrHeight = table["Ctr"]:GetHeight();
 	CtrLocY = CtrLocY + ( args.Y - dragStartY );
 	if CtrLocY < 0 then CtrLocY = 0; elseif CtrLocY + CtrHeight > TB["win"]:GetHeight() then CtrLocY = TB["win"]:GetHeight() - CtrHeight; end
 
-	HT["Ctr"]:SetPosition( CtrLocX, CtrLocY );
+	table["Ctr"]:SetPosition( CtrLocX, CtrLocY );
 	WasDrag = true;
 end

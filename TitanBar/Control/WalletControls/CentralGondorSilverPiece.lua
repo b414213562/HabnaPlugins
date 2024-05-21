@@ -1,113 +1,118 @@
 -- CentralGondorSilverPiece.lua
 -- Written by Habna
 
+local code = "CGSP";
+local key = "CentralGondorSilverPiece";
+_G[code] = {};
+local table = _G[code];
+local labelAlignment = Turbine.UI.ContentAlignment.MiddleRight;
+local iconWidth = 32; -- in-game icon 32x32
+local iconHeight = 32;
 
-_G.CGSP = {};
-
---**v Control of Central Gondor Silver Piece v**
-CGSP["Ctr"] = Turbine.UI.Control();
-CGSP["Ctr"]:SetParent( TB["win"] );
-CGSP["Ctr"]:SetMouseVisible( false );
-CGSP["Ctr"]:SetZOrder( 2 );
-CGSP["Ctr"]:SetBlendMode( Turbine.UI.BlendMode.AlphaBlend );
-CGSP["Ctr"]:SetBackColor( Turbine.UI.Color( BC.Alpha["CentralGondorSilverPiece"], BC.Red["CentralGondorSilverPiece"], BC.Green["CentralGondorSilverPiece"], BC.Blue["CentralGondorSilverPiece"] ) );
+--**v Control for this currency v**
+table["Ctr"] = Turbine.UI.Control();
+table["Ctr"]:SetParent( TB["win"] );
+table["Ctr"]:SetMouseVisible( false );
+table["Ctr"]:SetZOrder( 2 );
+table["Ctr"]:SetBlendMode( Turbine.UI.BlendMode.AlphaBlend );
+table["Ctr"]:SetBackColor( Turbine.UI.Color( BC.Alpha[key], BC.Red[key], BC.Green[key], BC.Blue[key] ) );
 --**^
---**v Central Gondor Silver Piece & icon on TitanBar v**
-CGSP["Icon"] = Turbine.UI.Control();
-CGSP["Icon"]:SetParent( CGSP["Ctr"] );
-CGSP["Icon"]:SetBlendMode( Turbine.UI.BlendMode.AlphaBlend );
-CGSP["Icon"]:SetSize( 32, 32 );
-CGSP["Icon"]:SetBackground( WalletItem.CentralGondorSilverPiece.Icon );-- in-game icon 32x32
+--**v Currency icon on TitanBar v**
+table["Icon"] = Turbine.UI.Control();
+table["Icon"]:SetParent( table["Ctr"] );
+table["Icon"]:SetBlendMode( Turbine.UI.BlendMode.AlphaBlend );
+table["Icon"]:SetSize( iconWidth, iconHeight );
+table["Icon"]:SetBackground( WalletItem[key].Icon );
 --**^
 
-CGSP["Icon"].MouseMove = function( sender, args )
-	CGSP["Lbl"].MouseLeave( sender, args );
+table["Icon"].MouseMove = function( sender, args )
+	table["Lbl"].MouseLeave( sender, args );
 	TB["win"].MouseMove();
-	if dragging then MoveCGSPCtr(sender, args); end
+	if dragging then table["MoveCtr"](sender, args); end
 end
 
-CGSP["Icon"].MouseLeave = function( sender, args )
-	CGSP["Lbl"].MouseLeave( sender, args );
+table["Icon"].MouseLeave = function( sender, args )
+	table["Lbl"].MouseLeave( sender, args );
 end
 
-CGSP["Icon"].MouseClick = function( sender, args )
-	CGSP["Lbl"].MouseClick( sender, args );
+table["Icon"].MouseClick = function( sender, args )
+	table["Lbl"].MouseClick( sender, args );
 end
 
-CGSP["Icon"].MouseDown = function( sender, args )
-	CGSP["Lbl"].MouseDown( sender, args );
+table["Icon"].MouseDown = function( sender, args )
+	table["Lbl"].MouseDown( sender, args );
 end
 
-CGSP["Icon"].MouseUp = function( sender, args )
-	CGSP["Lbl"].MouseUp( sender, args );
+table["Icon"].MouseUp = function( sender, args )
+	table["Lbl"].MouseUp( sender, args );
 end
 
 
-CGSP["Lbl"] = Turbine.UI.Label();
-CGSP["Lbl"]:SetParent( CGSP["Ctr"] );
-CGSP["Lbl"]:SetFont( _G.TBFont );
-CGSP["Lbl"]:SetPosition( 0, 0 );
-CGSP["Lbl"]:SetFontStyle( Turbine.UI.FontStyle.Outline );
-CGSP["Lbl"]:SetTextAlignment( Turbine.UI.ContentAlignment.MiddleRight );
+table["Lbl"] = Turbine.UI.Label();
+table["Lbl"]:SetParent( table["Ctr"] );
+table["Lbl"]:SetFont( _G.TBFont );
+table["Lbl"]:SetPosition( 0, 0 );
+table["Lbl"]:SetFontStyle( Turbine.UI.FontStyle.Outline );
+table["Lbl"]:SetTextAlignment( labelAlignment );
 
-CGSP["Lbl"].MouseMove = function( sender, args )
-	CGSP["Lbl"].MouseLeave( sender, args );
+table["Lbl"].MouseMove = function( sender, args )
+	table["Lbl"].MouseLeave( sender, args );
 	TB["win"].MouseMove();
 	if dragging then
-		MoveCGSPCtr(sender, args);
+		table["MoveCtr"](sender, args);
 	else
-		ShowToolTipWin( "CGSP" );
+		ShowToolTipWin( code );
 	end
 end
 
-CGSP["Lbl"].MouseLeave = function( sender, args )
+table["Lbl"].MouseLeave = function( sender, args )
 	ResetToolTipWin();
 end
 
-CGSP["Lbl"].MouseClick = function( sender, args )
+table["Lbl"].MouseClick = function( sender, args )
 	TB["win"].MouseMove();
 	if ( args.Button == Turbine.UI.MouseButton.Left ) then
 		if not WasDrag then
 			
 		end
 	elseif ( args.Button == Turbine.UI.MouseButton.Right ) then
-		_G.sFromCtr = "CGSP";
+		_G.sFromCtr = code;
 		ControlMenu:ShowMenu();
 	end
 	WasDrag = false;
 end
 
-CGSP["Lbl"].MouseDown = function( sender, args )
+table["Lbl"].MouseDown = function( sender, args )
 	if ( args.Button == Turbine.UI.MouseButton.Left ) then
-		CGSP["Ctr"]:SetZOrder( 3 );
+		table["Ctr"]:SetZOrder( 3 );
 		dragStartX = args.X;
 		dragStartY = args.Y;
 		dragging = true;
 	end
 end
 
-CGSP["Lbl"].MouseUp = function( sender, args )
-	CGSP["Ctr"]:SetZOrder( 2 );
+table["Lbl"].MouseUp = function( sender, args )
+	table["Ctr"]:SetZOrder( 2 );
 	dragging = false;
-	Position.Left["CentralGondorSilverPiece"] = CGSP["Ctr"]:GetLeft();
-	settings.CentralGondorSilverPiece.X = string.format("%.0f", Position.Left["CentralGondorSilverPiece"]);
-	Position.Top["CentralGondorSilverPiece"] = CGSP["Ctr"]:GetTop();
-	settings.CentralGondorSilverPiece.Y = string.format("%.0f", Position.Top["CentralGondorSilverPiece"]);
+	Position.Left[key] = table["Ctr"]:GetLeft();
+	settings[key].X = string.format("%.0f", Position.Left[key]);
+	Position.Top[key] = table["Ctr"]:GetTop();
+	settings[key].Y = string.format("%.0f", Position.Top[key]);
 	SaveSettings( false );
 end
 --**^
 
-function MoveCGSPCtr(sender, args)
-	local CtrLocX = CGSP["Ctr"]:GetLeft();
-	local CtrWidth = CGSP["Ctr"]:GetWidth();
+table["MoveCtr"] = function(sender, args)
+	local CtrLocX = table["Ctr"]:GetLeft();
+	local CtrWidth = table["Ctr"]:GetWidth();
 	CtrLocX = CtrLocX + ( args.X - dragStartX );
 	if CtrLocX < 0 then CtrLocX = 0; elseif CtrLocX + CtrWidth > screenWidth then CtrLocX = screenWidth - CtrWidth; end
 	
-	local CtrLocY = CGSP["Ctr"]:GetTop();
-	local CtrHeight = CGSP["Ctr"]:GetHeight();
+	local CtrLocY = table["Ctr"]:GetTop();
+	local CtrHeight = table["Ctr"]:GetHeight();
 	CtrLocY = CtrLocY + ( args.Y - dragStartY );
 	if CtrLocY < 0 then CtrLocY = 0; elseif CtrLocY + CtrHeight > TB["win"]:GetHeight() then CtrLocY = TB["win"]:GetHeight() - CtrHeight; end
 
-	CGSP["Ctr"]:SetPosition( CtrLocX, CtrLocY );
+	table["Ctr"]:SetPosition( CtrLocX, CtrLocY );
 	WasDrag = true;
 end

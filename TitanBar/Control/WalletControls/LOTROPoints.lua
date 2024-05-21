@@ -1,76 +1,77 @@
 -- LOTROPoints.lua
 -- Written by Habna
 
+local code = "LP";
+local key = "LOTROPoints";
+_G[code] = {};
+local table = _G[code];
+local labelAlignment = Turbine.UI.ContentAlignment.MiddleCenter;
+local iconWidth = 36; -- in-game icon 32x32
+local iconHeight = 43;
 
-_G.LP = {}; -- LOTRO Points table in _G
-
---**v Control of LOTRO Points v**
-LP["Ctr"] = Turbine.UI.Control();
-LP["Ctr"]:SetParent( TB["win"] );
-LP["Ctr"]:SetMouseVisible( false );
-LP["Ctr"]:SetZOrder( 2 );
-LP["Ctr"]:SetBlendMode( Turbine.UI.BlendMode.AlphaBlend );
-LP["Ctr"]:SetBackColor( Turbine.UI.Color( BC.Alpha["LOTROPoints"], BC.Red["LOTROPoints"], BC.Green["LOTROPoints"], BC.Blue["LOTROPoints"] ) );
---LP["Ctr"]:SetBackColor( Color["red"] ); -- Debug purpose
+--**v Control for this currency v**
+table["Ctr"] = Turbine.UI.Control();
+table["Ctr"]:SetParent( TB["win"] );
+table["Ctr"]:SetMouseVisible( false );
+table["Ctr"]:SetZOrder( 2 );
+table["Ctr"]:SetBlendMode( Turbine.UI.BlendMode.AlphaBlend );
+table["Ctr"]:SetBackColor( Turbine.UI.Color( BC.Alpha[key], BC.Red[key], BC.Green[key], BC.Blue[key] ) );
 --**^
---**v Destiny points & icon on TitanBar v**
-LP["Icon"] = Turbine.UI.Control();
-LP["Icon"]:SetParent( LP["Ctr"] );
-LP["Icon"]:SetBlendMode( Turbine.UI.BlendMode.AlphaBlend );
-LP["Icon"]:SetSize( 36, 43 );
-LP["Icon"]:SetBackground( WalletItem.LOTROPoints.Icon );
-LP["Icon"]:SetStretchMode( 1 );
-LP["Icon"]:SetSize( 32, 32 );
+--**v Currency icon on TitanBar v**
+table["Icon"] = Turbine.UI.Control();
+table["Icon"]:SetParent( table["Ctr"] );
+table["Icon"]:SetBlendMode( Turbine.UI.BlendMode.AlphaBlend );
+table["Icon"]:SetSize( iconWidth, iconHeight );
+table["Icon"]:SetBackground( WalletItem[key].Icon );
+table["Icon"]:SetStretchMode( 1 );
+table["Icon"]:SetSize( 32, 32 );
+--**^
 
---LP["Icon"]:SetBackColor( Color["blue"] ); -- Debug purpose
-
-LP["Icon"].MouseMove = function( sender, args )
-	LP["Lbl"].MouseLeave( sender, args );
+table["Icon"].MouseMove = function( sender, args )
+	table["Lbl"].MouseLeave( sender, args );
 	TB["win"].MouseMove();
-	if dragging then MoveLPCtr(sender, args); end
+	if dragging then table["MoveCtr"](sender, args); end
 end
 
-LP["Icon"].MouseLeave = function( sender, args )
-	LP["Lbl"].MouseLeave( sender, args );
+table["Icon"].MouseLeave = function( sender, args )
+	table["Lbl"].MouseLeave( sender, args );
 end
 
-LP["Icon"].MouseClick = function( sender, args )
-	LP["Lbl"].MouseClick( sender, args );
+table["Icon"].MouseClick = function( sender, args )
+	table["Lbl"].MouseClick( sender, args );
 end
 
-LP["Icon"].MouseDown = function( sender, args )
-	LP["Lbl"].MouseDown( sender, args );
+table["Icon"].MouseDown = function( sender, args )
+	table["Lbl"].MouseDown( sender, args );
 end
 
-LP["Icon"].MouseUp = function( sender, args )
-	LP["Lbl"].MouseUp( sender, args );
+table["Icon"].MouseUp = function( sender, args )
+	table["Lbl"].MouseUp( sender, args );
 end
 
 
-LP["Lbl"] = Turbine.UI.Label();
-LP["Lbl"]:SetParent( LP["Ctr"] );
-LP["Lbl"]:SetFont( _G.TBFont );
-LP["Lbl"]:SetPosition( 0, 0 );
---LP["Lbl"]:SetForeColor( Color["white"] );
-LP["Lbl"]:SetFontStyle( Turbine.UI.FontStyle.Outline );
-LP["Lbl"]:SetTextAlignment( Turbine.UI.ContentAlignment.MiddleCenter );
---LP["Lbl"]:SetBackColor( Color["white"] ); -- Debug purpose
+table["Lbl"] = Turbine.UI.Label();
+table["Lbl"]:SetParent( table["Ctr"] );
+table["Lbl"]:SetFont( _G.TBFont );
+table["Lbl"]:SetPosition( 0, 0 );
+table["Lbl"]:SetFontStyle( Turbine.UI.FontStyle.Outline );
+table["Lbl"]:SetTextAlignment( labelAlignment );
 
-LP["Lbl"].MouseMove = function( sender, args )
-	LP["Lbl"].MouseLeave( sender, args );
+table["Lbl"].MouseMove = function( sender, args )
+	table["Lbl"].MouseLeave( sender, args );
 	TB["win"].MouseMove();
 	if dragging then
-		MoveLPCtr(sender, args);
+		table["MoveCtr"](sender, args);
 	else
-		ShowToolTipWin( "LP" );
+		ShowToolTipWin( code );
 	end
 end
 
-LP["Lbl"].MouseLeave = function( sender, args )
+table["Lbl"].MouseLeave = function( sender, args )
 	ResetToolTipWin();
 end
 
-LP["Lbl"].MouseClick = function( sender, args )
+table["Lbl"].MouseClick = function( sender, args )
 	TB["win"].MouseMove();
 	if ( args.Button == Turbine.UI.MouseButton.Left ) then
 		if not WasDrag then
@@ -82,43 +83,43 @@ LP["Lbl"].MouseClick = function( sender, args )
 			end
 		end
 	elseif ( args.Button == Turbine.UI.MouseButton.Right ) then
-		_G.sFromCtr = "LP";
+		_G.sFromCtr = code;
 		ControlMenu:ShowMenu();
 	end
 	WasDrag = false;
 end
 
-LP["Lbl"].MouseDown = function( sender, args )
+table["Lbl"].MouseDown = function( sender, args )
 	if ( args.Button == Turbine.UI.MouseButton.Left ) then
-		LP["Ctr"]:SetZOrder( 3 );
+		table["Ctr"]:SetZOrder( 3 );
 		dragStartX = args.X;
 		dragStartY = args.Y;
 		dragging = true;
 	end
 end
 
-LP["Lbl"].MouseUp = function( sender, args )
-	LP["Ctr"]:SetZOrder( 2 );
+table["Lbl"].MouseUp = function( sender, args )
+	table["Ctr"]:SetZOrder( 2 );
 	dragging = false;
-	Position.Left["LOTROPoints"] = LP["Ctr"]:GetLeft();
-	settings.LOTROPoints.X = string.format("%.0f", Position.Left["LOTROPoints"]);
-	Position.Top["LOTROPoints"] = LP["Ctr"]:GetTop();
-	settings.LOTROPoints.Y = string.format("%.0f", Position.Top["LOTROPoints"]);
+	Position.Left[key] = table["Ctr"]:GetLeft();
+	settings[key].X = string.format("%.0f", Position.Left[key]);
+	Position.Top[key] = table["Ctr"]:GetTop();
+	settings[key].Y = string.format("%.0f", Position.Top[key]);
 	SaveSettings( false );
 end
 --**^
 
-function MoveLPCtr(sender, args)
-	local CtrLocX = LP["Ctr"]:GetLeft();
-	local CtrWidth = LP["Ctr"]:GetWidth();
+table["MoveCtr"] = function(sender, args)
+	local CtrLocX = table["Ctr"]:GetLeft();
+	local CtrWidth = table["Ctr"]:GetWidth();
 	CtrLocX = CtrLocX + ( args.X - dragStartX );
 	if CtrLocX < 0 then CtrLocX = 0; elseif CtrLocX + CtrWidth > screenWidth then CtrLocX = screenWidth - CtrWidth; end
 	
-	local CtrLocY = LP["Ctr"]:GetTop();
-	local CtrHeight = LP["Ctr"]:GetHeight();
+	local CtrLocY = table["Ctr"]:GetTop();
+	local CtrHeight = table["Ctr"]:GetHeight();
 	CtrLocY = CtrLocY + ( args.Y - dragStartY );
 	if CtrLocY < 0 then CtrLocY = 0; elseif CtrLocY + CtrHeight > TB["win"]:GetHeight() then CtrLocY = TB["win"]:GetHeight() - CtrHeight; end
 
-	LP["Ctr"]:SetPosition( CtrLocX, CtrLocY );
+	table["Ctr"]:SetPosition( CtrLocX, CtrLocY );
 	WasDrag = true;
 end

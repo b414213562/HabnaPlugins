@@ -1,113 +1,118 @@
 -- Ancient Script.lua
 -- Written by Duriel
 
+local code = "AS";
+local key = "AncientScript";
+_G[code] = {};
+local table = _G[code];
+local labelAlignment = Turbine.UI.ContentAlignment.MiddleRight;
+local iconWidth = 32; -- in-game icon 32x32
+local iconHeight = 32;
 
-_G.AS = {}; -- Ancient Script table in _G
-
---**v Control of Ancient Script v**
-AS["Ctr"] = Turbine.UI.Control();
-AS["Ctr"]:SetParent( TB["win"] );
-AS["Ctr"]:SetMouseVisible( false );
-AS["Ctr"]:SetZOrder( 2 );
-AS["Ctr"]:SetBlendMode( Turbine.UI.BlendMode.AlphaBlend );
-AS["Ctr"]:SetBackColor( Turbine.UI.Color( BC.Alpha["AncientScript"], BC.Red["AncientScript"], BC.Green["AncientScript"], BC.Blue["AncientScript"] ) );
+--**v Control for this currency v**
+table["Ctr"] = Turbine.UI.Control();
+table["Ctr"]:SetParent( TB["win"] );
+table["Ctr"]:SetMouseVisible( false );
+table["Ctr"]:SetZOrder( 2 );
+table["Ctr"]:SetBlendMode( Turbine.UI.BlendMode.AlphaBlend );
+table["Ctr"]:SetBackColor( Turbine.UI.Color( BC.Alpha[key], BC.Red[key], BC.Green[key], BC.Blue[key] ) );
 --**^
---**v Ancient Script & icon on TitanBar v**
-AS["Icon"] = Turbine.UI.Control();
-AS["Icon"]:SetParent( AS["Ctr"] );
-AS["Icon"]:SetBlendMode( Turbine.UI.BlendMode.AlphaBlend );
-AS["Icon"]:SetSize( 32, 32 );
-AS["Icon"]:SetBackground( WalletItem.AncientScript.Icon );-- in-game icon 32x32
+--**v Currency icon on TitanBar v**
+table["Icon"] = Turbine.UI.Control();
+table["Icon"]:SetParent( table["Ctr"] );
+table["Icon"]:SetBlendMode( Turbine.UI.BlendMode.AlphaBlend );
+table["Icon"]:SetSize( iconWidth, iconHeight );
+table["Icon"]:SetBackground( WalletItem[key].Icon );
 --**^
 
-AS["Icon"].MouseMove = function( sender, args )
-	AS["Lbl"].MouseLeave( sender, args );
+table["Icon"].MouseMove = function( sender, args )
+	table["Lbl"].MouseLeave( sender, args );
 	TB["win"].MouseMove();
-	if dragging then MoveASCtr(sender, args); end
+	if dragging then table["MoveCtr"](sender, args); end
 end
 
-AS["Icon"].MouseLeave = function( sender, args )
-	AS["Lbl"].MouseLeave( sender, args );
+table["Icon"].MouseLeave = function( sender, args )
+	table["Lbl"].MouseLeave( sender, args );
 end
 
-AS["Icon"].MouseClick = function( sender, args )
-	AS["Lbl"].MouseClick( sender, args );
+table["Icon"].MouseClick = function( sender, args )
+	table["Lbl"].MouseClick( sender, args );
 end
 
-AS["Icon"].MouseDown = function( sender, args )
-	AS["Lbl"].MouseDown( sender, args );
+table["Icon"].MouseDown = function( sender, args )
+	table["Lbl"].MouseDown( sender, args );
 end
 
-AS["Icon"].MouseUp = function( sender, args )
-	AS["Lbl"].MouseUp( sender, args );
+table["Icon"].MouseUp = function( sender, args )
+	table["Lbl"].MouseUp( sender, args );
 end
 
 
-AS["Lbl"] = Turbine.UI.Label();
-AS["Lbl"]:SetParent( AS["Ctr"] );
-AS["Lbl"]:SetFont( _G.TBFont );
-AS["Lbl"]:SetPosition( 0, 0 );
-AS["Lbl"]:SetFontStyle( Turbine.UI.FontStyle.Outline );
-AS["Lbl"]:SetTextAlignment( Turbine.UI.ContentAlignment.MiddleRight );
+table["Lbl"] = Turbine.UI.Label();
+table["Lbl"]:SetParent( table["Ctr"] );
+table["Lbl"]:SetFont( _G.TBFont );
+table["Lbl"]:SetPosition( 0, 0 );
+table["Lbl"]:SetFontStyle( Turbine.UI.FontStyle.Outline );
+table["Lbl"]:SetTextAlignment( labelAlignment );
 
-AS["Lbl"].MouseMove = function( sender, args )
-	AS["Lbl"].MouseLeave( sender, args );
+table["Lbl"].MouseMove = function( sender, args )
+	table["Lbl"].MouseLeave( sender, args );
 	TB["win"].MouseMove();
 	if dragging then
-		MoveASCtr(sender, args);
+		table["MoveCtr"](sender, args);
 	else
-		ShowToolTipWin( "AS" );
+		ShowToolTipWin( code );
 	end
 end
 
-AS["Lbl"].MouseLeave = function( sender, args )
+table["Lbl"].MouseLeave = function( sender, args )
 	ResetToolTipWin();
 end
 
-AS["Lbl"].MouseClick = function( sender, args )
+table["Lbl"].MouseClick = function( sender, args )
 	TB["win"].MouseMove();
 	if ( args.Button == Turbine.UI.MouseButton.Left ) then
 		if not WasDrag then
 			
 		end
 	elseif ( args.Button == Turbine.UI.MouseButton.Right ) then
-		_G.sFromCtr = "AS";
+		_G.sFromCtr = code;
 		ControlMenu:ShowMenu();
 	end
 	WasDrag = false;
 end
 
-AS["Lbl"].MouseDown = function( sender, args )
+table["Lbl"].MouseDown = function( sender, args )
 	if ( args.Button == Turbine.UI.MouseButton.Left ) then
-		AS["Ctr"]:SetZOrder( 3 );
+		table["Ctr"]:SetZOrder( 3 );
 		dragStartX = args.X;
 		dragStartY = args.Y;
 		dragging = true;
 	end
 end
 
-AS["Lbl"].MouseUp = function( sender, args )
-	AS["Ctr"]:SetZOrder( 2 );
+table["Lbl"].MouseUp = function( sender, args )
+	table["Ctr"]:SetZOrder( 2 );
 	dragging = false;
-	Position.Left["AncientScript"] = AS["Ctr"]:GetLeft();
-	settings.AncientScript.X = string.format("%.0f", Position.Left["AncientScript"]);
-	Position.Top["AncientScript"] = AS["Ctr"]:GetTop();
-	settings.AncientScript.Y = string.format("%.0f", Position.Top["AncientScript"]);
+	Position.Left[key] = table["Ctr"]:GetLeft();
+	settings[key].X = string.format("%.0f", Position.Left[key]);
+	Position.Top[key] = table["Ctr"]:GetTop();
+	settings[key].Y = string.format("%.0f", Position.Top[key]);
 	SaveSettings( false );
 end
 --**^
 
-function MoveASCtr(sender, args)
-	local CtrLocX = AS["Ctr"]:GetLeft();
-	local CtrWidth = AS["Ctr"]:GetWidth();
+table["MoveCtr"] = function(sender, args)
+	local CtrLocX = table["Ctr"]:GetLeft();
+	local CtrWidth = table["Ctr"]:GetWidth();
 	CtrLocX = CtrLocX + ( args.X - dragStartX );
 	if CtrLocX < 0 then CtrLocX = 0; elseif CtrLocX + CtrWidth > screenWidth then CtrLocX = screenWidth - CtrWidth; end
 	
-	local CtrLocY = AS["Ctr"]:GetTop();
-	local CtrHeight = AS["Ctr"]:GetHeight();
+	local CtrLocY = table["Ctr"]:GetTop();
+	local CtrHeight = table["Ctr"]:GetHeight();
 	CtrLocY = CtrLocY + ( args.Y - dragStartY );
 	if CtrLocY < 0 then CtrLocY = 0; elseif CtrLocY + CtrHeight > TB["win"]:GetHeight() then CtrLocY = TB["win"]:GetHeight() - CtrHeight; end
 
-	AS["Ctr"]:SetPosition( CtrLocX, CtrLocY );
+	table["Ctr"]:SetPosition( CtrLocX, CtrLocY );
 	WasDrag = true;
 end

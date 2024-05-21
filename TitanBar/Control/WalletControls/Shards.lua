@@ -1,116 +1,118 @@
 -- Shards.lua
 -- Written by Habna
 
+local code = "SP";
+local key = "Shards";
+_G[code] = {};
+local table = _G[code];
+local labelAlignment = Turbine.UI.ContentAlignment.MiddleCenter;
+local iconWidth = 32; -- in-game icon 32x32
+local iconHeight = 32;
 
-_G.SP = {}; -- Shard table in _G
-
---**v Control of Shard v**
-SP["Ctr"] = Turbine.UI.Control();
-SP["Ctr"]:SetParent( TB["win"] );
-SP["Ctr"]:SetMouseVisible( false );
-SP["Ctr"]:SetZOrder( 2 );
-SP["Ctr"]:SetBlendMode( Turbine.UI.BlendMode.AlphaBlend );
-SP["Ctr"]:SetBackColor( Turbine.UI.Color( BC.Alpha["Shards"], BC.Red["Shards"], BC.Green["Shards"], BC.Blue["Shards"] ) );
---SP["Ctr"]:SetBackColor( Color["red"] ); -- Debug purpose
+--**v Control for this currency v**
+table["Ctr"] = Turbine.UI.Control();
+table["Ctr"]:SetParent( TB["win"] );
+table["Ctr"]:SetMouseVisible( false );
+table["Ctr"]:SetZOrder( 2 );
+table["Ctr"]:SetBlendMode( Turbine.UI.BlendMode.AlphaBlend );
+table["Ctr"]:SetBackColor( Turbine.UI.Color( BC.Alpha[key], BC.Red[key], BC.Green[key], BC.Blue[key] ) );
 --**^
---**v Shard & icon on TitanBar v**
-SP["Icon"] = Turbine.UI.Control();
-SP["Icon"]:SetParent( SP["Ctr"] );
-SP["Icon"]:SetBlendMode( Turbine.UI.BlendMode.AlphaBlend );
-SP["Icon"]:SetSize( 32, 32 );
-SP["Icon"]:SetBackground( WalletItem.Shards.Icon );-- in-game icon 32x32
---SP["Icon"]:SetBackColor( Color["blue"] ); -- Debug purpose
+--**v Currency icon on TitanBar v**
+table["Icon"] = Turbine.UI.Control();
+table["Icon"]:SetParent( table["Ctr"] );
+table["Icon"]:SetBlendMode( Turbine.UI.BlendMode.AlphaBlend );
+table["Icon"]:SetSize( iconWidth, iconHeight );
+table["Icon"]:SetBackground( WalletItem[key].Icon );
+--**^
 
-SP["Icon"].MouseMove = function( sender, args )
-	SP["Lbl"].MouseLeave( sender, args );
+table["Icon"].MouseMove = function( sender, args )
+	table["Lbl"].MouseLeave( sender, args );
 	TB["win"].MouseMove();
-	if dragging then MoveSPCtr(sender, args); end
+	if dragging then table["MoveCtr"](sender, args); end
 end
 
-SP["Icon"].MouseLeave = function( sender, args )
-	SP["Lbl"].MouseLeave( sender, args );
+table["Icon"].MouseLeave = function( sender, args )
+	table["Lbl"].MouseLeave( sender, args );
 end
 
-SP["Icon"].MouseClick = function( sender, args )
-	SP["Lbl"].MouseClick( sender, args );
+table["Icon"].MouseClick = function( sender, args )
+	table["Lbl"].MouseClick( sender, args );
 end
 
-SP["Icon"].MouseDown = function( sender, args )
-	SP["Lbl"].MouseDown( sender, args );
+table["Icon"].MouseDown = function( sender, args )
+	table["Lbl"].MouseDown( sender, args );
 end
 
-SP["Icon"].MouseUp = function( sender, args )
-	SP["Lbl"].MouseUp( sender, args );
+table["Icon"].MouseUp = function( sender, args )
+	table["Lbl"].MouseUp( sender, args );
 end
 
 
-SP["Lbl"] = Turbine.UI.Label();
-SP["Lbl"]:SetParent( SP["Ctr"] );
-SP["Lbl"]:SetPosition( 0, 0 );
-SP["Lbl"]:SetFont( _G.TBFont );
---SP["Lbl"]:SetForeColor( Color["white"] );
-SP["Lbl"]:SetFontStyle( Turbine.UI.FontStyle.Outline );
-SP["Lbl"]:SetTextAlignment( Turbine.UI.ContentAlignment.MiddleCenter );
---SP["Lbl"]:SetBackColor( Color["white"] ); -- Debug purpose
+table["Lbl"] = Turbine.UI.Label();
+table["Lbl"]:SetParent( table["Ctr"] );
+table["Lbl"]:SetFont( _G.TBFont );
+table["Lbl"]:SetPosition( 0, 0 );
+table["Lbl"]:SetFontStyle( Turbine.UI.FontStyle.Outline );
+table["Lbl"]:SetTextAlignment( labelAlignment );
 
-SP["Lbl"].MouseMove = function( sender, args )
-	SP["Lbl"].MouseLeave( sender, args );
+table["Lbl"].MouseMove = function( sender, args )
+	table["Lbl"].MouseLeave( sender, args );
 	TB["win"].MouseMove();
 	if dragging then
-		MoveSPCtr(sender, args);
+		table["MoveCtr"](sender, args);
 	else
-		ShowToolTipWin( "SP" );
+		ShowToolTipWin( code );
 	end
 end
 
-SP["Lbl"].MouseLeave = function( sender, args )
+table["Lbl"].MouseLeave = function( sender, args )
 	ResetToolTipWin();
 end
 
-SP["Lbl"].MouseClick = function( sender, args )
+table["Lbl"].MouseClick = function( sender, args )
 	TB["win"].MouseMove();
 	if ( args.Button == Turbine.UI.MouseButton.Left ) then
 		if not WasDrag then
 			
 		end
 	elseif ( args.Button == Turbine.UI.MouseButton.Right ) then
-		_G.sFromCtr = "SP";
+		_G.sFromCtr = code;
 		ControlMenu:ShowMenu();
 	end
 	WasDrag = false;
 end
 
-SP["Lbl"].MouseDown = function( sender, args )
+table["Lbl"].MouseDown = function( sender, args )
 	if ( args.Button == Turbine.UI.MouseButton.Left ) then
-		SP["Ctr"]:SetZOrder( 3 );
+		table["Ctr"]:SetZOrder( 3 );
 		dragStartX = args.X;
 		dragStartY = args.Y;
 		dragging = true;
 	end
 end
 
-SP["Lbl"].MouseUp = function( sender, args )
-	SP["Ctr"]:SetZOrder( 2 );
+table["Lbl"].MouseUp = function( sender, args )
+	table["Ctr"]:SetZOrder( 2 );
 	dragging = false;
-	Position.Left["Shards"] = SP["Ctr"]:GetLeft();
-	settings.Shards.X = string.format("%.0f", Position.Left["Shards"]);
-	Position.Top["Shards"] = SP["Ctr"]:GetTop();
-	settings.Shards.Y = string.format("%.0f", Position.Top["Shards"]);
+	Position.Left[key] = table["Ctr"]:GetLeft();
+	settings[key].X = string.format("%.0f", Position.Left[key]);
+	Position.Top[key] = table["Ctr"]:GetTop();
+	settings[key].Y = string.format("%.0f", Position.Top[key]);
 	SaveSettings( false );
 end
 --**^
 
-function MoveSPCtr(sender, args)
-	local CtrLocX = SP["Ctr"]:GetLeft();
-	local CtrWidth = SP["Ctr"]:GetWidth();
+table["MoveCtr"] = function(sender, args)
+	local CtrLocX = table["Ctr"]:GetLeft();
+	local CtrWidth = table["Ctr"]:GetWidth();
 	CtrLocX = CtrLocX + ( args.X - dragStartX );
 	if CtrLocX < 0 then CtrLocX = 0; elseif CtrLocX + CtrWidth > screenWidth then CtrLocX = screenWidth - CtrWidth; end
 
-	local CtrLocY = SP["Ctr"]:GetTop();
-	local CtrHeight = SP["Ctr"]:GetHeight();
+	local CtrLocY = table["Ctr"]:GetTop();
+	local CtrHeight = table["Ctr"]:GetHeight();
 	CtrLocY = CtrLocY + ( args.Y - dragStartY );
 	if CtrLocY < 0 then CtrLocY = 0; elseif CtrLocY + CtrHeight > TB["win"]:GetHeight() then CtrLocY = TB["win"]:GetHeight() - CtrHeight; end
 
-	SP["Ctr"]:SetPosition( CtrLocX, CtrLocY );
+	table["Ctr"]:SetPosition( CtrLocX, CtrLocY );
 	WasDrag = true;
 end

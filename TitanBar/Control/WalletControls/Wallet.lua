@@ -1,31 +1,35 @@
 -- Wallet.lua
 -- Written by Habna
 
+local code = "WI";
+local key = "Wallet";
+_G[code] = {};
+local table = _G[code];
+local labelAlignment = Turbine.UI.ContentAlignment.MiddleRight;
+local iconWidth = 32; -- in-game icon 32x32
+local iconHeight = 32;
 
-_G.WI = {}; -- Wallet table in _G
-
---**v Wallet Control v**
-WI["Ctr"] = Turbine.UI.Control();
-WI["Ctr"]:SetParent( TB["win"] );
-WI["Ctr"]:SetMouseVisible( false );
-WI["Ctr"]:SetZOrder( 2 );
-WI["Ctr"]:SetBlendMode( 4 );
-WI["Ctr"]:SetBackColor( Turbine.UI.Color( BC.Alpha["Wallet"], BC.Red["Wallet"], BC.Green["Wallet"], BC.Blue["Wallet"] ) );
---WI["Ctr"]:SetBackColor( Color["red"] ); -- Debug puWIose
+--**v Control for this currency v**
+table["Ctr"] = Turbine.UI.Control();
+table["Ctr"]:SetParent( TB["win"] );
+table["Ctr"]:SetMouseVisible( false );
+table["Ctr"]:SetZOrder( 2 );
+table["Ctr"]:SetBlendMode( Turbine.UI.BlendMode.AlphaBlend );
+table["Ctr"]:SetBackColor( Turbine.UI.Color( BC.Alpha[key], BC.Red[key], BC.Green[key], BC.Blue[key] ) );
 --**^
---**v Wallet icon on TitanBar v**
-WI["Icon"] = Turbine.UI.Control();
-WI["Icon"]:SetParent( WI["Ctr"] );
-WI["Icon"]:SetBlendMode( 4 );
-WI["Icon"]:SetSize( 32, 32 );
-WI["Icon"]:SetBackground( resources.Wallet ); 
---WI["Icon"]:SetBackColor( Color["blue"] ); -- Debug purpose
+--**v Currency icon on TitanBar v**
+table["Icon"] = Turbine.UI.Control();
+table["Icon"]:SetParent( table["Ctr"] );
+table["Icon"]:SetBlendMode( Turbine.UI.BlendMode.AlphaBlend );
+table["Icon"]:SetSize( iconWidth, iconHeight );
+table["Icon"]:SetBackground( resources[key] );
+--**^
 
-WI["Icon"].MouseMove = function( sender, args )
-	--WI["Icon"].MouseLeave( sender, args );
+table["Icon"].MouseMove = function( sender, args )
+	--table["Icon"].MouseLeave( sender, args );
 	TB["win"].MouseMove();
 	if dragging then
-		MoveWICtr(sender, args);
+		table["MoveCtr"](sender, args);
 	else
 		if not WITT then
 			WITT = true;
@@ -44,12 +48,12 @@ WI["Icon"].MouseMove = function( sender, args )
 	end
 end
 
-WI["Icon"].MouseLeave = function( sender, args )
+table["Icon"].MouseLeave = function( sender, args )
 	ResetToolTipWin();
 	WITT = false;
 end
 
-WI["Icon"].MouseClick = function( sender, args )
+table["Icon"].MouseClick = function( sender, args )
 	TB["win"].MouseMove();
 	if ( args.Button == Turbine.UI.MouseButton.Left ) then
 		if not WasDrag then
@@ -61,44 +65,44 @@ WI["Icon"].MouseClick = function( sender, args )
 			end
 		end
 	elseif ( args.Button == Turbine.UI.MouseButton.Right ) then
-		_G.sFromCtr = "WI";
+		_G.sFromCtr = code;
 		ControlMenu:ShowMenu();
 	end
 	WasDrag = false;
 end
 
-WI["Icon"].MouseDown = function( sender, args )
+table["Icon"].MouseDown = function( sender, args )
 	if ( args.Button == Turbine.UI.MouseButton.Left ) then
-		WI["Ctr"]:SetZOrder( 3 );
+		table["Ctr"]:SetZOrder( 3 );
 		dragStartX = args.X;
 		dragStartY = args.Y;
 		dragging = true;
 	end
 end
 
-WI["Icon"].MouseUp = function( sender, args )
-	WI["Ctr"]:SetZOrder( 2 );
+table["Icon"].MouseUp = function( sender, args )
+	table["Ctr"]:SetZOrder( 2 );
 	dragging = false;
-	Position.Left["Wallet"] = WI["Ctr"]:GetLeft();
-	settings.Wallet.X = string.format("%.0f", Position.Left["Wallet"]);
-	Position.Top["Wallet"] = WI["Ctr"]:GetTop();
-	settings.Wallet.Y = string.format("%.0f", Position.Top["Wallet"]);
+	Position.Left[key] = table["Ctr"]:GetLeft();
+	settings[key].X = string.format("%.0f", Position.Left[key]);
+	Position.Top[key] = table["Ctr"]:GetTop();
+	settings[key].Y = string.format("%.0f", Position.Top[key]);
 	SaveSettings( false );
 end
 --**^
 
-function MoveWICtr(sender, args)
-	WI["Icon"].MouseLeave( sender, args );
-	local CtrLocX = WI["Ctr"]:GetLeft();
-	local CtrWidth = WI["Ctr"]:GetWidth();
+table["MoveCtr"] = function(sender, args)
+	table["Icon"].MouseLeave( sender, args );
+	local CtrLocX = table["Ctr"]:GetLeft();
+	local CtrWidth = table["Ctr"]:GetWidth();
 	CtrLocX = CtrLocX + ( args.X - dragStartX );
 	if CtrLocX < 0 then CtrLocX = 0; elseif CtrLocX + CtrWidth > screenWidth then CtrLocX = screenWidth - CtrWidth; end
 
-	local CtrLocY = WI["Ctr"]:GetTop();
-	local CtrHeight = WI["Ctr"]:GetHeight();
+	local CtrLocY = table["Ctr"]:GetTop();
+	local CtrHeight = table["Ctr"]:GetHeight();
 	CtrLocY = CtrLocY + ( args.Y - dragStartY );
 	if CtrLocY < 0 then CtrLocY = 0; elseif CtrLocY + CtrHeight > TB["win"]:GetHeight() then CtrLocY = TB["win"]:GetHeight() - CtrHeight; end
 
-	WI["Ctr"]:SetPosition( CtrLocX, CtrLocY );
+	table["Ctr"]:SetPosition( CtrLocX, CtrLocY );
 	WasDrag = true;
 end

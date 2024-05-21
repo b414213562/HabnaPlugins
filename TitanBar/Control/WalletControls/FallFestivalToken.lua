@@ -1,113 +1,118 @@
 -- Fall Festival Token.lua
 -- Written by Duriel
 
+local code = "FFT";
+local key = "FallFestivalToken";
+_G[code] = {};
+local table = _G[code];
+local labelAlignment = Turbine.UI.ContentAlignment.MiddleRight;
+local iconWidth = 32; -- in-game icon 32x32
+local iconHeight = 32;
 
-_G.FFT = {}; -- Fall Festival Token table in _G
-
---**v Control of Fall Festival Token v**
-FFT["Ctr"] = Turbine.UI.Control();
-FFT["Ctr"]:SetParent( TB["win"] );
-FFT["Ctr"]:SetMouseVisible( false );
-FFT["Ctr"]:SetZOrder( 2 );
-FFT["Ctr"]:SetBlendMode( Turbine.UI.BlendMode.AlphaBlend );
-FFT["Ctr"]:SetBackColor( Turbine.UI.Color( BC.Alpha["FallFestivalToken"], BC.Red["FallFestivalToken"], BC.Green["FallFestivalToken"], BC.Blue["FallFestivalToken"] ) );
+--**v Control for this currency v**
+table["Ctr"] = Turbine.UI.Control();
+table["Ctr"]:SetParent( TB["win"] );
+table["Ctr"]:SetMouseVisible( false );
+table["Ctr"]:SetZOrder( 2 );
+table["Ctr"]:SetBlendMode( Turbine.UI.BlendMode.AlphaBlend );
+table["Ctr"]:SetBackColor( Turbine.UI.Color( BC.Alpha[key], BC.Red[key], BC.Green[key], BC.Blue[key] ) );
 --**^
---**v Fall Festival Token & icon on TitanBar v**
-FFT["Icon"] = Turbine.UI.Control();
-FFT["Icon"]:SetParent( FFT["Ctr"] );
-FFT["Icon"]:SetBlendMode( Turbine.UI.BlendMode.AlphaBlend );
-FFT["Icon"]:SetSize( 32, 32 );
-FFT["Icon"]:SetBackground( WalletItem.FallFestivalToken.Icon );-- in-game icon 32x32
+--**v Currency icon on TitanBar v**
+table["Icon"] = Turbine.UI.Control();
+table["Icon"]:SetParent( table["Ctr"] );
+table["Icon"]:SetBlendMode( Turbine.UI.BlendMode.AlphaBlend );
+table["Icon"]:SetSize( iconWidth, iconHeight );
+table["Icon"]:SetBackground( WalletItem[key].Icon );
 --**^
 
-FFT["Icon"].MouseMove = function( sender, args )
-	FFT["Lbl"].MouseLeave( sender, args );
+table["Icon"].MouseMove = function( sender, args )
+	table["Lbl"].MouseLeave( sender, args );
 	TB["win"].MouseMove();
-	if dragging then MoveFFTCtr(sender, args); end
+	if dragging then table["MoveCtr"](sender, args); end
 end
 
-FFT["Icon"].MouseLeave = function( sender, args )
-	FFT["Lbl"].MouseLeave( sender, args );
+table["Icon"].MouseLeave = function( sender, args )
+	table["Lbl"].MouseLeave( sender, args );
 end
 
-FFT["Icon"].MouseClick = function( sender, args )
-	FFT["Lbl"].MouseClick( sender, args );
+table["Icon"].MouseClick = function( sender, args )
+	table["Lbl"].MouseClick( sender, args );
 end
 
-FFT["Icon"].MouseDown = function( sender, args )
-	FFT["Lbl"].MouseDown( sender, args );
+table["Icon"].MouseDown = function( sender, args )
+	table["Lbl"].MouseDown( sender, args );
 end
 
-FFT["Icon"].MouseUp = function( sender, args )
-	FFT["Lbl"].MouseUp( sender, args );
+table["Icon"].MouseUp = function( sender, args )
+	table["Lbl"].MouseUp( sender, args );
 end
 
 
-FFT["Lbl"] = Turbine.UI.Label();
-FFT["Lbl"]:SetParent( FFT["Ctr"] );
-FFT["Lbl"]:SetFont( _G.TBFont );
-FFT["Lbl"]:SetPosition( 0, 0 );
-FFT["Lbl"]:SetFontStyle( Turbine.UI.FontStyle.Outline );
-FFT["Lbl"]:SetTextAlignment( Turbine.UI.ContentAlignment.MiddleRight );
+table["Lbl"] = Turbine.UI.Label();
+table["Lbl"]:SetParent( table["Ctr"] );
+table["Lbl"]:SetFont( _G.TBFont );
+table["Lbl"]:SetPosition( 0, 0 );
+table["Lbl"]:SetFontStyle( Turbine.UI.FontStyle.Outline );
+table["Lbl"]:SetTextAlignment( labelAlignment );
 
-FFT["Lbl"].MouseMove = function( sender, args )
-	FFT["Lbl"].MouseLeave( sender, args );
+table["Lbl"].MouseMove = function( sender, args )
+	table["Lbl"].MouseLeave( sender, args );
 	TB["win"].MouseMove();
 	if dragging then
-		MoveFFTCtr(sender, args);
+		table["MoveCtr"](sender, args);
 	else
-		ShowToolTipWin( "FFT" );
+		ShowToolTipWin( code );
 	end
 end
 
-FFT["Lbl"].MouseLeave = function( sender, args )
+table["Lbl"].MouseLeave = function( sender, args )
 	ResetToolTipWin();
 end
 
-FFT["Lbl"].MouseClick = function( sender, args )
+table["Lbl"].MouseClick = function( sender, args )
 	TB["win"].MouseMove();
 	if ( args.Button == Turbine.UI.MouseButton.Left ) then
 		if not WasDrag then
 			
 		end
 	elseif ( args.Button == Turbine.UI.MouseButton.Right ) then
-		_G.sFromCtr = "FFT";
+		_G.sFromCtr = code;
 		ControlMenu:ShowMenu();
 	end
 	WasDrag = false;
 end
 
-FFT["Lbl"].MouseDown = function( sender, args )
+table["Lbl"].MouseDown = function( sender, args )
 	if ( args.Button == Turbine.UI.MouseButton.Left ) then
-		FFT["Ctr"]:SetZOrder( 3 );
+		table["Ctr"]:SetZOrder( 3 );
 		dragStartX = args.X;
 		dragStartY = args.Y;
 		dragging = true;
 	end
 end
 
-FFT["Lbl"].MouseUp = function( sender, args )
-	FFT["Ctr"]:SetZOrder( 2 );
+table["Lbl"].MouseUp = function( sender, args )
+	table["Ctr"]:SetZOrder( 2 );
 	dragging = false;
-	Position.Left["FallFestivalToken"] = FFT["Ctr"]:GetLeft();
-	settings.FallFestivalToken.X = string.format("%.0f", Position.Left["FallFestivalToken"]);
-	Position.Top["FallFestivalToken"] = FFT["Ctr"]:GetTop();
-	settings.FallFestivalToken.Y = string.format("%.0f", Position.Top["FallFestivalToken"]);
+	Position.Left[key] = table["Ctr"]:GetLeft();
+	settings[key].X = string.format("%.0f", Position.Left[key]);
+	Position.Top[key] = table["Ctr"]:GetTop();
+	settings[key].Y = string.format("%.0f", Position.Top[key]);
 	SaveSettings( false );
 end
 --**^
 
-function MoveFFTCtr(sender, args)
-	local CtrLocX = FFT["Ctr"]:GetLeft();
-	local CtrWidth = FFT["Ctr"]:GetWidth();
+table["MoveCtr"] = function(sender, args)
+	local CtrLocX = table["Ctr"]:GetLeft();
+	local CtrWidth = table["Ctr"]:GetWidth();
 	CtrLocX = CtrLocX + ( args.X - dragStartX );
 	if CtrLocX < 0 then CtrLocX = 0; elseif CtrLocX + CtrWidth > screenWidth then CtrLocX = screenWidth - CtrWidth; end
 	
-	local CtrLocY = FFT["Ctr"]:GetTop();
-	local CtrHeight = FFT["Ctr"]:GetHeight();
+	local CtrLocY = table["Ctr"]:GetTop();
+	local CtrHeight = table["Ctr"]:GetHeight();
 	CtrLocY = CtrLocY + ( args.Y - dragStartY );
 	if CtrLocY < 0 then CtrLocY = 0; elseif CtrLocY + CtrHeight > TB["win"]:GetHeight() then CtrLocY = TB["win"]:GetHeight() - CtrHeight; end
 
-	FFT["Ctr"]:SetPosition( CtrLocX, CtrLocY );
+	table["Ctr"]:SetPosition( CtrLocX, CtrLocY );
 	WasDrag = true;
 end

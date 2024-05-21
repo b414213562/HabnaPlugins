@@ -1,113 +1,118 @@
 -- StarsofMerit.lua
 -- Written by Habna
 
+local code = "SOM";
+local key = "StarsofMerit";
+_G[code] = {};
+local table = _G[code];
+local labelAlignment = Turbine.UI.ContentAlignment.MiddleRight;
+local iconWidth = 32; -- in-game icon 32x32
+local iconHeight = 32;
 
-_G.SOM = {};
-
---**v Control of Stars of Merit v**
-SOM["Ctr"] = Turbine.UI.Control();
-SOM["Ctr"]:SetParent( TB["win"] );
-SOM["Ctr"]:SetMouseVisible( false );
-SOM["Ctr"]:SetZOrder( 2 );
-SOM["Ctr"]:SetBlendMode( Turbine.UI.BlendMode.AlphaBlend );
-SOM["Ctr"]:SetBackColor( Turbine.UI.Color( BC.Alpha["StarsofMerit"], BC.Red["StarsofMerit"], BC.Green["StarsofMerit"], BC.Blue["StarsofMerit"] ) );
+--**v Control for this currency v**
+table["Ctr"] = Turbine.UI.Control();
+table["Ctr"]:SetParent( TB["win"] );
+table["Ctr"]:SetMouseVisible( false );
+table["Ctr"]:SetZOrder( 2 );
+table["Ctr"]:SetBlendMode( Turbine.UI.BlendMode.AlphaBlend );
+table["Ctr"]:SetBackColor( Turbine.UI.Color( BC.Alpha[key], BC.Red[key], BC.Green[key], BC.Blue[key] ) );
 --**^
---**v Stars of Merit & icon on TitanBar v**
-SOM["Icon"] = Turbine.UI.Control();
-SOM["Icon"]:SetParent( SOM["Ctr"] );
-SOM["Icon"]:SetBlendMode( Turbine.UI.BlendMode.AlphaBlend );
-SOM["Icon"]:SetSize( 32, 32 );
-SOM["Icon"]:SetBackground( WalletItem.StarsofMerit.Icon );-- in-game icon 32x32
+--**v Currency icon on TitanBar v**
+table["Icon"] = Turbine.UI.Control();
+table["Icon"]:SetParent( table["Ctr"] );
+table["Icon"]:SetBlendMode( Turbine.UI.BlendMode.AlphaBlend );
+table["Icon"]:SetSize( iconWidth, iconHeight );
+table["Icon"]:SetBackground( WalletItem[key].Icon );
 --**^
 
-SOM["Icon"].MouseMove = function( sender, args )
-	SOM["Lbl"].MouseLeave( sender, args );
+table["Icon"].MouseMove = function( sender, args )
+	table["Lbl"].MouseLeave( sender, args );
 	TB["win"].MouseMove();
-	if dragging then MoveSOMCtr(sender, args); end
+	if dragging then table["MoveCtr"](sender, args); end
 end
 
-SOM["Icon"].MouseLeave = function( sender, args )
-	SOM["Lbl"].MouseLeave( sender, args );
+table["Icon"].MouseLeave = function( sender, args )
+	table["Lbl"].MouseLeave( sender, args );
 end
 
-SOM["Icon"].MouseClick = function( sender, args )
-	SOM["Lbl"].MouseClick( sender, args );
+table["Icon"].MouseClick = function( sender, args )
+	table["Lbl"].MouseClick( sender, args );
 end
 
-SOM["Icon"].MouseDown = function( sender, args )
-	SOM["Lbl"].MouseDown( sender, args );
+table["Icon"].MouseDown = function( sender, args )
+	table["Lbl"].MouseDown( sender, args );
 end
 
-SOM["Icon"].MouseUp = function( sender, args )
-	SOM["Lbl"].MouseUp( sender, args );
+table["Icon"].MouseUp = function( sender, args )
+	table["Lbl"].MouseUp( sender, args );
 end
 
 
-SOM["Lbl"] = Turbine.UI.Label();
-SOM["Lbl"]:SetParent( SOM["Ctr"] );
-SOM["Lbl"]:SetFont( _G.TBFont );
-SOM["Lbl"]:SetPosition( 0, 0 );
-SOM["Lbl"]:SetFontStyle( Turbine.UI.FontStyle.Outline );
-SOM["Lbl"]:SetTextAlignment( Turbine.UI.ContentAlignment.MiddleRight );
+table["Lbl"] = Turbine.UI.Label();
+table["Lbl"]:SetParent( table["Ctr"] );
+table["Lbl"]:SetFont( _G.TBFont );
+table["Lbl"]:SetPosition( 0, 0 );
+table["Lbl"]:SetFontStyle( Turbine.UI.FontStyle.Outline );
+table["Lbl"]:SetTextAlignment( labelAlignment );
 
-SOM["Lbl"].MouseMove = function( sender, args )
-	SOM["Lbl"].MouseLeave( sender, args );
+table["Lbl"].MouseMove = function( sender, args )
+	table["Lbl"].MouseLeave( sender, args );
 	TB["win"].MouseMove();
 	if dragging then
-		MoveSOMCtr(sender, args);
+		table["MoveCtr"](sender, args);
 	else
-		ShowToolTipWin( "SOM" );
+		ShowToolTipWin( code );
 	end
 end
 
-SOM["Lbl"].MouseLeave = function( sender, args )
+table["Lbl"].MouseLeave = function( sender, args )
 	ResetToolTipWin();
 end
 
-SOM["Lbl"].MouseClick = function( sender, args )
+table["Lbl"].MouseClick = function( sender, args )
 	TB["win"].MouseMove();
 	if ( args.Button == Turbine.UI.MouseButton.Left ) then
 		if not WasDrag then
 			
 		end
 	elseif ( args.Button == Turbine.UI.MouseButton.Right ) then
-		_G.sFromCtr = "SOM";
+		_G.sFromCtr = code;
 		ControlMenu:ShowMenu();
 	end
 	WasDrag = false;
 end
 
-SOM["Lbl"].MouseDown = function( sender, args )
+table["Lbl"].MouseDown = function( sender, args )
 	if ( args.Button == Turbine.UI.MouseButton.Left ) then
-		SOM["Ctr"]:SetZOrder( 3 );
+		table["Ctr"]:SetZOrder( 3 );
 		dragStartX = args.X;
 		dragStartY = args.Y;
 		dragging = true;
 	end
 end
 
-SOM["Lbl"].MouseUp = function( sender, args )
-	SOM["Ctr"]:SetZOrder( 2 );
+table["Lbl"].MouseUp = function( sender, args )
+	table["Ctr"]:SetZOrder( 2 );
 	dragging = false;
-	Position.Left["StarsofMerit"] = SOM["Ctr"]:GetLeft();
-	settings.StarsofMerit.X = string.format("%.0f", Position.Left["StarsofMerit"]);
-	Position.Top["StarsofMerit"] = SOM["Ctr"]:GetTop();
-	settings.StarsofMerit.Y = string.format("%.0f", Position.Top["StarsofMerit"]);
+	Position.Left[key] = table["Ctr"]:GetLeft();
+	settings[key].X = string.format("%.0f", Position.Left[key]);
+	Position.Top[key] = table["Ctr"]:GetTop();
+	settings[key].Y = string.format("%.0f", Position.Top[key]);
 	SaveSettings( false );
 end
 --**^
 
-function MoveSOMCtr(sender, args)
-	local CtrLocX = SOM["Ctr"]:GetLeft();
-	local CtrWidth = SOM["Ctr"]:GetWidth();
+table["MoveCtr"] = function(sender, args)
+	local CtrLocX = table["Ctr"]:GetLeft();
+	local CtrWidth = table["Ctr"]:GetWidth();
 	CtrLocX = CtrLocX + ( args.X - dragStartX );
 	if CtrLocX < 0 then CtrLocX = 0; elseif CtrLocX + CtrWidth > screenWidth then CtrLocX = screenWidth - CtrWidth; end
 	
-	local CtrLocY = SOM["Ctr"]:GetTop();
-	local CtrHeight = SOM["Ctr"]:GetHeight();
+	local CtrLocY = table["Ctr"]:GetTop();
+	local CtrHeight = table["Ctr"]:GetHeight();
 	CtrLocY = CtrLocY + ( args.Y - dragStartY );
 	if CtrLocY < 0 then CtrLocY = 0; elseif CtrLocY + CtrHeight > TB["win"]:GetHeight() then CtrLocY = TB["win"]:GetHeight() - CtrHeight; end
 
-	SOM["Ctr"]:SetPosition( CtrLocX, CtrLocY );
+	table["Ctr"]:SetPosition( CtrLocX, CtrLocY );
 	WasDrag = true;
 end

@@ -1,113 +1,118 @@
 -- Anniversary Token.lua
 -- Written by ShoeMaker
 
+local code = "LAT";
+local key = "AnniversaryToken";
+_G[code] = {};
+local table = _G[code];
+local labelAlignment = Turbine.UI.ContentAlignment.MiddleRight;
+local iconWidth = 32; -- in-game icon 32x32
+local iconHeight = 32;
 
-_G.LAT = {}; -- Anniversary Token table in _G
-
---**v Control of Anniversary Token v**
-LAT["Ctr"] = Turbine.UI.Control();
-LAT["Ctr"]:SetParent( TB["win"] );
-LAT["Ctr"]:SetMouseVisible( false );
-LAT["Ctr"]:SetZOrder( 2 );
-LAT["Ctr"]:SetBlendMode( Turbine.UI.BlendMode.AlphaBlend );
-LAT["Ctr"]:SetBackColor( Turbine.UI.Color( BC.Alpha["AnniversaryToken"], BC.Red["AnniversaryToken"], BC.Green["AnniversaryToken"], BC.Blue["AnniversaryToken"] ) );
+--**v Control for this currency v**
+table["Ctr"] = Turbine.UI.Control();
+table["Ctr"]:SetParent( TB["win"] );
+table["Ctr"]:SetMouseVisible( false );
+table["Ctr"]:SetZOrder( 2 );
+table["Ctr"]:SetBlendMode( Turbine.UI.BlendMode.AlphaBlend );
+table["Ctr"]:SetBackColor( Turbine.UI.Color( BC.Alpha[key], BC.Red[key], BC.Green[key], BC.Blue[key] ) );
 --**^
---**v Anniversary Token & icon on TitanBar v**
-LAT["Icon"] = Turbine.UI.Control();
-LAT["Icon"]:SetParent( LAT["Ctr"] );
-LAT["Icon"]:SetBlendMode( Turbine.UI.BlendMode.AlphaBlend );
-LAT["Icon"]:SetSize( 32, 32 );
-LAT["Icon"]:SetBackground( WalletItem.AnniversaryToken.Icon );-- in-game icon 32x32
+--**v Currency icon on TitanBar v**
+table["Icon"] = Turbine.UI.Control();
+table["Icon"]:SetParent( table["Ctr"] );
+table["Icon"]:SetBlendMode( Turbine.UI.BlendMode.AlphaBlend );
+table["Icon"]:SetSize( iconWidth, iconHeight );
+table["Icon"]:SetBackground( WalletItem[key].Icon );
 --**^
 
-LAT["Icon"].MouseMove = function( sender, args )
-	LAT["Lbl"].MouseLeave( sender, args );
+table["Icon"].MouseMove = function( sender, args )
+	table["Lbl"].MouseLeave( sender, args );
 	TB["win"].MouseMove();
-	if dragging then MoveLATCtr(sender, args); end
+	if dragging then table["MoveCtr"](sender, args); end
 end
 
-LAT["Icon"].MouseLeave = function( sender, args )
-	LAT["Lbl"].MouseLeave( sender, args );
+table["Icon"].MouseLeave = function( sender, args )
+	table["Lbl"].MouseLeave( sender, args );
 end
 
-LAT["Icon"].MouseClick = function( sender, args )
-	LAT["Lbl"].MouseClick( sender, args );
+table["Icon"].MouseClick = function( sender, args )
+	table["Lbl"].MouseClick( sender, args );
 end
 
-LAT["Icon"].MouseDown = function( sender, args )
-	LAT["Lbl"].MouseDown( sender, args );
+table["Icon"].MouseDown = function( sender, args )
+	table["Lbl"].MouseDown( sender, args );
 end
 
-LAT["Icon"].MouseUp = function( sender, args )
-	LAT["Lbl"].MouseUp( sender, args );
+table["Icon"].MouseUp = function( sender, args )
+	table["Lbl"].MouseUp( sender, args );
 end
 
 
-LAT["Lbl"] = Turbine.UI.Label();
-LAT["Lbl"]:SetParent( LAT["Ctr"] );
-LAT["Lbl"]:SetFont( _G.TBFont );
-LAT["Lbl"]:SetPosition( 0, 0 );
-LAT["Lbl"]:SetFontStyle( Turbine.UI.FontStyle.Outline );
-LAT["Lbl"]:SetTextAlignment( Turbine.UI.ContentAlignment.MiddleRight );
+table["Lbl"] = Turbine.UI.Label();
+table["Lbl"]:SetParent( table["Ctr"] );
+table["Lbl"]:SetFont( _G.TBFont );
+table["Lbl"]:SetPosition( 0, 0 );
+table["Lbl"]:SetFontStyle( Turbine.UI.FontStyle.Outline );
+table["Lbl"]:SetTextAlignment( labelAlignment );
 
-LAT["Lbl"].MouseMove = function( sender, args )
-	LAT["Lbl"].MouseLeave( sender, args );
+table["Lbl"].MouseMove = function( sender, args )
+	table["Lbl"].MouseLeave( sender, args );
 	TB["win"].MouseMove();
 	if dragging then
-		MoveLATCtr(sender, args);
+		table["MoveCtr"](sender, args);
 	else
-		ShowToolTipWin( "LAT" );
+		ShowToolTipWin( code );
 	end
 end
 
-LAT["Lbl"].MouseLeave = function( sender, args )
+table["Lbl"].MouseLeave = function( sender, args )
 	ResetToolTipWin();
 end
 
-LAT["Lbl"].MouseClick = function( sender, args )
+table["Lbl"].MouseClick = function( sender, args )
 	TB["win"].MouseMove();
 	if ( args.Button == Turbine.UI.MouseButton.Left ) then
 		if not WasDrag then
 			
 		end
 	elseif ( args.Button == Turbine.UI.MouseButton.Right ) then
-		_G.sFromCtr = "LAT";
+		_G.sFromCtr = code;
 		ControlMenu:ShowMenu();
 	end
 	WasDrag = false;
 end
 
-LAT["Lbl"].MouseDown = function( sender, args )
+table["Lbl"].MouseDown = function( sender, args )
 	if ( args.Button == Turbine.UI.MouseButton.Left ) then
-		LAT["Ctr"]:SetZOrder( 3 );
+		table["Ctr"]:SetZOrder( 3 );
 		dragStartX = args.X;
 		dragStartY = args.Y;
 		dragging = true;
 	end
 end
 
-LAT["Lbl"].MouseUp = function( sender, args )
-	LAT["Ctr"]:SetZOrder( 2 );
+table["Lbl"].MouseUp = function( sender, args )
+	table["Ctr"]:SetZOrder( 2 );
 	dragging = false;
-	Position.Left["AnniversaryToken"] = LAT["Ctr"]:GetLeft();
-	settings.AnniversaryToken.X = string.format("%.0f", Position.Left["AnniversaryToken"]);
-	Position.Top["AnniversaryToken"] = LAT["Ctr"]:GetTop();
-	settings.AnniversaryToken.Y = string.format("%.0f", Position.Top["AnniversaryToken"]);
+	Position.Left[key] = table["Ctr"]:GetLeft();
+	settings[key].X = string.format("%.0f", Position.Left[key]);
+	Position.Top[key] = table["Ctr"]:GetTop();
+	settings[key].Y = string.format("%.0f", Position.Top[key]);
 	SaveSettings( false );
 end
 --**^
 
-function MoveLATCtr(sender, args)
-	local CtrLocX = LAT["Ctr"]:GetLeft();
-	local CtrWidth = LAT["Ctr"]:GetWidth();
+table["MoveCtr"] = function(sender, args)
+	local CtrLocX = table["Ctr"]:GetLeft();
+	local CtrWidth = table["Ctr"]:GetWidth();
 	CtrLocX = CtrLocX + ( args.X - dragStartX );
 	if CtrLocX < 0 then CtrLocX = 0; elseif CtrLocX + CtrWidth > screenWidth then CtrLocX = screenWidth - CtrWidth; end
 	
-	local CtrLocY = LAT["Ctr"]:GetTop();
-	local CtrHeight = LAT["Ctr"]:GetHeight();
+	local CtrLocY = table["Ctr"]:GetTop();
+	local CtrHeight = table["Ctr"]:GetHeight();
 	CtrLocY = CtrLocY + ( args.Y - dragStartY );
 	if CtrLocY < 0 then CtrLocY = 0; elseif CtrLocY + CtrHeight > TB["win"]:GetHeight() then CtrLocY = TB["win"]:GetHeight() - CtrHeight; end
 
-	LAT["Ctr"]:SetPosition( CtrLocX, CtrLocY );
+	table["Ctr"]:SetPosition( CtrLocX, CtrLocY );
 	WasDrag = true;
 end

@@ -1,3 +1,6 @@
+Current bugs:
+    MotesOfEnchantment token doesn't work - mouse over produces error, looks like _G table issues.
+
 TitanBar thoughts:
     Next: function ImportCtr( value ) <= Change the parameter here from things like "MC" to "MithrilCoins".
 
