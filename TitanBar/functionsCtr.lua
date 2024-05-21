@@ -1022,7 +1022,7 @@ function GetCurrency( str )
     local currentQuantity = 0;
 
     if (str == "DestinyPoints") then
-        currentQuantity = PlayerAtt:GetDestinyPoints();
+        currentQuantity = Player:GetAttributes():GetDestinyPoints();
     elseif (str == "LOTROPoints") then
         currentQuantity = tonumber(_G.LOTROPTS) or 0;
     else
