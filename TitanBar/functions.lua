@@ -488,9 +488,9 @@ end
 function UpdateCurrency(key)
     local code = CurrencyKeyToCode[key];
     local table = _G[code];
-    local label = table["Lbl"];
 
-	if Where[key] == 1 then
+	if Where[key] == 1 and table["Lbl"] then
+        local label = table["Lbl"];
 		label:SetText( GetCurrency( key ) );
 		label:SetSize( label:GetTextLength() * NM, CTRHeight );
 		AjustIcon( code );
