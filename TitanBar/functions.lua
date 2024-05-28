@@ -190,11 +190,6 @@ function ShowToolTipWin( ToShow )
 		h = 65;
 		if not TBTop then y = h; end
 		TTW = createToolTipWin( x, y, w, h, bblTo, GetCurrencyTooltip("DestinyPoints"), L["EIt2"], L["EIt3"] );
-	elseif ToShow == "BI" then -- Bag Infos
-		if w + mouseX > screenWidth then bblTo = "right"; x = w - 10; end
-		h = 80;
-		if not TBTop then y = h; end
-		TTW = createToolTipWin( x, y, w, h, bblTo, L["MBI"], L["EIt1"], L["EIt2"], L["EIt3"] );
 	elseif ToShow == "SP" then -- Shards
 		if w + mouseX > screenWidth then bblTo = "right"; x = w - 10; end
 		h = 65;
@@ -241,42 +236,6 @@ function ShowToolTipWin( ToShow )
 		if not TBTop then y = h; end
 		TTW = createToolTipWin( x, y, w, h, bblTo, GetCurrencyTooltip("Commendations"), L["EIt2"], 
             L["EIt3"] );
-	elseif ToShow == "PL" then -- Player Location
-		if w + mouseX > screenWidth then bblTo = "right"; x = w - 10; end
-		h = 65;
-		if not TBTop then y = h; end
-		TTW = createToolTipWin( x, y, w, h, bblTo, L["PLh"], L["EIt2"], 
-            L["EIt3"] );
-	elseif ToShow == "GT" then -- Game Time
-		if w + mouseX > screenWidth then bblTo = "right"; x = w - 10; end
-		h = 80;
-		if not TBTop then y = h; end
-		TTW = createToolTipWin( x, y, w, h, bblTo, L["GTh"], L["EIt1"], 
-            L["EIt2"], L["EIt3"] );
-	elseif ToShow == "VT" then -- Vault
-		if w + mouseX > screenWidth then bblTo = "right"; x = w - 10; end
-		h = 80;
-		if not TBTop then y = h; end
-		TTW = createToolTipWin( x, y, w, h, bblTo, L["MVault"], L["EIt1"], 
-            L["EIt2"], L["EIt3"] );
-	elseif ToShow == "SS" then -- Shared Storage
-		if w + mouseX > screenWidth then bblTo = "right"; x = w - 10; end
-		h = 80;
-		if not TBTop then y = h; end
-		TTW = createToolTipWin( x, y, w, h, bblTo, L["MStorage"], L["EIt1"], 
-            L["EIt2"], L["EIt3"] );
---[[	elseif ToShow == "BK" then -- Bank
-		if w + mouseX > screenWidth then bblTo = "right"; x = w - 10; end
-		h = 80;
-		if not TBTop then y = h; end
-		TTW = createToolTipWin( x, y, w, h, bblTo, L["MBank"], L["EIt1"], 
-            L["EIt2"], L["EIt3"] ); --]]
-	elseif ToShow == "DN" then -- Day & Night
-		if w + mouseX > screenWidth then bblTo = "right"; x = w - 10; end
-		h = 80;
-		if not TBTop then y = h; end
-		TTW = createToolTipWin( x, y, w, h, bblTo, L["MDayNight"], L["EIt1"], 
-            L["EIt2"], L["EIt3"] );
 	elseif ToShow == "LP" then -- LOTRO points
 		if w + mouseX > screenWidth then bblTo = "right"; x = w - 10; end
 		h = 80;
@@ -368,6 +327,47 @@ function ShowToolTipWin( ToShow )
 		h = 65;
 		if not TBTop then y = h; end
 		TTW = createToolTipWin( x, y, w, h, bblTo, GetCurrencyTooltip("BadgeOfDishonour"), L["EIt2"], L["EIt3"] );
+	elseif ToShow == "BI" then -- Bag Infos
+		if w + mouseX > screenWidth then bblTo = "right"; x = w - 10; end
+		h = 80;
+		if not TBTop then y = h; end
+		TTW = createToolTipWin( x, y, w, h, bblTo, L["MBI"], L["EIt1"], L["EIt2"], L["EIt3"] );
+	elseif ToShow == "PL" then -- Player Location
+		if w + mouseX > screenWidth then bblTo = "right"; x = w - 10; end
+		h = 65;
+		if not TBTop then y = h; end
+		TTW = createToolTipWin( x, y, w, h, bblTo, L["PLh"], L["EIt2"], 
+            L["EIt3"] );
+	elseif ToShow == "GT" then -- Game Time
+		if w + mouseX > screenWidth then bblTo = "right"; x = w - 10; end
+		h = 80;
+		if not TBTop then y = h; end
+		TTW = createToolTipWin( x, y, w, h, bblTo, L["GTh"], L["EIt1"], 
+            L["EIt2"], L["EIt3"] );
+	elseif ToShow == "VT" then -- Vault
+		if w + mouseX > screenWidth then bblTo = "right"; x = w - 10; end
+		h = 80;
+		if not TBTop then y = h; end
+		TTW = createToolTipWin( x, y, w, h, bblTo, L["MVault"], L["EIt1"], 
+            L["EIt2"], L["EIt3"] );
+	elseif ToShow == "SS" then -- Shared Storage
+		if w + mouseX > screenWidth then bblTo = "right"; x = w - 10; end
+		h = 80;
+		if not TBTop then y = h; end
+		TTW = createToolTipWin( x, y, w, h, bblTo, L["MStorage"], L["EIt1"], 
+            L["EIt2"], L["EIt3"] );
+--[[	elseif ToShow == "BK" then -- Bank
+		if w + mouseX > screenWidth then bblTo = "right"; x = w - 10; end
+		h = 80;
+		if not TBTop then y = h; end
+		TTW = createToolTipWin( x, y, w, h, bblTo, L["MBank"], L["EIt1"], 
+            L["EIt2"], L["EIt3"] ); --]]
+	elseif ToShow == "DN" then -- Day & Night
+		if w + mouseX > screenWidth then bblTo = "right"; x = w - 10; end
+		h = 80;
+		if not TBTop then y = h; end
+		TTW = createToolTipWin( x, y, w, h, bblTo, L["MDayNight"], L["EIt1"], 
+            L["EIt2"], L["EIt3"] );
 	end
 
 	_G.ToolTipWin:SetPosition( mouseX - _G.ToolTipWin.xOffset, mouseY - 
