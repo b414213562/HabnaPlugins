@@ -199,13 +199,14 @@ function ShowToolTipWin( ToShow )
         }
         w = tooltipWindowCustomWidth[key] or w;
 
+        local tooltipWindowCustomLines = {
+            ["LOTROPoints"] = { L["EIt1"], L["EIt2"], L["EIt3"] };
+        }
+        local lines = tooltipWindowCustomLines[key] or { L["EIt2"], L["EIt3"] };
+
         if w + mouseX > screenWidth then bblTo = "right"; x = w - 10; end
 		if not TBTop then y = h; end
-		if (key == "LOTROPoints") then
-			TTW = createToolTipWin( x, y, w, h, bblTo, GetCurrencyTooltip(key), L["EIt1"], L["EIt2"], L["EIt3"] );
-		else
-			TTW = createToolTipWin( x, y, w, h, bblTo, GetCurrencyTooltip(key), L["EIt2"], L["EIt3"] );
-		end
+        TTW = createToolTipWin( x, y, w, h, bblTo, GetCurrencyTooltip(key), unpack(lines) );
     -- Non-currencies:
     else
         if ToShow == "BI" then -- Bag Infos
