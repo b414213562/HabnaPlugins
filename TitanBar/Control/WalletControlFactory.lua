@@ -29,7 +29,7 @@ function MakeWalletControl(key)
     -- We haven't made the control yet, proceed:
     _G[code] = {};
     MakeWalletControl_Control(_G[code], key);
-    MakeWalletControl_Icon(_G[code], key);
+    MakeWalletControl_Icon(_G[code], code, key);
     MakeWalletControl_Label(_G[code], code, key);
     MakeWalletControl_MoveCtrFunction(_G[code]);
 end
@@ -47,7 +47,7 @@ function MakeWalletControl_Control(table, key)
     --**^
 end
 
-function MakeWalletControl_Icon(table, key)
+function MakeWalletControl_Icon(table, code, key)
     local iconWidth = MakeWalletControl_IconWidthOverrides[key] or 32;
     local iconHeight = MakeWalletControl_IconHeightOverrides[key] or 32;
 
@@ -60,7 +60,11 @@ function MakeWalletControl_Icon(table, key)
     table["Icon"].MouseMove = function( sender, args )
         table["Lbl"].MouseLeave( sender, args );
         TB["win"].MouseMove();
-        if dragging then table["MoveCtr"](sender, args); end
+        if dragging then
+            table["MoveCtr"](sender, args);
+        else
+            ShowToolTipWin( code );
+        end
     end
 
     table["Icon"].MouseLeave = function( sender, args )
