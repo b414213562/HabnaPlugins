@@ -504,6 +504,7 @@ function UpdateCurrency(key, quantity)
 end
 
 -- TODO: Make this do something meaningful instead of just logging.
+--       See frmMain: AllTimer.Update's code to handle wallet size changing.
 function CurrencyAdded(sender, args)
     Turbine.Shell.WriteLine("Wallet.CurrencyAdded: " .. dump(sender) .. ", " .. dump(args));
 end
