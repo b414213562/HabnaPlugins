@@ -45,84 +45,85 @@ L[ "MStorage" ] = "Shared Storage";
 L[ "MDayNight" ] = "Day & Night Time";
 L[ "MReputation" ] = "Reputation";
 
--- Wallet Currency Controls
+-- Wallet Currency Controls, name must match name of item in wallet.
+_G.WalletCurrencyTooltips = {};
 -- LOTRO Points control
 L[ "LOTROPoints" ] = "LOTRO points";
-L[ "LOTROPoints_tooltip" ] = "These are your LOTRO points";
+WalletCurrencyTooltips["LOTROPoints"] = "These are your LOTRO points";
 -- Mithril Coins control
 L[ "MithrilCoins" ] = "Mithril Coin";
-L[ "MithrilCoins_tooltip" ] = "These are your Mithril coins";
+WalletCurrencyTooltips[ "MithrilCoins" ] = "These are your Mithril coins";
 -- Yule Tokens control
 L[ "YuleToken" ] = "Yule Festival Token";
-L[ "YuleToken_tooltip" ] = "These are your Yule Festival Tokens";
+WalletCurrencyTooltips[ "YuleToken" ] = "These are your Yule Festival Tokens";
 -- Anniversary Tokens control
 L[ "AnniversaryToken" ] = "Anniversary Token";
-L[ "AnniversaryToken_tooltip" ] = "These are your Anniversary Tokens";
+WalletCurrencyTooltips[ "AnniversaryToken" ] = "These are your Anniversary Tokens";
 -- Bingo Badge control
 L[ "BingoBadge" ] = "Bingo Badge";
-L[ "BingoBadge_tooltip" ] = "These are your Bingo Badges";
+WalletCurrencyTooltips[ "BingoBadge" ] = "These are your Bingo Badges";
 -- Skirmish marks control
 L[ "SkirmishMarks" ] = "Mark";
-L[ "SkirmishMarks_tooltip" ] = "These are your skirmish marks";
+WalletCurrencyTooltips[ "SkirmishMarks" ] = "These are your skirmish marks";
 -- Destiny Points control
 L[ "DestinyPoints" ] = "Destiny point";
-L[ "DestinyPoints_tooltip" ] = "These are your destiny points";
+WalletCurrencyTooltips[ "DestinyPoints" ] = "These are your destiny points";
 -- Shards control
 L[ "Shards" ] = "Shard";
-L[ "Shards_tooltip" ] = "These are your shard";
+WalletCurrencyTooltips[ "Shards" ] = "These are your shard";
 -- Tokens of Hytbold control
 L[ "HytboldTokens" ] = "Token of Hytbold";
-L[ "HytboldTokens_tooltip" ] = "These are your Tokens of Hytbold";
+WalletCurrencyTooltips[ "HytboldTokens" ] = "These are your Tokens of Hytbold";
 -- Medallions control
 L[ "Medallions" ] = "Medallion";
-L[ "Medallions_tooltip" ] = "These are your medallions";
+WalletCurrencyTooltips[ "Medallions" ] = "These are your medallions";
 -- Seals control
 L[ "Seals" ] = "Seal";
-L[ "Seals_tooltip" ] = "These are your seals";
+WalletCurrencyTooltips[ "Seals" ] = "These are your seals";
 -- Commendations control
 L[ "Commendations" ] = "Commendation";
-L[ "Commendations_tooltip" ] = "These are your Commendations";
+WalletCurrencyTooltips[ "Commendations" ] = "These are your Commendations";
 -- Amroth Silver Piece control
 L[ "AmrothSilverPiece" ] = "Amroth Silver Piece";
-L[ "AmrothSilverPiece_tooltip" ] = "These are your Amroth Silver Pieces";
+WalletCurrencyTooltips[ "AmrothSilverPiece" ] = "These are your Amroth Silver Pieces";
 -- Stars of Merit control
 L[ "StarsofMerit" ] = "Star of Merit";
-L[ "StarsofMerit_tooltip" ] = "These are your Stars of Merit";
+WalletCurrencyTooltips[ "StarsofMerit" ] = "These are your Stars of Merit";
 -- Central Gondor Silver Piece control
 L[ "CentralGondorSilverPiece" ] = "Central Gondor Silver Piece";
-L[ "CentralGondorSilverPiece_tooltip" ] = "These are your Central Gondor Silver Pieces";
+WalletCurrencyTooltips[ "CentralGondorSilverPiece" ] = "These are your Central Gondor Silver Pieces";
 -- Gift giver's Brand control
 L[ "GiftgiversBrand" ] = "Gift-giver's Brand";
-L[ "GiftgiversBrand_tooltip" ] = "These are your Gift-giver's Brands";
+WalletCurrencyTooltips[ "GiftgiversBrand" ] = "These are your Gift-giver's Brands";
 -- Motes of Enchantment control
 L[ "MotesOfEnchantment" ] = "Motes of Enchantment";
-L[ "MotesOfEnchantment_tooltip" ] = "These are your Motes of Enchantment";
+WalletCurrencyTooltips[ "MotesOfEnchantment" ] = "These are your Motes of Enchantment";
 -- Embers of Enchantment control
 L[ "EmbersOfEnchantment" ] = "Embers of Enchantment";
-L[ "EmbersOfEnchantment_tooltip" ] = "These are your Embers of Enchantment";
+WalletCurrencyTooltips[ "EmbersOfEnchantment" ] = "These are your Embers of Enchantment";
 -- Figments of Splendour control
 L[ "FigmentsOfSplendour" ] = "Figments of Splendour";
-L[ "FigmentsOfSplendour_tooltip" ] = "These are your Figments of Splendour";
+WalletCurrencyTooltips[ "FigmentsOfSplendour" ] = "These are your Figments of Splendour";
 -- Fall Festival Tokens control
 L[ "FallFestivalToken" ] = "Fall Festival Token";
-L[ "FallFestivalToken_tooltip" ] = "These are your Fall Festival Tokens";
+WalletCurrencyTooltips[ "FallFestivalToken" ] = "These are your Fall Festival Tokens";
 -- Farmers Faire Tokens control
 L[ "FarmersFaireToken" ] = "Farmers Faire Token";
-L[ "FarmersFaireToken_tooltip" ] = "These are your Farmers Faire Tokens";
+WalletCurrencyTooltips[ "FarmersFaireToken" ] = "These are your Farmers Faire Tokens";
 -- Spring Leaves control
 L[ "SpringLeaf" ] = "Spring Leaf";
-L[ "SpringLeaf_tooltip" ] = "These are your Spring Leaves";
+WalletCurrencyTooltips[ "SpringLeaf" ] = "These are your Spring Leaves";
 -- Midsummer Tokens control
 L[ "MidsummerToken" ] = "Midsummer Token";
-L[ "MidsummerToken_tooltip" ] = "These are your Midsummer Tokens";
+WalletCurrencyTooltips[ "MidsummerToken" ] = "These are your Midsummer Tokens";
 -- Ancient Script control
 L[ "AncientScript" ] = "Ancient Script";
-L[ "AncientScript_tooltip" ] = "These are your Ancient Scripts";
+WalletCurrencyTooltips[ "AncientScript" ] = "These are your Ancient Scripts";
 -- Inn League / Ale Association control
 L[ "BadgeOfTaste" ] = "Badge of Taste";
-L[ "BadgeOfTaste_tooltip" ] = "These are your Badges of Taste";
+WalletCurrencyTooltips[ "BadgeOfTaste" ] = "These are your Badges of Taste";
 L[ "BadgeOfDishonour" ] = "Badge of Dishonour";
-L[ "BadgeOfDishonour_tooltip" ] = "These are your Badges of Dishonour";
+WalletCurrencyTooltips[ "BadgeOfDishonour" ] = "These are your Badges of Dishonour";
 
 -- Control Menu
 L[ "MCU" ] = "Unload ...";

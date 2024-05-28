@@ -45,84 +45,86 @@ L[ "MStorage" ] = "Stockage Partag\195\169";
 L[ "MDayNight" ] = "Jour & Nuit";
 L[ "MReputation" ] = "R\195\169putation";
 
+_G.WalletCurrencyTooltips = {};
+
 -- Wallet Currency Controls
 -- LOTRO Points control
 L[ "LOTROPoints" ] = "Points LOTRO";
-L[ "LOTROPoints_tooltip" ] = "Ce sont vos points LOTRO";
+WalletCurrencyTooltips[ "LOTROPoints" ] = "Ce sont vos points LOTRO";
 -- Mithril Coins control
 L[ "MithrilCoins" ] = "Pi\195\168ce de mithril";
-L[ "MithrilCoins_tooltip" ] = "Ce sont vos Pi\195\168ces de mithril";
+WalletCurrencyTooltips[ "MithrilCoins" ] = "Ce sont vos Pi\195\168ces de mithril";
 -- Yule Tokens control
 L[ "YuleToken" ] = "Jeton du festival de Yule";
-L[ "YuleToken_tooltip" ] = "Ce sont vos Jetons du festival de Yule";
+WalletCurrencyTooltips[ "YuleToken" ] = "Ce sont vos Jetons du festival de Yule";
 -- Anniversary Tokens control
 L[ "AnniversaryToken" ] = "Jeton d'anniversaire";
-L[ "AnniversaryToken_tooltip" ] = "Ce sont vos Jetons d'anniversaire";
+WalletCurrencyTooltips[ "AnniversaryToken" ] = "Ce sont vos Jetons d'anniversaire";
 -- Bingo Badge control
 L[ "BingoBadge" ] = "Insigne de Bingo";
-L[ "BingoBadge_tooltip" ] = "These are your Insignes de Bingo";
+WalletCurrencyTooltips[ "BingoBadge" ] = "These are your Insignes de Bingo";
 -- Skirmish marks control
 L[ "SkirmishMarks" ] = "Marque";
-L[ "SkirmishMarks_tooltip" ] = "Ce sont vos marques d'escarmouches";
+WalletCurrencyTooltips[ "SkirmishMarks" ] = "Ce sont vos marques d'escarmouches";
 -- Destiny Points control
 L[ "DestinyPoints" ] = "Points destin\195\169e";
-L[ "DestinyPoints_tooltip" ] = "Ce sont vos points destin\195\169e";
+WalletCurrencyTooltips[ "DestinyPoints" ] = "Ce sont vos points destin\195\169e";
 -- Shards control
 L[ "Shards" ] = "Eclat";
-L[ "Shards_tooltip" ] = "Ce sont vos Eclats";
+WalletCurrencyTooltips[ "Shards" ] = "Ce sont vos Eclats";
 -- Tokens of Hytbold control
 L[ "HytboldTokens" ] = "Jeton d'Hytbold";
-L[ "HytboldTokens_tooltip" ] = "Ce sont vos Jetons d'Hytbold";
+WalletCurrencyTooltips[ "HytboldTokens" ] = "Ce sont vos Jetons d'Hytbold";
 -- Medallions control
 L[ "Medallions" ] = "M\195\169daillon";
-L[ "Medallions_tooltip" ] = "Ce sont vos m\195\169daillons";
+WalletCurrencyTooltips[ "Medallions" ] = "Ce sont vos m\195\169daillons";
 -- Seals control
 L[ "Seals" ] = "Sceau";
-L[ "Seals_tooltip" ] = "Ce sont vos sceaux";
+WalletCurrencyTooltips[ "Seals" ] = "Ce sont vos sceaux";
 -- Commendations control
 L[ "Commendations" ] = "Citation";
-L[ "Commendations_tooltip" ] = "Ce sont vos Citations";
+WalletCurrencyTooltips[ "Commendations" ] = "Ce sont vos Citations";
 -- Amroth Silver Piece control
 L[ "AmrothSilverPiece" ] = "Pi\195\168ce d'argent d'Amroth";
-L[ "AmrothSilverPiece_tooltip" ] = "Ce sont vos Pi\195\168ces d'argent d'Amroth";
+WalletCurrencyTooltips[ "AmrothSilverPiece" ] = "Ce sont vos Pi\195\168ces d'argent d'Amroth";
 -- Stars of Merit control
 L[ "StarsofMerit" ] = "\195\137toile du m\195\169rite";
-L[ "StarsofMerit_tooltip" ] = "Ce sont vos \195\137toiles du m\195\169rite";
+WalletCurrencyTooltips[ "StarsofMerit" ] = "Ce sont vos \195\137toiles du m\195\169rite";
 -- Central Gondor Silver Piece control
 L[ "CentralGondorSilverPiece" ] = "Pi\195\168ce d'argent du Gondor central";
-L[ "CentralGondorSilverPiece_tooltip" ] = "Ce sont vos Pi\195\168ces d'argent du gondor Central";
+WalletCurrencyTooltips[ "CentralGondorSilverPiece" ] = "Ce sont vos Pi\195\168ces d'argent du gondor Central";
 -- Gift giver's Brand control
 L[ "GiftgiversBrand" ] = "Marque du Donateur";
-L[ "GiftgiversBrand_tooltip" ] = "Ce sont vos Marques du Donateur";
+WalletCurrencyTooltips[ "GiftgiversBrand" ] = "Ce sont vos Marques du Donateur";
 -- Motes of Enchantment control
 L[ "MotesOfEnchantment" ] = "Grain d\226\128\153enchantement";
-L[ "MotesOfEnchantment_tooltip" ] = "Ce sont vos Grains d'Enchantement";
+WalletCurrencyTooltips[ "MotesOfEnchantment" ] = "Ce sont vos Grains d'Enchantement";
 -- Embers of Enchantment control
 L[ "EmbersOfEnchantment" ] = "Braise d\226\128\153enchantement";
-L[ "EmbersOfEnchantment_tooltip" ] = "Ce sont vos Braises d'Enchantement";
+WalletCurrencyTooltips[ "EmbersOfEnchantment" ] = "Ce sont vos Braises d'Enchantement";
 -- Figments of Splendour control
 L[ "FigmentsOfSplendour" ] = "Mirage de splendeur";
-L[ "FigmentsOfSplendour_tooltip" ] = "Ce sont vos Mirages de Splendour";
+WalletCurrencyTooltips[ "FigmentsOfSplendour" ] = "Ce sont vos Mirages de Splendour";
 -- Fall Festival Tokens control
 L[ "FallFestivalToken" ] = "Jeton du festival d'automne";
-L[ "FallFestivalToken_tooltip" ] = "Ce sont vos Jetons du Festival d'Automne";
+WalletCurrencyTooltips[ "FallFestivalToken" ] = "Ce sont vos Jetons du Festival d'Automne";
 -- Farmers Faire Tokens control
 L[ "FarmersFaireToken" ] = "Jeton de la Foire des fermiers";
-L[ "FarmersFaireToken_tooltip" ] = "Ce sont vos Jetons de la Foire des Fermiers";
+WalletCurrencyTooltips[ "FarmersFaireToken" ] = "Ce sont vos Jetons de la Foire des Fermiers";
 -- Spring Leaves control
 L[ "SpringLeaf" ] = "Feuille de printemps";
-L[ "SpringLeaf_tooltip" ] = "Ce sont vos Feuille de Printemps";
+WalletCurrencyTooltips[ "SpringLeaf" ] = "Ce sont vos Feuille de Printemps";
 -- Midsummer Tokens control
 L[ "MidsummerToken" ] = "Jeton du solstice d'\195\169t\195\169";
-L[ "MidsummerToken_tooltip" ] = "Ce sont vos Jetons du solstice d'�t�";
+WalletCurrencyTooltips[ "MidsummerToken" ] = "Ce sont vos Jetons du solstice d'�t�";
 -- Ancient Script control
 L[ "AncientScript" ] = "\195\137criture ancienne";
-L[ "AncientScript_tooltip" ] = "Ce sont vos \195\137criture ancienne";
+WalletCurrencyTooltips[ "AncientScript" ] = "Ce sont vos \195\137criture ancienne";
 -- Inn League / Ale Association control
 L[ "BadgeOfTaste" ] = "M�daille du go�t";
-L[ "BadgeOfTaste_tooltip" ] = "Ce sont vos M�dailles du go�t";
+WalletCurrencyTooltips[ "BadgeOfTaste" ] = "Ce sont vos M�dailles du go�t";
 L[ "BadgeOfDishonour" ] = "M�daille de la honte";
-L[ "BadgeOfDishonour_tooltip" ] = "Ce sont vos M�dailles de la honte";
+WalletCurrencyTooltips[ "BadgeOfDishonour" ] = "Ce sont vos M�dailles de la honte";
 
 
 -- Control Menu

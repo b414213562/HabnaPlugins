@@ -168,6 +168,10 @@ function createToolTipWin( xOffset, yOffset, xSize, ySize, side, header, text1,
 	return _G.ToolTipWin;
 end
 
+function GetCurrencyTooltip(key)
+    return WalletCurrencyTooltips[key] or ("Could not find tooltip for " .. key);
+end
+
 -- Legend
 -- ( offsetX, offsetY, width, height, bubble side, header text, text1, text2, text3, text4 )
 function ShowToolTipWin( ToShow )
@@ -185,7 +189,7 @@ function ShowToolTipWin( ToShow )
 		if w + mouseX > screenWidth then bblTo = "right"; x = w - 10; end
 		h = 65;
 		if not TBTop then y = h; end
-		TTW = createToolTipWin( x, y, w, h, bblTo, L["DestinyPoints_tooltip"], L["EIt2"], L["EIt3"] );
+		TTW = createToolTipWin( x, y, w, h, bblTo, GetCurrencyTooltip("DestinyPoints"), L["EIt2"], L["EIt3"] );
 	elseif ToShow == "BI" then -- Bag Infos
 		if w + mouseX > screenWidth then bblTo = "right"; x = w - 10; end
 		h = 80;
@@ -195,47 +199,47 @@ function ShowToolTipWin( ToShow )
 		if w + mouseX > screenWidth then bblTo = "right"; x = w - 10; end
 		h = 65;
 		if not TBTop then y = h; end
-		TTW = createToolTipWin( x, y, w, h, bblTo, L["Shards_tooltip"], L["EIt2"], L["EIt3"] );
+		TTW = createToolTipWin( x, y, w, h, bblTo, GetCurrencyTooltip("Shards"), L["EIt2"], L["EIt3"] );
 	elseif ToShow == "SM" then -- Skirmish marks
 		if w + mouseX > screenWidth then bblTo = "right"; x = w - 10; end
 		h = 65;
 		if not TBTop then y = h; end
-		TTW = createToolTipWin( x, y, w, h, bblTo, L["SkirmishMarks_tooltip"], L["EIt2"], L["EIt3"] );
+		TTW = createToolTipWin( x, y, w, h, bblTo, GetCurrencyTooltip("SkirmishMarks"), L["EIt2"], L["EIt3"] );
 	elseif ToShow == "MC" then -- Mithril Coins
 		if w + mouseX > screenWidth then bblTo = "right"; x = w - 10; end
 		h = 65;
 		if not TBTop then y = h; end
-		TTW = createToolTipWin( x, y, w, h, bblTo, L["MithrilCoins_tooltip"], L["EIt2"], 
+		TTW = createToolTipWin( x, y, w, h, bblTo, GetCurrencyTooltip("MithrilCoins"), L["EIt2"], 
             L["EIt3"] );
 	elseif ToShow == "YT" then -- Yule Tokens
 		if w + mouseX > screenWidth then bblTo = "right"; x = w - 10; end
 		h = 65;
 		if not TBTop then y = h; end
-		TTW = createToolTipWin( x, y, w, h, bblTo, L["YuleToken_tooltip"], L["EIt2"], 
+		TTW = createToolTipWin( x, y, w, h, bblTo, GetCurrencyTooltip("YuleToken"), L["EIt2"], 
             L["EIt3"] );
 	elseif ToShow == "HT" then -- Tokens of Hytbold
 		if w + mouseX > screenWidth then bblTo = "right"; x = w - 10; end
 		h = 65;
 		if not TBTop then y = h; end
-		TTW = createToolTipWin( x, y, w, h, bblTo, L["HytboldTokens_tooltip"], L["EIt2"], 
+		TTW = createToolTipWin( x, y, w, h, bblTo, GetCurrencyTooltip("HytboldTokens"), L["EIt2"], 
             L["EIt3"] );
 	elseif ToShow == "MP" then -- Medallions
 		if w + mouseX > screenWidth then bblTo = "right"; x = w - 10; end
 		h = 65;
 		if not TBTop then y = h; end
-		TTW = createToolTipWin( x, y, w, h, bblTo, L["Medallions_tooltip"], L["EIt2"], 
+		TTW = createToolTipWin( x, y, w, h, bblTo, GetCurrencyTooltip("Medallions"), L["EIt2"], 
             L["EIt3"] );
 	elseif ToShow == "SL" then -- Seals
 		if w + mouseX > screenWidth then bblTo = "right"; x = w - 10; end
 		h = 65;
 		if not TBTop then y = h; end
-		TTW = createToolTipWin( x, y, w, h, bblTo, L["Seals_tooltip"], L["EIt2"], 
+		TTW = createToolTipWin( x, y, w, h, bblTo, GetCurrencyTooltip("Seals"), L["EIt2"], 
             L["EIt3"] );
 	elseif ToShow == "CP" then -- Commendations
 		if w + mouseX > screenWidth then bblTo = "right"; x = w - 10; end
 		h = 65;
 		if not TBTop then y = h; end
-		TTW = createToolTipWin( x, y, w, h, bblTo, L["Commendations_tooltip"], L["EIt2"], 
+		TTW = createToolTipWin( x, y, w, h, bblTo, GetCurrencyTooltip("Commendations"), L["EIt2"], 
             L["EIt3"] );
 	elseif ToShow == "PL" then -- Player Location
 		if w + mouseX > screenWidth then bblTo = "right"; x = w - 10; end
@@ -277,93 +281,93 @@ function ShowToolTipWin( ToShow )
 		if w + mouseX > screenWidth then bblTo = "right"; x = w - 10; end
 		h = 80;
 		if not TBTop then y = h; end
-		TTW = createToolTipWin( x, y, w, h, bblTo, L["LOTROPoints_tooltip"], L["EIt1"], 
+		TTW = createToolTipWin( x, y, w, h, bblTo, GetCurrencyTooltip("LOTROPoints"), L["EIt1"], 
             L["EIt2"], L["EIt3"] );
 	elseif ToShow == "ASP" then -- Amroth Silver Piece
 		if w + mouseX > screenWidth then bblTo = "right"; x = w - 10; end
 		h = 65;
 		if not TBTop then y = h; end
-		TTW = createToolTipWin( x, y, w, h, bblTo, L["AmrothSilverPiece_tooltip"], L["EIt2"], 
+		TTW = createToolTipWin( x, y, w, h, bblTo, GetCurrencyTooltip("AmrothSilverPiece"), L["EIt2"], 
             L["EIt3"] );
 	elseif ToShow == "SOM" then -- Stars of Merit
 		if w + mouseX > screenWidth then bblTo = "right"; x = w - 10; end
 		h = 65;
 		if not TBTop then y = h; end
-		TTW = createToolTipWin( x, y, w, h, bblTo, L["StarsofMerit_tooltip"], L["EIt2"], 
+		TTW = createToolTipWin( x, y, w, h, bblTo, GetCurrencyTooltip("StarsofMerit"), L["EIt2"], 
             L["EIt3"] );
 	elseif ToShow == "CGSP" then -- Central Gondor Silver Piece
 		if w + mouseX > screenWidth then bblTo = "right"; x = w - 10; end
 		h = 65;
 		if not TBTop then y = h; end
-		TTW = createToolTipWin( x, y, w+30, h, bblTo, L["CentralGondorSilverPiece_tooltip"], L["EIt2"], 
+		TTW = createToolTipWin( x, y, w+30, h, bblTo, GetCurrencyTooltip("CentralGondorSilverPiece"), L["EIt2"], 
             L["EIt3"] );
 	elseif ToShow == "GGB" then -- Gift giver's Brand
 		if w + mouseX > screenWidth then bblTo = "right"; x = w - 10; end
 		h = 65;
 		if not TBTop then y = h; end
-		TTW = createToolTipWin( x, y, w, h, bblTo, L["GiftgiversBrand_tooltip"], L["EIt2"], 
+		TTW = createToolTipWin( x, y, w, h, bblTo, GetCurrencyTooltip("GiftgiversBrand"), L["EIt2"], 
             L["EIt3"] );
 	elseif ToShow == "BB" then -- Bingo Badge
 		if w + mouseX > screenWidth then bblTo = "right"; x = w - 10; end
 		h = 65;
 		if not TBTop then y = h; end
-		TTW = createToolTipWin( x, y, w, h, bblTo, L["BingoBadge_tooltip"], L["EIt2"], 
+		TTW = createToolTipWin( x, y, w, h, bblTo, GetCurrencyTooltip("BingoBadge"), L["EIt2"], 
             L["EIt3"] );
 	elseif ToShow == "LAT" then -- Anniversary Token
 		if w + mouseX > screenWidth then bblTo = "right"; x = w - 10; end
 		h = 65;
 		if not TBTop then y = h; end
-		TTW = createToolTipWin( x, y, w, h, bblTo, L["AnniversaryToken_tooltip"], L["EIt2"], L["EIt3"] );
+		TTW = createToolTipWin( x, y, w, h, bblTo, GetCurrencyTooltip("AnniversaryToken"), L["EIt2"], L["EIt3"] );
 	elseif ToShow == "MOE" then -- Motes of Enchantment
 		if w + mouseX > screenWidth then bblTo = "right"; x = w - 10; end
 		h = 65;
 		if not TBTop then y = h; end
-		TTW = createToolTipWin( x, y, w, h, bblTo, L["MotesOfEnchantment_tooltip"], L["EIt2"], L["EIt3"] );	
+		TTW = createToolTipWin( x, y, w, h, bblTo, GetCurrencyTooltip("MotesOfEnchantment"), L["EIt2"], L["EIt3"] );	
 	elseif ToShow == "EOE" then -- Embers of Enchantment
 		if w + mouseX > screenWidth then bblTo = "right"; x = w - 10; end
 		h = 65;
 		if not TBTop then y = h; end
-		TTW = createToolTipWin( x, y, w, h, bblTo, L["EmbersOfEnchantment_tooltip"], L["EIt2"], L["EIt3"] );
+		TTW = createToolTipWin( x, y, w, h, bblTo, GetCurrencyTooltip("EmbersOfEnchantment"), L["EIt2"], L["EIt3"] );
 	elseif ToShow == "FOS" then -- Figments of Splendour
 		if w + mouseX > screenWidth then bblTo = "right"; x = w - 10; end
 		h = 65;
 		if not TBTop then y = h; end
-		TTW = createToolTipWin( x, y, w, h, bblTo, L["FigmentsOfSplendour_tooltip"], L["EIt2"], L["EIt3"] );
+		TTW = createToolTipWin( x, y, w, h, bblTo, GetCurrencyTooltip("FigmentsOfSplendour"), L["EIt2"], L["EIt3"] );
 	elseif ToShow == "FFT" then -- Fall Festival Tokens
 		if w + mouseX > screenWidth then bblTo = "right"; x = w - 10; end
 		h = 65;
 		if not TBTop then y = h; end
-		TTW = createToolTipWin( x, y, w, h, bblTo, L["FallFestivalToken_tooltip"], L["EIt2"], L["EIt3"] );
+		TTW = createToolTipWin( x, y, w, h, bblTo, GetCurrencyTooltip("FallFestivalToken"), L["EIt2"], L["EIt3"] );
 	elseif ToShow == "FFAT" then -- Farmers Faire Token
 		if w + mouseX > screenWidth then bblTo = "right"; x = w - 10; end
 		h = 65;
 		if not TBTop then y = h; end
-		TTW = createToolTipWin( x, y, w, h, bblTo, L["FarmersFaireToken_tooltip"], L["EIt2"], L["EIt3"] );
+		TTW = createToolTipWin( x, y, w, h, bblTo, GetCurrencyTooltip("FarmersFaireToken"), L["EIt2"], L["EIt3"] );
 	elseif ToShow == "SPL" then -- Spring Leaves
 		if w + mouseX > screenWidth then bblTo = "right"; x = w - 10; end
 		h = 65;
 		if not TBTop then y = h; end
-		TTW = createToolTipWin( x, y, w, h, bblTo, L["SpringLeaf_tooltip"], L["EIt2"], L["EIt3"] );
+		TTW = createToolTipWin( x, y, w, h, bblTo, GetCurrencyTooltip("SpringLeaf"), L["EIt2"], L["EIt3"] );
 	elseif ToShow == "MST" then -- Midsummer Tokens
 		if w + mouseX > screenWidth then bblTo = "right"; x = w - 10; end
 		h = 65;
 		if not TBTop then y = h; end
-		TTW = createToolTipWin( x, y, w, h, bblTo, L["MidsummerToken_tooltip"], L["EIt2"], L["EIt3"] );
+		TTW = createToolTipWin( x, y, w, h, bblTo, GetCurrencyTooltip("MidsummerToken"), L["EIt2"], L["EIt3"] );
 	elseif ToShow == "AS" then -- Ancient Script
 		if w + mouseX > screenWidth then bblTo = "right"; x = w - 10; end
 		h = 65;
 		if not TBTop then y = h; end
-		TTW = createToolTipWin( x, y, w, h, bblTo, L["AncientScript_tooltip"], L["EIt2"], L["EIt3"] );			
+		TTW = createToolTipWin( x, y, w, h, bblTo, GetCurrencyTooltip("AncientScript"), L["EIt2"], L["EIt3"] );			
 	elseif ToShow == "BOT" then -- Badge of Taste
 		if w + mouseX > screenWidth then bblTo = "right"; x = w - 10; end
 		h = 65;
 		if not TBTop then y = h; end
-		TTW = createToolTipWin( x, y, w, h, bblTo, L["BadgeOfTaste_tooltip"], L["EIt2"], L["EIt3"] );
+		TTW = createToolTipWin( x, y, w, h, bblTo, GetCurrencyTooltip("BadgeOfTaste"), L["EIt2"], L["EIt3"] );
 	elseif ToShow == "BOD" then -- Badge of Dishonour
 		if w + mouseX > screenWidth then bblTo = "right"; x = w - 10; end
 		h = 65;
 		if not TBTop then y = h; end
-		TTW = createToolTipWin( x, y, w, h, bblTo, L["BadgeOfDishonour_tooltip"], L["EIt2"], L["EIt3"] );
+		TTW = createToolTipWin( x, y, w, h, bblTo, GetCurrencyTooltip("BadgeOfDishonour"), L["EIt2"], L["EIt3"] );
 	end
 
 	_G.ToolTipWin:SetPosition( mouseX - _G.ToolTipWin.xOffset, mouseY - 

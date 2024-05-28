@@ -44,84 +44,86 @@ L[ "MStorage" ] = "gemeinsamer Lagerraum";
 L[ "MDayNight" ] = "Tages- & Nacht-Zeit";
 L[ "MReputation" ] = "Ruf";
 
+_G.WalletCurrencyTooltips = {};
+
 -- Wallet Currency Controls
 -- LOTRO Points control
 L[ "LOTROPoints" ] = "HdRO-Punkte";
-L[ "LOTROPoints_tooltip" ] = "Eure HdRO-Punkte";
+WalletCurrencyTooltips[ "LOTROPoints" ] = "Eure HdRO-Punkte";
 -- Mithril Coins control
 L[ "MithrilCoins" ] = "Mithril-M\195\188nze";
-L[ "MithrilCoins_tooltip" ] = "Eure Mithril-M\195\188nzen";
+WalletCurrencyTooltips[ "MithrilCoins" ] = "Eure Mithril-M\195\188nzen";
 -- Yule Tokens control
 L[ "YuleToken" ] = "Julfest-M\195\188nze";
-L[ "YuleToken_tooltip" ] = "Eure Julfest-M\195\188nzen";
+WalletCurrencyTooltips[ "YuleToken" ] = "Eure Julfest-M\195\188nzen";
 -- Anniversary Tokens control
 L[ "AnniversaryToken" ] = "Jubil\195\164umsm\195\188nze";
-L[ "AnniversaryToken_tooltip" ] = "Eure Jubil\195\164umsm\195\188nzen";
+WalletCurrencyTooltips[ "AnniversaryToken" ] = "Eure Jubil\195\164umsm\195\188nzen";
 -- Bingo Badge control
 L[ "BingoBadge" ] = "Bingo-Abzeichen";
-L[ "BingoBadge_tooltip" ] = "Eure Bingo-Abzeichen";
+WalletCurrencyTooltips[ "BingoBadge" ] = "Eure Bingo-Abzeichen";
 -- Skirmish marks control
 L[ "SkirmishMarks" ] = "Zeichen";
-L[ "SkirmishMarks_tooltip" ] = "Eure Scharm\195\188tzel-Zeichen";
+WalletCurrencyTooltips[ "SkirmishMarks" ] = "Eure Scharm\195\188tzel-Zeichen";
 -- Destiny Points control
 L[ "DestinyPoints" ] = "Schicksalspunkte";
-L[ "DestinyPoints_tooltip" ] = "Eure Schicksalspunkte";
+WalletCurrencyTooltips[ "DestinyPoints" ] = "Eure Schicksalspunkte";
 -- Shards control
 L[ "Shards" ] = "Scherbe";
-L[ "Shards_tooltip" ] = "Eure Scherben";
+WalletCurrencyTooltips[ "Shards" ] = "Eure Scherben";
 -- Tokens of Hytbold control
 L[ "HytboldTokens" ] = "M\195\188nze von Hytbold";
-L[ "HytboldTokens_tooltip" ] = "Eure M\195\188nzen von Hytbold";
+WalletCurrencyTooltips[ "HytboldTokens" ] = "Eure M\195\188nzen von Hytbold";
 -- Medallions control
 L[ "Medallions" ] = "Medaillon";
-L[ "Medallions_tooltip" ] = "Eure Medallions";
+WalletCurrencyTooltips[ "Medallions" ] = "Eure Medallions";
 -- Seals control
 L[ "Seals" ] = "Siegel";
-L[ "Seals_tooltip" ] = "Eure Siegel";
+WalletCurrencyTooltips[ "Seals" ] = "Eure Siegel";
 -- Commendations control
 L[ "Commendations" ] = "Anerkennung";
-L[ "Commendations_tooltip" ] = "Eure Anerkennung";
+WalletCurrencyTooltips[ "Commendations" ] = "Eure Anerkennung";
 -- Amroth Silver Piece control
 L[ "AmrothSilverPiece" ] = "Amroth-Silberst\195\188ck";
-L[ "AmrothSilverPiece_tooltip" ] = "Eure Amroth-Silberst\195\188cke";
+WalletCurrencyTooltips[ "AmrothSilverPiece" ] = "Eure Amroth-Silberst\195\188cke";
 -- Stars of Merit control
 L[ "StarsofMerit" ] = "Stern des Verdienst";
-L[ "StarsofMerit_tooltip" ] = "Eure Sterne des Verdienst";
+WalletCurrencyTooltips[ "StarsofMerit" ] = "Eure Sterne des Verdienst";
 -- Central Gondor Silver Piece control
 L[ "CentralGondorSilverPiece" ] = "Zentralgondorisches Silberst\195\188ck";
-L[ "CentralGondorSilverPiece_tooltip" ] = "Eure Zentralgondorischen Silberst\195\188cke";
+WalletCurrencyTooltips[ "CentralGondorSilverPiece" ] = "Eure Zentralgondorischen Silberst\195\188cke";
 -- Gift giver's Brand control
 L[ "GiftgiversBrand" ] = "Zeichen des Schenkenden";
-L[ "GiftgiversBrand_tooltip" ] = "Eure Zeichen des Schenkenden";
+WalletCurrencyTooltips[ "GiftgiversBrand" ] = "Eure Zeichen des Schenkenden";
 -- Motes of Enchantment control
 L[ "MotesOfEnchantment" ] = "Aschepartikel der Verzauberung";
-L[ "MotesOfEnchantment_tooltip" ] = "Eure Aschepartikel der Verzauberung";
+WalletCurrencyTooltips[ "MotesOfEnchantment" ] = "Eure Aschepartikel der Verzauberung";
 -- Embers of Enchantment control
 L[ "EmbersOfEnchantment" ] = "Asche der Verzauberung";
-L[ "EmbersOfEnchantment_tooltip" ] = "Eure Asche der Verzauberung";
+WalletCurrencyTooltips[ "EmbersOfEnchantment" ] = "Eure Asche der Verzauberung";
 -- Figments of Splendour control
 L[ "FigmentsOfSplendour" ] = "Prachtst\195\188ck des Glanzes";
-L[ "FigmentsOfSplendour_tooltip" ] = "Eure Prachtst\195\188cke des Glanzes";
+WalletCurrencyTooltips[ "FigmentsOfSplendour" ] = "Eure Prachtst\195\188cke des Glanzes";
 -- Fall Festival Tokens control
 L[ "FallFestivalToken" ] = "Herbstfest-Medaille";
-L[ "FallFestivalToken_tooltip" ] = "Eure Herbstfest-Medaillen";
+WalletCurrencyTooltips[ "FallFestivalToken" ] = "Eure Herbstfest-Medaillen";
 -- Farmers Faire Tokens control
 L[ "FarmersFaireToken" ] = "Bauernfest-M\195\188nze";
-L[ "FarmersFaireToken_tooltip" ] = "Eure Bauernfest-M\195\188nzen";
+WalletCurrencyTooltips[ "FarmersFaireToken" ] = "Eure Bauernfest-M\195\188nzen";
 -- Spring Leaves control
 L[ "SpringLeaf" ] = "Fr\195\188hlingsblatt";
-L[ "SpringLeaf_tooltip" ] = "Eure Fr\195\188hlingsbl\195\164tter";
+WalletCurrencyTooltips[ "SpringLeaf" ] = "Eure Fr\195\188hlingsbl\195\164tter";
 -- Midsummer Tokens control
 L[ "MidsummerToken" ] = "Mittsommer-Marke";
-L[ "MidsummerToken_tooltip" ] = "Eure Mittsommer-Marken";
+WalletCurrencyTooltips[ "MidsummerToken" ] = "Eure Mittsommer-Marken";
 -- Ancient Script control
 L[ "AncientScript" ] = "Uralte Schrift";
-L[ "AncientScript_tooltip" ] = "Eure Uralte Schriften";
+WalletCurrencyTooltips[ "AncientScript" ] = "Eure Uralte Schriften";
 -- Inn League / Ale Association control
 L[ "BadgeOfTaste" ] = "Abzeichen des Geschmacks";
-L[ "BadgeOfTaste_tooltip" ] = "Eure Abzeichen des Geschmacks";
+WalletCurrencyTooltips[ "BadgeOfTaste" ] = "Eure Abzeichen des Geschmacks";
 L[ "BadgeOfDishonour" ] = "Abzeichen der Schande";
-L[ "BadgeOfDishonour_tooltip" ] = "Eure Abzeichen der Schande";
+WalletCurrencyTooltips[ "BadgeOfDishonour" ] = "Eure Abzeichen der Schande";
 
 -- Control Menu
 L[ "MCU" ] = "entfernen ...";
