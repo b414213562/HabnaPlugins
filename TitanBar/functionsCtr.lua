@@ -675,8 +675,9 @@ function LoadPlayerWallet()
                 PlayerCurrency[CurName],
                 "QuantityChanged",
                 function(sender, args)
+                    local newQuantity = sender:GetQuantity();
                     if (Show[key]) then
-                        UpdateCurrency(key);
+                        UpdateCurrency(key, newQuantity);
                     end
                 end);
         end
