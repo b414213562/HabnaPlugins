@@ -30,7 +30,11 @@ table["Icon"]:SetSize( 32, 32 );
 table["Icon"].MouseMove = function( sender, args )
 	table["Lbl"].MouseLeave( sender, args );
 	TB["win"].MouseMove();
-	if dragging then table["MoveCtr"](sender, args); end
+	if dragging then
+        table["MoveCtr"](sender, args);
+	else
+		ShowToolTipWin( code );
+    end
 end
 
 table["Icon"].MouseLeave = function( sender, args )
