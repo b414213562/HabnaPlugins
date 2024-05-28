@@ -659,7 +659,8 @@ end
 -- **^
 
 function LoadPlayerWallet()
-    PlayerWallet = Player:GetWallet();
+    local wallet = Player:GetWallet();
+    PlayerWallet = wallet;
     PlayerWalletSize = PlayerWallet:GetSize();
     if PlayerWalletSize == 0 then return end
     -- ^^ Remove when Wallet info are available before plugin is loaded
@@ -682,6 +683,10 @@ function LoadPlayerWallet()
                 end);
         end
     end
+
+    -- Track when items are added or removed from the wallet:
+    AddCallback(wallet, "ItemAdded", CurrencyAdded);
+    AddCallback(wallet, "ItemRemoved", CurrencyRemoved);
 
     -- Destiny is tracked differently:
     if PlayerCurrencyHandler["DestinyPoints"] == nil then

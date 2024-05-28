@@ -499,6 +499,16 @@ function UpdateCurrency(key, quantity)
 	end
 end
 
+-- TODO: Make this do something meaningful instead of just logging.
+function CurrencyAdded(sender, args)
+    Turbine.Shell.WriteLine("Wallet.CurrencyAdded: " .. dump(sender) .. ", " .. dump(args));
+end
+
+-- TODO: Make this do something meaningful instead of just logging.
+function CurrencyRemoved(sender, args)
+    Turbine.Shell.WriteLine("Wallet.CurrencyRemoved: " .. dump(sender) .. ", " .. dump(args));
+end
+
 --**v Update backpack infos on TitanBar v**
 function UpdateBackpackInfos()
 	local max = backpack:GetSize();
