@@ -1,5 +1,15 @@
 Current bugs:
-    MotesOfEnchantment token doesn't work - mouse over produces error, looks like _G table issues.
+    Spend down to 0 issue: Because TitanBar ignores the passed value in favor of re-looking in the wallet,
+        it probably is not finding it, and therefore doing nothing instead of counting that as "0".
+        Possible fix: UpdateCurrency should take an optional quantity parameter. If present, use it.
+
+        To test: in Midsummer festival, spend down tokens to 0, make sure we see that final change.
+
+Question: Are we paying attention to these Wallet callbacks?
+	ItemAdded	Event fired when an item is added to the wallet.
+	ItemRemoved	Event fired when an item is removed from the wallet.
+If not, why not?
+
 
 TitanBar thoughts:
     Next: function ImportCtr( value ) <= Change the parameter here from things like "MC" to "MithrilCoins".
