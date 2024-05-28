@@ -186,7 +186,7 @@ function ShowToolTipWin( ToShow )
 	end
 
     local tooltipWindowCustomHeight = {
-        ["LOTROPoints"] = 80;
+        ["LP"] = 80;
     };
     h = tooltipWindowCustomHeight[ToShow] or 65;
 
@@ -229,7 +229,6 @@ function ShowToolTipWin( ToShow )
 		TTW = createToolTipWin( x, y, w, h, bblTo, GetCurrencyTooltip("Commendations"), L["EIt2"], L["EIt3"] );
 	elseif ToShow == "LP" then -- LOTRO points
 		if w + mouseX > screenWidth then bblTo = "right"; x = w - 10; end
-		h = 80;
 		if not TBTop then y = h; end
 		TTW = createToolTipWin( x, y, w, h, bblTo, GetCurrencyTooltip("LOTROPoints"), L["EIt1"], L["EIt2"], L["EIt3"] );
 	elseif ToShow == "ASP" then -- Amroth Silver Piece
