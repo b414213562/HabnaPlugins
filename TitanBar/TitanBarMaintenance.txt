@@ -46,6 +46,7 @@ Add a new currency:
 --- Important: The name behind the first abbreviation has to be exactly the name in the game (and most of the times singular). Otherwise it won't work.
 
 - Add currency in 'main.lua'
+    -- Note to self: This section should move into a settings initialization function if you have no save file.
 -- Search for "PlayerAlign == 1" and add the abbreviation to the MenuItem array. The position in that array defines the order in which the currencies are listed.
 
 - Add custom currency stuff to functionsCtr:ImportCtr().
@@ -53,7 +54,7 @@ Add a new currency:
 -- e.g. Wallet, Money, LOTROPoints
 -- (note: If you are just showing the amount of your currency, you do not need to do this)
 
-- Add currency in 'TBressources.lua'
+- Add currency in 'TBresources.lua'
 -- or more correctly: Add the image of the currency
 -- Search for "_G.WalletItem"
 -- Copy the last entry in the array and paste it as the last entry
