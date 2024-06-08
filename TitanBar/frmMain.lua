@@ -280,18 +280,6 @@ function frmMain()
 		end
 		
 		if (oldsecond ~= currentsecond) then
-			--Detect if wallet size has changed
-			if PlayerWallet:GetSize() ~= PlayerWalletSize then -- Until I find the size changed event or something similar in wallet
-				LoadPlayerWallet();
-
-                for index, key in ipairs(Currencies) do
-                    local isActive = Where[key] ~= 3;
-                    if (key == "Wallet") then isActive = Show[key]; end
-            
-                    if isActive then ImportCtr(CurrencyKeyToCode[key]); end
-                end
-			end
-
 			screenWidth, screenHeight = Turbine.UI.Display.GetSize();
 			if TBWidth ~= screenWidth then ReplaceCtr(); end --Replace control if screen width has changed
 

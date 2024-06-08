@@ -386,15 +386,46 @@ function UpdateCurrency(key, quantity)
 	end
 end
 
--- TODO: Make this do something meaningful instead of just logging.
---       See frmMain: AllTimer.Update's code to handle wallet size changing.
-function CurrencyAdded(sender, args)
-    Turbine.Shell.WriteLine("Wallet.CurrencyAdded: " .. dump(sender) .. ", " .. dump(args));
+function AddCurrencyCallbackIfNeeded(walletItem)
+    local currencyName = walletItem:GetName();
+    local key = CurrencyNameToKey[currencyName];
+    PlayerCurrency[currencyName] = walletItem;
+
+    if PlayerCurrencyHandler[currencyName] == nil and key ~= nil then
+        PlayerCurrencyHandler[currencyName] = AddCallback(
+            PlayerCurrency[currencyName],
+            "QuantityChanged",
+            function(sender, args)
+                local newQuantity = sender:GetQuantity();
+                if (Show[key]) then
+                    UpdateCurrency(key, newQuantity);
+                end
+        end);
+    end
 end
 
--- TODO: Make this do something meaningful instead of just logging.
+function CurrencyAdded(sender, args)
+    local item = PlayerWallet:GetItem(args.Index);
+    local currencyName = item:GetName();
+
+    local key = CurrencyNameToKey[currencyName];
+    if (key) then
+        AddCurrencyCallbackIfNeeded(item);
+        UpdateCurrency(key, item:GetQuantity());
+    end
+end
+
 function CurrencyRemoved(sender, args)
-    Turbine.Shell.WriteLine("Wallet.CurrencyRemoved: " .. dump(sender) .. ", " .. dump(args));
+    local item = PlayerWallet:GetItem(args.Index);
+    local currencyName = item:GetName();
+
+    local key = CurrencyNameToKey[currencyName];
+    if (key) then
+        UpdateCurrency(key, 0);
+
+        RemoveCallback(item, PlayerCurrencyHandler[currencyName]);
+        PlayerCurrencyHandler[currencyName] = nil;
+    end
 end
 
 --**v Update backpack infos on TitanBar v**

@@ -1031,6 +1031,10 @@ function GetCurrency( str )
         currentQuantity = tonumber(_G.LOTROPTS) or 0;
     else
         local localizedName = L[str];
+
+        -- If we're trying to update a currency that isn't in the wallet, return a default value of 0:
+        if (not PlayerCurrencyHandler[localizedName]) then return 0; end
+
         for k,v in pairs( PlayerCurrency ) do
             if k == localizedName then
                 currentQuantity = PlayerCurrency[ localizedName ]:GetQuantity();
