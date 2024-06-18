@@ -785,7 +785,7 @@ function ChangeColor(tColor)
 	else
 		if sFrom == "TitanBar" then TB["win"]:SetBackColor( tColor ); end
 		if sFrom == "WI" then WI[ "Ctr" ]:SetBackColor( tColor ); end
-		if sFrom == "Money" then MI[ "Ctr" ]:SetBackColor( tColor ); end
+		if sFrom == "MI" then MI[ "Ctr" ]:SetBackColor( tColor ); end
 		if sFrom == "DP" then DP[ "Ctr" ]:SetBackColor( tColor ); end
 		if sFrom == "SP" then SP[ "Ctr" ]:SetBackColor( tColor ); end
 		if sFrom == "SM" then SM[ "Ctr" ]:SetBackColor( tColor ); end
