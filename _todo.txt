@@ -1,28 +1,26 @@
-Current bugs:
-    Spend down to 0 issue: Because TitanBar ignores the passed value in favor of re-looking in the wallet,
-        it probably is not finding it, and therefore doing nothing instead of counting that as "0".
-        Possible fix: UpdateCurrency should take an optional quantity parameter. If present, use it.
-
-        To test: in Midsummer festival, spend down tokens to 0, make sure we see that final change.
-
-        Additional test:
-            A character who does not have a currency adds it to TitanBar.
-            Then the get some of that currency. What happens?
-            Theory: Nothing, because we're not using the ItemAdded callback to attach a handler to the QuantityChanged event.
-                EXCEPT: AllTimer.Update will see the size of the wallet change, and call LoadPlayerWallet().
-
-Question: Are we paying attention to these Wallet callbacks?
-	ItemAdded	Event fired when an item is added to the wallet.
-	ItemRemoved	Event fired when an item is removed from the wallet.
-If not, why not?
-
+Fanchen also tried to fix TitanBar currencies. See their progress at:
+    https://github.com/Fanch3n/HabnaPlugins/tree/cleanup
 
 TitanBar thoughts:
+    Next:
+        functions.lua ChangeColor(str) needs to handle currencies in a loop
+        functions.lua AjustIcon(str) needs to handle currencies in a loop
+
     Next: function ImportCtr( value ) <= Change the parameter here from things like "MC" to "MithrilCoins".
 
 Each Currency has two main keys associated:
 	core abbreviation, e.g. "MC"
 	settings name, e.g. "MithrilCoins"
+
+    Places to change:
+        The Global variable is still named things like _G.MC, _G.SM, etc.
+        Functions that take keys like "MC" as parameter:
+            functions.lua ChangeColor(tColor), tColor
+            functions.lua AjustIcon(str), str
+        Any place we're using CurrencyCodeToKey or CurrencyKeyToCode
+        All uses of _G.sFromCtr
+
+
 
 Once the variables are made into a table,
 that should allow for a lot of looping instead of stating every variable name.
