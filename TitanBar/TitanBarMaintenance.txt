@@ -39,14 +39,15 @@ Adding a new reputation faction:
 Add a new currency:
 - Add  text names to the 'de', 'en', and 'fr' localization files
 -- Search for "Wallet Currency Controls" and add the new currency to the end of the existing list
--- For the abbreviation: You need two for each currency. 
---- The first one starts with an "M" and then normally the first letter of each word in the name of the currency.
---- The second one starts normally with the first letter of each word in the name of the currency and then an "h".
---- Important: Check if the abbreviation you want to use, has already been used. If that is the case, get creative ;)
---- Important: The name behind the first abbreviation has to be exactly the name in the game (and most of the times singular). Otherwise it won't work.
+-- You need two for each currency:
+--- The first is the name of the currency in that language, e.g.:
+----  L[ "AnniversaryToken" ] = "Anniversary Token";
+----  Important: The name must match the name in the game exactly (and most of the times be singular). Otherwise TitanBar can't find it.
+--- The second is the tooltip for that currency, with the currency pluralized, e.g.:
+----- WalletCurrencyTooltips[ "AnniversaryToken" ] = "These are your Anniversary Tokens";
 
 - Add currency in 'main.lua'
-    -- Note to self: This section should move into a settings initialization function if you have no save file.
+-- Note to self: This section should move into a settings initialization function if you have no save file.
 -- Search for "PlayerAlign == 1" and add the abbreviation to the MenuItem array. The position in that array defines the order in which the currencies are listed.
 
 - Add custom currency stuff to functionsCtr:ImportCtr().
@@ -61,10 +62,6 @@ Add a new currency:
 -- Add a comma after the second to last entry (TitanBar won't load without it. It get's me every time)
 -- Replace the name in the last entry with the new currency
 -- Replace the hex value with the new icon value. (If you don't know the value scroll down to "HelloWorld-Plugin".
-
-For each point after this: Search through the files and every time the existing currencies are listed, add the new currency.
-- Add currency in 'functions.lua'
-- Add currency in 'settings.lua' => Currencies and other lookup tables
 
 
 To add a new control (from Technical_13):
