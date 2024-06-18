@@ -741,17 +741,15 @@ end
 function ChangeColor(tColor)
 	if BGWToAll then
 		TB["win"]:SetBackColor( tColor );
-		if Show["Wallet"] then WI[ "Ctr" ]:SetBackColor( tColor ); end
-		if Show["Money"] then MI[ "Ctr" ]:SetBackColor( tColor ); end
-		if Show["DestinyPoints"] then DP[ "Ctr" ]:SetBackColor( tColor ); end
-		if Show["Shards"] then SP[ "Ctr" ]:SetBackColor( tColor ); end
-		if Show["SkirmishMarks"] then SM[ "Ctr" ]:SetBackColor( tColor ); end
-		if Show["MithrilCoins"] then MC[ "Ctr" ]:SetBackColor( tColor ); end
-		if Show["YuleToken"] then YT[ "Ctr" ]:SetBackColor( tColor ); end
-		if Show["HytboldTokens"] then HT[ "Ctr" ]:SetBackColor( tColor ); end
-		if Show["Medallions"] then MP[ "Ctr" ]:SetBackColor( tColor ); end
-		if Show["Seals"] then SL[ "Ctr" ]:SetBackColor( tColor ); end
-		if Show["Commendations"] then CP[ "Ctr" ]:SetBackColor( tColor ); end
+
+        -- Check currencies:
+        for index, key in ipairs(Currencies) do
+            if (Show[key]) then
+                local code = CurrencyKeyToCode[key];
+                _G[code][ "Ctr" ]:SetBackColor( tColor );
+            end
+        end
+
 		if ShowBagInfos then BI[ "Ctr" ]:SetBackColor( tColor ); end
 		if ShowPlayerInfos then PI[ "Ctr" ]:SetBackColor( tColor ); end
 		if ShowEquipInfos then EI[ "Ctr" ]:SetBackColor( tColor ); end
@@ -763,68 +761,11 @@ function ChangeColor(tColor)
 		--if ShowBank then BK[ "Ctr" ]:SetBackColor( tColor ); end
 		if ShowDayNight then DN[ "Ctr" ]:SetBackColor( tColor ); end
 		if ShowReputation then RP[ "Ctr" ]:SetBackColor( tColor ); end
-		if Show["LOTROPoints"] then LP[ "Ctr" ]:SetBackColor( tColor ); end
 		if ShowPlayerLoc then PL[ "Ctr" ]:SetBackColor( tColor ); end
 		if ShowGameTime then GT[ "Ctr" ]:SetBackColor( tColor ); end
-		if Show["AmrothSilverPiece"] then ASP[ "Ctr" ]:SetBackColor( tColor ); end
-		if Show["StarsofMerit"] then SOM[ "Ctr" ]:SetBackColor( tColor ); end
-		if Show["CentralGondorSilverPiece"] then CGSP[ "Ctr" ]:SetBackColor( tColor ); end
-		if Show["GiftgiversBrand"] then GGB[ "Ctr" ]:SetBackColor( tColor ); end
-		if Show["BingoBadge"] then BB[ "Ctr" ]:SetBackColor( tColor ); end
-		if Show["AnniversaryToken"] then LAT[ "Ctr" ]:SetBackColor( tColor ); end
-		if Show["MotesOfEnchantment"] then MOE[ "Ctr" ]:SetBackColor( tColor ); end
-		if Show["EmbersOfEnchantment"] then EOE[ "Ctr" ]:SetBackColor( tColor ); end
-		if Show["FigmentsOfSplendour"] then FOS[ "Ctr" ]:SetBackColor( tColor ); end
-		if Show["FallFestivalToken"] then FFT[ "Ctr" ]:SetBackColor( tColor ); end
-		if Show["FarmersFaireToken"] then FFAT[ "Ctr" ]:SetBackColor( tColor ); end
-		if Show["SpringLeaf"] then SPL[ "Ctr" ]:SetBackColor( tColor ); end
-		if Show["MidsummerToken"] then MST[ "Ctr" ]:SetBackColor( tColor ); end
-		if Show["AncientScript"] then AS[ "Ctr" ]:SetBackColor( tColor ); end
-		if Show["BadgeOfTaste"] then BOT[ "Ctr" ]:SetBackColor( tColor ); end
-		if Show["BadgeOfDishonour"] then BOD[ "Ctr" ]:SetBackColor( tColor ); end
 	else
 		if sFrom == "TitanBar" then TB["win"]:SetBackColor( tColor ); end
-		if sFrom == "WI" then WI[ "Ctr" ]:SetBackColor( tColor ); end
-		if sFrom == "MI" then MI[ "Ctr" ]:SetBackColor( tColor ); end
-		if sFrom == "DP" then DP[ "Ctr" ]:SetBackColor( tColor ); end
-		if sFrom == "SP" then SP[ "Ctr" ]:SetBackColor( tColor ); end
-		if sFrom == "SM" then SM[ "Ctr" ]:SetBackColor( tColor ); end
-		if sFrom == "MC" then MC[ "Ctr" ]:SetBackColor( tColor ); end
-		if sFrom == "YT" then YT[ "Ctr" ]:SetBackColor( tColor ); end
-		if sFrom == "HT" then HT[ "Ctr" ]:SetBackColor( tColor ); end
-		if sFrom == "MP" then MP[ "Ctr" ]:SetBackColor( tColor ); end
-		if sFrom == "SL" then SL[ "Ctr" ]:SetBackColor( tColor ); end
-		if sFrom == "CP" then CP[ "Ctr" ]:SetBackColor( tColor ); end
-		if sFrom == "BI" then BI[ "Ctr" ]:SetBackColor( tColor ); end
-		if sFrom == "PI" then PI[ "Ctr" ]:SetBackColor( tColor ); end
-		if sFrom == "EI" then EI[ "Ctr" ]:SetBackColor( tColor ); end
-		if sFrom == "DI" then DI[ "Ctr" ]:SetBackColor( tColor ); end
-		if sFrom == "TI" then TI[ "Ctr" ]:SetBackColor( tColor ); end
-		if sFrom == "IF" then IF[ "Ctr" ]:SetBackColor( tColor ); end
-		if sFrom == "VT" then VT[ "Ctr" ]:SetBackColor( tColor ); end
-		if sFrom == "SS" then SS[ "Ctr" ]:SetBackColor( tColor ); end
-		--if sFrom == "BK" then BK[ "Ctr" ]:SetBackColor( tColor ); end
-		if sFrom == "DN" then DN[ "Ctr" ]:SetBackColor( tColor ); end
-		if sFrom == "RP" then RP[ "Ctr" ]:SetBackColor( tColor ); end
-		if sFrom == "LP" then LP[ "Ctr" ]:SetBackColor( tColor ); end
-		if sFrom == "PL" then PL[ "Ctr" ]:SetBackColor( tColor ); end
-		if sFrom == "GT" then GT[ "Ctr" ]:SetBackColor( tColor ); end
-		if sFrom == "ASP" then ASP[ "Ctr" ]:SetBackColor( tColor ); end
-		if sFrom == "SOM" then SOM[ "Ctr" ]:SetBackColor( tColor ); end
-		if sFrom == "CGSP" then CGSP[ "Ctr" ]:SetBackColor( tColor ); end
-		if sFrom == "GGB" then GGB[ "Ctr" ]:SetBackColor( tColor ); end
-		if sFrom == "BB" then BB[ "Ctr" ]:SetBackColor( tColor ); end
-		if sFrom == "LAT" then LAT[ "Ctr" ]:SetBackColor( tColor ); end
-		if sFrom == "MOE" then MOE[ "Ctr" ]:SetBackColor( tColor ); end
-		if sFrom == "EOE" then EOE[ "Ctr" ]:SetBackColor( tColor ); end
-		if sFrom == "FOS" then FOS[ "Ctr" ]:SetBackColor( tColor ); end
-		if sFrom == "FFT" then FFT[ "Ctr" ]:SetBackColor( tColor ); end
-		if sFrom == "FFAT" then FFAT[ "Ctr" ]:SetBackColor( tColor ); end
-		if sFrom == "SPL" then SPL[ "Ctr" ]:SetBackColor( tColor ); end
-		if sFrom == "MST" then MST[ "Ctr" ]:SetBackColor( tColor ); end
-		if sFrom == "AS" then AS[ "Ctr" ]:SetBackColor( tColor ); end
-		if sFrom == "BOT" then BOT[ "Ctr" ]:SetBackColor( tColor ); end
-		if sFrom == "BOD" then BOD[ "Ctr" ]:SetBackColor( tColor ); end
+        if (_G[sFrom]) then _G[sFrom][ "Ctr" ]:SetBackColor( tColor ); end;
 	end
 end
 --**^

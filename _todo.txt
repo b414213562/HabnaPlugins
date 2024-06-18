@@ -3,7 +3,6 @@ Fanchen also tried to fix TitanBar currencies. See their progress at:
 
 TitanBar thoughts:
     Next:
-        functions.lua ChangeColor(str) needs to handle currencies in a loop
         functions.lua AjustIcon(str) needs to handle currencies in a loop
 
     Next: function ImportCtr( value ) <= Change the parameter here from things like "MC" to "MithrilCoins".
@@ -13,6 +12,7 @@ Each Currency has two main keys associated:
 	settings name, e.g. "MithrilCoins"
 
     Places to change:
+        sFrom can sometimes be Money instead of MI?!? WHY??!?!?!
         The Global variable is still named things like _G.MC, _G.SM, etc.
         Functions that take keys like "MC" as parameter:
             functions.lua ChangeColor(tColor), tColor
