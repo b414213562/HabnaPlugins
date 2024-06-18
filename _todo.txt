@@ -2,8 +2,6 @@ Fanchen also tried to fix TitanBar currencies. See their progress at:
     https://github.com/Fanch3n/HabnaPlugins/tree/cleanup
 
 TitanBar thoughts:
-    Next:
-        functions.lua AjustIcon(str) needs to handle currencies in a loop
 
     Next: function ImportCtr( value ) <= Change the parameter here from things like "MC" to "MithrilCoins".
 
