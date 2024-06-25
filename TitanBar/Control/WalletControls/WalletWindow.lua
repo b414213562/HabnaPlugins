@@ -76,6 +76,7 @@ function frmWalletWindow()
     WIFiltertxt:SetPosition(80,75);
     WIFiltertxt:SetSize(_G.wWI:GetWidth() - 120, 20);
     WIFiltertxt.Text = "";
+    WIFiltertxt.LowerText = "";
     WIFiltertxt.TextChanged = function()
         if WIFiltertxt.Text ~= WIFiltertxt:GetText() then
             WIFiltertxt.Text = WIFiltertxt:GetText();
