@@ -1,3 +1,6 @@
+Figure out how to include the C# file for generating the auto-generated files?
+    Just add it to the data directory?
+
 Fanchen also tried to fix TitanBar currencies. See their progress at:
     https://github.com/Fanch3n/HabnaPlugins/tree/cleanup
 
