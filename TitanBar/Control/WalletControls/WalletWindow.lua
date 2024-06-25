@@ -81,6 +81,7 @@ function frmWalletWindow()
             WIFiltertxt.Text = WIFiltertxt:GetText();
             WIFiltertxt.LowerText = string.lower(WIFiltertxt.Text);
             WIFilter(WIFiltertxt.Text);
+            WITreeView:Refresh();
         end
     end
 
@@ -99,7 +100,7 @@ function frmWalletWindow()
 	local WIListBoxHeight = 
 		_G.wWI:GetHeight()-95 - WIlbltextHeight - WIFilterlblHeight;
 	WIListBox = Turbine.UI.ListBox();
-	WIListBox:SetParent( _G.wWI );
+	--WIListBox:SetParent( _G.wWI );
 	WIListBox:SetZOrder( 1 );
 	WIListBox:SetPosition( 20, 115 );
 	--WIListBox:SetPosition( 20, WIlbltext:GetTop()+WIlbltext:GetHeight()+5 );
@@ -117,6 +118,83 @@ function frmWalletWindow()
 	WIListBoxScrollBar:SetPosition( WIListBox:GetWidth() - 10, 0 );
 	WIListBoxScrollBar:SetSize( 12, WIListBox:GetHeight() );
 	-- **^
+
+	WITreeView = Turbine.UI.TreeView();
+    WITreeView:SetParent( _G.wWI );
+	WITreeView:SetPosition( 20, 115 );
+	WITreeView:SetSize( _G.wWI:GetWidth()-40, WIListBoxHeight );
+    -- WITreeView:SetBackColor(Turbine.UI.Color.DarkRed); -- For debug purposes
+
+    WITreeViewScrollBar = Turbine.UI.Lotro.ScrollBar();
+	WITreeViewScrollBar:SetParent( WITreeView );
+	WITreeViewScrollBar:SetZOrder( 1 );
+	WITreeViewScrollBar:SetOrientation( Turbine.UI.Orientation.Vertical );
+	WITreeView:SetVerticalScrollBar( WITreeViewScrollBar );
+	WITreeViewScrollBar:SetPosition( WITreeView:GetWidth() - 10, 0 );
+	WITreeViewScrollBar:SetSize( 12, WITreeView:GetHeight() );
+
+    ---TreeView filter
+    ---@param treeNode TreeNode
+    ---@return boolean # True if node should be hidden, false if visible
+    function WalletTreeViewFilterFunction(treeNode)
+        -- Filter ideas:
+        -- Always show a category.
+        --   Maybe hide if nothing in that category?
+        if (treeNode.isCategory) then
+            -- To hide when there's nothing visible underneath, 
+            -- we can manually check them ourselves by calling the filter function
+            
+            local categoryNodes = treeNode:GetChildNodes();
+            local visibleChildCount = 0;
+            for i=1, categoryNodes:GetCount() do
+                local itemNode = categoryNodes:Get(i);
+                itemNode.isNodeFiltered = WalletItemFilterFunction(itemNode);
+                if (not itemNode.isNodeFiltered) then
+                    visibleChildCount = visibleChildCount + 1;
+                end
+            end
+
+            return visibleChildCount == 0;
+        end
+
+        return treeNode.isNodeFiltered;
+    end
+
+    ---Filter for non-category items in the TreeView
+    ---@param treeNode TreeNode
+    ---@return boolean # True if node should be hidden, false if visible
+    function WalletItemFilterFunction(treeNode)
+        -- Items:
+        --   Maybe hide "old" items by default?
+        --   Hide if not in wallet
+        --   If there's a search time, hide if we don't match it.
+        local name = treeNode.label:GetText();
+        local value = _G.WalletItems[treeNode.itemId];
+
+        -- Is there a filter, and if so does in not match the current node?
+        if (WIFiltertxt.LowerText) then
+            if string.find(string.lower(name),WIFiltertxt.LowerText) == nil then
+                return true;
+            end
+        end
+
+        if (value.old) then
+            -- Don't show old items
+            return true;
+        end
+
+        if (PlayerCurrency[name]) then
+            -- it's in the wallet, do nothing
+
+        else
+            -- it's not in the wallet, exclude by default:
+            return true;
+        end
+
+        return false;
+    end
+
+    WITreeView:SetFilter(WalletTreeViewFilterFunction);
 
 	WIWCtr = Turbine.UI.Control();
 	WIWCtr:SetParent( _G.wWI );
@@ -259,6 +337,123 @@ function frmWalletWindow()
 	end
 
 	RefreshWIListBox();
+    PopulateWITreeView();
+end
+
+---Gets an Item or nil. (Implementation inspired by Festival Buddy)
+---@param itemID integer|string either the decimal item id or the hex representation (with 0x) in a string
+---@param IsHex boolean tells us if we're using the integer or string version of itemID
+---@return Item?
+-- Todo: Move to a more general location?
+function GetItemFromID(itemID,IsHex)
+    if itemID == nil then return nil end;
+
+    local itemHex = "";
+
+    if IsHex then
+        itemHex = tostring(itemID);
+    else
+        itemHex = string.format("%x", itemID);
+    end
+
+    local cItemInspect = Turbine.UI.Lotro.Quickslot();
+    cItemInspect:SetSize(1,1);
+    cItemInspect:SetVisible(false);
+    local function SetItemShortcut()     -- Use pcall in case item does not exist
+        cItemInspect:SetShortcut(Turbine.UI.Lotro.Shortcut(Turbine.UI.Lotro.ShortcutType.Item, "0x0,0x" .. itemHex));
+    end
+    if pcall(SetItemShortcut) then
+        local item = cItemInspect:GetShortcut():GetItem();
+        return item;
+    end
+end
+
+function PopulateWITreeView()
+    local treeWidth = WITreeView:GetWidth();
+    local rowHeight = 36;
+    local rowIndent = 10;
+    local itemInfoControlWidth = 36;
+    local scrollbarWidth = 12;
+    local rowWidth = treeWidth - scrollbarWidth;
+
+    local rootNodes = WITreeView:GetNodes();
+    if (rootNodes:GetCount() > 0) then
+        -- The tree has already been set up. Call refresh instead to re-filter
+        WITreeView:Refresh();
+        return;
+    end
+
+    for categoryIndex, categoryNumber in ipairs(_G.WalletUsedCategories) do
+        local categoryNode = Turbine.UI.TreeNode();
+        categoryNode:SetSize(rowWidth, rowHeight);
+        rootNodes:Add(categoryNode);
+        --categoryNode:SetBackColor(Turbine.UI.Color.DarkBlue);
+        categoryNode.isCategory = true;
+
+        local categoryLabel = Turbine.UI.Label();
+        categoryLabel:SetParent(categoryNode);
+        categoryLabel:SetText(_G.WalletItemCategories[categoryNumber]);
+        categoryLabel:SetSize(rowWidth, rowHeight);
+        categoryLabel:SetForeColor( Color["nicegold"] );
+        categoryLabel:SetTextAlignment( Turbine.UI.ContentAlignment.MiddleLeft)
+        categoryNode.label = categoryLabel;
+
+        local categoryNodeNodes = categoryNode:GetChildNodes();
+        for index, itemId in ipairs(_G.WalletItemsByCategories[categoryNumber]) do
+            -- Look up the item:
+            local item = GetItemFromID(itemId, false);
+
+            if (item) then
+                local value = _G.WalletItems[itemId];
+                local itemInfo = item:GetItemInfo();
+
+                local itemNode = Turbine.UI.TreeNode();
+                categoryNodeNodes:Add(itemNode);
+                itemNode:SetSize(rowWidth, rowHeight);
+                --itemNode:SetBackColor(Turbine.UI.Color.DarkCyan);
+                itemNode.itemId = itemId;
+
+                local quantity = 0;
+                if (PlayerCurrency[itemInfo:GetName()]) then
+                    quantity = PlayerCurrency[itemInfo:GetName()]:GetQuantity();
+                end
+
+                local itemControlWidth = rowWidth - rowIndent;
+                -- control to hold image, name, etc.
+                local itemControl = Turbine.UI.Control();
+                itemControl:SetParent(itemNode);
+                itemControl:SetSize(rowWidth - rowIndent, rowHeight);
+                itemControl:SetLeft(rowIndent);
+
+                local left = 0;
+
+                local itemInfoControl = Turbine.UI.Lotro.ItemInfoControl();
+                itemInfoControl:SetParent(itemControl);
+                itemInfoControl:SetSize(itemInfoControlWidth, itemInfoControlWidth);
+                itemInfoControl:SetItemInfo(itemInfo);
+                itemInfoControl:SetQuantity(quantity);
+                left = left + itemInfoControlWidth + 2;
+
+                local label = Turbine.UI.Label();
+                label:SetParent(itemControl);
+                label:SetText(itemInfo:GetName());
+                label:SetPosition(left, 0);
+                label:SetSize(itemControlWidth - left, rowHeight);
+                if (value["shared"]) then
+                    label:SetForeColor( Color["green"] );
+                end
+                --label:SetBackColor(Turbine.UI.Color.DarkGreen);
+                label:SetTextAlignment( Turbine.UI.ContentAlignment.MiddleLeft)
+                itemNode.label = label;
+
+            end
+
+        end
+        categoryNode:SetExpanded(true);
+
+    end
+
+
 end
 
 function RefreshWIListBox()
