@@ -79,15 +79,15 @@ function frmWalletWindow()
     WIFiltertxt.TextChanged = function()
         if WIFiltertxt.Text ~= WIFiltertxt:GetText() then
             WIFiltertxt.Text = WIFiltertxt:GetText();
+            WIFiltertxt.LowerText = string.lower(WIFiltertxt.Text);
             WIFilter(WIFiltertxt.Text);
         end
     end
 
    function WIFilter()
-        filterText = string.lower(WIFiltertxt.Text);
         for i=1,WIListBox:GetItemCount() do
             local row = WIListBox:GetItem(i);
-            if string.find(string.lower(row.curLbl:GetText()),filterText) == nil then
+            if string.find(string.lower(row.curLbl:GetText()),WIFiltertxt.LowerText) == nil then
                 row:SetHeight(0);
             else
                 row:SetHeight(20);
