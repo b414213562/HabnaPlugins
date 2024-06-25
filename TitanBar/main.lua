@@ -13,6 +13,7 @@ AppDirD = AppDir..".";
 AppClassD = AppDirD.."Class.";
 AppCtrD = AppDirD.."Control.";
 AppCtrWalletD = AppDirD.."Control.WalletControls.";
+AppDataD = AppDirD.."Data.";
 AppLocaleD = AppDirD.."Locale.";
 
 Version = Plugins["TitanBar"]:GetVersion();--> ** TitanBar current version **
@@ -83,6 +84,11 @@ import (AppDirD.."menuControl");
 import (AppDirD.."background");
 import (AppDirD.."frmMain");
 import (AppDirD.."FontMetric");
+
+import (AppDataD.."WalletItems");
+import (AppLocaleD.."WalletItemCategories_"..GLocale);
+import (AppLocaleD.."WalletItemsByCategory_"..GLocale);
+
 frmMain();
 
 if PlayerAlign == 1 then 
