@@ -1,6 +1,21 @@
 Fanchen also tried to fix TitanBar currencies. See their progress at:
     https://github.com/Fanch3n/HabnaPlugins/tree/cleanup
 
+Wallet window notes:
+    Possible filters at the top: 
+        Currencies with a cap.
+        Currencies close to their cap.
+        Account-wide Currencies, Personal Currencies, or both.
+
+
+    Make changes to the current Wallet window, or have a Configure Wallet window?
+    Maybe add a Show All button? This would eventually be replaced with a filter section?
+    Or just hollow out the window contents and start adding tree items?
+        This might need to wait until we get categories for each item.
+
+
+    
+
 TitanBar thoughts:
 
     Next: function ImportCtr( value ) <= Change the parameter here from things like "MC" to "MithrilCoins".
@@ -17,16 +32,6 @@ Each Currency has two main keys associated:
             functions.lua AjustIcon(str), str
         Any place we're using CurrencyCodeToKey or CurrencyKeyToCode
         All uses of _G.sFromCtr
-
-
-
-Once the variables are made into a table,
-that should allow for a lot of looping instead of stating every variable name.
-
-The controls also populate tables, like this:
-	_G.LAT = {}; -- Anniversary Token table in _G
-In order that we stop polluting the global table,
-	maybe put them in something like _G.TokenControls["LAT"].
 
 change values of sFrom from things like "WI" to "Wallet". Then background.lua gets more straightforward.
 
