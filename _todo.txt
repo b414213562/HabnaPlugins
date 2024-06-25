@@ -38,7 +38,6 @@ change values of sFrom from things like "WI" to "Wallet". Then background.lua ge
 ----
 
 Notes:
-    Is WalletControl the generic thing I've been wanting to make?!?
     Reorder the items in functionsCtr.lua 
         function ImportCtr( value )
         to sort the wallet items together
