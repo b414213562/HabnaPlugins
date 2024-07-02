@@ -1,8 +1,7 @@
 Figure out how to include the C# file for generating the auto-generated files?
     Just add it to the data directory?
-Populate extra items in the wallet window:
-    Any currency in our wallet that isn't in the built-in list.
-    Make a special category, like "Unknown to TitanBar", put them there.
+Calling our auto-generated stuff WalletItems when there's a WalletItem in the API is asking for confusion.
+    Please rename the auto-generated stuff to not conflict, and update anything in code that references them.
 
 Fanchen also tried to fix TitanBar currencies. See their progress at:
     https://github.com/Fanch3n/HabnaPlugins/tree/cleanup
@@ -19,8 +18,14 @@ Wallet window notes:
     Or just hollow out the window contents and start adding tree items?
         This might need to wait until we get categories for each item.
 
+There is at least one item duplicate. What's up with that? (looks like 6 duplicates)
+    [71] = 1879112720; -- Mark of Triumph
+    [72] = 1879124406; -- Mark of Triumph
 
-    
+What's up with this error message?
+    [07/02 08:49:22 PM] ...ins\TitanBar\Control\WalletControls\WalletWindow.lua:308: table index is nil
+
+
 
 TitanBar thoughts:
 

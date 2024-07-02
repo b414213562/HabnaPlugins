@@ -371,6 +371,29 @@ function GetItemFromID(itemID,IsHex)
     end
 end
 
+---comment Duplicates the PlayerCurrency table, but does not deep copy the WalletItem entries within.
+---@return table # A shallow copy of PlayerCurrency.
+function ClonePlayerCurrency()
+    local clone = {};
+
+    for key,value in pairs(PlayerCurrency) do
+        clone[key] = value;
+    end
+
+    return clone;
+end
+
+---comment
+---@param table table The table whose items we will count
+---@return integer # The count of items in the table, regardless of whether they are indexed with a number.
+function table.GetSize(table)
+    local size = 0;
+    for _ in pairs(table) do
+        size = size + 1;
+    end
+    return size;
+end
+
 ---comment
 ---@param rootNodes TreeNodeList The result of calling TreeView:GetNodes()
 ---@param width number The width for this node
@@ -400,8 +423,14 @@ function PopulateWITreeView()
     local rowHeight = 36;
     local rowIndent = 10;
     local itemInfoControlWidth = 36;
+    local itemImageWidth = 32;
     local scrollbarWidth = 12;
     local rowWidth = treeWidth - scrollbarWidth;
+
+    -- Begin by populating a list of all of the current wallet items.
+    -- As we add items to the UI, remove them from here.
+    -- Anything left goes into an "Unknown" category.
+    local remainingCurrencies = ClonePlayerCurrency();
 
     local rootNodes = WITreeView:GetNodes();
     if (rootNodes:GetCount() > 0) then
@@ -462,6 +491,7 @@ function PopulateWITreeView()
                 label:SetTextAlignment( Turbine.UI.ContentAlignment.MiddleLeft)
                 itemNode.label = label;
 
+                remainingCurrencies[itemName] = nil;
             end
 
         end
@@ -469,6 +499,60 @@ function PopulateWITreeView()
 
     end
 
+    local remainingCurrenciesSize = table.GetSize(remainingCurrencies);
+    if (remainingCurrenciesSize > 0) then
+        -- Get a lookup table sorted alphabetically:
+        local remainingCurrenciesInOrder = {};
+        for key, value in pairs(remainingCurrencies) do
+            table.insert(remainingCurrenciesInOrder, key);
+        end
+        table.sort(remainingCurrenciesInOrder);
+
+        local categoryNode = MakeRootNode(rootNodes, rowWidth, rowHeight, _G.WalletItemCategoryUnknown);
+
+        local categoryNodeNodes = categoryNode:GetChildNodes();
+        for index, itemName in ipairs(remainingCurrenciesInOrder) do
+            local walletItem = remainingCurrencies[itemName];
+
+            local itemNode = Turbine.UI.TreeNode();
+            categoryNodeNodes:Add(itemNode);
+            itemNode:SetSize(rowWidth, rowHeight);
+            --itemNode:SetBackColor(Turbine.UI.Color.DarkCyan);
+
+            local quantity = walletItem:GetQuantity();
+
+            local itemControlWidth = rowWidth - rowIndent;
+            -- control to hold image, name, etc.
+            local itemControl = Turbine.UI.Control();
+            itemControl:SetParent(itemNode);
+            itemControl:SetSize(rowWidth - rowIndent, rowHeight);
+            itemControl:SetLeft(rowIndent);
+
+            local left = 0;
+
+            local itemImage = Turbine.UI.Control();
+            itemImage:SetParent(itemControl);
+            itemImage:SetSize(itemImageWidth, itemImageWidth);
+            itemImage:SetBackground(walletItem:GetImage());
+            itemImage:SetBlendMode(Turbine.UI.BlendMode.AlphaBlend);
+            -- Todo: When quantity is split out from itemInfoControl, put this there
+            -- itemImage:SetQuantity(quantity);
+            left = left + itemImageWidth + 4;
+
+            local label = Turbine.UI.Label();
+            label:SetParent(itemControl);
+            label:SetText(itemName);
+            label:SetPosition(left, 0);
+            label:SetSize(itemControlWidth - left, rowHeight);
+            if (walletItem:IsAccountItem()) then
+                label:SetForeColor( Color["green"] );
+            end
+            --label:SetBackColor(Turbine.UI.Color.DarkGreen);
+            label:SetTextAlignment( Turbine.UI.ContentAlignment.MiddleLeft)
+            itemNode.label = label;
+        end
+        categoryNode:SetExpanded(true);
+    end
 
 end
 
