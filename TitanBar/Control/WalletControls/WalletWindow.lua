@@ -419,7 +419,7 @@ function PopulateWITreeView()
             local item = GetItemFromID(itemId, false);
 
             if (item) then
-                local value = _G.WalletItems[itemId];
+                local dataWalletItem = _G.WalletItems[itemId];
                 local itemInfo = item:GetItemInfo();
 
                 local itemNode = Turbine.UI.TreeNode();
@@ -454,7 +454,7 @@ function PopulateWITreeView()
                 label:SetText(itemInfo:GetName());
                 label:SetPosition(left, 0);
                 label:SetSize(itemControlWidth - left, rowHeight);
-                if (value["shared"]) then
+                if (dataWalletItem["shared"]) then
                     label:SetForeColor( Color["green"] );
                 end
                 --label:SetBackColor(Turbine.UI.Color.DarkGreen);
