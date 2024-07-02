@@ -170,7 +170,6 @@ function frmWalletWindow()
         --   Hide if not in wallet
         --   If there's a search time, hide if we don't match it.
         local name = treeNode.label:GetText();
-        local value = _G.WalletItems[treeNode.itemId];
 
         -- Is there a filter, and if so does in not match the current node?
         if (WIFiltertxt.LowerText) then
@@ -179,9 +178,12 @@ function frmWalletWindow()
             end
         end
 
-        if (value.old) then
-            -- Don't show old items
-            return true;
+        if (treeNode.itemId) then
+            local value = _G.WalletItems[treeNode.itemId];
+            if (value.old) then
+                -- Don't show old items
+                return true;
+            end
         end
 
         if (PlayerCurrency[name]) then
