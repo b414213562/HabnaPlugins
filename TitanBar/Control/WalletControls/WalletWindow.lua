@@ -421,6 +421,7 @@ function PopulateWITreeView()
             if (item) then
                 local dataWalletItem = _G.WalletItems[itemId];
                 local itemInfo = item:GetItemInfo();
+                local itemName = itemInfo:GetName();
 
                 local itemNode = Turbine.UI.TreeNode();
                 categoryNodeNodes:Add(itemNode);
@@ -429,8 +430,8 @@ function PopulateWITreeView()
                 itemNode.itemId = itemId;
 
                 local quantity = 0;
-                if (PlayerCurrency[itemInfo:GetName()]) then
-                    quantity = PlayerCurrency[itemInfo:GetName()]:GetQuantity();
+                if (PlayerCurrency[itemName]) then
+                    quantity = PlayerCurrency[itemName]:GetQuantity();
                 end
 
                 local itemControlWidth = rowWidth - rowIndent;
@@ -451,7 +452,7 @@ function PopulateWITreeView()
 
                 local label = Turbine.UI.Label();
                 label:SetParent(itemControl);
-                label:SetText(itemInfo:GetName());
+                label:SetText(itemName);
                 label:SetPosition(left, 0);
                 label:SetSize(itemControlWidth - left, rowHeight);
                 if (dataWalletItem["shared"]) then
