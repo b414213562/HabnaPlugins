@@ -1,5 +1,8 @@
 Figure out how to include the C# file for generating the auto-generated files?
     Just add it to the data directory?
+Populate extra items in the wallet window:
+    Any currency in our wallet that isn't in the built-in list.
+    Make a special category, like "Unknown to TitanBar", put them there.
 
 Fanchen also tried to fix TitanBar currencies. See their progress at:
     https://github.com/Fanch3n/HabnaPlugins/tree/cleanup
