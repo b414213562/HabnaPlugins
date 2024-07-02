@@ -413,6 +413,7 @@ function CurrencyAdded(sender, args)
         AddCurrencyCallbackIfNeeded(item);
         UpdateCurrency(key, item:GetQuantity());
     end
+    PlayerWalletSize = PlayerWalletSize + 1;
 end
 
 function CurrencyRemoved(sender, args)
@@ -426,6 +427,7 @@ function CurrencyRemoved(sender, args)
         RemoveCallback(item, PlayerCurrencyHandler[currencyName]);
         PlayerCurrencyHandler[currencyName] = nil;
     end
+    PlayerWalletSize = PlayerWalletSize - 1;
 end
 
 --**v Update backpack infos on TitanBar v**
