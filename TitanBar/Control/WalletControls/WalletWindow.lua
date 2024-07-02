@@ -371,6 +371,30 @@ function GetItemFromID(itemID,IsHex)
     end
 end
 
+---comment
+---@param rootNodes TreeNodeList The result of calling TreeView:GetNodes()
+---@param width number The width for this node
+---@param height number The height for this node
+---@param text string The text to put into this node's label
+---@return TreeNode # The created node
+function MakeRootNode(rootNodes, width, height, text)
+    local categoryNode = Turbine.UI.TreeNode();
+    categoryNode:SetSize(width, height);
+    rootNodes:Add(categoryNode);
+    --categoryNode:SetBackColor(Turbine.UI.Color.DarkBlue);
+    categoryNode.isCategory = true;
+
+    local categoryLabel = Turbine.UI.Label();
+    categoryLabel:SetParent(categoryNode);
+    categoryLabel:SetText(text);
+    categoryLabel:SetSize(width, height);
+    categoryLabel:SetForeColor( Color["nicegold"] );
+    categoryLabel:SetTextAlignment( Turbine.UI.ContentAlignment.MiddleLeft)
+    categoryNode.label = categoryLabel;
+
+    return categoryNode;
+end
+
 function PopulateWITreeView()
     local treeWidth = WITreeView:GetWidth();
     local rowHeight = 36;
@@ -387,19 +411,7 @@ function PopulateWITreeView()
     end
 
     for categoryIndex, categoryNumber in ipairs(_G.WalletUsedCategories) do
-        local categoryNode = Turbine.UI.TreeNode();
-        categoryNode:SetSize(rowWidth, rowHeight);
-        rootNodes:Add(categoryNode);
-        --categoryNode:SetBackColor(Turbine.UI.Color.DarkBlue);
-        categoryNode.isCategory = true;
-
-        local categoryLabel = Turbine.UI.Label();
-        categoryLabel:SetParent(categoryNode);
-        categoryLabel:SetText(_G.WalletItemCategories[categoryNumber]);
-        categoryLabel:SetSize(rowWidth, rowHeight);
-        categoryLabel:SetForeColor( Color["nicegold"] );
-        categoryLabel:SetTextAlignment( Turbine.UI.ContentAlignment.MiddleLeft)
-        categoryNode.label = categoryLabel;
+        local categoryNode = MakeRootNode(rootNodes, rowWidth, rowHeight, _G.WalletItemCategories[categoryNumber]);
 
         local categoryNodeNodes = categoryNode:GetChildNodes();
         for index, itemId in ipairs(_G.WalletItemsByCategories[categoryNumber]) do
