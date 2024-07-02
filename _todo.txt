@@ -117,3 +117,8 @@ Notes for Defenders of the Angle reputation for TitanBar:
     Acquaintance: 6,250
     Friend: 6,250
     Ally: 6,250
+
+---
+
+Further code fixes:
+    Why do we save off PlayerWalletSize when it is volatile?
