@@ -138,11 +138,12 @@ function BGColor( cmd, value )
 		BGColor( cmd, "TitanBar" );
 	elseif value == "this" then
         -- Handle currencies:
+        local code = _G.sFromCtr;
         local key = CurrencyCodeToKey[_G.sFromCtr];
         if (key) then
             BC.Alpha[key], BC.Red[key], BC.Green[key], BC.Blue[key] = tA, tR, tG, tB;
 
-            local table = _G[key];
+            local table = _G[code];
             table[ "Ctr" ]:SetBackColor( color );
         else
             -- Handle everything else:
