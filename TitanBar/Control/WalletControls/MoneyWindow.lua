@@ -4,49 +4,49 @@
 
 function frmMoneyWindow()
 	-- **v Set some window stuff v**
-	_G.wMI = Turbine.UI.Lotro.Window()
-	_G.wMI:SetText( L["MIWTitle"] );
-	_G.wMI:SetWantsKeyEvents( true );
-	_G.wMI:SetVisible( true );
-	_G.wMI:SetWidth( 325 );
-	--_G.wMI:SetZOrder( 2 );
-	_G.wMI:Activate();
+	_G.wMoney = Turbine.UI.Lotro.Window()
+	_G.wMoney:SetText( L["MIWTitle"] );
+	_G.wMoney:SetWantsKeyEvents( true );
+	_G.wMoney:SetVisible( true );
+	_G.wMoney:SetWidth( 325 );
+	--_G.wMoney:SetZOrder( 2 );
+	_G.wMoney:Activate();
 
-	_G.wMI.KeyDown = function( sender, args )
+	_G.wMoney.KeyDown = function( sender, args )
 		if ( args.Action == Turbine.UI.Lotro.Action.Escape ) then
-			_G.wMI:Close();
+			_G.wMoney:Close();
 		elseif ( args.Action == 268435635 ) or ( args.Action == 268435579 ) then -- Hide if F12 key is press or reposition UI
-			_G.wMI:SetVisible( not _G.wMI:IsVisible() );
+			_G.wMoney:SetVisible( not _G.wMoney:IsVisible() );
 		end
 	end
 
-	_G.wMI.MouseUp = function( sender, args )
-		settings.Money.L = string.format("%.0f", _G.wMI:GetLeft());
-		settings.Money.T = string.format("%.0f", _G.wMI:GetTop());
-		PositionW.Left["Money"], PositionW.Top["Money"] = _G.wMI:GetPosition();
+	_G.wMoney.MouseUp = function( sender, args )
+		settings.Money.L = string.format("%.0f", _G.wMoney:GetLeft());
+		settings.Money.T = string.format("%.0f", _G.wMoney:GetTop());
+		PositionW.Left["Money"], PositionW.Top["Money"] = _G.wMoney:GetPosition();
 		SaveSettings( false );
 	end
 
-	_G.wMI.Closing = function( sender, args ) -- Function for the Upper right X icon
-		_G.wMI:SetWantsKeyEvents( false );
-		_G.wMI = nil;
-		_G.frmMI = nil;
+	_G.wMoney.Closing = function( sender, args ) -- Function for the Upper right X icon
+		_G.wMoney:SetWantsKeyEvents( false );
+		_G.wMoney = nil;
+		_G.frmMoney = nil;
 	end
 	-- **^
 
 	MIListBox = Turbine.UI.ListBox();
-	MIListBox:SetParent( _G.wMI );
+	MIListBox:SetParent( _G.wMoney );
 	MIListBox:SetPosition( 20, 35 );
-	MIListBox:SetWidth( _G.wMI:GetWidth() - 40 );
+	MIListBox:SetWidth( _G.wMoney:GetWidth() - 40 );
 	MIListBox:SetMaxItemsPerLine( 1 );
 	MIListBox:SetOrientation( Turbine.UI.Orientation.Horizontal );
 	--MIListBox:SetBackColor( Color["darkgrey"] ); --debug purpose
 	
 	-- **v Display total money - check box v**
 	AllCharCB = Turbine.UI.Lotro.CheckBox();
-	AllCharCB:SetParent( _G.wMI );
+	AllCharCB:SetParent( _G.wMoney );
 	AllCharCB:SetText( L["MIWAll"] );
-	AllCharCB:SetSize( _G.wMI:GetWidth(), 30 );
+	AllCharCB:SetSize( _G.wMoney:GetWidth(), 30 );
 	AllCharCB:SetChecked( _G.STM );
 	AllCharCB:SetForeColor( Color["rustedgold"] );
 
@@ -59,9 +59,9 @@ function frmMoneyWindow()
 	-- **^
 	-- **v Display character money - check box v**
 	ThisCharCB = Turbine.UI.Lotro.CheckBox();
-	ThisCharCB:SetParent( _G.wMI );
+	ThisCharCB:SetParent( _G.wMoney );
 	ThisCharCB:SetText( L["MIWCM"] );
-	ThisCharCB:SetSize( _G.wMI:GetWidth(), 30 );
+	ThisCharCB:SetSize( _G.wMoney:GetWidth(), 30 );
 	ThisCharCB:SetChecked( _G.SCM );
 	ThisCharCB:SetForeColor( Color["rustedgold"] );
 
@@ -74,9 +74,9 @@ function frmMoneyWindow()
 	-- **^
 	-- **v Display to all character - check box v**
 	ToAllCharCB = Turbine.UI.Lotro.CheckBox();
-	ToAllCharCB:SetParent( _G.wMI );
+	ToAllCharCB:SetParent( _G.wMoney );
 	ToAllCharCB:SetText( L["MIWCMAll"] );
-	ToAllCharCB:SetSize( _G.wMI:GetWidth(), 30 );
+	ToAllCharCB:SetSize( _G.wMoney:GetWidth(), 30 );
 	ToAllCharCB:SetChecked( _G.SCMA );
 	ToAllCharCB:SetForeColor( Color["rustedgold"] );
 
@@ -87,9 +87,9 @@ function frmMoneyWindow()
 	-- **^
 	-- **v Display session statistics - check box v**
 	SSSCB = Turbine.UI.Lotro.CheckBox();
-	SSSCB:SetParent( _G.wMI );
+	SSSCB:SetParent( _G.wMoney );
 	SSSCB:SetText( L["MIWSSS"] );
-	SSSCB:SetSize( _G.wMI:GetWidth(), 30 );
+	SSSCB:SetSize( _G.wMoney:GetWidth(), 30 );
 	SSSCB:SetChecked( _G.SSS );
 	SSSCB:SetForeColor( Color["rustedgold"] );
 
@@ -101,9 +101,9 @@ function frmMoneyWindow()
 	-- **^
 	-- **v Display session statistics - check box v**
 	STSCB = Turbine.UI.Lotro.CheckBox();
-	STSCB:SetParent( _G.wMI );
+	STSCB:SetParent( _G.wMoney );
 	STSCB:SetText( L["MIWSTS"] );
-	STSCB:SetSize( _G.wMI:GetWidth(), 30 );
+	STSCB:SetSize( _G.wMoney:GetWidth(), 30 );
 	STSCB:SetChecked( _G.STS );
 	STSCB:SetForeColor( Color["rustedgold"] );
 
@@ -116,7 +116,7 @@ function frmMoneyWindow()
 
 	RefreshMIListBox();
 
-	_G.wMI:SetPosition( PositionW.Left["Money"], PositionW.Top["Money"] );
+	_G.wMoney:SetPosition( PositionW.Left["Money"], PositionW.Top["Money"] );
 end
 
 function RefreshMIListBox()
@@ -205,5 +205,5 @@ function RefreshMIListBox()
 	MIPosY = MIPosY + 20;
 	STSCB:SetPosition( MIListBox:GetLeft(), MIPosY );
 	
-	_G.wMI:SetHeight( MIPosY + 45 );
+	_G.wMoney:SetHeight( MIPosY + 45 );
 end

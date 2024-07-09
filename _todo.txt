@@ -1,5 +1,8 @@
-Do final changes to unify code and key to be the image ID.
-    And whetever else we happen to do along the way.
+Next time: Change key from friendly-names ("Wallet", "MithrilCoins", etc) to the image ID in preparation for arbitrary items.
+    Once that's done, can we kill all references to pre-defined lists of keys?
+    Also: Character save files needs to be updated from key to id.
+
+The Money tooltip (and maybe LotroPoints and Wallet) needs some attention - doesn't seem attached to the parent control.
 
 Figure out how to include the C# file for generating the auto-generated files?
     Just add it to the data directory?
@@ -29,26 +32,7 @@ Bug fix: The wallet window always responds to <enter> by clicking the save butto
 The way tooltip windows currently works:
     When the mouse cursor moves, hide the current window, nil out the only reference to it, and then create the window again from scratch.
     How it should work: If the window has the correct contents, just move it.\
-    
 
-TitanBar thoughts:
-
-    Next: function ImportCtr( value ) <= Change the parameter here from things like "MC" to "MithrilCoins".
-
-Each Currency has two main keys associated:
-	core abbreviation, e.g. "MC"
-	settings name, e.g. "MithrilCoins"
-
-    Places to change:
-        sFrom can sometimes be Money instead of MI?!? WHY??!?!?!
-        The Global variable is still named things like _G.MC, _G.SM, etc.
-        Functions that take keys like "MC" as parameter:
-            functions.lua ChangeColor(tColor), tColor
-            functions.lua AjustIcon(str), str
-        Any place we're using CurrencyCodeToKey or CurrencyKeyToCode
-        All uses of _G.sFromCtr
-
-change values of sFrom from things like "WI" to "Wallet". Then background.lua gets more straightforward.
 
 ----
 
@@ -66,52 +50,7 @@ Maybe fix how often we're using string.format for updating a setting?
 
 LOTROPTS is different than LOTROPoints
 
-
 ---
-8 globals changed?
-
-Wallet - 
--- Coin -- 
-L["MGSC"] -- Money
-L["MCP"] -- Commendation
-L["MDP"] -- Destiny point
-L["MLP"] -- LOTRO points
-L["MMC"] -- Mithril Coin
-
--- Currency -- 
-L["MMOE"] -- Motes of Enchantment
-L["MFOS"] -- Figments of Splendour
-L["MEOE"] -- Embers of Enchantment
-L["MAS"] -- Ancient Script
-
--- Instances and Skirmishes -- 
-L["MSM"] -- Mark
-L["MMP"] -- Medallion
-L["MSL"] -- Seal
-L["MSOM"] -- Star of Merit
-
--- Festivals and Events -- 
-L["MLAT"] -- Anniversary Token
-L["MFFT"] -- Fall Festival Token
-L["MFFAT"] -- Farmers Faire Token
-L["MMST"] -- Midsummer Token
-L["MSPL"] -- Spring Leaf
-L["MYT"] -- Yule Festival Token
-
--- Inn League and Ale Association -- 
-L["MBOT"] -- Badge of Taste
-L["MBOD"] -- Badge of Dishonour
-
--- Item Advancement -- 
-L["MSP"] -- Shard
-
--- Other    -- 
-L["MASP"] -- Amroth Silver Piece
-L["MBB"] -- Bingo Badge
-L["MCGSP"] -- Central Gondor Silver Piece
-L["MGGB"] -- Gift-giver's Brand
-L["MHT"] -- Token of Hytbold
-
 
 defeated was interested in: delving writs
 I want: festivity tokens

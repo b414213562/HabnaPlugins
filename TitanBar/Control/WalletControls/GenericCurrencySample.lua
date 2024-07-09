@@ -1,10 +1,9 @@
 -- This is how currency controls used to be done - one file per control.
 -- This is now handled in WalletControlFactory.lua.
 
-local code = ""; -- e.g. "ASP"
 local key = ""; -- e.g. "AmrothSilverPiece"
-_G[code] = {};
-local table = _G[code];
+_G[key] = {};
+local table = _G[key];
 local labelAlignment = Turbine.UI.ContentAlignment.MiddleRight;
 local iconWidth = 32; -- in-game icon 32x32
 local iconHeight = 32;
@@ -61,7 +60,7 @@ table["Lbl"].MouseMove = function( sender, args )
 	if dragging then
 		table["MoveCtr"](sender, args);
 	else
-		ShowToolTipWin( code );
+		ShowToolTipWin( key );
 	end
 end
 
@@ -76,7 +75,7 @@ table["Lbl"].MouseClick = function( sender, args )
 			
 		end
 	elseif ( args.Button == Turbine.UI.MouseButton.Right ) then
-		_G.sFromCtr = code;
+		_G.sFromCtr = key;
 		ControlMenu:ShowMenu();
 	end
 	WasDrag = false;

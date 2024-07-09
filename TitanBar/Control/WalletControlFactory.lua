@@ -21,21 +21,19 @@ MakeWalletControl_IconHeightOverrides = {
 --- This function creates a wallet control based on some parameters.
 ---@param key string The new internal key, e.g. "AmrothSilverPiece"
 function MakeWalletControl(key)
-    local code = CurrencyKeyToCode[key];
-
     -- Make sure to not make this control more than once:
-    if (_G[code]) then return; end
+    if (_G[key]) then return; end
 
     -- We haven't made the control yet, proceed:
-    _G[code] = {};
-    MakeWalletControl_Control(_G[code], code, key);
-    MakeWalletControl_Icon(_G[code], key);
-    MakeWalletControl_Label(_G[code], key);
+    _G[key] = {};
+    MakeWalletControl_Control(_G[key], key);
+    MakeWalletControl_Icon(_G[key], key);
+    MakeWalletControl_Label(_G[key], key);
 end
 
 _G.MakeWalletControl = MakeWalletControl;
 
-function MakeWalletControl_Control(table, code, key)
+function MakeWalletControl_Control(table, key)
     --**v Control for this currency v**
     table["Ctr"] = Turbine.UI.Control();
     table["Ctr"]:SetParent( TB["win"] );
@@ -49,7 +47,7 @@ function MakeWalletControl_Control(table, code, key)
         if dragging then
             MoveCtr(table, args);
         else
-            ShowToolTipWin( code );
+            ShowToolTipWin( key );
         end
     end
 
@@ -64,7 +62,7 @@ function MakeWalletControl_Control(table, code, key)
 
             end
         elseif ( args.Button == Turbine.UI.MouseButton.Right ) then
-            _G.sFromCtr = code;
+            _G.sFromCtr = key;
             ControlMenu:ShowMenu();
         end
         WasDrag = false;

@@ -1,294 +1,295 @@
 -- Money.lua
 -- Written by Habna
 
-
-_G.MI = {}; -- Money Infos table in _G
+local key = "Money";
+_G[key] = {}; -- Money Infos table in _G
+local table = _G[key];
 
 --**v Control of Gold/Silver/Copper currencies v**
-MI["Ctr"] = Turbine.UI.Control();
-MI["Ctr"]:SetParent( TB["win"] );
-MI["Ctr"]:SetMouseVisible( false );
-MI["Ctr"]:SetZOrder( 2 );
-MI["Ctr"]:SetBlendMode( Turbine.UI.BlendMode.AlphaBlend );
-MI["Ctr"]:SetBackColor( Turbine.UI.Color( BC.Alpha["Money"], BC.Red["Money"], BC.Green["Money"], BC.Blue["Money"] ) );
---MI["Ctr"]:SetBackColor( Color["red"] ); -- Debug purpose
+table["Ctr"] = Turbine.UI.Control();
+table["Ctr"]:SetParent( TB["win"] );
+table["Ctr"]:SetMouseVisible( false );
+table["Ctr"]:SetZOrder( 2 );
+table["Ctr"]:SetBlendMode( Turbine.UI.BlendMode.AlphaBlend );
+table["Ctr"]:SetBackColor( Turbine.UI.Color( BC.Alpha["Money"], BC.Red["Money"], BC.Green["Money"], BC.Blue["Money"] ) );
+--table["Ctr"]:SetBackColor( Color["red"] ); -- Debug purpose
 --**^
 --**v Control of Gold currencies v**
-MI["GCtr"] = Turbine.UI.Control();
-MI["GCtr"]:SetParent( MI["Ctr"] );
-MI["GCtr"]:SetMouseVisible( false );
---MI["GCtr"]:SetZOrder( 2 );
---MI["GCtr"]:SetBackColor( Color["blue"] ); -- Debug purpose
+table["GCtr"] = Turbine.UI.Control();
+table["GCtr"]:SetParent( table["Ctr"] );
+table["GCtr"]:SetMouseVisible( false );
+--table["GCtr"]:SetZOrder( 2 );
+--table["GCtr"]:SetBackColor( Color["blue"] ); -- Debug purpose
 --**^
 --**v Gold & total amount on TitanBar v**
-MI["GLblT"] = Turbine.UI.Label();
-MI["GLblT"]:SetParent( MI["GCtr"] );
-MI["GLblT"]:SetPosition( 0, 0 );
-MI["GLblT"]:SetFont( _G.TBFont );
---MI["GLblT"]:SetForeColor( Color["white"] );
-MI["GLblT"]:SetFontStyle( Turbine.UI.FontStyle.Outline );
-MI["GLblT"]:SetTextAlignment( Turbine.UI.ContentAlignment.MiddleRight );
---MI["GLblT"]:SetBackColor( Color["white"] ); -- Debug purpose
+table["GLblT"] = Turbine.UI.Label();
+table["GLblT"]:SetParent( table["GCtr"] );
+table["GLblT"]:SetPosition( 0, 0 );
+table["GLblT"]:SetFont( _G.TBFont );
+--table["GLblT"]:SetForeColor( Color["white"] );
+table["GLblT"]:SetFontStyle( Turbine.UI.FontStyle.Outline );
+table["GLblT"]:SetTextAlignment( Turbine.UI.ContentAlignment.MiddleRight );
+--table["GLblT"]:SetBackColor( Color["white"] ); -- Debug purpose
 
-MI["GLblT"].MouseMove = function( sender, args )
-	MI["CLbl"].MouseMove( sender, args );
+table["GLblT"].MouseMove = function( sender, args )
+	table["CLbl"].MouseMove( sender, args );
 end
 
-MI["GLblT"].MouseLeave = function( sender, args )
-	MI["CLbl"].MouseLeave( sender, args );
+table["GLblT"].MouseLeave = function( sender, args )
+	table["CLbl"].MouseLeave( sender, args );
 end
 
-MI["GLblT"].MouseClick = function( sender, args )
-	MI["CLbl"].MouseClick( sender, args );
+table["GLblT"].MouseClick = function( sender, args )
+	table["CLbl"].MouseClick( sender, args );
 end
 
-MI["GLblT"].MouseDown = function( sender, args )
-	MI["CLbl"].MouseDown( sender, args );
+table["GLblT"].MouseDown = function( sender, args )
+	table["CLbl"].MouseDown( sender, args );
 end
 
-MI["GLblT"].MouseUp = function( sender, args )
-	MI["CLbl"].MouseUp( sender, args );
+table["GLblT"].MouseUp = function( sender, args )
+	table["CLbl"].MouseUp( sender, args );
 end
 --**^
 --**v Gold amount & icon on TitanBar v**
-MI["GLbl"] = Turbine.UI.Label();
-MI["GLbl"]:SetParent( MI["GCtr"] );
-MI["GLbl"]:SetPosition( 0, 0 );
-MI["GLbl"]:SetFont( _G.TBFont );
---MI["GLbl"]:SetForeColor( Color["white"] );
-MI["GLbl"]:SetFontStyle( Turbine.UI.FontStyle.Outline );
-MI["GLbl"]:SetTextAlignment( Turbine.UI.ContentAlignment.MiddleRight );
---MI["GLbl"]:SetBackColor( Color["white"] ); -- Debug purpose
+table["GLbl"] = Turbine.UI.Label();
+table["GLbl"]:SetParent( table["GCtr"] );
+table["GLbl"]:SetPosition( 0, 0 );
+table["GLbl"]:SetFont( _G.TBFont );
+--table["GLbl"]:SetForeColor( Color["white"] );
+table["GLbl"]:SetFontStyle( Turbine.UI.FontStyle.Outline );
+table["GLbl"]:SetTextAlignment( Turbine.UI.ContentAlignment.MiddleRight );
+--table["GLbl"]:SetBackColor( Color["white"] ); -- Debug purpose
 
-MI["GLbl"].MouseMove = function( sender, args )
-	MI["CLbl"].MouseMove( sender, args );
+table["GLbl"].MouseMove = function( sender, args )
+	table["CLbl"].MouseMove( sender, args );
 end
 
-MI["GLbl"].MouseLeave = function( sender, args )
-	MI["CLbl"].MouseLeave( sender, args );
+table["GLbl"].MouseLeave = function( sender, args )
+	table["CLbl"].MouseLeave( sender, args );
 end
 
-MI["GLbl"].MouseClick = function( sender, args )
-	MI["CLbl"].MouseClick( sender, args );
+table["GLbl"].MouseClick = function( sender, args )
+	table["CLbl"].MouseClick( sender, args );
 end
 
-MI["GLbl"].MouseDown = function( sender, args )
-	MI["CLbl"].MouseDown( sender, args );
+table["GLbl"].MouseDown = function( sender, args )
+	table["CLbl"].MouseDown( sender, args );
 end
 
-MI["GLbl"].MouseUp = function( sender, args )
-	MI["CLbl"].MouseUp( sender, args );
+table["GLbl"].MouseUp = function( sender, args )
+	table["CLbl"].MouseUp( sender, args );
 end
 
 
-MI["GIcon"] = Turbine.UI.Control();
-MI["GIcon"]:SetParent( MI["GCtr"] );
---MI["GIcon"]:SetBlendMode( Turbine.UI.BlendMode.AlphaBlend );
-MI["GIcon"]:SetSize( 27, 21 );
-MI["GIcon"]:SetBackground( resources.MoneyIcon.Gold );-- in-game icon 27x21 (3 coins: 0x41004641 / 1 coin: 0x41007e7b) ( all 3 coins 16x16 - 1 of each: 0x41005e9e)
---MI["GIcon"]:SetBackColor( Color["blue"] ); -- Debug purpose
+table["GIcon"] = Turbine.UI.Control();
+table["GIcon"]:SetParent( table["GCtr"] );
+--table["GIcon"]:SetBlendMode( Turbine.UI.BlendMode.AlphaBlend );
+table["GIcon"]:SetSize( 27, 21 );
+table["GIcon"]:SetBackground( resources.MoneyIcon.Gold );-- in-game icon 27x21 (3 coins: 0x41004641 / 1 coin: 0x41007e7b) ( all 3 coins 16x16 - 1 of each: 0x41005e9e)
+--table["GIcon"]:SetBackColor( Color["blue"] ); -- Debug purpose
 
-MI["GIcon"].MouseMove = function( sender, args )
-	MI["CIcon"].MouseMove( sender, args );
+table["GIcon"].MouseMove = function( sender, args )
+	table["CIcon"].MouseMove( sender, args );
 end
 
-MI["GIcon"].MouseLeave = function( sender, args )
-	MI["CLbl"].MouseLeave( sender, args );
+table["GIcon"].MouseLeave = function( sender, args )
+	table["CLbl"].MouseLeave( sender, args );
 end
 
-MI["GIcon"].MouseClick = function( sender, args )
-	MI["CLbl"].MouseClick( sender, args );
+table["GIcon"].MouseClick = function( sender, args )
+	table["CLbl"].MouseClick( sender, args );
 end
 
-MI["GIcon"].MouseDown = function( sender, args )
-	MI["CLbl"].MouseDown( sender, args );
+table["GIcon"].MouseDown = function( sender, args )
+	table["CLbl"].MouseDown( sender, args );
 end
 
-MI["GIcon"].MouseUp = function( sender, args )
-	MI["CLbl"].MouseUp( sender, args );
+table["GIcon"].MouseUp = function( sender, args )
+	table["CLbl"].MouseUp( sender, args );
 end
 --**^
 
 --**v Control of Silver currencies v**
-MI["SCtr"] = Turbine.UI.Control();
-MI["SCtr"]:SetParent( MI["Ctr"] );
-MI["SCtr"]:SetMouseVisible( false );
---MI["SCtr"]:SetZOrder( 2 );
---MI["SCtr"]:SetBackColor( Color["blue"] ); -- Debug purpose
+table["SCtr"] = Turbine.UI.Control();
+table["SCtr"]:SetParent( table["Ctr"] );
+table["SCtr"]:SetMouseVisible( false );
+--table["SCtr"]:SetZOrder( 2 );
+--table["SCtr"]:SetBackColor( Color["blue"] ); -- Debug purpose
 --**^
 --**v Silver & total amount on TitanBar v**
-MI["SLblT"] = Turbine.UI.Label();
-MI["SLblT"]:SetParent( MI["SCtr"] );
-MI["SLblT"]:SetPosition( 0, 0 );
-MI["SLblT"]:SetFont( _G.TBFont );
---MI["SLblT"]:SetForeColor( Color["white"] );
-MI["SLblT"]:SetFontStyle( Turbine.UI.FontStyle.Outline );
-MI["SLblT"]:SetTextAlignment( Turbine.UI.ContentAlignment.MiddleRight );
---MI["SLblT"]:SetBackColor( Color["white"] ); -- Debug purpose
+table["SLblT"] = Turbine.UI.Label();
+table["SLblT"]:SetParent( table["SCtr"] );
+table["SLblT"]:SetPosition( 0, 0 );
+table["SLblT"]:SetFont( _G.TBFont );
+--table["SLblT"]:SetForeColor( Color["white"] );
+table["SLblT"]:SetFontStyle( Turbine.UI.FontStyle.Outline );
+table["SLblT"]:SetTextAlignment( Turbine.UI.ContentAlignment.MiddleRight );
+--table["SLblT"]:SetBackColor( Color["white"] ); -- Debug purpose
 
-MI["SLblT"].MouseMove = function( sender, args )
-	MI["CLbl"].MouseMove( sender, args );
+table["SLblT"].MouseMove = function( sender, args )
+	table["CLbl"].MouseMove( sender, args );
 end
 
-MI["SLblT"].MouseLeave = function( sender, args )
-	MI["CLbl"].MouseLeave( sender, args );
+table["SLblT"].MouseLeave = function( sender, args )
+	table["CLbl"].MouseLeave( sender, args );
 end
 
-MI["SLblT"].MouseClick = function( sender, args )
-	MI["CLbl"].MouseClick( sender, args );
+table["SLblT"].MouseClick = function( sender, args )
+	table["CLbl"].MouseClick( sender, args );
 end
 
-MI["SLblT"].MouseDown = function( sender, args )
-	MI["CLbl"].MouseDown( sender, args );
+table["SLblT"].MouseDown = function( sender, args )
+	table["CLbl"].MouseDown( sender, args );
 end
 
-MI["SLblT"].MouseUp = function( sender, args )
-	MI["CLbl"].MouseUp( sender, args );
+table["SLblT"].MouseUp = function( sender, args )
+	table["CLbl"].MouseUp( sender, args );
 
 end
 --**^
 --**v Silver amount & icon on TitanBar v**
-MI["SLbl"] = Turbine.UI.Label();
-MI["SLbl"]:SetParent( MI["SCtr"] );
-MI["SLbl"]:SetPosition( 0, 0 );
-MI["SLbl"]:SetFont( _G.TBFont );
---MI["SLbl"]:SetForeColor( Color["white"] );
---MI["SLbl"]:SetSize( 20, 30 );
-MI["SLbl"]:SetFontStyle( Turbine.UI.FontStyle.Outline );
-MI["SLbl"]:SetTextAlignment( Turbine.UI.ContentAlignment.MiddleRight );
---MI["SLbl"]:SetBackColor( Color["white"] ); -- Debug purpose
+table["SLbl"] = Turbine.UI.Label();
+table["SLbl"]:SetParent( table["SCtr"] );
+table["SLbl"]:SetPosition( 0, 0 );
+table["SLbl"]:SetFont( _G.TBFont );
+--table["SLbl"]:SetForeColor( Color["white"] );
+--table["SLbl"]:SetSize( 20, 30 );
+table["SLbl"]:SetFontStyle( Turbine.UI.FontStyle.Outline );
+table["SLbl"]:SetTextAlignment( Turbine.UI.ContentAlignment.MiddleRight );
+--table["SLbl"]:SetBackColor( Color["white"] ); -- Debug purpose
 
-MI["SLbl"].MouseMove = function( sender, args )
-	MI["CLbl"].MouseMove( sender, args );
+table["SLbl"].MouseMove = function( sender, args )
+	table["CLbl"].MouseMove( sender, args );
 end
 
-MI["SLbl"].MouseLeave = function( sender, args )
-	MI["CLbl"].MouseLeave( sender, args );
+table["SLbl"].MouseLeave = function( sender, args )
+	table["CLbl"].MouseLeave( sender, args );
 end
 
-MI["SLbl"].MouseClick = function( sender, args )
-	MI["CLbl"].MouseClick( sender, args );
+table["SLbl"].MouseClick = function( sender, args )
+	table["CLbl"].MouseClick( sender, args );
 end
 
-MI["SLbl"].MouseDown = function( sender, args )
-	MI["CLbl"].MouseDown( sender, args );
+table["SLbl"].MouseDown = function( sender, args )
+	table["CLbl"].MouseDown( sender, args );
 end
 
-MI["SLbl"].MouseUp = function( sender, args )
-	MI["CLbl"].MouseUp( sender, args );
+table["SLbl"].MouseUp = function( sender, args )
+	table["CLbl"].MouseUp( sender, args );
 
 end
 
 
-MI["SIcon"] = Turbine.UI.Control();
-MI["SIcon"]:SetParent( MI["SCtr"] );
---MI["SIcon"]:SetBlendMode( Turbine.UI.BlendMode.AlphaBlend );
-MI["SIcon"]:SetSize( 27, 21 );
-MI["SIcon"]:SetBackground( resources.MoneyIcon.Silver );-- in-game icon 27x21 (3 coins: 0x41007e7e / 1 coin: 0x41007e7c)
---MI["SIcon"]:SetBackColor( Color["blue"] ); -- Debug purpose
+table["SIcon"] = Turbine.UI.Control();
+table["SIcon"]:SetParent( table["SCtr"] );
+--table["SIcon"]:SetBlendMode( Turbine.UI.BlendMode.AlphaBlend );
+table["SIcon"]:SetSize( 27, 21 );
+table["SIcon"]:SetBackground( resources.MoneyIcon.Silver );-- in-game icon 27x21 (3 coins: 0x41007e7e / 1 coin: 0x41007e7c)
+--table["SIcon"]:SetBackColor( Color["blue"] ); -- Debug purpose
 
-MI["SIcon"].MouseMove = function( sender, args )
-	MI["CIcon"].MouseMove( sender, args );
+table["SIcon"].MouseMove = function( sender, args )
+	table["CIcon"].MouseMove( sender, args );
 end
 
-MI["SIcon"].MouseLeave = function( sender, args )
-	MI["CLbl"].MouseLeave( sender, args );
+table["SIcon"].MouseLeave = function( sender, args )
+	table["CLbl"].MouseLeave( sender, args );
 end
 
-MI["SIcon"].MouseClick = function( sender, args )
-	MI["CLbl"].MouseClick( sender, args );
+table["SIcon"].MouseClick = function( sender, args )
+	table["CLbl"].MouseClick( sender, args );
 end
 
-MI["SIcon"].MouseDown = function( sender, args )
-	MI["CLbl"].MouseDown( sender, args );
+table["SIcon"].MouseDown = function( sender, args )
+	table["CLbl"].MouseDown( sender, args );
 end
 
-MI["SIcon"].MouseUp = function( sender, args )
-	MI["CLbl"].MouseUp( sender, args );
+table["SIcon"].MouseUp = function( sender, args )
+	table["CLbl"].MouseUp( sender, args );
 end
 --**^
 
 --**v Control of Copper currencies v**
-MI["CCtr"] = Turbine.UI.Control();
-MI["CCtr"]:SetParent( MI["Ctr"] );
-MI["CCtr"]:SetMouseVisible( false );
---MI["CCtr"]:SetZOrder( 2 );
---MI["CCtr"]:SetBackColor( Color["blue"] ); -- Debug purpose
+table["CCtr"] = Turbine.UI.Control();
+table["CCtr"]:SetParent( table["Ctr"] );
+table["CCtr"]:SetMouseVisible( false );
+--table["CCtr"]:SetZOrder( 2 );
+--table["CCtr"]:SetBackColor( Color["blue"] ); -- Debug purpose
 --**^
 --**v Copper & total amount on TitanBar v**
-MI["CLblT"] = Turbine.UI.Label();
-MI["CLblT"]:SetParent( MI["CCtr"] );
-MI["CLblT"]:SetPosition( 0, 0 );
-MI["CLblT"]:SetFont( _G.TBFont );
---MI["CLblT"]:SetForeColor( Color["white"] );
-MI["CLblT"]:SetFontStyle( Turbine.UI.FontStyle.Outline );
-MI["CLblT"]:SetTextAlignment( Turbine.UI.ContentAlignment.MiddleRight );
---MI["CLblT"]:SetBackColor( Color["white"] ); -- Debug purpose
+table["CLblT"] = Turbine.UI.Label();
+table["CLblT"]:SetParent( table["CCtr"] );
+table["CLblT"]:SetPosition( 0, 0 );
+table["CLblT"]:SetFont( _G.TBFont );
+--table["CLblT"]:SetForeColor( Color["white"] );
+table["CLblT"]:SetFontStyle( Turbine.UI.FontStyle.Outline );
+table["CLblT"]:SetTextAlignment( Turbine.UI.ContentAlignment.MiddleRight );
+--table["CLblT"]:SetBackColor( Color["white"] ); -- Debug purpose
 
-MI["CLblT"].MouseMove = function( sender, args )
-	MI["CLbl"].MouseMove( sender, args );
+table["CLblT"].MouseMove = function( sender, args )
+	table["CLbl"].MouseMove( sender, args );
 end
 
-MI["CLblT"].MouseLeave = function( sender, args )
-	MI["CLbl"].MouseLeave( sender, args );
+table["CLblT"].MouseLeave = function( sender, args )
+	table["CLbl"].MouseLeave( sender, args );
 end
 
-MI["CLblT"].MouseClick = function( sender, args )
-	MI["CLbl"].MouseClick( sender, args );
+table["CLblT"].MouseClick = function( sender, args )
+	table["CLbl"].MouseClick( sender, args );
 end
 
-MI["CLblT"].MouseDown = function( sender, args )
-	MI["CLbl"].MouseDown( sender, args );
+table["CLblT"].MouseDown = function( sender, args )
+	table["CLbl"].MouseDown( sender, args );
 end
 
-MI["CLblT"].MouseUp = function( sender, args )
-	MI["CLbl"].MouseUp( sender, args );
+table["CLblT"].MouseUp = function( sender, args )
+	table["CLbl"].MouseUp( sender, args );
 
 end
 --**^
 --**v Copper amount & icon on TitanBar v**
-MI["CIcon"] = Turbine.UI.Control();
-MI["CIcon"]:SetParent( MI["CCtr"] );
---MI["CIcon"]:SetBlendMode( Turbine.UI.BlendMode.AlphaBlend );
-MI["CIcon"]:SetSize( 27, 21 );
-MI["CIcon"]:SetBackground( resources.MoneyIcon.Copper );-- in-game icon 27x21 (3 coins: 0x41007e80 / 1 coin: 0x41007e7d)
---MI["CIcon"]:SetBackColor( Color["blue"] ); -- Debug purpose
+table["CIcon"] = Turbine.UI.Control();
+table["CIcon"]:SetParent( table["CCtr"] );
+--table["CIcon"]:SetBlendMode( Turbine.UI.BlendMode.AlphaBlend );
+table["CIcon"]:SetSize( 27, 21 );
+table["CIcon"]:SetBackground( resources.MoneyIcon.Copper );-- in-game icon 27x21 (3 coins: 0x41007e80 / 1 coin: 0x41007e7d)
+--table["CIcon"]:SetBackColor( Color["blue"] ); -- Debug purpose
 
-MI["CIcon"].MouseMove = function( sender, args )
-	MI["CLbl"].MouseLeave( sender, args );
+table["CIcon"].MouseMove = function( sender, args )
+	table["CLbl"].MouseLeave( sender, args );
 	TB["win"].MouseMove();
 	if dragging then MoveMICtr(sender, args); end
 end
 
-MI["CIcon"].MouseLeave = function( sender, args )
-	MI["CLbl"].MouseLeave( sender, args );
+table["CIcon"].MouseLeave = function( sender, args )
+	table["CLbl"].MouseLeave( sender, args );
 end
 
-MI["CIcon"].MouseClick = function( sender, args )
-	MI["CLbl"].MouseClick( sender, args );
+table["CIcon"].MouseClick = function( sender, args )
+	table["CLbl"].MouseClick( sender, args );
 end
 
-MI["CIcon"].MouseDown = function( sender, args )
-	MI["CLbl"].MouseDown( sender, args );
+table["CIcon"].MouseDown = function( sender, args )
+	table["CLbl"].MouseDown( sender, args );
 end
 
-MI["CIcon"].MouseUp = function( sender, args )
-	MI["CLbl"].MouseUp( sender, args );
+table["CIcon"].MouseUp = function( sender, args )
+	table["CLbl"].MouseUp( sender, args );
 end
 
 
-MI["CLbl"] = Turbine.UI.Label();
-MI["CLbl"]:SetParent( MI["CCtr"] );
-MI["CLbl"]:SetPosition( 0, 0 );
-MI["CLbl"]:SetFont( _G.TBFont );
---MI["CLbl"]:SetForeColor( Color["white"] );
---MI["CLbl"]:SetSize( 20, 30 );
-MI["CLbl"]:SetFontStyle( Turbine.UI.FontStyle.Outline );
-MI["CLbl"]:SetTextAlignment( Turbine.UI.ContentAlignment.MiddleRight );
---MI["CLbl"]:SetBackColor( Color["white"] ); -- Debug purpose
+table["CLbl"] = Turbine.UI.Label();
+table["CLbl"]:SetParent( table["CCtr"] );
+table["CLbl"]:SetPosition( 0, 0 );
+table["CLbl"]:SetFont( _G.TBFont );
+--table["CLbl"]:SetForeColor( Color["white"] );
+--table["CLbl"]:SetSize( 20, 30 );
+table["CLbl"]:SetFontStyle( Turbine.UI.FontStyle.Outline );
+table["CLbl"]:SetTextAlignment( Turbine.UI.ContentAlignment.MiddleRight );
+--table["CLbl"]:SetBackColor( Color["white"] ); -- Debug purpose
 
-MI["CLbl"].MouseMove = function( sender, args )
-	--MI["CLbl"].MouseLeave( sender, args );
+table["CLbl"].MouseMove = function( sender, args )
+	--table["CLbl"].MouseLeave( sender, args );
 	TB["win"].MouseMove();
 	if dragging then
 		MoveMICtr(sender, args);
@@ -310,61 +311,61 @@ MI["CLbl"].MouseMove = function( sender, args )
 	end
 end
 
-MI["CLbl"].MouseLeave = function( sender, args )
+table["CLbl"].MouseLeave = function( sender, args )
 	ResetToolTipWin();
 	MITT = false;
 end
 
-MI["CLbl"].MouseClick = function( sender, args )
+table["CLbl"].MouseClick = function( sender, args )
 	TB["win"].MouseMove();
 	if ( args.Button == Turbine.UI.MouseButton.Left ) then
 		if not WasDrag then
-			if _G.frmMI then _G.frmMI = false; wMI:Close();
+			if _G.frmMoney then _G.frmMoney = false; wMoney:Close();
 			else
-				_G.frmMI = true;
+				_G.frmMoney = true;
 				import (AppCtrWalletD.."MoneyWindow");
 				frmMoneyWindow();
 			end
 		end
 	elseif ( args.Button == Turbine.UI.MouseButton.Right ) then
-		_G.sFromCtr = "MI";
+		_G.sFromCtr = "Money";
 		ControlMenu:ShowMenu();
 	end
 	WasDrag = false;
 end
 
-MI["CLbl"].MouseDown = function( sender, args )
+table["CLbl"].MouseDown = function( sender, args )
 	if ( args.Button == Turbine.UI.MouseButton.Left ) then
-		MI["Ctr"]:SetZOrder( 3 );
+		table["Ctr"]:SetZOrder( 3 );
 		dragStartX = args.X;
 		dragStartY = args.Y;
 		dragging = true;
 	end
 end
 
-MI["CLbl"].MouseUp = function( sender, args )
-	MI["Ctr"]:SetZOrder( 2 );
+table["CLbl"].MouseUp = function( sender, args )
+	table["Ctr"]:SetZOrder( 2 );
 	dragging = false;
-	Position.Left["Money"] = MI["Ctr"]:GetLeft();
+	Position.Left["Money"] = table["Ctr"]:GetLeft();
 	settings.Money.X = string.format("%.0f", Position.Left["Money"]);
-	Position.Top["Money"] = MI["Ctr"]:GetTop();
+	Position.Top["Money"] = table["Ctr"]:GetTop();
 	settings.Money.Y = string.format("%.0f", Position.Top["Money"]);
 	SaveSettings( false );
 end
 --**^
 
 function MoveMICtr(sender, args)
-	MI["CLbl"].MouseLeave( sender, args );
-	local CtrLocX = MI["Ctr"]:GetLeft();
-	local CtrWidth = MI["Ctr"]:GetWidth();
+	table["CLbl"].MouseLeave( sender, args );
+	local CtrLocX = table["Ctr"]:GetLeft();
+	local CtrWidth = table["Ctr"]:GetWidth();
 	CtrLocX = CtrLocX + ( args.X - dragStartX );
 	if CtrLocX < 0 then CtrLocX = 0; elseif CtrLocX + CtrWidth > screenWidth then CtrLocX = screenWidth - CtrWidth; end
 	
-	local CtrLocY = MI["Ctr"]:GetTop();
-	local CtrHeight = MI["Ctr"]:GetHeight();
+	local CtrLocY = table["Ctr"]:GetTop();
+	local CtrHeight = table["Ctr"]:GetHeight();
 	CtrLocY = CtrLocY + ( args.Y - dragStartY );
 	if CtrLocY < 0 then CtrLocY = 0; elseif CtrLocY + CtrHeight > TB["win"]:GetHeight() then CtrLocY = TB["win"]:GetHeight() - CtrHeight; end
 
-	MI["Ctr"]:SetPosition( CtrLocX, CtrLocY );
+	table["Ctr"]:SetPosition( CtrLocX, CtrLocY );
 	WasDrag = true;
 end

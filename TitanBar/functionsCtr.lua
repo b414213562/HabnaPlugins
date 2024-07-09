@@ -5,19 +5,18 @@
 
 function ImportCtr( value )
     -- Handle currencies:
-    local key = CurrencyCodeToKey[value];
-    if (key) then
-        -- Currency-specific code:
-        if (key == "Wallet") then
+    if (IsCurrency[value]) then
+        -- Currency-specific blocks:
+        if (value == "Wallet") then
             import (AppCtrWalletD.."Wallet");
             import (AppCtrWalletD.."WalletToolTip");
             UpdateWallet();
-            WI[ "Ctr" ]:SetPosition( Position.Left["Wallet"], Position.Top["Wallet"] );
-        elseif (key == "Money") then
+            _G[value][ "Ctr" ]:SetPosition( Position.Left[value], Position.Top[value] );
+        elseif (value == "Money") then
             if Where["Money"] == 1 then
                 import (AppCtrWalletD.."Money");
                 import (AppCtrWalletD.."MoneyToolTip");
-                MI[ "Ctr" ]:SetPosition( Position.Left["Money"], Position.Top["Money"] );
+                _G["Money"][ "Ctr" ]:SetPosition( Position.Left["Money"], Position.Top["Money"] );
             end
             if Where["Money"] ~= 3 then
                 PlayerAtt = Player:GetAttributes();
@@ -32,10 +31,10 @@ function ImportCtr( value )
                 RemoveCallback(sspack, "CountChanged", UpdateSharedStorageGold);
                 -- ^^ Thx Heridian!
             end
-        elseif (key == "LOTROPoints") then
+        elseif (value == "LOTROPoints") then
             if Where["LOTROPoints"] == 1 then
                 import (AppCtrWalletD.."LOTROPoints");
-                LP[ "Ctr" ]:SetPosition( Position.Left["LOTROPoints"], Position.Top["LOTROPoints"] );
+                _G["LOTROPoints"][ "Ctr" ]:SetPosition( Position.Left["LOTROPoints"], Position.Top["LOTROPoints"] );
                 UpdateLOTROPoints();
             end
             if Where["LOTROPoints"] ~= 3 then
@@ -72,15 +71,15 @@ function ImportCtr( value )
                 RemoveCallback(Turbine.Chat, "Received", LPcb);
             end
         else
-            if Where[key] == 1 then
+            if Where[value] == 1 then
                 -- Any wallet control that is not generic
                 -- must have a custom block above
                 -- (e.g. Wallet, Money, LOTROPoints).
-                MakeWalletControl(key);
-                _G[value][ "Ctr" ]:SetPosition( Position.Left[key], Position.Top[key] );
+                MakeWalletControl(value);
+                _G[value][ "Ctr" ]:SetPosition( Position.Left[value], Position.Top[value] );
             end
-            if Where[key] ~= 3 then
-                UpdateCurrency(key);
+            if Where[value] ~= 3 then
+                UpdateCurrency(value);
             end
         end
 

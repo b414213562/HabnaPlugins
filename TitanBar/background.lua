@@ -60,12 +60,11 @@ function frmBackground()
 	curSelColor:SetPosition( 1, 1 );
 	
 	-- Set backcolor window setting to currently control color
-    local currencyKey = CurrencyCodeToKey[sFrom];
-    if (currencyKey) then
-        curSelAlpha = BC.Alpha[currencyKey];
-        curSelRed = BC.Red[currencyKey];
-        curSelGreen = BC.Green[currencyKey];
-        curSelBlue = BC.Blue[currencyKey];
+    if (BC.Alpha[sFrom]) then
+        curSelAlpha = BC.Alpha[sFrom];
+        curSelRed = BC.Red[sFrom];
+        curSelGreen = BC.Green[sFrom];
+        curSelBlue = BC.Blue[sFrom];
     else
         if sFrom == "TitanBar" then curSelAlpha = bcAlpha; curSelRed = bcRed; curSelGreen = bcGreen; curSelBlue = bcBlue; end
         if sFrom == "BI" then curSelAlpha = BIbcAlpha; curSelRed = BIbcRed; curSelGreen = BIbcGreen; curSelBlue = BIbcBlue; end
@@ -311,11 +310,11 @@ function UpdateBCvariable()
 	if BGWToAll then
 		bcAlpha, bcRed, bcGreen, bcBlue = curSelAlpha, curSelRed, curSelGreen, curSelBlue;
 
-        for key, value in ipairs(Currencies) do
-            BC.Alpha[value] = curSelAlpha;
-            BC.Red[value] = curSelRed;
-            BC.Green[value] = curSelGreen;
-            BC.Blue[value] = curSelBlue;
+        for index, key in ipairs(Currencies) do
+            BC.Alpha[key] = curSelAlpha;
+            BC.Red[key] = curSelRed;
+            BC.Green[key] = curSelGreen;
+            BC.Blue[key] = curSelBlue;
         end
 
 		BIbcAlpha, BIbcRed, BIbcGreen, BIbcBlue = curSelAlpha, curSelRed, curSelGreen, curSelBlue;
@@ -333,12 +332,11 @@ function UpdateBCvariable()
 		GTbcAlpha, GTbcRed, GTbcGreen, GTbcBlue = curSelAlpha, curSelRed, curSelGreen, curSelBlue;
 
 	else
-        local currencyKey = CurrencyCodeToKey[sFrom];
-        if (currencyKey) then
-            BC.Alpha[currencyKey] = curSelAlpha;
-            BC.Red[currencyKey] = curSelRed;
-            BC.Green[currencyKey] = curSelGreen;
-            BC.Blue[currencyKey] = curSelBlue;
+        if (BC.Alpha[sFrom]) then
+            BC.Alpha[sFrom] = curSelAlpha;
+            BC.Red[sFrom] = curSelRed;
+            BC.Green[sFrom] = curSelGreen;
+            BC.Blue[sFrom] = curSelBlue;
         else
             if sFrom == "TitanBar" then bcAlpha = curSelAlpha; bcRed = curSelRed; bcGreen = curSelGreen; bcBlue = curSelBlue; end
             if sFrom == "BI" then BIbcAlpha = curSelAlpha; BIbcRed = curSelRed; BIbcGreen = curSelGreen; BIbcBlue = curSelBlue; end

@@ -1,10 +1,9 @@
 -- LOTROPoints.lua
 -- Written by Habna
 
-local code = "LP";
 local key = "LOTROPoints";
-_G[code] = {};
-local table = _G[code];
+_G[key] = {};
+local table = _G[key];
 local labelAlignment = Turbine.UI.ContentAlignment.MiddleCenter;
 local iconWidth = 36; -- in-game icon 32x32
 local iconHeight = 43;
@@ -33,7 +32,7 @@ table["Icon"].MouseMove = function( sender, args )
 	if dragging then
         table["MoveCtr"](sender, args);
 	else
-		ShowToolTipWin( code );
+		ShowToolTipWin( key );
     end
 end
 
@@ -67,7 +66,7 @@ table["Lbl"].MouseMove = function( sender, args )
 	if dragging then
 		table["MoveCtr"](sender, args);
 	else
-		ShowToolTipWin( code );
+		ShowToolTipWin( key );
 	end
 end
 
@@ -79,15 +78,15 @@ table["Lbl"].MouseClick = function( sender, args )
 	TB["win"].MouseMove();
 	if ( args.Button == Turbine.UI.MouseButton.Left ) then
 		if not WasDrag then
-			if _G.frmLP then _G.frmLP = false; wLP:Close();
+			if _G.frmLOTROPoints then _G.frmLOTROPoints = false; wLOTROPoints:Close();
 			else
-				_G.frmLP = true;
+				_G.frmLOTROPoints = true;
 				import (AppCtrWalletD.."LOTROPointsWindow");
 				frmLOTROPointsWindow();
 			end
 		end
 	elseif ( args.Button == Turbine.UI.MouseButton.Right ) then
-		_G.sFromCtr = code;
+		_G.sFromCtr = key;
 		ControlMenu:ShowMenu();
 	end
 	WasDrag = false;

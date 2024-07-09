@@ -68,6 +68,7 @@ DoesNotHaveWhere = {
     ["Wallet"] = true;
 };
 
+-- the key for each currency:
 Currencies = {
     "Wallet",
     "Money",
@@ -99,6 +100,11 @@ Currencies = {
     "BadgeOfDishonour",
 }
 
+IsCurrency = {};
+for key, value in ipairs(Currencies) do
+    IsCurrency[value] = true;
+end
+
 CurrenciesNotUsedInMonsterPlay = {
     "DestinyPoints",
     "Shards",
@@ -123,68 +129,6 @@ CurrenciesNotUsedInMonsterPlay = {
     "AncientScript",
     "BadgeOfTaste",
     "BadgeOfDishonour",
-};
-
-CurrencyCodeToKey = {
-    ["WI"] = "Wallet",
-    ["MI"] = "Money",
-    ["DP"] = "DestinyPoints",
-    ["SP"] = "Shards",
-    ["SM"] = "SkirmishMarks",
-    ["MC"] = "MithrilCoins",
-    ["YT"] = "YuleToken",
-    ["HT"] = "HytboldTokens",
-    ["MP"] = "Medallions",
-    ["SL"] = "Seals",
-    ["CP"] = "Commendations",
-    ["LP"] = "LOTROPoints",
-    ["ASP"] = "AmrothSilverPiece",
-    ["SOM"] = "StarsofMerit",
-    ["CGSP"] = "CentralGondorSilverPiece",
-    ["GGB"] = "GiftgiversBrand",
-    ["BB"] = "BingoBadge",
-    ["LAT"] = "AnniversaryToken",
-    ["MOE"] = "MotesOfEnchantment",
-    ["EOE"] = "EmbersOfEnchantment",
-    ["FOS"] = "FigmentsOfSplendour",
-    ["FFT"] = "FallFestivalToken",
-    ["FFAT"] = "FarmersFaireToken",
-    ["SPL"] = "SpringLeaf",
-    ["MST"] = "MidsummerToken",
-    ["AS"] = "AncientScript",
-    ["BOT"] = "BadgeOfTaste",
-    ["BOD"] = "BadgeOfDishonour",
-};
-
-CurrencyKeyToCode = {
-    ["Wallet"] = "WI",
-    ["Money"] = "MI",
-    ["DestinyPoints"] = "DP",
-    ["Shards"] = "SP",
-    ["SkirmishMarks"] = "SM",
-    ["MithrilCoins"] = "MC",
-    ["YuleToken"] = "YT",
-    ["HytboldTokens"] = "HT",
-    ["Medallions"] = "MP",
-    ["Seals"] = "SL",
-    ["Commendations"] = "CP",
-    ["LOTROPoints"] = "LP",
-    ["AmrothSilverPiece"] = "ASP",
-    ["StarsofMerit"] = "SOM",
-    ["CentralGondorSilverPiece"] = "CGSP",
-    ["GiftgiversBrand"] = "GGB",
-    ["BingoBadge"] = "BB",
-    ["AnniversaryToken"] = "LAT",
-    ["MotesOfEnchantment"] = "MOE",
-    ["EmbersOfEnchantment"] = "EOE",
-    ["FigmentsOfSplendour"] = "FOS",
-    ["FallFestivalToken"] = "FFT",
-    ["FarmersFaireToken"] = "FFAT",
-    ["SpringLeaf"] = "SPL",
-    ["MidsummerToken"] = "MST",
-    ["AncientScript"] = "AS",
-    ["BadgeOfTaste"] = "BOT",
-    ["BadgeOfDishonour"] = "BOD",
 };
 
 --- Parses an entry like settings.Money.W. Also checks for a discrepancy between Where and Show.
@@ -401,8 +345,8 @@ function LoadSettings()
 	BGWToAll = settings.Background.A;
 
     -- Initialize each currency:
-    for key, value in ipairs(Currencies) do
-        InitializeControlSettings(settings, value);
+    for index, key in ipairs(Currencies) do
+        InitializeControlSettings(settings, key);
     end
 
     -- Handle currency-specific initializations:
@@ -778,8 +722,8 @@ function SaveSettings(str)
 		settings.Background.A = BGWToAll;
 
         -- Save currency-specific data:
-        for key, value in ipairs(Currencies) do
-            SaveControlSettings(settings, value);
+        for index, key in ipairs(Currencies) do
+            SaveControlSettings(settings, key);
         end
 
         -- Money-specific settings:
@@ -965,8 +909,8 @@ function ResetSettings()
 	TBHeight, _G.TBFont, TBFontT, TBTop, TBAutoHide, TBIconSize, bcAlpha, bcRed, bcGreen, bcBlue = 30, 1107296268, "TrajanPro14", true, L["OPAHC"], 32, tA, tR, tG, tB; --Backcolor & default X Location for TitanBar
 
     -- Reset each currency:
-    for key, value in ipairs(Currencies) do
-        ResetControlSettings(value);
+    for index, key in ipairs(Currencies) do
+        ResetControlSettings(key);
     end
 
     -- Money-specific reset:
@@ -1001,14 +945,12 @@ function ReplaceCtr()
 	settings.TitanBar.W = string.format("%.0f", screenWidth);
 
     for index, key in ipairs(Currencies) do
-        local code = CurrencyKeyToCode[key];
-
         local oldLocX = settings[key].X / oldScreenWidth;
         Position.Left[key] = oldLocX * screenWidth;
         settings[key].X = string.format("%.0f", Position.Left[key]);
 
         local visible = Show[key] and (DoesNotHaveWhere[key] or Where[key] == 1);
-        if visible then _G[code][ "Ctr" ]:SetPosition( Position.Left[key], Position.Top[key] ); end
+        if visible then _G[key][ "Ctr" ]:SetPosition( Position.Left[key], Position.Top[key] ); end
     end
 
 	oldLocX = settings.BagInfos.X / oldScreenWidth;

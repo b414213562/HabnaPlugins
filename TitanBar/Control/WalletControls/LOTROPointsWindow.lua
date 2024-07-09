@@ -4,41 +4,41 @@
 
 function frmLOTROPointsWindow()
 	-- **v Set some window stuff v**
-	_G.wLP = Turbine.UI.Lotro.Window()
-	_G.wLP:SetPosition( PositionW.Left["LOTROPoints"], PositionW.Top["LOTROPoints"] );
-	--_G.wLP:SetSize( 300, 80 );
-	_G.wLP:SetText( L["LOTROPoints"] );
-	_G.wLP:SetWantsKeyEvents( true );
-	_G.wLP:SetVisible( true );
-	--_G.wLP:SetZOrder( 2 );
-	_G.wLP:Activate();
+	_G.wLOTROPoints = Turbine.UI.Lotro.Window()
+	_G.wLOTROPoints:SetPosition( PositionW.Left["LOTROPoints"], PositionW.Top["LOTROPoints"] );
+	--_G.wLOTROPoints:SetSize( 300, 80 );
+	_G.wLOTROPoints:SetText( L["LOTROPoints"] );
+	_G.wLOTROPoints:SetWantsKeyEvents( true );
+	_G.wLOTROPoints:SetVisible( true );
+	--_G.wLOTROPoints:SetZOrder( 2 );
+	_G.wLOTROPoints:Activate();
 
-	_G.wLP.KeyDown = function( sender, args )
+	_G.wLOTROPoints.KeyDown = function( sender, args )
 		if ( args.Action == Turbine.UI.Lotro.Action.Escape ) then
-			_G.wLP:Close();
+			_G.wLOTROPoints:Close();
 		elseif ( args.Action == 268435635 ) or ( args.Action == 268435579 ) then -- Hide if F12 key is press or reposition UI
-			_G.wLP:SetVisible( not _G.wLP:IsVisible() );
+			_G.wLOTROPoints:SetVisible( not _G.wLOTROPoints:IsVisible() );
 		elseif ( args.Action == 162 ) then --Enter key was pressed
 			buttonSave.Click( sender, args );
 		end
 	end
 
-	_G.wLP.MouseUp = function( sender, args )
-		settings.LOTROPoints.L = string.format("%.0f", _G.wLP:GetLeft());
-		settings.LOTROPoints.T = string.format("%.0f", _G.wLP:GetTop());
-		PositionW.Left["LOTROPoints"], PositionW.Top["LOTROPoints"] = _G.wLP:GetPosition();
+	_G.wLOTROPoints.MouseUp = function( sender, args )
+		settings.LOTROPoints.L = string.format("%.0f", _G.wLOTROPoints:GetLeft());
+		settings.LOTROPoints.T = string.format("%.0f", _G.wLOTROPoints:GetTop());
+		PositionW.Left["LOTROPoints"], PositionW.Top["LOTROPoints"] = _G.wLOTROPoints:GetPosition();
 		SaveSettings( false );
 	end
 
-	_G.wLP.Closing = function( sender, args ) -- Function for the Upper right X icon
-		_G.wLP:SetWantsKeyEvents( false );
-		_G.wLP = nil;
-		_G.frmLP = nil;
+	_G.wLOTROPoints.Closing = function( sender, args ) -- Function for the Upper right X icon
+		_G.wLOTROPoints:SetWantsKeyEvents( false );
+		_G.wLOTROPoints = nil;
+		_G.frmLOTROPoints = nil;
 	end
 	-- **^
 
 	local LPWCtr = Turbine.UI.Control();
-	LPWCtr:SetParent( _G.wLP );
+	LPWCtr:SetParent( _G.wLOTROPoints );
 	LPWCtr:SetPosition( 15, 50 );
 	LPWCtr:SetZOrder( 2 );
 	--LPWCtr:SetBackColor( Color["red"] ); -- debug purpose
@@ -110,7 +110,7 @@ function frmLOTROPointsWindow()
 	end
 
 	LPWCtr:SetSize( lblLOTROPTS:GetWidth()+txtLOTROPTS:GetWidth()+buttonSave:GetWidth()+10, 20 );
-	_G.wLP:SetSize( LPWCtr:GetWidth()+30, 80 );
+	_G.wLOTROPoints:SetSize( LPWCtr:GetWidth()+30, 80 );
 
 	txtLOTROPTS:Focus();
 end

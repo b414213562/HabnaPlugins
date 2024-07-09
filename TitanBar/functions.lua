@@ -185,28 +185,26 @@ function ShowToolTipWin( ToShow )
 		else w = 305; end
 	end
 
-    local key = CurrencyCodeToKey[ToShow];
-
     -- Currencies:
-    if (key) then
+    if (IsCurrency[ToShow]) then
         local tooltipWindowCustomHeight = {
             ["LOTROPoints"] = 80;
         };
-        h = tooltipWindowCustomHeight[key] or 65;
+        h = tooltipWindowCustomHeight[ToShow] or 65;
 
         local tooltipWindowCustomWidth = {
             ["CentralGondorSilverPiece"] = w + 30;
         }
-        w = tooltipWindowCustomWidth[key] or w;
+        w = tooltipWindowCustomWidth[ToShow] or w;
 
         local tooltipWindowCustomLines = {
             ["LOTROPoints"] = { L["EIt1"], L["EIt2"], L["EIt3"] };
         }
-        local lines = tooltipWindowCustomLines[key] or { L["EIt2"], L["EIt3"] };
+        local lines = tooltipWindowCustomLines[ToShow] or { L["EIt2"], L["EIt3"] };
 
         if w + mouseX > screenWidth then bblTo = "right"; x = w - 10; end
 		if not TBTop then y = h; end
-        TTW = createToolTipWin( x, y, w, h, bblTo, GetCurrencyTooltip(key), unpack(lines) );
+        TTW = createToolTipWin( x, y, w, h, bblTo, GetCurrencyTooltip(ToShow), unpack(lines) );
     -- Non-currencies:
     else
         if ToShow == "BI" then -- Bag Infos
@@ -260,7 +258,7 @@ end
 --**^
 --**v Update Wallet on TitanBar v**
 function UpdateWallet()
-	AjustIcon( "WI" );
+	AjustIcon( "Wallet" );
 end
 --**^
 --**v Update money on TitanBar v**
@@ -269,46 +267,46 @@ function UpdateMoney()
 		local money = PlayerAtt:GetMoney();
 		local gold, silver, copper = DecryptMoney( money );
 	
-		MI[ "GLbl" ]:SetText( string.format( "%.0f", gold ) );
-		MI[ "SLbl" ]:SetText( string.format( "%.0f", silver ) );
-		MI[ "CLbl" ]:SetText( string.format( "%.0f", copper ) );
+		_G["Money"][ "GLbl" ]:SetText( string.format( "%.0f", gold ) );
+		_G["Money"][ "SLbl" ]:SetText( string.format( "%.0f", silver ) );
+		_G["Money"][ "CLbl" ]:SetText( string.format( "%.0f", copper ) );
 
 		SavePlayerMoney( false );
 
-		MI[ "GLbl" ]:SetSize( MI[ "GLbl" ]:GetTextLength() * NM, CTRHeight ); 
+		_G["Money"][ "GLbl" ]:SetSize( _G["Money"][ "GLbl" ]:GetTextLength() * NM, CTRHeight ); 
             --Auto size with text length
-		MI[ "SLbl" ]:SetSize( 4 * NM, CTRHeight ); --Auto size with text length
-		MI[ "CLbl" ]:SetSize( 3 * NM, CTRHeight ); --Auto size with text length
+		_G["Money"][ "SLbl" ]:SetSize( 4 * NM, CTRHeight ); --Auto size with text length
+		_G["Money"][ "CLbl" ]:SetSize( 3 * NM, CTRHeight ); --Auto size with text length
 
-		MI[ "GLblT" ]:SetVisible( _G.STM );
-		MI[ "GLbl" ]:SetVisible( not _G.STM );
+		_G["Money"][ "GLblT" ]:SetVisible( _G.STM );
+		_G["Money"][ "GLbl" ]:SetVisible( not _G.STM );
 
-		MI[ "SLblT" ]:SetVisible( _G.STM );
-		MI[ "SLbl" ]:SetVisible( not _G.STM );
+		_G["Money"][ "SLblT" ]:SetVisible( _G.STM );
+		_G["Money"][ "SLbl" ]:SetVisible( not _G.STM );
 
-		MI[ "CLblT" ]:SetVisible( _G.STM );
-		MI[ "CLbl" ]:SetVisible( not _G.STM );
+		_G["Money"][ "CLblT" ]:SetVisible( _G.STM );
+		_G["Money"][ "CLbl" ]:SetVisible( not _G.STM );
 	
 		if _G.STM then --Add Total Money on TitanBar Money control.
 			local strData = L[ "MIWTotal" ] .. ": ";
 			local strData1 = string.format( "%.0f", GoldTot );
-			local strData2 = L[ "You" ] .. MI[ "GLbl" ]:GetText();
+			local strData2 = L[ "You" ] .. _G["Money"][ "GLbl" ]:GetText();
 			local TextLen = string.len( strData ) * TM + string.len( strData1 ) * NM;
 			if TBFontT == "TrajanPro25" then TextLen = TextLen + 7; end
-			MI[ "GLblT" ]:SetText(strData .. strData1 .. "\n" .. strData2 .. " ");
-			MI[ "GLblT" ]:SetSize( TextLen, CTRHeight );
+			_G["Money"][ "GLblT" ]:SetText(strData .. strData1 .. "\n" .. strData2 .. " ");
+			_G["Money"][ "GLblT" ]:SetSize( TextLen, CTRHeight );
 
 			strData1 = string.format( "%.0f", SilverTot );
-			strData2 = MI[ "SLbl" ]:GetText();
+			strData2 = _G["Money"][ "SLbl" ]:GetText();
 			TextLen = 4 * NM + 6;
-			MI[ "SLblT" ]:SetText( strData1 .. "\n" .. strData2 .. " " );
-			MI[ "SLblT" ]:SetSize( TextLen, CTRHeight );
+			_G["Money"][ "SLblT" ]:SetText( strData1 .. "\n" .. strData2 .. " " );
+			_G["Money"][ "SLblT" ]:SetSize( TextLen, CTRHeight );
 
 			strData1 = string.format( "%.0f", CopperTot );
-			strData2 = MI[ "CLbl" ]:GetText();
+			strData2 = _G["Money"][ "CLbl" ]:GetText();
 			TextLen = 3 * NM + 6;
-			MI[ "CLblT" ]:SetText( strData1 .. "\n" .. strData2 .. " " );
-			MI[ "CLblT" ]:SetSize( TextLen, CTRHeight );
+			_G["Money"][ "CLblT" ]:SetText( strData1 .. "\n" .. strData2 .. " " );
+			_G["Money"][ "CLblT" ]:SetSize( TextLen, CTRHeight );
 		end
 
 		--Statistics section
@@ -354,16 +352,16 @@ function UpdateMoney()
 		Turbine.PluginData.Save( 
             Turbine.DataScope.Server, "TitanBarPlayerWalletStats", walletStats);
 	
-		AjustIcon( "MI" );
+		AjustIcon( "Money" );
 	end
 end
 --**^
 --**v Update LOTRO points on TitanBar v**
 function UpdateLOTROPoints()
 	if Where["LOTROPoints"] == 1 then
-		LP[ "Lbl" ]:SetText( _G.LOTROPTS );
-		LP[ "Lbl" ]:SetSize( LP[ "Lbl" ]:GetTextLength() * NM, CTRHeight ); 
-		AjustIcon( "LP" );
+		_G["LOTROPoints"][ "Lbl" ]:SetText( _G.LOTROPTS );
+		_G["LOTROPoints"][ "Lbl" ]:SetSize( _G["LOTROPoints"][ "Lbl" ]:GetTextLength() * NM, CTRHeight ); 
+		AjustIcon( "LOTROPoints" );
 	end
 	SavePlayerLOTROPoints();
 end
@@ -374,15 +372,14 @@ end
 ---@param key string The key (e.g. "DestinyPoints" for the currency)
 ---@param quantity integer The new quantity, if known. Otherwise, will call GetCurrency().
 function UpdateCurrency(key, quantity)
-    local code = CurrencyKeyToCode[key];
-    local table = _G[code];
+    local table = _G[key];
     local quantity = quantity or GetCurrency(key);
 
 	if Where[key] == 1 and table["Lbl"] then
         local label = table["Lbl"];
 		label:SetText( quantity );
 		label:SetSize( label:GetTextLength() * NM, CTRHeight );
-		AjustIcon( code );
+		AjustIcon( key );
 	end
 end
 
@@ -745,8 +742,7 @@ function ChangeColor(tColor)
         -- Check currencies:
         for index, key in ipairs(Currencies) do
             if (Show[key]) then
-                local code = CurrencyKeyToCode[key];
-                _G[code][ "Ctr" ]:SetBackColor( tColor );
+                _G[key][ "Ctr" ]:SetBackColor( tColor );
             end
         end
 
@@ -818,33 +814,31 @@ function AjustIcon(str)
 	--CTRHeight=TBHeight;
 	local Y = -1 - ((TBIconSize - CTRHeight) / 2);
 
-    local key = CurrencyCodeToKey[str];
-
-	if str == "WI" then
-		WI[ "Icon" ]:SetStretchMode( 1 );
-		WI[ "Icon" ]:SetPosition( 0, Y );
-		WI[ "Ctr" ]:SetSize( TBIconSize, CTRHeight );
-		WI[ "Icon" ]:SetSize( TBIconSize, TBIconSize );
-		WI[ "Icon" ]:SetStretchMode( 3 );
-	elseif str == "MI" then
+	if str == "Wallet" then
+		_G.Wallet[ "Icon" ]:SetStretchMode( 1 );
+		_G.Wallet[ "Icon" ]:SetPosition( 0, Y );
+		_G.Wallet[ "Ctr" ]:SetSize( TBIconSize, CTRHeight );
+		_G.Wallet[ "Icon" ]:SetSize( TBIconSize, TBIconSize );
+		_G.Wallet[ "Icon" ]:SetStretchMode( 3 );
+	elseif str == "Money" then
 		local t = "" 
         if _G.STM then t = "T"; end 
         local p = { "G", "S", "C" }; --prefix for Gold, Silver, Copper controls
         local setleft = 0;
         for i = 1,3 do 
             local index = p[i] .. "Lbl" .. t;
-            MI[p[i] .. "Ctr"]:SetLeft(setleft);
-            local getright = MI[index]:GetLeft() + MI[index]:GetWidth();
-            MI[p[i] .. "Icon"]:SetStretchMode(1);
-		    MI[p[i] .. "Icon"]:SetPosition(getright - 4, Y + 1 );
-		    MI[p[i] .. "Ctr"]:SetSize(getright + TBIconSize, CTRHeight);
-            MI[p[i] .. "Icon"]:SetSize( TBIconSize, TBIconSize );
-		    MI[p[i] .. "Icon"]:SetStretchMode( 3 );
-            setleft = MI[p[i].."Ctr"]:GetLeft() + MI[p[i].."Ctr"]:GetWidth();
+            _G["Money"][p[i] .. "Ctr"]:SetLeft(setleft);
+            local getright = _G["Money"][index]:GetLeft() + _G["Money"][index]:GetWidth();
+            _G["Money"][p[i] .. "Icon"]:SetStretchMode(1);
+		    _G["Money"][p[i] .. "Icon"]:SetPosition(getright - 4, Y + 1 );
+		    _G["Money"][p[i] .. "Ctr"]:SetSize(getright + TBIconSize, CTRHeight);
+            _G["Money"][p[i] .. "Icon"]:SetSize( TBIconSize, TBIconSize );
+		    _G["Money"][p[i] .. "Icon"]:SetStretchMode( 3 );
+            setleft = _G["Money"][p[i].."Ctr"]:GetLeft() + _G["Money"][p[i].."Ctr"]:GetWidth();
         end
-		MI[ "Ctr" ]:SetSize( MI["GCtr"]:GetWidth() + MI["SCtr"]:GetWidth() + 
-            MI["CCtr"]:GetWidth(), CTRHeight );
-    elseif (key) then
+		_G["Money"][ "Ctr" ]:SetSize( _G["Money"]["GCtr"]:GetWidth() + _G["Money"]["SCtr"]:GetWidth() + 
+            _G["Money"]["CCtr"]:GetWidth(), CTRHeight );
+    elseif (IsCurrency[str]) then
         -- Customizing icon positions goes here:
         local customCurrencyWidthOffsets = {
             ["DestinyPoints"] = 0;
@@ -854,8 +848,8 @@ function AjustIcon(str)
         local customCurrencyHeightOffsets = {
             ["LOTROPoints"] = 1;
         };
-        local widthOffset = customCurrencyWidthOffsets[key] or 3;
-        local heightOffset = customCurrencyHeightOffsets[key] or 0;
+        local widthOffset = customCurrencyWidthOffsets[str] or 3;
+        local heightOffset = customCurrencyHeightOffsets[str] or 0;
 
         -- Handle generic currencies:
         local table = _G[str];

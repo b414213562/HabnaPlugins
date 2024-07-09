@@ -176,7 +176,7 @@ function frmMain()
         local isActive = Where[key] ~= 3;
         if (key == "Wallet") then isActive = Show[key]; end
 
-        if isActive then ImportCtr(CurrencyKeyToCode[key]); end
+        if isActive then ImportCtr(key); end
     end
 
 	if ShowTrackItems then ImportCtr( "TI" ); end --Track Items

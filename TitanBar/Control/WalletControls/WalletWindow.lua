@@ -9,72 +9,72 @@ function frmWalletWindow()
 	WIDD = HabnaPlugins.TitanBar.Class.ComboBox();
 
 	-- **v Set some window stuff v**
-	_G.wWI = Turbine.UI.Lotro.Window();
+	_G.wWallet = Turbine.UI.Lotro.Window();
 	if GLocale == "de" then w = 300; else w = 280; end
-	_G.wWI:SetSize( w, 640 ); --280x260
-    _G.wWI:SetPosition( PositionW.Left["Wallet"], PositionW.Top["Wallet"] );
-	_G.wWI:SetText( L["Wallet"] );
-	_G.wWI:SetVisible( true );
-	_G.wWI:SetWantsKeyEvents( true );
-	--_G.wWI:SetZOrder( 2 );
-	_G.wWI:Activate();
+	_G.wWallet:SetSize( w, 640 ); --280x260
+    _G.wWallet:SetPosition( PositionW.Left["Wallet"], PositionW.Top["Wallet"] );
+	_G.wWallet:SetText( L["Wallet"] );
+	_G.wWallet:SetVisible( true );
+	_G.wWallet:SetWantsKeyEvents( true );
+	--_G.wWallet:SetZOrder( 2 );
+	_G.wWallet:Activate();
 
-	_G.wWI.KeyDown = function( sender, args )
+	_G.wWallet.KeyDown = function( sender, args )
 		if ( args.Action == Turbine.UI.Lotro.Action.Escape ) then
-			_G.wWI:Close();
+			_G.wWallet:Close();
 		elseif ( args.Action == 268435635 ) or ( args.Action == 268435579 ) then -- Hide if F12 key or 'ctrl + \' is press
-			_G.wWI:SetVisible( not _G.wWI:IsVisible() );
+			_G.wWallet:SetVisible( not _G.wWallet:IsVisible() );
 		elseif ( args.Action == 162 ) then --Enter key was pressed
 			WIbutSave.Click( sender, args );
 		end
 	end
 
-	_G.wWI.MouseDown = function( sender, args )
+	_G.wWallet.MouseDown = function( sender, args )
 		if ( args.Button == Turbine.UI.MouseButton.Left ) then dragging = true; end
 	end
 
-	_G.wWI.MouseMove = function( sender, args )
+	_G.wWallet.MouseMove = function( sender, args )
 		if dragging then if WIDD.dropped then WIDD:CloseDropDown(); end end
 	end
 
-	_G.wWI.MouseUp = function( sender, args )
+	_G.wWallet.MouseUp = function( sender, args )
 		dragging = false;
-		settings.Wallet.L = string.format("%.0f", _G.wWI:GetLeft());
-		settings.Wallet.T = string.format("%.0f", _G.wWI:GetTop());
-		PositionW.Left["Wallet"], PositionW.Top["Wallet"] = _G.wWI:GetPosition();
+		settings.Wallet.L = string.format("%.0f", _G.wWallet:GetLeft());
+		settings.Wallet.T = string.format("%.0f", _G.wWallet:GetTop());
+		PositionW.Left["Wallet"], PositionW.Top["Wallet"] = _G.wWallet:GetPosition();
 		SaveSettings( false );
 	end
 
-	_G.wWI.Closing = function( sender, args )
+	_G.wWallet.Closing = function( sender, args )
 		WIDD.dropDownWindow:SetVisible(false);
-		_G.wWI:SetWantsKeyEvents( false );
-		_G.wWI = nil;
-		_G.frmWI = nil;
+		_G.wWallet:SetWantsKeyEvents( false );
+		_G.wWallet = nil;
+		_G.frmWallet = nil;
 	end
 	-- **^
 	
 	local WIlbltextHeight = 35;
 	local WIlbltext = Turbine.UI.Label();
-	WIlbltext:SetParent( _G.wWI );
+	WIlbltext:SetParent( _G.wWallet );
 	WIlbltext:SetText( L["WIt"] );
 	WIlbltext:SetPosition( 20, 35);
-	WIlbltext:SetSize( _G.wWI:GetWidth()-40 , WIlbltextHeight );
+	WIlbltext:SetSize( _G.wWallet:GetWidth()-40 , WIlbltextHeight );
 	WIlbltext:SetTextAlignment( Turbine.UI.ContentAlignment.MiddleCenter );
 	WIlbltext:SetForeColor( Color["green"] );
 
 	local WIFilterlblHeight = 20;
     local WIFilterlbl = Turbine.UI.Label();
-    WIFilterlbl:SetParent(_G.wWI);
+    WIFilterlbl:SetParent(_G.wWallet);
     WIFilterlbl:SetSize(60,WIFilterlblHeight);
     WIFilterlbl:SetPosition(20,75);
     WIFilterlbl:SetTextAlignment(Turbine.UI.ContentAlignment.MiddleLeft);
     WIFilterlbl:SetText("Search:");
     local WIFiltertxt = Turbine.UI.Lotro.TextBox();
-    WIFiltertxt:SetParent(_G.wWI);
+    WIFiltertxt:SetParent(_G.wWallet);
     WIFiltertxt:SetFont(Turbine.UI.Lotro.Font.Verdana16);
     WIFiltertxt:SetMultiline(false);
     WIFiltertxt:SetPosition(80,75);
-    WIFiltertxt:SetSize(_G.wWI:GetWidth() - 120, 20);
+    WIFiltertxt:SetSize(_G.wWallet:GetWidth() - 120, 20);
     WIFiltertxt.Text = "";
     WIFiltertxt.LowerText = "";
     WIFiltertxt.TextChanged = function()
@@ -98,13 +98,13 @@ function frmWalletWindow()
 
 	-- **v Set the Wallet listbox v**
 	local WIListBoxHeight = 
-		_G.wWI:GetHeight()-95 - WIlbltextHeight - WIFilterlblHeight;
+		_G.wWallet:GetHeight()-95 - WIlbltextHeight - WIFilterlblHeight;
 	WIListBox = Turbine.UI.ListBox();
-	WIListBox:SetParent( _G.wWI );
+	WIListBox:SetParent( _G.wWallet );
 	WIListBox:SetZOrder( 1 );
 	WIListBox:SetPosition( 20, 115 );
 	--WIListBox:SetPosition( 20, WIlbltext:GetTop()+WIlbltext:GetHeight()+5 );
-	WIListBox:SetSize( _G.wWI:GetWidth()-40, WIListBoxHeight );
+	WIListBox:SetSize( _G.wWallet:GetWidth()-40, WIListBoxHeight );
 	WIListBox:SetMaxItemsPerLine( 1 );
 	WIListBox:SetOrientation( Turbine.UI.Orientation.Horizontal );
 	--WIListBox:SetBackColor( Color["red"] ); --debug purpose
@@ -120,7 +120,7 @@ function frmWalletWindow()
 	-- **^
 
 	WIWCtr = Turbine.UI.Control();
-	WIWCtr:SetParent( _G.wWI );
+	WIWCtr:SetParent( _G.wWallet );
 	WIWCtr:SetPosition( WIListBox:GetLeft(), WIListBox:GetTop() );
 	WIWCtr:SetSize( WIListBox:GetWidth(), WIListBox:GetHeight() );
 	WIWCtr:SetZOrder( 0 );

@@ -44,9 +44,9 @@ TitanBarMenu.items = TitanBarMenu:GetItems();
 local opt_line = Turbine.UI.MenuItem("---------------------------------------------", false);
 local opt_empty = Turbine.UI.MenuItem("", false);
 
-opt_WI = Turbine.UI.MenuItem(L["Wallet"]);
-opt_WI:SetChecked( Show["Wallet"] );
-opt_WI.Click = function( sender, args ) ShowHideCurrency("Wallet"); TitanBarMenu:ShowMenuAt(mouseXPos, mouseYPos); end
+opt_Wallet = Turbine.UI.MenuItem(L["Wallet"]);
+opt_Wallet:SetChecked( Show["Wallet"] );
+opt_Wallet.Click = function( sender, args ) ShowHideCurrency("Wallet"); TitanBarMenu:ShowMenuAt(mouseXPos, mouseYPos); end
 
 opt_BI = Turbine.UI.MenuItem(L["MBI"]);
 opt_BI:SetChecked( ShowBagInfos );
@@ -130,7 +130,7 @@ opt_about.Click = function( sender, args ) AboutTitanBar(); end
 
 
 
-TitanBarMenu.items:Add(opt_WI);
+TitanBarMenu.items:Add(opt_Wallet);
 TitanBarMenu.items:Add(opt_BI);
 TitanBarMenu.items:Add(opt_PI);
 if PlayerAlign == 1 then TitanBarMenu.items:Add(opt_EI); end -- only show if in Free People mode

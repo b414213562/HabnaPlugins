@@ -5,11 +5,11 @@
 -- Note: WalletControls is misnamed, this (should) hold all possible controls so they
 -- can be notified if the TitanBar height changes or the icon size changes.
 local WalletControls = { };
--- code,key = (e.g.) "MC", "MithrilCoins"
-for code,key in pairs(CurrencyCodeToKey) do
-    local table = _G[code];
+-- index,key = (e.g.) 6, "MithrilCoins"
+for index,key in ipairs(Currencies) do
+    local table = _G[key];
 
-    if table ~= nil then WalletControls[ code ] = { ShowHide = Show[key], Control = table[ "Ctr" ] }; end
+    if table ~= nil then WalletControls[ key ] = { ShowHide = Show[key], Control = table[ "Ctr" ] }; end
 end
 
 if BI ~= nil then WalletControls[ "BI" ] = { ShowHide = ShowBagInfos, Control = BI[ "Ctr" ] }; end

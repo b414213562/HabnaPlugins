@@ -7,9 +7,8 @@
 --- Generic function to show/hide a currency control.
 ---@param key string Long key, e.g. "Wallet", "LOTROPoints"
 function ShowHideCurrency(key)
-    local code = CurrencyKeyToCode[key];
-    ImportCtr( code );
-    local controlTable = _G[code];
+    ImportCtr( key );
+    local controlTable = _G[key];
     local control = controlTable["Ctr"];
 
 	Show[key] = not Show[key];
@@ -24,15 +23,14 @@ function ShowHideCurrency(key)
 	else
 		--write( "TitanBar: Hiding control's window");
         if (HasWindow[key]) then
-            local from = _G["frm" .. code];
-            local window = _G["w" .. code];
+            local from = _G["frm" .. key];
+            local window = _G["w" .. key];
             if from then window:Close(); end
         end
 	end
 	control:SetVisible( Show[key] );
     if (key == "Wallet") then
-        local menuItem = _G["HabnaPlugins"]["TitanBar"]["opt_" .. code];
-    	menuItem:SetChecked( Show[key] );
+    	opt_Wallet:SetChecked( Show[key] );
     end
 end
 

@@ -3,7 +3,7 @@
 -- rewritten by many
 
 
-function ShowWIToolTip()
+function ShowWalletToolTip()
 	-- ( offsetX, offsetY, width, height, bubble side )
 	--x, y, w, h = -5, -15, 100, 0;
 	--mouseX, mouseY = Turbine.UI.Display.GetMousePosition();

@@ -1,10 +1,9 @@
 -- Wallet.lua
 -- Written by Habna
 
-local code = "WI";
 local key = "Wallet";
-_G[code] = {};
-local table = _G[code];
+_G[key] = {};
+local table = _G[key];
 local labelAlignment = Turbine.UI.ContentAlignment.MiddleRight;
 local iconWidth = 32; -- in-game icon 32x32
 local iconHeight = 32;
@@ -33,7 +32,7 @@ table["Icon"].MouseMove = function( sender, args )
 	else
 		if not WITT then
 			WITT = true;
-			ShowWIToolTip();
+			ShowWalletToolTip();
 		else
 			local mouseX, mouseY = Turbine.UI.Display.GetMousePosition();
 			
@@ -57,15 +56,15 @@ table["Icon"].MouseClick = function( sender, args )
 	TB["win"].MouseMove();
 	if ( args.Button == Turbine.UI.MouseButton.Left ) then
 		if not WasDrag then
-			if _G.frmWI then _G.frmWI = false; wWI:Close();
+			if _G.frmWallet then _G.frmWallet = false; wWallet:Close();
 			else
-				_G.frmWI = true;
+				_G.frmWallet = true;
 				import (AppCtrWalletD.."WalletWindow");
 				frmWalletWindow();
 			end
 		end
 	elseif ( args.Button == Turbine.UI.MouseButton.Right ) then
-		_G.sFromCtr = code;
+		_G.sFromCtr = key;
 		ControlMenu:ShowMenu();
 	end
 	WasDrag = false;

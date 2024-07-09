@@ -33,12 +33,11 @@ function UnloadControl( value )
         if ShowGameTime then ShowHideGameTime(); opt_GT:SetChecked( false ); end
     elseif value == "applyToThis" then
         -- Handle currencies:
-        local key = CurrencyCodeToKey[_G.sFromCtr];
-        if (key) then
-            if (not DoesNotHaveWhere[key]) then
-                Where[key] = 3;
+        if (IsCurrency[_G.sFromCtr]) then
+            if (not DoesNotHaveWhere[_G.sFromCtr]) then
+                Where[_G.sFromCtr] = 3;
             end
-            ShowHideCurrency(key);
+            ShowHideCurrency(_G.sFromCtr);
         else
             -- Handle everything else:
             if _G.sFromCtr == "BI" then ShowHideBackpackInfos(); opt_BI:SetChecked( false );
@@ -71,9 +70,8 @@ function BGColor( cmd, value )
 		tA, tR, tG, tB = bcAlpha, bcRed, bcGreen, bcBlue;
 	elseif cmd == "apply" then
         -- Handle currencies:
-        local key = CurrencyCodeToKey[_G.sFromCtr];
-        if (key) then
-            tA, tR, tG, tB = BC.Alpha[key], BC.Red[key], BC.Green[key], BC.Blue[key];
+        if (BC.Alpha[_G.sFromCtr]) then
+            tA, tR, tG, tB = BC.Alpha[_G.sFromCtr], BC.Red[_G.sFromCtr], BC.Green[_G.sFromCtr], BC.Blue[_G.sFromCtr];
         else
             -- Handle everything else:
             if _G.sFromCtr == "BI" then tA, tR, tG, tB = BIbcAlpha, BIbcRed, BIbcGreen, BIbcBlue;
@@ -101,7 +99,7 @@ function BGColor( cmd, value )
             BC.Alpha[key], BC.Red[key], BC.Green[key], BC.Blue[key] = tA, tR, tG, tB;
             if Show[key] then
                 local color = GetBGColor(key);
-                local table = _G[CurrencyKeyToCode[key]];
+                local table = _G[key];
                 table[ "Ctr" ]:SetBackColor( color );
             end
         end
@@ -138,12 +136,11 @@ function BGColor( cmd, value )
 		BGColor( cmd, "TitanBar" );
 	elseif value == "applyToThis" then
         -- Handle currencies:
-        local code = _G.sFromCtr;
-        local key = CurrencyCodeToKey[_G.sFromCtr];
-        if (key) then
+        local key = _G.sFromCtr;
+        if (BC.Alpha[key]) then
             BC.Alpha[key], BC.Red[key], BC.Green[key], BC.Blue[key] = tA, tR, tG, tB;
 
-            local table = _G[code];
+            local table = _G[key];
             table[ "Ctr" ]:SetBackColor( color );
         else
             -- Handle everything else:
