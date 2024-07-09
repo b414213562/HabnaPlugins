@@ -26,9 +26,6 @@ Bug fix: The wallet window always responds to <enter> by clicking the save butto
     and set it back to nil once the save button's handler is done.
     This was a bug when I collapsed down the if wcur == X cases, because then the execution fell out of the if block without finding a match.
 
-For each Bar Wallet control, the icon and lable are handling mouse hover, move, etc.
-    We should do this in the control control, and make the image and label invisible to mouse clicks.
-
 The way tooltip windows currently works:
     When the mouse cursor moves, hide the current window, nil out the only reference to it, and then create the window again from scratch.
     How it should work: If the window has the correct contents, just move it.\
