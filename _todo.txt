@@ -32,10 +32,6 @@ For each Bar Wallet control, the icon and lable are handling mouse hover, move, 
 The way tooltip windows currently works:
     When the mouse cursor moves, hide the current window, nil out the only reference to it, and then create the window again from scratch.
     How it should work: If the window has the correct contents, just move it.\
-
-MakeWalletControl_MoveCtrFunction:
-    There's a full version of this for every wallet control on the bar.
-    It would be nicer to have a single version of this that is called by the dragging handler in MakeWalletControl_Control - table["Ctr"].MouseMove.
     
 
 TitanBar thoughts:

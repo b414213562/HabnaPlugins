@@ -31,7 +31,6 @@ function MakeWalletControl(key)
     MakeWalletControl_Control(_G[code], key);
     MakeWalletControl_Icon(_G[code], code, key);
     MakeWalletControl_Label(_G[code], code, key);
-    MakeWalletControl_MoveCtrFunction(_G[code]);
 end
 
 _G.MakeWalletControl = MakeWalletControl;
@@ -61,7 +60,7 @@ function MakeWalletControl_Icon(table, code, key)
         table["Lbl"].MouseLeave( sender, args );
         TB["win"].MouseMove();
         if dragging then
-            table["MoveCtr"](sender, args);
+            MoveCtr(table, args);
         else
             ShowToolTipWin( code );
         end
@@ -98,7 +97,7 @@ function MakeWalletControl_Label(table, code, key)
         table["Lbl"].MouseLeave( sender, args );
         TB["win"].MouseMove();
         if dragging then
-            table["MoveCtr"](sender, args);
+            MoveCtr(table, args);
         else
             ShowToolTipWin( code );
         end
@@ -141,19 +140,17 @@ function MakeWalletControl_Label(table, code, key)
     end
 end
 
-function MakeWalletControl_MoveCtrFunction(table)
-    table["MoveCtr"] = function (sender, args)
-        local CtrLocX = table["Ctr"]:GetLeft();
-        local CtrWidth = table["Ctr"]:GetWidth();
-        CtrLocX = CtrLocX + ( args.X - dragStartX );
-        if CtrLocX < 0 then CtrLocX = 0; elseif CtrLocX + CtrWidth > screenWidth then CtrLocX = screenWidth - CtrWidth; end
-        
-        local CtrLocY = table["Ctr"]:GetTop();
-        local CtrHeight = table["Ctr"]:GetHeight();
-        CtrLocY = CtrLocY + ( args.Y - dragStartY );
-        if CtrLocY < 0 then CtrLocY = 0; elseif CtrLocY + CtrHeight > TB["win"]:GetHeight() then CtrLocY = TB["win"]:GetHeight() - CtrHeight; end
+function MoveCtr(table, args)
+    local CtrLocX = table["Ctr"]:GetLeft();
+    local CtrWidth = table["Ctr"]:GetWidth();
+    CtrLocX = CtrLocX + ( args.X - dragStartX );
+    if CtrLocX < 0 then CtrLocX = 0; elseif CtrLocX + CtrWidth > screenWidth then CtrLocX = screenWidth - CtrWidth; end
     
-        table["Ctr"]:SetPosition( CtrLocX, CtrLocY );
-        WasDrag = true;
-    end
+    local CtrLocY = table["Ctr"]:GetTop();
+    local CtrHeight = table["Ctr"]:GetHeight();
+    CtrLocY = CtrLocY + ( args.Y - dragStartY );
+    if CtrLocY < 0 then CtrLocY = 0; elseif CtrLocY + CtrHeight > TB["win"]:GetHeight() then CtrLocY = TB["win"]:GetHeight() - CtrHeight; end
+
+    table["Ctr"]:SetPosition( CtrLocX, CtrLocY );
+    WasDrag = true;
 end
