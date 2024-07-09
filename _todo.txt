@@ -1,5 +1,10 @@
+Do final changes to unify code and key to be the image ID.
+    And whetever else we happen to do along the way.
+
 Figure out how to include the C# file for generating the auto-generated files?
     Just add it to the data directory?
+
+Consider not even adding treeview items for items not in wallet until the user asks, to improve loading time.
 
 Fanchen also tried to fix TitanBar currencies. See their progress at:
     https://github.com/Fanch3n/HabnaPlugins/tree/cleanup
@@ -16,7 +21,21 @@ Wallet window notes:
     Or just hollow out the window contents and start adding tree items?
         This might need to wait until we get categories for each item.
 
+Bug fix: The wallet window always responds to <enter> by clicking the save button.
+    If we haven't opened up a currency's options, wcur is nil. Check for this in the enter handler,
+    and set it back to nil once the save button's handler is done.
+    This was a bug when I collapsed down the if wcur == X cases, because then the execution fell out of the if block without finding a match.
 
+For each Bar Wallet control, the icon and lable are handling mouse hover, move, etc.
+    We should do this in the control control, and make the image and label invisible to mouse clicks.
+
+The way tooltip windows currently works:
+    When the mouse cursor moves, hide the current window, nil out the only reference to it, and then create the window again from scratch.
+    How it should work: If the window has the correct contents, just move it.\
+
+MakeWalletControl_MoveCtrFunction:
+    There's a full version of this for every wallet control on the bar.
+    It would be nicer to have a single version of this that is called by the dragging handler in MakeWalletControl_Control - table["Ctr"].MouseMove.
     
 
 TitanBar thoughts:
