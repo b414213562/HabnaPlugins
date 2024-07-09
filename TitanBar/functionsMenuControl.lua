@@ -31,7 +31,7 @@ function UnloadControl( value )
         if ShowReputation then ShowHideReputation(); opt_RP:SetChecked( false ); end
         if ShowPlayerLoc then ShowHidePlayerLoc(); opt_PL:SetChecked( false ); end
         if ShowGameTime then ShowHideGameTime(); opt_GT:SetChecked( false ); end
-    elseif value == "this" then
+    elseif value == "applyToThis" then
         -- Handle currencies:
         local key = CurrencyCodeToKey[_G.sFromCtr];
         if (key) then
@@ -136,7 +136,7 @@ function BGColor( cmd, value )
 	elseif value == "all" then
 		BGColor( cmd, "ctr" );
 		BGColor( cmd, "TitanBar" );
-	elseif value == "this" then
+	elseif value == "applyToThis" then
         -- Handle currencies:
         local code = _G.sFromCtr;
         local key = CurrencyCodeToKey[_G.sFromCtr];
