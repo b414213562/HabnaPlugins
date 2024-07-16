@@ -103,8 +103,8 @@ WalletCurrencyTooltips[ MotesOfEnchantment ] = "Ce sont vos Grains d'Enchantemen
 L[ EmbersOfEnchantment ] = "Braise d\226\128\153enchantement";
 WalletCurrencyTooltips[ EmbersOfEnchantment ] = "Ce sont vos Braises d'Enchantement";
 -- Figments of Splendour control
-L[ "FigmentsOfSplendour" ] = "Mirage de splendeur";
-WalletCurrencyTooltips[ "FigmentsOfSplendour" ] = "Ce sont vos Mirages de Splendour";
+L[ FigmentsOfSplendour ] = "Mirage de splendeur";
+WalletCurrencyTooltips[ FigmentsOfSplendour ] = "Ce sont vos Mirages de Splendour";
 -- Fall Festival Tokens control
 L[ "FallFestivalToken" ] = "Jeton du festival d'automne";
 WalletCurrencyTooltips[ "FallFestivalToken" ] = "Ce sont vos Jetons du Festival d'Automne";

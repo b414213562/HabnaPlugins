@@ -77,6 +77,7 @@ BingoBadge = 0x410e6ee4;
 AnniversaryToken = 0x4110e2e7;
 MotesOfEnchantment = 0x411b91dd;
 EmbersOfEnchantment = 0x411CE971;
+FigmentsOfSplendour = 0x411CF13B;
 
 -- the key for each currency:
 Currencies = {
@@ -100,7 +101,7 @@ Currencies = {
     AnniversaryToken,
     MotesOfEnchantment,
     EmbersOfEnchantment,
-    "FigmentsOfSplendour",
+    FigmentsOfSplendour,
     "FallFestivalToken",
     "FarmersFaireToken",
     "SpringLeaf",
@@ -140,7 +141,7 @@ CurrenciesNotUsedInMonsterPlay = {
     AnniversaryToken,
     MotesOfEnchantment,
     EmbersOfEnchantment,
-    "FigmentsOfSplendour",
+    FigmentsOfSplendour,
     "FallFestivalToken",
     "FarmersFaireToken",
     "SpringLeaf",

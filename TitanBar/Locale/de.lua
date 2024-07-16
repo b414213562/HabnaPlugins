@@ -102,8 +102,8 @@ WalletCurrencyTooltips[ MotesOfEnchantment ] = "Eure Aschepartikel der Verzauber
 L[ EmbersOfEnchantment ] = "Asche der Verzauberung";
 WalletCurrencyTooltips[ EmbersOfEnchantment ] = "Eure Asche der Verzauberung";
 -- Figments of Splendour control
-L[ "FigmentsOfSplendour" ] = "Prachtst\195\188ck des Glanzes";
-WalletCurrencyTooltips[ "FigmentsOfSplendour" ] = "Eure Prachtst\195\188cke des Glanzes";
+L[ FigmentsOfSplendour ] = "Prachtst\195\188ck des Glanzes";
+WalletCurrencyTooltips[ FigmentsOfSplendour ] = "Eure Prachtst\195\188cke des Glanzes";
 -- Fall Festival Tokens control
 L[ "FallFestivalToken" ] = "Herbstfest-Medaille";
 WalletCurrencyTooltips[ "FallFestivalToken" ] = "Eure Herbstfest-Medaillen";

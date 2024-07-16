@@ -102,8 +102,8 @@ WalletCurrencyTooltips[ MotesOfEnchantment ] = "These are your Motes of Enchantm
 L[ EmbersOfEnchantment ] = "Embers of Enchantment";
 WalletCurrencyTooltips[ EmbersOfEnchantment ] = "These are your Embers of Enchantment";
 -- Figments of Splendour control
-L[ "FigmentsOfSplendour" ] = "Figments of Splendour";
-WalletCurrencyTooltips[ "FigmentsOfSplendour" ] = "These are your Figments of Splendour";
+L[ FigmentsOfSplendour ] = "Figments of Splendour";
+WalletCurrencyTooltips[ FigmentsOfSplendour ] = "These are your Figments of Splendour";
 -- Fall Festival Tokens control
 L[ "FallFestivalToken" ] = "Fall Festival Token";
 WalletCurrencyTooltips[ "FallFestivalToken" ] = "These are your Fall Festival Tokens";
