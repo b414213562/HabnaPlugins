@@ -59,15 +59,6 @@ PositionW.Top = {};
 _G.Where = {}; -- Is currency on bar, tooltip, or hidden?
 -- End Note on _G.
 
-HasWindow = {
-    ["Wallet"] = true;
-    ["Money"] = true;
-    ["LOTROPoints"] = true;
-};
-DoesNotHaveWhere = {
-    ["Wallet"] = true;
-};
-
 DestinyPoints = 0x4100a682;
 Shards = 0x41110d5b;
 SkirmishMarks = 0x4111c446;
@@ -114,6 +105,15 @@ IsCurrency = {};
 for key, value in ipairs(Currencies) do
     IsCurrency[value] = true;
 end
+
+HasWindow = {
+    ["Wallet"] = true;
+    ["Money"] = true;
+    [LOTROPoints] = true;
+};
+DoesNotHaveWhere = {
+    ["Wallet"] = true;
+};
 
 CurrenciesNotUsedInMonsterPlay = {
     DestinyPoints,
