@@ -73,8 +73,8 @@ WalletCurrencyTooltips[ DestinyPoints ] = "Ce sont vos points destin\195\169e";
 L[ Shards ] = "Eclat";
 WalletCurrencyTooltips[ Shards ] = "Ce sont vos Eclats";
 -- Tokens of Hytbold control
-L[ "HytboldTokens" ] = "Jeton d'Hytbold";
-WalletCurrencyTooltips[ "HytboldTokens" ] = "Ce sont vos Jetons d'Hytbold";
+L[ HytboldTokens ] = "Jeton d'Hytbold";
+WalletCurrencyTooltips[ HytboldTokens ] = "Ce sont vos Jetons d'Hytbold";
 -- Medallions control
 L[ "Medallions" ] = "M\195\169daillon";
 WalletCurrencyTooltips[ "Medallions" ] = "Ce sont vos m\195\169daillons";

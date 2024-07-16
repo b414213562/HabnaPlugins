@@ -72,8 +72,8 @@ WalletCurrencyTooltips[ DestinyPoints ] = "Eure Schicksalspunkte";
 L[ Shards ] = "Scherbe";
 WalletCurrencyTooltips[ Shards ] = "Eure Scherben";
 -- Tokens of Hytbold control
-L[ "HytboldTokens" ] = "M\195\188nze von Hytbold";
-WalletCurrencyTooltips[ "HytboldTokens" ] = "Eure M\195\188nzen von Hytbold";
+L[ HytboldTokens ] = "M\195\188nze von Hytbold";
+WalletCurrencyTooltips[ HytboldTokens ] = "Eure M\195\188nzen von Hytbold";
 -- Medallions control
 L[ "Medallions" ] = "Medaillon";
 WalletCurrencyTooltips[ "Medallions" ] = "Eure Medallions";
