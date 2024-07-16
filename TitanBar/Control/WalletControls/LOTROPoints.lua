@@ -1,7 +1,7 @@
 -- LOTROPoints.lua
 -- Written by Habna
 
-local key = "LOTROPoints";
+local key = LOTROPoints;
 _G[key] = {};
 local table = _G[key];
 local labelAlignment = Turbine.UI.ContentAlignment.MiddleCenter;
@@ -21,7 +21,7 @@ table["Icon"] = Turbine.UI.Control();
 table["Icon"]:SetParent( table["Ctr"] );
 table["Icon"]:SetBlendMode( Turbine.UI.BlendMode.AlphaBlend );
 table["Icon"]:SetSize( iconWidth, iconHeight );
-table["Icon"]:SetBackground( WalletItem[key].Icon );
+table["Icon"]:SetBackground( LOTROPoints );
 table["Icon"]:SetStretchMode( 1 );
 table["Icon"]:SetSize( 32, 32 );
 --**^

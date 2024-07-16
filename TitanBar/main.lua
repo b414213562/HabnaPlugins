@@ -92,7 +92,7 @@ frmMain();
 if PlayerAlign == 1 then 
     MenuItem = { 
 	-- Coin
-	"Money", Commendations, DestinyPoints, "LOTROPoints", MithrilCoins,
+	"Money", Commendations, DestinyPoints, LOTROPoints, MithrilCoins,
 	-- Currency
 	"MotesOfEnchantment", "FigmentsOfSplendour", "EmbersOfEnchantment", "AncientScript",
 	-- Instances and Skirmishes
@@ -106,7 +106,7 @@ if PlayerAlign == 1 then
 	-- Other   
     "AmrothSilverPiece", "BingoBadge", "CentralGondorSilverPiece", "GiftgiversBrand", HytboldTokens,
 	};
-else MenuItem = { Commendations, "LOTROPoints" }; end
+else MenuItem = { Commendations, LOTROPoints }; end
 
 TitanBarCommand = Turbine.ShellCommand()
 

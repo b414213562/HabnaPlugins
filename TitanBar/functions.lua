@@ -188,7 +188,7 @@ function ShowToolTipWin( ToShow )
     -- Currencies:
     if (IsCurrency[ToShow]) then
         local tooltipWindowCustomHeight = {
-            ["LOTROPoints"] = 80;
+            [LOTROPoints] = 80;
         };
         h = tooltipWindowCustomHeight[ToShow] or 65;
 
@@ -198,7 +198,7 @@ function ShowToolTipWin( ToShow )
         w = tooltipWindowCustomWidth[ToShow] or w;
 
         local tooltipWindowCustomLines = {
-            ["LOTROPoints"] = { L["EIt1"], L["EIt2"], L["EIt3"] };
+            [LOTROPoints] = { L["EIt1"], L["EIt2"], L["EIt3"] };
         }
         local lines = tooltipWindowCustomLines[ToShow] or { L["EIt2"], L["EIt3"] };
 
@@ -358,10 +358,10 @@ end
 --**^
 --**v Update LOTRO points on TitanBar v**
 function UpdateLOTROPoints()
-	if Where["LOTROPoints"] == 1 then
-		_G["LOTROPoints"][ "Lbl" ]:SetText( _G.LOTROPTS );
-		_G["LOTROPoints"][ "Lbl" ]:SetSize( _G["LOTROPoints"][ "Lbl" ]:GetTextLength() * NM, CTRHeight ); 
-		AjustIcon( "LOTROPoints" );
+	if Where[LOTROPoints] == 1 then
+		_G[LOTROPoints][ "Lbl" ]:SetText( _G.LOTROPTS );
+		_G[LOTROPoints][ "Lbl" ]:SetSize( _G[LOTROPoints][ "Lbl" ]:GetTextLength() * NM, CTRHeight ); 
+		AjustIcon( LOTROPoints );
 	end
 	SavePlayerLOTROPoints();
 end
@@ -843,10 +843,10 @@ function AjustIcon(str)
         local customCurrencyWidthOffsets = {
             [DestinyPoints] = 0;
             [Shards] = -2;
-            ["LOTROPoints"] = 2;
+            [LOTROPoints] = 2;
         };
         local customCurrencyHeightOffsets = {
-            ["LOTROPoints"] = 1;
+            [LOTROPoints] = 1;
         };
         local widthOffset = customCurrencyWidthOffsets[str] or 3;
         local heightOffset = customCurrencyHeightOffsets[str] or 0;

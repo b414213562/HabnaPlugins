@@ -68,6 +68,7 @@ HytboldTokens = 0x41127D0C;
 Medallions = 0x4111c43d;
 Seals = 0x4111c449;
 Commendations = 0x41123495;
+LOTROPoints = 0x4113478C;
 
 -- the key for each currency:
 Currencies = {
@@ -82,7 +83,7 @@ Currencies = {
     Medallions,
     Seals,
     Commendations,
-    "LOTROPoints",
+    LOTROPoints,
     "AmrothSilverPiece",
     "StarsofMerit",
     "CentralGondorSilverPiece",

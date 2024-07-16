@@ -5,9 +5,9 @@
 function frmLOTROPointsWindow()
 	-- **v Set some window stuff v**
 	_G.wLOTROPoints = Turbine.UI.Lotro.Window()
-	_G.wLOTROPoints:SetPosition( PositionW.Left["LOTROPoints"], PositionW.Top["LOTROPoints"] );
+	_G.wLOTROPoints:SetPosition( PositionW.Left[LOTROPoints], PositionW.Top[LOTROPoints] );
 	--_G.wLOTROPoints:SetSize( 300, 80 );
-	_G.wLOTROPoints:SetText( L["LOTROPoints"] );
+	_G.wLOTROPoints:SetText( L[LOTROPoints] );
 	_G.wLOTROPoints:SetWantsKeyEvents( true );
 	_G.wLOTROPoints:SetVisible( true );
 	--_G.wLOTROPoints:SetZOrder( 2 );
@@ -26,7 +26,7 @@ function frmLOTROPointsWindow()
 	_G.wLOTROPoints.MouseUp = function( sender, args )
 		settings.LOTROPoints.L = string.format("%.0f", _G.wLOTROPoints:GetLeft());
 		settings.LOTROPoints.T = string.format("%.0f", _G.wLOTROPoints:GetTop());
-		PositionW.Left["LOTROPoints"], PositionW.Top["LOTROPoints"] = _G.wLOTROPoints:GetPosition();
+		PositionW.Left[LOTROPoints], PositionW.Top[LOTROPoints] = _G.wLOTROPoints:GetPosition();
 		SaveSettings( false );
 	end
 
@@ -46,7 +46,7 @@ function frmLOTROPointsWindow()
 	local lblLOTROPTS = Turbine.UI.Label();
 	lblLOTROPTS:SetParent( LPWCtr );
 	--lblLOTROPTS:SetFont( Turbine.UI.Lotro.Font.TrajanPro14 );
-	lblLOTROPTS:SetText( L["LOTROPoints"] );
+	lblLOTROPTS:SetText( L[LOTROPoints] );
 	lblLOTROPTS:SetPosition( 0, 2 );
 	lblLOTROPTS:SetSize( lblLOTROPTS:GetTextLength() * 7.5, 15 ); --Auto size with text lenght
 	lblLOTROPTS:SetForeColor( Color["rustedgold"] );

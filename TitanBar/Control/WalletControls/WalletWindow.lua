@@ -168,7 +168,7 @@ function frmWalletWindow()
 	local WIlblLOTROPTS = Turbine.UI.Label();
 	WIlblLOTROPTS:SetParent( LPWCtr );
 	--WIlblLOTROPTS:SetFont( Turbine.UI.Lotro.Font.TrajanPro14 );
-	WIlblLOTROPTS:SetText( L["LOTROPoints"] );
+	WIlblLOTROPTS:SetText( L[LOTROPoints] );
 	WIlblLOTROPTS:SetPosition( 0, 2 );
 	WIlblLOTROPTS:SetSize( WIlblLOTROPTS:GetTextLength() * 7.5, 15 ); --Auto size with text lenght
 	WIlblLOTROPTS:SetForeColor( Color["rustedgold"] );
@@ -238,7 +238,7 @@ function frmWalletWindow()
         end
 
         -- Do currency-specific items here:
-        if wcur == "LOTROPoints" then
+        if wcur == LOTROPoints then
 			local parsed_text = WItxtLOTROPTS:GetText();
 
 			if parsed_text == "" then
@@ -251,7 +251,7 @@ function frmWalletWindow()
 			end
 			
 			_G.LOTROPTS = WItxtLOTROPTS:GetText();
-			if Where["LOTROPoints"] == 1 then UpdateLOTROPoints(); end
+			if Where[LOTROPoints] == 1 then UpdateLOTROPoints(); end
 			SavePlayerLOTROPoints();
 		end
         -- End currency-specific section.
@@ -294,7 +294,7 @@ function RefreshWIListBox()
                 local where = tonumber(Where[wcur]);
                 WIDD:SetSelection(where);
 
-                if wcur == "LOTROPoints" then
+                if wcur == LOTROPoints then
                     LPWCtr:SetVisible( true );
                     WItxtLOTROPTS:SetText( _G.LOTROPTS );
                     WItxtLOTROPTS:Focus();

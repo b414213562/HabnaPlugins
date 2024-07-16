@@ -31,13 +31,13 @@ function ImportCtr( value )
                 RemoveCallback(sspack, "CountChanged", UpdateSharedStorageGold);
                 -- ^^ Thx Heridian!
             end
-        elseif (value == "LOTROPoints") then
-            if Where["LOTROPoints"] == 1 then
+        elseif (value == LOTROPoints) then
+            if Where[LOTROPoints] == 1 then
                 import (AppCtrWalletD.."LOTROPoints");
-                _G["LOTROPoints"][ "Ctr" ]:SetPosition( Position.Left["LOTROPoints"], Position.Top["LOTROPoints"] );
+                _G[LOTROPoints][ "Ctr" ]:SetPosition( Position.Left[LOTROPoints], Position.Top[LOTROPoints] );
                 UpdateLOTROPoints();
             end
-            if Where["LOTROPoints"] ~= 3 then
+            if Where[LOTROPoints] ~= 3 then
                 --PlayerLP = Player:GetLOTROPoints();
                 --AddCallback(PlayerLP, "LOTROPointsChanged",
                 --    function(sender, args) UpdateLOTROPoints(); end
@@ -61,7 +61,7 @@ function ImportCtr( value )
                             if tmpLP ~= nil then
                                 LPTS = tmpLP;
                                 _G.LOTROPTS = _G.LOTROPTS + LPTS;
-                                if Where["LOTROPoints"] == 1 then UpdateLOTROPoints(); end
+                                if Where[LOTROPoints] == 1 then UpdateLOTROPoints(); end
                                 SavePlayerLOTROPoints();
                             end
                         end
@@ -1026,7 +1026,7 @@ function GetCurrency( str )
 
     if (str == DestinyPoints) then
         currentQuantity = Player:GetAttributes():GetDestinyPoints();
-    elseif (str == "LOTROPoints") then
+    elseif (str == LOTROPoints) then
         currentQuantity = tonumber(_G.LOTROPTS) or 0;
     else
         local localizedName = L[str];

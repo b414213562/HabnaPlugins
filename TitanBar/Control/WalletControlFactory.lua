@@ -2,7 +2,7 @@
 MakeWalletControl_LabelAlignmentOverrides = {
     [Commendations] = Turbine.UI.ContentAlignment.MiddleCenter;
     [DestinyPoints] = Turbine.UI.ContentAlignment.MiddleCenter;
-    ["LOTROPoints"] = Turbine.UI.ContentAlignment.MiddleCenter;
+    [LOTROPoints] = Turbine.UI.ContentAlignment.MiddleCenter;
     [Medallions] = Turbine.UI.ContentAlignment.MiddleCenter;
     [Seals] = Turbine.UI.ContentAlignment.MiddleCenter;
     [Shards] = Turbine.UI.ContentAlignment.MiddleCenter;
@@ -10,12 +10,12 @@ MakeWalletControl_LabelAlignmentOverrides = {
 
 MakeWalletControl_IconWidthOverrides = {
     [DestinyPoints] = 21;
-    ["LOTROPoints"] = 36;
+    [LOTROPoints] = 36;
 };
 
 MakeWalletControl_IconHeightOverrides = {
     [DestinyPoints] = 22;
-    ["LOTROPoints"] = 43;
+    [LOTROPoints] = 43;
 };
 
 --- This function creates a wallet control based on some parameters.

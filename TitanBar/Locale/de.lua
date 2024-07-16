@@ -48,8 +48,8 @@ _G.WalletCurrencyTooltips = {};
 
 -- Wallet Currency Controls
 -- LOTRO Points control
-L[ "LOTROPoints" ] = "HdRO-Punkte";
-WalletCurrencyTooltips[ "LOTROPoints" ] = "Eure HdRO-Punkte";
+L[ LOTROPoints ] = "HdRO-Punkte";
+WalletCurrencyTooltips[ LOTROPoints ] = "Eure HdRO-Punkte";
 -- Mithril Coins control
 L[ MithrilCoins ] = "Mithril-M\195\188nze";
 WalletCurrencyTooltips[ MithrilCoins ] = "Eure Mithril-M\195\188nzen";

@@ -48,8 +48,8 @@ L[ "MReputation" ] = "Reputation";
 -- Wallet Currency Controls, name must match name of item in wallet.
 _G.WalletCurrencyTooltips = {};
 -- LOTRO Points control
-L[ "LOTROPoints" ] = "LOTRO points";
-WalletCurrencyTooltips["LOTROPoints"] = "These are your LOTRO points";
+L[ LOTROPoints ] = "LOTRO points";
+WalletCurrencyTooltips[LOTROPoints] = "These are your LOTRO points";
 -- Mithril Coins control
 L[ MithrilCoins ] = "Mithril Coin";
 WalletCurrencyTooltips[ MithrilCoins ] = "These are your Mithril coins";
