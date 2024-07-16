@@ -93,8 +93,8 @@ WalletCurrencyTooltips[ StarsofMerit ] = "Eure Sterne des Verdienst";
 L[ CentralGondorSilverPiece ] = "Zentralgondorisches Silberst\195\188ck";
 WalletCurrencyTooltips[ CentralGondorSilverPiece ] = "Eure Zentralgondorischen Silberst\195\188cke";
 -- Gift giver's Brand control
-L[ "GiftgiversBrand" ] = "Zeichen des Schenkenden";
-WalletCurrencyTooltips[ "GiftgiversBrand" ] = "Eure Zeichen des Schenkenden";
+L[ GiftgiversBrand ] = "Zeichen des Schenkenden";
+WalletCurrencyTooltips[ GiftgiversBrand ] = "Eure Zeichen des Schenkenden";
 -- Motes of Enchantment control
 L[ "MotesOfEnchantment" ] = "Aschepartikel der Verzauberung";
 WalletCurrencyTooltips[ "MotesOfEnchantment" ] = "Eure Aschepartikel der Verzauberung";

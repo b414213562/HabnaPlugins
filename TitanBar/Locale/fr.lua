@@ -94,8 +94,8 @@ WalletCurrencyTooltips[ StarsofMerit ] = "Ce sont vos \195\137toiles du m\195\16
 L[ CentralGondorSilverPiece ] = "Pi\195\168ce d'argent du Gondor central";
 WalletCurrencyTooltips[ CentralGondorSilverPiece ] = "Ce sont vos Pi\195\168ces d'argent du gondor Central";
 -- Gift giver's Brand control
-L[ "GiftgiversBrand" ] = "Marque du Donateur";
-WalletCurrencyTooltips[ "GiftgiversBrand" ] = "Ce sont vos Marques du Donateur";
+L[ GiftgiversBrand ] = "Marque du Donateur";
+WalletCurrencyTooltips[ GiftgiversBrand ] = "Ce sont vos Marques du Donateur";
 -- Motes of Enchantment control
 L[ "MotesOfEnchantment" ] = "Grain d\226\128\153enchantement";
 WalletCurrencyTooltips[ "MotesOfEnchantment" ] = "Ce sont vos Grains d'Enchantement";
