@@ -79,8 +79,8 @@ WalletCurrencyTooltips[ HytboldTokens ] = "Ce sont vos Jetons d'Hytbold";
 L[ Medallions ] = "M\195\169daillon";
 WalletCurrencyTooltips[ Medallions ] = "Ce sont vos m\195\169daillons";
 -- Seals control
-L[ "Seals" ] = "Sceau";
-WalletCurrencyTooltips[ "Seals" ] = "Ce sont vos sceaux";
+L[ Seals ] = "Sceau";
+WalletCurrencyTooltips[ Seals ] = "Ce sont vos sceaux";
 -- Commendations control
 L[ "Commendations" ] = "Citation";
 WalletCurrencyTooltips[ "Commendations" ] = "Ce sont vos Citations";

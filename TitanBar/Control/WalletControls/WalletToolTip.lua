@@ -106,7 +106,7 @@ function RefreshWITTListBox()
 				ttIcon:SetPosition( 0, 0 );
 				ttIcon:SetBlendMode( Turbine.UI.BlendMode.AlphaBlend );
 			
-				if wttcur == "Seals" or wttcur == "LOTROPoints" then ttIcon:SetBackground( CtrIconCodeIs );
+				if wttcur == Seals or wttcur == "LOTROPoints" then ttIcon:SetBackground( CtrIconCodeIs );
 				else ttIcon:SetBackground( tonumber(CtrIconCodeIs) ); end
 				--ttIcon:SetBackColor( Color["blue"] ); -- Debug purpose
 				--**^

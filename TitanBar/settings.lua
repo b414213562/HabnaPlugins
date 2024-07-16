@@ -75,6 +75,7 @@ MithrilCoins = 0x411348E1;
 YuleToken = 0x410FA62D;
 HytboldTokens = 0x41127D0C;
 Medallions = 0x4111c43d;
+Seals = 0x4111c449;
 
 -- the key for each currency:
 Currencies = {
@@ -87,7 +88,7 @@ Currencies = {
     YuleToken,
     HytboldTokens,
     Medallions,
-    "Seals",
+    Seals,
     "Commendations",
     "LOTROPoints",
     "AmrothSilverPiece",
@@ -120,7 +121,7 @@ CurrenciesNotUsedInMonsterPlay = {
     YuleToken,
     HytboldTokens,
     Medallions,
-    "Seals",
+    Seals,
     "AmrothSilverPiece",
     "StarsofMerit",
     "CentralGondorSilverPiece",

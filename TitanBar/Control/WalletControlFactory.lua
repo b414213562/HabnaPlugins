@@ -4,7 +4,7 @@ MakeWalletControl_LabelAlignmentOverrides = {
     [DestinyPoints] = Turbine.UI.ContentAlignment.MiddleCenter;
     ["LOTROPoints"] = Turbine.UI.ContentAlignment.MiddleCenter;
     [Medallions] = Turbine.UI.ContentAlignment.MiddleCenter;
-    ["Seals"] = Turbine.UI.ContentAlignment.MiddleCenter;
+    [Seals] = Turbine.UI.ContentAlignment.MiddleCenter;
     [Shards] = Turbine.UI.ContentAlignment.MiddleCenter;
 }
 

@@ -78,8 +78,8 @@ WalletCurrencyTooltips[ HytboldTokens ] = "These are your Tokens of Hytbold";
 L[ Medallions ] = "Medallion";
 WalletCurrencyTooltips[ Medallions ] = "These are your medallions";
 -- Seals control
-L[ "Seals" ] = "Seal";
-WalletCurrencyTooltips[ "Seals" ] = "These are your seals";
+L[ Seals ] = "Seal";
+WalletCurrencyTooltips[ Seals ] = "These are your seals";
 -- Commendations control
 L[ "Commendations" ] = "Commendation";
 WalletCurrencyTooltips[ "Commendations" ] = "These are your Commendations";

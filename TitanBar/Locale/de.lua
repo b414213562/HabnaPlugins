@@ -78,8 +78,8 @@ WalletCurrencyTooltips[ HytboldTokens ] = "Eure M\195\188nzen von Hytbold";
 L[ Medallions ] = "Medaillon";
 WalletCurrencyTooltips[ Medallions ] = "Eure Medallions";
 -- Seals control
-L[ "Seals" ] = "Siegel";
-WalletCurrencyTooltips[ "Seals" ] = "Eure Siegel";
+L[ Seals ] = "Siegel";
+WalletCurrencyTooltips[ Seals ] = "Eure Siegel";
 -- Commendations control
 L[ "Commendations" ] = "Anerkennung";
 WalletCurrencyTooltips[ "Commendations" ] = "Eure Anerkennung";

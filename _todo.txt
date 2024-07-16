@@ -6,6 +6,10 @@ Next time: Change key from friendly-names ("Wallet", "MithrilCoins", etc) to the
 Are monster wallet items in the data files?
     If so, we should split them out, so that only monsters load those, and only free peoples load the others.
 
+Consider if this is still good code in WalletToolTip.lua:
+    if wttcur == Seals or wttcur == "LOTROPoints" then ttIcon:SetBackground( CtrIconCodeIs );
+
+
 The Money tooltip (and maybe LotroPoints and Wallet) needs some attention - doesn't seem attached to the parent control.
 
 Figure out how to include the C# file for generating the auto-generated files?
