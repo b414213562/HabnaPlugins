@@ -61,8 +61,8 @@ WalletCurrencyTooltips[ YuleToken ] = "Ce sont vos Jetons du festival de Yule";
 L[ "AnniversaryToken" ] = "Jeton d'anniversaire";
 WalletCurrencyTooltips[ "AnniversaryToken" ] = "Ce sont vos Jetons d'anniversaire";
 -- Bingo Badge control
-L[ "BingoBadge" ] = "Insigne de Bingo";
-WalletCurrencyTooltips[ "BingoBadge" ] = "These are your Insignes de Bingo";
+L[ BingoBadge ] = "Insigne de Bingo";
+WalletCurrencyTooltips[ BingoBadge ] = "These are your Insignes de Bingo";
 -- Skirmish marks control
 L[ SkirmishMarks ] = "Marque";
 WalletCurrencyTooltips[ SkirmishMarks ] = "Ce sont vos marques d'escarmouches";

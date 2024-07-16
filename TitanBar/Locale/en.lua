@@ -60,8 +60,8 @@ WalletCurrencyTooltips[ YuleToken ] = "These are your Yule Festival Tokens";
 L[ "AnniversaryToken" ] = "Anniversary Token";
 WalletCurrencyTooltips[ "AnniversaryToken" ] = "These are your Anniversary Tokens";
 -- Bingo Badge control
-L[ "BingoBadge" ] = "Bingo Badge";
-WalletCurrencyTooltips[ "BingoBadge" ] = "These are your Bingo Badges";
+L[ BingoBadge ] = "Bingo Badge";
+WalletCurrencyTooltips[ BingoBadge ] = "These are your Bingo Badges";
 -- Skirmish marks control
 L[ SkirmishMarks ] = "Mark";
 WalletCurrencyTooltips[ SkirmishMarks ] = "These are your skirmish marks";

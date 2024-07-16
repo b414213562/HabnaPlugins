@@ -73,6 +73,7 @@ AmrothSilverPiece = 0x41152875;
 StarsofMerit = 0x4115bea4;
 CentralGondorSilverPiece = 0x41155957;
 GiftgiversBrand = 0x4115c888;
+BingoBadge = 0x410e6ee4;
 
 -- the key for each currency:
 Currencies = {
@@ -92,7 +93,7 @@ Currencies = {
     StarsofMerit,
     CentralGondorSilverPiece,
     GiftgiversBrand,
-    "BingoBadge",
+    BingoBadge,
     "AnniversaryToken",
     "MotesOfEnchantment",
     "EmbersOfEnchantment",
@@ -132,7 +133,7 @@ CurrenciesNotUsedInMonsterPlay = {
     StarsofMerit,
     CentralGondorSilverPiece,
     GiftgiversBrand,
-    "BingoBadge",
+    BingoBadge,
     "AnniversaryToken",
     "MotesOfEnchantment",
     "EmbersOfEnchantment",

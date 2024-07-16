@@ -60,8 +60,8 @@ WalletCurrencyTooltips[ YuleToken ] = "Eure Julfest-M\195\188nzen";
 L[ "AnniversaryToken" ] = "Jubil\195\164umsm\195\188nze";
 WalletCurrencyTooltips[ "AnniversaryToken" ] = "Eure Jubil\195\164umsm\195\188nzen";
 -- Bingo Badge control
-L[ "BingoBadge" ] = "Bingo-Abzeichen";
-WalletCurrencyTooltips[ "BingoBadge" ] = "Eure Bingo-Abzeichen";
+L[ BingoBadge ] = "Bingo-Abzeichen";
+WalletCurrencyTooltips[ BingoBadge ] = "Eure Bingo-Abzeichen";
 -- Skirmish marks control
 L[ SkirmishMarks ] = "Zeichen";
 WalletCurrencyTooltips[ SkirmishMarks ] = "Eure Scharm\195\188tzel-Zeichen";

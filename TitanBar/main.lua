@@ -104,7 +104,7 @@ if PlayerAlign == 1 then
 	-- Item Advancement
 	Shards,
 	-- Other   
-    AmrothSilverPiece, "BingoBadge", CentralGondorSilverPiece, GiftgiversBrand, HytboldTokens,
+    AmrothSilverPiece, BingoBadge, CentralGondorSilverPiece, GiftgiversBrand, HytboldTokens,
 	};
 else MenuItem = { Commendations, LOTROPoints }; end
 
