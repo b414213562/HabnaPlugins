@@ -51,8 +51,8 @@ _G.WalletCurrencyTooltips = {};
 L[ "LOTROPoints" ] = "LOTRO points";
 WalletCurrencyTooltips["LOTROPoints"] = "These are your LOTRO points";
 -- Mithril Coins control
-L[ "MithrilCoins" ] = "Mithril Coin";
-WalletCurrencyTooltips[ "MithrilCoins" ] = "These are your Mithril coins";
+L[ MithrilCoins ] = "Mithril Coin";
+WalletCurrencyTooltips[ MithrilCoins ] = "These are your Mithril coins";
 -- Yule Tokens control
 L[ "YuleToken" ] = "Yule Festival Token";
 WalletCurrencyTooltips[ "YuleToken" ] = "These are your Yule Festival Tokens";

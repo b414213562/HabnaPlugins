@@ -5,7 +5,7 @@
 -- Note: WalletControls is misnamed, this (should) hold all possible controls so they
 -- can be notified if the TitanBar height changes or the icon size changes.
 local WalletControls = { };
--- index,key = (e.g.) 6, "MithrilCoins"
+-- index,key = (e.g.) 6, 0x411348E1
 for index,key in ipairs(Currencies) do
     local table = _G[key];
 

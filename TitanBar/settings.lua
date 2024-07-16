@@ -71,6 +71,7 @@ DoesNotHaveWhere = {
 DestinyPoints = 0x4100a682;
 Shards = 0x41110d5b;
 SkirmishMarks = 0x4111c446;
+MithrilCoins = 0x411348E1;
 
 -- the key for each currency:
 Currencies = {
@@ -79,7 +80,7 @@ Currencies = {
     DestinyPoints,
     Shards,
     SkirmishMarks,
-    "MithrilCoins",
+    MithrilCoins,
     "YuleToken",
     "HytboldTokens",
     "Medallions",
@@ -430,7 +431,7 @@ function LoadSettings()
 
     -- End currency initialization
 
-    -- Make a lookup table from translated name (e.g. "Mithril Coin") to key (e.g. "MithrilCoins"):
+    -- Make a lookup table from translated name (e.g. "Mithril Coin") to key (e.g. MithrilCoins):
     CurrencyNameToKey = {}
     for index, key in ipairs(Currencies) do
         CurrencyNameToKey[L[key]] = key;
