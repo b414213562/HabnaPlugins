@@ -100,8 +100,8 @@ WalletCurrencyTooltips[ GiftgiversBrand ] = "Ce sont vos Marques du Donateur";
 L[ MotesOfEnchantment ] = "Grain d\226\128\153enchantement";
 WalletCurrencyTooltips[ MotesOfEnchantment ] = "Ce sont vos Grains d'Enchantement";
 -- Embers of Enchantment control
-L[ "EmbersOfEnchantment" ] = "Braise d\226\128\153enchantement";
-WalletCurrencyTooltips[ "EmbersOfEnchantment" ] = "Ce sont vos Braises d'Enchantement";
+L[ EmbersOfEnchantment ] = "Braise d\226\128\153enchantement";
+WalletCurrencyTooltips[ EmbersOfEnchantment ] = "Ce sont vos Braises d'Enchantement";
 -- Figments of Splendour control
 L[ "FigmentsOfSplendour" ] = "Mirage de splendeur";
 WalletCurrencyTooltips[ "FigmentsOfSplendour" ] = "Ce sont vos Mirages de Splendour";

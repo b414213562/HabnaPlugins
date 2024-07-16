@@ -99,8 +99,8 @@ WalletCurrencyTooltips[ GiftgiversBrand ] = "These are your Gift-giver's Brands"
 L[ MotesOfEnchantment ] = "Motes of Enchantment";
 WalletCurrencyTooltips[ MotesOfEnchantment ] = "These are your Motes of Enchantment";
 -- Embers of Enchantment control
-L[ "EmbersOfEnchantment" ] = "Embers of Enchantment";
-WalletCurrencyTooltips[ "EmbersOfEnchantment" ] = "These are your Embers of Enchantment";
+L[ EmbersOfEnchantment ] = "Embers of Enchantment";
+WalletCurrencyTooltips[ EmbersOfEnchantment ] = "These are your Embers of Enchantment";
 -- Figments of Splendour control
 L[ "FigmentsOfSplendour" ] = "Figments of Splendour";
 WalletCurrencyTooltips[ "FigmentsOfSplendour" ] = "These are your Figments of Splendour";

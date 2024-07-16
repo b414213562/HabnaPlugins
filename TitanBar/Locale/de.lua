@@ -99,8 +99,8 @@ WalletCurrencyTooltips[ GiftgiversBrand ] = "Eure Zeichen des Schenkenden";
 L[ MotesOfEnchantment ] = "Aschepartikel der Verzauberung";
 WalletCurrencyTooltips[ MotesOfEnchantment ] = "Eure Aschepartikel der Verzauberung";
 -- Embers of Enchantment control
-L[ "EmbersOfEnchantment" ] = "Asche der Verzauberung";
-WalletCurrencyTooltips[ "EmbersOfEnchantment" ] = "Eure Asche der Verzauberung";
+L[ EmbersOfEnchantment ] = "Asche der Verzauberung";
+WalletCurrencyTooltips[ EmbersOfEnchantment ] = "Eure Asche der Verzauberung";
 -- Figments of Splendour control
 L[ "FigmentsOfSplendour" ] = "Prachtst\195\188ck des Glanzes";
 WalletCurrencyTooltips[ "FigmentsOfSplendour" ] = "Eure Prachtst\195\188cke des Glanzes";

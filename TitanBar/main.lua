@@ -94,7 +94,7 @@ if PlayerAlign == 1 then
 	-- Coin
 	"Money", Commendations, DestinyPoints, LOTROPoints, MithrilCoins,
 	-- Currency
-	MotesOfEnchantment, "FigmentsOfSplendour", "EmbersOfEnchantment", "AncientScript",
+	MotesOfEnchantment, "FigmentsOfSplendour", EmbersOfEnchantment, "AncientScript",
 	-- Instances and Skirmishes
 	SkirmishMarks, Medallions, Seals, StarsofMerit,
 	-- Festivals and Events
