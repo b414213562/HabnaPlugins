@@ -303,6 +303,7 @@ end
 
 -- **v Load / update / set default settings v**
 -- I'm confused as to what most of this is... Most of these strings should be in localization files, and I believe they are - so why are they here too?  Deprecated code that hasn't been cleaned up yet?
+-- Ah! It's probably to solve the radix point problem.
 function LoadSettings()
 	if GLocale == "de" then
 		settings = Turbine.PluginData.Load( Turbine.DataScope.Character, "TitanBarSettingsDE" );
