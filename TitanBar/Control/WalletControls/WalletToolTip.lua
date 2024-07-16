@@ -42,7 +42,12 @@ function RefreshWITTListBox()
         local ttw = Where[wttcur];
 
         if (wttcur ~= "Money") then
-            CtrIconCodeIs = WalletItem[wttcur].Icon;
+            local imageNum = tonumber(wttcur);
+            if (imageNum) then
+                CtrIconCodeIs = imageNum;
+            else
+                CtrIconCodeIs = WalletItem[wttcur].Icon;
+            end
             CtrQteIs = GetCurrency( wttcur );
 		end
 		
