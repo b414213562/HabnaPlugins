@@ -54,8 +54,8 @@ WalletCurrencyTooltips[ "LOTROPoints" ] = "Eure HdRO-Punkte";
 L[ MithrilCoins ] = "Mithril-M\195\188nze";
 WalletCurrencyTooltips[ MithrilCoins ] = "Eure Mithril-M\195\188nzen";
 -- Yule Tokens control
-L[ "YuleToken" ] = "Julfest-M\195\188nze";
-WalletCurrencyTooltips[ "YuleToken" ] = "Eure Julfest-M\195\188nzen";
+L[ YuleToken ] = "Julfest-M\195\188nze";
+WalletCurrencyTooltips[ YuleToken ] = "Eure Julfest-M\195\188nzen";
 -- Anniversary Tokens control
 L[ "AnniversaryToken" ] = "Jubil\195\164umsm\195\188nze";
 WalletCurrencyTooltips[ "AnniversaryToken" ] = "Eure Jubil\195\164umsm\195\188nzen";

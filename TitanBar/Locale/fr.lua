@@ -55,8 +55,8 @@ WalletCurrencyTooltips[ "LOTROPoints" ] = "Ce sont vos points LOTRO";
 L[ MithrilCoins ] = "Pi\195\168ce de mithril";
 WalletCurrencyTooltips[ MithrilCoins ] = "Ce sont vos Pi\195\168ces de mithril";
 -- Yule Tokens control
-L[ "YuleToken" ] = "Jeton du festival de Yule";
-WalletCurrencyTooltips[ "YuleToken" ] = "Ce sont vos Jetons du festival de Yule";
+L[ YuleToken ] = "Jeton du festival de Yule";
+WalletCurrencyTooltips[ YuleToken ] = "Ce sont vos Jetons du festival de Yule";
 -- Anniversary Tokens control
 L[ "AnniversaryToken" ] = "Jeton d'anniversaire";
 WalletCurrencyTooltips[ "AnniversaryToken" ] = "Ce sont vos Jetons d'anniversaire";

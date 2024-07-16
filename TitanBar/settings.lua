@@ -72,6 +72,7 @@ DestinyPoints = 0x4100a682;
 Shards = 0x41110d5b;
 SkirmishMarks = 0x4111c446;
 MithrilCoins = 0x411348E1;
+YuleToken = 0x410FA62D;
 
 -- the key for each currency:
 Currencies = {
@@ -81,7 +82,7 @@ Currencies = {
     Shards,
     SkirmishMarks,
     MithrilCoins,
-    "YuleToken",
+    YuleToken,
     "HytboldTokens",
     "Medallions",
     "Seals",
@@ -114,7 +115,7 @@ CurrenciesNotUsedInMonsterPlay = {
     DestinyPoints,
     Shards,
     SkirmishMarks,
-    "YuleToken",
+    YuleToken,
     "HytboldTokens",
     "Medallions",
     "Seals",
