@@ -108,8 +108,8 @@ WalletCurrencyTooltips[ FigmentsOfSplendour ] = "These are your Figments of Sple
 L[ FallFestivalToken ] = "Fall Festival Token";
 WalletCurrencyTooltips[ FallFestivalToken ] = "These are your Fall Festival Tokens";
 -- Farmers Faire Tokens control
-L[ "FarmersFaireToken" ] = "Farmers Faire Token";
-WalletCurrencyTooltips[ "FarmersFaireToken" ] = "These are your Farmers Faire Tokens";
+L[ FarmersFaireToken ] = "Farmers Faire Token";
+WalletCurrencyTooltips[ FarmersFaireToken ] = "These are your Farmers Faire Tokens";
 -- Spring Leaves control
 L[ "SpringLeaf" ] = "Spring Leaf";
 WalletCurrencyTooltips[ "SpringLeaf" ] = "These are your Spring Leaves";

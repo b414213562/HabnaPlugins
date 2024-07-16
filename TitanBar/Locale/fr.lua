@@ -109,8 +109,8 @@ WalletCurrencyTooltips[ FigmentsOfSplendour ] = "Ce sont vos Mirages de Splendou
 L[ FallFestivalToken ] = "Jeton du festival d'automne";
 WalletCurrencyTooltips[ FallFestivalToken ] = "Ce sont vos Jetons du Festival d'Automne";
 -- Farmers Faire Tokens control
-L[ "FarmersFaireToken" ] = "Jeton de la Foire des fermiers";
-WalletCurrencyTooltips[ "FarmersFaireToken" ] = "Ce sont vos Jetons de la Foire des Fermiers";
+L[ FarmersFaireToken ] = "Jeton de la Foire des fermiers";
+WalletCurrencyTooltips[ FarmersFaireToken ] = "Ce sont vos Jetons de la Foire des Fermiers";
 -- Spring Leaves control
 L[ "SpringLeaf" ] = "Feuille de printemps";
 WalletCurrencyTooltips[ "SpringLeaf" ] = "Ce sont vos Feuille de Printemps";
