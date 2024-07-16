@@ -118,8 +118,8 @@ WalletCurrencyTooltips[ SpringLeaf ] = "Ce sont vos Feuille de Printemps";
 L[ MidsummerToken ] = "Jeton du solstice d'\195\169t\195\169";
 WalletCurrencyTooltips[ MidsummerToken ] = "Ce sont vos Jetons du solstice d'�t�";
 -- Ancient Script control
-L[ "AncientScript" ] = "\195\137criture ancienne";
-WalletCurrencyTooltips[ "AncientScript" ] = "Ce sont vos \195\137criture ancienne";
+L[ AncientScript ] = "\195\137criture ancienne";
+WalletCurrencyTooltips[ AncientScript ] = "Ce sont vos \195\137criture ancienne";
 -- Inn League / Ale Association control
 L[ "BadgeOfTaste" ] = "M�daille du go�t";
 WalletCurrencyTooltips[ "BadgeOfTaste" ] = "Ce sont vos M�dailles du go�t";

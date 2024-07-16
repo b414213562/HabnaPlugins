@@ -25,7 +25,7 @@ tL, tT = 100, 100; --Default position of control window
 
 ---Returns the default value for the specified setting
 ---@param setting string The type of setting, e.g. V, A, R, G
----@param key string The currency in question, e.g. "Money", "AncientScript"
+---@param key string The currency in question, e.g. "Money", AncientScript
 ---@return any
 function GetDefault(setting, key)
     local value = nil;
@@ -82,6 +82,7 @@ FallFestivalToken = 0x410d85de;
 FarmersFaireToken = 0x410e7bd6;
 SpringLeaf = 0x410d74cb;
 MidsummerToken = 0x411ee829;
+AncientScript = 0x41212e84;
 
 -- the key for each currency:
 Currencies = {
@@ -110,7 +111,7 @@ Currencies = {
     FarmersFaireToken,
     SpringLeaf,
     MidsummerToken,
-    "AncientScript",
+    AncientScript,
     "BadgeOfTaste",
     "BadgeOfDishonour",
 }
@@ -150,7 +151,7 @@ CurrenciesNotUsedInMonsterPlay = {
     FarmersFaireToken,
     SpringLeaf,
     MidsummerToken,
-    "AncientScript",
+    AncientScript,
     "BadgeOfTaste",
     "BadgeOfDishonour",
 };

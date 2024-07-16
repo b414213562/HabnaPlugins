@@ -117,8 +117,8 @@ WalletCurrencyTooltips[ SpringLeaf ] = "Eure Fr\195\188hlingsbl\195\164tter";
 L[ MidsummerToken ] = "Mittsommer-Marke";
 WalletCurrencyTooltips[ MidsummerToken ] = "Eure Mittsommer-Marken";
 -- Ancient Script control
-L[ "AncientScript" ] = "Uralte Schrift";
-WalletCurrencyTooltips[ "AncientScript" ] = "Eure Uralte Schriften";
+L[ AncientScript ] = "Uralte Schrift";
+WalletCurrencyTooltips[ AncientScript ] = "Eure Uralte Schriften";
 -- Inn League / Ale Association control
 L[ "BadgeOfTaste" ] = "Abzeichen des Geschmacks";
 WalletCurrencyTooltips[ "BadgeOfTaste" ] = "Eure Abzeichen des Geschmacks";
