@@ -96,7 +96,7 @@ if PlayerAlign == 1 then
 	-- Currency
 	"MotesOfEnchantment", "FigmentsOfSplendour", "EmbersOfEnchantment", "AncientScript",
 	-- Instances and Skirmishes
-	"SkirmishMarks", "Medallions", "Seals", "StarsofMerit",
+	SkirmishMarks, "Medallions", "Seals", "StarsofMerit",
 	-- Festivals and Events
 	"AnniversaryToken", "FallFestivalToken", "FarmersFaireToken", "MidsummerToken", "SpringLeaf", "YuleToken",
 	-- Inn League and Ale Association

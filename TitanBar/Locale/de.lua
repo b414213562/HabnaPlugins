@@ -63,8 +63,8 @@ WalletCurrencyTooltips[ "AnniversaryToken" ] = "Eure Jubil\195\164umsm\195\188nz
 L[ "BingoBadge" ] = "Bingo-Abzeichen";
 WalletCurrencyTooltips[ "BingoBadge" ] = "Eure Bingo-Abzeichen";
 -- Skirmish marks control
-L[ "SkirmishMarks" ] = "Zeichen";
-WalletCurrencyTooltips[ "SkirmishMarks" ] = "Eure Scharm\195\188tzel-Zeichen";
+L[ SkirmishMarks ] = "Zeichen";
+WalletCurrencyTooltips[ SkirmishMarks ] = "Eure Scharm\195\188tzel-Zeichen";
 -- Destiny Points control
 L[ DestinyPoints ] = "Schicksalspunkte";
 WalletCurrencyTooltips[ DestinyPoints ] = "Eure Schicksalspunkte";
