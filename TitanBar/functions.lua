@@ -383,6 +383,8 @@ function UpdateCurrency(key, quantity)
 	end
 end
 
+--- If entry is missing in PlayerCurrencyHandler, creates it.
+---@param walletItem WalletItem
 function AddCurrencyCallbackIfNeeded(walletItem)
     local currencyName = walletItem:GetName();
     local key = CurrencyNameToKey[currencyName];
