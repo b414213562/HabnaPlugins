@@ -1,7 +1,7 @@
 -- Tables for control overrides:
 MakeWalletControl_LabelAlignmentOverrides = {
     ["Commendations"] = Turbine.UI.ContentAlignment.MiddleCenter;
-    ["DestinyPoints"] = Turbine.UI.ContentAlignment.MiddleCenter;
+    [DestinyPoints] = Turbine.UI.ContentAlignment.MiddleCenter;
     ["LOTROPoints"] = Turbine.UI.ContentAlignment.MiddleCenter;
     ["Medallions"] = Turbine.UI.ContentAlignment.MiddleCenter;
     ["Seals"] = Turbine.UI.ContentAlignment.MiddleCenter;
@@ -9,12 +9,12 @@ MakeWalletControl_LabelAlignmentOverrides = {
 }
 
 MakeWalletControl_IconWidthOverrides = {
-    ["DestinyPoints"] = 21;
+    [DestinyPoints] = 21;
     ["LOTROPoints"] = 36;
 };
 
 MakeWalletControl_IconHeightOverrides = {
-    ["DestinyPoints"] = 22;
+    [DestinyPoints] = 22;
     ["LOTROPoints"] = 43;
 };
 

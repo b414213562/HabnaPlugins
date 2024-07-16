@@ -128,7 +128,7 @@ function RefreshWITTListBox()
 				_G.ToolTipWin:SetWidth( totWidth+40 );
 				--**
 				--** Resize Destiny points & LOTRO points icon since it's not in 32x32 **--
-				if wttcur == "DestinyPoints" then
+				if wttcur == DestinyPoints then
 					ttIcon:SetSize( 21, 22 );
 					ttIcon:SetStretchMode( 1 );
 					ttIcon:SetSize( 32, 32 );

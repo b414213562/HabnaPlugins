@@ -66,8 +66,8 @@ WalletCurrencyTooltips[ "BingoBadge" ] = "Eure Bingo-Abzeichen";
 L[ "SkirmishMarks" ] = "Zeichen";
 WalletCurrencyTooltips[ "SkirmishMarks" ] = "Eure Scharm\195\188tzel-Zeichen";
 -- Destiny Points control
-L[ "DestinyPoints" ] = "Schicksalspunkte";
-WalletCurrencyTooltips[ "DestinyPoints" ] = "Eure Schicksalspunkte";
+L[ DestinyPoints ] = "Schicksalspunkte";
+WalletCurrencyTooltips[ DestinyPoints ] = "Eure Schicksalspunkte";
 -- Shards control
 L[ "Shards" ] = "Scherbe";
 WalletCurrencyTooltips[ "Shards" ] = "Eure Scherben";

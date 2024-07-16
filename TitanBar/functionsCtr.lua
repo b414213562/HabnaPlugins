@@ -688,13 +688,13 @@ function LoadPlayerWallet()
     AddCallback(wallet, "ItemRemoved", CurrencyRemoved);
 
     -- Destiny is tracked differently:
-    if PlayerCurrencyHandler["DestinyPoints"] == nil then
+    if PlayerCurrencyHandler[DestinyPoints] == nil then
         PlayerAtt = Player:GetAttributes();
-        PlayerCurrencyHandler["DestinyPoints"] = AddCallback(
+        PlayerCurrencyHandler[DestinyPoints] = AddCallback(
             PlayerAtt,
             "DestinyPointsChanged",
             function(sender, args)
-                UpdateCurrency("DestinyPoints");
+                UpdateCurrency(DestinyPoints);
             end);
     end
 
@@ -1024,7 +1024,7 @@ end
 function GetCurrency( str )
     local currentQuantity = 0;
 
-    if (str == "DestinyPoints") then
+    if (str == DestinyPoints) then
         currentQuantity = Player:GetAttributes():GetDestinyPoints();
     elseif (str == "LOTROPoints") then
         currentQuantity = tonumber(_G.LOTROPTS) or 0;

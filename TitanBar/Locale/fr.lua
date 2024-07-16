@@ -67,8 +67,8 @@ WalletCurrencyTooltips[ "BingoBadge" ] = "These are your Insignes de Bingo";
 L[ "SkirmishMarks" ] = "Marque";
 WalletCurrencyTooltips[ "SkirmishMarks" ] = "Ce sont vos marques d'escarmouches";
 -- Destiny Points control
-L[ "DestinyPoints" ] = "Points destin\195\169e";
-WalletCurrencyTooltips[ "DestinyPoints" ] = "Ce sont vos points destin\195\169e";
+L[ DestinyPoints ] = "Points destin\195\169e";
+WalletCurrencyTooltips[ DestinyPoints ] = "Ce sont vos points destin\195\169e";
 -- Shards control
 L[ "Shards" ] = "Eclat";
 WalletCurrencyTooltips[ "Shards" ] = "Ce sont vos Eclats";

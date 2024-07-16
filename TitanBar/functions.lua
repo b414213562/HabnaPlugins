@@ -369,7 +369,7 @@ end
 
 --- Function to update the details for currencies on the bar.
 --- Does nothing if the currency is not currently on the bar (Where = 1) or in the tooltip (Where = 2).
----@param key string The key (e.g. "DestinyPoints" for the currency)
+---@param key string The key (e.g. DestinyPoints for the currency)
 ---@param quantity integer The new quantity, if known. Otherwise, will call GetCurrency().
 function UpdateCurrency(key, quantity)
     local table = _G[key];
@@ -841,7 +841,7 @@ function AjustIcon(str)
     elseif (IsCurrency[str]) then
         -- Customizing icon positions goes here:
         local customCurrencyWidthOffsets = {
-            ["DestinyPoints"] = 0;
+            [DestinyPoints] = 0;
             ["Shards"] = -2;
             ["LOTROPoints"] = 2;
         };

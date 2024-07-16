@@ -92,7 +92,7 @@ frmMain();
 if PlayerAlign == 1 then 
     MenuItem = { 
 	-- Coin
-	"Money", "Commendations", "DestinyPoints", "LOTROPoints", "MithrilCoins",
+	"Money", "Commendations", DestinyPoints, "LOTROPoints", "MithrilCoins",
 	-- Currency
 	"MotesOfEnchantment", "FigmentsOfSplendour", "EmbersOfEnchantment", "AncientScript",
 	-- Instances and Skirmishes

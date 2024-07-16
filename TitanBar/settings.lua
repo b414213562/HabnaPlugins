@@ -68,11 +68,13 @@ DoesNotHaveWhere = {
     ["Wallet"] = true;
 };
 
+DestinyPoints = 0x4100a682;
+
 -- the key for each currency:
 Currencies = {
     "Wallet",
     "Money",
-    "DestinyPoints",
+    DestinyPoints,
     "Shards",
     "SkirmishMarks",
     "MithrilCoins",
@@ -106,7 +108,7 @@ for key, value in ipairs(Currencies) do
 end
 
 CurrenciesNotUsedInMonsterPlay = {
-    "DestinyPoints",
+    DestinyPoints,
     "Shards",
     "SkirmishMarks",
     "YuleToken",
