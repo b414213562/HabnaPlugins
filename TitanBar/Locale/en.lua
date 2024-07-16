@@ -75,8 +75,8 @@ WalletCurrencyTooltips[ Shards ] = "These are your shard";
 L[ HytboldTokens ] = "Token of Hytbold";
 WalletCurrencyTooltips[ HytboldTokens ] = "These are your Tokens of Hytbold";
 -- Medallions control
-L[ "Medallions" ] = "Medallion";
-WalletCurrencyTooltips[ "Medallions" ] = "These are your medallions";
+L[ Medallions ] = "Medallion";
+WalletCurrencyTooltips[ Medallions ] = "These are your medallions";
 -- Seals control
 L[ "Seals" ] = "Seal";
 WalletCurrencyTooltips[ "Seals" ] = "These are your seals";
