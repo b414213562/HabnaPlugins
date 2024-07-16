@@ -96,8 +96,8 @@ WalletCurrencyTooltips[ CentralGondorSilverPiece ] = "These are your Central Gon
 L[ GiftgiversBrand ] = "Gift-giver's Brand";
 WalletCurrencyTooltips[ GiftgiversBrand ] = "These are your Gift-giver's Brands";
 -- Motes of Enchantment control
-L[ "MotesOfEnchantment" ] = "Motes of Enchantment";
-WalletCurrencyTooltips[ "MotesOfEnchantment" ] = "These are your Motes of Enchantment";
+L[ MotesOfEnchantment ] = "Motes of Enchantment";
+WalletCurrencyTooltips[ MotesOfEnchantment ] = "These are your Motes of Enchantment";
 -- Embers of Enchantment control
 L[ "EmbersOfEnchantment" ] = "Embers of Enchantment";
 WalletCurrencyTooltips[ "EmbersOfEnchantment" ] = "These are your Embers of Enchantment";

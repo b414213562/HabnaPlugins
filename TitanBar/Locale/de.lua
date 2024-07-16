@@ -96,8 +96,8 @@ WalletCurrencyTooltips[ CentralGondorSilverPiece ] = "Eure Zentralgondorischen S
 L[ GiftgiversBrand ] = "Zeichen des Schenkenden";
 WalletCurrencyTooltips[ GiftgiversBrand ] = "Eure Zeichen des Schenkenden";
 -- Motes of Enchantment control
-L[ "MotesOfEnchantment" ] = "Aschepartikel der Verzauberung";
-WalletCurrencyTooltips[ "MotesOfEnchantment" ] = "Eure Aschepartikel der Verzauberung";
+L[ MotesOfEnchantment ] = "Aschepartikel der Verzauberung";
+WalletCurrencyTooltips[ MotesOfEnchantment ] = "Eure Aschepartikel der Verzauberung";
 -- Embers of Enchantment control
 L[ "EmbersOfEnchantment" ] = "Asche der Verzauberung";
 WalletCurrencyTooltips[ "EmbersOfEnchantment" ] = "Eure Asche der Verzauberung";

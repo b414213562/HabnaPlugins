@@ -97,8 +97,8 @@ WalletCurrencyTooltips[ CentralGondorSilverPiece ] = "Ce sont vos Pi\195\168ces 
 L[ GiftgiversBrand ] = "Marque du Donateur";
 WalletCurrencyTooltips[ GiftgiversBrand ] = "Ce sont vos Marques du Donateur";
 -- Motes of Enchantment control
-L[ "MotesOfEnchantment" ] = "Grain d\226\128\153enchantement";
-WalletCurrencyTooltips[ "MotesOfEnchantment" ] = "Ce sont vos Grains d'Enchantement";
+L[ MotesOfEnchantment ] = "Grain d\226\128\153enchantement";
+WalletCurrencyTooltips[ MotesOfEnchantment ] = "Ce sont vos Grains d'Enchantement";
 -- Embers of Enchantment control
 L[ "EmbersOfEnchantment" ] = "Braise d\226\128\153enchantement";
 WalletCurrencyTooltips[ "EmbersOfEnchantment" ] = "Ce sont vos Braises d'Enchantement";
