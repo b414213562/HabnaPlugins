@@ -58,8 +58,8 @@ WalletCurrencyTooltips[ MithrilCoins ] = "Ce sont vos Pi\195\168ces de mithril";
 L[ YuleToken ] = "Jeton du festival de Yule";
 WalletCurrencyTooltips[ YuleToken ] = "Ce sont vos Jetons du festival de Yule";
 -- Anniversary Tokens control
-L[ "AnniversaryToken" ] = "Jeton d'anniversaire";
-WalletCurrencyTooltips[ "AnniversaryToken" ] = "Ce sont vos Jetons d'anniversaire";
+L[ AnniversaryToken ] = "Jeton d'anniversaire";
+WalletCurrencyTooltips[ AnniversaryToken ] = "Ce sont vos Jetons d'anniversaire";
 -- Bingo Badge control
 L[ BingoBadge ] = "Insigne de Bingo";
 WalletCurrencyTooltips[ BingoBadge ] = "These are your Insignes de Bingo";

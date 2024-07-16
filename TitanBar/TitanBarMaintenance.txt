@@ -41,10 +41,10 @@ Add a new currency:
 -- Search for "Wallet Currency Controls" and add the new currency to the end of the existing list
 -- You need two for each currency:
 --- The first is the name of the currency in that language, e.g.:
-----  L[ "AnniversaryToken" ] = "Anniversary Token";
+----  L[ AnniversaryToken ] = "Anniversary Token";
 ----  Important: The name must match the name in the game exactly (and most of the times be singular). Otherwise TitanBar can't find it.
 --- The second is the tooltip for that currency, with the currency pluralized, e.g.:
------ WalletCurrencyTooltips[ "AnniversaryToken" ] = "These are your Anniversary Tokens";
+----- WalletCurrencyTooltips[ AnniversaryToken ] = "These are your Anniversary Tokens";
 
 - Add currency in 'main.lua'
 -- Note to self: This section should move into a settings initialization function if you have no save file.
