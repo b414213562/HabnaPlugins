@@ -7,8 +7,13 @@ Are monster wallet items in the data files?
     If so, we should split them out, so that only monsters load those, and only free peoples load the others.
 
 Consider if this is still good code in WalletToolTip.lua:
-    if wttcur == Seals or wttcur == "LOTROPoints" then ttIcon:SetBackground( CtrIconCodeIs );
+    if wttcur == Seals or wttcur == LOTROPoints then ttIcon:SetBackground( CtrIconCodeIs );
 
+If we only show Commentations and LOTRO Points in Monster Play (See main.lua's MenuItem), why does this exist in frmMain.lua:
+		-- Disable infos not useful in Monster Play
+        for index, key in ipairs(CurrenciesNotUsedInMonsterPlay) do
+            Show[key] = false;
+        end
 
 The Money tooltip (and maybe LotroPoints and Wallet) needs some attention - doesn't seem attached to the parent control.
 
