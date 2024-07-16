@@ -87,8 +87,8 @@ WalletCurrencyTooltips[ Commendations ] = "These are your Commendations";
 L[ AmrothSilverPiece ] = "Amroth Silver Piece";
 WalletCurrencyTooltips[ AmrothSilverPiece ] = "These are your Amroth Silver Pieces";
 -- Stars of Merit control
-L[ "StarsofMerit" ] = "Star of Merit";
-WalletCurrencyTooltips[ "StarsofMerit" ] = "These are your Stars of Merit";
+L[ StarsofMerit ] = "Star of Merit";
+WalletCurrencyTooltips[ StarsofMerit ] = "These are your Stars of Merit";
 -- Central Gondor Silver Piece control
 L[ "CentralGondorSilverPiece" ] = "Central Gondor Silver Piece";
 WalletCurrencyTooltips[ "CentralGondorSilverPiece" ] = "These are your Central Gondor Silver Pieces";
