@@ -100,7 +100,7 @@ if PlayerAlign == 1 then
 	-- Festivals and Events
 	AnniversaryToken, FallFestivalToken, FarmersFaireToken, MidsummerToken, SpringLeaf, YuleToken,
 	-- Inn League and Ale Association
-	"BadgeOfTaste", "BadgeOfDishonour",
+	BadgeOfTaste, "BadgeOfDishonour",
 	-- Item Advancement
 	Shards,
 	-- Other   

@@ -120,8 +120,8 @@ WalletCurrencyTooltips[ MidsummerToken ] = "These are your Midsummer Tokens";
 L[ AncientScript ] = "Ancient Script";
 WalletCurrencyTooltips[ AncientScript ] = "These are your Ancient Scripts";
 -- Inn League / Ale Association control
-L[ "BadgeOfTaste" ] = "Badge of Taste";
-WalletCurrencyTooltips[ "BadgeOfTaste" ] = "These are your Badges of Taste";
+L[ BadgeOfTaste ] = "Badge of Taste";
+WalletCurrencyTooltips[ BadgeOfTaste ] = "These are your Badges of Taste";
 L[ "BadgeOfDishonour" ] = "Badge of Dishonour";
 WalletCurrencyTooltips[ "BadgeOfDishonour" ] = "These are your Badges of Dishonour";
 

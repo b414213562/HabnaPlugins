@@ -83,6 +83,7 @@ FarmersFaireToken = 0x410e7bd6;
 SpringLeaf = 0x410d74cb;
 MidsummerToken = 0x411ee829;
 AncientScript = 0x41212e84;
+BadgeOfTaste = 0x41002b2c;
 
 -- the key for each currency:
 Currencies = {
@@ -112,7 +113,7 @@ Currencies = {
     SpringLeaf,
     MidsummerToken,
     AncientScript,
-    "BadgeOfTaste",
+    BadgeOfTaste,
     "BadgeOfDishonour",
 }
 
@@ -152,7 +153,7 @@ CurrenciesNotUsedInMonsterPlay = {
     SpringLeaf,
     MidsummerToken,
     AncientScript,
-    "BadgeOfTaste",
+    BadgeOfTaste,
     "BadgeOfDishonour",
 };
 
