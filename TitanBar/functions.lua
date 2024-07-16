@@ -193,7 +193,7 @@ function ShowToolTipWin( ToShow )
         h = tooltipWindowCustomHeight[ToShow] or 65;
 
         local tooltipWindowCustomWidth = {
-            ["CentralGondorSilverPiece"] = w + 30;
+            [CentralGondorSilverPiece] = w + 30;
         }
         w = tooltipWindowCustomWidth[ToShow] or w;
 

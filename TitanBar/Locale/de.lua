@@ -90,8 +90,8 @@ WalletCurrencyTooltips[ AmrothSilverPiece ] = "Eure Amroth-Silberst\195\188cke";
 L[ StarsofMerit ] = "Stern des Verdienst";
 WalletCurrencyTooltips[ StarsofMerit ] = "Eure Sterne des Verdienst";
 -- Central Gondor Silver Piece control
-L[ "CentralGondorSilverPiece" ] = "Zentralgondorisches Silberst\195\188ck";
-WalletCurrencyTooltips[ "CentralGondorSilverPiece" ] = "Eure Zentralgondorischen Silberst\195\188cke";
+L[ CentralGondorSilverPiece ] = "Zentralgondorisches Silberst\195\188ck";
+WalletCurrencyTooltips[ CentralGondorSilverPiece ] = "Eure Zentralgondorischen Silberst\195\188cke";
 -- Gift giver's Brand control
 L[ "GiftgiversBrand" ] = "Zeichen des Schenkenden";
 WalletCurrencyTooltips[ "GiftgiversBrand" ] = "Eure Zeichen des Schenkenden";

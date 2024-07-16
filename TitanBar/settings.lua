@@ -71,6 +71,7 @@ Commendations = 0x41123495;
 LOTROPoints = 0x4113478C;
 AmrothSilverPiece = 0x41152875;
 StarsofMerit = 0x4115bea4;
+CentralGondorSilverPiece = 0x41155957;
 
 -- the key for each currency:
 Currencies = {
@@ -88,7 +89,7 @@ Currencies = {
     LOTROPoints,
     AmrothSilverPiece,
     StarsofMerit,
-    "CentralGondorSilverPiece",
+    CentralGondorSilverPiece,
     "GiftgiversBrand",
     "BingoBadge",
     "AnniversaryToken",
@@ -128,7 +129,7 @@ CurrenciesNotUsedInMonsterPlay = {
     Seals,
     AmrothSilverPiece,
     StarsofMerit,
-    "CentralGondorSilverPiece",
+    CentralGondorSilverPiece,
     "GiftgiversBrand",
     "BingoBadge",
     "AnniversaryToken",
