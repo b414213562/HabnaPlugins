@@ -55,15 +55,6 @@ Add a new currency:
 -- e.g. Wallet, Money, LOTROPoints
 -- (note: If you are just showing the amount of your currency, you do not need to do this)
 
-- Add currency in 'TBresources.lua'
--- or more correctly: Add the image of the currency
--- Search for "_G.WalletItem"
--- Copy the last entry in the array and paste it as the last entry
--- Add a comma after the second to last entry (TitanBar won't load without it. It get's me every time)
--- Replace the name in the last entry with the new currency
--- Replace the hex value with the new icon value. (If you don't know the value scroll down to "HelloWorld-Plugin".
-
-
 To add a new control (from Technical_13):
 - Add  text names to the 'de', 'en', and 'fr' localization files
 - Add control in 'menu.lua'

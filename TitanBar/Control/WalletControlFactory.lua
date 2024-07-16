@@ -97,12 +97,7 @@ function MakeWalletControl_Icon(table, key)
     table["Icon"]:SetParent( table["Ctr"] );
     table["Icon"]:SetBlendMode( Turbine.UI.BlendMode.AlphaBlend );
     table["Icon"]:SetSize( iconWidth, iconHeight );
-    local imageNum = tonumber(key);
-    if (imageNum) then
-        table["Icon"]:SetBackground( imageNum );
-    else
-        table["Icon"]:SetBackground( WalletItem[key].Icon );
-    end
+    table["Icon"]:SetBackground( key );
     table["Icon"]:SetMouseVisible(false);
 end
 

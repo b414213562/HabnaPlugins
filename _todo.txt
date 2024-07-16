@@ -1,8 +1,13 @@
-Next time: Change key from friendly-names ("Wallet", "MithrilCoins", etc) to the image ID in preparation for arbitrary items.
+[DONE] Next time: Change key from friendly-names ("Wallet", "MithrilCoins", etc) to the image ID in preparation for arbitrary items.
     Once that's done, can we kill all references to pre-defined lists of keys?
-    Also: Character save files needs to be updated from key to id.
-    Before saving the .plugindata file, make sure each wallet setting has a "placeholder_name" with the name of the thing.
-        (Populated from our data files for known items, and the wallet name for unknown.)
+
+    Need to find code that uses things like CurrencyNameToKey and address how it uses those keys.
+        Possibly fine?
+    Can we store currency entries in PlayerCurrencyHandler by imageID?
+    [DONE] Also: Character save files needs to be updated from key to id.
+        [DONE] Converted plugindata files: Add "description" with old key.
+    When adding new currencies to save file:
+        Add "description" key with the WalletItem:GetName() value.
 Are monster wallet items in the data files?
     If so, we should split them out, so that only monsters load those, and only free peoples load the others.
 

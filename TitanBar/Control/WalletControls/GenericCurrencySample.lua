@@ -21,7 +21,7 @@ table["Icon"] = Turbine.UI.Control();
 table["Icon"]:SetParent( table["Ctr"] );
 table["Icon"]:SetBlendMode( Turbine.UI.BlendMode.AlphaBlend );
 table["Icon"]:SetSize( iconWidth, iconHeight );
-table["Icon"]:SetBackground( WalletItem[key].Icon );
+table["Icon"]:SetBackground( key );
 --**^
 
 table["Icon"].MouseMove = function( sender, args )
