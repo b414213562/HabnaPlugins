@@ -69,13 +69,14 @@ DoesNotHaveWhere = {
 };
 
 DestinyPoints = 0x4100a682;
+Shards = 0x41110d5b;
 
 -- the key for each currency:
 Currencies = {
     "Wallet",
     "Money",
     DestinyPoints,
-    "Shards",
+    Shards,
     "SkirmishMarks",
     "MithrilCoins",
     "YuleToken",
@@ -109,7 +110,7 @@ end
 
 CurrenciesNotUsedInMonsterPlay = {
     DestinyPoints,
-    "Shards",
+    Shards,
     "SkirmishMarks",
     "YuleToken",
     "HytboldTokens",

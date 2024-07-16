@@ -102,7 +102,7 @@ if PlayerAlign == 1 then
 	-- Inn League and Ale Association
 	"BadgeOfTaste", "BadgeOfDishonour",
 	-- Item Advancement
-	"Shards",
+	Shards,
 	-- Other   
     "AmrothSilverPiece", "BingoBadge", "CentralGondorSilverPiece", "GiftgiversBrand", "HytboldTokens",
 	};

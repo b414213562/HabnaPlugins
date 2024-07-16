@@ -70,8 +70,8 @@ WalletCurrencyTooltips[ "SkirmishMarks" ] = "Ce sont vos marques d'escarmouches"
 L[ DestinyPoints ] = "Points destin\195\169e";
 WalletCurrencyTooltips[ DestinyPoints ] = "Ce sont vos points destin\195\169e";
 -- Shards control
-L[ "Shards" ] = "Eclat";
-WalletCurrencyTooltips[ "Shards" ] = "Ce sont vos Eclats";
+L[ Shards ] = "Eclat";
+WalletCurrencyTooltips[ Shards ] = "Ce sont vos Eclats";
 -- Tokens of Hytbold control
 L[ "HytboldTokens" ] = "Jeton d'Hytbold";
 WalletCurrencyTooltips[ "HytboldTokens" ] = "Ce sont vos Jetons d'Hytbold";

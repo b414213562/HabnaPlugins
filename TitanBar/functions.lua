@@ -842,7 +842,7 @@ function AjustIcon(str)
         -- Customizing icon positions goes here:
         local customCurrencyWidthOffsets = {
             [DestinyPoints] = 0;
-            ["Shards"] = -2;
+            [Shards] = -2;
             ["LOTROPoints"] = 2;
         };
         local customCurrencyHeightOffsets = {

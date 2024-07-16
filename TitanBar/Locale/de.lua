@@ -69,8 +69,8 @@ WalletCurrencyTooltips[ "SkirmishMarks" ] = "Eure Scharm\195\188tzel-Zeichen";
 L[ DestinyPoints ] = "Schicksalspunkte";
 WalletCurrencyTooltips[ DestinyPoints ] = "Eure Schicksalspunkte";
 -- Shards control
-L[ "Shards" ] = "Scherbe";
-WalletCurrencyTooltips[ "Shards" ] = "Eure Scherben";
+L[ Shards ] = "Scherbe";
+WalletCurrencyTooltips[ Shards ] = "Eure Scherben";
 -- Tokens of Hytbold control
 L[ "HytboldTokens" ] = "M\195\188nze von Hytbold";
 WalletCurrencyTooltips[ "HytboldTokens" ] = "Eure M\195\188nzen von Hytbold";
