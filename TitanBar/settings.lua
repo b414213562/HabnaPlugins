@@ -84,6 +84,7 @@ SpringLeaf = 0x410d74cb;
 MidsummerToken = 0x411ee829;
 AncientScript = 0x41212e84;
 BadgeOfTaste = 0x41002b2c;
+BadgeOfDishonour = 0x410d4316;
 
 -- the key for each currency:
 Currencies = {
@@ -114,7 +115,7 @@ Currencies = {
     MidsummerToken,
     AncientScript,
     BadgeOfTaste,
-    "BadgeOfDishonour",
+    BadgeOfDishonour,
 }
 
 IsCurrency = {};
@@ -154,7 +155,7 @@ CurrenciesNotUsedInMonsterPlay = {
     MidsummerToken,
     AncientScript,
     BadgeOfTaste,
-    "BadgeOfDishonour",
+    BadgeOfDishonour,
 };
 
 --- Parses an entry like settings.Money.W. Also checks for a discrepancy between Where and Show.
@@ -307,7 +308,7 @@ function UpdateCharacterSettingsIfNecessary(settings)
             ["Mid" .. "summerToken"] = 0x411EE829,
             ["Anc" .. "ientScript"] = 0x41212E84,
             ["Bad" .. "geOfTaste"] = 0x41002B2C,
-            ["Bad" .. "geOfDishonour"] = 0x410D431
+            ["Bad" .. "geOfDishonour"] = 0x410d4316,
         };
 
         for key, imageId in pairs(v_10_to_11_lookup_table) do

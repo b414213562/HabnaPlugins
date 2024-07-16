@@ -122,8 +122,8 @@ WalletCurrencyTooltips[ AncientScript ] = "Eure Uralte Schriften";
 -- Inn League / Ale Association control
 L[ BadgeOfTaste ] = "Abzeichen des Geschmacks";
 WalletCurrencyTooltips[ BadgeOfTaste ] = "Eure Abzeichen des Geschmacks";
-L[ "BadgeOfDishonour" ] = "Abzeichen der Schande";
-WalletCurrencyTooltips[ "BadgeOfDishonour" ] = "Eure Abzeichen der Schande";
+L[ BadgeOfDishonour ] = "Abzeichen der Schande";
+WalletCurrencyTooltips[ BadgeOfDishonour ] = "Eure Abzeichen der Schande";
 
 -- Control Menu
 L[ "MCU" ] = "entfernen ...";

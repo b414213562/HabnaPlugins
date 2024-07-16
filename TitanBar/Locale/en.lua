@@ -122,8 +122,8 @@ WalletCurrencyTooltips[ AncientScript ] = "These are your Ancient Scripts";
 -- Inn League / Ale Association control
 L[ BadgeOfTaste ] = "Badge of Taste";
 WalletCurrencyTooltips[ BadgeOfTaste ] = "These are your Badges of Taste";
-L[ "BadgeOfDishonour" ] = "Badge of Dishonour";
-WalletCurrencyTooltips[ "BadgeOfDishonour" ] = "These are your Badges of Dishonour";
+L[ BadgeOfDishonour ] = "Badge of Dishonour";
+WalletCurrencyTooltips[ BadgeOfDishonour ] = "These are your Badges of Dishonour";
 
 -- Control Menu
 L[ "MCU" ] = "Unload ...";

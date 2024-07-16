@@ -123,8 +123,8 @@ WalletCurrencyTooltips[ AncientScript ] = "Ce sont vos \195\137criture ancienne"
 -- Inn League / Ale Association control
 L[ BadgeOfTaste ] = "M�daille du go�t";
 WalletCurrencyTooltips[ BadgeOfTaste ] = "Ce sont vos M�dailles du go�t";
-L[ "BadgeOfDishonour" ] = "M�daille de la honte";
-WalletCurrencyTooltips[ "BadgeOfDishonour" ] = "Ce sont vos M�dailles de la honte";
+L[ BadgeOfDishonour ] = "M�daille de la honte";
+WalletCurrencyTooltips[ BadgeOfDishonour ] = "Ce sont vos M�dailles de la honte";
 
 
 -- Control Menu
