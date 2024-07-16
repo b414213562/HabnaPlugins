@@ -76,6 +76,7 @@ YuleToken = 0x410FA62D;
 HytboldTokens = 0x41127D0C;
 Medallions = 0x4111c43d;
 Seals = 0x4111c449;
+Commendations = 0x41123495;
 
 -- the key for each currency:
 Currencies = {
@@ -89,7 +90,7 @@ Currencies = {
     HytboldTokens,
     Medallions,
     Seals,
-    "Commendations",
+    Commendations,
     "LOTROPoints",
     "AmrothSilverPiece",
     "StarsofMerit",

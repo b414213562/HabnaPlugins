@@ -1,6 +1,6 @@
 -- Tables for control overrides:
 MakeWalletControl_LabelAlignmentOverrides = {
-    ["Commendations"] = Turbine.UI.ContentAlignment.MiddleCenter;
+    [Commendations] = Turbine.UI.ContentAlignment.MiddleCenter;
     [DestinyPoints] = Turbine.UI.ContentAlignment.MiddleCenter;
     ["LOTROPoints"] = Turbine.UI.ContentAlignment.MiddleCenter;
     [Medallions] = Turbine.UI.ContentAlignment.MiddleCenter;
