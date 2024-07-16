@@ -78,6 +78,7 @@ AnniversaryToken = 0x4110e2e7;
 MotesOfEnchantment = 0x411b91dd;
 EmbersOfEnchantment = 0x411ce971;
 FigmentsOfSplendour = 0x411cf13b;
+FallFestivalToken = 0x410d85de;
 
 -- the key for each currency:
 Currencies = {
@@ -102,7 +103,7 @@ Currencies = {
     MotesOfEnchantment,
     EmbersOfEnchantment,
     FigmentsOfSplendour,
-    "FallFestivalToken",
+    FallFestivalToken,
     "FarmersFaireToken",
     "SpringLeaf",
     "MidsummerToken",
@@ -142,7 +143,7 @@ CurrenciesNotUsedInMonsterPlay = {
     MotesOfEnchantment,
     EmbersOfEnchantment,
     FigmentsOfSplendour,
-    "FallFestivalToken",
+    FallFestivalToken,
     "FarmersFaireToken",
     "SpringLeaf",
     "MidsummerToken",

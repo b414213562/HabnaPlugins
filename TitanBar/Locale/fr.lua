@@ -106,8 +106,8 @@ WalletCurrencyTooltips[ EmbersOfEnchantment ] = "Ce sont vos Braises d'Enchantem
 L[ FigmentsOfSplendour ] = "Mirage de splendeur";
 WalletCurrencyTooltips[ FigmentsOfSplendour ] = "Ce sont vos Mirages de Splendour";
 -- Fall Festival Tokens control
-L[ "FallFestivalToken" ] = "Jeton du festival d'automne";
-WalletCurrencyTooltips[ "FallFestivalToken" ] = "Ce sont vos Jetons du Festival d'Automne";
+L[ FallFestivalToken ] = "Jeton du festival d'automne";
+WalletCurrencyTooltips[ FallFestivalToken ] = "Ce sont vos Jetons du Festival d'Automne";
 -- Farmers Faire Tokens control
 L[ "FarmersFaireToken" ] = "Jeton de la Foire des fermiers";
 WalletCurrencyTooltips[ "FarmersFaireToken" ] = "Ce sont vos Jetons de la Foire des Fermiers";

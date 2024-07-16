@@ -105,8 +105,8 @@ WalletCurrencyTooltips[ EmbersOfEnchantment ] = "Eure Asche der Verzauberung";
 L[ FigmentsOfSplendour ] = "Prachtst\195\188ck des Glanzes";
 WalletCurrencyTooltips[ FigmentsOfSplendour ] = "Eure Prachtst\195\188cke des Glanzes";
 -- Fall Festival Tokens control
-L[ "FallFestivalToken" ] = "Herbstfest-Medaille";
-WalletCurrencyTooltips[ "FallFestivalToken" ] = "Eure Herbstfest-Medaillen";
+L[ FallFestivalToken ] = "Herbstfest-Medaille";
+WalletCurrencyTooltips[ FallFestivalToken ] = "Eure Herbstfest-Medaillen";
 -- Farmers Faire Tokens control
 L[ "FarmersFaireToken" ] = "Bauernfest-M\195\188nze";
 WalletCurrencyTooltips[ "FarmersFaireToken" ] = "Eure Bauernfest-M\195\188nzen";
