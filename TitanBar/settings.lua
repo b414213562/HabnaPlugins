@@ -238,6 +238,69 @@ function ResetControlSettings(key)
     end
 end
 
+--- Updates the Character Settings from v1.0 to current.
+---@param settings table
+function UpdateCharacterSettingsIfNecessary(settings)
+    -- check for version number:
+    local version = settings.version;
+
+    if (not version) then version = "1.0" end
+
+    -- todo: reinstate after testing:
+--    if (version == "1.0") then
+        Turbine.Shell.WriteLine("Updating TitanBar character setting file to v1.1");
+        -- update to version 1.1
+
+        -- In this update, the currencies are now indexed with image ID instead of a human readable key.
+        -- Change old values to new, and add placeholder text to make it more legible.
+
+        local v_10_to_11_lookup_table = {
+            ["DestinyPoints"] = 0x4100a682,
+            ["Shards"] = 0x41110d5b,
+            ["SkirmishMarks"] = 0x4111c446,
+            ["MithrilCoins"] = 0x411348E1,
+            ["YuleToken"] = 0x410FA62D,
+            ["HytboldTokens"] = 0x41127D0C,
+            ["Medallions"] = 0x4111c43d,
+            ["Seals"] = 0x4111c449,
+            ["Commendations"] = 0x41123495,
+            ["LOTROPoints"] = 0x4113478C,
+            ["AmrothSilverPiece"] = 0x41152875,
+            ["StarsofMerit"] = 0x4115bea4,
+            ["CentralGondorSilverPiece"] = 0x41155957,
+            ["GiftgiversBrand"] = 0x4115c888,
+            ["BingoBadge"] = 0x410E6EE4,
+            ["AnniversaryToken"] = 0x4110E2E7,
+            ["MotesOfEnchantment"] = 0x411B91DD,
+            ["EmbersOfEnchantment"] = 0x411CE971,
+            ["FigmentsOfSplendour"] = 0x411CF13B,
+            ["FallFestivalToken"] = 0x410D85DE,
+            ["FarmersFaireToken"] = 0x410E7BD6,
+            ["SpringLeaf"] = 0x410D74CB,
+            ["MidsummerToken"] = 0x411EE829,
+            ["AncientScript"] = 0x41212E84,
+            ["BadgeOfTaste"] = 0x41002B2C,
+            ["BadgeOfDishonour"] = 0x410D431
+        };
+
+        for key, imageId in pairs(v_10_to_11_lookup_table) do
+            local isSettingPresent = not not settings[key];
+            -- TODO: Delete the next line, it's only needed during development:
+            local isCurrencyTransitioned = IsCurrency[imageId];
+
+            if (isSettingPresent and isCurrencyTransitioned) then
+                Turbine.Shell.WriteLine("Transitioning currency from " .. key .. " to " .. imageId);
+                settings[imageId] = settings[key];
+                settings[key] = nil;
+                settings[imageId]["description"] = key;
+            end
+--        end
+
+        settings.version = "1.1";
+    end
+
+end
+
 -- **v Load / update / set default settings v**
 -- I'm confused as to what most of this is... Most of these strings should be in localization files, and I believe they are - so why are they here too?  Deprecated code that hasn't been cleaned up yet?
 function LoadSettings()
@@ -250,6 +313,8 @@ function LoadSettings()
 	end
 	
 	if settings == nil then	settings = {}; end
+
+    UpdateCharacterSettingsIfNecessary(settings);
 
 	if settings.TitanBar == nil then settings.TitanBar = {}; end
 	if settings.TitanBar.A == nil then settings.TitanBar.A = string.format("%.3f", tA); end --Default Alpha color value
