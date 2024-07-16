@@ -112,8 +112,8 @@ WalletCurrencyTooltips[ FallFestivalToken ] = "Ce sont vos Jetons du Festival d'
 L[ FarmersFaireToken ] = "Jeton de la Foire des fermiers";
 WalletCurrencyTooltips[ FarmersFaireToken ] = "Ce sont vos Jetons de la Foire des Fermiers";
 -- Spring Leaves control
-L[ "SpringLeaf" ] = "Feuille de printemps";
-WalletCurrencyTooltips[ "SpringLeaf" ] = "Ce sont vos Feuille de Printemps";
+L[ SpringLeaf ] = "Feuille de printemps";
+WalletCurrencyTooltips[ SpringLeaf ] = "Ce sont vos Feuille de Printemps";
 -- Midsummer Tokens control
 L[ "MidsummerToken" ] = "Jeton du solstice d'\195\169t\195\169";
 WalletCurrencyTooltips[ "MidsummerToken" ] = "Ce sont vos Jetons du solstice d'�t�";

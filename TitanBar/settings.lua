@@ -80,6 +80,7 @@ EmbersOfEnchantment = 0x411ce971;
 FigmentsOfSplendour = 0x411cf13b;
 FallFestivalToken = 0x410d85de;
 FarmersFaireToken = 0x410e7bd6;
+SpringLeaf = 0x410d74cb;
 
 -- the key for each currency:
 Currencies = {
@@ -106,7 +107,7 @@ Currencies = {
     FigmentsOfSplendour,
     FallFestivalToken,
     FarmersFaireToken,
-    "SpringLeaf",
+    SpringLeaf,
     "MidsummerToken",
     "AncientScript",
     "BadgeOfTaste",
@@ -146,7 +147,7 @@ CurrenciesNotUsedInMonsterPlay = {
     FigmentsOfSplendour,
     FallFestivalToken,
     FarmersFaireToken,
-    "SpringLeaf",
+    SpringLeaf,
     "MidsummerToken",
     "AncientScript",
     "BadgeOfTaste",
