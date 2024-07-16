@@ -76,8 +76,8 @@ GiftgiversBrand = 0x4115c888;
 BingoBadge = 0x410e6ee4;
 AnniversaryToken = 0x4110e2e7;
 MotesOfEnchantment = 0x411b91dd;
-EmbersOfEnchantment = 0x411CE971;
-FigmentsOfSplendour = 0x411CF13B;
+EmbersOfEnchantment = 0x411ce971;
+FigmentsOfSplendour = 0x411cf13b;
 
 -- the key for each currency:
 Currencies = {
