@@ -1,6 +1,8 @@
 Next time: Change key from friendly-names ("Wallet", "MithrilCoins", etc) to the image ID in preparation for arbitrary items.
     Once that's done, can we kill all references to pre-defined lists of keys?
     Also: Character save files needs to be updated from key to id.
+    Before saving the .plugindata file, make sure each wallet setting has a "placeholder_name" with the name of the thing.
+        (Populated from our data files for known items, and the wallet name for unknown.)
 
 The Money tooltip (and maybe LotroPoints and Wallet) needs some attention - doesn't seem attached to the parent control.
 
