@@ -1,7 +1,7 @@
 -- This is how currency controls used to be done - one file per control.
 -- This is now handled in WalletControlFactory.lua.
 
-local key = ""; -- e.g. "AmrothSilverPiece"
+local key = ""; -- e.g. AmrothSilverPiece
 _G[key] = {};
 local table = _G[key];
 local labelAlignment = Turbine.UI.ContentAlignment.MiddleRight;

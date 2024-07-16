@@ -19,7 +19,7 @@ MakeWalletControl_IconHeightOverrides = {
 };
 
 --- This function creates a wallet control based on some parameters.
----@param key string The new internal key, e.g. "AmrothSilverPiece"
+---@param key string The new internal key, e.g. AmrothSilverPiece
 function MakeWalletControl(key)
     -- Make sure to not make this control more than once:
     if (_G[key]) then return; end

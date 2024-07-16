@@ -84,8 +84,8 @@ WalletCurrencyTooltips[ Seals ] = "Eure Siegel";
 L[ Commendations ] = "Anerkennung";
 WalletCurrencyTooltips[ Commendations ] = "Eure Anerkennung";
 -- Amroth Silver Piece control
-L[ "AmrothSilverPiece" ] = "Amroth-Silberst\195\188ck";
-WalletCurrencyTooltips[ "AmrothSilverPiece" ] = "Eure Amroth-Silberst\195\188cke";
+L[ AmrothSilverPiece ] = "Amroth-Silberst\195\188ck";
+WalletCurrencyTooltips[ AmrothSilverPiece ] = "Eure Amroth-Silberst\195\188cke";
 -- Stars of Merit control
 L[ "StarsofMerit" ] = "Stern des Verdienst";
 WalletCurrencyTooltips[ "StarsofMerit" ] = "Eure Sterne des Verdienst";
