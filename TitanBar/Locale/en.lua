@@ -114,8 +114,8 @@ WalletCurrencyTooltips[ FarmersFaireToken ] = "These are your Farmers Faire Toke
 L[ SpringLeaf ] = "Spring Leaf";
 WalletCurrencyTooltips[ SpringLeaf ] = "These are your Spring Leaves";
 -- Midsummer Tokens control
-L[ "MidsummerToken" ] = "Midsummer Token";
-WalletCurrencyTooltips[ "MidsummerToken" ] = "These are your Midsummer Tokens";
+L[ MidsummerToken ] = "Midsummer Token";
+WalletCurrencyTooltips[ MidsummerToken ] = "These are your Midsummer Tokens";
 -- Ancient Script control
 L[ "AncientScript" ] = "Ancient Script";
 WalletCurrencyTooltips[ "AncientScript" ] = "These are your Ancient Scripts";

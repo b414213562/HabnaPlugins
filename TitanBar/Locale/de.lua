@@ -114,8 +114,8 @@ WalletCurrencyTooltips[ FarmersFaireToken ] = "Eure Bauernfest-M\195\188nzen";
 L[ SpringLeaf ] = "Fr\195\188hlingsblatt";
 WalletCurrencyTooltips[ SpringLeaf ] = "Eure Fr\195\188hlingsbl\195\164tter";
 -- Midsummer Tokens control
-L[ "MidsummerToken" ] = "Mittsommer-Marke";
-WalletCurrencyTooltips[ "MidsummerToken" ] = "Eure Mittsommer-Marken";
+L[ MidsummerToken ] = "Mittsommer-Marke";
+WalletCurrencyTooltips[ MidsummerToken ] = "Eure Mittsommer-Marken";
 -- Ancient Script control
 L[ "AncientScript" ] = "Uralte Schrift";
 WalletCurrencyTooltips[ "AncientScript" ] = "Eure Uralte Schriften";

@@ -98,7 +98,7 @@ if PlayerAlign == 1 then
 	-- Instances and Skirmishes
 	SkirmishMarks, Medallions, Seals, StarsofMerit,
 	-- Festivals and Events
-	AnniversaryToken, FallFestivalToken, FarmersFaireToken, "MidsummerToken", SpringLeaf, YuleToken,
+	AnniversaryToken, FallFestivalToken, FarmersFaireToken, MidsummerToken, SpringLeaf, YuleToken,
 	-- Inn League and Ale Association
 	"BadgeOfTaste", "BadgeOfDishonour",
 	-- Item Advancement

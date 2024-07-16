@@ -115,8 +115,8 @@ WalletCurrencyTooltips[ FarmersFaireToken ] = "Ce sont vos Jetons de la Foire de
 L[ SpringLeaf ] = "Feuille de printemps";
 WalletCurrencyTooltips[ SpringLeaf ] = "Ce sont vos Feuille de Printemps";
 -- Midsummer Tokens control
-L[ "MidsummerToken" ] = "Jeton du solstice d'\195\169t\195\169";
-WalletCurrencyTooltips[ "MidsummerToken" ] = "Ce sont vos Jetons du solstice d'�t�";
+L[ MidsummerToken ] = "Jeton du solstice d'\195\169t\195\169";
+WalletCurrencyTooltips[ MidsummerToken ] = "Ce sont vos Jetons du solstice d'�t�";
 -- Ancient Script control
 L[ "AncientScript" ] = "\195\137criture ancienne";
 WalletCurrencyTooltips[ "AncientScript" ] = "Ce sont vos \195\137criture ancienne";
