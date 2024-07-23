@@ -8,6 +8,8 @@ L[ "TBSSCS" ] = "TitanBar: Bildschirmgr\195\182\195\159e ge\195\164ndert hat, Ne
 L[ "TBSSCD" ] = "TitanBar: erledigt!";
 L[ "TBOpt" ] = "Optionen sind durch einen Rechtsklick auf TitanBar verf\195\188gbar";
 
+L[ "TB_character_save_file_v10_to_v11" ] = "Updating TitanBar character setting file for " .. Player:GetName() .." from v1.0 to v1.1";
+
 --Misc
 L[ "NoData" ] = "Keine anderen Daten in der API";
 L[ "NA" ] = "N/A";

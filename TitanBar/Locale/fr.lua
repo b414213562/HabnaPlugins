@@ -8,6 +8,8 @@ L[ "TBSSCS" ] = "TitanBar: La taille de l'\195\169cran a chang\195\169, reposion
 L[ "TBSSCD" ] = "TitanBar: fini!";
 L[ "TBOpt" ] = "Les options sont disponibles via le clic droit sur TitanBar";
 
+L[ "TB_character_save_file_v10_to_v11" ] = "Updating TitanBar character setting file for " .. Player:GetName() .." from v1.0 to v1.1";
+
 --Misc
 L[ "NoData" ] = "Aucune autre donn\195\169e disponible dans l'API";
 L[ "NA" ] = "N/D";

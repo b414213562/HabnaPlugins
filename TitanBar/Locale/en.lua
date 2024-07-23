@@ -8,6 +8,8 @@ L[ "TBSSCS" ] = "TitanBar: Screen size has changed, repositioning controls...";
 L[ "TBSSCD" ] = "TitanBar: done!";
 L[ "TBOpt" ] = "Options are available by right clicking on TitanBar";
 
+L[ "TB_character_save_file_v10_to_v11" ] = "Updating TitanBar character setting file for " .. Player:GetName() .." from v1.0 to v1.1";
+
 --Misc
 L[ "NoData" ] = "No other data available in API";
 L[ "NA" ] = "N/A";

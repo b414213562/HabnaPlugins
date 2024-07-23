@@ -275,7 +275,7 @@ function UpdateCharacterSettingsIfNecessary(settings)
 
     -- todo: reinstate after testing:
 --    if (version == "1.0") then
-        Turbine.Shell.WriteLine("Updating TitanBar character setting file to v1.1");
+        Turbine.Shell.WriteLine( L[ "TB_character_save_file_v10_to_v11" ] );
         -- update to version 1.1
 
         -- In this update, the currencies are now indexed with image ID instead of a human readable key.
@@ -342,15 +342,19 @@ function LoadSettings()
 	
 	if settings == nil then	settings = {}; end
 
+    -- Process the UI Language before calling an update function so it can use localized output messages.
+    if settings.TitanBar == nil then settings.TitanBar = {}; end
+	if settings.TitanBar.L == nil then settings.TitanBar.L = GLocale; end -- Default TitanBar Language
+	TBLocale = settings.TitanBar.L;
+	import (AppLocaleD..TBLocale);
+
     UpdateCharacterSettingsIfNecessary(settings);
 
-	if settings.TitanBar == nil then settings.TitanBar = {}; end
 	if settings.TitanBar.A == nil then settings.TitanBar.A = string.format("%.3f", tA); end --Default Alpha color value
 	if settings.TitanBar.R == nil then settings.TitanBar.R = string.format("%.3f", tR); end --Default Red color value
 	if settings.TitanBar.G == nil then settings.TitanBar.G = string.format("%.3f", tG); end --Default Green color value
 	if settings.TitanBar.B == nil then settings.TitanBar.B = string.format("%.3f", tB); end --Default Blue color value
 	if settings.TitanBar.W == nil then settings.TitanBar.W = string.format("%.0f", screenWidth); end -- Default TitanBar Width
-	if settings.TitanBar.L == nil then settings.TitanBar.L = GLocale; end -- Default TitanBar Language
 	if settings.TitanBar.H == nil then settings.TitanBar.H = string.format("%.0f", 30); end -- Default TitanBar Height
 	if settings.TitanBar.F == nil then settings.TitanBar.F = string.format("%.0f", 1107296268); end -- Default TitanBar Font type #
 	if settings.TitanBar.T == nil then settings.TitanBar.T = "TrajanPro14"; end -- Default TitanBar Font name
@@ -362,8 +366,6 @@ function LoadSettings()
 	bcGreen = tonumber(settings.TitanBar.G);
 	bcBlue = tonumber(settings.TitanBar.B);
 	TBWidth = tonumber(settings.TitanBar.W);
-	TBLocale = settings.TitanBar.L;
-	import (AppLocaleD..TBLocale);
 	TBHeight = tonumber(settings.TitanBar.H);
 	_G.TBFont = tonumber(settings.TitanBar.F);
 	TBFontT = settings.TitanBar.T;
