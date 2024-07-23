@@ -273,8 +273,7 @@ function UpdateCharacterSettingsIfNecessary(settings)
 
     if (not version) then version = "1.0" end
 
-    -- todo: reinstate after testing:
---    if (version == "1.0") then
+    if (version == "1.0") then
         Turbine.Shell.WriteLine( L[ "TB_character_save_file_v10_to_v11" ] );
         -- update to version 1.1
 
@@ -312,16 +311,13 @@ function UpdateCharacterSettingsIfNecessary(settings)
 
         for key, imageId in pairs(v_10_to_11_lookup_table) do
             local isSettingPresent = not not settings[key];
-            -- TODO: Delete the next line, it's only needed during development:
-            local isCurrencyTransitioned = IsCurrency[imageId];
 
-            if (isSettingPresent and isCurrencyTransitioned) then
-                Turbine.Shell.WriteLine("Transitioning currency from " .. key .. " to " .. imageId);
+            if (isSettingPresent) then
                 settings[imageId] = settings[key];
                 settings[key] = nil;
                 settings[imageId]["description"] = key;
             end
---        end
+        end
 
         settings.version = "1.1";
     end
