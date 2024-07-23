@@ -1,5 +1,7 @@
 [DONE] Change key from friendly-names ("Wallet", "MithrilCoins", etc) to the image ID in preparation for arbitrary items.
     [DONE] Now that the 26 currencies are updated in my local save file, remove the progressive abilities of the v1.0 to v1.1 update code in settings.lua.
+    "Wallet" should not have been in Currencies. Split it back out.
+        For each place that iterates through Currencies, add it back to the list of non-currencies.
 
     Once that's done, can we kill all references to pre-defined lists of keys?
 
