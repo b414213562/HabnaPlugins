@@ -10,6 +10,10 @@
         [DONE] Converted plugindata files: Add "description" with old key.
     When adding new currencies to save file:
         Add "description" key with the WalletItem:GetName() value.
+
+How should frmOptions.lua:TitanBarControls handle arbitrarily added Currencies? How do they get notified of the new icon size?
+
+
 Are monster wallet items in the data files?
     If so, we should split them out, so that only monsters load those, and only free peoples load the others.
 

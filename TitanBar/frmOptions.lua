@@ -2,27 +2,31 @@
 -- written by Habna
 -- rewritten by many
 
--- This allows sending messages to all possible TitanBar controls so they
--- can be notified if the TitanBar height changes or the icon size changes.
+-- This allows sending messages to all possible TitanBar controls that have an icon
+-- so they can be notified if the TitanBar height changes or the icon size changes.
+-- Note: It seems intentional that "Player Location" and "Time" are intentionally excluded.
 local TitanBarControls = { };
--- index,key = (e.g.) 6, 0x411348E1
-for index,key in ipairs(Currencies) do
-    local table = _G[key];
 
-    if table ~= nil then TitanBarControls[ key ] = { ShowHide = Show[key], Control = table[ "Ctr" ] }; end
+function UpdateTitanBarControls()
+    -- index,key = (e.g.) 6, 0x411348E1
+    for index,key in ipairs(Currencies) do
+        local table = _G[key];
+
+        if table ~= nil then TitanBarControls[ key ] = { ShowHide = Show[key], Control = table[ "Ctr" ] }; end
+    end
+
+    if BI ~= nil then TitanBarControls[ "BI" ] = { ShowHide = ShowBagInfos, Control = BI[ "Ctr" ] }; end
+    if PI ~= nil then TitanBarControls[ "PI" ] = { ShowHide = ShowPlayerInfos, Control = PI[ "Ctr" ] }; end
+    if EI ~= nil then TitanBarControls[ "EI" ] = { ShowHide = ShowEquipInfos, Control = EI[ "Ctr" ] }; end
+    if DI ~= nil then TitanBarControls[ "DI" ] = { ShowHide = ShowDurabilityInfos, Control = DI[ "Ctr" ] };end
+    if TI ~= nil then TitanBarControls[ "TI" ] = { ShowHide = ShowTrackItems, Control = TI[ "Ctr" ] }; end
+    if IF ~= nil then TitanBarControls[ "IF" ] = { ShowHide = ShowInfamy, Control = IF[ "Ctr" ] }; end
+    if VT ~= nil then TitanBarControls[ "VT" ] = { ShowHide = ShowVault, Control = VT[ "Ctr" ] }; end
+    if SS ~= nil then TitanBarControls[ "SS" ] = { ShowHide = ShowSharedStorage, Control = SS[ "Ctr" ] }; end
+    --if BK ~= nil then TitanBarControls[ "BK" ] = { ShowHide = ShowBank, Control = BK[ "Ctr" ] }; end
+    if DN ~= nil then TitanBarControls[ "DN" ] = { ShowHide = ShowDayNight, Control = DN[ "Ctr" ] }; end
+    if RP ~= nil then TitanBarControls[ "RP" ] = { ShowHide = ShowReputation, Control = RP[ "Ctr" ] }; end
 end
-
-if BI ~= nil then TitanBarControls[ "BI" ] = { ShowHide = ShowBagInfos, Control = BI[ "Ctr" ] }; end
-if PI ~= nil then TitanBarControls[ "PI" ] = { ShowHide = ShowPlayerInfos, Control = PI[ "Ctr" ] }; end
-if EI ~= nil then TitanBarControls[ "EI" ] = { ShowHide = ShowEquipInfos, Control = EI[ "Ctr" ] }; end
-if DI ~= nil then TitanBarControls[ "DI" ] = { ShowHide = ShowDurabilityInfos, Control = DI[ "Ctr" ] };end
-if TI ~= nil then TitanBarControls[ "TI" ] = { ShowHide = ShowTrackItems, Control = TI[ "Ctr" ] }; end
-if IF ~= nil then TitanBarControls[ "IF" ] = { ShowHide = ShowInfamy, Control = IF[ "Ctr" ] }; end
-if VT ~= nil then TitanBarControls[ "VT" ] = { ShowHide = ShowVault, Control = VT[ "Ctr" ] }; end
-if SS ~= nil then TitanBarControls[ "SS" ] = { ShowHide = ShowSharedStorage, Control = SS[ "Ctr" ] }; end
---if BK ~= nil then TitanBarControls[ "BK" ] = { ShowHide = ShowBank, Control = BK[ "Ctr" ] }; end
-if DN ~= nil then TitanBarControls[ "DN" ] = { ShowHide = ShowDayNight, Control = DN[ "Ctr" ] }; end
-if RP ~= nil then TitanBarControls[ "RP" ] = { ShowHide = ShowReputation, Control = RP[ "Ctr" ] }; end
 
 tFonts = { "Arial12", "TrajanPro13", "TrajanPro14", "TrajanPro15", "TrajanPro16", "TrajanPro18", "TrajanPro19", "TrajanPro20", "TrajanPro21",
 			"TrajanPro23", "TrajanPro24", "TrajanPro25", "TrajanPro26", "TrajanPro28", "TrajanProBold16", "TrajanProBold22", "TrajanProBold24",
@@ -264,6 +268,8 @@ function frmOptions()
 end
 
 function ResizeControls()
+    UpdateTitanBarControls();
+
 	--Resize control height if control is visible
 	CTRHeight = TBHeight;
 
@@ -279,6 +285,8 @@ function ResizeControls()
 end
 
 function ResizeIcon()
+    UpdateTitanBarControls();
+
 	for ItemID, ShowItem in pairs( TitanBarControls ) do
 		if ShowItem.ShowHide then AjustIcon( ItemID ); end
 	end
