@@ -174,11 +174,10 @@ function frmMain()
 
     for index, key in ipairs(Currencies) do
         local isActive = Where[key] ~= 3;
-        if (key == "Wallet") then isActive = Show[key]; end
-
         if isActive then ImportCtr(key); end
     end
 
+    if Show["Wallet"] then ImportCtr( "Wallet" ); end -- Wallet
 	if ShowTrackItems then ImportCtr( "TI" ); end --Track Items
 	if ShowInfamy then ImportCtr( "IF" ); end --Infamy/Renown
 	if ShowVault then ImportCtr( "VT" ); end --Vault

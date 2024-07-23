@@ -19,6 +19,7 @@ function UnloadControl( value )
         end
 
         -- Handle everything else:
+        if Show["Wallet"] then ShowHideWallet(); opt_Wallet:SetChecked( false ); end
         if ShowBagInfos then ShowHideBackpackInfos(); opt_BI:SetChecked( false ); end
         if ShowPlayerInfos then ShowHidePlayerInfos(); opt_PI:SetChecked( false ); end
         if ShowEquipInfos then ShowHideEquipInfos(); opt_EI:SetChecked( false ); end
@@ -107,6 +108,8 @@ function BGColor( cmd, value )
         end
 
         -- Handle everything else:
+        BC.Alpha["Wallet"], BC.Red["Wallet"], BC.Green["Wallet"], BC.Blue["Wallet"] = tA, tR, tG, tB;
+		if Show["Wallet"] then Wallet[ "Ctr" ]:SetBackColor( color ); end
 		BIbcAlpha, BIbcRed, BIbcGreen, BIbcBlue = tA, tR, tG, tB;
 		if ShowBagInfos then BI[ "Ctr" ]:SetBackColor( color ); end
 		PIbcAlpha, PIbcRed, PIbcGreen, PIbcBlue = tA, tR, tG, tB;

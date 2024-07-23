@@ -317,6 +317,7 @@ function UpdateBCvariable()
             BC.Blue[key] = curSelBlue;
         end
 
+        BC.Alpha["Wallet"], BC.Red["Wallet"], BC.Green["Wallet"], BC.Blue["Wallet"] = curSelAlpha, curSelRed, curSelGreen, curSelBlue;
 		BIbcAlpha, BIbcRed, BIbcGreen, BIbcBlue = curSelAlpha, curSelRed, curSelGreen, curSelBlue;
 		PIbcAlpha, PIbcRed, PIbcGreen, PIbcBlue = curSelAlpha, curSelRed, curSelGreen, curSelBlue;
 		EIbcAlpha, EIbcRed, EIbcGreen, EIbcBlue = curSelAlpha, curSelRed, curSelGreen, curSelBlue;

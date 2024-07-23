@@ -748,6 +748,7 @@ function ChangeColor(tColor)
             end
         end
 
+        if Show["Wallet"] then Wallet[ "Ctr" ]:SetBackColor( tColor ); end
 		if ShowBagInfos then BI[ "Ctr" ]:SetBackColor( tColor ); end
 		if ShowPlayerInfos then PI[ "Ctr" ]:SetBackColor( tColor ); end
 		if ShowEquipInfos then EI[ "Ctr" ]:SetBackColor( tColor ); end

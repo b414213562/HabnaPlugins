@@ -34,6 +34,25 @@ function ShowHideCurrency(key)
     end
 end
 
+-- TODO: Use this as basis of ShowHideControl, a parameterized version of ShowHideX().
+-- **v Show/Hide Wallet v**
+function ShowHideWallet()
+	Show["Wallet"] = not Show["Wallet"];
+	settings["Wallet"].V = Show["Wallet"];
+	SaveSettings( false );
+	if Show["Wallet"] then
+		--write( "TitanBar: Showing wallet control");
+		ImportCtr( "Wallet" );
+		Wallet[ "Ctr" ]:SetBackColor( GetBGColor("Wallet") );
+	else
+		--write( "TitanBar: Hiding wallet control");
+		if _G.frmWallet then Wallet:Close(); end
+	end
+	Wallet[ "Ctr" ]:SetVisible( Show["Wallet"] );
+	opt_Wallet:SetChecked( Show["Wallet"] );
+end
+-- **^
+
 -- **v Show/Hide backpack Infos v**
 function ShowHideBackpackInfos()
 	ShowBagInfos = not ShowBagInfos;

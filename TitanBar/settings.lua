@@ -88,7 +88,6 @@ BadgeOfDishonour = 0x410d4316;
 
 -- the key for each currency:
 Currencies = {
-    "Wallet",
     "Money",
     DestinyPoints,
     Shards,
@@ -457,6 +456,26 @@ function LoadSettings()
         CurrencyNameToKey[L[key]] = key;
     end
 
+	if settings["Wallet"] == nil then settings["Wallet"] = {}; end
+	if settings["Wallet"].V == nil then settings["Wallet"].V = false; end
+	if settings["Wallet"].A == nil then settings["Wallet"].A = string.format("%.3f", tA); end
+	if settings["Wallet"].R == nil then settings["Wallet"].R = string.format("%.3f", tR); end
+	if settings["Wallet"].G == nil then settings["Wallet"].G = string.format("%.3f", tG); end
+	if settings["Wallet"].B == nil then settings["Wallet"].B = string.format("%.3f", tB); end
+    if settings["Wallet"].X == nil then settings["Wallet"].X = string.format("%.0f", tX); end
+	if settings["Wallet"].Y == nil then settings["Wallet"].Y = string.format("%.0f", tY); end
+    if settings["Wallet"].L == nil then settings["Wallet"].L = string.format("%.0f", tL); end --X position of window
+    if settings["Wallet"].T == nil then settings["Wallet"].T = string.format("%.0f", tT); end --Y position of window
+	Show["Wallet"] = settings["Wallet"].V;
+    BC.Alpha["Wallet"] = tonumber(settings["Wallet"].A);
+	BC.Red["Wallet"] = tonumber(settings["Wallet"].R);
+	BC.Green["Wallet"] = tonumber(settings["Wallet"].G);
+	BC.Blue["Wallet"] = tonumber(settings["Wallet"].B);
+	Position.Left["Wallet"] = tonumber(settings["Wallet"].X);
+	Position.Top["Wallet"] = tonumber(settings["Wallet"].Y);
+    PositionW.Left["Wallet"] = tonumber(settings["Wallet"].L);
+    PositionW.Top["Wallet"] = tonumber(settings["Wallet"].T);
+
     if settings.BagInfos == nil then settings.BagInfos = {}; end
 	if settings.BagInfos.V == nil then settings.BagInfos.V = true; end
 	if settings.BagInfos.A == nil then settings.BagInfos.A = string.format("%.3f", tA); end
@@ -824,6 +843,17 @@ function SaveSettings(str)
 		if PlayerAlign == 1 then settings.Money.L = string.format("%.0f", PositionW.Left["Money"]); end
 		if PlayerAlign == 1 then settings.Money.T = string.format("%.0f", PositionW.Top["Money"]); end
 
+        settings["Wallet"] = {};
+        settings["Wallet"].V = Show["Wallet"];
+        settings["Wallet"].A = string.format("%.3f", BC.Alpha["Wallet"]);
+        settings["Wallet"].R = string.format("%.3f", BC.Red["Wallet"]);
+        settings["Wallet"].G = string.format("%.3f", BC.Green["Wallet"]);
+        settings["Wallet"].B = string.format("%.3f", BC.Blue["Wallet"]);
+        settings["Wallet"].X = string.format("%.0f", Position.Left["Wallet"]);
+        settings["Wallet"].Y = string.format("%.0f", Position.Top["Wallet"]);
+        settings["Wallet"].L = string.format("%.0f", PositionW.Left["Wallet"]);
+        settings["Wallet"].T = string.format("%.0f", PositionW.Top["Wallet"]);
+
 		settings.BagInfos = {};
 		settings.BagInfos.V = ShowBagInfos;
 		settings.BagInfos.A = string.format("%.3f", BIbcAlpha);
@@ -1009,6 +1039,7 @@ function ResetSettings()
 
     -- End currency initialization
 
+    Show["Wallet"], BC.Alpha["Wallet"], BC.Red["Wallet"], BC.Green["Wallet"], BC.Blue["Wallet"], Position.Left["Wallet"], Position.Top["Wallet"], PositionW.Left["Wallet"], PositionW.Top["Wallet"] = false, tA, tR, tG, tB, tX, tY, tL, tT;
 	ShowBagInfos, _G.BIUsed, _G.BIMax, BIbcAlpha, BIbcRed, BIbcGreen, BIbcBlue, _G.BILocX, _G.BILocY = true, true, true, tA, tR, tG, tB, tX, tY; --for Bag info Control
 	ShowEquipInfos, EIbcAlpha, EIbcRed, EIbcGreen, EIbcBlue, _G.EILocX, _G.EILocY = true, tA, tR, tG, tB, 75, tY; --for Equipment infos Control
 	ShowDurabilityInfos, DIIcon, DIText, DIbcAlpha, DIbcRed, DIbcGreen, DIbcBlue, _G.DILocX, _G.DILocY = true, true, true, tA, tR, tG, tB, 145, tY; --for Durability infos Control
@@ -1044,6 +1075,11 @@ function ReplaceCtr()
         local visible = Show[key] and (DoesNotHaveWhere[key] or Where[key] == 1);
         if visible then _G[key][ "Ctr" ]:SetPosition( Position.Left[key], Position.Top[key] ); end
     end
+
+    oldLocX = settings["Wallet"].X / oldScreenWidth;
+    Position.Left["Wallet"] = oldLocX * screenWidth;
+    settings["Wallet"].X = string.format("%.0f", Position.Left["Wallet"]);
+    if Show["Wallet"] then _G["Wallet"][ "Ctr" ]:SetPosition( Position.Left["Wallet"], Position.Top["Wallet"] ); end
 
 	oldLocX = settings.BagInfos.X / oldScreenWidth;
 	_G.BILocX = oldLocX * screenWidth;

@@ -15,6 +15,7 @@ function UpdateTitanBarControls()
         if table ~= nil then TitanBarControls[ key ] = { ShowHide = Show[key], Control = table[ "Ctr" ] }; end
     end
 
+    if Wallet ~= nil then TitanBarControls[ "Wallet" ] = { ShowHide = Show["Wallet"], Control = Wallet[ "Ctr" ] }; end
     if BI ~= nil then TitanBarControls[ "BI" ] = { ShowHide = ShowBagInfos, Control = BI[ "Ctr" ] }; end
     if PI ~= nil then TitanBarControls[ "PI" ] = { ShowHide = ShowPlayerInfos, Control = PI[ "Ctr" ] }; end
     if EI ~= nil then TitanBarControls[ "EI" ] = { ShowHide = ShowEquipInfos, Control = EI[ "Ctr" ] }; end
