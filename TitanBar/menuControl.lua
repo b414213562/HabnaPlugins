@@ -58,7 +58,7 @@ UnloadMenu1.Click = function( sender, args ) UnloadControl("applyToThis"); end
 UnloadMenu.Items:Add( UnloadMenu1 );
 
 local UnloadMenu2 = Turbine.UI.MenuItem( L["MTBBGAC"] );
-UnloadMenu2.Click = function( sender, args ) UnloadControl("ctr"); end
+UnloadMenu2.Click = function( sender, args ) UnloadControl("applyToAll"); end
 UnloadMenu.Items:Add( UnloadMenu2 );
 
 

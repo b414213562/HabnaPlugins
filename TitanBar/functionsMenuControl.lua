@@ -6,7 +6,7 @@
 --**v Functions for the menu of control v**
 --**v Unload control v**
 function UnloadControl( value )
-	if value == "ctr" then
+    if value == "applyToAll" then
         -- Handle currencies:
         for index, key in ipairs(Currencies) do
             if (Show[key]) then
