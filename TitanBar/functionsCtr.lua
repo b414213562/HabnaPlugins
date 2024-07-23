@@ -7,12 +7,7 @@ function ImportCtr( value )
     -- Handle currencies:
     if (IsCurrency[value]) then
         -- Currency-specific blocks:
-        if (value == "Wallet") then
-            import (AppCtrWalletD.."Wallet");
-            import (AppCtrWalletD.."WalletToolTip");
-            UpdateWallet();
-            _G[value][ "Ctr" ]:SetPosition( Position.Left[value], Position.Top[value] );
-        elseif (value == "Money") then
+        if (value == "Money") then
             if Where["Money"] == 1 then
                 import (AppCtrWalletD.."Money");
                 import (AppCtrWalletD.."MoneyToolTip");
@@ -86,7 +81,12 @@ function ImportCtr( value )
     end
 
     -- Handle non-currencies:
-    if value == "BI" then --Backpack Infos
+    if (value == "Wallet") then
+        import (AppCtrWalletD.."Wallet");
+        import (AppCtrWalletD.."WalletToolTip");
+        UpdateWallet();
+        _G[value][ "Ctr" ]:SetPosition( Position.Left[value], Position.Top[value] );
+    elseif value == "BI" then --Backpack Infos
         import (AppCtrD.."BagInfos");
         --import (AppCtrD.."BagInfosToolTip");
         AddCallback(backpack, "ItemAdded",

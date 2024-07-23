@@ -4,8 +4,13 @@
         For each place that iterates through Currencies, add it back to the list of non-currencies.
         ShowHideCurrency - what's going on with Wallet?
         Get rid of DoesNotHaveWhere
-        Did any uses of IsCurrency assume Wallet would be there?
         Where is CurrencyNameToKey used, and is Wallet a part of it?
+    friendly-name in save file does not persist through a file reset.
+    "Ajust" is misspelled. Should be Adjust
+    This makes me sad:
+            Where[_G.sFromCtr] = 3;
+            ShowHideCurrency(_G.sFromCtr);
+        Toggling Where to 3 should be done inside ShowHideCurrency, not separate.
 
     Once that's done, can we kill all references to pre-defined lists of keys?
 

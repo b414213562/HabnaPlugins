@@ -37,13 +37,12 @@ function UnloadControl( value )
     elseif value == "applyToThis" then
         -- Handle currencies:
         if (IsCurrency[_G.sFromCtr]) then
-            if (not DoesNotHaveWhere[_G.sFromCtr]) then
-                Where[_G.sFromCtr] = 3;
-            end
+            Where[_G.sFromCtr] = 3;
             ShowHideCurrency(_G.sFromCtr);
         else
             -- Handle everything else:
-            if _G.sFromCtr == "BI" then ShowHideBackpackInfos(); opt_BI:SetChecked( false );
+            if _G.sFromCtr == "Wallet" then ShowHideWallet(); opt_Wallet:SetChecked( false );
+            elseif _G.sFromCtr == "BI" then ShowHideBackpackInfos(); opt_BI:SetChecked( false );
             elseif _G.sFromCtr == "PI" then ShowHidePlayerInfos(); opt_PI:SetChecked( false );
             elseif _G.sFromCtr == "EI" then ShowHideEquipInfos(); opt_EI:SetChecked( false );
             elseif _G.sFromCtr == "DI" then ShowHideDurabilityInfos(); opt_DI:SetChecked( false );
