@@ -2,27 +2,27 @@
 -- written by Habna
 -- rewritten by many
 
--- Note: WalletControls is misnamed, this (should) hold all possible controls so they
+-- This allows sending messages to all possible TitanBar controls so they
 -- can be notified if the TitanBar height changes or the icon size changes.
-local WalletControls = { };
+local TitanBarControls = { };
 -- index,key = (e.g.) 6, 0x411348E1
 for index,key in ipairs(Currencies) do
     local table = _G[key];
 
-    if table ~= nil then WalletControls[ key ] = { ShowHide = Show[key], Control = table[ "Ctr" ] }; end
+    if table ~= nil then TitanBarControls[ key ] = { ShowHide = Show[key], Control = table[ "Ctr" ] }; end
 end
 
-if BI ~= nil then WalletControls[ "BI" ] = { ShowHide = ShowBagInfos, Control = BI[ "Ctr" ] }; end
-if PI ~= nil then WalletControls[ "PI" ] = { ShowHide = ShowPlayerInfos, Control = PI[ "Ctr" ] }; end
-if EI ~= nil then WalletControls[ "EI" ] = { ShowHide = ShowEquipInfos, Control = EI[ "Ctr" ] }; end
-if DI ~= nil then WalletControls[ "DI" ] = { ShowHide = ShowDurabilityInfos, Control = DI[ "Ctr" ] };end
-if TI ~= nil then WalletControls[ "TI" ] = { ShowHide = ShowTrackItems, Control = TI[ "Ctr" ] }; end
-if IF ~= nil then WalletControls[ "IF" ] = { ShowHide = ShowInfamy, Control = IF[ "Ctr" ] }; end
-if VT ~= nil then WalletControls[ "VT" ] = { ShowHide = ShowVault, Control = VT[ "Ctr" ] }; end
-if SS ~= nil then WalletControls[ "SS" ] = { ShowHide = ShowSharedStorage, Control = SS[ "Ctr" ] }; end
---if BK ~= nil then WalletControls[ "BK" ] = { ShowHide = ShowBank, Control = BK[ "Ctr" ] }; end
-if DN ~= nil then WalletControls[ "DN" ] = { ShowHide = ShowDayNight, Control = DN[ "Ctr" ] }; end
-if RP ~= nil then WalletControls[ "RP" ] = { ShowHide = ShowReputation, Control = RP[ "Ctr" ] }; end
+if BI ~= nil then TitanBarControls[ "BI" ] = { ShowHide = ShowBagInfos, Control = BI[ "Ctr" ] }; end
+if PI ~= nil then TitanBarControls[ "PI" ] = { ShowHide = ShowPlayerInfos, Control = PI[ "Ctr" ] }; end
+if EI ~= nil then TitanBarControls[ "EI" ] = { ShowHide = ShowEquipInfos, Control = EI[ "Ctr" ] }; end
+if DI ~= nil then TitanBarControls[ "DI" ] = { ShowHide = ShowDurabilityInfos, Control = DI[ "Ctr" ] };end
+if TI ~= nil then TitanBarControls[ "TI" ] = { ShowHide = ShowTrackItems, Control = TI[ "Ctr" ] }; end
+if IF ~= nil then TitanBarControls[ "IF" ] = { ShowHide = ShowInfamy, Control = IF[ "Ctr" ] }; end
+if VT ~= nil then TitanBarControls[ "VT" ] = { ShowHide = ShowVault, Control = VT[ "Ctr" ] }; end
+if SS ~= nil then TitanBarControls[ "SS" ] = { ShowHide = ShowSharedStorage, Control = SS[ "Ctr" ] }; end
+--if BK ~= nil then TitanBarControls[ "BK" ] = { ShowHide = ShowBank, Control = BK[ "Ctr" ] }; end
+if DN ~= nil then TitanBarControls[ "DN" ] = { ShowHide = ShowDayNight, Control = DN[ "Ctr" ] }; end
+if RP ~= nil then TitanBarControls[ "RP" ] = { ShowHide = ShowReputation, Control = RP[ "Ctr" ] }; end
 
 tFonts = { "Arial12", "TrajanPro13", "TrajanPro14", "TrajanPro15", "TrajanPro16", "TrajanPro18", "TrajanPro19", "TrajanPro20", "TrajanPro21",
 			"TrajanPro23", "TrajanPro24", "TrajanPro25", "TrajanPro26", "TrajanPro28", "TrajanProBold16", "TrajanProBold22", "TrajanProBold24",
@@ -269,7 +269,7 @@ function ResizeControls()
 
 	if TBHeight > 30 then CTRHeight = 30; end--Set control maximum height
 	
-	for ItemID, ShowItem in pairs( WalletControls ) do
+	for ItemID, ShowItem in pairs( TitanBarControls ) do
 		if ShowItem.ShowHide then ShowItem.Control:SetHeight( CTRHeight ); end
 		AjustIcon( ItemID );
 	end 
@@ -279,7 +279,7 @@ function ResizeControls()
 end
 
 function ResizeIcon()
-	for ItemID, ShowItem in pairs( WalletControls ) do
+	for ItemID, ShowItem in pairs( TitanBarControls ) do
 		if ShowItem.ShowHide then AjustIcon( ItemID ); end
 	end
 end
