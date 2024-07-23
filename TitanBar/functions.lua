@@ -370,7 +370,7 @@ end
 --- Function to update the details for currencies on the bar.
 --- Does nothing if the currency is not currently on the bar (Where = 1) or in the tooltip (Where = 2).
 ---@param key number The key (e.g. DestinyPoints for the currency)
----@param quantity integer The new quantity, if known. Otherwise, will call GetCurrency().
+---@param quantity integer? The new quantity, if known. Otherwise, will call GetCurrency().
 function UpdateCurrency(key, quantity)
     local table = _G[key];
     local quantity = quantity or GetCurrency(key);

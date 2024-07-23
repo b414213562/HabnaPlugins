@@ -74,7 +74,7 @@ function ImportCtr( value )
                 _G[value][ "Ctr" ]:SetPosition( Position.Left[value], Position.Top[value] );
             end
             if Where[value] ~= 3 then
-                UpdateCurrency(value);
+                UpdateCurrency(value, nil);
             end
         end
 
