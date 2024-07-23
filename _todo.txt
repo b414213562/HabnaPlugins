@@ -1,4 +1,31 @@
-Once that's done, can we kill all references to pre-defined lists of keys?
+Next time: Convert Currencies into a Settings Structure that is created (if missing) during load.
+    Then, start updating the below entries to use that structure instead of the hard-coded Currencies.
+
+    How is Currencies being used?
+    ** = This is fine if Currencies changes to a list of loaded currencies only.
+
+    ** background.lua:UpdateBCvariable: We iterate through all possible currencies and set the corresponding BC.Alpha/Red/Green/Blue values.
+    ** frmMain.lua:frmMain(): We iterate through all Currencies, and if their location (Where) is tooltip or bar, then we import the control.
+    ** frmOptions.lua: We iterate through all Currencies and set up a TitanBarControls entry containing the current ShowHide and Control.
+    ** functions.lua:ChangeColor(): We iterate through all Currencies and if they are visible set their Back Color.
+    ** functionsMenuControl.lua: x2
+        We interate through them to Unload or set BG Color
+    ** settings.lua:
+        Currencies = {
+            Initialization of Currencies: We want this to be a list of in-use currencies in the character settings.
+        IsCurrency = {};
+            Replace with lookup in _G.WalletItems.
+        InitializeControlSettings: 
+            Can do this as a currency is being loaded, instead of here.
+        CurrencyNameToKey:
+            Initialize this from settings, add to it as currencies are added to bar.
+        SaveControlSettings:
+            Fine to switch to settings.
+        ResetSettings():
+            For each Currency in charcacter settings, call ResetControlSettings().
+        ReplaceCtr():
+            Can use Currencies as a list of loaded controls.
+
 
 "Ajust" is misspelled. Should be Adjust
 
