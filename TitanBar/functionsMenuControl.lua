@@ -6,6 +6,7 @@
 --**v Functions for the menu of control v**
 --**v Unload control v**
 function UnloadControl( value )
+    -- Remove all controls from TitanBar:
     if value == "applyToAll" then
         -- Handle currencies:
         for index, key in ipairs(Currencies) do
@@ -31,6 +32,7 @@ function UnloadControl( value )
         if ShowReputation then ShowHideReputation(); opt_RP:SetChecked( false ); end
         if ShowPlayerLoc then ShowHidePlayerLoc(); opt_PL:SetChecked( false ); end
         if ShowGameTime then ShowHideGameTime(); opt_GT:SetChecked( false ); end
+    -- Remove just the selected control from TitanBar
     elseif value == "applyToThis" then
         -- Handle currencies:
         if (IsCurrency[_G.sFromCtr]) then
