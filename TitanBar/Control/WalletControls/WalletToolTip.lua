@@ -41,7 +41,7 @@ function RefreshWITTListBox()
 		local wttcur = MenuItem[i];
         local ttw = Where[wttcur];
 
-        if (wttcur ~= "Money") then
+        if (wttcur ~= "Money" and Where[MenuItem[i]] == 2) then
             local imageNum = tonumber(wttcur);
             CtrIconCodeIs = wttcur;
             CtrQteIs = GetCurrency( imageNum );
