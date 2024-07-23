@@ -98,9 +98,7 @@ function BGColor( cmd, value )
         for index, key in ipairs(Currencies) do
             BC.Alpha[key], BC.Red[key], BC.Green[key], BC.Blue[key] = tA, tR, tG, tB;
             if Show[key] then
-                local color = GetBGColor(key);
-                local table = _G[key];
-                table[ "Ctr" ]:SetBackColor( color );
+                _G[key][ "Ctr" ]:SetBackColor( color );
             end
         end
 
