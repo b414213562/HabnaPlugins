@@ -2,7 +2,17 @@
     [DONE] Now that the 26 currencies are updated in my local save file, remove the progressive abilities of the v1.0 to v1.1 update code in settings.lua.
     "Wallet" should not have been in Currencies. Split it back out.
         For each place that iterates through Currencies, add it back to the list of non-currencies.
-        Where is CurrencyNameToKey used, and is Wallet a part of it?
+        [DONE] Where is CurrencyNameToKey used, and is Wallet a part of it?
+            In all cases except "Money", this should be the imageId of the currency.
+
+            AddCurrencyCallbackIfNeeded - uses name, needs to switch to ImageID.
+                These need to be indexed by imageID, not name:
+                    PlayerCurrency
+                    PlayerCurrencyHandler
+                    UpdateCurrency()
+                        [DONE] function GetCurrency( str ) - called from UpdateCurrency
+                    Test "/titanbar pw"
+
     friendly-name in save file does not persist through a file reset.
     "Ajust" is misspelled. Should be Adjust
     This makes me sad:
@@ -12,8 +22,6 @@
 
     Once that's done, can we kill all references to pre-defined lists of keys?
 
-    Need to find code that uses things like CurrencyNameToKey and address how it uses those keys.
-        Possibly fine?
     Can we store currency entries in PlayerCurrencyHandler by imageID?
     [DONE] Also: Character save files needs to be updated from key to id.
         [DONE] Converted plugindata files: Add "description" with old key.

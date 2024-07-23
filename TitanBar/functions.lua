@@ -369,7 +369,7 @@ end
 
 --- Function to update the details for currencies on the bar.
 --- Does nothing if the currency is not currently on the bar (Where = 1) or in the tooltip (Where = 2).
----@param key string The key (e.g. DestinyPoints for the currency)
+---@param key number The key (e.g. DestinyPoints for the currency)
 ---@param quantity integer The new quantity, if known. Otherwise, will call GetCurrency().
 function UpdateCurrency(key, quantity)
     local table = _G[key];
@@ -386,13 +386,12 @@ end
 --- If entry is missing in PlayerCurrencyHandler, creates it.
 ---@param walletItem WalletItem
 function AddCurrencyCallbackIfNeeded(walletItem)
-    local currencyName = walletItem:GetName();
-    local key = CurrencyNameToKey[currencyName];
-    PlayerCurrency[currencyName] = walletItem;
+    local key = walletItem:GetImage();
+    PlayerCurrency[key] = walletItem;
 
-    if PlayerCurrencyHandler[currencyName] == nil and key ~= nil then
-        PlayerCurrencyHandler[currencyName] = AddCallback(
-            PlayerCurrency[currencyName],
+    if PlayerCurrencyHandler[key] == nil and key ~= nil then
+        PlayerCurrencyHandler[key] = AddCallback(
+            PlayerCurrency[key],
             "QuantityChanged",
             function(sender, args)
                 local newQuantity = sender:GetQuantity();
@@ -405,9 +404,7 @@ end
 
 function CurrencyAdded(sender, args)
     local item = PlayerWallet:GetItem(args.Index);
-    local currencyName = item:GetName();
-
-    local key = CurrencyNameToKey[currencyName];
+    local key = item:GetImage();
     if (key) then
         AddCurrencyCallbackIfNeeded(item);
         UpdateCurrency(key, item:GetQuantity());
@@ -416,14 +413,12 @@ end
 
 function CurrencyRemoved(sender, args)
     local item = PlayerWallet:GetItem(args.Index);
-    local currencyName = item:GetName();
-
-    local key = CurrencyNameToKey[currencyName];
+    local key = item:GetImage();
     if (key) then
         UpdateCurrency(key, 0);
 
-        RemoveCallback(item, PlayerCurrencyHandler[currencyName]);
-        PlayerCurrencyHandler[currencyName] = nil;
+        RemoveCallback(item, PlayerCurrencyHandler[key]);
+        PlayerCurrencyHandler[key] = nil;
     end
 end
 

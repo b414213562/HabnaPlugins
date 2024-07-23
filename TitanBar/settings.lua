@@ -439,12 +439,6 @@ function LoadSettings()
 
     -- End currency initialization
 
-    -- Make a lookup table from translated name (e.g. "Mithril Coin") to key (e.g. MithrilCoins):
-    CurrencyNameToKey = {}
-    for index, key in ipairs(Currencies) do
-        CurrencyNameToKey[L[key]] = key;
-    end
-
 	if settings["Wallet"] == nil then settings["Wallet"] = {}; end
 	if settings["Wallet"].V == nil then settings["Wallet"].V = false; end
 	if settings["Wallet"].A == nil then settings["Wallet"].A = string.format("%.3f", tA); end

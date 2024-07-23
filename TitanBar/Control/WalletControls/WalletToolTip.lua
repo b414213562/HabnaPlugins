@@ -44,7 +44,7 @@ function RefreshWITTListBox()
         if (wttcur ~= "Money") then
             local imageNum = tonumber(wttcur);
             CtrIconCodeIs = wttcur;
-            CtrQteIs = GetCurrency( wttcur );
+            CtrQteIs = GetCurrency( imageNum );
 		end
 		
 		if tonumber(ttw) == 2 then

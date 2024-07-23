@@ -666,20 +666,21 @@ function LoadPlayerWallet()
 
     for i = 1, PlayerWalletSize do
         local CurItem = PlayerWallet:GetItem(i);
-        local CurName = PlayerWallet:GetItem(i):GetName();
-        local key = CurrencyNameToKey[CurName];
+        local key = CurItem:GetImage();
 
-        PlayerCurrency[CurName] = CurItem;
-        if PlayerCurrencyHandler[CurName] == nil and key ~= nil then
-            PlayerCurrencyHandler[CurName] = AddCallback(
-                PlayerCurrency[CurName],
-                "QuantityChanged",
-                function(sender, args)
-                    local newQuantity = sender:GetQuantity();
-                    if (Show[key]) then
-                        UpdateCurrency(key, newQuantity);
-                    end
-                end);
+        if (key ~= nil) then
+            PlayerCurrency[key] = CurItem;
+            if PlayerCurrencyHandler[key] == nil then
+                PlayerCurrencyHandler[key] = AddCallback(
+                    PlayerCurrency[key],
+                    "QuantityChanged",
+                    function(sender, args)
+                        local newQuantity = sender:GetQuantity();
+                        if (Show[key]) then
+                            UpdateCurrency(key, newQuantity);
+                        end
+                    end);
+            end
         end
     end
 
@@ -1019,26 +1020,23 @@ function SavePlayerLOTROPoints()
 end
 
 --- Gets the count of an item in the wallet
----@param str string The key of the item.
+---@param key number? The key of the item.
 ---@return number # How many are in the wallet.
-function GetCurrency( str )
+function GetCurrency( key )
+    if (not key) then return 0; end
+
     local currentQuantity = 0;
 
-    if (str == DestinyPoints) then
+    if (key == DestinyPoints) then
         currentQuantity = Player:GetAttributes():GetDestinyPoints();
-    elseif (str == LOTROPoints) then
+    elseif (key == LOTROPoints) then
         currentQuantity = tonumber(_G.LOTROPTS) or 0;
     else
-        local localizedName = L[str];
-
         -- If we're trying to update a currency that isn't in the wallet, return a default value of 0:
-        if (not PlayerCurrencyHandler[localizedName]) then return 0; end
+        if (not PlayerCurrencyHandler[key]) then return 0; end
 
-        for k,v in pairs( PlayerCurrency ) do
-            if k == localizedName then
-                currentQuantity = PlayerCurrency[ localizedName ]:GetQuantity();
-                break
-            end
+        if (PlayerCurrency[key]) then
+            currentQuantity = PlayerCurrency[key]:GetQuantity();
         end
     end
 
