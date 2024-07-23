@@ -127,9 +127,6 @@ HasWindow = {
     ["Money"] = true;
     [LOTROPoints] = true;
 };
-DoesNotHaveWhere = {
-    ["Wallet"] = true;
-};
 
 CurrenciesNotUsedInMonsterPlay = {
     DestinyPoints,
@@ -191,9 +188,7 @@ function InitializeDefaultControlSettings(settings, key)
         if settings[key].L == nil then settings[key].L = string.format("%.0f", tL); end --X position of window
         if settings[key].T == nil then settings[key].T = string.format("%.0f", tT); end --Y position of window
     end
-    if (not DoesNotHaveWhere[key]) then
-        if settings[key].W == nil then settings[key].W = string.format("%.0f", GetDefault("W", key)); end
-    end
+    if settings[key].W == nil then settings[key].W = string.format("%.0f", GetDefault("W", key)); end
 end
 
 --- Initialize global Show, ARGB, X/Y, and Where variables
@@ -211,9 +206,7 @@ function InitializeGlobalControlSettings(settings, key)
         PositionW.Left[key] = tonumber(settings[key].L);
         PositionW.Top[key] = tonumber(settings[key].T);
     end
-    if (not DoesNotHaveWhere[key]) then
-        Where[key] = ParseWhere(settings, key);
-    end
+    Where[key] = ParseWhere(settings, key);
 end
 
 --- Parses an entry like settings.Money.W. Also checks for a discrepancy between Where and Show.
@@ -242,9 +235,7 @@ function SaveControlSettings(settings, key)
         settings[key].L = string.format("%.0f", PositionW.Left[key]);
         settings[key].T = string.format("%.0f", PositionW.Top[key]);
     end
-    if (not DoesNotHaveWhere[key]) then
-		settings[key].W = string.format("%.0f", Where[key]);
-    end
+    settings[key].W = string.format("%.0f", Where[key]);
 end
 
 function ResetControlSettings(key)
@@ -259,9 +250,7 @@ function ResetControlSettings(key)
         PositionW.Left[key] = tL;
         PositionW.Top[key] = tT;
     end
-    if (not DoesNotHaveWhere[key]) then
-		Where[key] = GetDefault("W", key);
-    end
+    Where[key] = GetDefault("W", key);
 end
 
 --- Updates the Character Settings from v1.0 to current.
@@ -1072,7 +1061,7 @@ function ReplaceCtr()
         Position.Left[key] = oldLocX * screenWidth;
         settings[key].X = string.format("%.0f", Position.Left[key]);
 
-        local visible = Show[key] and (DoesNotHaveWhere[key] or Where[key] == 1);
+        local visible = Show[key] and Where[key] == 1;
         if visible then _G[key][ "Ctr" ]:SetPosition( Position.Left[key], Position.Top[key] ); end
     end
 

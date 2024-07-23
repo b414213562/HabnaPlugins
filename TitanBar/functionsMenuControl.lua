@@ -11,9 +11,7 @@ function UnloadControl( value )
         -- Handle currencies:
         for index, key in ipairs(Currencies) do
             if (Show[key]) then
-                if (not DoesNotHaveWhere[key]) then
-                    Where[key] = 3;
-                end
+                Where[key] = 3;
                 ShowHideCurrency(key);
             end
         end

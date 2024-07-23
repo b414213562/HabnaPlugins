@@ -13,9 +13,7 @@ function ShowHideCurrency(key)
 
 	Show[key] = not Show[key];
 	settings[key].V = Show[key];
-    if (not DoesNotHaveWhere[key]) then
-        settings[key].W = string.format("%.0f", Where[key]);
-    end
+    settings[key].W = string.format("%.0f", Where[key]);
 	SaveSettings( false );
 	if Show[key] then
 		--write( "TitanBar: Showing control");
