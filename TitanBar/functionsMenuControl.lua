@@ -93,7 +93,7 @@ function BGColor( cmd, value )
         end
 	end
 	
-	if value == "ctr" then
+	if value == "applyToAll" then
         local color = Turbine.UI.Color( tA, tR, tG, tB );
 
         -- Handle currencies:
@@ -133,8 +133,8 @@ function BGColor( cmd, value )
 		if ShowPlayerLoc then PL[ "Ctr" ]:SetBackColor( color ); end
 		GTbcAlpha, GTbcRed, GTbcGreen, GTbcBlue = tA, tR, tG, tB;
 		if ShowGameTime then GT[ "Ctr" ]:SetBackColor( color );	end
-	elseif value == "all" then
-		BGColor( cmd, "ctr" );
+	elseif value == "applyToAllAndTitanBar" then
+		BGColor( cmd, "applyToAll" );
 		BGColor( cmd, "TitanBar" );
 	elseif value == "applyToThis" then
         -- Handle currencies:

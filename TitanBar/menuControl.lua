@@ -11,7 +11,7 @@ ATBBMenu1.Click = function( sender, args ) BGColor( "match", "applyToThis" ); en
 ATBBMenu.Items:Add( ATBBMenu1 );
 
 local ATBBMenu2 = Turbine.UI.MenuItem( L["MTBBGAC"] );
-ATBBMenu2.Click = function( sender, args ) BGColor( "match", "ctr" ); end
+ATBBMenu2.Click = function( sender, args ) BGColor( "match", "applyToAll" ); end
 ATBBMenu.Items:Add( ATBBMenu2 );
 
 
@@ -24,11 +24,11 @@ RBGMenu1.Click = function( sender, args ) BGColor( "reset", "applyToThis" ); end
 RBGMenu.Items:Add( RBGMenu1 );
 
 local RBGMenu2 = Turbine.UI.MenuItem( L["MTBBGAC"] );
-RBGMenu2.Click = function( sender, args ) BGColor( "reset", "ctr"); end
+RBGMenu2.Click = function( sender, args ) BGColor( "reset", "applyToAll"); end
 RBGMenu.Items:Add( RBGMenu2 );
 
 local RBGMenu3 = Turbine.UI.MenuItem( L["MCABTA"] );
-RBGMenu3.Click = function( sender, args ) BGColor( "reset", "all"); end
+RBGMenu3.Click = function( sender, args ) BGColor( "reset", "applyToAllAndTitanBar"); end
 RBGMenu.Items:Add( RBGMenu3 );
 
 
@@ -37,11 +37,11 @@ local ABGTMenu = Turbine.UI.MenuItem( L["MCABT"] );
 ABGTMenu.Items = ABGTMenu:GetItems();
 
 local ABGTMenu1 = Turbine.UI.MenuItem( L["MCABTA"] );
-ABGTMenu1.Click = function( sender, args ) BGColor( "apply", "all" ); end
+ABGTMenu1.Click = function( sender, args ) BGColor( "apply", "applyToAllAndTitanBar" ); end
 ABGTMenu.Items:Add( ABGTMenu1 );
 
 local ABGTMenu2 = Turbine.UI.MenuItem( L["MTBBGAC"] );
-ABGTMenu2.Click = function( sender, args ) BGColor( "apply", "ctr" ); end
+ABGTMenu2.Click = function( sender, args ) BGColor( "apply", "applyToAll" ); end
 ABGTMenu.Items:Add( ABGTMenu2 );
 
 local ABGTMenu3 = Turbine.UI.MenuItem( L["MCABTTB"] );
