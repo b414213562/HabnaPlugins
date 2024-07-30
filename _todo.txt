@@ -27,6 +27,10 @@ Next time: Convert Currencies into a Settings Structure that is created (if miss
         On load and unload, need to add/remove entries from settings.Currencies.
 
 Todo: make sure each currency has a "description" field with the currency name.
+Todo:
+    ImageID is not unique for wallet items.
+    It probably makes the most since to transition from imageID to itemID, and use the name as a lookup into the language-specific table.
+
 
 Bug: Mithril Coins are not grabbing correct value from wallet.
 

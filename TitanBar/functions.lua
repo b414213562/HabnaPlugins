@@ -1004,7 +1004,7 @@ function GetTotalItems( MyTable )
 end
 
 ---comment
----@param key string The lookup key for this control.
+---@param key number|string The lookup key for this control.
 ---@return Color # The resulting Turbine.UI.Color.
 function GetBGColor(key)
     local color = Turbine.UI.Color( BC.Alpha[key], BC.Red[key], BC.Green[key], BC.Blue[key] );
