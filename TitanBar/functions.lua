@@ -737,7 +737,7 @@ function ChangeColor(tColor)
 		TB["win"]:SetBackColor( tColor );
 
         -- Check currencies:
-        for index, key in ipairs(Currencies) do
+        for key, isInUse in pairs(Currencies) do
             if (Show[key]) then
                 _G[key][ "Ctr" ]:SetBackColor( tColor );
             end

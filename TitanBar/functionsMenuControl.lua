@@ -9,7 +9,7 @@ function UnloadControl( value )
     -- Remove all controls from TitanBar:
     if value == "applyToAll" then
         -- Handle currencies:
-        for index, key in ipairs(Currencies) do
+        for key, isInUse in pairs(Currencies) do
             if (Show[key]) then
                 Where[key] = 3;
                 ShowHideCurrency(key);
@@ -95,7 +95,7 @@ function BGColor( cmd, value )
         local color = Turbine.UI.Color( tA, tR, tG, tB );
 
         -- Handle currencies:
-        for index, key in ipairs(Currencies) do
+        for key, isInUse in pairs(Currencies) do
             BC.Alpha[key], BC.Red[key], BC.Green[key], BC.Blue[key] = tA, tR, tG, tB;
             if Show[key] then
                 _G[key][ "Ctr" ]:SetBackColor( color );

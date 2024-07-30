@@ -9,7 +9,7 @@ local TitanBarControls = { };
 
 function UpdateTitanBarControls()
     -- index,key = (e.g.) 6, 0x411348E1
-    for index,key in ipairs(Currencies) do
+    for key, isInUse in pairs(Currencies) do
         local table = _G[key];
 
         if table ~= nil then TitanBarControls[ key ] = { ShowHide = Show[key], Control = table[ "Ctr" ] }; end
