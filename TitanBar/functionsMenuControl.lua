@@ -9,11 +9,12 @@ function UnloadControl( value )
     -- Remove all controls from TitanBar:
     if value == "applyToAll" then
         -- Handle currencies:
-        for key, isInUse in pairs(Currencies) do
+        for key, isInUse in pairs(settings.Currencies) do
             if (Show[key]) then
                 Where[key] = 3;
                 ShowHideCurrency(key);
             end
+            settings.Currencies[key] = nil;
         end
 
         -- Handle everything else:
@@ -37,6 +38,7 @@ function UnloadControl( value )
         if (type(_G.sFromCtr) == "number") then
             Where[_G.sFromCtr] = 3;
             ShowHideCurrency(_G.sFromCtr);
+            settings.Currencies[key] = nil;
         else
             -- Handle everything else:
             if _G.sFromCtr == "Wallet" then ShowHideWallet(); opt_Wallet:SetChecked( false );
@@ -95,7 +97,7 @@ function BGColor( cmd, value )
         local color = Turbine.UI.Color( tA, tR, tG, tB );
 
         -- Handle currencies:
-        for key, isInUse in pairs(Currencies) do
+        for key, isInUse in pairs(settings.Currencies) do
             BC.Alpha[key], BC.Red[key], BC.Green[key], BC.Blue[key] = tA, tR, tG, tB;
             if Show[key] then
                 _G[key][ "Ctr" ]:SetBackColor( color );

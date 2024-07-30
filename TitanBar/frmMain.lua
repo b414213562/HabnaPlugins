@@ -173,7 +173,7 @@ function frmMain()
 		ShowReputation = false;
 	end
 
-    for key, isInUse in pairs(Currencies) do
+    for key, isInUse in pairs(settings.Currencies) do
         local isActive = Where[key] ~= 3;
         if isActive then ImportCtr(key); end
     end

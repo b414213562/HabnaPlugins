@@ -310,7 +310,7 @@ function UpdateBCvariable()
 	if BGWToAll then
 		bcAlpha, bcRed, bcGreen, bcBlue = curSelAlpha, curSelRed, curSelGreen, curSelBlue;
 
-        for key, isInUse in pairs(Currencies) do
+        for key, isInUse in pairs(settings.Currencies) do
             BC.Alpha[key] = curSelAlpha;
             BC.Red[key] = curSelRed;
             BC.Green[key] = curSelGreen;

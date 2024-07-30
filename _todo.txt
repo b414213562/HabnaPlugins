@@ -23,6 +23,10 @@ Next time: Convert Currencies into a Settings Structure that is created (if miss
             For each Currency in charcacter settings, call ResetControlSettings().
         ReplaceCtr():
             Can use Currencies as a list of loaded controls.
+    Needed:
+        On load and unload, need to add/remove entries from settings.Currencies.
+
+Todo: make sure each currency has a "description" field with the currency name.
 
 Bug: Mithril Coins are not grabbing correct value from wallet.
 

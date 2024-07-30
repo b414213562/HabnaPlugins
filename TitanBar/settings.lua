@@ -89,37 +89,6 @@ PositionW.Top = {};
 _G.Where = {}; -- Is currency on bar, tooltip, or hidden?
 -- End Note on _G.
 
--- the key for each currency:
-Currencies = {
-    [Money] = true,
-    [DestinyPoints] = true,
-    [Shards] = true,
-    [SkirmishMarks] = true,
-    [MithrilCoins] = true,
-    [YuleToken] = true,
-    [HytboldTokens] = true,
-    [Medallions] = true,
-    [Seals] = true,
-    [Commendations] = true,
-    [LOTROPoints] = true,
-    [AmrothSilverPiece] = true,
-    [StarsofMerit] = true,
-    [CentralGondorSilverPiece] = true,
-    [GiftgiversBrand] = true,
-    [BingoBadge] = true,
-    [AnniversaryToken] = true,
-    [MotesOfEnchantment] = true,
-    [EmbersOfEnchantment] = true,
-    [FigmentsOfSplendour] = true,
-    [FallFestivalToken] = true,
-    [FarmersFaireToken] = true,
-    [SpringLeaf] = true,
-    [MidsummerToken] = true,
-    [AncientScript] = true,
-    [BadgeOfTaste] = true,
-    [BadgeOfDishonour] = true,
-}
-
 HasWindow = {
     ["Wallet"] = true;
     [Money] = true;
@@ -332,6 +301,9 @@ function LoadSettings()
 
     UpdateCharacterSettingsIfNecessary(settings);
 
+    -- Set up the default currency:
+    if settings.Currencies == nil then settings.Currencies = { [Money] = true; }; end
+
 	if settings.TitanBar.A == nil then settings.TitanBar.A = string.format("%.3f", tA); end --Default Alpha color value
 	if settings.TitanBar.R == nil then settings.TitanBar.R = string.format("%.3f", tR); end --Default Red color value
 	if settings.TitanBar.G == nil then settings.TitanBar.G = string.format("%.3f", tG); end --Default Green color value
@@ -422,7 +394,7 @@ function LoadSettings()
 	BGWToAll = settings.Background.A;
 
     -- Initialize each currency:
-    for key, isInUse in pairs(Currencies) do
+    for key, isInUse in pairs(settings.Currencies) do
         InitializeControlSettings(settings, key);
     end
 
@@ -813,7 +785,7 @@ function SaveSettings(str)
 		settings.Background.A = BGWToAll;
 
         -- Save currency-specific data:
-        for key, isInUse in pairs(Currencies) do
+        for key, isInUse in pairs(settings.Currencies) do
             SaveControlSettings(settings, key);
         end
 
@@ -1011,7 +983,7 @@ function ResetSettings()
 	TBHeight, _G.TBFont, TBFontT, TBTop, TBAutoHide, TBIconSize, bcAlpha, bcRed, bcGreen, bcBlue = 30, 1107296268, "TrajanPro14", true, L["OPAHC"], 32, tA, tR, tG, tB; --Backcolor & default X Location for TitanBar
 
     -- Reset each currency:
-    for key, isInUse in pairs(Currencies) do
+    for key, isInUse in pairs(settings.Currencies) do
         ResetControlSettings(key);
     end
 
@@ -1048,7 +1020,7 @@ function ReplaceCtr()
 	TBWidth = screenWidth;
 	settings.TitanBar.W = string.format("%.0f", screenWidth);
 
-    for key, isInUse in pairs(Currencies) do
+    for key, isInUse in pairs(settings.Currencies) do
         local oldLocX = settings[key].X / oldScreenWidth;
         Position.Left[key] = oldLocX * screenWidth;
         settings[key].X = string.format("%.0f", Position.Left[key]);

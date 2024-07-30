@@ -226,7 +226,6 @@ function frmWalletWindow()
 
 		--Where-> 1: On TitanBar / 2: In wallet control tooltip / 3: Don't show
         Where[wcur] = SelIndex;
-        settings[wcur].W = string.format("%.0f", SelIndex);
         if SelIndex == 1 then
             if not Show[wcur] then
                 ShowHideCurrency(wcur);
@@ -291,7 +290,7 @@ function RefreshWIListBox()
 				LPWCtr:SetVisible( false );
 				WIbutSave:SetPosition( WIWCtr:GetWidth()/2 - WIbutSave:GetWidth()/2, WIDD:GetTop()+WIDD:GetHeight()+10 );
 
-                local where = tonumber(Where[wcur]);
+                local where = tonumber(Where[wcur] or 3);
                 WIDD:SetSelection(where);
 
                 if wcur == LOTROPoints then

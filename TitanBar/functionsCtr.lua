@@ -402,6 +402,15 @@ function ImportCtr( value )
     else
         -- Handle currencies:
         if (type(value) == "number") then
+            settings.Currencies[value] = true;
+            
+            -- Initialize settings for this currency if necessary:
+            -- Note: We need to preserve Where[value] because if the settings don't already exist, Where
+            --       Will default to 3 and the following blocks will be skipped, meaning the control never loads.
+            local where = Where[value];
+            InitializeControlSettings(settings, value);
+            Where[value] = where;
+
             if Where[value] == 1 then
                 -- Any wallet control that is not generic
                 -- must have a custom block above
