@@ -13,8 +13,6 @@ Next time: Convert Currencies into a Settings Structure that is created (if miss
     ** settings.lua:
         Currencies = {
             Initialization of Currencies: We want this to be a list of in-use currencies in the character settings.
-        IsCurrency = {};
-            Replace with lookup in _G.WalletItems.
         InitializeControlSettings: 
             Can do this as a currency is being loaded, instead of here.
         CurrencyNameToKey:

@@ -34,7 +34,7 @@ function UnloadControl( value )
     -- Remove just the selected control from TitanBar
     elseif value == "applyToThis" then
         -- Handle currencies:
-        if (IsCurrency[_G.sFromCtr]) then
+        if (type(_G.sFromCtr) == "number") then
             Where[_G.sFromCtr] = 3;
             ShowHideCurrency(_G.sFromCtr);
         else

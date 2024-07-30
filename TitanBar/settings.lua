@@ -120,11 +120,6 @@ Currencies = {
     BadgeOfDishonour,
 }
 
-IsCurrency = {};
-for key, value in ipairs(Currencies) do
-    IsCurrency[value] = true;
-end
-
 HasWindow = {
     ["Wallet"] = true;
     [Money] = true;

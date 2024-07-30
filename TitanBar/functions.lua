@@ -186,7 +186,7 @@ function ShowToolTipWin( ToShow )
 	end
 
     -- Currencies:
-    if (IsCurrency[ToShow]) then
+    if (type(ToShow) == "number") then
         local tooltipWindowCustomHeight = {
             [LOTROPoints] = 80;
         };
@@ -836,7 +836,7 @@ function AjustIcon(str)
         end
 		_G[Money][ "Ctr" ]:SetSize( _G[Money]["GCtr"]:GetWidth() + _G[Money]["SCtr"]:GetWidth() + 
             _G[Money]["CCtr"]:GetWidth(), CTRHeight );
-    elseif (IsCurrency[str]) then
+    elseif (type(str) == "number") then
         -- Customizing icon positions goes here:
         local customCurrencyWidthOffsets = {
             [DestinyPoints] = 0;
