@@ -5,7 +5,7 @@
 --**v Functions for the menu v**
 
 --- Generic function to show/hide a currency control.
----@param key string Long key, e.g. "Wallet", LOTROPoints
+---@param key number Long key, e.g. "Wallet", LOTROPoints
 function ShowHideCurrency(key)
     ImportCtr( key );
     local controlTable = _G[key];
