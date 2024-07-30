@@ -26,6 +26,13 @@ Next time: Convert Currencies into a Settings Structure that is created (if miss
         ReplaceCtr():
             Can use Currencies as a list of loaded controls.
 
+Bug: Mithril Coins are not grabbing correct value from wallet.
+
+applyToAll:
+    Since we are adding the capability for arbitrary currencies to become controls, 
+    we either need to inflate the save file to add anything in you wallet, or
+    save off the last "apply to all" and keep using it for newly added currencies.
+    Or we accept that Apply to All only affects currently loaded currencies, and we ignore anything else.
 
 "Ajust" is misspelled. Should be Adjust
 

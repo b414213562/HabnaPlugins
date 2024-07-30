@@ -4,84 +4,66 @@
 
 
 function ImportCtr( value )
-    -- Handle currencies:
-    if (IsCurrency[value]) then
-        -- Currency-specific blocks:
-        if (value == Money) then
-            if Where[Money] == 1 then
-                import (AppCtrWalletD..Money);
-                import (AppCtrWalletD.."MoneyToolTip");
-                _G[Money][ "Ctr" ]:SetPosition( Position.Left[Money], Position.Top[Money] );
-            end
-            if Where[Money] ~= 3 then
-                PlayerAtt = Player:GetAttributes();
-                AddCallback(PlayerAtt, "MoneyChanged",
-                    function(sender, args) UpdateMoney(); end
-                    );
-                AddCallback(sspack, "CountChanged", UpdateSharedStorageGold);
-                -- ^^ Thx Heridian!
-                UpdateMoney();
-            else
-                RemoveCallback(PlayerAtt, "MoneyChanged");
-                RemoveCallback(sspack, "CountChanged", UpdateSharedStorageGold);
-                -- ^^ Thx Heridian!
-            end
-        elseif (value == LOTROPoints) then
-            if Where[LOTROPoints] == 1 then
-                import (AppCtrWalletD.."LOTROPoints");
-                _G[LOTROPoints][ "Ctr" ]:SetPosition( Position.Left[LOTROPoints], Position.Top[LOTROPoints] );
-                UpdateLOTROPoints();
-            end
-            if Where[LOTROPoints] ~= 3 then
-                --PlayerLP = Player:GetLOTROPoints();
-                --AddCallback(PlayerLP, "LOTROPointsChanged",
-                --    function(sender, args) UpdateLOTROPoints(); end
-                --);
-                LPcb = AddCallback(Turbine.Chat, "Received",
-                    function(sender, args)
-                        -- Note: We are only detecting earned, because currently there is
-                        --       no chat output identifying how much LP we spend.
-                    if args.ChatType == Turbine.ChatType.Advancement then
-                        tpMess = args.Message;
-                        if tpMess ~= nil then
-                            local tpPattern;
-                            if GLocale == "en" then
-                                tpPattern = "earned ([%d%p]*) LOTRO Points";
-                            elseif GLocale == "fr" then
-                                tpPattern = "gagn\195\169 ([%d%p]*) points LOTRO";
-                            elseif GLocale == "de" then
-                                tpPattern = "habt ([%d%p]*) Punkte erhalten";
-                            end
-                            local tmpLP = string.match(tpMess,tpPattern);
-                            if tmpLP ~= nil then
-                                LPTS = tmpLP;
-                                _G.LOTROPTS = _G.LOTROPTS + LPTS;
-                                if Where[LOTROPoints] == 1 then UpdateLOTROPoints(); end
-                                SavePlayerLOTROPoints();
-                            end
+    -- Handle non-currencies:
+    if (value == Money) then
+        if Where[Money] == 1 then
+            import (AppCtrWalletD..Money);
+            import (AppCtrWalletD.."MoneyToolTip");
+            _G[Money][ "Ctr" ]:SetPosition( Position.Left[Money], Position.Top[Money] );
+        end
+        if Where[Money] ~= 3 then
+            PlayerAtt = Player:GetAttributes();
+            AddCallback(PlayerAtt, "MoneyChanged",
+                function(sender, args) UpdateMoney(); end
+                );
+            AddCallback(sspack, "CountChanged", UpdateSharedStorageGold);
+            -- ^^ Thx Heridian!
+            UpdateMoney();
+        else
+            RemoveCallback(PlayerAtt, "MoneyChanged");
+            RemoveCallback(sspack, "CountChanged", UpdateSharedStorageGold);
+            -- ^^ Thx Heridian!
+        end
+    elseif (value == LOTROPoints) then
+        if Where[LOTROPoints] == 1 then
+            import (AppCtrWalletD.."LOTROPoints");
+            _G[LOTROPoints][ "Ctr" ]:SetPosition( Position.Left[LOTROPoints], Position.Top[LOTROPoints] );
+            UpdateLOTROPoints();
+        end
+        if Where[LOTROPoints] ~= 3 then
+            --PlayerLP = Player:GetLOTROPoints();
+            --AddCallback(PlayerLP, "LOTROPointsChanged",
+            --    function(sender, args) UpdateLOTROPoints(); end
+            --);
+            LPcb = AddCallback(Turbine.Chat, "Received",
+                function(sender, args)
+                    -- Note: We are only detecting earned, because currently there is
+                    --       no chat output identifying how much LP we spend.
+                if args.ChatType == Turbine.ChatType.Advancement then
+                    tpMess = args.Message;
+                    if tpMess ~= nil then
+                        local tpPattern;
+                        if GLocale == "en" then
+                            tpPattern = "earned ([%d%p]*) LOTRO Points";
+                        elseif GLocale == "fr" then
+                            tpPattern = "gagn\195\169 ([%d%p]*) points LOTRO";
+                        elseif GLocale == "de" then
+                            tpPattern = "habt ([%d%p]*) Punkte erhalten";
+                        end
+                        local tmpLP = string.match(tpMess,tpPattern);
+                        if tmpLP ~= nil then
+                            LPTS = tmpLP;
+                            _G.LOTROPTS = _G.LOTROPTS + LPTS;
+                            if Where[LOTROPoints] == 1 then UpdateLOTROPoints(); end
+                            SavePlayerLOTROPoints();
                         end
                     end
-                    end);
-            else
-                RemoveCallback(Turbine.Chat, "Received", LPcb);
-            end
+                end
+                end);
         else
-            if Where[value] == 1 then
-                -- Any wallet control that is not generic
-                -- must have a custom block above
-                -- (e.g. Wallet, Money, LOTROPoints).
-                MakeWalletControl(value);
-                _G[value][ "Ctr" ]:SetPosition( Position.Left[value], Position.Top[value] );
-            end
-            if Where[value] ~= 3 then
-                UpdateCurrency(value, nil);
-            end
+            RemoveCallback(Turbine.Chat, "Received", LPcb);
         end
-
-    end
-
-    -- Handle non-currencies:
-    if (value == "Wallet") then
+    elseif (value == "Wallet") then
         import (AppCtrWalletD.."Wallet");
         import (AppCtrWalletD.."WalletToolTip");
         UpdateWallet();
@@ -417,6 +399,20 @@ function ImportCtr( value )
             end);
         UpdateReputation();
         RP[ "Ctr" ]:SetPosition( _G.RPLocX, _G.RPLocY );
+    else
+        -- Handle currencies:
+        if (type(value) == "number") then
+            if Where[value] == 1 then
+                -- Any wallet control that is not generic
+                -- must have a custom block above
+                -- (e.g. Wallet, Money, LOTROPoints).
+                MakeWalletControl(value);
+                _G[value][ "Ctr" ]:SetPosition( Position.Left[value], Position.Top[value] );
+            end
+            if Where[value] ~= 3 then
+                UpdateCurrency(value, nil);
+            end
+        end
     end
 end
 
