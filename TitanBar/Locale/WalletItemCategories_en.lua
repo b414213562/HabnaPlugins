@@ -16,3 +16,5 @@ _G.WalletItemCategories = {
   [16] = "Monster Play";
 };
 
+_G.WalletItemCategoryUnknown = "Unknown to TitanBar";
+
