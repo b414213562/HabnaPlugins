@@ -226,6 +226,12 @@ function frmWalletWindow()
 
 		--Where-> 1: On TitanBar / 2: In wallet control tooltip / 3: Don't show
         Where[wcur] = SelIndex;
+        -- If we already have a settings object for this currency, update the .W value.
+        -- (This insures that the value is updated when moving from a not-bar to other not-bar configuration.)
+        -- Otherwise, that will happen in ShowHideCurrency.
+        if (settings[wcur]) then
+            settings[wcur].W = string.format("%.0f", SelIndex);
+        end
         if SelIndex == 1 then
             if not Show[wcur] then
                 ShowHideCurrency(wcur);
