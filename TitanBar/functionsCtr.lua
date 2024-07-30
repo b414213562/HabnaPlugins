@@ -7,13 +7,13 @@ function ImportCtr( value )
     -- Handle currencies:
     if (IsCurrency[value]) then
         -- Currency-specific blocks:
-        if (value == "Money") then
-            if Where["Money"] == 1 then
-                import (AppCtrWalletD.."Money");
+        if (value == Money) then
+            if Where[Money] == 1 then
+                import (AppCtrWalletD..Money);
                 import (AppCtrWalletD.."MoneyToolTip");
-                _G["Money"][ "Ctr" ]:SetPosition( Position.Left["Money"], Position.Top["Money"] );
+                _G[Money][ "Ctr" ]:SetPosition( Position.Left[Money], Position.Top[Money] );
             end
-            if Where["Money"] ~= 3 then
+            if Where[Money] ~= 3 then
                 PlayerAtt = Player:GetAttributes();
                 AddCallback(PlayerAtt, "MoneyChanged",
                     function(sender, args) UpdateMoney(); end
@@ -795,7 +795,7 @@ function UpdateSharedStorageGold( sender, args )
     wallet[ L[ "MStorage" ] ] =  {
         [ "Show" ] = true,
         [ "ShowToAll" ] = true,
-        [ "Money" ] = tostring( sharedmoney )
+        [ Money ] = tostring( sharedmoney )
     }
     UpdateMoney()
 end

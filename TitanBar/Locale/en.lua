@@ -20,7 +20,7 @@ L[ "ButDel" ] = "Delete information of this character";
 
 -- TitanBar Menu
 L[ "Wallet" ] = "Wallet";
-L[ "Money" ] = "Money";
+L[ Money ] = "Money";
 L[ "MBI" ] = "Backpack infos";
 L[ "MPI" ] = "Player infos";
 L[ "MEI" ] = "Equipment infos";

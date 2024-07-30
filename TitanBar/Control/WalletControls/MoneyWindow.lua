@@ -23,7 +23,7 @@ function frmMoneyWindow()
 	_G.wMoney.MouseUp = function( sender, args )
 		settings.Money.L = string.format("%.0f", _G.wMoney:GetLeft());
 		settings.Money.T = string.format("%.0f", _G.wMoney:GetTop());
-		PositionW.Left["Money"], PositionW.Top["Money"] = _G.wMoney:GetPosition();
+		PositionW.Left[Money], PositionW.Top[Money] = _G.wMoney:GetPosition();
 		SaveSettings( false );
 	end
 
@@ -116,7 +116,7 @@ function frmMoneyWindow()
 
 	RefreshMIListBox();
 
-	_G.wMoney:SetPosition( PositionW.Left["Money"], PositionW.Top["Money"] );
+	_G.wMoney:SetPosition( PositionW.Left[Money], PositionW.Top[Money] );
 end
 
 function RefreshMIListBox()

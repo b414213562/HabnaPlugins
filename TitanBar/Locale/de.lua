@@ -20,7 +20,7 @@ L[ "ButDel" ] = "Infos dieser Art l\195\182schen";
 
 -- TitanBar Menu
 L[ "Wallet" ] = "Zeige Geldbeutel";
-L[ "Money" ] = "Verm\195\182gen"; -- (Gold, Silber, Kupfer)
+L[ Money ] = "Verm\195\182gen"; -- (Gold, Silber, Kupfer)
 L[ "MPI" ] = "Spieler Infos";
 L[ "MEI" ] = "Ausr\195\188stung Infos";
 L[ "MDI" ] = "Haltbarkeit Infos";

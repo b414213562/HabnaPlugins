@@ -2,6 +2,36 @@
 -- Written by Habna
 -- Rewritten by many
 
+-- Currency variables:
+-- TODO: Most of these currency entries should be deleted.
+Money = "Money";
+DestinyPoints = 0x4100a682;
+Shards = 0x41110d5b;
+SkirmishMarks = 0x4111c446;
+MithrilCoins = 0x411348E1;
+YuleToken = 0x410FA62D;
+HytboldTokens = 0x41127D0C;
+Medallions = 0x4111c43d;
+Seals = 0x4111c449;
+Commendations = 0x41123495;
+LOTROPoints = 0x4113478C;
+AmrothSilverPiece = 0x41152875;
+StarsofMerit = 0x4115bea4;
+CentralGondorSilverPiece = 0x41155957;
+GiftgiversBrand = 0x4115c888;
+BingoBadge = 0x410e6ee4;
+AnniversaryToken = 0x4110e2e7;
+MotesOfEnchantment = 0x411b91dd;
+EmbersOfEnchantment = 0x411ce971;
+FigmentsOfSplendour = 0x411cf13b;
+FallFestivalToken = 0x410d85de;
+FarmersFaireToken = 0x410e7bd6;
+SpringLeaf = 0x410d74cb;
+MidsummerToken = 0x411ee829;
+AncientScript = 0x41212e84;
+BadgeOfTaste = 0x41002b2c;
+BadgeOfDishonour = 0x410d4316;
+
 -- Globals that are used by Settings:
 
 -- default values:
@@ -9,15 +39,15 @@ DEFAULT = "DEFAULT";
 Default = {
     ["V"] = {
         [DEFAULT] = false;
-        ["Money"] = true;
+        [Money] = true;
     };
     ["X"] = {
         [DEFAULT] = 0;
-        ["Money"] = 400;
+        [Money] = 400;
     };
     ["W"] = {
         [DEFAULT] = 3;
-        ["Money"] = 1;
+        [Money] = 1;
     };
 };
 tA, tR, tG, tB, tX, tY, tW = 0.3, 0.3, 0.3, 0.3, 0, 0, 3; --Default alpha, red, green, blue, X, Y pos of control, Show where
@@ -25,7 +55,7 @@ tL, tT = 100, 100; --Default position of control window
 
 ---Returns the default value for the specified setting
 ---@param setting string The type of setting, e.g. V, A, R, G
----@param key string The currency in question, e.g. "Money", AncientScript
+---@param key string The currency in question, e.g. Money, AncientScript
 ---@return any
 function GetDefault(setting, key)
     local value = nil;
@@ -59,36 +89,9 @@ PositionW.Top = {};
 _G.Where = {}; -- Is currency on bar, tooltip, or hidden?
 -- End Note on _G.
 
-DestinyPoints = 0x4100a682;
-Shards = 0x41110d5b;
-SkirmishMarks = 0x4111c446;
-MithrilCoins = 0x411348E1;
-YuleToken = 0x410FA62D;
-HytboldTokens = 0x41127D0C;
-Medallions = 0x4111c43d;
-Seals = 0x4111c449;
-Commendations = 0x41123495;
-LOTROPoints = 0x4113478C;
-AmrothSilverPiece = 0x41152875;
-StarsofMerit = 0x4115bea4;
-CentralGondorSilverPiece = 0x41155957;
-GiftgiversBrand = 0x4115c888;
-BingoBadge = 0x410e6ee4;
-AnniversaryToken = 0x4110e2e7;
-MotesOfEnchantment = 0x411b91dd;
-EmbersOfEnchantment = 0x411ce971;
-FigmentsOfSplendour = 0x411cf13b;
-FallFestivalToken = 0x410d85de;
-FarmersFaireToken = 0x410e7bd6;
-SpringLeaf = 0x410d74cb;
-MidsummerToken = 0x411ee829;
-AncientScript = 0x41212e84;
-BadgeOfTaste = 0x41002b2c;
-BadgeOfDishonour = 0x410d4316;
-
 -- the key for each currency:
 Currencies = {
-    "Money",
+    Money,
     DestinyPoints,
     Shards,
     SkirmishMarks,
@@ -124,7 +127,7 @@ end
 
 HasWindow = {
     ["Wallet"] = true;
-    ["Money"] = true;
+    [Money] = true;
     [LOTROPoints] = true;
 };
 
@@ -823,8 +826,8 @@ function SaveSettings(str)
 		settings.Money.S = _G.STM; --Show Total Money of all character on TitanBar Money control.
 		settings.Money.SS = _G.SSS; --Show sessions statistics in money tooltip.
 		settings.Money.TS = _G.STS; --Show today statistics in money tooltip
-		if PlayerAlign == 1 then settings.Money.L = string.format("%.0f", PositionW.Left["Money"]); end
-		if PlayerAlign == 1 then settings.Money.T = string.format("%.0f", PositionW.Top["Money"]); end
+		if PlayerAlign == 1 then settings.Money.L = string.format("%.0f", PositionW.Left[Money]); end
+		if PlayerAlign == 1 then settings.Money.T = string.format("%.0f", PositionW.Top[Money]); end
 
         settings["Wallet"] = {};
         settings["Wallet"].V = Show["Wallet"];

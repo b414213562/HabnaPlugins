@@ -1,7 +1,7 @@
 -- Money.lua
 -- Written by Habna
 
-local key = "Money";
+local key = Money;
 _G[key] = {}; -- Money Infos table in _G
 local table = _G[key];
 
@@ -11,7 +11,7 @@ table["Ctr"]:SetParent( TB["win"] );
 table["Ctr"]:SetMouseVisible( false );
 table["Ctr"]:SetZOrder( 2 );
 table["Ctr"]:SetBlendMode( Turbine.UI.BlendMode.AlphaBlend );
-table["Ctr"]:SetBackColor( Turbine.UI.Color( BC.Alpha["Money"], BC.Red["Money"], BC.Green["Money"], BC.Blue["Money"] ) );
+table["Ctr"]:SetBackColor( Turbine.UI.Color( BC.Alpha[Money], BC.Red[Money], BC.Green[Money], BC.Blue[Money] ) );
 --table["Ctr"]:SetBackColor( Color["red"] ); -- Debug purpose
 --**^
 --**v Control of Gold currencies v**
@@ -328,7 +328,7 @@ table["CLbl"].MouseClick = function( sender, args )
 			end
 		end
 	elseif ( args.Button == Turbine.UI.MouseButton.Right ) then
-		_G.sFromCtr = "Money";
+		_G.sFromCtr = Money;
 		ControlMenu:ShowMenu();
 	end
 	WasDrag = false;
@@ -346,10 +346,10 @@ end
 table["CLbl"].MouseUp = function( sender, args )
 	table["Ctr"]:SetZOrder( 2 );
 	dragging = false;
-	Position.Left["Money"] = table["Ctr"]:GetLeft();
-	settings.Money.X = string.format("%.0f", Position.Left["Money"]);
-	Position.Top["Money"] = table["Ctr"]:GetTop();
-	settings.Money.Y = string.format("%.0f", Position.Top["Money"]);
+	Position.Left[Money] = table["Ctr"]:GetLeft();
+	settings.Money.X = string.format("%.0f", Position.Left[Money]);
+	Position.Top[Money] = table["Ctr"]:GetTop();
+	settings.Money.Y = string.format("%.0f", Position.Top[Money]);
 	SaveSettings( false );
 end
 --**^

@@ -41,7 +41,7 @@ function RefreshWITTListBox()
 		local wttcur = MenuItem[i];
         local ttw = Where[wttcur];
 
-        if (wttcur ~= "Money" and Where[MenuItem[i]] == 2) then
+        if (wttcur ~= Money and Where[MenuItem[i]] == 2) then
             local imageNum = tonumber(wttcur);
             CtrIconCodeIs = wttcur;
             CtrQteIs = GetCurrency( imageNum );
@@ -58,7 +58,7 @@ function RefreshWITTListBox()
 			--WITTCtr:SetBackColor( Color["red"] ); -- Debug purpose
 			--**^
 
-			if wttcur == "Money" then --Money control
+			if wttcur == Money then --Money control
 				local wiPosX, tmWidth = 0, 0;
 				local wmoney = PlayerAtt:GetMoney();
 				local gold, silver, copper = DecryptMoney(wmoney);

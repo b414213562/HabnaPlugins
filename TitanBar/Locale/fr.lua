@@ -20,7 +20,7 @@ L[ "ButDel" ] = "Effacer les infos de ce personnage";
 
 -- TitanBar Menu
 L[ "Wallet" ] = "Porte-feuille";
-L[ "Money" ] = "Votre argent";
+L[ Money ] = "Votre argent";
 L[ "MBI" ] = "Informations de vos sacs";
 L[ "MPI" ] = "Information du joueur";
 L[ "MEI" ] = "Points pour tous vos articles";
