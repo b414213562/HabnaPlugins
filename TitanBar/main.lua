@@ -84,6 +84,7 @@ import (AppDirD.."frmMain");
 import (AppDirD.."FontMetric");
 
 import (AppDataD.."WalletItems");
+import (AppLocaleD.."WalletItems_"..GLocale);
 import (AppLocaleD.."WalletItemCategories_"..GLocale);
 import (AppLocaleD.."WalletItemsByCategory_"..GLocale);
 
