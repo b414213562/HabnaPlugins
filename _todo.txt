@@ -1,32 +1,21 @@
-Next time: Convert Currencies into a Settings Structure that is created (if missing) during load.
-    Then, start updating the below entries to use that structure instead of the hard-coded Currencies.
+Next up: Get rid of MenuItem
+    WalletToolTip:
+        Change to iterating through each entry in settings.Currencies, if the Where is 2 then do stuff.
+    WalletWindow:
+        Will be taken care of with the new window design.
 
-    How is Currencies being used?
-    ** = This is fine if Currencies changes to a list of loaded currencies only.
+Explore why CurrenciesNotUsedInMonsterPlay exits, and why frmMain.lua tries to suppress items on the Bar, 
+    when they shouldn't be addable in the first place.
+    (And if the player did add them, what's the harm?)
+Talyrion thinks it may be to prevent overwriting server-level data like shared storage.
+    Surely there's a better way to protect against this if this is the reason?
+Where is the core TB menu populated, and are the items there controlled by PlayerAlign?
+    menu.lua: TitanBarMenu
 
-    ** background.lua:UpdateBCvariable: We iterate through all possible currencies and set the corresponding BC.Alpha/Red/Green/Blue values.
-    ** frmMain.lua:frmMain(): We iterate through all Currencies, and if their location (Where) is tooltip or bar, then we import the control.
-    ** frmOptions.lua: We iterate through all Currencies and set up a TitanBarControls entry containing the current ShowHide and Control.
-    ** functions.lua:ChangeColor(): We iterate through all Currencies and if they are visible set their Back Color.
-    ** functionsMenuControl.lua: x2
-        We interate through them to Unload or set BG Color
-    ** settings.lua:
-        Currencies = {
-            Initialization of Currencies: We want this to be a list of in-use currencies in the character settings.
-        InitializeControlSettings: 
-            Can do this as a currency is being loaded, instead of here.
-        CurrencyNameToKey:
-            Initialize this from settings, add to it as currencies are added to bar.
-        SaveControlSettings:
-            Fine to switch to settings.
-        ResetSettings():
-            For each Currency in charcacter settings, call ResetControlSettings().
-        ReplaceCtr():
-            Can use Currencies as a list of loaded controls.
-    Needed:
-        On load and unload, need to add/remove entries from settings.Currencies.
+
 
 Todo: make sure each currency has a "description" field with the currency name.
+
 Todo:
     ImageID is not unique for wallet items.
     It probably makes the most since to transition from imageID to itemID, and use the name as a lookup into the language-specific table.
