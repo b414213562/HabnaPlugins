@@ -1058,7 +1058,7 @@ function GetCurrencyIcon( key )
     local iconID = unknownIcon;
     if (PlayerCurrency[key]) then
         iconID = PlayerCurrency[key]:GetImage();
-    elseif (key == 0x4100a682) then -- Destiny Points don't exist in wallet, can't look it up
+    elseif (key == DestinyPoints) then -- Destiny Points don't exist in wallet, can't look it up
         iconID = 1090561666;
     end
     return iconID;
