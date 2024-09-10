@@ -1,3 +1,25 @@
+Reported by LRH?
+session play:
+...s Online\Plugins\HabnaPlugins\TitanBar\functions.lua:393: bad argument #2 to 'format' (number expected, got nil)
+
+
+Todo:
+    ImageID is not unique for wallet items.
+    It probably makes the most since to transition from imageID to itemID, and use the name as a lookup into the language-specific table.
+    Note: Destiny isn't a PaperItem, need to add it manually!
+        Also LOTRO Points?
+    Current broken state:
+        Wallet Tooltip:
+            didn't save state when unloaded/reloaded
+                Start by observing the V and W entries for what we put in the wallet, are they correct?
+                That is, is this a saving problem or a loading problem?
+
+    Commendations:
+        If it's not in our wallet, we don't have a way to get the image ID.
+        In the new system, we need to offer a way to enter this?
+
+    Change fileformat to 2.0 to match new plugin version?
+
 Next up: Get rid of MenuItem
     WalletToolTip:
         Change to iterating through each entry in settings.Currencies, if the Where is 2 then do stuff.
@@ -15,11 +37,6 @@ Where is the core TB menu populated, and are the items there controlled by Playe
 
 
 Todo: make sure each currency has a "description" field with the currency name.
-
-Todo:
-    ImageID is not unique for wallet items.
-    It probably makes the most since to transition from imageID to itemID, and use the name as a lookup into the language-specific table.
-
 
 Bug: Mithril Coins are not grabbing correct value from wallet.
 

@@ -92,12 +92,13 @@ end
 function MakeWalletControl_Icon(table, key)
     local iconWidth = MakeWalletControl_IconWidthOverrides[key] or 32;
     local iconHeight = MakeWalletControl_IconHeightOverrides[key] or 32;
+    local iconID = GetCurrencyIcon(key)
 
     table["Icon"] = Turbine.UI.Control();
     table["Icon"]:SetParent( table["Ctr"] );
     table["Icon"]:SetBlendMode( Turbine.UI.BlendMode.AlphaBlend );
     table["Icon"]:SetSize( iconWidth, iconHeight );
-    table["Icon"]:SetBackground( key );
+    table["Icon"]:SetBackground( iconID );
     table["Icon"]:SetMouseVisible(false);
 end
 

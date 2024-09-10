@@ -401,26 +401,24 @@ function ImportCtr( value )
         RP[ "Ctr" ]:SetPosition( _G.RPLocX, _G.RPLocY );
     else
         -- Handle currencies:
-        if (type(value) == "number") then
-            settings.Currencies[value] = true;
-            
-            -- Initialize settings for this currency if necessary:
-            -- Note: We need to preserve Where[value] because if the settings don't already exist, Where
-            --       Will default to 3 and the following blocks will be skipped, meaning the control never loads.
-            local where = Where[value];
-            InitializeControlSettings(settings, value);
-            Where[value] = where;
+        settings.Currencies[value] = true;
+        
+        -- Initialize settings for this currency if necessary:
+        -- Note: We need to preserve Where[value] because if the settings don't already exist, Where
+        --       Will default to 3 and the following blocks will be skipped, meaning the control never loads.
+        local where = Where[value];
+        InitializeControlSettings(settings, value);
+        Where[value] = where;
 
-            if Where[value] == 1 then
-                -- Any wallet control that is not generic
-                -- must have a custom block above
-                -- (e.g. Wallet, Money, LOTROPoints).
-                MakeWalletControl(value);
-                _G[value][ "Ctr" ]:SetPosition( Position.Left[value], Position.Top[value] );
-            end
-            if Where[value] ~= 3 then
-                UpdateCurrency(value, nil);
-            end
+        if Where[value] == 1 then
+            -- Any wallet control that is not generic
+            -- must have a custom block above
+            -- (e.g. Wallet, Money, LOTROPoints).
+            MakeWalletControl(value);
+            _G[value][ "Ctr" ]:SetPosition( Position.Left[value], Position.Top[value] );
+        end
+        if Where[value] ~= 3 then
+            UpdateCurrency(value, nil);
         end
     end
 end
@@ -671,7 +669,7 @@ function LoadPlayerWallet()
 
     for i = 1, PlayerWalletSize do
         local CurItem = PlayerWallet:GetItem(i);
-        local key = CurItem:GetImage();
+        local key = GetCurrencyKey(CurItem);
 
         if (key ~= nil) then
             PlayerCurrency[key] = CurItem;
@@ -1025,10 +1023,13 @@ function SavePlayerLOTROPoints()
 end
 
 --- Gets the count of an item in the wallet
----@param key number? The key of the item.
+---@param key string|number? The key of the item.
 ---@return number # How many are in the wallet.
 function GetCurrency( key )
     if (not key) then return 0; end
+
+    local asNumber = tonumber(key);
+    if (asNumber) then key = asNumber; end
 
     local currentQuantity = 0;
 
@@ -1046,4 +1047,19 @@ function GetCurrency( key )
     end
 
     return currentQuantity;
+end
+
+--- Gets the Icon for a currency, or returns a suitable default.
+---@param key any
+---@return integer
+function GetCurrencyIcon( key )
+    local unknownIcon = 0x410d79f6; -- Question mark over shield
+
+    local iconID = unknownIcon;
+    if (PlayerCurrency[key]) then
+        iconID = PlayerCurrency[key]:GetImage();
+    elseif (key == 0x4100a682) then -- Destiny Points don't exist in wallet, can't look it up
+        iconID = 1090561666;
+    end
+    return iconID;
 end

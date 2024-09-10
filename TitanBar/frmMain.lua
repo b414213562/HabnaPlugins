@@ -139,7 +139,8 @@ function frmMain()
 		end
 	end
 
-    -- Indexed by ImageId:
+    -- Indexed by GetCurrencyKey():
+
 	PlayerCurrency = {};
 	PlayerCurrencyHandler = {};
 

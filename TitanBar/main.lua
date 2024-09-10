@@ -64,6 +64,11 @@ else GLocale = "en";
 end
 --**^
 
+import (AppDataD.."WalletItems");
+import (AppLocaleD.."WalletItemsNameToID_"..GLocale);
+import (AppLocaleD.."WalletItemCategories_"..GLocale);
+import (AppLocaleD.."WalletItemsByCategory_"..GLocale);
+
 import (AppDirD.."TBresources");
 import (AppClassD.."Class");
 import (AppDir);
@@ -82,11 +87,6 @@ import (AppDirD.."menuControl");
 import (AppDirD.."background");
 import (AppDirD.."frmMain");
 import (AppDirD.."FontMetric");
-
-import (AppDataD.."WalletItems");
-import (AppLocaleD.."WalletItems_"..GLocale);
-import (AppLocaleD.."WalletItemCategories_"..GLocale);
-import (AppLocaleD.."WalletItemsByCategory_"..GLocale);
 
 frmMain();
 

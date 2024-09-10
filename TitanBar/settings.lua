@@ -5,32 +5,32 @@
 -- Currency variables:
 -- TODO: Most of these currency entries should be deleted.
 Money = "Money";
-DestinyPoints = 0x4100a682;
-Shards = 0x41110d5b;
-SkirmishMarks = 0x4111c446;
-MithrilCoins = 0x411348E1;
-YuleToken = 0x410FA62D;
-HytboldTokens = 0x41127D0C;
-Medallions = 0x4111c43d;
-Seals = 0x4111c449;
-Commendations = 0x41123495;
-LOTROPoints = 0x4113478C;
-AmrothSilverPiece = 0x41152875;
-StarsofMerit = 0x4115bea4;
-CentralGondorSilverPiece = 0x41155957;
-GiftgiversBrand = 0x4115c888;
-BingoBadge = 0x410e6ee4;
-AnniversaryToken = 0x4110e2e7;
-MotesOfEnchantment = 0x411b91dd;
-EmbersOfEnchantment = 0x411ce971;
-FigmentsOfSplendour = 0x411cf13b;
-FallFestivalToken = 0x410d85de;
-FarmersFaireToken = 0x410e7bd6;
-SpringLeaf = 0x410d74cb;
-MidsummerToken = 0x411ee829;
-AncientScript = 0x41212e84;
-BadgeOfTaste = 0x41002b2c;
-BadgeOfDishonour = 0x410d4316;
+DestinyPoints = 0x4100a682; -- No Item ID, = 1090561666
+Shards = 1879202375; -- 0x41110d5b
+SkirmishMarks = 1879224343; -- 0x4111c446, NOTE: These are "Mark" in game
+MithrilCoins = 1879255991; -- 0x411348e1
+YuleToken = 1879256449; -- 0x410fa62d
+HytboldTokens = 1879237349; -- 0x41127d0c
+Medallions = 1879224344; -- 0x4111c43d
+Seals = 1879224345; -- 0x4111c449
+Commendations = 1879230183; -- 0x41123495
+LOTROPoints = 0x4113478c; -- No Item ID, = 1091782540
+AmrothSilverPiece = 1879306057; -- 0x41152875
+StarsofMerit = 1879318665; -- 0x4115bea4
+CentralGondorSilverPiece = 1879314933; -- 0x41155957
+GiftgiversBrand = 1879320706; -- 0x4115c888
+BingoBadge = 1879321808; -- 0x410e6ee4
+AnniversaryToken = 1879200721; -- 0x4110e2e7
+MotesOfEnchantment = 1879352247; -- 0x411b91dd
+EmbersOfEnchantment = 1879377205; -- 0x411ce971
+FigmentsOfSplendour = 1879381191; -- 0x411cf13b
+FallFestivalToken = 1879098272; -- 0x410d85de
+FarmersFaireToken = 1879223715; -- 0x410e7bd6
+SpringLeaf = 1879151743; -- 0x410d74cb
+MidsummerToken = 1879406105; -- 0x411ee829
+AncientScript = 1879424263; -- 0x41212e84
+BadgeOfTaste = 1879185136; -- 0x41002b2c
+BadgeOfDishonour = 1879183133; -- 0x410d4316
 
 -- Globals that are used by Settings:
 
@@ -232,46 +232,55 @@ function UpdateCharacterSettingsIfNecessary(settings)
         Turbine.Shell.WriteLine( L[ "TB_character_save_file_v10_to_v11" ] );
         -- update to version 1.1
 
-        -- In this update, the currencies are now indexed with image ID instead of a human readable key.
+        -- In this update, the currencies are now indexed with item ID (where possible) instead of a human readable key.
         -- Change old values to new, and add placeholder text to make it more legible.
 
         local v_10_to_11_lookup_table = {
-            ["DestinyPoints"] = 0x4100a682,
-            ["Shards"] = 0x41110d5b,
-            ["SkirmishMarks"] = 0x4111c446,
-            ["MithrilCoins"] = 0x411348e1,
-            ["YuleToken"] = 0x410fa62d,
-            ["HytboldTokens"] = 0x41127d0c,
-            ["Medallions"] = 0x4111c43d,
-            ["Seals"] = 0x4111c449,
-            ["Commendations"] = 0x41123495,
-            ["LOTROPoints"] = 0x4113478c,
-            ["AmrothSilverPiece"] = 0x41152875,
-            ["StarsofMerit"] = 0x4115bea4,
-            ["CentralGondorSilverPiece"] = 0x41155957,
-            ["GiftgiversBrand"] = 0x4115c888,
-            ["BingoBadge"] = 0x410e6ee4,
-            ["AnniversaryToken"] = 0x4110e2e7,
-            ["MotesOfEnchantment"] = 0x411b91dd,
-            ["EmbersOfEnchantment"] = 0x411ce971,
-            ["FigmentsOfSplendour"] = 0x411cf13b,
-            ["FallFestivalToken"] = 0x410d85de,
-            ["FarmersFaireToken"] = 0x410e7bd6,
-            ["SpringLeaf"] = 0x410d74cb,
-            ["MidsummerToken"] = 0x411ee829,
-            ["AncientScript"] = 0x41212e84,
-            ["BadgeOfTaste"] = 0x41002b2c,
-            ["BadgeOfDishonour"] = 0x410d4316,
+            ["DestinyPoints"] = 0x4100a682, -- No Item ID, = 1090561666
+            ["Shards"] = 1879202375, -- 0x41110d5b
+            ["SkirmishMarks"] = 1879224343, -- 0x4111c446, NOTE: These are "Mark" in game
+            ["MithrilCoins"] = 1879255991, -- 0x411348e1
+            ["YuleToken"] = 1879256449, -- 0x410fa62d
+            ["HytboldTokens"] = 1879237349, -- 0x41127d0c
+            ["Medallions"] = 1879224344, -- 0x4111c43d
+            ["Seals"] = 1879224345, -- 0x4111c449
+            ["Commendations"] = 1879230183, -- 0x41123495
+            ["LOTROPoints"] = 0x4113478c, -- No Item ID, = 1091782540
+            ["AmrothSilverPiece"] = 1879306057, -- 0x41152875
+            ["StarsofMerit"] = 1879318665, -- 0x4115bea4
+            ["CentralGondorSilverPiece"] = 1879314933, -- 0x41155957
+            ["GiftgiversBrand"] = 1879320706, -- 0x4115c888
+            ["BingoBadge"] = 1879321808, -- 0x410e6ee4
+            ["AnniversaryToken"] = 1879200721, -- 0x4110e2e7
+            ["MotesOfEnchantment"] = 1879352247, -- 0x411b91dd
+            ["EmbersOfEnchantment"] = 1879377205, -- 0x411ce971
+            ["FigmentsOfSplendour"] = 1879381191, -- 0x411cf13b
+            ["FallFestivalToken"] = 1879098272, -- 0x410d85de
+            ["FarmersFaireToken"] = 1879223715, -- 0x410e7bd6
+            ["SpringLeaf"] = 1879151743, -- 0x410d74cb
+            ["MidsummerToken"] = 1879406105, -- 0x411ee829
+            ["AncientScript"] = 1879424263, -- 0x41212e84
+            ["BadgeOfTaste"] = 1879185136, -- 0x41002b2c
+            ["BadgeOfDishonour"] = 1879183133, -- 0x410d4316
         };
 
-        for key, imageId in pairs(v_10_to_11_lookup_table) do
-            local isSettingPresent = not not settings[key];
+        settings.Currencies = {};
 
-            if (isSettingPresent) then
-                settings[imageId] = settings[key];
-                settings[key] = nil;
-                settings[imageId]["description"] = key;
+        for oldKey, newKey in pairs(v_10_to_11_lookup_table) do
+
+            if (settings[oldKey]) then
+                settings[newKey] = settings[oldKey];
+                settings[oldKey] = nil;
+                settings[newKey]["description"] = oldKey;
+
+                if (settings[newKey].W ~= "3") then
+                    settings.Currencies[newKey] = true;
+                end
             end
+        end
+
+        if (settings["Money"].W ~= 3) then
+            settings.Currencies["Money"] = true;
         end
 
         settings.version = "1.1";
@@ -985,6 +994,8 @@ function ResetSettings()
     -- Reset each currency:
     for key, isInUse in pairs(settings.Currencies) do
         ResetControlSettings(key);
+
+        -- TODO: Handle currencies in settings that are not currently in settings.Currencies.
     end
 
     -- Money-specific reset:

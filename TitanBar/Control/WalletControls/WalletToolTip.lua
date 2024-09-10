@@ -42,9 +42,8 @@ function RefreshWITTListBox()
         local ttw = Where[wttcur];
 
         if (wttcur ~= Money and Where[MenuItem[i]] == 2) then
-            local imageNum = tonumber(wttcur);
             CtrIconCodeIs = wttcur;
-            CtrQteIs = GetCurrency( imageNum );
+            CtrQteIs = GetCurrency( wttcur );
 		end
 		
 		if tonumber(ttw) == 2 then
@@ -103,7 +102,10 @@ function RefreshWITTListBox()
 				ttIcon:SetBlendMode( Turbine.UI.BlendMode.AlphaBlend );
 			
 				if wttcur == Seals or wttcur == LOTROPoints then ttIcon:SetBackground( CtrIconCodeIs );
-				else ttIcon:SetBackground( tonumber(CtrIconCodeIs) ); end
+				else
+                    local iconID = GetCurrencyIcon(CtrIconCodeIs)
+                    ttIcon:SetBackground( iconID );
+                end
 				--ttIcon:SetBackColor( Color["blue"] ); -- Debug purpose
 				--**^
 				--**v Quantity v**

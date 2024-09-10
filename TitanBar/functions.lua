@@ -369,7 +369,7 @@ end
 
 --- Function to update the details for currencies on the bar.
 --- Does nothing if the currency is not currently on the bar (Where = 1) or in the tooltip (Where = 2).
----@param key number The key (e.g. DestinyPoints for the currency)
+---@param key string|number The key (e.g. DestinyPoints for the currency)
 ---@param quantity integer? The new quantity, if known. Otherwise, will call GetCurrency().
 function UpdateCurrency(key, quantity)
     local table = _G[key];
@@ -386,7 +386,7 @@ end
 --- If entry is missing in PlayerCurrencyHandler, creates it.
 ---@param walletItem WalletItem
 function AddCurrencyCallbackIfNeeded(walletItem)
-    local key = walletItem:GetImage();
+    local key = GetCurrencyKey(walletItem);
     PlayerCurrency[key] = walletItem;
 
     if PlayerCurrencyHandler[key] == nil and key ~= nil then
@@ -404,7 +404,7 @@ end
 
 function CurrencyAdded(sender, args)
     local item = PlayerWallet:GetItem(args.Index);
-    local key = item:GetImage();
+    local key = GetCurrencyKey(item);
     if (key) then
         AddCurrencyCallbackIfNeeded(item);
         UpdateCurrency(key, item:GetQuantity());
@@ -413,7 +413,7 @@ end
 
 function CurrencyRemoved(sender, args)
     local item = PlayerWallet:GetItem(args.Index);
-    local key = item:GetImage();
+    local key = GetCurrencyKey(item);
     if (key) then
         UpdateCurrency(key, 0);
 
@@ -1009,4 +1009,18 @@ end
 function GetBGColor(key)
     local color = Turbine.UI.Color( BC.Alpha[key], BC.Red[key], BC.Green[key], BC.Blue[key] );
     return color;
+end
+
+--- Gets the internal ID for a WalletItem. 
+--- If it exists in our WalletItems lookup table this will be the Item ID.
+--- If not, it will be the name of the item (language dependent).
+--- (To be corrected on a future TitanBar release.)
+---@param walletItem WalletItem
+---@return integer|string # integer if it's a known item, string otherwise
+function GetCurrencyKey(walletItem)
+    local name = walletItem:GetName();
+
+    local result = _G.WalletItemsNameToID[name];
+
+    return result;
 end
